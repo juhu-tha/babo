@@ -6,7 +6,7 @@
  * Duplex-System: t_D = f · (t_Zn + t_B) mit Synergiefaktor f (Literaturwert, nicht normativ).
  * Reiner Rechenkern – geprüft in tests/korrosionsschutz.test.ts.
  */
-import { type Hinweis, istEndlich, muss, hatFehler, bereich, nurGueltig } from './plausibilitaet';
+import { type Hinweis, istEndlich, muss, hatFehler, bereich, nurGueltig, KEINE_KLASSE, type KeineKlasse } from './plausibilitaet';
 
 export type Kategorie = 'C1' | 'C2' | 'C3' | 'C4' | 'C5' | 'CX';
 export type Schutzdauerklasse = 'L' | 'M' | 'H' | 'VH';
@@ -42,7 +42,8 @@ export const SCHUTZDAUER: Readonly<Record<Schutzdauerklasse, { name: string; von
 export const KLASSEN: Schutzdauerklasse[] = ['L', 'M', 'H', 'VH'];
 
 /** Schutzdauerklasse, in die eine Dauer t [a] fällt (Grenzwerte gehören zur unteren Klasse) */
-export function schutzdauerklasse(t: number): Schutzdauerklasse {
+export function schutzdauerklasse(t: number): Schutzdauerklasse | KeineKlasse {
+  if (!Number.isFinite(t)) return KEINE_KLASSE; // F-1 (02.11.2026): keine Zahl → keine Klasse
   if (t <= 7) return 'L';
   if (t <= 15) return 'M';
   if (t <= 25) return 'H';
@@ -126,7 +127,7 @@ export interface ZinkEingabe {
   stahlDickeMm?: number;
 }
 
-export type Bewertung = 'erfuellt' | 'grenzwertig' | 'nicht_erfuellt';
+export type Bewertung = 'erfuellt' | 'grenzwertig' | 'nicht_erfuellt' | KeineKlasse;
 
 export interface ZinkErgebnis {
   gueltig: boolean;
@@ -140,14 +141,14 @@ export interface ZinkErgebnis {
   tDuplexMax: number | null;
   /** Maßgebende (ungünstige) Schutzdauer [a] */
   tMassgebend: number;
-  klasseUnguenstig: Schutzdauerklasse;
-  klasseGuenstig: Schutzdauerklasse;
+  klasseUnguenstig: Schutzdauerklasse | KeineKlasse;
+  klasseGuenstig: Schutzdauerklasse | KeineKlasse;
   bewertung: Bewertung;
   mindest1461?: { bereich: string; oertlich: number; mittel: number };
   hinweise: Hinweis[];
 }
 
-const rang = (k: Schutzdauerklasse) => KLASSEN.indexOf(k);
+const rang = (k: Schutzdauerklasse | KeineKlasse) => (k === KEINE_KLASSE ? -1 : KLASSEN.indexOf(k));
 
 export function zinkSchutzdauer(e: ZinkEingabe): ZinkErgebnis {
   const hinweise: Hinweis[] = [];
@@ -163,7 +164,7 @@ export function zinkSchutzdauer(e: ZinkEingabe): ZinkErgebnis {
     if (e.stahlDickeMm !== undefined) muss(hinweise, e.stahlDickeMm > 0, 'stahlDickeMm', 'Die Stahldicke muss größer als 0 mm sein.');
   }
   if (hatFehler(hinweise)) {
-    return nurGueltig({ gueltig: false, rMin: 0, rMax: 0, tMin: 0, tMax: null, tDuplexMin: 0, tDuplexMax: null, tMassgebend: 0, klasseUnguenstig: 'L', klasseGuenstig: 'L', bewertung: 'nicht_erfuellt', hinweise });
+    return nurGueltig({ gueltig: false, rMin: 0, rMax: 0, tMin: 0, tMax: null, tDuplexMin: 0, tDuplexMax: null, tMassgebend: 0, klasseUnguenstig: KEINE_KLASSE, klasseGuenstig: KEINE_KLASSE, bewertung: KEINE_KLASSE, hinweise });
   }
 
   const [rMin, rMax] = kat.zink;
@@ -191,5 +192,5 @@ export function zinkSchutzdauer(e: ZinkEingabe): ZinkErgebnis {
   }
   if (e.kategorie === 'CX') hinweise.push({ stufe: 'warnung', feld: 'kategorie', text: 'In CX streut der Zinkabtrag sehr stark (8,4 bis 25 µm/a); Zink allein reicht hier kaum, Systeme nach DIN EN ISO 12944-9 bzw. Einzelfallbetrachtung.' });
 
-  return nurGueltig({ gueltig: true, rMin, rMax, tMin, tMax, tDuplexMin, tDuplexMax, tMassgebend, klasseUnguenstig, klasseGuenstig, bewertung, mindest1461, hinweise });
+  return nurGueltig({ gueltig: true, rMin, rMax, tMin, tMax, tDuplexMin, tDuplexMax, tMassgebend, klasseUnguenstig, klasseGuenstig, bewertung, mindest1461, hinweise }, ['klasseUnguenstig', 'klasseGuenstig', 'bewertung']);
 }

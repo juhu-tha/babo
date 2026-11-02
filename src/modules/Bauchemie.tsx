@@ -74,7 +74,12 @@ export const Bauchemie: React.FC = () => {
     let stateColor = "";
     let statusClass = "";
 
-    if (r.ruhe) {
+    if (r.dosierung === '–') {
+      // F-1: ungültige Eingabe → keine Bewertung
+      stateMessage = '–';
+      stateColor = "text-slate-700 bg-off-white border-home-grau/30";
+      statusClass = '–';
+    } else if (r.ruhe) {
       // RESTING STATE (Standfestigkeit)
       if (r.dosierung === 'unter') {
         stateMessage = inhalt.werte.flieseRutschtAbPutz;

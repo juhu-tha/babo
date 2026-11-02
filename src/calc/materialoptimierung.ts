@@ -12,7 +12,7 @@
  *  - Klasse: ≥ 50 % A+, ≥ 40 % A, ≥ 25 % B, ≥ 10 % C, sonst Referenz (Lehreinteilung)
  * Einheiten: kg CO₂e; spezifisch je Bezugsgröße (m² bzw. m). Reiner Rechenkern – geprüft in tests/materialoptimierung.test.ts.
  */
-import { type Hinweis, hatFehler, nurGueltig } from './plausibilitaet';
+import { type Hinweis, hatFehler, nurGueltig, KEINE_KLASSE, type KeineKlasse } from './plausibilitaet';
 import { ZEMENT_GWP_KG } from '../data/zementGwp';
 import { GWP_LEHRWERTE, LEHRBETON_C3037 } from '../data/gwpLehrwerte';
 
@@ -74,12 +74,13 @@ export interface DafstbErgebnis {
   refConcreteGwpTotal: number; refSteelGwpTotal: number; refTotalGwp: number; refSpecificGwp: number;
   optConcreteGwpTotal: number; optSteelGwpTotal: number; optTotalGwp: number; optSpecificGwp: number;
   diffAbs: number; diffPct: number;
-  efficiencyClass: 'Referenz' | 'Klasse C' | 'Klasse B' | 'Klasse A' | 'Klasse A+';
+  efficiencyClass: 'Referenz' | 'Klasse C' | 'Klasse B' | 'Klasse A' | 'Klasse A+' | KeineKlasse;
   gueltig: boolean;
   hinweise: Hinweis[];
 }
 
 export function effizienzKlasseThg(diffPct: number): DafstbErgebnis['efficiencyClass'] {
+  if (!Number.isFinite(diffPct)) return KEINE_KLASSE; // F-1 (02.11.2026): keine Zahl → keine Klasse
   if (diffPct >= 50) return 'Klasse A+';
   if (diffPct >= 40) return 'Klasse A';
   if (diffPct >= 25) return 'Klasse B';
@@ -111,5 +112,5 @@ export function dafstbVergleich(e: DafstbEingabe): DafstbErgebnis {
     optConcreteGwpPerM3, refConcreteGwpTotal, refSteelGwpTotal, refTotalGwp, refSpecificGwp: refTotalGwp / b.bezug,
     optConcreteGwpTotal, optSteelGwpTotal, optTotalGwp, optSpecificGwp: optTotalGwp / b.bezug,
     diffAbs, diffPct, efficiencyClass: effizienzKlasseThg(diffPct), gueltig: !hatFehler(hinweise), hinweise,
-  });
+  }, ['efficiencyClass']);
 }

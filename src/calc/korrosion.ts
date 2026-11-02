@@ -17,7 +17,7 @@
  *    alle Beiwerte sind Lehrannahmen, keine Normwerte.
  * Lehr- und Vorbemessungswerkzeug; ersetzt keine Dauerhaftigkeitsbemessung oder Bauwerksuntersuchung.
  */
-import { type Hinweis, hatFehler, istEndlich, istAnzahl, muss, nurGueltig, MAX_STUETZSTELLEN } from './plausibilitaet';
+import { type Hinweis, hatFehler, istEndlich, istAnzahl, muss, nurGueltig, MAX_STUETZSTELLEN, KEINE_KLASSE, type KeineKlasse } from './plausibilitaet';
 import { tiefeNach, umrechnungsfaktor } from './schnellkarbonatisierung';
 import { chloridgehalt, alterungsfaktor, T0_JAHRE, D_EINHEIT_MM2_A } from './lebensdauer';
 
@@ -214,7 +214,7 @@ export const I_PASSIV = 0.08;
 /** Lehrannahmen: Rostvolumenfaktor (Zuwachs je abgetragener Dicke), wirksamer E-Modul [MPa], f_ctm [MPa] */
 export const LOKALELEMENT = { rostFaktor: 2.5, eEff: 12000, fctm: 3.0, iMax: 18.0, sigmaMax: 14.0 } as const;
 
-export type SchadensStufe = 'passiv' | 'initiierung' | 'rissbildung' | 'oberflaechenriss' | 'abplatzung';
+export type SchadensStufe = 'passiv' | 'initiierung' | 'rissbildung' | 'oberflaechenriss' | 'abplatzung' | KeineKlasse;
 
 export interface LokalelementEingabe {
   /** Chloridgehalt an der Bewehrung [M.-% v. z.] */
@@ -261,6 +261,7 @@ export function iCorrLehrmodell(clGehalt: number, relFeuchte: number): number {
 /** Schadensstufe aus dem Sprengdruck relativ zu f_ctm (Schwellen 0,7 / 1,5 / 2,8 · f_ctm) */
 export function schadensStufe(depassiviert: boolean, sigmaRadial: number, fctm: number = LOKALELEMENT.fctm): SchadensStufe {
   if (!depassiviert) return 'passiv';
+  if (!Number.isFinite(sigmaRadial)) return KEINE_KLASSE; // F-1 (02.11.2026): keine Zahl → keine Klasse
   if (sigmaRadial < fctm * 0.7) return 'initiierung';
   if (sigmaRadial < fctm * 1.5) return 'rissbildung';
   if (sigmaRadial < fctm * 2.8) return 'oberflaechenriss';
@@ -277,7 +278,7 @@ export function lokalelement(e: LokalelementEingabe): LokalelementErgebnis {
     muss(hinweise, e.jahre >= 0, 'jahre', 'Die Dauer darf nicht negativ sein.');
   }
   if (hatFehler(hinweise)) {
-    return nurGueltig({ depassiviert: false, iCorr: NaN, vCorr: NaN, abtrag: NaN, rostDicke: NaN, sigmaRadial: NaN, stufe: 'passiv', gueltig: false, hinweise });
+    return nurGueltig({ depassiviert: false, iCorr: NaN, vCorr: NaN, abtrag: NaN, rostDicke: NaN, sigmaRadial: NaN, stufe: KEINE_KLASSE, gueltig: false, hinweise });
   }
   const depassiviert = e.clGehalt >= CL_DEPASSIVIERUNG;
   const iCorr = iCorrLehrmodell(e.clGehalt, e.relFeuchte);
@@ -286,5 +287,5 @@ export function lokalelement(e: LokalelementEingabe): LokalelementErgebnis {
   const rostDicke = (abtrag * LOKALELEMENT.rostFaktor) / 1000;
   // Lehrmodell Hohlzylinder: σ ≈ E_eff · (Rostdicke/10) / c  (Ansatz unverändert aus dem Modul)
   const sigmaRadial = depassiviert ? Math.min(LOKALELEMENT.sigmaMax, (LOKALELEMENT.eEff * (rostDicke / 10)) / e.deckungMm) : 0;
-  return nurGueltig({ depassiviert, iCorr, vCorr, abtrag, rostDicke, sigmaRadial, stufe: schadensStufe(depassiviert, sigmaRadial), gueltig: true, hinweise });
+  return nurGueltig({ depassiviert, iCorr, vCorr, abtrag, rostDicke, sigmaRadial, stufe: schadensStufe(depassiviert, sigmaRadial), gueltig: true, hinweise }, ['stufe']);
 }

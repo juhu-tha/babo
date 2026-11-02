@@ -20,7 +20,7 @@
  * Einheiten: Flächen m², U in W/(m²K), H in W/K, Energiekennwerte in kWh/(m²a), CO₂ in kg/(m²a).
  * Reiner Rechenkern – geprüft in tests/energieausweis.test.ts.
  */
-import { type Hinweis, hatFehler, muss, nurGueltig } from './plausibilitaet';
+import { type Hinweis, hatFehler, muss, nurGueltig, KEINE_KLASSE, type KeineKlasse } from './plausibilitaet';
 
 export type Gebaeudetyp = 'efh' | 'mfh';
 export type Huellstandard = 'unsaniert' | 'bestand_teilsaniert' | 'geg_standard' | 'effizienzhaus40';
@@ -79,6 +79,7 @@ export const Q_INTERN = 35;
 export const EFFIZIENZKLASSEN: readonly (readonly [string, number])[] = [['A+', 30], ['A', 50], ['B', 75], ['C', 100], ['D', 130], ['E', 160], ['F', 200], ['G', 250]];
 
 export function effizienzklasse(qe: number): string {
+  if (!Number.isFinite(qe)) return KEINE_KLASSE; // F-1 (02.11.2026): keine Zahl → keine Klasse
   return EFFIZIENZKLASSEN.find(([, grenze]) => qe <= grenze)?.[0] ?? 'H';
 }
 
@@ -146,5 +147,5 @@ export function energieausweis(e: EnergieausweisEingabe): EnergieausweisErgebnis
     q_t_jahr: Math.round(q_t_roh), q_v_jahr: Math.round(q_v_roh), q_gewinne: Math.round(q_gewinne_roh),
     q_h, q_w, q_verlust_netz, w_hilfsstrom, jaz: erz.jaz, eta_erzeuger: erz.eta, f_p: fak.fp,
     q_e, q_p, co2_emissionen, co2_faktor: fak.co2, fp_strom, rechtsstand, klasse, istWP, gueltig: !hatFehler(hinweise), hinweise,
-  });
+  }, ['klasse']);
 }

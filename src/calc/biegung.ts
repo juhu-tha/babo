@@ -51,7 +51,8 @@ export function spannungsblock(fck: number): { lambda: number; eta: number } {
   return { lambda: 0.8 - (f - 50) / 400, eta: 1.0 - (f - 50) / 200 };
 }
 /** Bezogene Druckzonenhöhe ξ_lim: 0,45 bis C50/60, 0,35 ab C55/67 (DIN EN 1992-1-1/NA, 5.4.1; vorläufig, F-Freigabe) */
-export const xiLimit = (fck: number) => (fck > 50 ? 0.35 : XI_LIM);
+/** ξ_lim nach NA (DE); keine Zahl → NaN (F-1) */
+export const xiLimit = (fck: number) => (!Number.isFinite(fck) ? NaN : fck > 50 ? 0.35 : XI_LIM);
 /** µ_Eds,lim = η·λ·ξ_lim·(1 − λ·ξ_lim/2) */
 export function muLimit(fck: number): number {
   const { lambda, eta } = spannungsblock(fck);

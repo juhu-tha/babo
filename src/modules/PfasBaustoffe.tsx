@@ -8,7 +8,7 @@ import { Slider } from '@/src/components/ui/Slider';
 import { EingabeHinweise } from '@/src/components/ui/EingabeHinweise';
 import { CalculatorDisclaimerBanner } from '@/src/components/ui/CalculatorDisclaimerBanner';
 import { Querverweis } from '@/src/components/ui/Querverweis';
-import { formatDeZahl, formatDeTeX } from '@/src/utils/numberFormat';
+import { formatDeZahl, formatDeTeX, formatDeGanzzahl } from '@/src/utils/numberFormat';
 import { pfasSummenbewertung, ersatzwert, PFAS20, PFAS4, PFAS_GRENZWERTE, type PfasId, type BgAnsatz, type PfasSumme } from '@/src/calc/pfas';
 import inhalt from '@/content/pfasbaustoffe/PfasBaustoffe.json';
 import { MdText } from '@/src/components/inhalt/MdText';
@@ -72,7 +72,7 @@ export default function PfasBaustoffe() {
   const liveSchritte = gueltig ? [
     {
       titel: inhalt.werte.werteUnterDerBestimmungsgrenze,
-      erklaerung: `${erg.pfas20.nKleinerBg} von 20 Stoffen liegen unter der Bestimmungsgrenze BG = ${formatDeZahl(bg, 1)} ng/l. Gewählter Ansatz: ${ANSATZ_TEXT[ansatz]}.`,
+      erklaerung: `${formatDeGanzzahl(erg.pfas20.nKleinerBg)} von 20 Stoffen liegen unter der Bestimmungsgrenze BG = ${formatDeZahl(bg, 1)} ng/l. Gewählter Ansatz: ${ANSATZ_TEXT[ansatz]}.`,
       formel: `c_{<BG} = ${tex(ew, 2)}\\,\\text{ng/l}`,
     },
     {

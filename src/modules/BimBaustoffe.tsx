@@ -57,6 +57,8 @@ export default function BimBaustoffe() {
     }
   };
 
+  // IFC: keine Zahl (leeres Feld) → Wert „$“ (nicht gesetzt nach ISO 10303-21) statt „MEASURE(NaN)“ (Prüfung 02.11.2026)
+  const ifcWert = (typ: string, x: number, n: number) => (Number.isFinite(x) ? `${typ}(${x.toFixed(n)})` : '$');
   const generatedIfcString = `/* Bauteil-Zuweisungsstruktur für Building Information Modeling */
 #100 = IFCWALL('2X3g5_w1S', #15, 'Aussenwand_Tragend', $, $, #101, $, $);
 #110 = IFCMATERIAL('${archetype.name}');
@@ -67,17 +69,17 @@ export default function BimBaustoffe() {
 /* Property-Set: Mechanische Werkstoffdaten fuer Statik */
 /* Einheiten: IFC rechnet in SI (MassDensity kg/m3, YoungModulus Pa); E in MPa nur mit passender IFCUNITASSIGNMENT (PRESSUREUNIT, Praefix MEGA) */
 #150 = IFCMATERIALPROPERTIES('Pset_MaterialCommon', $, (#160), #110);
-#160 = IFCPROPERTYSINGLEVALUE('MassDensity', $, IFCMASSDENSITYMEASURE(${density.toFixed(1)}), $);
+#160 = IFCPROPERTYSINGLEVALUE('MassDensity', $, ${ifcWert('IFCMASSDENSITYMEASURE', density, 1)}, $);
 #155 = IFCMATERIALPROPERTIES('Pset_MaterialMechanical', $, (#170), #110);
-#170 = IFCPROPERTYSINGLEVALUE('YoungModulus', $, IFCMODULUSOFELASTICITYMEASURE(${eModulus.toFixed(1)}), $);
+#170 = IFCPROPERTYSINGLEVALUE('YoungModulus', $, ${ifcWert('IFCMODULUSOFELASTICITYMEASURE', eModulus, 1)}, $);
 
 /* Property-Set: Thermische Eigenschaften fuer Energiebilanz */
 #180 = IFCMATERIALPROPERTIES('Pset_MaterialThermal', $, (#190), #110);
-#190 = IFCPROPERTYSINGLEVALUE('ThermalConductivity', $, IFCTHERMALCONDUCTIVITYMEASURE(${conductivity.toFixed(3)}), $);
+#190 = IFCPROPERTYSINGLEVALUE('ThermalConductivity', $, ${ifcWert('IFCTHERMALCONDUCTIVITYMEASURE', conductivity, 3)}, $);
 
 /* Projektspezifisches Property-Set (kein IFC-Standard-Pset): Umweltindikatoren aus EPD */
 #200 = IFCMATERIALPROPERTIES('CPset_Umweltdaten', $, (#210), #110);
-#210 = IFCPROPERTYSINGLEVALUE('GWP_A1_A3', $, IFCREAL(${gwp.toFixed(2)}), $);`;
+#210 = IFCPROPERTYSINGLEVALUE('GWP_A1_A3', $, ${ifcWert('IFCREAL', gwp, 2)}, $);`;
 
   const handleCopy = () => {
     navigator.clipboard.writeText(generatedIfcString);

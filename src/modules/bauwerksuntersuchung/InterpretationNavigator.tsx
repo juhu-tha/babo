@@ -279,7 +279,7 @@ export default function InterpretationNavigator() {
             <div className="space-y-1.5 p-3.5 bg-white rounded-xl border border-home-grau/20">
               <div className="flex justify-between font-bold">
                 <span className="text-slate-700"><MdText text={inhalt.texte.halbzellenpotentialUCse} /></span>
-                <span className={`font-mono ${evaluation.potentialStatus === 'aktiv' ? 'text-rose-600' : evaluation.potentialStatus === 'unsicher' ? 'text-amber-600' : 'text-emerald-600'}`}>
+                <span className={`font-mono ${evaluation.potentialStatus === '–' ? 'text-slate-700' : evaluation.potentialStatus === 'aktiv' ? 'text-rose-600' : evaluation.potentialStatus === 'unsicher' ? 'text-amber-600' : 'text-emerald-600'}`}>
                   {formatDeZahl(potentialVal, 0)} mV
                 </span>
               </div>
@@ -378,11 +378,13 @@ export default function InterpretationNavigator() {
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-home-grau/20 pb-4">
           <div className="flex items-center gap-3">
             <div className={`w-9 h-9 rounded-xl flex items-center justify-center font-bold text-white shrink-0 ${
+              evaluation.overallRisk === '–' ? 'bg-slate-500' :
               evaluation.overallRisk === 'akut' ? 'bg-rose-600' :
               evaluation.overallRisk === 'hoch' ? 'bg-amber-600' :
               evaluation.overallRisk === 'mittel' ? 'bg-amber-500' : 'bg-emerald-600'
             }`}>
-              {evaluation.overallRisk === 'akut' ? <ShieldAlert size={20} /> :
+              {evaluation.overallRisk === '–' ? <span aria-hidden="true">–</span> :
+               evaluation.overallRisk === 'akut' ? <ShieldAlert size={20} /> :
                evaluation.overallRisk === 'hoch' ? <AlertTriangle size={20} /> :
                <CheckCircle2 size={20} />}
             </div>
@@ -395,11 +397,13 @@ export default function InterpretationNavigator() {
 
           <div className="flex items-center gap-2">
             <span className={`px-3 py-1 text-xs font-bold rounded-full uppercase font-mono ${
+              evaluation.overallRisk === '–' ? 'bg-off-white text-slate-700 border border-home-grau/30' :
               evaluation.overallRisk === 'akut' ? 'bg-rose-100 text-rose-800 border border-rose-300' :
               evaluation.overallRisk === 'hoch' ? 'bg-amber-100 text-amber-800 border border-amber-300' :
               evaluation.overallRisk === 'mittel' ? 'bg-amber-50 text-amber-700 border border-amber-200' :
               'bg-emerald-100 text-emerald-800 border border-emerald-300'
             }`}><MdText text={inhalt.texte.gutachterlicheDringlichkeitAmpelNicht} />{
+                evaluation.overallRisk === '–' ? '–' :
                 evaluation.overallRisk === 'akut' ? inhalt.werte.stufe4SofortigerHandlungsbedarf :
                 evaluation.overallRisk === 'hoch' ? inhalt.werte.stufe3Erheblich :
                 evaluation.overallRisk === 'mittel' ? inhalt.werte.stufe2Beobachtung :
@@ -424,6 +428,8 @@ export default function InterpretationNavigator() {
                       <span className="text-slate-500"><MdText text={inhalt.texte.deckungNichtGemessen} /></span>
                     ) : evaluation.isCarbDepassivated ? (
                       <span className="text-rose-700 font-semibold"><MdText text={inhalt.texte.bewehrungVollständigDepassiviertD} /></span>
+                    ) : !Number.isFinite(evaluation.passivierungsReserve) ? (
+                      <span>–</span>
                     ) : evaluation.passivierungsReserve < 10 ? (
                       <span className="text-amber-700"><MdText text={inhalt.texte.restreserveKnapp10Mm} /></span>
                     ) : (

@@ -620,7 +620,9 @@ export default function Spaltzugversuch({ onNavigateToProtocols }: Spaltzugversu
 
                     <button
                       onClick={() => {
-                        const rows = testData.map(d => [d.x.toFixed(4), d.y.toFixed(3), spaltkraft(d.y, diameter, length).toFixed(2)]);
+                        // CSV: keine Zahl → leeres Feld statt „NaN“ (Prüfung „Kein Ergebnis in der Anzeige“ 02.11.2026)
+                        const csv = (v: number, n: number) => (Number.isFinite(v) ? v.toFixed(n) : '');
+                        const rows = testData.map(d => [csv(d.x, 4), csv(d.y, 3), csv(spaltkraft(d.y, diameter, length), 2)]);
                         exportToCSV(`Spaltzug_${grade}`, ['Weg_mm', 'Spaltzugspannung_N_mm2', 'Kraft_kN'], rows);
                       }}
                       className="px-3 py-1.5 bg-white hover:bg-slate-100 text-text-main text-xs font-bold rounded-xl border border-home-grau/30 shadow-xs transition-all flex items-center gap-1.5 cursor-pointer"

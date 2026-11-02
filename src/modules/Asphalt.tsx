@@ -362,7 +362,12 @@ export default function Asphalt() {
           let ratingColor = "bg-green-50 text-green-800 border-green-200";
           let ratingBadge = inhalt.werte.optimalVerarbeitbar;
           let ratingText = inhalt.werte.viskositätImIdealenBereich;
-          if (nta.bewertung === 'blockiert') {
+          if (nta.bewertung === '–') {
+            // F-1: ungültige Eingabe → keine Bewertung
+            ratingColor = "bg-off-white text-text-main border-home-grau/30";
+            ratingBadge = '–';
+            ratingText = '';
+          } else if (nta.bewertung === 'blockiert') {
             ratingColor = "bg-red-50 text-red-800 border-red-200";
             ratingBadge = inhalt.werte.ungenügendKritischerGrenzstopp;
             ratingText = inhalt.werte.bindemittelIstVielZu;
@@ -566,7 +571,7 @@ export default function Asphalt() {
                     {/* Feasibility Alert Box */}
                     <div className={`p-3 rounded-lg border text-xs leading-relaxed flex gap-2 items-start transition-colors duration-300 ${ratingColor}`}>
                       <div className="mt-0.5">
-                        {nta.bewertung === 'blockiert' ? (
+                        {nta.bewertung === '–' ? null : nta.bewertung === 'blockiert' ? (
                           <ShieldAlert size={14} className="text-red-700 animate-pulse" />
                         ) : nta.bewertung === 'erschwert' ? (
                           <AlertTriangle size={14} className="text-amber-700" />
@@ -589,8 +594,10 @@ export default function Asphalt() {
                         <span className="text-xs font-bold text-text-main flex items-center gap-1"><MdText text={inhalt.texte.aerosolDampfkonzentrationArbeitsplatzluf} /></span>
                       </div>
                       <span className={`text-xs font-mono font-bold px-2 py-0.5 rounded border ${
-                        fumesValue > NTA.agw 
-                          ? 'bg-red-50 text-red-700 border-red-200' 
+                        !Number.isFinite(fumesValue)
+                          ? 'bg-off-white text-text-main border-home-grau/30'
+                          : fumesValue > NTA.agw
+                          ? 'bg-red-50 text-red-700 border-red-200'
                           : 'bg-green-50 text-green-700 border-green-200'
                       }`}>
                         {formatDeZahl(fumesValue, 2)} mg/m³
@@ -607,8 +614,8 @@ export default function Asphalt() {
                       <div className="relative w-full bg-stone-200 h-4 rounded overflow-hidden">
                         {/* 100% boundary of the element is 3.0 mg/m³ for visual scale */}
                         <div 
-                          className={`h-full transition-all duration-500 ${fumesValue > NTA.agw ? 'bg-red-500' : 'bg-emerald-500'}`}
-                          style={{ width: `${Math.min(100, (fumesValue / 3.0) * 100)}%` }}
+                          className={`h-full transition-all duration-500 ${!Number.isFinite(fumesValue) ? 'bg-slate-300' : fumesValue > NTA.agw ? 'bg-red-500' : 'bg-emerald-500'}`}
+                          style={{ width: `${Number.isFinite(fumesValue) ? Math.min(100, (fumesValue / 3.0) * 100) : 0}%` }}
                         ></div>
                         {/* Red divider indicating the 1.5 limit at 50% */}
                         <div className="absolute inset-y-0 left-1/2 w-0.5 bg-red-600 z-10"></div>
@@ -617,7 +624,9 @@ export default function Asphalt() {
 
                     <div className="flex justify-between items-center text-[11px] leading-relaxed">
                       <span className="text-text-main/70">
-                        {fumesValue > NTA.agw ? (
+                        {!Number.isFinite(fumesValue) ? (
+                          <span>–</span>
+                        ) : fumesValue > NTA.agw ? (
                           <span className="text-red-700 font-semibold"><MdText text={inhalt.texte.modellwertÜberAgwSchutzmaßnahmen} /></span>
                         ) : (
                           <span className="text-green-700 font-semibold"><MdText text={inhalt.texte.modellwertUnterAgwReale} /></span>

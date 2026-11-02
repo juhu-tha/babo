@@ -71,6 +71,8 @@ export default function Eigenspannungen() {
       maxTensile,
       maxCompressive,
       crackRisk,
+      // ungültige Eingabe: keine Rissaussage (NaN > f_ctm wäre sonst „keine Risse“)
+      gueltig: r.gueltig,
       zugLage: r.zugLage,
       chartData: {
         labels,
@@ -170,9 +172,11 @@ export default function Eigenspannungen() {
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <div className="bg-white p-4 rounded-xl border border-home-grau/30 shadow-sm">
                     <div className="text-xs text-home-grau uppercase tracking-wider mb-1"><MdText text={betonResults.zugLage === 'kern' ? inhalt.texte.maxZugeigenspannungKern : inhalt.texte.maxZugeigenspannungRand} /></div>
-                    <div className={`text-2xl font-bold ${betonResults.crackRisk ? 'text-red-600' : 'text-emerald-600'}`}>+{formatDeZahl(betonResults.maxTensile, 1)} MPa</div>
+                    <div className={`text-2xl font-bold ${!betonResults.gueltig ? 'text-slate-700' : betonResults.crackRisk ? 'text-red-600' : 'text-emerald-600'}`}>+{formatDeZahl(betonResults.maxTensile, 1)} MPa</div>
                     <div className="text-xs text-text-main/60 mt-1">
-                      {betonResults.crackRisk ? (
+                      {!betonResults.gueltig ? (
+                        <span>–</span>
+                      ) : betonResults.crackRisk ? (
                         <span className="text-red-600 font-medium"><MdText text={betonResults.zugLage === 'kern' ? inhalt.texte.gefahrVonKernrissenF : inhalt.texte.gefahrVonOberflächenrissenF} /></span>
                       ) : (
                         <span className="text-emerald-600 font-medium"><MdText text={betonResults.zugLage === 'kern' ? inhalt.texte.keineKernrisseFCtm : inhalt.texte.keineOberflächenrisseFCtm} /></span>

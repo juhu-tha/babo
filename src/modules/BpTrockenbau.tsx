@@ -1,4 +1,4 @@
-import { formatDeZahl, formatDeWert } from '@/src/utils/numberFormat';
+import { formatDeZahl, formatDeWert, formatDeGanzzahl } from '@/src/utils/numberFormat';
 import { trockenbauBedarf } from '@/src/calc/bauprodukte';
 import React, { useState } from 'react';
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
@@ -554,7 +554,7 @@ export default function BpTrockenbau() {
                       <p className="text-sm font-semibold text-text-main"><MdText text={inhalt.texte.schnellbauschrauben253545} /></p>
                       <p className="text-xs text-text-main/50"><MdText text={inhalt.texte.phosphatiertMitFeingewindeFür} /></p>
                     </div>
-                    <p className="text-base font-bold text-text-main">{screwsCount} Stk</p>
+                    <p className="text-base font-bold text-text-main">{formatDeGanzzahl(screwsCount)} Stk</p>
                   </div>
 
                   <div className="flex items-center justify-between pt-2 pb-2">

@@ -696,14 +696,17 @@ export default function BpBetonzusatzmittel() {
                       <div>
                         <span className="text-[9px] text-slate-400 uppercase font-semibold block flex items-center gap-1"><MdText text={inhalt.texte.tatsächlicherEffektiverWZ} />{isWaterAnrechnungMandatory && <span className="bg-sky-500 text-white font-mono font-bold text-[8px] px-1 py-0.2 px-1 rounded">VORSCHRIFT</span>}
                         </span>
-                        <span className={`text-sm font-extrabold block font-mono ${effectiveWcRatio > targetWcValue ? 'text-red-600' : 'text-emerald-700'}`}>
+                        <span className={`text-sm font-extrabold block font-mono ${!Number.isFinite(effectiveWcRatio) ? 'text-slate-700' : effectiveWcRatio > targetWcValue ? 'text-red-600' : 'text-emerald-700'}`}>
                           {formatDeZahl(effectiveWcRatio, 3)}
                         </span>
                         <span className="text-[10px] text-slate-400 italic block mt-0.5"><MdText text={inhalt.texte.effektivesWasser} />{formatDeZahl(effectiveWater, 1)} l) / Zement</span>
                       </div>
                     </div>
 
-                    {effectiveWcRatio > targetWcValue ? (
+                    {!Number.isFinite(effectiveWcRatio) ? (
+                      // keine Zahl (z. B. leeres Feld): keine Aussage zum Grenzwert (vorher „hält … sicher ein“)
+                      <div className="p-3 bg-off-white border border-home-grau/30 text-text-main rounded-lg text-xxs leading-relaxed mt-2">–</div>
+                    ) : effectiveWcRatio > targetWcValue ? (
                       <div className="p-3 bg-red-50 border border-red-200 text-red-950 font-semibold rounded-lg text-xxs leading-relaxed mt-2 flex gap-1.5 items-start">
                         <AlertTriangle size={14} className="text-red-700 flex-none mt-0.5" />
                         <div><MdText text={inhalt.texte.gefahrZielWZ} />{formatDeZahl(effectiveWcRatio, 3)}<MdText text={inhalt.texte.übersteigtDenGrenzwertVon} />{formatDeZahl(targetWcValue, 2)}<MdText text={inhalt.texte.durchDasEigenwasserDes} /><strong>{formatDeZahl((targetWcValue * cementContent - (isWaterAnrechnungMandatory ? admixtureWaterMass : 0)), 0)} l/m³</strong><MdText text={inhalt.texte.umDieRezeptvorgabeZu} /></div>

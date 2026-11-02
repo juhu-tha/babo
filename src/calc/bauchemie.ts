@@ -10,7 +10,7 @@
  *  - pH-Wert und Hydroxidionenkonzentration bei 25 °C: pH = 14 + lg[OH⁻]
  * Reiner Rechenkern – geprüft in tests/bauchemie.test.ts.
  */
-import { type Hinweis, istEndlich, istAnzahl, hatFehler, muss, nurGueltig, MAX_STUETZSTELLEN } from './plausibilitaet';
+import { type Hinweis, istEndlich, istAnzahl, hatFehler, muss, nurGueltig, MAX_STUETZSTELLEN, type KeineKlasse } from './plausibilitaet';
 import { tiefeNach, zeitBisTiefe } from './schnellkarbonatisierung';
 
 export interface Ergebnis { gueltig: boolean; hinweise: Hinweis[] }
@@ -30,8 +30,8 @@ export const SCHERRATE_RUHE = 5;
 export const stellmittelViskositaet = (konzentration: number, scherrate: number) =>
   runde1(1.5 + (konzentration * 90) / (Math.pow(scherrate, 0.72) + 0.25));
 
-export type Dosierung = 'unter' | 'optimal' | 'ueber';
-export type Kraftaufwand = 'hoch' | 'leicht' | 'optimal';
+export type Dosierung = 'unter' | 'optimal' | 'ueber' | KeineKlasse;
+export type Kraftaufwand = 'hoch' | 'leicht' | 'optimal' | KeineKlasse;
 export interface RheologieErgebnis extends Ergebnis {
   kurve: number[];
   referenz: number[];
@@ -54,7 +54,7 @@ export function stellmittelRheologie(konzentration: number, scherrate: number): 
     kurve: SCHERRATEN.map(s => stellmittelViskositaet(konzentration, s)),
     referenz: SCHERRATEN.map(() => VISKOSITAET_REFERENZ),
     viskositaet, ruhe: scherrate < SCHERRATE_RUHE, dosierung, kraftaufwand, ...abschluss(h),
-  });
+  }, ['dosierung', 'kraftaufwand']);
 }
 
 // ---------------------------------------------------------------- AKR (Lehrmodell)

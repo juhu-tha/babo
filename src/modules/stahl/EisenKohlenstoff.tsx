@@ -224,7 +224,7 @@ export default function EisenKohlenstoff() {
           <dl className="grid grid-cols-1 sm:grid-cols-3 gap-4 text-sm bg-shiraz/5 p-4 rounded-xl border border-shiraz/20">
             <div><dt className="text-text-main/75"><MdText text={inhalt.texte.cevErgebnis} /></dt><dd className="text-lg font-bold tabular-nums">{formatDeZahl(cevErg.cev, 3)} %</dd></div>
             <div><dt className="text-text-main/75"><MdText text={inhalt.texte.eignung} /></dt><dd className="font-bold">{cevErg.stufe} – {cevErg.vorwaermen}</dd></div>
-            <div><dt className="text-text-main/75"><MdText text={inhalt.texte.grenzwert} /></dt><dd className="font-bold">S235JR ≤ {formatDeZahl(CEV_GRENZEN.S235JR.cevBis30, 2)}: {cevErg.cev <= CEV_GRENZEN.S235JR.cevBis30 ? 'eingehalten' : 'überschritten'}; S355J2 ≤ {formatDeZahl(CEV_GRENZEN.S355J2.cevBis30, 2)}: {cevErg.cev <= CEV_GRENZEN.S355J2.cevBis30 ? 'eingehalten' : 'überschritten'}</dd></div>
+            <div><dt className="text-text-main/75"><MdText text={inhalt.texte.grenzwert} /></dt><dd className="font-bold">S235JR ≤ {formatDeZahl(CEV_GRENZEN.S235JR.cevBis30, 2)}: {!Number.isFinite(cevErg.cev) ? '–' : cevErg.cev <= CEV_GRENZEN.S235JR.cevBis30 ? 'eingehalten' : 'überschritten'}; S355J2 ≤ {formatDeZahl(CEV_GRENZEN.S355J2.cevBis30, 2)}: {!Number.isFinite(cevErg.cev) ? '–' : cevErg.cev <= CEV_GRENZEN.S355J2.cevBis30 ? 'eingehalten' : 'überschritten'}</dd></div>
           </dl>
         )}
       </div>

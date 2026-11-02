@@ -291,7 +291,7 @@ export default function KennwerteEinpressmoertel({ groutAdmixturePct, groutCalcu
 
               <div className="space-y-1">
                 <div className="flex items-center justify-between text-xs font-semibold text-text-main">
-                  <span><MdText text={inhalt.texte.litzenbelegungAp} />{groutStrandCount * LITZE.Ap} mm²):</span>
+                  <span><MdText text={inhalt.texte.litzenbelegungAp} />{formatDeWert(groutStrandCount * LITZE.Ap)} mm²):</span>
                   <span className="font-mono text-shiraz font-bold">{groutStrandCount} Litzen</span>
                 </div>
                 <select

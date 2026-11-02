@@ -3,7 +3,7 @@
  * Erddruck nach Rankine (glatte, lotrechte Wand, waagerechtes Gelände, kohäsionslos), eindimensionale Konsolidierung (Terzaghi).
  * Reiner Rechenkern – geprüft in tests/boden.test.ts.
  */
-import { type Hinweis, istEndlich, muss, bereich, hatFehler, nurGueltig } from './plausibilitaet';
+import { type Hinweis, istEndlich, muss, bereich, hatFehler, nurGueltig, KEINE_KLASSE, type KeineKlasse } from './plausibilitaet';
 import { formatDeZahl } from '../utils/numberFormat';
 
 /**
@@ -17,6 +17,7 @@ import { formatDeZahl } from '../utils/numberFormat';
  * (breiig 0–0,5, weich 0,5–0,75, steif 0,75–1,0, halbfest/fest > 1,0).
  */
 export function zustandsformISO14688(iC: number): string {
+  if (!Number.isFinite(iC)) return KEINE_KLASSE; // F-1 (02.11.2026): keine Zahl → keine Klasse
   return iC < 0 ? 'flüssig' : iC < 0.25 ? 'breiig' : iC < 0.5 ? 'weich' : iC < 0.75 ? 'steif' : iC <= 1.0 ? 'halbfest' : 'fest';
 }
 

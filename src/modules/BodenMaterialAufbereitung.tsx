@@ -3,7 +3,7 @@ import { Recycle, Sliders, Activity, CheckCircle2, Info, AlertTriangle, AlertCir
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
 import { FormulaDerivationBox } from '@/src/components/ui/FormulaDerivationBox';
 import { ModulTest } from '@/src/components/quiz/ModulTest';
-import { formatDeZahl, formatDeWert, formatDeIntl } from '@/src/utils/numberFormat';
+import { formatDeZahl, formatDeWert, formatDeIntl, formatDeGanzzahl } from '@/src/utils/numberFormat';
 import { FormulaText } from '@/src/components/ui/FormulaText';
 import { InlineMath } from 'react-katex';
 import inhalt from '@/content/bodenmaterialaufbereitung/BodenMaterialAufbereitung.json';
@@ -502,7 +502,7 @@ export default function BodenMaterialAufbereitung() {
                     <div className="bg-white p-3 rounded-xl border border-home-grau/15">
                       <span className="text-xs font-mono text-slate-400 uppercase tracking-wider block"><MdText text={inhalt.texte.untersuchungseinheitenUe} /></span>
                       <div className="text-xl font-extrabold text-slate-850 mt-0.5 flex items-baseline gap-1">
-                        {numInvestigationUnits}
+                        {formatDeGanzzahl(numInvestigationUnits)}
                         <span className="text-xs font-normal text-slate-500">UE</span>
                       </div>
                     </div>
@@ -586,7 +586,7 @@ export default function BodenMaterialAufbereitung() {
                       <div className="bg-blue-50 border border-blue-200 text-blue-800 text-xs p-3 rounded-lg flex gap-2 items-start">
                         <Layers size={15} className="text-blue-600 flex-shrink-0 mt-0.5" />
                         <div>
-                          <strong className="block mb-0.5 font-extrabold"><MdText text={inhalt.texte.erforderlicheAufteilungIn} />{numInvestigationUnits} Sektoren:</strong><MdText text={inhalt.texte.dasHaufwerkÜbersteigt3} />{numInvestigationUnits}<MdText text={inhalt.texte.getrennteUntersuchungseinheitenUeBilden} /></div>
+                          <strong className="block mb-0.5 font-extrabold"><MdText text={inhalt.texte.erforderlicheAufteilungIn} />{formatDeGanzzahl(numInvestigationUnits)} Sektoren:</strong><MdText text={inhalt.texte.dasHaufwerkÜbersteigt3} />{formatDeGanzzahl(numInvestigationUnits)}<MdText text={inhalt.texte.getrennteUntersuchungseinheitenUeBilden} /></div>
                       </div>
                     )}
                   </div>
@@ -748,8 +748,8 @@ export default function BodenMaterialAufbereitung() {
                       </tr>
                       <tr>
                         <td className="border border-slate-300 p-1"><MdText text={inhalt.texte.untersuchungseinheitenUe2} /></td>
-                        <td className="border border-slate-300 p-1 font-mono">{numInvestigationUnits}<MdText text={inhalt.texte.ueMax3000} /></td>
-                        <td className="border border-slate-300 p-1 font-semibold">{numInvestigationUnits} UE gebildet</td>
+                        <td className="border border-slate-300 p-1 font-mono">{formatDeGanzzahl(numInvestigationUnits)}<MdText text={inhalt.texte.ueMax3000} /></td>
+                        <td className="border border-slate-300 p-1 font-semibold">{formatDeGanzzahl(numInvestigationUnits)} UE gebildet</td>
                       </tr>
                       <tr>
                         <td className="border border-slate-300 p-1"><MdText text={inhalt.texte.anzahlMischprobenMp} /></td>

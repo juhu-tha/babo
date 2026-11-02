@@ -181,7 +181,7 @@ export default function StahlWerkstoffkunde({ activeTab, alloyC, alloyCr, alloyM
                 <div className={`p-4 rounded-xl shadow-md ${nR === Infinity || nR > 1e8 ? 'bg-off-white border border-home-grau/30 text-text-main' : 'bg-shiraz text-white'} transition-colors mt-2`}>
                   <div className="text-sm opacity-90 mb-1"><MdText text={inhalt.texte.ertragbareLastwechsel} /><FormulaText text="N_R" /></div>
                   <div className="text-2xl font-bold">
-                    {nR === Infinity ? inhalt.werte.dauerfest : nR > 1e8 ? inhalt.werte.t100MioDauerfest : nR.toExponential(2)}
+                    {nR === Infinity ? inhalt.werte.dauerfest : !Number.isFinite(nR) ? '–' : nR > 1e8 ? inhalt.werte.t100MioDauerfest : nR.toExponential(2)}
                   </div>
                 </div>
               </div>
@@ -502,6 +502,7 @@ export default function StahlWerkstoffkunde({ activeTab, alloyC, alloyCr, alloyM
                 duplex: { category: inhalt.werte.duplexAustenitFerritMischgefüge, designationMatch: inhalt.werte.duplexEdelstahlZB, corrosionRating: inhalt.werte.hervorragendBisExtremHohe, corrosionColor: 'text-teal-700 bg-teal-50', microstructureDesc: inhalt.werte.bestehtAusEtwaGleichen },
                 martensitisch: { category: inhalt.werte.martensitischerChromstahlHärtbar, designationMatch: inhalt.werte.martensitischerStahlZB, corrosionRating: inhalt.werte.mäßigHärtbarDurchAbschrecken, corrosionColor: 'text-amber-700 bg-amber-50', microstructureDesc: inhalt.werte.reagiertStarkAufWärmebehandlung },
                 ferritisch: { category: inhalt.werte.ferritischerChromstahlRostfreiMagnetisch, designationMatch: inhalt.werte.ferritischerEdelstahlZB, corrosionRating: inhalt.werte.mäßigBisGut, corrosionColor: 'text-stone-700 bg-stone-50', microstructureDesc: inhalt.werte.rostfreiAberOhneNennenswerten },
+                '–': { category: '–', designationMatch: '–', corrosionRating: '–', corrosionColor: 'text-slate-700 bg-slate-100', microstructureDesc: '–' }, // F-1
               } as const;
               const { category, designationMatch, corrosionRating, corrosionColor, microstructureDesc } = TEXTE[gefuegeklasse(alloyCr, alloyNi, alloyMo, alloyC)];
 

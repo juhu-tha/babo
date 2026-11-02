@@ -7,7 +7,7 @@
  * stimmen bei S1 bis S6 und bei den außenliegenden F_C-Werten überein. Die Neuausgabe DIN 4108-2:2026-05
  * (Abschnitte neu nummeriert) ist nicht eingearbeitet.
  */
-import { type Hinweis, istEndlich, nurGueltig } from './plausibilitaet';
+import { type Hinweis, istEndlich, nurGueltig, KEINE_KLASSE, type KeineKlasse } from './plausibilitaet';
 
 export type Nutzung = 'wohn' | 'nichtwohn';
 export type Klimaregion = 'A' | 'B' | 'C';
@@ -205,7 +205,8 @@ export function sonneneintrag(r: Raum) {
 }
 
 /** Einstufung der Bauart aus der wirksamen Wärmespeicherfähigkeit C_wirk/A_G [Wh/(m²K)] */
-export function bauartAusCwirk(cwirkProAG: number): Bauart {
+export function bauartAusCwirk(cwirkProAG: number): Bauart | KeineKlasse {
+  if (!Number.isFinite(cwirkProAG)) return KEINE_KLASSE; // F-1 (02.11.2026): keine Zahl → keine Klasse
   if (cwirkProAG < BAUART_GRENZEN.leichtBis) return 'leicht';
   return cwirkProAG > BAUART_GRENZEN.schwerAb ? 'schwer' : 'mittel';
 }

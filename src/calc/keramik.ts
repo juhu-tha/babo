@@ -12,10 +12,10 @@
  * 3. Schwindmaß und Formmaß (Trocken- und Brennschwindung, bezogen auf die Ausgangslänge).
  * Reiner Rechenkern – geprüft in tests/keramik.test.ts.
  */
-import { type Hinweis, istEndlich, hatFehler, nurGueltig } from './plausibilitaet';
+import { type Hinweis, istEndlich, hatFehler, nurGueltig, KEINE_KLASSE, type KeineKlasse } from './plausibilitaet';
 
 export type Formgebung = 'A' | 'B';
-export type FliesenGruppe = 'AIa' | 'AIb' | 'AIIa' | 'AIIb' | 'AIII' | 'BIa' | 'BIb' | 'BIIa' | 'BIIb' | 'BIII';
+export type FliesenGruppe = 'AIa' | 'AIb' | 'AIIa' | 'AIIb' | 'AIII' | 'BIa' | 'BIb' | 'BIIa' | 'BIIb' | 'BIII' | KeineKlasse;
 
 /** Gruppengrenzen der Wasseraufnahme E_b in % nach DIN EN 14411:2016-12 (Obergrenzen, jeweils einschließlich) */
 export const EB_GRENZEN = [
@@ -30,12 +30,14 @@ const EPS = 1e-9;
 
 /** Gruppe nach DIN EN 14411 aus der Wasseraufnahme E_b in %. */
 export function fliesenGruppe(ebProzent: number, formgebung: Formgebung): FliesenGruppe {
+  if (!Number.isFinite(ebProzent)) return KEINE_KLASSE; // F-1 (02.11.2026): keine Zahl → keine Klasse
   const teil = EB_GRENZEN.find(g => ebProzent <= g.bis + EPS)?.teil ?? 'III';
   return `${formgebung}${teil}` as FliesenGruppe;
 }
 
 /** Einordnung des Scherbens (Lehrschema dicht/porös); Bezeichnungen für trockengepresste Fliesen. */
 export function scherbenTyp(ebProzent: number, formgebung: Formgebung): string {
+  if (!Number.isFinite(ebProzent)) return KEINE_KLASSE; // F-1 (02.11.2026): keine Zahl → keine Klasse
   if (ebProzent <= 0.5 + EPS) return formgebung === 'B' ? 'dicht gesintert (Feinsteinzeug)' : 'dicht gesintert';
   if (ebProzent <= 3 + EPS) return formgebung === 'B' ? 'dicht (Steinzeug)' : 'dicht (Spaltplatte, Klinkerplatte)';
   if (ebProzent <= 10 + EPS) return 'halbdicht bis porös';
@@ -78,7 +80,7 @@ export function keramikKennwerte(e: KeramikEingabe): KeramikErgebnis {
   const rhoW = e.rhoW ?? 1.0;
   const mitMa = e.ma !== undefined && e.ma !== null;
   const mitRein = e.rhoRein !== undefined && e.rhoRein !== null;
-  const leer: KeramikErgebnis = { eb: NaN, gruppe: null, scherben: '–', volumen: NaN, rhoRoh: NaN, pOffen: NaN, pGes: NaN, gueltig: false, hinweise };
+  const leer: KeramikErgebnis = { eb: NaN, gruppe: KEINE_KLASSE, scherben: KEINE_KLASSE, volumen: NaN, rhoRoh: NaN, pOffen: NaN, pGes: NaN, gueltig: false, hinweise };
 
   if (!istEndlich(e.mt, e.mn) || e.mt <= 0 || e.mn <= 0) hinweise.push({ stufe: 'fehler', feld: 'mt', text: 'Trocken- und Nassmasse müssen endliche Werte größer als 0 sein.' });
   else if (e.mn < e.mt) hinweise.push({ stufe: 'fehler', feld: 'mn', text: 'Die Masse nach Wassersättigung m_n kann nicht kleiner als die Trockenmasse m_t sein.' });
@@ -114,7 +116,7 @@ export function keramikKennwerte(e: KeramikEingabe): KeramikErgebnis {
   if (eb > 25) hinweise.push({ stufe: 'warnung', feld: 'mn', text: 'Wasseraufnahmen über 25 % sind für gebrannte Scherben ungewöhnlich hoch – Wägung und Sättigung prüfen.' });
   if (e.formgebung === 'B' && eb > 10 + EPS) hinweise.push({ stufe: 'warnung', feld: 'formgebung', text: 'Trockengepresste Fliesen der Gruppe BIII behandelt DIN EN 14411 nur in glasierter Ausführung (Wandfliesen).' });
 
-  return nurGueltig({ eb, gruppe: fliesenGruppe(eb, e.formgebung), scherben: scherbenTyp(eb, e.formgebung), volumen, rhoRoh, pOffen, pGes, gueltig: true, hinweise });
+  return nurGueltig({ eb, gruppe: fliesenGruppe(eb, e.formgebung), scherben: scherbenTyp(eb, e.formgebung), volumen, rhoRoh, pOffen, pGes, gueltig: true, hinweise }, ['gruppe', 'scherben']);
 }
 
 /** Lineares Schwindmaß s = (l_0 − l_1)/l_0 (dimensionslos). */

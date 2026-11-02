@@ -1,7 +1,7 @@
 import React, { useMemo, useState } from 'react';
 import { BookOpen, FlaskConical, TrendingUp, Calculator, ShieldAlert, Info, GraduationCap } from 'lucide-react';
 import { BlockMath } from 'react-katex';
-import { formatDeZahl, formatDeTeX } from '@/src/utils/numberFormat';
+import { formatDeZahl, formatDeTeX, formatDeGanzzahl } from '@/src/utils/numberFormat';
 import { schnellkarbonatisierung, tiefeNach, type Messpunkt } from '@/src/calc/schnellkarbonatisierung';
 import { ModuleTabs, type ModulTab } from '@/src/components/ui/ModuleTabs';
 import { FormulaText } from '@/src/components/ui/FormulaText';
@@ -62,13 +62,15 @@ export default function Schnellkarbonatisierung() {
 
   // Diagramm 1: x über √t mit Regressionsgerade
   const B = 320, H = 190, L = 40, U = 28, O = 10, R = 10;
-  const sMax = Math.max(1, ...punkte.map(p => Math.sqrt(Math.max(p.tTage, 0)))) * 1.08; // Darstellungsfaktor (Achsenreserve)
+  // Diagrammachsen nur aus endlichen Eingaben (leeres Feld → NaN, Prüfung „Kein Ergebnis in der Anzeige“ 02.11.2026)
+  const endlich = (v: number, ersatz: number) => (Number.isFinite(v) ? v : ersatz);
+  const sMax = Math.max(1, ...punkte.map(p => Math.sqrt(Math.max(endlich(p.tTage, 0), 0)))) * 1.08; // Darstellungsfaktor (Achsenreserve)
   const xMax = Math.max(1, ...punkte.map(p => (Number.isFinite(p.xMm) ? p.xMm : 0))) * 1.2;
   const px = (s: number) => L + s / sMax * (B - L - R);
   const py = (v: number) => H - U - v / xMax * (H - U - O);
   // Diagramm 2: Prognose über Jahre
-  const tPlot = Math.max(100, nutzung * 1.3);
-  const yMax2 = Math.max(deckung * 1.4, erg.gueltig ? tiefeNach(erg.kNat, tPlot) * 1.05 : 1);
+  const tPlot = Math.max(100, endlich(nutzung, 0) * 1.3);
+  const yMax2 = Math.max(endlich(deckung, 0) * 1.4, erg.gueltig ? tiefeNach(erg.kNat, tPlot) * 1.05 : 1, 1);
   const qx = (j: number) => L + j / tPlot * (B - L - R);
   const qy = (v: number) => H - U - Math.min(v, yMax2) / yMax2 * (H - U - O);
   const kurve = erg.gueltig
@@ -283,7 +285,7 @@ export default function Schnellkarbonatisierung() {
                           <line x1={L} y1={H - U} x2={B - R} y2={H - U} stroke="#64748b" strokeWidth="1" />
                           <line x1={L} y1={O} x2={L} y2={H - U} stroke="#64748b" strokeWidth="1" />
                           {erg.gueltig && <line x1={px(0)} y1={py(Math.max(erg.reg.a, 0))} x2={px(sMax)} y2={py(Math.min(xMax, erg.reg.a + erg.kAC * sMax))} stroke="#9b1b30" strokeWidth="2" />}
-                          {punkte.filter(p => Number.isFinite(p.xMm) && p.tTage >= 0).map((p, i) => (
+                          {punkte.filter(p => Number.isFinite(p.xMm) && Number.isFinite(p.tTage) && p.tTage >= 0).map((p, i) => (
                             <circle key={i} cx={px(Math.sqrt(p.tTage))} cy={py(p.xMm)} r="4" fill="#0f172a" />
                           ))}
                           <text x={B - R} y={H - 8} textAnchor="end" fontSize="10" fill="#334155">√t in √d (max. {formatDeZahl(sMax, 1)})</text>
@@ -296,11 +298,11 @@ export default function Schnellkarbonatisierung() {
                         <svg viewBox={`0 0 ${B} ${H}`} className="w-full h-auto bg-off-white rounded-lg" role="img" aria-label={inhalt.werte.prognoseDerKarbonatisierungstiefeÜber}>
                           <line x1={L} y1={H - U} x2={B - R} y2={H - U} stroke="#64748b" strokeWidth="1" />
                           <line x1={L} y1={O} x2={L} y2={H - U} stroke="#64748b" strokeWidth="1" />
-                          <line x1={L} y1={qy(deckung)} x2={B - R} y2={qy(deckung)} stroke="#059669" strokeWidth="1.5" strokeDasharray="5 3" />
-                          <line x1={qx(nutzung)} y1={O} x2={qx(nutzung)} y2={H - U} stroke="#94a3b8" strokeWidth="1" strokeDasharray="3 3" />
+                          {Number.isFinite(deckung) && <line x1={L} y1={qy(deckung)} x2={B - R} y2={qy(deckung)} stroke="#059669" strokeWidth="1.5" strokeDasharray="5 3" />}
+                          {Number.isFinite(nutzung) && <line x1={qx(nutzung)} y1={O} x2={qx(nutzung)} y2={H - U} stroke="#94a3b8" strokeWidth="1" strokeDasharray="3 3" />}
                           {erg.gueltig && <path d={kurve} fill="none" stroke="#9b1b30" strokeWidth="2" />}
-                          <text x={B - R - 2} y={qy(deckung) - 4} textAnchor="end" fontSize="9" fill="#059669">c = {formatDeZahl(deckung, 0)} mm</text>
-                          <text x={qx(nutzung) + 3} y={O + 10} fontSize="9" fill="#475569">t_N = {formatDeZahl(nutzung, 0)} a</text>
+                          {Number.isFinite(deckung) && <text x={B - R - 2} y={qy(deckung) - 4} textAnchor="end" fontSize="9" fill="#059669">c = {formatDeZahl(deckung, 0)} mm</text>}
+                          {Number.isFinite(nutzung) && <text x={qx(nutzung) + 3} y={O + 10} fontSize="9" fill="#475569">t_N = {formatDeZahl(nutzung, 0)} a</text>}
                           <text x={B - R} y={H - 8} textAnchor="end" fontSize="10" fill="#334155">t in Jahren (bis {formatDeZahl(tPlot, 0)})</text>
                           <text x={4} y={12} fontSize="10" fill="#334155">x_c in mm</text>
                         </svg>
@@ -331,7 +333,7 @@ export default function Schnellkarbonatisierung() {
                     schritte={[
                       {
                         titel: inhalt.werte.messwerteÜberT,
-                        erklaerung: `${erg.reg.n} Messpunkte; die Zeit wird als Wurzel aufgetragen:`,
+                        erklaerung: `${formatDeGanzzahl(erg.reg.n)} Messpunkte; die Zeit wird als Wurzel aufgetragen:`,
                         formel: punkte.map(p => `\\sqrt{${tex(p.tTage, 0)}} = ${tex(Math.sqrt(Math.max(p.tTage, 0)), 3)} \\to ${tex(p.xMm, 1)}\\,\\text{mm}`).join(', \\quad ') || '\\text{–}',
                       },
                       {

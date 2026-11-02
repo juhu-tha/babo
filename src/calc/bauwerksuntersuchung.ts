@@ -20,7 +20,7 @@
  *  - Probenahmeplaner (Lehransätze) und Befundsynthese des Interpretations-Navigators
  * Einheiten stehen an den Feldern. Reiner Rechenkern – geprüft in tests/bauwerksuntersuchung.test.ts.
  */
-import { type Hinweis, istEndlich, hatFehler, muss, nurGueltig } from './plausibilitaet';
+import { type Hinweis, istEndlich, hatFehler, muss, nurGueltig, KEINE_KLASSE, type KeineKlasse } from './plausibilitaet';
 import { saugKlasse, wWertAusKarsten, type SaugKlasse } from './karsten';
 import { koeffizientAusTiefe, zeitBisTiefe } from './schnellkarbonatisierung';
 import { kn13791, margin13791 } from '../utils/schadensKern';
@@ -147,11 +147,11 @@ export function rueckprall(rueckprallwert: number, richtung: Schlagrichtung, kar
   else if (fcSchaetz >= 20) klasse = 'C20/25';
   if (rueckprallwert < 20 || rueckprallwert > 55) h.push({ stufe: 'warnung', feld: 'rueckprall', text: 'Rückprallwert außerhalb 20 … 55: Die Lehr-Näherung ist dort nicht abgesichert.' });
   h.push({ stufe: 'warnung', feld: 'fcSchaetz', text: RUECKPRALL_HINWEIS_SCHAETZUNG });
-  return nurGueltig({ rKorr, kKarb, rFinal, fcSchaetz, klasse, ...abschluss(h) });
+  return nurGueltig({ rKorr, kKarb, rFinal, fcSchaetz, klasse, ...abschluss(h) }, ['klasse']);
 }
 
 // ---------------------------------------------------------------- Ultraschall
-export type GefuegeStufe = 'gut' | 'maessig' | 'kritisch';
+export type GefuegeStufe = 'gut' | 'maessig' | 'kritisch' | KeineKlasse;
 export interface UltraschallErgebnis extends Ergebnis {
   /** Schallgeschwindigkeit in m/s */
   vp: number;
@@ -172,11 +172,11 @@ export function ultraschall(abstandM: number, laufzeitUs: number, dichte: number
   const eDynGPa = dynamischerEModul(dichte, vp, nu) * 1e-9;
   const stufe: GefuegeStufe = vp < 3000 ? 'kritisch' : vp < 3800 ? 'maessig' : 'gut';
   if (vp > 5500) h.push({ stufe: 'warnung', feld: 'vp', text: 'v_p > 5500 m/s ist für Beton unplausibel – Messstrecke oder Laufzeit prüfen.' });
-  return nurGueltig({ vp, eDynGPa, stufe, ...abschluss(h) });
+  return nurGueltig({ vp, eDynGPa, stufe, ...abschluss(h) }, ['stufe']);
 }
 
 // ---------------------------------------------------------------- Potentialfeld
-export type KorrosionsWahrscheinlichkeit = 'gering' | 'ungewiss' | 'hoch';
+export type KorrosionsWahrscheinlichkeit = 'gering' | 'ungewiss' | 'hoch' | KeineKlasse;
 /** Grenzen der Potentialeinstufung in mV gegen Cu/CuSO₄ (ASTM C876): positiver als −200 mV gering, negativer als −350 mV hoch */
 export const POTENTIAL_GRENZEN_MV = { gering: -200, hoch: -350 } as const;
 /**
@@ -186,14 +186,15 @@ export const POTENTIAL_GRENZEN_MV = { gering: -200, hoch: -350 } as const;
  * Vorher: Grenze −350 mV in der Bauwerksuntersuchung eingeschlossen (≤ −350 hoch), im Modul ZfP ausgeschlossen.
  */
 export function potentialStufe(potentialMv: number): KorrosionsWahrscheinlichkeit {
+  if (!Number.isFinite(potentialMv)) return KEINE_KLASSE; // F-1: vorher NaN → „gering“
   if (potentialMv < POTENTIAL_GRENZEN_MV.hoch) return 'hoch';
   if (potentialMv <= POTENTIAL_GRENZEN_MV.gering) return 'ungewiss';
   return 'gering';
 }
 /** Einstufung im Interpretations-Navigator mit denselben Grenzen wie potentialStufe */
-export function potentialStatus(potentialMv: number): 'passiv' | 'unsicher' | 'aktiv' {
+export function potentialStatus(potentialMv: number): 'passiv' | 'unsicher' | 'aktiv' | KeineKlasse {
   const s = potentialStufe(potentialMv);
-  return s === 'hoch' ? 'aktiv' : s === 'ungewiss' ? 'unsicher' : 'passiv';
+  return s === KEINE_KLASSE ? KEINE_KLASSE : s === 'hoch' ? 'aktiv' : s === 'ungewiss' ? 'unsicher' : 'passiv';
 }
 
 // ---------------------------------------------------------------- Betondeckung
@@ -214,15 +215,15 @@ export function betondeckung(klasse: DeckungsKlasse, gemessenMm: number): Deckun
 }
 
 // ---------------------------------------------------------------- Chlorid
-export interface ChloridErgebnis extends Ergebnis { grenze: number; ueberschritten: boolean; verhaeltnis: number; stufe: 'unkritisch' | 'Beobachtung / Prävention' | 'Korrosion wahrscheinlich' }
+export interface ChloridErgebnis extends Ergebnis { grenze: number; ueberschritten: boolean; verhaeltnis: number; stufe: 'unkritisch' | 'Beobachtung / Prävention' | 'Korrosion wahrscheinlich' | KeineKlasse }
 /** Chloridgehalt in M.-% bezogen auf den Zement */
 export function chlorid(gehaltProzent: number, vorgespannt: boolean): ChloridErgebnis {
   const h: Hinweis[] = [];
   muss(h, Number.isFinite(gehaltProzent) && gehaltProzent >= 0, 'gehalt', 'Der Chloridgehalt muss ≥ 0 sein.');
   const grenze = 0.5;
   const ueberschritten = vorgespannt ? gehaltProzent >= 0.2 : gehaltProzent >= grenze;
-  const stufe = gehaltProzent < 0.2 ? 'unkritisch' : gehaltProzent < 0.5 ? 'Beobachtung / Prävention' : 'Korrosion wahrscheinlich';
-  return nurGueltig({ grenze, ueberschritten, verhaeltnis: gehaltProzent / grenze, stufe, ...abschluss(h) });
+  const stufe: ChloridErgebnis['stufe'] = gehaltProzent < 0.2 ? 'unkritisch' : gehaltProzent < 0.5 ? 'Beobachtung / Prävention' : 'Korrosion wahrscheinlich';
+  return nurGueltig({ grenze, ueberschritten, verhaeltnis: gehaltProzent / grenze, stufe, ...abschluss(h) }, ['stufe']);
 }
 
 // ---------------------------------------------------------------- Haftzug
@@ -247,9 +248,9 @@ export function karsten(wasserMl60: number): KarstenErgebnis {
   const h: Hinweis[] = [];
   muss(h, Number.isFinite(wasserMl60) && wasserMl60 >= 0, 'wasserMl60', 'Die Wasseraufnahme muss ≥ 0 ml sein.');
   const w = Number.isFinite(wasserMl60) && wasserMl60 >= 0 ? wWertAusKarsten(wasserMl60, 1) : 0;
-  const klasse: SaugKlasse = saugKlasse(w);
+  const klasse: SaugKlasse = hatFehler(h) ? KEINE_KLASSE : saugKlasse(w);
   h.push({ stufe: 'warnung', feld: 'w', text: 'Das Karsten-Röhrchen liefert nur einen Schätzwert (Prüffläche geräteabhängig); der w-Wert nach DIN 4108-3 wird nach DIN EN ISO 15148 bestimmt.' });
-  return nurGueltig({ w, klasse, ...abschluss(h) });
+  return nurGueltig({ w, klasse, ...abschluss(h) }, ['klasse']);
 }
 
 // ---------------------------------------------------------------- Karbonatisierung
@@ -275,16 +276,16 @@ export function karbonatisierung(tiefeMm: number, alterJahre: number, deckungMm:
 }
 
 // ---------------------------------------------------------------- Bohrkern
-export interface BohrkernErgebnis extends Ergebnis { flaecheMm2: number; festigkeit: number; schlankheit: number; bezug: 'wuerfel' | 'zylinder' | 'keiner' }
+export interface BohrkernErgebnis extends Ergebnis { flaecheMm2: number; festigkeit: number; schlankheit: number; bezug: 'wuerfel' | 'zylinder' | 'keiner' | KeineKlasse }
 export function bohrkern(durchmesserMm: number, laengeMm: number, kraftKn: number): BohrkernErgebnis {
   const h: Hinweis[] = [];
   muss(h, istEndlich(durchmesserMm, laengeMm, kraftKn) && durchmesserMm > 0 && laengeMm > 0 && kraftKn >= 0, 'eingabe', 'Durchmesser und Länge müssen größer als 0 sein, die Bruchkraft ≥ 0.');
   const flaecheMm2 = Math.PI * Math.pow(durchmesserMm / 2, 2);
   const festigkeit = (kraftKn * 1000) / flaecheMm2;
   const schlankheit = laengeMm / durchmesserMm;
-  const bezug = Math.abs(schlankheit - 1) < 0.05 ? 'wuerfel' : Math.abs(schlankheit - 2) < 0.1 ? 'zylinder' : 'keiner';
+  const bezug: BohrkernErgebnis['bezug'] = Math.abs(schlankheit - 1) < 0.05 ? 'wuerfel' : Math.abs(schlankheit - 2) < 0.1 ? 'zylinder' : 'keiner';
   if (bezug === 'keiner') h.push({ stufe: 'warnung', feld: 'laengeMm', text: 'Kein Bezugskörper nach DIN EN 13791 – Kern auf L/D = 1 oder 2 ablängen.' });
-  return nurGueltig({ flaecheMm2, festigkeit, schlankheit, bezug, ...abschluss(h) });
+  return nurGueltig({ flaecheMm2, festigkeit, schlankheit, bezug, ...abschluss(h) }, ['bezug']);
 }
 
 // ---------------------------------------------------------------- In-situ-Druckfestigkeit (DIN EN 13791)
@@ -316,7 +317,7 @@ export function insituDruckfestigkeit13791(e: InsituEingabe): InsituErgebnis {
   for (const [zyl, wue] of C_CLASSES) {
     if (0.85 * (e.bezug === 'wuerfel' ? wue : zyl) <= fckIs + 1e-9) { klasse = `C${zyl}/${wue}`; fck = zyl; fckCube = wue; }
   }
-  return nurGueltig({ kn, M, ausStreuung, ausKleinstwert, fckIs, klasse, fck, fckCube, ...abschluss(h) });
+  return nurGueltig({ kn, M, ausStreuung, ausKleinstwert, fckIs, klasse, fck, fckCube, ...abschluss(h) }, ['klasse']);
 }
 
 // ---------------------------------------------------------------- Impact-Echo
@@ -387,7 +388,7 @@ export interface BefundEingabe {
 export interface BefundErgebnis extends Ergebnis {
   passivierungsReserve: number; isCarbDepassivated: boolean;
   isChlorideCritical: boolean; isChlorideSevere: boolean;
-  potentialStatus: 'passiv' | 'unsicher' | 'aktiv';
+  potentialStatus: 'passiv' | 'unsicher' | 'aktiv' | KeineKlasse;
   festigkeitsVerhaeltnis: number; isStrengthDeficient: boolean;
   /** Haftzug gemessen und bestanden (≥ 1,5 N/mm², Bruch im Beton) */
   isHaftzugOk: boolean;
@@ -398,7 +399,7 @@ export interface BefundErgebnis extends Ergebnis {
   deckungGemessen: boolean; haftzugGemessen: boolean; festigkeitGemessen: boolean;
   /** Restwiderstandsmoment in % bei Höhenverlust (W ∝ h²) */
   holzRestWiderstand: number;
-  overallRisk: 'gering' | 'mittel' | 'hoch' | 'akut';
+  overallRisk: 'gering' | 'mittel' | 'hoch' | 'akut' | KeineKlasse;
 }
 /** Messwert liegt vor: endlich und > 0 (0 oder leer = nicht gemessen) */
 const gemessen = (x: number) => Number.isFinite(x) && x > 0;
@@ -432,5 +433,5 @@ export function befundSynthese(e: BefundEingabe): BefundErgebnis {
     deckungGemessen, haftzugGemessen, festigkeitGemessen,
     holzRestWiderstand: Math.pow(e.holzRest / 100, 2) * 100,
     overallRisk, ...abschluss(h),
-  });
+  }, ['overallRisk', 'potentialStatus']);
 }

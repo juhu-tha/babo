@@ -213,7 +213,7 @@ export default function RechnungBestand({ bestandSubTab, altbeton, altbetonGrenz
                       {insitu.gueltig && (
                         <div className="border-t border-slate-100 pt-3 bg-green-50/50 p-2.5 rounded-lg border border-green-150"><MdText text={inhalt.texte.schritt3bKlasse} /><p className="mt-1 text-xxs text-green-800">
                             {insitu.klasse ? (
-                              <><InlineMath math={`f_{ck,is} = ${formatDeTeX(insitu.fckIs, 1)} \\ge 0{,}85 \\cdot f_{ck,cube} = ${formatDeTeX(0.85 * insitu.fckCube, 2)} \\, \\text{N/mm}^2`} /><MdText text={inhalt.texte.zuordnungZurFestigkeitsklasse} /><strong>{insitu.klasse}</strong> (<InlineMath math={`f_{ck} = ${insitu.fck} \\, \\text{N/mm}^2`} />)</>
+                              <><InlineMath math={`f_{ck,is} = ${formatDeTeX(insitu.fckIs, 1)} \\ge 0{,}85 \\cdot f_{ck,cube} = ${formatDeTeX(0.85 * insitu.fckCube, 2)} \\, \\text{N/mm}^2`} /><MdText text={inhalt.texte.zuordnungZurFestigkeitsklasse} /><strong>{insitu.klasse}</strong> (<InlineMath math={`f_{ck} = ${formatDeTeXWert(insitu.fck)} \\, \\text{N/mm}^2`} />)</>
                             ) : (
                               <><MdText text={inhalt.texte.zuordnungKlasseTabelle} /><strong>{inhalt.werte.unterC8}</strong></>
                             )}

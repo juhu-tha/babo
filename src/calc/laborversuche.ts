@@ -17,7 +17,7 @@
  *    R_c = F_c / 1600 mm²; Mittelwert der sechs Druckfestigkeiten mit ±10-%-Regel.
  * Reine Rechenkerne – geprüft in tests/laborversuche.test.ts.
  */
-import { type Hinweis, hatFehler, nurGueltig, unvollstaendigeZeilen } from './plausibilitaet';
+import { type Hinweis, hatFehler, nurGueltig, unvollstaendigeZeilen, KEINE_KLASSE, type KeineKlasse } from './plausibilitaet';
 
 const mittel = (x: readonly number[]) => (x.length ? x.reduce((a, b) => a + b, 0) / x.length : NaN);
 const stdabw = (x: readonly number[]) => {
@@ -47,7 +47,7 @@ export const M_NACL = 58.44;
 /** Kritisches Verhältnis Cl⁻/OH⁻ nach Hausmann (1967) für Stahl in alkalischer Lösung – Richtwert */
 export const CL_OH_KRITISCH = 0.6;
 
-export type PotentialBereich = 'gering' | 'unsicher' | 'hoch';
+export type PotentialBereich = 'gering' | 'unsicher' | 'hoch' | KeineKlasse;
 
 export function bezugselektrode(id: string) {
   return BEZUGSELEKTRODEN.find(b => b.id === id) ?? BEZUGSELEKTRODEN[0];
@@ -61,6 +61,7 @@ export function umrechnenPotential(eMess: number, eBezugSHE: number): { eSHE: nu
 
 /** Potentialbereich nach ASTM C876 (Richtwert, Potential in mV gegen CSE) */
 export function bereichCSE(eCSE: number): PotentialBereich {
+  if (!Number.isFinite(eCSE)) return KEINE_KLASSE; // F-1 (02.11.2026): keine Zahl → keine Klasse
   if (eCSE > -200) return 'gering';
   if (eCSE >= -350) return 'unsicher';
   return 'hoch';
@@ -355,7 +356,8 @@ export interface DruckErgebnis {
 export const druckfestigkeit = (F: number, a: number, b: number) => Math.round(F * 1000 / (a * b) * 10) / 10;
 
 /** Faktor für trocken gelagerte Würfel: 0,92 bis C50/60, 0,95 für hochfesten Beton */
-export const trockenFaktor = (fcDry: number) => (fcDry > 60 / 0.92 ? 0.95 : 0.92);
+/** Trocknungsfaktor 0,92/0,95; keine Zahl → NaN (F-1) */
+export const trockenFaktor = (fcDry: number) => (!Number.isFinite(fcDry) ? NaN : fcDry > 60 / 0.92 ? 0.95 : 0.92);
 
 export function druckpruefung(e: DruckEingabe): DruckErgebnis {
   const hinweise: Hinweis[] = [];

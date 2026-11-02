@@ -119,6 +119,7 @@ export default function BahnbauTab({ bettungstyp, neutralTemp, schieneTemp, setB
                 verwerfung: [inhalt.werte.akuteGefahrVonGleisverwerfung, "text-rose-700 bg-rose-50 border-rose-200"],
                 erhoeht: [inhalt.werte.erhöhtesRisikoGeringerQuerverschiebesich, "text-amber-700 bg-amber-50 border-amber-200"],
                 unkritisch: [inhalt.werte.thermischeEigenspannungUnkritischAusreic, "text-emerald-700 bg-emerald-50 border-emerald-100"],
+                '–': ['–', 'text-slate-700 bg-off-white border-home-grau/30'], // F-1: ungültige Eingabe
               };
               const [statusMsg, statusColorClass] = STATUS[gleis.status];
 
@@ -126,11 +127,11 @@ export default function BahnbauTab({ bettungstyp, neutralTemp, schieneTemp, setB
                 <div className="p-4 bg-zinc-50 border border-zinc-200 rounded-lg space-y-3 mt-4 text-xs">
                   <div className="grid grid-cols-2 font-mono gap-y-1">
                     <div className="text-zinc-500 font-bold"><MdText text={inhalt.texte.temperaturdifferenzT} /></div>
-                    <div className="text-right font-extrabold text-zinc-900">{deltaT > 0 ? `+${formatDeWert(deltaT)}` : deltaT} K</div>
+                    <div className="text-right font-extrabold text-zinc-900">{deltaT > 0 ? `+${formatDeWert(deltaT)}` : formatDeWert(deltaT)} K</div>
                     
                     <div className="text-zinc-500 font-bold"><MdText text={inhalt.texte.eigenspannungT} /></div>
                     <div className={`text-right font-extrabold ${sigma_T >= 0 ? 'text-rose-800' : 'text-blue-800'}`}>
-                      {formatDeZahl(sigma_T, 2)} MPa {(sigma_T >= 0 ? '(Druck)' : '(Zug)')}
+                      {formatDeZahl(sigma_T, 2)} MPa {!Number.isFinite(sigma_T) ? '' : sigma_T >= 0 ? '(Druck)' : '(Zug)'}
                     </div>
 
                     <div className="text-zinc-500 font-bold"><MdText text={inhalt.texte.längskraftProSchiene} /></div>
