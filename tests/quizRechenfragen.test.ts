@@ -15,6 +15,24 @@ import { relaxation } from '../src/utils/ec2Spannbeton';
 import { ultraschall, impactEcho, haftzug, chlorid, bohrkern } from '../src/calc/bauwerksuntersuchung';
 import { georadar, wenner, potentialRisikoZfp, torrentFeuchte } from '../src/calc/pruefverfahren';
 import { WAERMEKAPAZITAET_VOL } from '../src/calc/hydratation';
+// Nachrechnung 02.11.2026 (docs/pruefung/quiz-rechenfragen-2026-11-02.md)
+import { uWert, temperaturverlauf, taupunkt, psat, temperaturBeiPsat, temperaturleitfaehigkeit, waermeeindringkoeffizient } from '../src/calc/waermeschutz';
+import { betaCc, ecmVonFcm } from '../src/calc/betonkennwerte';
+import { ecmEc2, verbundSchranken } from '../src/calc/emodul';
+import { konformitaetDruck } from '../src/calc/festbetonStatistik';
+import { bemessungswert, knickbeiwert, druckUnterWinkel, abbrandQuerschnitt } from '../src/calc/holzbau';
+import { biegeknicken, bemesseZugstab, plastischeKapazitaet } from '../src/calc/stahlbau';
+import { zustandsgrenzen, mohrCoulomb, erddruckRankine, fliessgrenze, bodengruppePlastizitaet } from '../src/calc/boden';
+import { frostschutz, bodengruppe } from '../src/calc/erdbau';
+import { abtragsrateFaraday, querschnittsverlust, chloridGehalt, karbonatisierungsFront, schnellUmrechnung } from '../src/calc/korrosion';
+import { wurzelZeitRegression } from '../src/calc/schnellkarbonatisierung';
+import { rentenbarwertfaktor } from '../src/calc/lcc';
+import { zwangSpannung } from '../src/calc/zwang';
+import { hauptspannungen, vonMises } from '../src/calc/spannungszustand';
+import { gefuegeAnteile, cev } from '../src/calc/eisenKohlenstoff';
+import { bilinearVerfestigung, binghamScherrate, maxwellSpannung, abminderungStahlBrand } from '../src/calc/werkstoffmodelle';
+import { carbonbetonBiegung } from '../src/calc/carbonbeton';
+import { einfeldQ, kragF } from '../src/calc/biegelinie';
 
 const fehler: string[] = [];
 const pruefe = (ok: boolean, msg: string) => { if (!ok) fehler.push(msg); };
@@ -260,6 +278,203 @@ const OHNE_RECHNUNG: Record<string, string> = {};
   // Torrent: Feuchte 90 % → kritisch (Messung ungültig)
   pruefe(torrentFeuchte(90) === 'kritisch', 'qt_zfp_4: 90 % Feuchte laut Kern nicht „kritisch“');
   PRUEFUNGEN.push({ id: 'qt_zfp_4', richtig: 'Ungültig: Porenwasser blockiert den Gasfluss, k_T fällt zu klein aus', frage: ['90 %'] });
+}
+
+// ------------------------------------------------------------------------------------------------
+// Nachrechnung 02.11.2026: weitere Rechenfragen, die sich über einen Kern rechnen lassen
+// (Liste und Handrechnungen der übrigen Fragen: docs/pruefung/quiz-rechenfragen-2026-11-02.md)
+// ------------------------------------------------------------------------------------------------
+const zm = (x: number, n: number) => (x < 0 ? `−${z(-x, n)}` : z(x, n)); // Minuszeichen U+2212 wie im Quiztext
+{
+  // Wärmeschutz (src/calc/waermeschutz.ts): R_T = R_si + Σ d/λ + R_se, U = 1/R_T, Temperaturverlauf, Taupunkt
+  const putzBeton = [{ d: 0.015, lambda: 0.70 }, { d: 0.20, lambda: 2.3 }];
+  const u = (eps: number, beton = 0.20) => uWert([putzBeton[0], { d: beton, lambda: 2.3 }, { d: eps, lambda: 0.035 }], 0.13, 0.04);
+  const u14 = u(0.14), u12 = u(0.12), u40 = u(0.14, 0.40);
+  PRUEFUNGEN.push({ id: 'qn_rechnung_u_wert_2', richtig: `U = ${z(u14.U, 3)} W/(m²K)`, erklaerung: [`= ${z(u14.R_T, 3)} m²K/W`] });
+  pruefe(u12.U > 0.24 && u14.U <= 0.24, 'qn_rechnung_u_wert_3: 12 cm EPS müsste verfehlen, 14 cm einhalten');
+  PRUEFUNGEN.push({ id: 'qn_rechnung_u_wert_3', richtig: `U ≈ ${z(u12.U, 2)} W/(m²K): Anforderung verfehlt, Dämmung auf 14 cm erhöhen`, erklaerung: [`= ${z(u12.R_T, 3)} m²K/W`] });
+  const rOhne = uWert(putzBeton, 0.13, 0.04).R_T;
+  PRUEFUNGEN.push({ id: 'qn_rechnung_u_wert_4', richtig: `d ≥ ${z(((1 / 0.24 - rOhne) * 0.035) * 100, 1)} cm` });
+  PRUEFUNGEN.push({ id: 'qn_rechnung_u_wert_5', richtig: 'Beton hat mit λ = 2,3 W/(mK) eine hohe Wärmeleitfähigkeit; 20 cm liefern nur 0,09 m²K/W', frage: [`von ${z(u14.U, 3)} auf ${z(u40.U, 3)}`] });
+  PRUEFUNGEN.push({ id: 'qn_rechnung_u_wert_6', richtig: `rund ${z((4.0 / u14.R_T) * 100, 0)} %` });
+  const wand = [{ d: 0.20, lambda: 2.0 }, { d: 0.12, lambda: 0.035 }];
+  const bp = uWert(wand, 0.13, 0.04);
+  pruefe(bp.U > 0.24, 'qn_bauphysik_1: U müsste über 0,24 liegen');
+  PRUEFUNGEN.push({ id: 'qn_bauphysik_1', richtig: `U ≈ ${z(bp.U, 2)} W/(m²K); der Höchstwert wird nicht eingehalten`, erklaerung: [`R_T = 0,13 + 0,20/2,0 + 0,12/0,035 + 0,04`, `= ${z(bp.R_T, 2)} m²K/W`] });
+  PRUEFUNGEN.push({ id: 'qn_bauphysik_2', richtig: `θ ≈ ${z(temperaturverlauf(wand, 0.13, 0.04, 20, -5)[1], 1)} °C` });
+  const innen = temperaturverlauf([{ d: 0.08, lambda: 0.040 }, { d: 0.24, lambda: 0.68 }], 0.13, 0.04, 20, -5);
+  PRUEFUNGEN.push({ id: 'qn_daemmung_vergleich_1', richtig: `θ ≈ ${zm(innen[1], 1)} °C` });
+  PRUEFUNGEN.push({ id: 'qn_feuchteschutz_1', richtig: `θ_d ≈ ${z(taupunkt(22, 60), 1)} °C` });
+  PRUEFUNGEN.push({ id: 'q_fs_1', richtig: `unter ${z(temperaturBeiPsat((psat(20) * 0.5) / 0.8), 1)} °C`, erklaerung: [`Taupunkt liegt bei ${z(taupunkt(20, 50), 1)} °C`] });
+  PRUEFUNGEN.push({ id: 'q_we_4', richtig: `${z(temperaturleitfaehigkeit(2.0, 2400, 1000) * 1e7, 1)} · 10⁻⁷ m²/s` });
+  PRUEFUNGEN.push({ id: 'qn_nawaro_2', richtig: `etwa Faktor ${z(temperaturleitfaehigkeit(0.035, 20, 1500) / temperaturleitfaehigkeit(0.040, 160, 2100), 0)}` });
+  PRUEFUNGEN.push({ id: 'qn_baustoffkenngroessen_1', richtig: `b ≈ ${z(waermeeindringkoeffizient(2.0, 2400, 1000), 0)} J/(m²·K·s^0,5); die Oberfläche wirkt kühl` });
+}
+{
+  // Betonkennwerte (src/calc/betonkennwerte.ts, emodul.ts): β_cc(t) = exp{s·[1 − (28/t)^0,5]}, E_cm = 22·(f_cm/10)^0,3·α_E
+  PRUEFUNGEN.push({ id: 'qn_festbeton_1', richtig: `${z(betaCc(0.25, 7) * 38, 1)} N/mm²` });
+  PRUEFUNGEN.push({ id: 'qn_betonkennwerte_2', richtig: `${z(betaCc(0.20, 3) * 38, 1)} N/mm²` });
+  PRUEFUNGEN.push({ id: 'q_feb_2', richtig: 'Klasse R (s = 0,20)', erklaerung: [`R ${z(betaCc(0.20, 7), 2)}; N ${z(betaCc(0.25, 7), 2)}; S ${z(betaCc(0.38, 7), 2)}`] });
+  PRUEFUNGEN.push({ id: 'qn_betonkennwerte_1', richtig: `rund ${z(Math.round(ecmVonFcm(48, 0.9) / 100) * 100, 0)} N/mm²` });
+  PRUEFUNGEN.push({ id: 'qn_emodul_1', richtig: `E_cm ≈ ${z(ecmEc2(40, 1.2), 1)} GPa` });
+  const s = verbundSchranken(50, 18, 0.65);
+  PRUEFUNGEN.push({ id: 'qn_emodul_2', richtig: `Voigt ≈ ${z(s.voigt, 1)} GPa (obere), Reuss ≈ ${z(s.reuss, 1)} GPa (untere Schranke)` });
+  const e30 = ecmEc2(30), e50 = ecmEc2(50), e30b = ecmEc2(30, 1.2);
+  pruefe(e30b > e50, 'qn_emodul_4: Basalt müsste mehr bewirken als C50/60');
+  PRUEFUNGEN.push({
+    id: 'qn_emodul_4', richtig: `Basalt bei C30/37: E_cm ≈ ${z(e30b, 1)} GPa, also rund +${z((e30b / e30 - 1) * 100, 0)} % und damit mehr als C50/60`,
+    frage: [`E_cm ≈ ${z(e30, 1)} GPa`], erklaerung: [`= ${z(e50, 1)} GPa (+${z((e50 / e30 - 1) * 100, 0)} %)`],
+  });
+}
+{
+  // Konformität Druckfestigkeit (src/calc/festbetonStatistik.ts): Erstherstellung f_cm ≥ f_ck + 4, f_ci ≥ f_ck − 4; stetig f_ck + 1,48·σ
+  const k = (werte: number[], fckCube: number) => konformitaetDruck({ werte, fckCube, pruefArt: 'erst' });
+  const a = k([33.5, 34.8, 32.9], 30);
+  pruefe(!a.mittelOk && a.einzelOk, 'q_fbs_1: Kern-Einstufung abweichend');
+  PRUEFUNGEN.push({ id: 'q_fbs_1', richtig: 'Nein, Kriterium 1 (Mittelwert ≥ 34) verfehlt', erklaerung: [`Mittelwert = ${z(a.mittelwert, 1)} N/mm²`] });
+  const b = k([54.0, 54.5, 40.5], 45);
+  pruefe(b.mittelOk && !b.einzelOk, 'qn_festbeton_statistik_2: Kern-Einstufung abweichend');
+  PRUEFUNGEN.push({ id: 'qn_festbeton_statistik_2', richtig: `Nein, weil der Einzelwert 40,5 N/mm² unter f_ck − 4 = ${z(b.sollEinzelwert, 0)} N/mm² liegt`, erklaerung: [`f_cm = ${z(b.mittelwert, 1)}`] });
+  const c = k([34.0, 32.5, 34.6], 30);
+  pruefe(!c.mittelOk && c.einzelOk, 'qn_festbeton_2: Kern-Einstufung abweichend');
+  PRUEFUNGEN.push({ id: 'qn_festbeton_2', richtig: `Nein – Mittelwert ${z(c.mittelwert, 1)} < 34,0 N/mm², obwohl alle Einzelwerte ≥ 26 N/mm² sind` });
+  const d = k([41, 39, 43], 37);
+  pruefe(d.bestanden && d.mittelwert === d.sollMittelwert, 'q_px_pr_2: Mittelwert 41 = f_ck + 4 müsste gerade bestehen (≥)');
+  PRUEFUNGEN.push({ id: 'q_px_pr_2', richtig: 'Ja: f_cm = 41 ≥ 37 + 4 und f_ci,min = 39 ≥ 37 − 4' });
+  const e = k([30, 32, 37], 30);
+  pruefe(!e.mittelOk && e.einzelOk, 'qn_px_produktion_2: Kern-Einstufung abweichend');
+  PRUEFUNGEN.push({ id: 'qn_px_produktion_2', richtig: `Nicht erfüllt: f_cm = ${z(e.mittelwert, 1)} < 34 N/mm², Einzelwerte ausreichend` });
+  const lab = (fck: number) => k([33.5, 35.0, 31.0], fck).bestanden;
+  pruefe(lab(25) && !lab(30), 'qn_labor_druckfestigkeit_4: Einstufung C20/25 laut Kern abweichend');
+  PRUEFUNGEN.push({ id: 'qn_labor_druckfestigkeit_4', richtig: 'C20/25', frage: [`(Mittel ${z(k([33.5, 35.0, 31.0], 25).mittelwert, 1)} MPa)`] });
+  // stetige Herstellung: σ = max(σ_Vorserie; 3,0)
+  const q1 = konformitaetDruck({ werte: Array.from({ length: 15 }, () => 42), fckCube: 37, pruefArt: 'stetig', sigmaVorserie: 2.2 });
+  PRUEFUNGEN.push({ id: 'q_qsi_1', richtig: `${z(q1.sollMittelwert, 1)} N/mm²`, erklaerung: [`σ = max(2,2; ${z(q1.sigmaAngesetzt, 1)})`] });
+  const f3 = konformitaetDruck({ werte: [34.5, ...Array.from({ length: 14 }, () => (15 * 42.0 - 34.5) / 14)], fckCube: 37, pruefArt: 'stetig', sigmaVorserie: 4.5 });
+  pruefe(!f3.mittelOk && f3.einzelOk && nahe(f3.mittelwert, 42.0, 1e-9), 'qn_festbeton_statistik_3: Kern-Einstufung abweichend');
+  PRUEFUNGEN.push({ id: 'qn_festbeton_statistik_3', richtig: `Nicht konform, weil 42,0 N/mm² unter f_ck + 1,48 · σ = ${z(f3.sollMittelwert, 1)} N/mm² liegt` });
+}
+{
+  // Holzbau (src/calc/holzbau.ts): f_d = k_mod·f_k/γ_M, k_c (Ersatzstab), f_c,α,d, Abbrand d_ef = β_n·t + k₀·d₀
+  const fc0d = bemessungswert(21, 0.9, 1.3);
+  PRUEFUNGEN.push({ id: 'qn_rechnung_holzbau_1', richtig: `f_c,0,d = ${z(fc0d, 2)} N/mm²` });
+  PRUEFUNGEN.push({ id: 'qn_holzbau_bemessung_2', richtig: `${z(bemessungswert(24, 0.9, 1.3), 1)} N/mm²` });
+  PRUEFUNGEN.push({ id: 'q_hol_3', richtig: `ca. ${z(bemessungswert(24, 0.8, 1.3), 1)} N/mm²`, erklaerung: [`${z(bemessungswert(24, 0.8, 1.25), 1)} N/mm² ergäbe sich mit γ_M = 1,25`] });
+  const lam = (L_mm: number, b_mm: number) => L_mm / (b_mm / Math.sqrt(12));
+  const lrel = (l: number, fc0k = 21, e005 = 7400) => (l / Math.PI) * Math.sqrt(fc0k / e005);
+  const l14 = lam(3000, 140);
+  PRUEFUNGEN.push({ id: 'qn_rechnung_holzbau_2', richtig: `λ = ${z(l14, 1)}` });
+  PRUEFUNGEN.push({ id: 'qn_rechnung_holzbau_3', richtig: `λ_rel = ${z(lrel(l14), 2)}`, erklaerung: [`= ${z(lrel(l14), 3)}`] });
+  const kc14 = knickbeiwert(lrel(l14), false);
+  PRUEFUNGEN.push({ id: 'qn_rechnung_holzbau_4', richtig: `k_c = ${z(knickbeiwert(1.259, false), 3)}` });
+  PRUEFUNGEN.push({ id: 'qn_rechnung_holzbau_5', richtig: `η = ${z(65000 / 19600 / (kc14 * fc0d), 2)}` });
+  const eta = (b: number, L: number, fc0k = 21, e005 = 7400) => 90000 / (b * b) / (knickbeiwert(lrel(lam(L, b), fc0k, e005), false) * bemessungswert(fc0k, 0.9, 1.3));
+  pruefe(eta(120, 1750) < eta(140, 3500) && eta(140, 3500) < eta(120, 3500, 24, 8000), 'qn_rechnung_holzbau_6: Reihenfolge der Maßnahmen laut Kern abweichend');
+  PRUEFUNGEN.push({
+    id: 'qn_rechnung_holzbau_6', richtig: `Halterung in halber Höhe, s_k = 1,75 m (η ≈ ${z(eta(120, 1750), 2)})`,
+    optionen: [`Wechsel auf C30 bei gleichem Querschnitt (η ≈ ${z(eta(120, 3500, 24, 8000), 2)})`, `Querschnitt auf 14 × 14 cm vergrößern (η ≈ ${z(eta(140, 3500), 2)})`,
+      `Halterung in halber Höhe, s_k = 1,75 m (η ≈ ${z(eta(120, 1750), 2)})`, 'k_mod von 0,9 auf 1,1 anheben, da die Last kurz wirkt'],
+    frage: [`η = ${z(eta(120, 3500), 2)}`],
+  });
+  const l12 = lrel(lam(2600, 120));
+  PRUEFUNGEN.push({ id: 'qn_holzbau_bemessung_4', richtig: z(l12, 2) });
+  PRUEFUNGEN.push({ id: 'qn_holzbau_bemessung_5', richtig: `rund ${z((knickbeiwert(1.27, false) * 19200 * bemessungswert(21, 0.8, 1.3)) / 1000, 0)} kN`, frage: [`k_c,z ≈ ${z(knickbeiwert(l12, false), 2)}`] });
+  PRUEFUNGEN.push({ id: 'qn_holz_2', richtig: `ca. ${z(druckUnterWinkel(bemessungswert(21, 0.8, 1.3), bemessungswert(2.5, 0.8, 1.3), 1.0, 30), 1)} N/mm²` });
+  const ab = (art: 'nadel' | 'bsh' | 'laub', t: number, b: number, h: number) => abbrandQuerschnitt(art, t, b, h, 3);
+  PRUEFUNGEN.push({ id: 'qn_holzbau_bauphysik_2', richtig: `${z(ab('bsh', 60, 160, 400).d_ef, 0)} mm` });
+  PRUEFUNGEN.push({ id: 'qn_rechnung_brandschutz_1', richtig: `d_ef = ${z(ab('bsh', 60, 160, 400).d_ef, 1)} mm` });
+  PRUEFUNGEN.push({ id: 'q_bs_2', richtig: `${z(ab('bsh', 60, 160, 400).d_ef, 0)} mm` });
+  const r1 = ab('bsh', 60, 160, 400), r2 = ab('bsh', 60, 180, 360);
+  PRUEFUNGEN.push({ id: 'qn_holzbau_bauphysik_3', richtig: `${z(r1.b_fi, 0)} × ${z(r1.h_fi, 0)} mm` });
+  PRUEFUNGEN.push({ id: 'qn_rechnung_brandschutz_2', richtig: `${z(r2.b_fi, 0)} × ${z(r2.h_fi, 0)} mm` });
+  PRUEFUNGEN.push({ id: 'qn_rechnung_brandschutz_4', richtig: `Nadelvollholz ${z(ab('nadel', 90, 200, 400).d_ef, 1)} mm; BSH ${z(ab('bsh', 90, 200, 400).d_ef, 1)} mm; Laubholz ${z(ab('laub', 90, 200, 400).d_ef, 1)} mm` });
+  PRUEFUNGEN.push({ id: 'q_hbx_2', richtig: `${z(ab('nadel', 30, 200, 400).d_ef, 0)} mm` });
+}
+{
+  // Stahlbau EC3 (src/calc/stahlbau.ts): Biegeknicken HEB 200 (A = 78,1 cm², i_z = 5,07 cm, Linie c), Zugstab, M_pl,Rd
+  const k3 = biegeknicken(78.1, 5.07, 235, 3, 'c'), k6 = biegeknicken(78.1, 5.07, 235, 6, 'c'), k4 = biegeknicken(78.1, 5.07, 235, 4, 'c');
+  pruefe(z((k6.NbRd / k3.NbRd) * 100, 0) === '53', 'qn_stahlbau_ec3_7: Verhältnis N_b,Rd(6 m)/N_b,Rd(3 m) laut Kern nicht ≈ 53 %');
+  PRUEFUNGEN.push({
+    id: 'qn_stahlbau_ec3_7', richtig: 'Er sinkt auf etwa 53 % des Ausgangswerts.',
+    erklaerung: [`${z(Math.round(k3.NbRd / 10) * 10, 0)} kN (λ̄_z = ${z(k3.lambdaQuer, 2)}; χ = ${z(k3.chi, 3)})`, `${z(k6.NbRd, 0)} kN (λ̄_z = ${z(k6.lambdaQuer, 2)}; χ = ${z(k6.chi, 3)})`],
+  });
+  PRUEFUNGEN.push({ id: 'qn_stahlbau_ec3_4', richtig: z(k4.lambdaQuer, 2) });
+  const zs = bemesseZugstab({ A: 10, Anet: 8.2, guete: 'S235', nEd: 100 });
+  pruefe(zs.nettoMassgebend, 'qn_stahlbau_ec3_3: Nettoquerschnitt laut Kern nicht maßgebend');
+  PRUEFUNGEN.push({ id: 'qn_stahlbau_ec3_3', richtig: `${z(zs.NuRd, 1)} kN`, erklaerung: [`N_pl,Rd = ${z(zs.NplRd, 1)} kN`] });
+  const mpl = plastischeKapazitaet(642.5, 78.1, 235).MplRd;
+  PRUEFUNGEN.push({ id: 'qn_stahl_1', richtig: `M_pl,Rd ≈ ${z(mpl, 0)} kNm; η ≈ ${z(130 / mpl, 2)}` });
+}
+{
+  // Boden und Erdbau (src/calc/boden.ts, erdbau.ts)
+  const zg = (w: number, wL: number, wP: number) => zustandsgrenzen(w, wL, wP);
+  const b1 = zg(25, 45, 20), b2 = zg(32, 48, 22), b3 = zg(30, 42, 22);
+  PRUEFUNGEN.push({ id: 'q_boden_1', richtig: `${b1.zustand} (I_C = ${z(b1.iC, 2)})` });
+  PRUEFUNGEN.push({ id: 'qn_bodenmechanik_1', richtig: `I_C ≈ ${z(b2.iC, 2)} – ${b2.zustand}` });
+  PRUEFUNGEN.push({ id: 'qz24_atterberg_3', richtig: `I_C = ${z(b3.iC, 2)} – ${b3.zustand}` });
+  const mc = mohrCoulomb(0, 30, 160, 50);
+  pruefe(mc.isFailing, 'qn_bodenmechanik_2: Kern meldet keinen Bruchzustand');
+  PRUEFUNGEN.push({ id: 'qn_bodenmechanik_2', richtig: `Ja, weil der Kreis mit r = ${z(mc.radius, 0)} kPa die Bruchgerade schneidet`, erklaerung: [`r = m · sin φ = ${z(mc.center * Math.sin(Math.PI / 6), 1)} kPa`] });
+  PRUEFUNGEN.push({ id: 'qn_bodenmechanik_3', richtig: `E_a ≈ ${z(erddruckRankine(35, 19, 4).E_a, 1)} kN/m`, erklaerung: [`K_a = tan²(45° − 17,5°) = ${z(erddruckRankine(35, 19, 4).k_a, 3)}`] });
+  PRUEFUNGEN.push({ id: 'qz24_atterberg_2', richtig: `etwa ${z(fliessgrenze([{ schlaege: 22, w: 42.6 }]).wL, 1)} %` });
+  const bg = bodengruppePlastizitaet(45, 12);
+  pruefe(bg.kuerzel === 'UM', 'qz24_atterberg_4: Kern ordnet nicht UM zu');
+  PRUEFUNGEN.push({ id: 'qz24_atterberg_4', richtig: `UM, weil I_P unter der A-Linie (${z(bg.aLinie, 1)} %) liegt` });
+  const fs = (frostzone: number, wasser: 'guenstig' | 'unguenstig') => frostschutz({ frostzone, bauklasse: 'BK1', bodengruppe: 'F3', wasser }).gesamtDicke;
+  PRUEFUNGEN.push({ id: 'qn_bp_verkehr_rsto_3', richtig: `${fs(2, 'guenstig')} cm` });
+  PRUEFUNGEN.push({ id: 'qn_erdbau_2', richtig: `${fs(3, 'unguenstig')} cm` });
+  const gr = bodengruppe({ feinanteil: 10, kiesanteil: 30, sandanteil: 70, organik: 'keine', plastizitaet: 'nicht' });
+  pruefe(gr.gruppe.replace(/ /g, '') === 'SU/ST' && gr.frost === 'F2', 'qn_erdbau_3: Kern ordnet nicht SU/ST (F2) zu');
+  PRUEFUNGEN.push({ id: 'qn_erdbau_3', richtig: `SU/ST – Sand-Schluff-/Sand-Ton-Gemisch (${gr.frost})` });
+}
+{
+  // Korrosion und Karbonatisierung (src/calc/korrosion.ts, schnellkarbonatisierung.ts)
+  const r = abtragsrateFaraday(1);
+  PRUEFUNGEN.push({ id: 'q_ko_2', richtig: `${z(r, 1)} µm/a` });
+  PRUEFUNGEN.push({ id: 'qn_korrosion_3', richtig: `rund ${z(querschnittsverlust(16, 2 * 11.6, 15).verlust * 100, 1)} %` });
+  PRUEFUNGEN.push({ id: 'qn_korrosion_2', richtig: `rund ${z(chloridGehalt(40, 50, 0.5, 2.5, 0), 2)} M.-% v. z.` });
+  const kf = karbonatisierungsFront(4.0, 50, 25);
+  pruefe(kf.depassiviert, 'qn_bauchemie_1: Front müsste die Bewehrung erreicht haben');
+  PRUEFUNGEN.push({ id: 'qn_bauchemie_1', richtig: `d_k ≈ ${z(kf.xc, 0)} mm; die Front hat die Bewehrung erreicht` });
+  PRUEFUNGEN.push({ id: 'qn_rechnung_nachhaltigkeit_1', richtig: `d_k ≈ ${z(kf.xc, 1)} mm` });
+  PRUEFUNGEN.push({ id: 'qn_rechnung_nachhaltigkeit_2', richtig: `nach rund ${z(karbonatisierungsFront(4.0, 50, 30).tDeckung, 0)} Jahren` });
+  PRUEFUNGEN.push({ id: 'q_bch_1', richtig: `${z(karbonatisierungsFront(4, 50, 40).tDeckung, 0)} Jahre` });
+  PRUEFUNGEN.push({ id: 'qn_dauerhaftigkeit_2', richtig: `nach ${z(karbonatisierungsFront(5.0, 50, 30).tDeckung, 0)} Jahren` });
+  PRUEFUNGEN.push({ id: 'qn_schnellkarbonatisierung_5', richtig: `nach etwa ${z(karbonatisierungsFront(3.0, 50, 30).tDeckung, 0)} Jahren` });
+  PRUEFUNGEN.push({ id: 'qn_korrosion_1', richtig: `rund ${z(schnellUmrechnung(2.0, 2.0, 0.04).kNat / Math.sqrt(365), 2)} mm/√d` }); // Kern liefert mm/√a
+  const reg = wurzelZeitRegression([{ tTage: 7, xMm: 2.0 }, { tTage: 28, xMm: 4.0 }, { tTage: 70, xMm: 6.3 }], false);
+  PRUEFUNGEN.push({ id: 'qn_schnellkarbonatisierung_3', richtig: `etwa ${z(reg.k, 2)} mm/√d`, erklaerung: [`= ${z(reg.k, 3)} mm/√d`] });
+}
+{
+  // Weitere Kerne: LCC, Zwang, Spannungszustand, Fe-C, Werkstoffmodelle, Carbonbeton, Biegelinie
+  PRUEFUNGEN.push({ id: 'q_lk_1', richtig: `${z(Math.round((2000 * rentenbarwertfaktor(0.02, 30)) / 100) * 100, 0)} €`, erklaerung: [`= ${z(rentenbarwertfaktor(0.02, 30), 2)}`] });
+  const zw = (deltaT: number, epsCsPromille: number, eModul: number, festhaltungProzent: number) => zwangSpannung({ deltaT, epsCsPromille, eModul, festhaltungProzent, fct: 3 }).sigma;
+  PRUEFUNGEN.push({ id: 'qn_zwang_1', richtig: `${z(zw(20, 0, 30000, 50), 1)} N/mm²`, erklaerung: [`${z(zw(20, 0, 30000, 100), 1)} N/mm² bei voller Festhaltung`] });
+  PRUEFUNGEN.push({ id: 'qn_zwang_5', richtig: `${z(zw(0, 0.3, 15000, 100), 1)} N/mm²` });
+  const h1 = hauptspannungen({ sx: 120, sy: -40, txy: 60 }), h4 = hauptspannungen({ sx: 0, sy: 0, txy: 50 });
+  PRUEFUNGEN.push({ id: 'qn_festigkeit_mohr_1', richtig: `σ₁ = ${zm(h1.sigma1, 0)} N/mm², σ₂ = ${zm(h1.sigma2, 0)} N/mm²` });
+  pruefe(h4.sigma1 === 50 && h4.sigma2 === -50, 'qn_festigkeit_mohr_4: reiner Schub laut Kern nicht ±50 N/mm²');
+  PRUEFUNGEN.push({ id: 'qn_festigkeit_mohr_4', richtig: `±${z(h4.sigma1, 0)} N/mm² unter 45° zur x-Achse` });
+  const vmA = vonMises({ sx: 200, sy: 200, txy: 0 }), vmB = vonMises({ sx: 200, sy: -200, txy: 0 });
+  pruefe(vmB > vmA, 'qn_festigkeit_mohr_5: Zustand B müsste ungünstiger sein');
+  PRUEFUNGEN.push({ id: 'qn_festigkeit_mohr_5', richtig: `B, weil Zug und Druck zusammenwirken (σ_v ≈ ${z(vmB, 0)} N/mm²)`, erklaerung: [`= ${z(vmA, 0)} N/mm², B ergibt`] });
+  const g1 = gefuegeAnteile(0.45), g3 = gefuegeAnteile(1.2);
+  PRUEFUNGEN.push({ id: 'qn_stahl_fec_1', richtig: `Perlit ≈ ${z(g1.perlit * 100, 0)} %, Ferrit ≈ ${z(g1.ferrit * 100, 0)} %` });
+  PRUEFUNGEN.push({ id: 'qn_stahl_fec_3', richtig: `Fe₃C II ≈ ${z(g3.sekundaerzementit * 100, 1)} %, Perlit ≈ ${z(g3.perlit * 100, 1)} %` });
+  PRUEFUNGEN.push({ id: 'qn_stahl_fec_4', richtig: `CEV = ${z(cev({ C: 0.16, Mn: 1.2, Cr: 0.10, Ni: 0.30 }), 2)} %` });
+  PRUEFUNGEN.push({ id: 'qn_materialmodelle_1', richtig: `ε_p ≈ ${z(bilinearVerfestigung({ fy: 500, E: 200000, Et: 1600, epsMaxPromille: 30 }).epsPlastischPromille, 1)} ‰` });
+  PRUEFUNGEN.push({ id: 'q_matm_2', richtig: `${z(binghamScherrate(800, 500, 50), 0)} s⁻¹` });
+  PRUEFUNGEN.push({ id: 'qn_materialmodelle_2', richtig: `σ ≈ ${z(maxwellSpannung(20, 10, 5), 2)} MPa` });
+  PRUEFUNGEN.push({ id: 'q_sta_2', richtig: z(abminderungStahlBrand(600).ky, 2), erklaerung: [`500 °C ${z(abminderungStahlBrand(500).ky, 2)}`, `700 °C ${z(abminderungStahlBrand(700).ky, 2)}`] });
+  // Carbonbeton: Die Fragen nennen ausdrücklich das vereinfachte Verfahren ohne Dehnungskontrolle (Textil erreicht f_td).
+  // Der Kern rechnet seit T9-CB-1 mit Dehnungskontrolle; mit E_tex = 200 GPa versagt in beiden Fällen der Beton zuerst
+  // (m_Rd kleiner) – offene Frage im Bericht 02.11.2026, daher hier der Vergleichswert des Kerns ohne Dehnungskontrolle.
+  const cb = (h: number, aTex: number, fTk: number, fCk: number) => carbonbetonBiegung({ h, c: 10, aTex, fTk, eTexGPa: 200, fCk }).mRdOhneDehnungskontrolle;
+  PRUEFUNGEN.push({ id: 'qn_carbonbeton_1', richtig: `rund ${z(cb(30, 80, 3000, 45), 1)} kNm/m` });
+  PRUEFUNGEN.push({ id: 'qn_carbonbeton_2', richtig: 'Die Druckzone y wächst mit, der Hebelarm z = d − y/2 wird kleiner', frage: [`von rund ${z(cb(40, 100, 2500, 50), 1)} auf rund ${z(cb(40, 200, 2500, 50), 1)} kNm/m`] });
+  PRUEFUNGEN.push({ id: 'qn_formaenderungen_bl_1', richtig: `w ≈ ${z(einfeldQ(2, 4, 10, 10000).w * 1000, 2)} mm` });
+  const kr = kragF(2, 12, 2, 4000);
+  PRUEFUNGEN.push({ id: 'qn_formaenderungen_bl_2', richtig: `w = ${z(kr.w * 1000, 1)} mm; φ = ${z(kr.phi * 1000, 1)} mrad` });
 }
 
 // ------------------------------------------------------------------------------------------------
