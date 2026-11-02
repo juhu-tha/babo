@@ -1,7 +1,7 @@
 # Nachstichprobe 5c (02.11.2026) – die 16 nach Nachstichprobe 5a/5b offenen freigegebenen Module (Positionen 51–66)
 
 **Stand:** 02.11.2026 (Branch `pruefung/nachstichprobe5c-11-02`, Basis origin/main 39f48254)
-**Status:** Bericht zur Kenntnis und Entscheidung – keine Prüfvermerke geändert; eine Quizfrage korrigiert (zur Freigabe zurückgestellt).
+**Status:** Bericht zur Kenntnis – keine Prüfvermerke geändert; eine Quizfrage korrigiert (zur Freigabe zurückgestellt); eigene Empfehlungen nach der Grundregel vom 02.11.2026 umgesetzt.
 **Auftrag:** Abschluss der Fehlerquotenmessung an den freigegebenen Modulen. Nachstichprobe 5a (PR #301, ungerade Positionen 1–49) und 5b (PR #300, gerade Positionen 2–50) haben je 25 der 66 Module der Restliste geprüft; diese Prüfung nimmt die übrigen Positionen 51 bis 66. Damit ist jedes freigegebene Modul einmal nachgeprüft (Nachstichproben 1–5c: 136 Module, dazu sieben Module nur in der Gegenprüfung vom 30.10.2026, siehe Gesamtbilanz).
 
 ## Auswahl
@@ -37,7 +37,7 @@
 | `metallkorrosion` | NS5C-MK-1 Die Korrosivitätskategorien C1–CX werden als „Schutzdauerklassen L, M, H, VH“ bezeichnet (Schutzdauer ist eine getrennte Festlegung nach DIN EN ISO 12944-1) | (b) Zuordnung | gering | behoben |
 | `qualitaetssicherung` | NS5C-QS-1 Quiz `q_qsi_4`: Merksatz der Lückenanalyse „ÜK 1–3 nach DIN 1045-3“ – seit DIN 1045-3:2023-08 nur ÜK 1 und ÜK 2 (so Modultext, Antwortoption und Erklärung derselben Frage) | Quiz | gering | korrigiert (`verified: false`) |
 | | NS5C-QS-2 Anzeige „(min 3.0)“ bei der Mindest-Standardabweichung | redaktionell | – | behoben |
-| `nachhaltigkeit_daten_regeln`, `rueckbau`, app-weit | Fragen NS5C-NDR-3 (Gebäudetyp E), NS5C-NDR-4 (Leitfaden Nachhaltiges Bauen), NS5C-RB-2 (§ 22 EBV), NS5C-X-1 (Bearbeitungsvermerke „manuell prüfen“) | Frage | – | offen |
+| `nachhaltigkeit_daten_regeln`, `rueckbau`, CSC, `nawaro`, `putzemoertel`, `rechnung_u_wert` | Empfehlungen NS5C-NDR-3 bis -5, NS5C-RB-2, NS5C-X-1 (Gebäudetyp E, Leitfaden, Drei-Säulen-Modell, § 22 EBV, Bearbeitungsvermerke) | Empfehlung | – | umgesetzt |
 | übrige 11 Module | – | – | – | ohne Befund |
 
 **Fehlerquote (Modulinhalt, Zählregel wie Nachstichprobe 1–5b): 4 von 16 Modulen = 25 %** (95-%-Vertrauensbereich nach Wilson **10 % bis 49 %**). **Einschließlich der falschen Quiz-Erklärung: 5 von 16 = 31 %** (Wilson 14 % bis 56 %).
@@ -85,7 +85,7 @@
 **(b)/Rechtsquellen:** EPBD Art. 7 Abs. 2 (Lebenszyklus-GWP ab 01.01.2028 > 1000 m², ab 01.01.2030 alle Neubauten, Offenlegung im Ausweis – [Wortlaut](https://gesetzefinden.at/eu-recht/richtlinien/eu.32024l1275/artikel-7)), Art. 17 Abs. 15 (keine Förderung fossiler Einzelkessel ab 2025), Taxonomie 7.1 (−10 % NZEB, > 5000 m² GWP, Luftdichtheit), QNG-PLUS 24 / PREMIUM 20 kg CO₂e/(m²a) und PENRT 96 (Quiz), § 7b EStG, § 22 EBV 250 m³, KrWG § 6, Kyoto/Paris/COP 28, Leitfaden 2001, Daly 1990, MCI-Formel – richtig. Quiz `q_ndr_1`, `q_ndr_7` (ZEB öffentliche Neubauten im Eigentum ab 2028) stimmen.
 - **behoben – NS5C-NDR-1 (b):** Stufe 2028 „Alle neuen Gebäude im Eigentum **oder in der Nutzung** öffentlicher Einrichtungen müssen als ZEB errichtet werden“ – nach Art. 7 Abs. 1 EPBD gilt die Pflicht ab 01.01.2028 für neue Gebäude im Eigentum öffentlicher Einrichtungen; für neue Gebäude, die sie nutzen, ohne Eigentümer zu sein, „streben sie an“, dass es Nullemissionsgebäude sind. Neu mit diesem Unterschied und der 2028-Stufe des Lebenszyklus-GWP (> 1000 m² Nutzfläche); Stufe 2030 ohne „Ausnahmslos“, GWP-Pflicht „für alle Neubauten (Art. 7 Abs. 2)“ (`content/nachhaltigkeitdatenregeln/NachhaltigkeitDatenRegeln.json`).
 - **behoben – NS5C-NDR-2 (e):** Reiter Definitionen: „Von den 9 definierten Erdsystemgrenzen sind aktuell 6 überschritten“ – das ist der Stand von Richardson et al. (2023); der Planetary Health Check 2025 (PIK, September 2025) zählt sieben, neu die Ozeanversauerung ([DKKV](https://dkkv.org/en/planetary-health-check-2025-seven-out-of-nine-planetary-boundaries-have-been-exceeded/)). Neu: „waren nach Richardson et al. (2023) 6 überschritten (…); der Planetary Health Check 2025 des PIK (September 2025) zählt mit der Ozeanversauerung 7“ (`content/nachhaltigkeitdatenregeln/DefinitionenTab.json`).
-- **Hinweise (kein Fehler):** Zeitleiste 1987 „Formulierung des Drei-Säulen-Modells“ – der Reiter Definitionen ordnet das Modell der Enquete-Kommission 1998 zu; Bauschutt „zu ca. 80 % zu RC-Schotter … downgecycelt“ meint sinngemäß die Verwertungsquote.
+- **Hinweise (kein Fehler):** Zeitleiste 1987 „Formulierung des Drei-Säulen-Modells“ (umgesetzt als NS5C-NDR-5); Bauschutt „zu ca. 80 % zu RC-Schotter … downgecycelt“ meint sinngemäß die Verwertungsquote.
 
 ### 53. NaWaRo (`nawaro`)
 **Nachrechnungen:** BSH 420/1,12 = 375 kg, C 187,5 kg, CO₂ 688 kg (DIN EN 16449, cf = 0,5); Quiz 2 m³ Fichte 1,47 t mit Distraktoren 0,74/1,65/0,40 t, 0,21/1,54/0,38 t; Temperaturleitfähigkeit HF 1,19 · 10⁻⁷, EPS 1,17 · 10⁻⁶ m²/s, Faktor 9,8 (Distraktoren 8 und 1,1); Navigator ρ · c = 567 kJ/(m³K) – richtig.
@@ -156,16 +156,21 @@
 | NS5C-QS-1 | `qualitaetssicherung` | `src/data/quiz.json`, `docs/pruefung/quiz-cluster-III.md` | `q_qsi_4` Merksatz ÜK 1 und ÜK 2; `verified: false` |
 | NS5C-QS-2 | `qualitaetssicherung` | `src/modules/Konformitaetskontrolle.tsx` | „(mind. 3,0)“ (redaktionell) |
 
-Regressionstest: `tests/nachstichprobe5c.test.ts`. Kein Prüfvermerk geändert, kein Normtext gekennzeichnet (kein Normtextpunkt offen). Die Datei `NachhaltigkeitDatenRegeln.json` ändert auch #299 (Eintrag EBV in den Regelwerken); die Änderungen hier betreffen andere Schlüssel.
+Regressionstest: `tests/nachstichprobe5c.test.ts`. Kein Prüfvermerk geändert; gekennzeichnet („vorläufig, Normprüfung ausstehend“) nur der Abgleich DIN 4108-2:2026-05 in `rechnung_u_wert` (NS5C-X-1). Die Datei `NachhaltigkeitDatenRegeln.json` ändert auch #299 (Eintrag EBV in den Regelwerken); die Änderungen hier betreffen andere Schlüssel.
 
-## Offene Fragen mit Vorschlag
+## Umgesetzt (Empfehlung)
 
-| Kennung | Modul | Frage | Vorschlag |
+Nach der Grundregel vom 02.11.2026 sind die eigenen Vorschläge, die eindeutig und umkehrbar sind, ohne Rückfrage umgesetzt (Test: Abschnitt „Umgesetzte Empfehlungen“ in `tests/nachstichprobe5c.test.ts`). Fachwerte ohne Beleg sind nicht verändert, sondern gekennzeichnet.
+
+| Kennung | Modul | Befund | Umsetzung |
 |---|---|---|---|
-| NS5C-NDR-3 | `nachhaltigkeit_daten_regeln` | Gebäudetyp E: „nach Eckpunkten vom 20.11.2025 befindet sich ein neuer Gesetzentwurf in der Ressortabstimmung, ist aber noch nicht veröffentlicht (Stand 10/2026)“ – nach #299 (R-10, R-11) liegt seit 26.10.2026 ein Referentenentwurf vor (Stellungnahmen bis 09.11.2026). #299 hat diese Stelle nicht geändert; hier nicht doppelt bearbeitet | nach dem Merge von #299 im selben Wortlaut wie dort: „… liegt seit 26.10.2026 ein Referentenentwurf von BMJV und BMWSB vor (Stellungnahmen bis 09.11.2026); Kabinettsbeschluss und parlamentarisches Verfahren stehen aus (Stand 11/2026)“ |
-| NS5C-NDR-4 | `nachhaltigkeit_daten_regeln` | Leitfaden Nachhaltiges Bauen: Reiter Definitionen „BMWSB … 2021“ (2 Stellen), Literatur „BMI, Stand Januar 2019“; das BMWSB besteht erst seit Dezember 2021, eine Ausgabe 2021 ist nicht belegt | einheitlich „BMI (Hrsg.): Leitfaden Nachhaltiges Bauen, 3. Aufl., Stand Januar 2019“, falls keine spätere Ausgabe nachgewiesen wird |
-| NS5C-RB-2 | `rueckbau` | Reiter Baustoffrecycling: „Einbauerstatter müssen Einbauten mineralischer Ersatzbaustoffe ab 250 m³ behördlich melden“ (Überschrift „Ersatzbaustoffregister“) – § 22 EBV betrifft nur bestimmte Materialklassen und Einbauweisen (der Reiter Aktualität nennt RC-3 richtig) | an den Wortlaut von § 22 Abs. 1 angleichen: „Der Verwender zeigt den Einbau bestimmter Materialklassen (u. a. RC-3, BM-F3, BG-F3) ab 250 m³ vier Wochen vorher an; die Behörde führt ein Kataster“ (Normtextprüfung der Klassenliste vorher) |
-| NS5C-X-1 | app-weit (6 Stellen hier) | 32 sichtbare Bearbeitungsvermerke „manuell prüfen/abgleichen“ in 25 Dateien, hier: Taxonomie-Normquelle „(Stand manuell prüfen)“, Seegras „(Euroklasse manuell prüfen)“, Aerogel-Putz „(… manuell prüfen)“, CSC R-Modul und LEED, U-Wert „Neuausgabe 2026-05 manuell abgleichen“ (vgl. NS5B-DP-1) | in einer eigenen Runde einheitlich ersetzen: Normbezug → „vorläufig, Normprüfung ausstehend“ (mit FACHGEBIETE-Abgleich in `scripts/auditDaten.ts`), Produktklasse → „nach Leistungserklärung des Produkts“, sonst „Stand nicht geprüft“ |
+| NS5C-NDR-3 | `nachhaltigkeit_daten_regeln` | Gebäudetyp E: „… befindet sich ein neuer Gesetzentwurf in der Ressortabstimmung, ist aber noch nicht veröffentlicht (Stand 10/2026)“ – seit 26.10.2026 liegt ein Referentenentwurf vor (#299, R-10/R-11) | Wortlaut wie #299: „… liegt seit 26.10.2026 ein Referentenentwurf von BMJV und BMWSB vor (Stellungnahmen bis 09.11.2026); Kabinettsbeschluss und parlamentarisches Verfahren stehen aus (Stand 11/2026)“ (anderer Schlüssel als die #299-Änderung derselben Datei) |
+| NS5C-NDR-4 | `nachhaltigkeit_daten_regeln` | Leitfaden Nachhaltiges Bauen im Reiter Definitionen „BMWSB … 2021“ (2 Stellen), Literatur des Moduls „BMI, Stand Januar 2019“; eine Ausgabe 2021 ist nicht belegt | einheitlich „BMI, 3. Aufl., Stand Januar 2019 (heute zuständig: BMWSB)“ (`DefinitionenTab.json`) |
+| NS5C-NDR-5 | `nachhaltigkeit_daten_regeln` | Zeitleiste 1987 „Formulierung des Drei-Säulen-Modells“ (der Reiter Definitionen ordnet es der Enquete-Kommission 1998 zu) | „Leitbild der nachhaltigen Entwicklung (Brundtland-Bericht) … Das Drei-Säulen-Modell wurde später ausformuliert, u. a. von der Enquete-Kommission (1998)“ |
+| NS5C-RB-2 | `rueckbau` | „Einbauerstatter müssen Einbauten mineralischer Ersatzbaustoffe ab 250 m³ behördlich melden“ (Überschrift „Ersatzbaustoffregister“) – § 22 EBV betrifft nur bestimmte Materialklassen | Überschrift „Anzeigepflicht und Kataster (§ 22 EBV)“; Text „Der Verwender zeigt den Einbau bestimmter Materialklassen (u. a. RC-3, BM-F3, BG-F3) ab 250 m³ vier Wochen vorher … an …; die Behörde erfasst die Anzeigen in einem Kataster (Klassenliste nach § 22 Abs. 1 EBV, hier nicht abschließend wiedergegeben)“ (`BaustoffrecyclingTab.json`) |
+| NS5C-X-1 | `nachhaltigkeit_daten_regeln`, `nawaro`, `putzemoertel`, `qualitaetssicherung` (CSC), `rechnung_u_wert` | 7 sichtbare Bearbeitungsvermerke „manuell prüfen/abgleichen“ (vgl. NS5B-DP-1) | Taxonomie „(Stand 10/2026)“ (Kriterien 7.1 geprüft); Seegras und Aerogel-Putz „nach Leistungserklärung des Produkts“; CSC R-Modul, QNG/KfW und LEED „Stand nicht geprüft“; U-Wert „Abgleich mit der Neuausgabe 2026-05 vorläufig, Normprüfung ausstehend“ (`scripts/auditDaten.ts` ordnet die Fundstelle zu, kein Hinweis) |
+
+**Weiter offen (außerhalb der 16 Module):** 25 gleichartige Vermerke „manuell prüfen“ in 20 weiteren Dateien (u. a. `betonpraxis`, `sonderbetone`, `schallschutz`, `ressourceneffizienz`, `uwbeton`, `centralNormenRegistry.ts`). Empfehlung für eine eigene Runde: dieselbe Ersetzungsregel; dabei für neue Fundstellen „Normprüfung ausstehend“ das Fachgebiet in `scripts/auditDaten.ts` prüfen.
 
 ## Quellen (abgerufen 02.11.2026, nur aus Suchergebnissen)
 

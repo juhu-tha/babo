@@ -118,7 +118,7 @@
     "verbindliche5StufigeAbfallhierarchie": "Verbindliche 5-stufige Abfallhierarchie: 1. Vermeidung > 2. Vorbereitung zur Wiederverwendung > 3. Recycling > 4. sonstige Verwertung > 5. Beseitigung (Deponierung als Ultima Ratio).",
     "vermeidungVorBeseitigung": "Vermeidung vor Beseitigung",
     "t5GebäudetypEGesetzesvorhaben": "5. Gebäudetyp E (Gesetzentwurf, Stand 10/2026)",
-    "sollFachkundigenBaupartnernDas": "Soll fachkundigen Baupartnern das rechtlich belastbare Abweichen von reinen Komfort- und Ausstattungsnormen ohne Sachmangelrisiko nach § 633 BGB ermöglichen. Der Entwurf von 2024 (BT-Drs. 20/13959) ist mit der 20. Wahlperiode erledigt; nach Eckpunkten vom 20.11.2025 befindet sich ein neuer Gesetzentwurf in der Ressortabstimmung, ist aber noch nicht veröffentlicht (Stand 10/2026). Grundlegende öffentlich-rechtliche Schutzziele (Standsicherheit, Brandschutz, Gesundheit, Schall- und Wärmeschutz) bleiben gewahrt.",
+    "sollFachkundigenBaupartnernDas": "Soll fachkundigen Baupartnern das rechtlich belastbare Abweichen von reinen Komfort- und Ausstattungsnormen ohne Sachmangelrisiko nach § 633 BGB ermöglichen. Der Entwurf von 2024 (BT-Drs. 20/13959) ist mit der 20. Wahlperiode erledigt; nach Eckpunkten vom 20.11.2025 liegt seit 26.10.2026 ein Referentenentwurf von BMJV und BMWSB vor (Stellungnahmen bis 09.11.2026); Kabinettsbeschluss und parlamentarisches Verfahren stehen aus (Stand 11/2026). Grundlegende öffentlich-rechtliche Schutzziele (Standsicherheit, Brandschutz, Gesundheit, Schall- und Wärmeschutz) bleiben gewahrt.",
     "kabinettNov2024": "Entwurf 2024 erledigt",
     "einfachesBauen": "Einfaches Bauen"
   },
@@ -126,7 +126,7 @@
     "direkteKernrelevanzFürDas": "Direkte Kernrelevanz für das Bauwesen",
     "beispiel1EuTaxonomie": "Beispiel 1: EU-Taxonomie – Primärenergie-Kriterium für einen Neubau",
     "fürGebäudeÜber5": "Für Gebäude über 5000 m² ist zusätzlich das Lebenszyklus-GWP zu berechnen und offenzulegen; außerdem gelten Luftdichtheits- bzw. Thermografie-Nachweise und die DNSH-Kriterien.",
-    "delegierteVoEu2021": "Delegierte VO (EU) 2021/2139, Anhang I, Abschnitt 7.1 (Stand manuell prüfen)",
+    "delegierteVoEu2021": "Delegierte VO (EU) 2021/2139, Anhang I, Abschnitt 7.1 (Stand 10/2026)",
     "beispiel2CrremPfad": "Beispiel 2: CRREM-Pfad – wann wird ein Bürogebäude „stranded“?",
     "crremPfadeSindLänder": "CRREM-Pfade sind länder- und nutzungsspezifisch; für Investitionsentscheidungen sind die aktuellen veröffentlichten Pfade zu verwenden, nicht diese Lehrwerte.",
     "crremMethodikLehrbeispiel": "CRREM-Methodik (Lehrbeispiel)",
@@ -141,7 +141,7 @@
       {
         "year": "1987",
         "title": "Brundtland-Bericht („Our Common Future“)",
-        "desc": "Formulierung des Drei-Säulen-Modells der Nachhaltigkeit (Ökologie, Ökonomie, Soziales). Grundsatz: Bedürfnisse der Gegenwart befriedigen, ohne die Möglichkeiten zukünftiger Generationen zu gefährden."
+        "desc": "Leitbild der nachhaltigen Entwicklung (Brundtland-Bericht). Grundsatz: Bedürfnisse der Gegenwart befriedigen, ohne die Möglichkeiten zukünftiger Generationen zu gefährden. Das Drei-Säulen-Modell (Ökologie, Ökonomie, Soziales) wurde später ausformuliert, u. a. von der Enquete-Kommission des Bundestages (1998)."
       },
       {
         "year": "1992",

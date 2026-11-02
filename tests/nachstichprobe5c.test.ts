@@ -77,5 +77,15 @@ const qsi4 = (quiz as { id: string; verified?: boolean; gapAnalysis?: { coreRule
 gilt(!!qsi4 && qsi4.verified === false && !/ÜK 1–3/.test(qsi4.gapAnalysis?.coreRule ?? '') && /ÜK 1 und ÜK 2/.test(qsi4.gapAnalysis?.coreRule ?? ''), 'NS5C-QS-1: Merksatz q_qsi_4 ÜK 1 und ÜK 2, Frage zur Freigabe zurückgestellt');
 gilt(/\(mind\. 3,0\)/.test(readFileSync('src/modules/Konformitaetskontrolle.tsx', 'utf8')), 'NS5C-QS-2: Dezimalkomma bei der Mindest-Standardabweichung');
 
+// Umgesetzte Empfehlungen (Grundregel 02.11.2026)
+gilt(/Referentenentwurf von BMJV und BMWSB/.test(ndr.texte.sollFachkundigenBaupartnernDas) && !/noch nicht veröffentlicht/.test(ndr.texte.sollFachkundigenBaupartnernDas), 'NS5C-NDR-3: Gebäudetyp E Referentenentwurf 26.10.2026');
+gilt(!/BMWSB Leitfaden|Berlin, 2021/.test(JSON.stringify(definitionen)), 'NS5C-NDR-4: Leitfaden Nachhaltiges Bauen BMI 2019');
+const baustoffrecycling = readFileSync('content/rueckbau/BaustoffrecyclingTab.json', 'utf8');
+gilt(!/Einbauerstatter/.test(baustoffrecycling) && /bestimmter Materialklassen/.test(baustoffrecycling), 'NS5C-RB-2: § 22 EBV nur für bestimmte Materialklassen');
+for (const datei of ['content/nachhaltigkeitdatenregeln/NachhaltigkeitDatenRegeln.json', 'content/nawaro/Nawaro.json', 'content/putzemoertel/PutzeMoertel.json',
+  'content/csczertifizierung/CscZertifizierung.json', 'content/beispielrechnungen/RechnungUWert.json']) {
+  gilt(!/manuell (prüfen|abgleichen)/.test(readFileSync(datei, 'utf8')), `NS5C-X-1: kein Vermerk „manuell prüfen“ in ${datei}`);
+}
+
 if (fehler.length) { for (const f of fehler) console.error(`FAIL: ${f}`); process.exit(1); }
 console.log('OK: Nachstichprobe 5c (02.11.2026)');
