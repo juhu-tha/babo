@@ -83,7 +83,7 @@ pruefe((fkNA('KS-12-NMII')?.fk ?? 0) < (fkNA('KS-12-NMIIIa')?.fk ?? 0) && (fkNA(
 
 // 6. Grenzen und Hinweise
 const g1 = bemesseWandVereinfacht({ ...aw, h: 4.5, t: 115, a: 115 }); // h_ef/t = 29,3 → Φ2 < 0
-pruefe(g1.hinweise.some(h => h.stufe === 'fehler') && g1.nRd === 0, 'Φ2 ≤ 0 → Fehler, kein Ergebnis');
+pruefe(g1.hinweise.some(h => h.stufe === 'fehler') && Number.isNaN(g1.nRd) && Number.isNaN(g1.schlankheit), 'Φ2 ≤ 0 → Fehler, kein Ergebnis (Grenzfallprüfung 02.11.2026: auch keine Zwischenwerte)');
 const g2 = bemesseWandVereinfacht({ ...aw, lf: 7 });
 pruefe(g2.hinweise.some(h => h.feld === 'lf' && h.stufe === 'warnung'), 'l_f > 6 m → Warnung');
 const g3 = bemesseWandVereinfacht({ ...aw, nEd: 600 });

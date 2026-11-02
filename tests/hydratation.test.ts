@@ -223,11 +223,11 @@ for (let i = 0; i < 1000; i++) {
   });
   const reihen = [r.fcAkt, r.fcRef, r.fctAkt, r.EAkt, r.tempKern, r.tempRand, r.tempAdiabat, r.fcAktRel, r.fctAktRel, r.hydratationsgrad].flat();
   const skalare = [r.te28, r.te2d, r.beta2d, r.fc2d, r.fct2d, r.E2d, r.maxTempDiff, r.fReq, r.Hmax, r.t50, r.fcm28, r.fctm28, r.Ecm28];
-  if (![...reihen, ...skalare].every(Number.isFinite)) { pruefe(false, `Fuzz Hydratation ${i}: ${JSON.stringify(skalare)} ${reihen.findIndex(x => !Number.isFinite(x))}`); break; }
+  if (!zahlenPassen(r, [...reihen, ...skalare])) { pruefe(false, `Fuzz Hydratation ${i}: ${JSON.stringify(skalare)} ${reihen.findIndex(x => !Number.isFinite(x))}`); break; }
   const x = reissrahmen({ zement: profile[i % profile.length], tFrisch: z(-10, 45), tUmgebung: z(-10, 40), fasergehalt: z(-5, 100), festhaltegrad: z(-10, 110) });
-  if (![x.maxTemp, ...x.punkte.flatMap(p => [p.temp, p.fct, p.stress, p.displayStress])].every(Number.isFinite)) { pruefe(false, `Fuzz Reißrahmen ${i}`); break; }
+  if (!zahlenPassen(x, [x.maxTemp, ...x.punkte.flatMap(p => [p.temp, p.fct, p.stress, p.displayStress])])) { pruefe(false, `Fuzz Reißrahmen ${i}`); break; }
   const v = verdunstungsrate({ tLuft: z(-30, 50), tBeton: z(-30, 50), rh: z(-10, 110), wind: z(-5, 60) });
-  if (![v.E, v.Eroh].every(Number.isFinite) || v.E < 0) { pruefe(false, `Fuzz Verdunstung ${i}`); break; }
+  if (!zahlenPassen(v, [v.E, v.Eroh]) || v.E < 0) { pruefe(false, `Fuzz Verdunstung ${i}`); break; }
   const nb = nachbehandlungsdauer(festigkeitsentwicklungAusR(z(-0.2, 1.2)), expo[i % 3], oberflaechenTempBereich(z(-10, 40)));
   if (nb.tage !== null && !(Number.isFinite(nb.tage) && nb.tage > 0)) { pruefe(false, `Fuzz Nachbehandlung ${i}`); break; }
 }

@@ -14,6 +14,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import datei from './fixtures/rechenkerne-basis.json';
 import { FIB_KARBONATISIERUNG as K, FIB_CHLORID as C, rInvAusAcc, rInvStreuung, type LebensdauerEingabe } from '../src/calc/lebensdauer';
+import hydratationInhalt from '../content/hydratationpruefverfahren/HydratationPruefverfahren.json';
 
 const ROOT = path.resolve(path.dirname(new URL(import.meta.url).pathname), '..');
 const fehler: string[] = [];
@@ -295,6 +296,34 @@ for (const h of HAND) {
     const zurueck = um(hin.wert, a, n, v);
     gilt(zurueck.gueltig && Math.abs(zurueck.wert - w) < 1e-9 * Math.max(1, Math.abs(w)), `R6 Einheiten ${a} ${v} ↔ ${n}: ${w} → ${hin.wert} → ${zurueck.wert}`);
   }
+}
+
+// ---------------------------------------------------------------- 5b. Reglergrenzen der Module (gültige Eingaben → gültiges, endliches Ergebnis)
+// Bereiche aus den <input type="range">-Reglern der Module abgelesen (Stand 02.11.2026); geprüft werden alle Ecken min/max
+// je Regler bei Mittelwerten der übrigen. Ein Fehlerhinweis am Reglerende wäre ein Widerspruch zwischen Anzeige und Kern.
+{
+  const m = (d: string) => module[`src/${d}`] as Record<string, (...a: never[]) => unknown>;
+  const ecken = (fall: string, bereiche: Record<string, [number, number]>, rechne: (w: Record<string, number>) => unknown) => {
+    const mitte = Object.fromEntries(Object.entries(bereiche).map(([k, [a, b]]) => [k, (a + b) / 2]));
+    for (const [k, [a, b]] of Object.entries(bereiche)) for (const v of [a, b]) {
+      let r: unknown;
+      try { r = rechne({ ...mitte, [k]: v }); } catch (e) { gilt(false, `Regler ${fall} ${k} = ${v}: Ausnahme ${String((e as Error).message)}`); continue; }
+      gilt(!ungueltig(r) && zahlen(r).length > 0 && zahlen(r).filter(x => !Number.isNaN(x)).every(Number.isFinite), `Regler ${fall} ${k} = ${v}: ungültig oder nicht endlich`);
+    }
+  };
+  // LCC.tsx: N 10 … 80 a, r 0,5 … 6 %, e 0 … 8 %, i 0 … 5 %, CO₂-Preis 20 … 220 €/t, Steigerung 0 … 10 %, Förderung 5 … 40 %
+  const o = { capex: 1000, opex0: 10, maintenanceCost: 5, maintenanceInterval: 5, replacementCost: 800, lifespan: 30, eolCost: 50, embodiedCO2: 100, operatingCO2: 10 };
+  ecken('LCC', { N: [10, 80], r: [0.5, 6], e: [0, 8], i: [0, 5], co2Preis: [20, 220], co2Steigerung: [0, 10], foerderungB: [5, 40] }, w => m('calc/lcc.ts').lccVergleich(o as never, o as never,
+    { r: w.r / 100, e: w.e / 100, i: w.i / 100, N: Math.round(w.N / 5) * 5, co2Bepreisung: true, co2Preis: w.co2Preis, co2Steigerung: w.co2Steigerung / 100, foerderungB: w.foerderungB, restwertLinear: false } as never));
+  // Bauchemie.tsx: Stellmittel 0 … 2 %, Scherrate 0,1 … 100 1/s
+  ecken('Stellmittel', { c: [0, 2], g: [0.1, 100] }, w => m('calc/bauchemie.ts').stellmittelRheologie(w.c as never, w.g as never));
+  // KorrosionsschutzBeschichtungen.tsx: d_Zn 20 … 300 µm, t_B 0 … 40 a, Synergie 1 … 3, Stahldicke 1 … 30 mm
+  ecken('Zinkschutzdauer', { dZn: [20, 300], tB: [0, 40], f: [1, 3], t: [1, 30] }, w => m('calc/korrosionsschutz.ts').zinkSchutzdauer({ dZn: w.dZn, kategorie: 'C3', ziel: 'H', duplex: true, tBeschichtung: w.tB, synergie: w.f, stahlDickeMm: w.t } as never));
+  // HydratationPruefverfahren.tsx: Frischbeton 5 … 35 °C, Umgebung 5 … 30 °C, Fasern 0 … 60 kg/m³, Festhaltegrad 30 … 100 %
+  const zement = (hydratationInhalt.daten as { CEMENT_MAP: Record<string, unknown> }).CEMENT_MAP['CEM I 42.5 N (Standard)'];
+  ecken('Reißrahmen', { tf: [5, 35], tu: [5, 30], f: [0, 60], g: [30, 100] }, w => m('calc/hydratation.ts').reissrahmen({ zement, tFrisch: w.tf, tUmgebung: w.tu, fasergehalt: w.f, festhaltegrad: w.g } as never));
+  // Energieausweis.tsx: Nutzfläche 80 … 400 m²
+  ecken('Energieausweis', { a: [80, 400] }, w => m('calc/energieausweis.ts').energieausweis({ typ: 'efh', flaeche: w.a, huelle: 'unsaniert', lueftung: 'fenster', heizung: 'gas_brennwert', rechtsstand: 'bis_2026' } as never));
 }
 
 // ---------------------------------------------------------------- 6. Vollständigkeit (R7)

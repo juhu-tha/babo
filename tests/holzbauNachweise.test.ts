@@ -83,7 +83,8 @@ const sk = verformterDruckstab({ ...sp, nd: 10, e0: 5 });
 pruefe(sk.e_ansatz === 10 && sk.hinweise.some(h => h.feld === 'e0'), 'e₀ < l/400 → Ersatzimperfektion');
 // Grenze: N_d ≥ N_cr,d → Fehler
 const s3 = verformterDruckstab({ ...sp, nd: 120 });
-pruefe(!s3.gueltig && s3.hinweise.some(h => h.stufe === 'fehler') && Math.abs(s3.N_crit_kN - 119.35) < 0.01, 'N_d ≥ N_cr,d');
+// Grenzfallprüfung 02.11.2026: ungültig → kein Zahlenergebnis; N_cr,d = 119,35 kN steht jetzt im Hinweistext (vorher als Feld)
+pruefe(!s3.gueltig && s3.hinweise.some(h => h.stufe === 'fehler' && h.text.includes('119,4 kN')) && Number.isNaN(s3.N_crit_kN), 'N_d ≥ N_cr,d');
 pruefe(verformterDruckstab({ ...sp, l: 0 }).hinweise.some(h => h.stufe === 'fehler'), 'l = 0 → Fehler');
 pruefe(verformterDruckstab({ ...sp, E005: 0 }).hinweise.some(h => h.stufe === 'fehler'), 'E_0,05 = 0 → Fehler');
 

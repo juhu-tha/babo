@@ -364,7 +364,7 @@ export function verformterDruckstab(e: VerformterStabEingabe) {
   const lambda_rel_y = (lambda_y / Math.PI) * Math.sqrt(e.fc0k / e.E005); // (6.21)
   const k_cy = knickbeiwert(lambda_rel_y, !!e.brettschichtholz);
   if (N >= N_crit) {
-    hinweise.push({ stufe: 'fehler', feld: 'nd', text: 'Die Normalkraft erreicht die Knicklast N_cr,d = π²·E_d·I/l² – nach Theorie II. Ordnung ist kein Gleichgewicht möglich (Stab instabil).' });
+    hinweise.push({ stufe: 'fehler', feld: 'nd', text: `Die Normalkraft erreicht die Knicklast N_cr,d = π²·E_d·I/l² = ${formatDeZahl(N_crit / 1000, 1)} kN – nach Theorie II. Ordnung ist kein Gleichgewicht möglich (Stab instabil).` });
     return nurGueltig({ ...leer, A, W, I, E_d, e_imp, e_ansatz, N_crit_kN: N_crit / 1000, lambda_y, lambda_rel_y, k_cy }); // Grenzfallprüfung 02.11.2026: Fehler → ohne Zwischenwerte
   }
   const magFactor = 1 / (1 - N / N_crit); // = α_cr/(α_cr − 1); N = 0 → 1

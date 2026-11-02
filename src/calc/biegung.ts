@@ -180,5 +180,5 @@ export function bemesseBiegung(e: BiegungEingabe): BiegungErgebnis {
     hinweise.push({ stufe: 'fehler', feld: 'eingabe', text: 'Die Berechnung liefert keinen endlichen Wert – Eingaben prüfen.' });
     return nurGueltig({ ...leer, hinweise });
   }
-  return ergebnis;
+  return nurGueltig(ergebnis); // Grenzfallprüfung 02.11.2026: Fehlerhinweis aus der Bemessung → kein Zahlenergebnis
 }

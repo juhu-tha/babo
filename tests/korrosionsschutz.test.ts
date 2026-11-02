@@ -52,7 +52,7 @@ let seed = 29;
 const z = (a: number, c: number) => { seed = (seed * 1103515245 + 12345) % 2147483648; return a + (c - a) * (seed / 2147483648); };
 for (let i = 0; i < 1000; i++) {
   const r = zinkSchutzdauer({ dZn: z(-20, 400), kategorie: KATEGORIEN[i % 6], ziel: KLASSEN[i % 4], duplex: i % 2 === 0, tBeschichtung: z(-5, 60), synergie: z(-0.5, 3.5), stahlDickeMm: i % 3 ? z(-1, 40) : undefined });
-  const werte = [r.tMin, r.tDuplexMin, r.tMassgebend, r.rMin, r.rMax, r.tMax ?? 0, r.tDuplexMax ?? 0];
+  const werte = [r.tMin, r.tDuplexMin, r.tMassgebend, r.rMin, r.rMax, ...[r.tMax, r.tDuplexMax].filter((x): x is number => x !== null)];
   if (!zahlenPassen(r, werte)) { pruefe(false, `Fuzz ${i}`); break; }
 }
 

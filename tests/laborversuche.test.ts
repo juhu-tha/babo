@@ -95,7 +95,8 @@ for (let i = 0; i < 500; i++) {
   pruefe(Number.isFinite(e.fcm) && e.fmin <= e.fcm + 1e-9, `Fuzz Würfel ${i}`);
   const ps = Array.from({ length: n }, () => ({ Ff: rnd() * 6, Fc1: rnd() * 120, Fc2: rnd() * 120 }));
   const m = moertelprismen(ps, 28);
-  if (m.gueltig) pruefe(Number.isFinite(m.druck.mittel) && m.rc.length === 2 * n, `Fuzz Prismen ${i}`);
+  // Grenzfallprüfung 02.11.2026: verworfene Serie (druck.gueltig = false) ohne Mittelwert
+  if (m.gueltig) pruefe((m.druck.gueltig ? Number.isFinite(m.druck.mittel) : Number.isNaN(m.druck.mittel)) && m.rc.length === 2 * n, `Fuzz Prismen ${i}`);
 }
 
 if (fehler.length) { for (const f of fehler) console.error(`FAIL: ${f}`); process.exit(1); }
