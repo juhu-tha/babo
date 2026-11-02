@@ -4,7 +4,7 @@
 import fs from 'fs';
 import { modulPfad, tabAusPfad, tabAusHash } from '../src/routing/pfad';
 import { zerlege, zusammensetzen, kuerze, textLaenge } from '../scripts/vorrendernHtml';
-import { modulSchale, baueSeite, gleicheSchale, NUR_HELL } from '../scripts/vorrendern';
+import { modulSchale, baueSeite, gleicheSchale, NUR_HELL, NUR_BREIT } from '../scripts/vorrendern';
 import { KOPF_ANKER } from '../scripts/startSchale';
 import { erzeugeSitemap } from '../scripts/gen-sitemap';
 
@@ -91,6 +91,9 @@ pruefe(wirft, 'fehlende Startseiten-Schale wird nicht erkannt');
 const nurHellSeite = baueSeite(vorlage, startRoot, { id: 'glas', label: 'Glas' }, '<p>X</p>', { nurHell: true });
 pruefe(nurHellSeite.includes(`<meta name="bb-vorgerendert" content="glas" ${NUR_HELL} />`), 'Kennung data-nur-hell fehlt');
 pruefe(!baueSeite(vorlage, startRoot, { id: 'glas', label: 'Glas' }, '<p>X</p>').includes(NUR_HELL), 'data-nur-hell ohne Abweichung');
+const nurBreitSeite = baueSeite(vorlage, startRoot, { id: 'glas', label: 'Glas' }, '<p>X</p>', { nurBreit: true, nurHell: true });
+pruefe(nurBreitSeite.includes(`<meta name="bb-vorgerendert" content="glas" ${NUR_HELL} ${NUR_BREIT} />`), 'Kennung data-nur-breit fehlt');
+pruefe(!baueSeite(vorlage, startRoot, { id: 'glas', label: 'Glas' }, '<p>X</p>').includes(NUR_BREIT), 'data-nur-breit ohne Abweichung');
 pruefe(gleicheSchale('<button title="Dunkelmodus aktivieren" aria-label="a">X</button>', '<button title="Hellmodus aktivieren" aria-label="b">X</button>'), 'title/aria-label als Abweichung gewertet');
 pruefe(!gleicheSchale('<svg class="lucide-moon"></svg>', '<svg class="lucide-sun"></svg>') && !gleicheSchale('<p>F = 180 kN</p>', '<p>F = 260 kN</p>'), 'Abweichung im Markup nicht erkannt');
 

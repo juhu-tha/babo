@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { Eye } from 'lucide-react';
+import { leseSeitenbreite, waehleSeitenbreite, alsSeitenbreite, type Bildschirmbreite } from '@/src/utils/seitenbreite';
 
 const A11yPanel = React.lazy(() => import('./A11yPanel'));
 
-export type Bildschirmbreite = 'standard' | 'wide' | 'full';
+export type { Bildschirmbreite };
 
 export interface A11ySettings {
   fontSizeScale: number; // 0.75 (compact/75%), 0.85, 1.0 (default), 1.15, 1.30
@@ -88,36 +89,20 @@ if (typeof document !== 'undefined') {
 export function AccessibilityToolbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [settings, setSettings] = useState<A11ySettings>(getA11yPreferences);
-  const [screenWidth, setScreenWidth] = useState<'standard' | 'wide' | 'full'>(() => {
-    try {
-      const saved = localStorage.getItem('baustoffboard_screen_width');
-      if (saved === 'standard' || saved === 'wide' || saved === 'full') return saved;
-      const legacyFluid = localStorage.getItem('baustoffboard_fluid_width');
-      if (legacyFluid !== null) return legacyFluid === 'true' ? 'full' : 'standard';
-      return 'wide';
-    } catch {
-      return 'wide';
-    }
-  });
+  const [screenWidth, setScreenWidth] = useState<Bildschirmbreite>(leseSeitenbreite);
 
   useEffect(() => {
     const handleWidthChange = (e: Event) => {
-      const custom = e as CustomEvent<'standard' | 'wide' | 'full'>;
-      if (custom.detail && (custom.detail === 'standard' || custom.detail === 'wide' || custom.detail === 'full')) {
-        setScreenWidth(custom.detail);
-      }
+      const b = alsSeitenbreite(e);
+      if (b) setScreenWidth(b);
     };
     window.addEventListener('baustoffboard_width_change', handleWidthChange);
     return () => window.removeEventListener('baustoffboard_width_change', handleWidthChange);
   }, []);
 
-  const changeScreenWidth = (mode: 'standard' | 'wide' | 'full') => {
+  const changeScreenWidth = (mode: Bildschirmbreite) => {
     setScreenWidth(mode);
-    try {
-      localStorage.setItem('baustoffboard_screen_width', mode);
-      localStorage.setItem('baustoffboard_fluid_width', mode === 'full' ? 'true' : 'false');
-      window.dispatchEvent(new CustomEvent('baustoffboard_width_change', { detail: mode }));
-    } catch {}
+    waehleSeitenbreite(mode);
   };
 
   useEffect(() => {
