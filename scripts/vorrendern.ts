@@ -10,7 +10,8 @@
  *   4. In dist/index.html statt der Startseiten-Schale einsetzen, Titel/Beschreibung/kanonische Adresse je Modul
  *      setzen → dist/modul/<id>.html; Liste, Aliase und inaktive Adressen → dist/modul/routen.json (für server.ts).
  * Die Seite ist wie die Startseiten-Schale `inert` und nur sichtbar, wenn scripts/startschale-boot.js sie zur
- * Adresse und den Einstellungen passend findet; React ersetzt sie (src/main.tsx wartet dafür die Chunks ab).
+ * Adresse und den Einstellungen passend findet (im Dunkelmodus nur, wenn ein zweiter, dunkler Durchlauf dasselbe
+ * Markup ergibt – sonst Kennung data-nur-hell im Kopf); React ersetzt sie (src/main.tsx wartet dafür die Chunks ab).
  * Abschalten (z. B. für schnelle Probe-Builds): BB_OHNE_VORRENDERN=1.
  */
 import fs from 'fs';
@@ -120,14 +121,28 @@ export function vorladenFuerSeite(html: string, id: string): string {
   return ohne.slice(0, ende) + block + ohne.slice(ende);
 }
 
+/**
+ * Sichtbare Ausgabe zweier Schalen gleich? (Dunkelmodus 02.11.2026, docs/pruefung/lcp-dunkel-2026-11-02.md)
+ * Die Schale wird hell gerendert und im Dunkelmodus nur gezeigt, wenn React dunkel dasselbe Markup erzeugt – die
+ * Farben kommen dann allein über die Klasse dark an <html> (Tailwind dark:, src/index.css). title und aria-label
+ * werden nicht verglichen: unsichtbar, und die Schale ist inert, bis React sie ersetzt.
+ */
+export function gleicheSchale(hell: string, dunkel: string): boolean {
+  const ohne = (s: string) => s.replace(/ (?:title|aria-label)="[^"]*"/g, '');
+  return ohne(hell) === ohne(dunkel);
+}
+
+/** Kennung im Kopf: Schale nur im Hellmodus zeigen (scripts/startschale-boot.js liest sie) */
+export const NUR_HELL = 'data-nur-hell';
+
 /** vollständige HTML-Datei einer Modulseite aus dist/index.html */
-export function baueSeite(vorlage: string, startRoot: string, route: RouteInfo, schale: string): string {
+export function baueSeite(vorlage: string, startRoot: string, route: RouteInfo, schale: string, { nurHell = false }: { nurHell?: boolean } = {}): string {
   if (!vorlage.includes(startRoot)) throw new Error('baueSeite: Startseiten-Schale nicht in dist/index.html gefunden');
   const titel = maskiere(`BaustoffBoard THA - ${route.label}`);
   const url = maskiere(BASIS_URL + modulPfad(route.id));
   let s = vorlage.replace(startRoot, () => `<div id="root"><div data-schale inert>${schale}</div></div>`);
   // vor dem Inline-Skript startschale-boot.js (direkt hinter <meta charset>), das die Kennung liest
-  s = s.replace(KOPF_ANKER, () => `${KOPF_ANKER}\n    <meta name="bb-vorgerendert" content="${maskiere(route.id)}" />`);
+  s = s.replace(KOPF_ANKER, () => `${KOPF_ANKER}\n    <meta name="bb-vorgerendert" content="${maskiere(route.id)}"${nurHell ? ` ${NUR_HELL}` : ''} />`);
   s = ersetze(s, /<title>[\s\S]*?<\/title>/, `<title>${titel}</title>`, '<title>');
   s = ersetze(s, /<link rel="canonical" href="[^"]*"/, `<link rel="canonical" href="${url}"`, 'canonical');
   s = ersetze(s, /<meta property="og:url" content="[^"]*"/, `<meta property="og:url" content="${url}"`, 'og:url');
@@ -182,6 +197,7 @@ export async function vorrendern({ wurzel = process.cwd(), dist = path.join(wurz
 
   const ids: string[] = [];
   const meldungen: string[] = [];
+  const nurHellIds: string[] = [];
   let bytes = 0;
   for (const r of eintrag.routen()) {
     if (nur && !nur.includes(r.id)) continue;
@@ -190,7 +206,17 @@ export async function vorrendern({ wurzel = process.cwd(), dist = path.join(wurz
       const { html, fehler } = await eintrag.rendere(r.id);
       if (process.env.BB_VORRENDERN_ROH) fs.writeFileSync(path.join(process.env.BB_VORRENDERN_ROH, `${r.id}.roh.html`), html);
       const { html: schale, hinweise } = modulSchale(html);
-      const seite = baueSeite(vorlage, startRoot, r, schale);
+      // zweiter Durchlauf im Dunkelmodus (TabContext liest localStorage 'theme'): weicht die Schale ab (Komponenten,
+      // die nach theme statt per Klasse dark umschalten), bleibt sie im Dunkelmodus aus
+      g.localStorage!.setItem('theme', 'dark');
+      let nurHell = true;
+      try {
+        const dunkel = await eintrag.rendere(r.id);
+        if (process.env.BB_VORRENDERN_ROH) fs.writeFileSync(path.join(process.env.BB_VORRENDERN_ROH, `${r.id}.dunkel.roh.html`), dunkel.html);
+        nurHell = !gleicheSchale(schale, modulSchale(dunkel.html).html);
+      } catch { /* dunkel nicht renderbar → nur hell */ } finally { g.localStorage!.removeItem('theme'); }
+      if (nurHell) nurHellIds.push(r.id);
+      const seite = baueSeite(vorlage, startRoot, r, schale, { nurHell });
       fs.writeFileSync(path.join(zielDir, `${r.id}.html`), seite);
       ids.push(r.id);
       bytes += seite.length;
@@ -205,7 +231,8 @@ export async function vorrendern({ wurzel = process.cwd(), dist = path.join(wurz
   const s = ((Date.now() - start) / 1000).toFixed(1);
   console.log(`vorrendern: ${ids.length} Modulseiten nach dist/modul/ (Ø ${(bytes / Math.max(1, ids.length) / 1024).toFixed(0)} kB) in ${s} s`);
   for (const m of meldungen) console.log(`  · ${m}`);
-  return { ids, meldungen };
+  if (nurHellIds.length) console.log(`  · Schale nur im Hellmodus (Markup dunkel anders): ${nurHellIds.join(', ')}`);
+  return { ids, meldungen, nurHell: nurHellIds };
 }
 
 if (process.argv[1] && path.resolve(process.argv[1]) === fileURLToPath(import.meta.url)) {

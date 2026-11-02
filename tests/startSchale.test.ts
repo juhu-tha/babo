@@ -45,10 +45,11 @@ pruefe(index.includes(KOPF_ANKER) && !/<link[^>]*stylesheet|<style/.test(index.s
 // 4. Boot-Skript: Schale nur auf der Startseite mit Standardeinstellungen
 const boot = fs.readFileSync('scripts/startschale-boot.js', 'utf8');
 // pfad/seite: Adresse und Inhalt der Datei (<meta name="bb-vorgerendert">, Modulseiten aus scripts/vorrendern.ts, Z52)
-function laufe(hash: string, search: string, speicher: Record<string, string>, pathname = '/', seite?: string, systemDunkel = false): 'behalten' | 'entfernt' {
+function laufe(hash: string, search: string, speicher: Record<string, string> | null, pathname = '/', seite?: string, systemDunkel = false, nurHell = false): 'behalten' | 'entfernt' {
   const klassen = new Set<string>();
-  const ls = { getItem: (k: string) => (k in speicher ? speicher[k] : null) };
-  const meta = seite === undefined ? null : { getAttribute: (n: string) => (n === 'content' ? seite : null) };
+  // speicher null: Zugriff auf localStorage wirft (gesperrter Speicher)
+  const ls = { getItem: (k: string) => { if (speicher === null) throw new Error('gesperrt'); return k in speicher ? speicher[k] : null; } };
+  const meta = seite === undefined ? null : { getAttribute: (n: string) => (n === 'content' ? seite : null), hasAttribute: (n: string) => n === 'data-nur-hell' && nurHell };
   const document = { documentElement: { classList: { add: (k: string) => klassen.add(k) } }, querySelector: (q: string) => (q === 'meta[name="bb-vorgerendert"]' ? meta : null) };
   vm.runInNewContext(boot, { document, location: { hash, search, pathname }, window: { localStorage: ls, matchMedia: (q: string) => ({ matches: systemDunkel && q.includes('dark') }) }, decodeURIComponent });
   letzteDunkel = klassen.has('dark');
@@ -60,9 +61,10 @@ pruefe(laufe('#start', '', { baustoffboard_screen_width: 'wide' }) === 'behalten
 pruefe(laufe('#glas', '', {}) === 'entfernt', '#glas: Schale bleibt');
 pruefe(laufe('', '?poll=abc', {}) === 'entfernt', 'Umfrage: Schale bleibt');
 pruefe(laufe('', '', { baustoffboard_lang: 'en' }) === 'entfernt', 'Englisch: Schale bleibt');
-pruefe(laufe('', '', { theme: 'dark' }) === 'entfernt' && letzteDunkel, 'Dunkelmodus: Schale bleibt');
+// Dunkelmodus (02.11.2026): Schale steht auch dunkel (Markup hell = dunkel), Klasse dark vor dem ersten Bild
+pruefe(laufe('', '', { theme: 'dark' }) === 'behalten' && letzteDunkel, 'Dunkelmodus: Schale fehlt oder kein dark');
 // Systemeinstellung dunkel (Gutachten 29.10.2026): gilt ohne eigene Wahl; eigene Wahl „hell“ hat Vorrang
-pruefe(laufe('', '', {}, '/', undefined, true) === 'entfernt' && letzteDunkel, 'System dunkel: Schale bleibt oder kein dark');
+pruefe(laufe('', '', {}, '/', undefined, true) === 'behalten' && letzteDunkel, 'System dunkel: Schale fehlt oder kein dark');
 pruefe(laufe('', '', { theme: 'light' }, '/', undefined, true) === 'behalten' && !letzteDunkel, 'System dunkel, Wahl hell: Schale fehlt oder dark gesetzt');
 pruefe(laufe('', '', {}, '/', undefined, false) === 'behalten' && !letzteDunkel, 'System hell: dark gesetzt');
 pruefe(laufe('', '', { baustoffboard_screen_width: 'full' }) === 'entfernt', 'Vollbreite: Schale bleibt');
@@ -74,7 +76,13 @@ pruefe(laufe('#abschnitt', '', {}, '/modul/glas', 'glas') === 'behalten', '/modu
 pruefe(laufe('', '', {}, '/modul/glas') === 'entfernt', '/modul/glas mit index.html (Start-Schale): Schale bleibt');
 pruefe(laufe('', '', {}, '/modul/glas', 'holz') === 'entfernt', 'falsche Modulseite: Schale bleibt');
 pruefe(laufe('', '', {}, '/', 'glas') === 'entfernt', 'Modulseite unter /: Schale bleibt');
-pruefe(laufe('', '', { theme: 'dark' }, '/modul/glas', 'glas') === 'entfernt', 'Modulseite im Dunkelmodus: Schale bleibt');
+pruefe(laufe('', '', { theme: 'dark' }, '/modul/glas', 'glas') === 'behalten' && letzteDunkel, 'Modulseite im Dunkelmodus: Schale fehlt');
+// Modulseite, deren Markup dunkel abweicht (scripts/vorrendern.ts, data-nur-hell): nur hell
+pruefe(laufe('', '', { theme: 'dark' }, '/modul/glas', 'glas', false, true) === 'entfernt' && letzteDunkel, 'data-nur-hell im Dunkelmodus: Schale bleibt');
+pruefe(laufe('', '', {}, '/modul/glas', 'glas', true, true) === 'entfernt', 'data-nur-hell, System dunkel: Schale bleibt');
+pruefe(laufe('', '', {}, '/modul/glas', 'glas', false, true) === 'behalten', 'data-nur-hell im Hellmodus: Schale fehlt');
+// gesperrter Speicher: ohne Schale, aber Systemeinstellung dunkel greift trotzdem vor dem ersten Bild
+pruefe(laufe('', '', null, '/', undefined, true) === 'entfernt' && letzteDunkel, 'Speicher gesperrt: Schale bleibt oder kein dark');
 pruefe(laufe('', '?poll=x', {}, '/modul/glas', 'glas') === 'entfernt', 'Modulseite mit Umfrage: Schale bleibt');
 
 if (fehler.length) {

@@ -5,7 +5,8 @@
  * Anfang – Rahmen (Seitenleiste ohne Menüeinträge, Kopfzeile) und Begrüßungskarte bis zur Versionszeile – nach
  * scripts/startschale.html. Das Vite-Plugin scripts/startSchale.ts setzt sie beim Build in <div id="root">.
  * Nach Änderungen an Rahmen oder Begrüßung in App.tsx/Startseite.tsx neu erzeugen; tests/startSchale.test.ts
- * prüft, dass Texte und Klassen der Schale noch im Quelltext vorkommen.
+ * prüft, dass Texte und Klassen der Schale noch im Quelltext vorkommen. Liest die Seite hell und dunkel und bricht ab,
+ * wenn sich das Markup unterscheidet (die Schale steht auch im Dunkelmodus, scripts/startschale-boot.js).
  *
  *   npm run build && NODE_ENV=production PORT=4206 node dist/server.cjs &
  *   node scripts/qa/startschale-erzeugen.mjs [--basis http://localhost:4206/]
@@ -27,10 +28,13 @@ const ai = n => { const i = process.argv.indexOf(n); return i > 0 ? process.argv
 const BASIS = (ai('--basis') ?? 'http://localhost:4206/').replace(/\/?$/, '/');
 const exe = process.env.CHROMIUM_PATH || (fs.existsSync('/opt/pw-browsers/chromium') ? '/opt/pw-browsers/chromium' : undefined);
 const browser = await chromium.launch(exe ? { executablePath: exe } : {});
-const page = await (await browser.newContext({ viewport: { width: 1280, height: 900 }, locale: 'de-DE' })).newPage();
+// hell und dunkel (Systemeinstellung) lesen: Die Schale steht seit 02.11.2026 auch im Dunkelmodus und muss dafür
+// in beiden Darstellungen dasselbe Markup haben (Farben über dark:-Klassen; title/aria-label unsichtbar, ausgenommen)
+const lies = async colorScheme => {
+const page = await (await browser.newContext({ viewport: { width: 1280, height: 900 }, locale: 'de-DE', colorScheme })).newPage();
 await page.goto(BASIS, { waitUntil: 'networkidle' });
 await page.waitForSelector('main h2');
-const html = await page.evaluate(() => {
+return page.evaluate(() => {
   const root = document.getElementById('root').cloneNode(true);
   // Menüeinträge (je Nutzer verschieden) weglassen, Rahmen behalten
   root.querySelector('aside nav').replaceChildren();
@@ -42,7 +46,18 @@ const html = await page.evaluate(() => {
   root.querySelector('aside')?.removeAttribute('inert');
   return root.innerHTML;
 });
+};
+const html = await lies('light');
+const dunkel = await lies('dark');
 await browser.close();
+const ohne = s => s.replace(/ (?:title|aria-label)="[^"]*"/g, '');
+if (ohne(html) !== ohne(dunkel)) {
+  const a = ohne(html), b = ohne(dunkel);
+  let i = 0; while (i < a.length && a[i] === b[i]) i++;
+  console.error(`Schale hell und dunkel verschieden (ab Zeichen ${i}): …${a.slice(Math.max(0, i - 120), i + 80)}… / …${b.slice(Math.max(0, i - 120), i + 80)}…`);
+  console.error('Komponente per dark:-Klassen statt nach theme umschalten (s. src/App.tsx, Darstellungsschalter).');
+  process.exit(1);
+}
 // Druckzeilen (Datum, Version) ebenfalls als Platzhalter – scripts/startSchale.ts setzt sie beim Build
 const schale = html.replace(/Version v[\d.]+ \([\d.]+\)/, 'Version %BB_VERSION%')
   .replace(/ · \d{2}\.\d{2}\.\d{4} · v[\d.]+</, ' · %BB_DATUM% · %BB_VNR%<')
