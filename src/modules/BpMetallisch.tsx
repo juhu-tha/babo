@@ -122,10 +122,12 @@ export interface MetalMaterial {
   recyclingRate?: string;
 }
 
+// λ Aluminium zentral aus kennwerte.ts (DIN EN ISO 10456, Entscheidung 30.10.2026); Umsetzung 02.11.2026 (NS4-ME-1)
+const ALUMINIUM_INHALT: MetalMaterial = inhalt.daten["metalsDb.aluminum"];
+
 export const metalsDb: MetalMaterial[] = [
   inhalt.daten["metalsDb.zinc"],
-  // λ zentral aus kennwerte.ts (DIN EN ISO 10456, Entscheidung 30.10.2026); Umsetzung 02.11.2026 (NS4-ME-1)
-  { ...inhalt.daten["metalsDb.aluminum"], lambda: LAMBDA_ALUMINIUM },
+  { ...ALUMINIUM_INHALT, lambda: LAMBDA_ALUMINIUM },
   inhalt.daten["metalsDb.steel"],
   {
     id: 'stainless',
