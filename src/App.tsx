@@ -527,8 +527,12 @@ function AppContent({ vorgerendert = false, vorrendern = false }: Omit<AppProps,
                     onClick={() => { toggleTheme(); setMobilWerkzeugeOffen(false); }}
                     className="flex items-center gap-2 px-3 py-2.5 rounded-lg bg-off-white dark:bg-slate-800 text-text-main dark:text-white border border-home-grau/20 dark:border-slate-700 text-sm"
                   >
-                    {theme === 'light' ? <Moon size={16} aria-hidden="true" /> : <Sun size={16} aria-hidden="true" />}
-                    <span>{theme === 'light' ? t('themeDark') : t('themeLight')}</span>
+                    {/* Symbol und Text über die Klasse dark an <html> statt über theme: gleiche Ausgabe hell und dunkel,
+                        damit die vorgerenderte Seite auch im Dunkelmodus dem ersten Bild von React entspricht */}
+                    <Moon size={16} aria-hidden="true" className="dark:hidden" />
+                    <Sun size={16} aria-hidden="true" className="hidden dark:block" />
+                    <span className="dark:hidden">{t('themeDark')}</span>
+                    <span className="hidden dark:inline">{t('themeLight')}</span>
                   </button>
                   <button
                     onClick={() => { setMobilWerkzeugeOffen(false); handleExport(); }}
@@ -591,8 +595,11 @@ function AppContent({ vorgerendert = false, vorrendern = false }: Omit<AppProps,
                 title={theme === 'light' ? (language === 'en' ? "Enable Dark Mode" : "Dunkelmodus aktivieren") : (language === 'en' ? "Enable Light Mode" : "Hellmodus aktivieren")}
                 id="theme-toggle-btn"
               >
-                {theme === 'light' ? <Moon size={14} /> : <Sun size={14} />}
-                <span className="text-xs font-medium leading-none select-none">{theme === 'light' ? t('themeDark') : t('themeLight')}</span>
+                {/* wie im Mobilmenü: Umschaltung per Klasse dark (vorgerenderte Seite im Dunkelmodus) */}
+                <Moon size={14} aria-hidden="true" className="dark:hidden" />
+                <Sun size={14} aria-hidden="true" className="hidden dark:block" />
+                <span className="text-xs font-medium leading-none select-none dark:hidden">{t('themeDark')}</span>
+                <span className="text-xs font-medium leading-none select-none hidden dark:inline">{t('themeLight')}</span>
               </button>
               <button onClick={handleExport} disabled={isExporting} aria-label={t('exportPdf')} className="flex items-center gap-2 px-3 py-1.5 md:px-4 md:py-1.5 text-sm font-medium text-text-main dark:text-white bg-off-white dark:bg-slate-800 hover:bg-home-grau/20 dark:hover:bg-slate-750 border border-home-grau/20 dark:border-slate-700 rounded-lg transition-colors disabled:opacity-50 cursor-pointer">
                 <Download size={16} />

@@ -1,13 +1,14 @@
 #!/usr/bin/env node
 /**
  * Bundle-Budget (Umsetzungsplan Phase 5, AP 5.4)
- * Liest dist/ nach `npm run build`, prüft die Vollständigkeit (dist/server.cjs, dist/modul/routen.json; sonst Exit 1)
+ * Liest dist/ nach `npm run build`, prüft die Vollständigkeit (dist/server.cjs – nicht im Statik-Modus –,
+ * dist/modul/routen.json; sonst Exit 1)
  * und die gzip-Größen:
  *   - Einstiegs-Chunk (das <script type="module"> in dist/index.html) samt statisch importierter Chunks
  *   - größter JS-Chunk; jeder Chunk ≤ GRENZE_CHUNK (ohne Ausnahmen)
  * Die Grenzen sind eine Ratsche auf den erreichten Werten (+ kleiner Puffer): sinkt ein Wert dauerhaft,
  * die Grenze nachziehen; steigt er, ist das ein Befund (lazy laden statt Grenze anheben).
- *   node scripts/qa/check-bundle.mjs [--dist dist] [--top 10]
+ *   node scripts/qa/check-bundle.mjs [--dist dist] [--top 10] [--statisch]
  */
 import fs from 'fs';
 import path from 'path';
@@ -43,8 +44,11 @@ if (!fs.existsSync(path.join(DIST, 'index.html'))) {
 
 // Vollständigkeit des Builds (Gutachten 27.10.2026 abends, Nr. 4): Bricht `npm run build` nach dem Client-Build ab
 // (z. B. Speicher, rc 137), fehlen Vorrendern und Server – das Budget allein würde trotzdem „OK“ melden.
+// Statik-Modus (Vercel, docs/betrieb-vercel.md): BB_STATISCH=1, --statisch oder dist/404.html (nur der buildCommand
+// in vercel.json legt sie an, nach dem vollständigen Build). Dort wird server.cjs bewusst gelöscht und nicht verlangt.
+const STATISCH = process.env.BB_STATISCH === '1' || process.argv.includes('--statisch') || fs.existsSync(path.join(DIST, '404.html'));
 const PFLICHT = [
-  ['server.cjs', 'Server-Bundle (esbuild-Schritt von npm run build)'],
+  ...(STATISCH ? [] : [['server.cjs', 'Server-Bundle (esbuild-Schritt von npm run build)']]),
   ['modul/routen.json', 'Routenliste des Vorrenderns (scripts/vorrendern.ts)'],
 ];
 const fehlend = PFLICHT.filter(([f]) => !fs.existsSync(path.join(DIST, f)));
@@ -53,7 +57,7 @@ if (fehlend.length) process.exit(1);
 try {
   const routen = JSON.parse(fs.readFileSync(path.join(DIST, 'modul/routen.json'), 'utf8'));
   if (!Array.isArray(routen?.ids) || routen.ids.length === 0) throw new Error('keine Modul-IDs');
-  console.log(`Build vollständig: server.cjs, modul/routen.json (${routen.ids.length} Modulseiten)`);
+  console.log(`Build vollständig${STATISCH ? ' (Statik-Modus, ohne server.cjs)' : ''}: ${STATISCH ? '' : 'server.cjs, '}modul/routen.json (${routen.ids.length} Modulseiten)`);
 } catch (e) {
   console.error(`FAIL: dist/modul/routen.json unbrauchbar (${e instanceof Error ? e.message : e})`);
   process.exit(1);
