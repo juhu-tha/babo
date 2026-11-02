@@ -37,8 +37,8 @@
 | `lca_ingenieurbau` | NS4-LI-1 Modul B8 als „Alleinstellungsmerkmal“ der DIN EN 17472, Vergleichstabelle „Hochbau: kein Modul B8“ – DIN EN 15978:2026 kennt B8 (optional); Registry und Quiz (`qn_lca_ingenieurbau_1`, seit 29.10. korrigiert) sagen das bereits | (b) | gering | behoben |
 | `vdi6200` | NS4-VDI-1 Prüfintervalle nach VDI 6200 Tab. 3: öffentliche Wiedergaben widersprechen sich (Inspektion CC1, eingehende Überprüfung CC2/CC1) | (Normtext) | – | gekennzeichnet |
 | `betonpraxis`, `bauwerkserfassung` | NS4-BP-1, NS4-BWE-1 Schreibfehler („is“, „Kritikpunk“, „Grundrissaufaufteilungen“) | redaktionell | – | behoben |
-| `holzbau_werkstoffe`, `bp_metallisch`, `ressourcen_umwelt` | Kennwertfragen NS4-HW-1, NS4-ME-1, NS4-RU-1 | Frage | – | offen |
-| `vdi6200`, `betonpraxis`, `rechnung_stahlbeton` | Quiz-Erklärung widerspricht dem Modultext: NS4-VDI-2, NS4-BP-2 (eindeutig), NS4-RS-1 (Rundung) | Quiz | gering | offen (Quiz nicht geändert) |
+| `holzbau_werkstoffe`, `bp_metallisch`, `ressourcen_umwelt` | Kennwertfragen NS4-HW-1, NS4-ME-1, NS4-RU-1 | Frage | – | umgesetzt 02.11.2026 |
+| `vdi6200`, `betonpraxis`, `rechnung_stahlbeton` | Quiz-Erklärung widerspricht dem Modultext: NS4-VDI-2, NS4-BP-2 (eindeutig), NS4-RS-1 (Rundung) | Quiz | gering | umgesetzt 02.11.2026 (Quiz korrigiert) |
 | übrige 15 Module | – | – | – | ohne Befund |
 
 **Fehlerquote (Modulinhalt, Zählregel wie Nachstichprobe 1–3): 1 von 20 Modulen = 5 %** (95-%-Vertrauensbereich nach Wilson **1 % bis 24 %**).
@@ -171,3 +171,18 @@ Regressionstest: `tests/nachstichprobe4.test.ts` (Nachrechnungen über die Kerne
 | NS4-ME-1 | `bp_metallisch` | Aluminium λ 220 (Karte) gegen 160 (Text, ISO 10456) | Karte 160, Zusatz Reinaluminium |
 | NS4-RU-1 | `ressourcen_umwelt` | KVH 0,10–0,15 kg/kg gegen zentral 0,16 | Spanne bis 0,16 oder Verweis auf `GWP_LEHRWERTE.kvh` |
 | NS4-VDI-1 | `vdi6200` | (Normtext) Prüfintervalle VDI 6200 Tab. 3 | Abgleich mit dem Richtlinientext; bis dahin gekennzeichnet |
+
+## Umsetzung 02.11.2026
+
+Entscheidung vom 02.11.2026: alle Vorschläge übernommen. Zusätzlich: Kalksandstein-Lehrwert 0,13 bestätigt (unverändert); BIM-Modul Holz-Voreinstellung 480 kg/m³. Regressionstest: `tests/umsetzungNs4_20261102.test.ts`; Prüflisten mit `scripts/pruefliste.ts` neu erzeugt. Prüfvermerke nicht geändert. Offen bleibt nur NS4-VDI-1 (Normtext).
+
+| Kennung | Modul | gewählte Fassung | Quelle | Status |
+|---|---|---|---|---|
+| NS4-VDI-2 | `vdi6200` | Quiz `q_vdi_1`: Erklärung nach Modultext (CC3 z. B. Versammlungsstätten für mehr als 5000 Personen; eingehende Überprüfung durch eine besonders fachkundige Person); Lernhilfe: Sporthallen und Industriebauten CC2, Intervalle je Schadensfolgeklasse statt „1, 3 und 6 Jahre“ (das sind DIN-1076-Fristen); Bloom-Stufe, Niveau und Rückmeldungen ergänzt | Modultext Zustandsbewertung (VDI 6200) | umgesetzt, Frage `verified: false` |
+| NS4-BP-2 | `betonpraxis` | Quiz `q_bpx_5`: „0,276 ≈ 0,28 – nach der Einteilung des Moduls normales Zusammenhaltevermögen (0,27 < K ≤ 0,31)“; Antwort unverändert | Krell (2022), Einteilung im Modul | umgesetzt, `verified: false` |
+| NS4-RS-1 | `rechnung_stahlbeton` | Quiz `qn_rechnung_stahlbeton_4`: μ_lim = 0,295 in Frage und Erklärung; Ergebnis unverändert | 0,8 · 0,45 · (1 − 0,4 · 0,45) = 0,2952 (Modul und Kern) | umgesetzt, `verified: false` |
+| NS4-HW-1 | `holzbau_werkstoffe` | Steildach-Lehrbeispiel U = 0,16 W/(m²K) mit Quellkommentar wie bei der Geschossdecke (Lehrbeispiel, nicht klassifiziert). Nachrechnung nach DIN EN ISO 6946 mit Sparrenanteil 10,7 %: R′ = 6,57, R″ = 6,22, R_T = 6,40 m²K/W → U = 0,156 (ohne Sparren 0,137). Keine Folgewerte oder Quizfragen betroffen | `src/modules/holzbaubeta/daten.ts` | umgesetzt |
+| NS4-ME-1 | `bp_metallisch` | Kennwertkarte Aluminium λ = 160 W/(mK) aus `LAMBDA_ALUMINIUM` (DIN EN ISO 10456, Umsetzung 30.10.), Zusatz „Bemessungswert für Aluminiumlegierungen nach DIN EN ISO 10456; Reinaluminium etwa 220–237 W/(m·K)“; keine Quizfrage betroffen | `src/data/kennwerte.ts` | umgesetzt |
+| NS4-RU-1 | `ressourcen_umwelt` | Emissionstabelle KVH „~ 0,10 – 0,16“, obere Grenze gelesen aus `gwpJeKg('kvh').fossil` (`GWP_LEHRWERTE.kvh`: 80 kg/m³ bei 500 kg/m³); keine Quizfrage betroffen | `src/data/gwpLehrwerte.ts` | umgesetzt |
+| BIM | `bim_baustoffe` | Holz-Voreinstellung Rohdichte 480 statt 450 kg/m³, gelesen aus `GWP_LEHRWERTE.bsh.rohdichte`; GWP-Voreinstellung −680 unverändert und auf dem Regler (`gwpRegler.ts`), IFC-Ausgabe (MassDensity) übernimmt die Voreinstellung | DIN EN 16449, BSH-Lehrwert 480 kg/m³ | umgesetzt |
+| KS-Lehrwert | – | Kalksandstein 0,13 bleibt (bestätigt) | – | unverändert |

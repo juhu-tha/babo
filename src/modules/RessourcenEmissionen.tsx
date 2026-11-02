@@ -3,6 +3,8 @@ import { Factory, Droplets, Zap, Activity } from 'lucide-react';
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
 import inhalt from '@/content/ressourcenemissionen/RessourcenEmissionen.json';
 import { MdText } from '@/src/components/inhalt/MdText';
+import { gwpJeKg } from '@/src/data/gwpLehrwerte';
+import { formatDeZahl } from '@/src/utils/numberFormat';
 
 export default function RessourcenEmissionen() {
   return (
@@ -72,7 +74,7 @@ export default function RessourcenEmissionen() {
               <tr className="border-b border-home-grau/10">
                 <td className="p-3 font-bold">Konstruktionsvollholz</td>
                 <td className="p-3 text-text-main/80"><MdText text={inhalt.texte.holzeinschlagSägenTechnischeTrocknung} /></td>
-                <td className="p-3 font-mono">~ 0,10 - 0,15</td>
+                <td className="p-3 font-mono">~ 0,10 - {formatDeZahl(gwpJeKg('kvh').fossil, 2)}</td>{/* obere Grenze = zentraler Lehrwert GWP_LEHRWERTE.kvh (fossil 80 kg/m³ bei 500 kg/m³); Umsetzung 02.11.2026 (NS4-RU-1) */}
               </tr>
               <tr className="border-b border-home-grau/10 bg-off-white/30">
                 <td className="p-3 font-bold">Mauerziegel</td>
