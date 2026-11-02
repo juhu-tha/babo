@@ -4,7 +4,7 @@ Stand: 02.11.2026 · Grundlage: `src/data/quiz.json` (Felder `vorpruefung` und `
 
 Cluster III umfasst 194 Fragen aus 33 Modulen. Aufgeführt sind 49 auffällige Fragen (Vorprüfung „korrigiert“ oder „fraglich“, offener Prüfhinweis oder neu seit 26.10.2026 ohne Freigabe) und eine Stichprobe von 5 unauffälligen Fragen. Entscheidung je Frage ankreuzen; bei „ändern“ den Änderungswunsch in die Zeile darunter schreiben.
 
-Auffällig im Einzelnen (Mehrfachnennung möglich): 47 korrigiert, 0 fraglich, 0 mit offenem Prüfhinweis, 2 neu seit 26.10.2026.
+Auffällig im Einzelnen (Mehrfachnennung möglich): 46 korrigiert, 1 fraglich, 0 mit offenem Prüfhinweis, 2 neu seit 26.10.2026.
 
 ## A. Auffällige Fragen
 
@@ -148,7 +148,7 @@ Auffällig im Einzelnen (Mehrfachnennung möglich): 47 korrigiert, 0 fraglich, 0
 
 - **Frage:** Welche Betonbauqualitätsklassen kennt DIN 1045-1000?
 - **Richtige Antwort:** BBQ-N, BBQ-E und BBQ-S
-- **Auffälligkeit:** Vorprüfung „korrigiert“: Zweitprüfung 27.10.: Option 4, Rückmeldung und Erklärung: DIN 1045-3:2023-08 kennt nur noch ÜK 1 und ÜK 2 (ÜK 3 entfallen; Quelle SCHWENK, Beton-Herstellung nach den aktuellen Normen, 2026) korrigiert. · Normenabgleich: DIN 1045-3:2023: DIN Media nennt DIN 1045-3:2023-08 → Ausgabe bestätigt · bereits freigegeben (verified)
+- **Auffälligkeit:** Vorprüfung „korrigiert“: Nachstichprobe 5c 02.11.: Merksatz (gapAnalysis) „ÜK 1–3 nach DIN 1045-3“ → „ÜK 1 und ÜK 2 nach DIN 1045-3:2023-08 (die frühere ÜK 3 ist entfallen)“, wie Modultext, Option 4 und Erklärung (NS5C-QS-1; die Zweitprüfung 27.10. hatte Option, Rückmeldung und Erklärung bereits berichtigt) – korrigiert · Normenabgleich: DIN 1045-3:2023: DIN Media nennt DIN 1045-3:2023-08 → Ausgabe bestätigt
 - [ ] ok
 - [x] ändern: DIN 1045-3:2023 kennt nur noch ÜK 1 und ÜK 2 – Option 4, Rückmeldung und Erklärung angepasst, korrigiert
 
@@ -244,7 +244,7 @@ Auffällig im Einzelnen (Mehrfachnennung möglich): 47 korrigiert, 0 fraglich, 0
 
 - **Frage:** C30/37, XF1, D_max = 16 mm, Zementgehalt z = 330 kg/m³. Höchstwerte: 400 kg/m³ bei z ≤ 300 kg/m³ und 450 kg/m³ bei z ≥ 350 kg/m³. Welcher höchstzulässige Mehlkorngehalt ergibt sich?
 - **Richtige Antwort:** 430 kg/m³
-- **Auffälligkeit:** Vorprüfung „korrigiert“: Höchstwerte 400/450 kg/m³ (XF/XM, D_max ≥ 16 mm, bis C50/60) und Interpolationsregel nach aktuellem Tabellenwerk bestätigt (Heidelberg Materials, Betontechnische Daten 6.3.4); normRef auf die Registry-Ausgabe 2023-08 umgestellt. Tabellennummer der Ausgabe 2023-08 öffentlich nicht verifizierbar und daher weggelassen (2008-08: Tab. F.4.1). · bereits freigegeben (verified)
+- **Auffälligkeit:** Vorprüfung „fraglich“: Höchstwerte 400/450 kg/m³ (XF/XM, D_max ≥ 16 mm, bis C50/60) und Interpolationsregel nach aktuellem Tabellenwerk bestätigt (Heidelberg Materials, Betontechnische Daten 6.3.4); normRef auf die Registry-Ausgabe 2023-08 umgestellt. Tabellennummer der Ausgabe 2023-08 öffentlich nicht verifizierbar und daher weggelassen (2008-08: Tab. F.4.1). · Umsetzung 02.11.: Quiz (DIN 1045-2:2023-08) und Modul (Werte aus DIN 1045-2:2008-08, Höchstwerte in 2023-08 entfallen) widersprechen sich in der Normausgabe; beide Stellen als „vorläufig, Normprüfung ausstehend“ gekennzeichnet, Inhalt unverändert – am Normtext DIN 1045-2:2023-08 klären
 - [x] ok
 - [ ] ändern: …
 
@@ -276,7 +276,7 @@ Auffällig im Einzelnen (Mehrfachnennung möglich): 47 korrigiert, 0 fraglich, 0
 
 - **Frage:** Vollgewindeschraube d = 8 mm, l_ef = 100 mm, rechtwinklig zur Faser (k_α = 1,0), in GL24h (ρ_k = 385 kg/m³). Mit dem Lehrwert f_ax,k = 12 N/mm² und F_ax,Rk = f_ax,k·k_α·(ρ_k/350)^0,8·d·l_ef: Wie groß ist F_ax,Rk einer Schraube?
 - **Richtige Antwort:** rund 10,4 kN
-- **Auffälligkeit:** Vorprüfung „korrigiert“: normRef ergänzt · bereits freigegeben (verified)
+- **Auffälligkeit:** Vorprüfung „korrigiert“: normRef ergänzt · Umsetzung 02.11.: Erklärung ergänzt – Frage rechnet mit Gl. (8.40a) und deklariertem f_ax,k = 12 N/mm² (10,4 kN), das Modul mit Gl. (8.39) (f_ax,k = 13,6 N/mm², rund 10,9 kN); Antwort unverändert
 - [x] ok
 - [ ] ändern: …
 

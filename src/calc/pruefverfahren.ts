@@ -32,7 +32,7 @@
  *    Würfel 150 über f_ck,cube/f_ck der Festigkeitsklasse (statt pauschal 1,25), Lagerungsfaktoren
  * Reiner Rechenkern ohne Rundung – geprüft in tests/pruefverfahren.test.ts.
  */
-import { type Hinweis, istEndlich, hatFehler, muss, bereich } from './plausibilitaet';
+import { type Hinweis, istEndlich, istAnzahl, hatFehler, muss, bereich, nurGueltig, MAX_STUETZSTELLEN } from './plausibilitaet';
 import { dynamischerEModul, impactEcho, bohrkern, rueckprallLehrkurve, rueckprallRichtungskorrektur, RUECKPRALL_LEHRKURVE, RUECKPRALL_HINWEIS_SCHAETZUNG, potentialStufe } from './bauwerksuntersuchung';
 import { fckZumAlter, fckCubeVonFck, fckVonFckCube, BETONSTAHL } from '../data/kennwerte';
 import { betaCc, ZEMENT_S } from './betonkennwerte';
@@ -41,7 +41,7 @@ import { stichprobe } from './statistik';
 import { karstenAuswertung, saugKlasse } from './karsten';
 
 export interface PruefErgebnis { gueltig: boolean; hinweise: Hinweis[] }
-const abschluss = (h: Hinweis[]): PruefErgebnis => ({ gueltig: !hatFehler(h), hinweise: h });
+const abschluss = (h: Hinweis[]): PruefErgebnis => nurGueltig(({ gueltig: !hatFehler(h), hinweise: h }));
 
 // ================================================================ ZfP
 // ---------------------------------------------------------------- Rückprallhammer
@@ -66,11 +66,13 @@ export function rueckprallZfp(rueckprallwert: number, winkel: PruefWinkel): Ruec
   if (rCorr < RUECKPRALL_ZFP.rMin) h.push({ stufe: 'warnung', feld: 'rebound', text: 'Korrigierter Rückprallwert unter 10: Die Lehrkurve wird mit R = 10 ausgewertet.' });
   bereich(h, 'rebound', rueckprallwert, 20, 60, 'Rückprallwert außerhalb 20 … 60: Die Lehr-Näherung ist dort nicht abgesichert.');
   h.push({ stufe: 'warnung', feld: 'fc', text: RUECKPRALL_HINWEIS_SCHAETZUNG });
-  return { rCorr, fc, ...abschluss(h) };
+  return nurGueltig({ rCorr, fc, ...abschluss(h) });
 }
 /** Kurvenschar des Diagramms (horizontal, nach unten α = −90°, nach oben α = +90°) über dem abgelesenen R = von … bis */
 export function rueckprallKurven(von = 20, bis = 60, schritt = 2) {
   const labels: number[] = [], horizontal: number[] = [], unten: number[] = [], oben: number[] = [];
+  // Grenzfallprüfung 02.11.2026: ungültiger Bereich oder Schritt ≤ 0 → leere Kurven (vorher Endlosschleife)
+  if (!istEndlich(von, bis, schritt) || schritt <= 0 || (bis - von) / schritt > MAX_STUETZSTELLEN) return { labels, horizontal, unten, oben };
   for (let r = von; r <= bis; r += schritt) {
     labels.push(r);
     horizontal.push(rueckprallFestigkeitLehr(r));
@@ -95,7 +97,7 @@ export function ultraschallZfp(vKmS: number, dichte = 2400, nu = 0.2): Ultrascha
   const fcEst = Math.max(0, (vKmS - 2.0) * 20);
   if (vKmS < 2.0) h.push({ stufe: 'warnung', feld: 'velocity', text: 'v < 2 km/s: Die grobe Festigkeitsabschätzung liefert 0 N/mm².' });
   bereich(h, 'velocity', vKmS, 2.0, 5.5, 'Schallgeschwindigkeit außerhalb 2 … 5,5 km/s ist für Beton unüblich.');
-  return { eDyn, fcEst, ...abschluss(h) };
+  return nurGueltig({ eDyn, fcEst, ...abschluss(h) });
 }
 
 // ---------------------------------------------------------------- Impact-Echo
@@ -103,7 +105,7 @@ export interface ImpactEchoZfpErgebnis extends PruefErgebnis { /** Dicke in mm *
 /** f in kHz, v_p in m/s; d = β·v_p/(2f) mit β = 0,96 (Kern bauwerksuntersuchung.impactEcho) */
 export function impactEchoZfp(frequenzKHz: number, vp: number): ImpactEchoZfpErgebnis {
   const ie = impactEcho(frequenzKHz, vp, 0);
-  return { depth: ie.dickeCm * 10, ...abschluss(ie.hinweise.filter(x => x.stufe === 'fehler')) };
+  return nurGueltig({ depth: ie.dickeCm * 10, ...abschluss(ie.hinweise.filter(x => x.stufe === 'fehler')) });
 }
 
 // ---------------------------------------------------------------- Bewehrungssucher und Georadar
@@ -118,7 +120,7 @@ export function georadar(epsilonR: number, laufzeitNs: number): RadarErgebnis {
   const h: Hinweis[] = [];
   muss(h, istEndlich(epsilonR, laufzeitNs) && epsilonR >= 1 && laufzeitNs >= 0, 'dielectric', 'ε_r muss ≥ 1 und die Laufzeit ≥ 0 sein.');
   const vRadar = C_MM_NS / Math.sqrt(epsilonR);
-  return { vRadar, depth: (vRadar * laufzeitNs) / 2, ...abschluss(h) };
+  return nurGueltig({ vRadar, depth: (vRadar * laufzeitNs) / 2, ...abschluss(h) });
 }
 
 // ---------------------------------------------------------------- Potentialfeld, Wenner, Torrent
@@ -141,7 +143,7 @@ export function wenner(abstandMm: number, widerstandOhm: number): WennerErgebnis
   const g = WENNER_GRENZEN_OHM_M;
   const stufe: WennerStufe = rho < g.hoch ? 'sehr_hoch' : rho < g.maessig ? 'mittel' : rho < g.niedrig ? 'niedrig' : 'vernachlaessigbar';
   if (!hatFehler(h)) h.push({ stufe: 'warnung', feld: 'wenner', text: 'Klassengrenzen nach RILEM TC 154-EMC als Anhalt für OPC-Beton bei 20 °C; Feuchte, Temperatur und Zementart verschieben den Widerstand stark.' });
-  return { rho, rhoKohmCm: rho / 10, stufe, ...abschluss(h) };
+  return nurGueltig({ rho, rhoKohmCm: rho / 10, stufe, ...abschluss(h) });
 }
 /** Permeabilitätsklasse 1 … 5 (sehr niedrig … sehr hoch) aus k_T in 10⁻¹⁶ m² */
 export function torrentKlasse(kT: number): 1 | 2 | 3 | 4 | 5 {
@@ -169,7 +171,7 @@ export function karstenZfp(zeitMin: number, wasserMl: number): KarstenZfpErgebni
   const klasse = saugKlasse(k.w);
   const stufe: KarstenStufe = klasse === 'wassersaugend' ? 'saugend' : klasse === 'wasserhemmend' ? 'hemmend' : 'abweisend';
   if (!hatFehler(h)) h.push(...k.hinweise);
-  return { w: hatFehler(h) ? 0 : k.w, tHours, stufe, ...abschluss(h) };
+  return nurGueltig({ w: hatFehler(h) ? 0 : k.w, tHours, stufe, ...abschluss(h) });
 }
 
 // ---------------------------------------------------------------- Thermografie und Durchstrahlung
@@ -185,7 +187,7 @@ export function durchstrahlung(dickeCm: number, energieMeV: number): Durchstrahl
   const mu = 0.15 / energieMeV;
   const transmission = Math.exp(-mu * dickeCm) * 100;
   const stufe = transmission < 1 ? 'schlecht' : transmission < 5 ? 'ausreichend' : 'gut';
-  return { transmission, stufe, ...abschluss(h) };
+  return nurGueltig({ transmission, stufe, ...abschluss(h) });
 }
 
 // ================================================================ Messen & Prüfen
@@ -208,8 +210,10 @@ export function gumMessunsicherheit(werte: readonly number[], aufloesung: number
   const n = werte.length;
   muss(h, istEndlich(aufloesung, uKal, k) && aufloesung >= 0 && uKal >= 0 && k > 0, 'aufloesung', 'Auflösung und Kalibrierunsicherheit müssen ≥ 0 sein.');
   muss(h, n >= 2, 'messwerte', 'Für die Typ-A-Unsicherheit sind mindestens 2 Messwerte nötig.');
+  // Grenzfallprüfung 02.11.2026: Messwerte prüfen (vorher NaN/∞ ohne Hinweis)
+  muss(h, istEndlich(...werte), 'messwerte', 'Alle Messwerte müssen Zahlen sein.');
   if (n < 2) {
-    return { n, mean: n === 1 ? werte[0] : 0, sampleStdDev: 0, uA: 0, uB1: 0, uB2: 0, uc: 0, expandedU: 0, minInterval: 0, maxInterval: 0, ...abschluss(h) };
+    return nurGueltig({ n, mean: n === 1 ? werte[0] : 0, sampleStdDev: 0, uA: 0, uB1: 0, uB2: 0, uc: 0, expandedU: 0, minInterval: 0, maxInterval: 0, ...abschluss(h) });
   }
   const st = stichprobe(werte);
   const uA = st.stdAbw / Math.sqrt(n);
@@ -218,7 +222,7 @@ export function gumMessunsicherheit(werte: readonly number[], aufloesung: number
   const uc = Math.sqrt(uA * uA + uB1 * uB1 + uB2 * uB2);
   const expandedU = k * uc;
   if (n < 10 && uA > Math.max(uB1, uB2)) h.push({ stufe: 'warnung', feld: 'messwerte', text: 'Wenige Messwerte und u_A dominiert: k = 2 deckt dann weniger als 95 % ab (GUM: k aus der t-Verteilung mit effektivem Freiheitsgrad).' });
-  return { n, mean: st.mittelwert, sampleStdDev: st.stdAbw, uA, uB1, uB2, uc, expandedU, minInterval: st.mittelwert - expandedU, maxInterval: st.mittelwert + expandedU, ...abschluss(h) };
+  return nurGueltig({ n, mean: st.mittelwert, sampleStdDev: st.stdAbw, uA, uB1, uB2, uc, expandedU, minInterval: st.mittelwert - expandedU, maxInterval: st.mittelwert + expandedU, ...abschluss(h) });
 }
 
 export interface RingversuchEingabe {
@@ -248,7 +252,7 @@ export function ringversuch(e: RingversuchEingabe): RingversuchErgebnis {
   const enScore = denomEn > 0 ? dVal / denomEn : 0;
   const absEn = Math.abs(enScore);
   const currentLab = { a: e.x, b: e.X + e.offsetB + dVal * 0.95 };
-  return { dVal, zScore, absZ, zStatus, denomEn, enScore, absEn, enStatus: absEn <= 1.0 ? 'ok' : 'critical', currentLab, ...abschluss(h) };
+  return nurGueltig({ dVal, zScore, absZ, zStatus, denomEn, enScore, absEn, enStatus: absEn <= 1.0 ? 'ok' : 'critical', currentLab, ...abschluss(h) });
 }
 
 export type Messwerkzeug = 'meterstab' | 'messschieber' | 'laser' | 'risslupe' | 'nivellier';
@@ -314,10 +318,10 @@ export function bohrkernPruefung(e: BohrkernPruefungEingabe): BohrkernPruefungEr
   if (b.schlankheit > 2) h.push({ stufe: 'warnung', feld: 'concreteHeight', text: 'h/d > 2: Kern auf h/d = 2 kürzen; gerechnet wird wie mit h/d = 2.' });
   if (e.staebe > 0) h.push({ stufe: 'warnung', feld: 'staebe', text: 'Bewehrung im Kern: +3,5 % je Stab ist eine Lehrannahme; nach DIN EN 12504-1 sollen Kerne möglichst bewehrungsfrei sein.' });
   if (!hatFehler(h)) h.push({ stufe: 'warnung', feld: 'equivalentCube', text: 'Umrechnung Zylinder ↔ Würfel über das Verhältnis f_ck,cube/f_ck der Festigkeitsklassen (Tab. 3.1) – für Einzelwerte eine Näherung.' });
-  return {
+  return nurGueltig({
     area: b.flaecheMm2, rawStrength: b.festigkeit, aspect: b.schlankheit, lambdaAspect: lambda, lambdaRebar, lambdaDirection,
     fcCore, equivalentCylinder, equivalentCube, ...abschluss(h),
-  };
+  });
 }
 
 /** Spaltzugfestigkeit f_ct = 2F/(π·d·l) in N/mm² (F in kN, d und l in mm) */
@@ -358,7 +362,7 @@ export function zugversuchStahl(e: ZugversuchEingabe): ZugversuchErgebnis {
   if (e.kraftRmKn < e.kraftReKn) h.push({ stufe: 'warnung', feld: 'steelForceUltimate', text: 'F_m < F_e: Die Höchstkraft liegt unter der Streckgrenzenkraft.' });
   h.push({ stufe: 'warnung', feld: 'elongation', text: 'A_gt = (L_m − L₀)/L₀ aus der Messlänge unter Höchstkraft (einschließlich elastischem Anteil). Die Bruchdehnung A nach dem Bruch ist größer und darf nicht mit den A_gt-Grenzen der DIN 488-1 verglichen werden. Einzelwert – die Norm bewertet charakteristische Werte aus Prüfserien.' });
   if (einstufung === 'B500B' && yieldStrength > 1.3 * B.fyk) h.push({ stufe: 'warnung', feld: 'steelForceYield', text: 'R_e > 1,30·R_e,nenn: Die Obergrenze R_e,ist/R_e,nenn für B500B ist zu prüfen (vorläufig, Normprüfung ausstehend).' });
-  return { area, yieldStrength, ultimateStrength, ratio, elongation, yieldPassed: yieldStrength >= B.fyk, ratiosPassed: ratio >= B.k, elongationPassed: elongation >= B.euk / 10, einstufung, ...abschluss(h) };
+  return nurGueltig({ area, yieldStrength, ultimateStrength, ratio, elongation, yieldPassed: yieldStrength >= B.fyk, ratiosPassed: ratio >= B.k, elongationPassed: elongation >= B.euk / 10, einstufung, ...abschluss(h) });
 }
 
 export type HolzNiveau = 'unterC18' | 'laubholz' | 'C30' | 'C24' | 'C18';
@@ -376,7 +380,7 @@ export function holzSchaetzung(e: HolzEingabe): HolzErgebnis {
   const f_bending = biegezug4Punkt(e.kraftKn, e.stuetzweiteMm, e.bMm, e.hMm);
   const niveau: HolzNiveau = e.rohdichte >= 0.65 ? 'laubholz' : f_bending >= 30 ? 'C30' : f_bending >= 24 ? 'C24' : f_bending >= 18 ? 'C18' : 'unterC18';
   if (e.feuchte > 28) h.push({ stufe: 'warnung', feld: 'woodMoisture', text: 'Holzfeuchte über Fasersättigung (≈ 28 %): Der Feuchtefaktor wird nicht weiter abgemindert.' });
-  return { feuchteFaktor, fc0_actual: fc0Basis * feuchteFaktor, f_bending, e_modul: 25000 * e.rohdichte * feuchteFaktor, niveau, ...abschluss(h) };
+  return nurGueltig({ feuchteFaktor, fc0_actual: fc0Basis * feuchteFaktor, f_bending, e_modul: 25000 * e.rohdichte * feuchteFaktor, niveau, ...abschluss(h) });
 }
 
 // ================================================================ Festbeton
@@ -384,7 +388,7 @@ export function holzSchaetzung(e: HolzEingabe): HolzErgebnis {
 export function bemessungswerteBeton(fck: number, fctk005: number, alphaCc: number, alphaCt: number, gammaC: number) {
   const h: Hinweis[] = [];
   muss(h, istEndlich(fck, fctk005, alphaCc, alphaCt, gammaC) && gammaC > 0, 'gammaC', 'γ_c muss größer als 0 sein.');
-  return { fcd: (alphaCc * fck) / gammaC, fctd: (alphaCt * fctk005) / gammaC, ...abschluss(h) };
+  return nurGueltig({ fcd: (alphaCc * fck) / gammaC, fctd: (alphaCt * fctk005) / gammaC, ...abschluss(h) });
 }
 
 export type Probekoerper = 'zyl_150' | 'cube_150' | 'cube_100' | 'cube_200';
@@ -419,5 +423,5 @@ export function festigkeitsentwicklung(e: FestigkeitsentwicklungEingabe): Festig
   if (e.alterTage > 28) h.push({ stufe: 'warnung', feld: 'alter', text: 'Nach 28 Tagen: β_cc > 1 beschreibt die Nacherhärtung des Mittelwerts f_cm(t); nach DIN EN 1992-1-1, 3.1.2(5) gilt für t ≥ 28 d f_ck(t) = f_ck.' });
   if (e.alterTage <= 3) h.push({ stufe: 'warnung', feld: 'alter', text: 't ≤ 3 d: f_ck(t) = f_cm(t) − 8 ist nach 3.1.2(5) erst für 3 d < t < 28 d angegeben.' });
   const fckT = fckZumAlter(e.fck, fcmT, e.alterTage);
-  return { s, betaCc: bcc, fcmRef, fcmT, geoFaktor, lagerungsFaktor, fcmTeff: fcmT * geoFaktor * lagerungsFaktor, fckT, ...abschluss(h) };
+  return nurGueltig({ s, betaCc: bcc, fcmRef, fcmT, geoFaktor, lagerungsFaktor, fcmTeff: fcmT * geoFaktor * lagerungsFaktor, fckT, ...abschluss(h) });
 }

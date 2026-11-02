@@ -4,7 +4,7 @@
  */
 import { EC2_NA_DE } from '../data/normParams';
 import { E_BETONSTAHL } from '../data/kennwerte';
-import { type Hinweis, bereich, hatFehler, istEndlich, muss } from './plausibilitaet';
+import { type Hinweis, bereich, hatFehler, istEndlich, muss, nurGueltig } from './plausibilitaet';
 
 export interface RissEingabe {
   h: number; b: number;   // [mm]
@@ -71,7 +71,7 @@ export function pruefeRiss(e: RissEingabe): Hinweis[] {
 export function bemesseRiss(e: RissEingabe): RissErgebnis {
   const hinweise = pruefeRiss(e);
   if (hatFehler(hinweise)) {
-    return { as: 0, d: 0, x: 0, hcEf: 0, actEff: 0, rhoPEff: 0, effectiveFct: 0, srMax: 0, epsSmEpsCm: 0, wkCalc: 0, asMinReq: 0, isOk: false, hinweise };
+    return nurGueltig({ as: 0, d: 0, x: 0, hcEf: 0, actEff: 0, rhoPEff: 0, effectiveFct: 0, srMax: 0, epsSmEpsCm: 0, wkCalc: 0, asMinReq: 0, isOk: false, hinweise });
   }
   const as = (e.b / (e.abstand * 10)) * (Math.PI * e.phi * e.phi) / 4;
   const r = rissbreiteFuerAs(e, as);
@@ -80,5 +80,5 @@ export function bemesseRiss(e: RissEingabe): RissErgebnis {
   const act = e.beanspruchung === 'biegung' ? (e.b * e.h) / 2 : e.b * e.h;
   const asMinReq = (kc * EC2_NA_DE.kAsMin(e.h) * r.effectiveFct * act) / e.sigmaS;
   if (as < asMinReq) hinweise.push({ stufe: 'warnung', feld: 'as', text: 'Die vorhandene Bewehrung liegt unter der Mindestbewehrung nach (7.1).' });
-  return { ...r, asMinReq, isOk: r.wkCalc <= e.wkReq, hinweise };
+  return nurGueltig({ ...r, asMinReq, isOk: r.wkCalc <= e.wkReq, hinweise });
 }

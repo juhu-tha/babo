@@ -3,7 +3,7 @@
  * Erddruck nach Rankine (glatte, lotrechte Wand, waagerechtes Gelände, kohäsionslos), eindimensionale Konsolidierung (Terzaghi).
  * Reiner Rechenkern – geprüft in tests/boden.test.ts.
  */
-import { type Hinweis, istEndlich, muss, bereich, hatFehler } from './plausibilitaet';
+import { type Hinweis, istEndlich, muss, bereich, hatFehler, nurGueltig } from './plausibilitaet';
 import { formatDeZahl } from '../utils/numberFormat';
 
 /**
@@ -27,7 +27,7 @@ export function zustandsgrenzen(w: number, wL: number, wP: number) {
     muss(hinweise, w >= 0 && wL > 0 && wP > 0, 'w', 'Wassergehalte müssen positiv sein.');
     muss(hinweise, wP < wL, 'wP', 'Die Ausrollgrenze w_P muss kleiner als die Fließgrenze w_L sein (I_P > 0).');
   }
-  if (hatFehler(hinweise)) return { iP: NaN, iC: NaN, zustand: '–', klasse: '–', hinweise };
+  if (hatFehler(hinweise)) return nurGueltig({ iP: NaN, iC: NaN, zustand: '–', klasse: '–', hinweise });
 
   const iP = wL - wP;
   const iC = (wL - w) / iP;
@@ -39,7 +39,7 @@ export function zustandsgrenzen(w: number, wL: number, wP: number) {
   else if (iP >= aLinie && iP >= 4) klasse = 'UL/TL (Zwischenbereich, 4 ≤ I_P < 7)';
   else klasse = wL < 35 ? 'UL (Schluff, leicht plastisch)' : wL <= 50 ? 'UM (Schluff, mittelplastisch) bzw. OU bei organischen Beimengungen' : 'UA (Schluff, ausgeprägt plastisch); bei organischen Beimengungen Gruppe nach DIN 18196 prüfen';
   if (wL > 120) hinweise.push({ stufe: 'warnung', feld: 'wL', text: 'w_L > 120 % liegt außerhalb des üblichen Plastizitätsdiagramms.' });
-  return { iP, iC, zustand, klasse, hinweise };
+  return nurGueltig({ iP, iC, zustand, klasse, hinweise });
 }
 
 /* ────────────────────────────────────────────────────────────────────────────────────────────────
@@ -83,7 +83,7 @@ export interface FliessgrenzenErgebnis {
 /** Fließgrenze aus einem (Einpunkt-) oder mehreren Versuchen (Mehrpunktverfahren) */
 export function fliessgrenze(versuche: readonly FliessVersuch[]): FliessgrenzenErgebnis {
   const hinweise: Hinweis[] = [];
-  const leer = (): FliessgrenzenErgebnis => ({ wL: NaN, a: NaN, b: NaN, r2: NaN, verfahren: versuche.length === 1 ? 'einpunkt' : 'mehrpunkt', hinweise });
+  const leer = (): FliessgrenzenErgebnis => nurGueltig(({ wL: NaN, a: NaN, b: NaN, r2: NaN, verfahren: versuche.length === 1 ? 'einpunkt' : 'mehrpunkt', hinweise }));
   muss(hinweise, versuche.length >= 1, 'versuche', 'Mindestens ein Fließgrenzenversuch ist erforderlich.');
   versuche.forEach((v, i) => muss(hinweise, istEndlich(v.schlaege, v.w) && v.schlaege >= 1 && v.w > 0, `versuch${i}`, `Versuch ${i + 1}: Schlagzahl ≥ 1 und Wassergehalt > 0 % erforderlich.`));
   if (hatFehler(hinweise)) return leer();
@@ -96,7 +96,7 @@ export function fliessgrenze(versuche: readonly FliessVersuch[]): FliessgrenzenE
     hinweise.push({ stufe: 'warnung', feld: 'verfahren', text: 'Einpunktverfahren: Näherung mit fester Neigung der Fließkurve; für Nachweise das Mehrpunktverfahren mit mindestens 4 Versuchen verwenden.' });
     // Darstellungsgerade durch den Messpunkt mit der Neigung der Einpunktformel bei N = 25: dw/d(lg N) = −0,121·ln 10·w_L
     const b = -EINPUNKT_EXPONENT * Math.LN10 * wL;
-    return { wL, a: wL - b * Math.log10(25), b, r2: NaN, verfahren: 'einpunkt', hinweise };
+    return nurGueltig({ wL, a: wL - b * Math.log10(25), b, r2: NaN, verfahren: 'einpunkt', hinweise });
   }
 
   const x = versuche.map(v => Math.log10(v.schlaege)), y = versuche.map(v => v.w);
@@ -115,7 +115,7 @@ export function fliessgrenze(versuche: readonly FliessVersuch[]): FliessgrenzenE
   if (n >= 3 && r2 < 0.9) hinweise.push({ stufe: 'warnung', feld: 'versuche', text: `Bestimmtheitsmaß R² = ${formatDeZahl(r2, 2)}: Die Punkte streuen stark um die Ausgleichsgerade.` });
   const nMin = Math.min(...versuche.map(v => v.schlaege)), nMax = Math.max(...versuche.map(v => v.schlaege));
   if (nMin > 25 || nMax < 25) hinweise.push({ stufe: 'warnung', feld: 'versuche', text: 'N = 25 liegt außerhalb der gemessenen Schlagzahlen: w_L wird extrapoliert – Versuche auf beiden Seiten von 25 Schlägen anordnen.' });
-  return { wL, a, b, r2, verfahren: 'mehrpunkt', hinweise };
+  return nurGueltig({ wL, a, b, r2, verfahren: 'mehrpunkt', hinweise });
 }
 
 /** Ausrollgrenze w_P als Mittelwert der Einzelversuche */
@@ -123,12 +123,12 @@ export function ausrollgrenze(werte: readonly number[]) {
   const hinweise: Hinweis[] = [];
   muss(hinweise, werte.length >= 1, 'wP', 'Mindestens ein Ausrollversuch ist erforderlich.');
   muss(hinweise, werte.every(v => Number.isFinite(v) && v > 0), 'wP', 'Die Wassergehalte der Ausrollversuche müssen größer als 0 % sein.');
-  if (hatFehler(hinweise)) return { wP: NaN, spanne: NaN, hinweise };
+  if (hatFehler(hinweise)) return nurGueltig({ wP: NaN, spanne: NaN, hinweise });
   const wP = werte.reduce((s, v) => s + v, 0) / werte.length;
   const spanne = Math.max(...werte) - Math.min(...werte);
   if (werte.length < 2) hinweise.push({ stufe: 'warnung', feld: 'wP', text: 'Nur ein Ausrollversuch: w_P als Mittelwert aus mindestens zwei Versuchen bestimmen.' });
   if (spanne > 2) hinweise.push({ stufe: 'warnung', feld: 'wP', text: `Die Einzelwerte liegen ${formatDeZahl(spanne, 1)} Prozentpunkte auseinander (Lehrannahme: höchstens 2): Versuch wiederholen.` });
-  return { wP, spanne, hinweise };
+  return nurGueltig({ wP, spanne, hinweise });
 }
 
 export interface BodengruppeErgebnis { kuerzel: string; text: string; aLinie: number; oberhalbALinie: boolean }
@@ -167,16 +167,16 @@ export function atterberg(e: AtterbergEingabe) {
   const hinweise: Hinweis[] = [...fl.hinweise, ...ar.hinweise];
   muss(hinweise, Number.isFinite(e.w) && e.w >= 0, 'w', 'Der natürliche Wassergehalt muss eine Zahl ≥ 0 % sein.');
   const leer = { wL: fl.wL, wP: ar.wP, iP: NaN, iC: NaN, zustand: '–', gruppe: undefined as BodengruppeErgebnis | undefined, fliess: fl, gueltig: false, hinweise };
-  if (hatFehler(hinweise)) return leer;
+  if (hatFehler(hinweise)) return nurGueltig(leer);
   muss(hinweise, ar.wP < fl.wL, 'wP', `Die Ausrollgrenze w_P = ${formatDeZahl(ar.wP, 1)} % muss kleiner als die Fließgrenze w_L = ${formatDeZahl(fl.wL, 1)} % sein (I_P > 0).`);
-  if (hatFehler(hinweise)) return leer;
+  if (hatFehler(hinweise)) return nurGueltig(leer);
   const z = zustandsgrenzen(e.w, fl.wL, ar.wP);
   const iP = fl.wL - ar.wP;
   const gruppe = bodengruppePlastizitaet(fl.wL, iP, e.organisch);
   hinweise.push(...z.hinweise);
   if (e.organisch) hinweise.push({ stufe: 'warnung', feld: 'organisch', text: 'Organische Beimengungen: Die Zuordnung zu OU/OT setzt eine Bestimmung des Glühverlusts voraus (DIN 18196).' });
   if (iP < 4) hinweise.push({ stufe: 'warnung', feld: 'iP', text: 'I_P < 4 %: Der Boden ist kaum plastisch – Ausrollgrenze schwer bestimmbar, Einordnung über die Korngrößenverteilung prüfen.' });
-  return { wL: fl.wL, wP: ar.wP, iP, iC: z.iC, zustand: z.zustand, gruppe, fliess: fl, gueltig: true, hinweise };
+  return nurGueltig({ wL: fl.wL, wP: ar.wP, iP, iC: z.iC, zustand: z.zustand, gruppe, fliess: fl, gueltig: true, hinweise });
 }
 
 export function mohrCoulomb(c: number, phiGrad: number, sigma1: number, sigma3: number) {
@@ -188,30 +188,31 @@ export function mohrCoulomb(c: number, phiGrad: number, sigma1: number, sigma3: 
     muss(hinweise, sigma3 >= 0, 'sigma3', 'σ₃ darf nicht negativ sein (Zug wird nicht betrachtet).');
     muss(hinweise, sigma1 >= sigma3, 'sigma1', 'σ₁ ist die größte Hauptspannung und muss ≥ σ₃ sein.');
   }
-  if (hatFehler(hinweise)) return { center: 0, radius: 0, isFailing: false, sigma1_f: NaN, ausnutzung: NaN, hinweise };
+  if (hatFehler(hinweise)) return nurGueltig({ center: 0, radius: 0, isFailing: false, sigma1_f: NaN, ausnutzung: NaN, hinweise });
   bereich(hinweise, 'phi', phiGrad, 0, 50, 'Reibungswinkel über 50° sind für Böden unrealistisch.');
   const p = (phiGrad * Math.PI) / 180;
   const center = (sigma1 + sigma3) / 2;
   const radius = (sigma1 - sigma3) / 2;
   const grenzRadius = center * Math.sin(p) + c * Math.cos(p);
   const t = Math.tan(Math.PI / 4 + p / 2);
-  return { center, radius, isFailing: radius > grenzRadius * (1 + 1e-9), sigma1_f: sigma3 * t * t + 2 * c * t, ausnutzung: grenzRadius > 0 ? radius / grenzRadius : Infinity, hinweise };
+  return nurGueltig({ center, radius, isFailing: radius > grenzRadius * (1 + 1e-9), sigma1_f: sigma3 * t * t + 2 * c * t, ausnutzung: grenzRadius > 0 ? radius / grenzRadius : Infinity, hinweise });
 }
 
 export function erddruckRankine(phiGrad: number, gamma: number, h: number) {
   const hinweise: Hinweis[] = [];
   muss(hinweise, istEndlich(phiGrad, gamma, h) && phiGrad >= 0 && phiGrad < 90 && gamma > 0 && h > 0, 'eingabe', 'φ muss zwischen 0° und 90° liegen, γ und h müssen größer als 0 sein.');
-  if (hatFehler(hinweise)) return { k_a: NaN, k_p: NaN, k_0: NaN, E_a: NaN, E_p: NaN, E_0: NaN, hinweise };
+  if (hatFehler(hinweise)) return nurGueltig({ k_a: NaN, k_p: NaN, k_0: NaN, E_a: NaN, E_p: NaN, E_0: NaN, hinweise });
   const p = (phiGrad * Math.PI) / 180;
   const k_a = Math.tan(Math.PI / 4 - p / 2) ** 2;
   const k_p = Math.tan(Math.PI / 4 + p / 2) ** 2;
   const k_0 = 1 - Math.sin(p); // Jáky, normalkonsolidiert
   const f = 0.5 * gamma * h * h;
-  return { k_a, k_p, k_0, E_a: k_a * f, E_p: k_p * f, E_0: k_0 * f, hinweise };
+  return nurGueltig({ k_a, k_p, k_0, E_a: k_a * f, E_p: k_p * f, E_0: k_0 * f, hinweise });
 }
 
 /** Konsolidierungsgrad U(T_v) – Näherung nach Terzaghi/Casagrande (U ≤ 60 %: √(4T_v/π), darüber log-Näherung) */
 export function konsolidierungsgrad(Tv: number): number {
+  if (Number.isNaN(Tv)) return NaN; // Grenzfallprüfung 02.11.2026: NaN-Eingabe nicht als Zahl ausgeben
   if (!(Tv > 0)) return 0;
   return Tv <= 0.283 ? Math.sqrt((4 * Tv) / Math.PI) : 1 - Math.pow(10, -(Tv + 0.085) / 0.933);
 }
@@ -219,11 +220,11 @@ export function konsolidierungsgrad(Tv: number): number {
 export function konsolidierung(hSchicht: number, deltaSigma: number, Es: number, cv: number, drainage: 'einseitig' | 'zweiseitig') {
   const hinweise: Hinweis[] = [];
   muss(hinweise, istEndlich(hSchicht, deltaSigma, Es, cv) && hSchicht > 0 && Es > 0 && cv > 0 && deltaSigma >= 0, 'eingabe', 'Schichtdicke, E_s und c_v müssen größer als 0 sein, Δσ ≥ 0.');
-  if (hatFehler(hinweise)) return { s_end: NaN, t_50: NaN, t_90: NaN, kurve: [] as { x: number; y: number }[], hinweise };
+  if (hatFehler(hinweise)) return nurGueltig({ s_end: NaN, t_50: NaN, t_90: NaN, kurve: [] as { x: number; y: number }[], hinweise });
   const s_end = (deltaSigma / (Es * 1000)) * hSchicht * 1000; // mm
   const d = drainage === 'zweiseitig' ? hSchicht / 2 : hSchicht;
   const t_50 = (0.197 * d * d) / cv, t_90 = (0.848 * d * d) / cv;
   const maxT = t_90 * 1.5;
   const kurve = Array.from({ length: 51 }, (_, i) => { const t = (maxT * i) / 50; return { x: t, y: s_end * konsolidierungsgrad((cv * t) / (d * d)) }; });
-  return { s_end, t_50, t_90, kurve, hinweise };
+  return nurGueltig({ s_end, t_50, t_90, kurve, hinweise });
 }

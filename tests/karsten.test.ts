@@ -2,6 +2,7 @@
 import { KARSTEN_FLAECHE_CM2, W_GRENZEN_4108_3, wWertAusKarsten, saugKlasse, karstenAuswertung } from '../src/calc/karsten';
 import { karstenZfp } from '../src/calc/pruefverfahren';
 import { karsten } from '../src/calc/bauwerksuntersuchung';
+import { istUngueltig, keinErgebnis, zahlenPassen } from './hilfen/keinErgebnis';
 
 const fehler: string[] = [];
 const pruefe = (ok: boolean, msg: string) => { if (!ok) fehler.push(msg); };
@@ -38,7 +39,7 @@ let seed = 7;
 const z = (a: number, c: number) => { seed = (seed * 1103515245 + 12345) % 2147483648; return a + (c - a) * (seed / 2147483648); };
 for (let i = 0; i < 1000; i++) {
   const r = karstenAuswertung(z(-1, 10), z(-5, 120), z(-1, 10));
-  if (!Number.isFinite(r.w) || !Number.isFinite(r.tHours)) { pruefe(false, `Fuzz ${i}`); break; }
+  if (!zahlenPassen(r, [r.w, r.tHours])) { pruefe(false, `Fuzz ${i}`); break; }
 }
 
 if (fehler.length) { for (const x of fehler) console.error(`FAIL: ${x}`); process.exit(1); }

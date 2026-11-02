@@ -106,6 +106,8 @@ export type Din1076Art = 'H' | 'E' | 'B';
  *  zusätzlich laufende Beobachtung (i. d. R. zweimal jährlich) und anlassbezogene Sonderprüfungen. */
 export function din1076Plan(startH: number, years = 12): { year: number; art: Din1076Art }[] {
   const out: { year: number; art: Din1076Art }[] = [];
+  // Grenzfallprüfung 02.11.2026: ungültiger Zeitraum → leerer Plan (vorher Endlosschleife)
+  if (!Number.isInteger(startH) || !Number.isInteger(years) || years < 0 || years > 10_000) return out;
   for (let y = startH; y < startH + years; y++) {
     const d = (y - startH) % 6;
     out.push({ year: y, art: d === 0 ? 'H' : d === 3 ? 'E' : 'B' });
@@ -114,7 +116,7 @@ export function din1076Plan(startH: number, years = 12): { year: number; art: Di
 }
 /** Notenbereiche RI-EBW-PRÜF (Bauwerks-/Teilbauwerksnote). */
 export function riebwClass(z: number) {
-  if (z < 1 || z > 4) return 'ungültig';
+  if (!(z >= 1 && z <= 4)) return 'ungültig'; // Grenzfallprüfung 02.11.2026: NaN vorher „ungenügend“
   if (z < 1.5) return 'sehr guter Bauwerkszustand';
   if (z < 2.0) return 'guter Bauwerkszustand';
   if (z < 2.5) return 'befriedigender Bauwerkszustand';

@@ -10,7 +10,7 @@
  * Bildung von Untersuchungseinheiten (z. B. höchstens 3 000 m³ je Haufwerk nach LfU-Arbeitshilfe) ist Vorgabe des Anwenders;
  * die Probenzahl gilt je Untersuchungseinheit. Reiner Rechenkern – geprüft in tests/probenahme.test.ts.
  */
-import { type Hinweis, istEndlich, muss, hatFehler } from './plausibilitaet';
+import { type Hinweis, istEndlich, muss, hatFehler, nurGueltig } from './plausibilitaet';
 
 /** Stufen der Tabelle 2 bis 600 m³ (Obergrenzen) */
 export const PN98_STUFEN = [30, 60, 100, 150, 200, 300, 400, 500, 600] as const;
@@ -25,6 +25,7 @@ export interface Pn98Proben {
 
 /** Mindestprobenzahl nach LAGA PN 98, Tabelle 2, für eine Grundmenge V [m³] (V > 0) */
 export function pn98Probenzahl(volumenM3: number): Pn98Proben {
+  if (Number.isNaN(volumenM3)) return { einzelproben: NaN, mischproben: NaN, sammelproben: NaN, laborproben: NaN }; // Grenzfallprüfung 02.11.2026: NaN-Eingabe nicht als Zahl ausgeben
   if (!(volumenM3 > 0) || !Number.isFinite(volumenM3)) return { einzelproben: 0, mischproben: 0, sammelproben: 0, laborproben: 0 };
   if (volumenM3 <= 600) {
     const mp = PN98_STUFEN.findIndex(g => volumenM3 <= g) + 2;
@@ -46,7 +47,7 @@ export interface Pn98Eingabe {
 export function pn98Plan(e: Pn98Eingabe) {
   const hinweise: Hinweis[] = [];
   muss(hinweise, istEndlich(e.volumenM3, e.maxUeM3) && e.volumenM3 > 0 && e.maxUeM3 > 0, 'volumen', 'Haufwerksvolumen und Größe der Untersuchungseinheit müssen größer als 0 sein.');
-  if (hatFehler(hinweise)) return { einheiten: 0, volumenJeUe: 0, jeUe: pn98Probenzahl(0), gesamt: pn98Probenzahl(0), hinweise };
+  if (hatFehler(hinweise)) return nurGueltig({ einheiten: 0, volumenJeUe: 0, jeUe: pn98Probenzahl(0), gesamt: pn98Probenzahl(0), hinweise });
   const einheiten = Math.max(1, Math.ceil(e.volumenM3 / e.maxUeM3 - 1e-9));
   const volumenJeUe = e.volumenM3 / einheiten;
   const jeUe = pn98Probenzahl(volumenJeUe);
@@ -55,7 +56,7 @@ export function pn98Plan(e: Pn98Eingabe) {
     sammelproben: jeUe.sammelproben * einheiten, laborproben: jeUe.laborproben * einheiten,
   };
   if (volumenJeUe > 1200) hinweise.push({ stufe: 'warnung', feld: 'volumen', text: 'Tabelle 2 der LAGA PN 98 endet bei 1200 m³; größere Grundmengen werden mit den Zuschlagsregeln fortgeschrieben.' });
-  return { einheiten, volumenJeUe, jeUe, gesamt, hinweise };
+  return nurGueltig({ einheiten, volumenJeUe, jeUe, gesamt, hinweise });
 }
 
 export interface Pn98Volumen { einzelL: number | null; laborL: number | null; stueck: boolean }

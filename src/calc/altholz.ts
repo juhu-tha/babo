@@ -19,7 +19,7 @@
  * Schadstoffgrenzwerte des Anhangs II für Holzhackschnitzel und -späne.
  * Reiner Rechenkern – geprüft in tests/altholz.test.ts.
  */
-import { type Hinweis, istEndlich, muss, hatFehler } from './plausibilitaet';
+import { type Hinweis, istEndlich, muss, hatFehler, nurGueltig } from './plausibilitaet';
 
 export const ALTHOLZ_KATEGORIEN = ['AI', 'AII', 'AIII', 'AIV'] as const;
 export type AltholzKategorie = (typeof ALTHOLZ_KATEGORIEN)[number];
@@ -84,9 +84,9 @@ export interface AltholzErgebnis {
   hinweise: Hinweis[];
 }
 
-const LEER = (hinweise: Hinweis[]): AltholzErgebnis => ({
+const LEER = (hinweise: Hinweis[]): AltholzErgebnis => nurGueltig(({
   mIn: NaN, mSt: NaN, mEn: NaN, mFehl: NaN, qFehl: NaN, reinheitSt: NaN, anteilAIVSt: NaN, qSt: NaN, qStMax: NaN, stroeme: [], hinweise,
-});
+}));
 
 export function sortierbilanz(e: AltholzEingabe): AltholzErgebnis {
   const hinweise: Hinweis[] = [];
@@ -128,7 +128,7 @@ export function sortierbilanz(e: AltholzEingabe): AltholzErgebnis {
   if (ausbr.some(a => a < ALTHOLZ_LEHRWERTE.ausbringenWarnung)) warnung(hinweise, 'ausbringen', 'Ausbringen unter 80 % in mindestens einer Kategorie: Die Sortierung ist dort wenig wirksam.');
   if (e.masse.AIV / mIn > 0.5) warnung(hinweise, 'masse', 'Mehr als die Hälfte A IV im Eingang: Eine stoffliche Linie lohnt sich dann kaum.');
 
-  return { mIn, mSt, mEn, mFehl, qFehl, reinheitSt, anteilAIVSt, qSt: richtigSt / mIn, qStMax, stroeme, hinweise };
+  return nurGueltig({ mIn, mSt, mEn, mFehl, qFehl, reinheitSt, anteilAIVSt, qSt: richtigSt / mIn, qStMax, stroeme, hinweise });
 }
 
 function warnung(h: Hinweis[], feld: string, text: string) {

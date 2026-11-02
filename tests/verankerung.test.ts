@@ -1,5 +1,6 @@
 // Rechenkern Verankerungslänge (Umsetzungsplan Phase 4, AP 4.3)
 import { bemesseVerankerung, type VerankerungEingabe } from '../src/calc/verankerung';
+import { keinErgebnis, zahlenPassen } from './hilfen/keinErgebnis';
 
 const fehler: string[] = [];
 const pruefe = (ok: boolean, msg: string) => { if (!ok) fehler.push(msg); };
@@ -62,14 +63,14 @@ pruefe(nahe(bemesseVerankerung({ ...basis, fck: 80 }).fbd, bemesseVerankerung({ 
 // 3. Unsinnige Eingaben (vorher stillschweigend auf A_s-Verhältnis 1 begrenzt)
 for (const u of [{ asVorh: 0 }, { asErf: 15 }, { phi: 0 }, { fck: 0 }, { alpha2: 0 }, { asErf: -1 }, { phi: NaN }] as Partial<VerankerungEingabe>[]) {
   const rr = bemesseVerankerung({ ...basis, ...u });
-  pruefe([rr.lbd, rr.lbRqd].every(Number.isFinite) && rr.hinweise.some(x => x.stufe === 'fehler'), JSON.stringify(u));
+  pruefe(keinErgebnis([rr.lbd, rr.lbRqd]) && rr.hinweise.some(x => x.stufe === 'fehler'), JSON.stringify(u));
 }
 let seed = 5;
 const z = (a: number, c: number) => { seed = (seed * 1103515245 + 12345) % 2147483648; return a + (c - a) * (seed / 2147483648); };
 for (let i = 0; i < 1000; i++) {
   const rr = bemesseVerankerung({ fck: z(-5, 100), fyk: z(-5, 700), phi: z(-2, 50), verbund: i % 2 ? 'gut' : 'maessig', beanspruchung: i % 3 ? 'zug' : 'druck',
     art: i % 5 ? 'verankerung' : 'uebergreifung', form: (['gerade', 'haken', 'winkel'] as const)[i % 3], alpha2: z(-0.2, 1.5), alpha3: z(-0.2, 1.5), alpha5: z(-0.2, 1.5), stossanteil: i % 2 ? 'bis33' : 'ueber33', stossAbstandGross: i % 7 === 0, querstab: i % 4 === 0, verfahren: i % 3 ? 'en' : 'naVereinfacht', lagerung: i % 2 ? 'direkt' : 'sonst', asErf: z(-5, 30), asVorh: z(-5, 30) });
-  if (![rr.lbd, rr.lbRqd, rr.fbd].every(Number.isFinite)) { pruefe(false, `Fuzz ${i}`); break; }
+  if (!zahlenPassen(rr, [rr.lbd, rr.lbRqd, rr.fbd])) { pruefe(false, `Fuzz ${i}`); break; }
 }
 
 if (fehler.length) { for (const f of fehler) console.error(`FAIL: ${f}`); process.exit(1); }

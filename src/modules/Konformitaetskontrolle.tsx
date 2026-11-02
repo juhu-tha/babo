@@ -721,7 +721,7 @@ export default function Konformitaetskontrolle() {
                         {testValues.length > 1 ? stats.stdDev : '—'}
                       </span>
                       {testMode === 'stetig' ? (
-                        <span className="text-[9px] text-slate-500">Angewandt: <strong>{formatDeWert(stats.stdDevUsed)}</strong> (min 3.0)</span>
+                        <span className="text-[9px] text-slate-500">Angewandt: <strong>{formatDeWert(stats.stdDevUsed)}</strong> (mind. 3,0)</span>
                       ) : (
                         <span className="text-[9px] text-slate-400"><MdText text={inhalt.texte.inaktivBeiN15} /></span>
                       )}

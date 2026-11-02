@@ -11,7 +11,7 @@
  *    ungünstige Wasserverhältnisse +5 cm; gebundene Schichten pauschal 30 cm (Bk100, Bk32) bzw. 15 cm; FSS ≥ 15 cm
  * Einheiten: Anteile in M.-%, Dicken in cm. Reiner Rechenkern – geprüft in tests/erdbau.test.ts.
  */
-import { type Hinweis, istEndlich, hatFehler, muss } from './plausibilitaet';
+import { type Hinweis, istEndlich, hatFehler, muss, nurGueltig } from './plausibilitaet';
 
 /** Grenze Kies/Sand nach DIN 18196: Kornanteil > 2 mm in M.-% der Gesamtmasse (Anteil ≤ 2 mm höchstens 60 %) */
 export const KIES_GRENZE_18196 = 40;
@@ -39,7 +39,7 @@ export interface BodenErgebnis {
 export function bodengruppe(e: BodenEingabe): BodenErgebnis {
   const hinweise: Hinweis[] = [];
   muss(hinweise, istEndlich(e.feinanteil, e.kiesanteil, e.sandanteil) && e.feinanteil >= 0 && e.feinanteil <= 100 && e.kiesanteil >= 0 && e.sandanteil >= 0, 'feinanteil', 'Anteile müssen zwischen 0 und 100 % liegen.');
-  const fertig = (r: Omit<BodenErgebnis, 'gueltig' | 'hinweise'>): BodenErgebnis => ({ ...r, gueltig: !hatFehler(hinweise), hinweise });
+  const fertig = (r: Omit<BodenErgebnis, 'gueltig' | 'hinweise'>): BodenErgebnis => nurGueltig(({ ...r, gueltig: !hatFehler(hinweise), hinweise }));
   const gesamtGrob = e.kiesanteil + e.sandanteil;
   const relativKies = gesamtGrob > 0 ? (e.kiesanteil / gesamtGrob) * 100 : 0;
   // DIN 18196: Kies, wenn der Massenanteil ≤ 2 mm (Sand + Feinkorn) ≤ 60 % ist, d. h. Kieskorn ≥ 40 % der Gesamtmasse
@@ -90,5 +90,5 @@ export function frostschutz(e: FrostschutzEingabe): FrostschutzErgebnis {
   if (e.wasser === 'unguenstig') d += 5;
   const dickeAsphalt = (e.bauklasse === 'Bk100' || e.bauklasse === 'Bk32') ? 30 : 15;
   hinweise.push({ stufe: 'warnung', feld: 'gesamtDicke', text: 'Vereinfacht: Mehr- oder Minderdicken aus RStO Tab. 7, Zeilen B, D und E (Klima, Gradiente, Entwässerung) sind nicht berücksichtigt.' });
-  return { gesamtDicke: d, dickeAsphalt, dickeFSS: Math.max(15, d - dickeAsphalt), gueltig: !hatFehler(hinweise), hinweise };
+  return nurGueltig({ gesamtDicke: d, dickeAsphalt, dickeFSS: Math.max(15, d - dickeAsphalt), gueltig: !hatFehler(hinweise), hinweise });
 }

@@ -15,11 +15,11 @@
  *    Runde 5; vorher 1,3); γ_c = 1,3 nur außergewöhnlich (NA DE Tab. 2.1DE; EC2 empfohlen 1,2)
  * Einheiten stehen an den Feldern. Reiner Rechenkern – geprüft in tests/verkehrswegebau.test.ts.
  */
-import { type Hinweis, istEndlich, hatFehler, muss } from './plausibilitaet';
+import { type Hinweis, istEndlich, hatFehler, muss, nurGueltig } from './plausibilitaet';
 import { asphaltRohdichte } from './asphalt';
 
 export interface Ergebnis { gueltig: boolean; hinweise: Hinweis[] }
-const abschluss = (h: Hinweis[]): Ergebnis => ({ gueltig: !hatFehler(h), hinweise: h });
+const abschluss = (h: Hinweis[]): Ergebnis => nurGueltig(({ gueltig: !hatFehler(h), hinweise: h }));
 
 // ---------------------------------------------------------------- Asphalt
 export interface AsphaltEingabe {
@@ -47,7 +47,7 @@ export function asphaltHohlraum(e: AsphaltEingabe): AsphaltErgebnis {
   const hohlraum = (1 - (e.raumdichteMischung / maxDichte)) * 100;
   if (Math.abs(e.gesteinAnteil + e.bitumenAnteil - 100) > 0.05) h.push({ stufe: 'warnung', feld: 'bitumenAnteil', text: 'Gestein und Bitumen ergeben nicht 100 M.-%.' });
   if (hohlraum < 0) h.push({ stufe: 'fehler', feld: 'raumdichteMischung', text: 'Raumdichte größer als die hohlraumfreie Rohdichte – Eingaben prüfen.' });
-  return { maxDichte, hohlraum, ok: hohlraum >= 1.5 && hohlraum <= 4.5, ...abschluss(h) };
+  return nurGueltig({ maxDichte, hohlraum, ok: !hatFehler(h) && hohlraum >= 1.5 && hohlraum <= 4.5, ...abschluss(h) });
 }
 
 // ---------------------------------------------------------------- Bahnbau
@@ -81,7 +81,7 @@ export function schienenTemperatur(schieneTemp: number, neutralTemp: number, bet
   else if (sigmaT >= knickGrenze * 0.7) status = 'erhoeht';
   else status = 'unkritisch';
   if (schieneTemp < -40 || schieneTemp > 70) h.push({ stufe: 'warnung', feld: 'schieneTemp', text: 'Schienentemperatur außerhalb −40 … 70 °C.' });
-  return { deltaT, sigmaT, kraftSchieneKn, kraftGleisKn, knickGrenze, status, ...abschluss(h) };
+  return nurGueltig({ deltaT, sigmaT, kraftSchieneKn, kraftGleisKn, knickGrenze, status, ...abschluss(h) });
 }
 
 // ---------------------------------------------------------------- Betondecke
@@ -108,6 +108,7 @@ export interface WestergaardSpannungen {
 }
 /** Ersatzradius des widerstehenden Querschnitts nach Westergaard: b = √(1,6·a² + h²) − 0,675·h für a < 1,724·h, sonst b = a (mm) */
 export function westergaardErsatzradius(aMm: number, hMm: number): number {
+  if (Number.isNaN(aMm) || Number.isNaN(hMm)) return NaN; // Grenzfallprüfung 02.11.2026
   return aMm < 1.724 * hMm ? Math.sqrt(1.6 * aMm * aMm + hMm * hMm) - 0.675 * hMm : aMm;
 }
 /**
@@ -143,6 +144,8 @@ export function westergaardRand(e: WestergaardEingabe): WestergaardErgebnis {
   const h: Hinweis[] = [];
   const E = e.E ?? 34000, nu = e.nu ?? 0.15, p = e.reifendruck ?? 0.8, zul = e.zulaessig ?? 2.25;
   muss(h, istEndlich(e.dickeCm, e.achslastKn, e.bettungMNm3) && e.dickeCm > 0 && e.achslastKn > 0 && e.bettungMNm3 > 0, 'eingabe', 'Dicke, Achslast und Bettungsmodul müssen größer als 0 sein.');
+  // Grenzfallprüfung 02.11.2026: optionale Kennwerte prüfen (vorher σ = −∞ und „ok“ bei E = 0 oder Reifendruck 0)
+  muss(h, istEndlich(E, nu, p, zul) && E > 0 && nu >= 0 && nu < 0.5 && p > 0 && zul > 0, 'kennwerte', 'E-Modul, Reifendruck und zulässige Spannung müssen größer als 0 sein, die Querdehnzahl zwischen 0 und 0,5.');
   const hMm = e.dickeCm * 10;
   const pN = (e.achslastKn / 2) * 1000;
   const k = e.bettungMNm3 * 1e-3;
@@ -153,7 +156,7 @@ export function westergaardRand(e: WestergaardEingabe): WestergaardErgebnis {
   const ausnutzung = (sigmaE / zul) * 100;
   if (nu !== 0.15) h.push({ stufe: 'warnung', feld: 'nu', text: 'Die Westergaard-Koeffizienten 0,316/0,572 sind für ν = 0,15 abgeleitet; mit anderem ν nur Näherung.' });
   h.push({ stufe: 'warnung', feld: 'sigmaE', text: 'Westergaard-Lastspannung am Rand ohne Wölbspannungen aus Temperaturgradient und ohne Ermüdungsnachweis; die Dimensionierung erfolgt nach RDO Beton.' });
-  return { lMm, rMm, bMm: sp.bMm, sigmaInnen: sp.innen, sigmaEcke: sp.ecke, sigmaE, ausnutzung, ok: sigmaE <= zul, ...abschluss(h) };
+  return nurGueltig({ lMm, rMm, bMm: sp.bMm, sigmaInnen: sp.innen, sigmaEcke: sp.ecke, sigmaE, ausnutzung, ok: !hatFehler(h) && sigmaE <= zul, ...abschluss(h) });
 }
 
 export interface FugenErgebnis extends Ergebnis { maxAbstandM: number; ok: boolean; duebel: number; anker: number }
@@ -162,7 +165,7 @@ export function betondeckenFugen(abstandM: number, dickeCm: number): FugenErgebn
   const h: Hinweis[] = [];
   muss(h, istEndlich(abstandM, dickeCm) && abstandM > 0 && dickeCm > 0, 'eingabe', 'Fugenabstand und Dicke müssen größer als 0 sein.');
   const maxAbstandM = Math.min(25 * (dickeCm / 100), 5.0);
-  return { maxAbstandM, ok: abstandM <= maxAbstandM, duebel: Math.floor(3.75 / 0.25), anker: Math.max(3, Math.floor(abstandM / 1.5) + 1), ...abschluss(h) };
+  return nurGueltig({ maxAbstandM, ok: !hatFehler(h) && abstandM <= maxAbstandM, duebel: Math.floor(3.75 / 0.25), anker: Math.max(3, Math.floor(abstandM / 1.5) + 1), ...abschluss(h) });
 }
 
 // ---------------------------------------------------------------- Rigole
@@ -265,7 +268,7 @@ export function rigole(e: RigolenEingabe): RigolenErgebnis {
   if (zaehler <= 0 && aRed > 0) h.push({ stufe: 'warnung', feld: 'flaecheM2', text: 'Der Zufluss versickert schon über die Stirnflächen; rechnerisch ist keine Speicherlänge nötig – konstruktive Mindestlänge wählen.' });
   h.push({ stufe: 'warnung', feld: 'dwa', text: `Vereinfachtes Verfahren nach DWA-A 138-1:2024-10 für eine Regendauer: k_i = f_Ort·f_Methode·k_f, Seiten- und Stirnflächen mit ${voll ? 'voller Höhe (vollständige Durchsickerung)' : 'halber Höhe (Regelfall)'}. Die Iteration über die Dauerstufen der Regenstatistik (KOSTRA-DWD) ist nicht abgebildet. Werte für f_Ort und die Flächenregel sind vorläufig (Normprüfung ausstehend).` });
   if (e.psi < 0 || e.psi > 1) h.push({ stufe: 'warnung', feld: 'psi', text: 'Der Abflussbeiwert liegt üblicherweise zwischen 0 und 1.' });
-  return { aRed, qZu, vZu, fK, ki, hWirksam, aS, qSicker, vSicker, laengeM, vRigole, vNutz, boxen, ...abschluss(h) };
+  return nurGueltig({ aRed, qZu, vZu, fK, ki, hWirksam, aS, qSicker, vSicker, laengeM, vRigole, vNutz, boxen, ...abschluss(h) });
 }
 
 // ---------------------------------------------------------------- Tunnelbau
@@ -295,5 +298,5 @@ export function spritzbetonRing(radiusM: number, gebirgsdruck: number, dickeCm: 
   if (gammaC < GAMMA_C_TUNNEL.voruebergehend) h.push({ stufe: 'warnung', feld: 'gammaC', text: 'γ_c < 1,5 ist nur für die außergewöhnliche Bemessungssituation vorgesehen (DIN EN 1992-1-1/NA: 1,3; EC2 empfohlen 1,2). Bauzustände sind vorübergehende Situationen mit γ_c = 1,5.' });
   h.push({ stufe: 'warnung', feld: 'tunnel', text: 'Lehrmodell: Für Tunnelschalen gelten zusätzlich ZTV-ING Teil 5 (Straßentunnel) bzw. Ril 853 (DS 853, Eisenbahntunnel).' });
   if (dickeCm / 100 > radiusM / 10) h.push({ stufe: 'warnung', feld: 'dickeCm', text: 'd > R/10: Die Kesselformel für dünnwandige Ringe wird ungenau.' });
-  return { ringKraftKnM: gebirgsdruck * radiusM * 1000, sigmaRing, fcd, ausnutzung, ok: ausnutzung <= 100, ...abschluss(h) };
+  return nurGueltig({ ringKraftKnM: gebirgsdruck * radiusM * 1000, sigmaRing, fcd, ausnutzung, ok: !hatFehler(h) && ausnutzung <= 100, ...abschluss(h) });
 }

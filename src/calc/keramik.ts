@@ -12,7 +12,7 @@
  * 3. Schwindmaß und Formmaß (Trocken- und Brennschwindung, bezogen auf die Ausgangslänge).
  * Reiner Rechenkern – geprüft in tests/keramik.test.ts.
  */
-import { type Hinweis, istEndlich, hatFehler } from './plausibilitaet';
+import { type Hinweis, istEndlich, hatFehler, nurGueltig } from './plausibilitaet';
 
 export type Formgebung = 'A' | 'B';
 export type FliesenGruppe = 'AIa' | 'AIb' | 'AIIa' | 'AIIb' | 'AIII' | 'BIa' | 'BIb' | 'BIIa' | 'BIIb' | 'BIII';
@@ -85,7 +85,7 @@ export function keramikKennwerte(e: KeramikEingabe): KeramikErgebnis {
   if (mitMa && !istEndlich(e.ma as number)) hinweise.push({ stufe: 'fehler', feld: 'ma', text: 'Die Masse unter Wasser m_a muss ein endlicher Wert sein.' });
   if (!istEndlich(rhoW) || rhoW <= 0) hinweise.push({ stufe: 'fehler', feld: 'rhoW', text: 'Die Dichte des Wassers muss größer als 0 sein.' });
   if (mitRein && (!istEndlich(e.rhoRein as number) || (e.rhoRein as number) <= 0)) hinweise.push({ stufe: 'fehler', feld: 'rhoRein', text: 'Die Reindichte muss größer als 0 sein.' });
-  if (hatFehler(hinweise)) return leer;
+  if (hatFehler(hinweise)) return nurGueltig(leer);
 
   const eb = (e.mn - e.mt) / e.mt * 100;
   let volumen = NaN, rhoRoh = NaN, pOffen = NaN, pGes = NaN;
@@ -94,7 +94,7 @@ export function keramikKennwerte(e: KeramikEingabe): KeramikErgebnis {
     const ma = e.ma as number;
     if (ma >= e.mn) hinweise.push({ stufe: 'fehler', feld: 'ma', text: 'Die Masse unter Wasser m_a muss kleiner als die Nassmasse m_n sein (Auftrieb).' });
     else if (ma >= e.mt) hinweise.push({ stufe: 'fehler', feld: 'ma', text: 'Mit m_a ≥ m_t wäre das offene Porenvolumen größer als das Gesamtvolumen – Wägungen prüfen.' });
-    if (hatFehler(hinweise)) return leer;
+    if (hatFehler(hinweise)) return nurGueltig(leer);
     volumen = (e.mn - ma) / rhoW;
     rhoRoh = e.mt / volumen;
     pOffen = (e.mn - e.mt) / (e.mn - ma) * 100;
@@ -102,7 +102,7 @@ export function keramikKennwerte(e: KeramikEingabe): KeramikErgebnis {
       pGes = (1 - rhoRoh / (e.rhoRein as number)) * 100;
       if (pGes < 0) hinweise.push({ stufe: 'fehler', feld: 'rhoRein', text: 'Die Rohdichte übersteigt die Reindichte – Reindichte oder Wägungen prüfen.' });
       else if (pGes < pOffen - 0.5) hinweise.push({ stufe: 'warnung', feld: 'rhoRein', text: 'Die Gesamtporosität ist kleiner als die offene Porosität. Die angesetzte Reindichte ist vermutlich zu niedrig.' });
-      if (hatFehler(hinweise)) return leer;
+      if (hatFehler(hinweise)) return nurGueltig(leer);
       const r = e.rhoRein as number;
       if (r < 2.4 || r > 3.0) hinweise.push({ stufe: 'warnung', feld: 'rhoRein', text: 'Reindichten keramischer Scherben liegen üblicherweise bei etwa 2,5 bis 2,8 g/cm³.' });
     }
@@ -114,7 +114,7 @@ export function keramikKennwerte(e: KeramikEingabe): KeramikErgebnis {
   if (eb > 25) hinweise.push({ stufe: 'warnung', feld: 'mn', text: 'Wasseraufnahmen über 25 % sind für gebrannte Scherben ungewöhnlich hoch – Wägung und Sättigung prüfen.' });
   if (e.formgebung === 'B' && eb > 10 + EPS) hinweise.push({ stufe: 'warnung', feld: 'formgebung', text: 'Trockengepresste Fliesen der Gruppe BIII behandelt DIN EN 14411 nur in glasierter Ausführung (Wandfliesen).' });
 
-  return { eb, gruppe: fliesenGruppe(eb, e.formgebung), scherben: scherbenTyp(eb, e.formgebung), volumen, rhoRoh, pOffen, pGes, gueltig: true, hinweise };
+  return nurGueltig({ eb, gruppe: fliesenGruppe(eb, e.formgebung), scherben: scherbenTyp(eb, e.formgebung), volumen, rhoRoh, pOffen, pGes, gueltig: true, hinweise });
 }
 
 /** Lineares Schwindmaß s = (l_0 − l_1)/l_0 (dimensionslos). */

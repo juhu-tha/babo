@@ -30,16 +30,16 @@
     "lehrannahmeBrBronzeAb": "ℹ️ **Lehrannahme:**<br>• Bronze ab 35% • Silber ab 50% (Lieferkette ≥ 40%)<br>• Gold ab 60% (Lieferkette ≥ 50%) • Platin ab 80% (Lieferkette ≥ 60%)",
     "cscRModulRecyclingbeton": " CSC R-Modul (Recyclingbeton)",
     "eingeführtImJuni2020": "Eingeführt im Juni 2020 für Beton mit rezyklierter Gesteinskörnung.",
-    "voraussetzungRcGesteinskörnungAb": "Voraussetzung: RC-Gesteinskörnung **ab 10 %** (weitere Abstufungen manuell prüfen).",
+    "voraussetzungRcGesteinskörnungAb": "Voraussetzung: RC-Gesteinskörnung **ab 10 %** (weitere Abstufungen nach CSC Technical Manual; Stand nicht geprüft).",
     "dgnbAnrechnungImKriterium": "DGNB: Anrechnung im Kriterium ENV1.3, Qualitätsstufe 2.2 (zertifizierte Sekundärrohstoffe), Stand 2021.",
     "cscCoModul": " CSC CO₂-Modul",
     "vierKlassen3040": "Vier Klassen: **30 / 40 / 50 / 60 %** weniger Treibhausgasemissionen (kg CO₂e je m³ Beton) gegenüber einem regionalen Referenzwert.",
     "voraussetzungenWerkMindestensCsc": "Voraussetzungen: Werk mindestens CSC Silber, mindestens 75 % CSC-zertifizierter Zement in der Lieferkette, Monitoring der Emissionen, dokumentierte WPK.",
-    "anrechnungInQngKfw": "Anrechnung in QNG/KfW-Förderung: manuell prüfen.",
+    "anrechnungInQngKfw": "Anrechnung in QNG/KfW-Förderung: Stand nicht geprüft.",
     "relevanzInGebäudezertifizierungen": " Relevanz in Gebäudezertifizierungen",
     "dgnbCscSilberUnd": "**DGNB:** CSC Silber und Gold werden im Kriterium „Verantwortungsbewusste Ressourcengewinnung“ (ENV1.3) in Qualitätsstufe 1.2 anerkannt (Stand 2018); das R-Modul in Qualitätsstufe 2.2 (Stand 2021).",
     "breeamCscIstSeit": "**BREEAM:** CSC ist seit 2018 als Responsible-Sourcing-System anerkannt.",
-    "leedAnerkennungWar2018": "**LEED:** Anerkennung war 2018 noch offen – aktuellen Stand manuell prüfen."
+    "leedAnerkennungWar2018": "**LEED:** Anerkennung war 2018 noch offen (aktueller Stand nicht geprüft)."
   },
   "werte": {
     "keineZertifizierung": "Keine Zertifizierung",
