@@ -63,7 +63,7 @@ export const FACHGEBIETE: readonly { name: string; datei: RegExp; text: RegExp }
   { name: 'Geotechnik', datei: /boden|atterberg/i, text: /Fließgrenze|Atterberg|17892|DIN 18122|14688|Zustandsform|ZTV E-StB/ },
   { name: 'Nachhaltigkeit (LCA/LCC)', datei: /lca|lcc|materialoptimierung|oekobilanz|modulD|dafstb|cbam|energieausweis/i, text: /QNG|ÖKOBAUDAT|Ökobilanz|Restwert|Modul D|EN 15804|KrWG|CBAM|GModG|DIN\/TS 18599/ },
   { name: 'Stahl & Korrosionsschutz', datei: /korrosionsschutz|eisenKohlenstoff|stahlbau/i, text: /ISO 12944|DIN EN 10025|Eisen-Kohlenstoff/ },
-  { name: 'Prüfverfahren & Bauwerksdiagnostik', datei: /pruefverfahren|bauwerksuntersuchung|karsten|zfp/i, text: /Prüfverfahren|Rückprall|Karsten/ },
+  { name: 'Prüfverfahren & Bauwerksdiagnostik', datei: /pruefverfahren|bauwerksuntersuchung|karsten|zfp|zustandsbewertung/i, text: /Prüfverfahren|Rückprall|Karsten/ },
   { name: 'Verkehrswege- & Tunnelbau', datei: /verkehrswegebau|tunnel|tiefbau|asphalt/i, text: /Tunnel|ZTV-ING|RStO|DWA-A 138|Rigole|f_Ort|ZTV Asphalt|Bitumen|TL Gestein|DIN EN 13450/ },
   { name: 'Bauen im Bestand & Aufmaß', datei: /bauwerkserfassung|altbau|denkmal|historisch/i, text: /DIN 18202|Aufmaß|Bauaufnahme/ },
   { name: 'Bauprodukte', datei: /bauprodukte|^Bp[A-Z]/, text: /Lehmstein|DIN 1894[0-8]|Fugenband|DIN 18533|DIN 18534|DIN 18365|DIN 18540/ },
