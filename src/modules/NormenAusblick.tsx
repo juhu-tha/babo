@@ -9,7 +9,7 @@ import inhalt from '@/content/normenausblick/NormenAusblick.json';
 import { MdText } from '@/src/components/inhalt/MdText';
 
 /**
- * Ausblick auf die neue Normengeneration im Betonbau und bei den Eurocodes (Stand Oktober 2026).
+ * Ausblick auf die neue Normengeneration im Betonbau und bei den Eurocodes (Stand November 2026).
  * Alle Aussagen stützen sich auf öffentlich zugängliche Quellen (Fußzeile). Was dort nicht steht,
  * ist als „noch offen“ bzw. „unsicher“ gekennzeichnet. Maßgebend für die Bemessung bleiben die
  * bauaufsichtlich eingeführten Ausgaben (MVV TB 2025/1).
@@ -78,6 +78,9 @@ const STAND: readonly Zeile[] = [
 
 const ZEITSTRAHL: readonly { wann: string; was: string; quelle: string }[] = inhalt.daten.ZEITSTRAHL;
 
+/** Entwürfe und Normungsprojekte (Stand November 2026, docs/pruefung/normausgaben-2026-11.md) */
+const ENTWUERFE: readonly { was: string; art: string; gegenstand: string; quelle: string }[] = inhalt.daten.ENTWUERFE;
+
 export default function NormenAusblick() {
   const [reiter, setReiter] = useState<Reiter>('warum');
 
@@ -92,7 +95,7 @@ export default function NormenAusblick() {
 
         <div className="p-4 rounded-xl border border-amber-300/60 bg-amber-50 text-xs text-text-main/85 leading-relaxed flex items-start gap-2.5" role="note">
           <AlertTriangle size={16} className="text-amber-700 shrink-0 mt-0.5" aria-hidden={true} />
-          <p><MdText text={inhalt.texte.standOktober2026Für} /><Unsicher>unsicher</Unsicher> oder <Offen /><MdText text={inhalt.texte.sindÖffentlichNichtBelegt} /></p>
+          <p><MdText text={inhalt.texte.standNovember2026Für} /><Unsicher>unsicher</Unsicher> oder <Offen /><MdText text={inhalt.texte.sindÖffentlichNichtBelegt} /></p>
         </div>
 
         <ModuleTabs label={inhalt.werte.bereicheDesModulsAusblick} tabs={REITER} aktiv={reiter} onWechsel={setReiter}>
@@ -273,7 +276,7 @@ export default function NormenAusblick() {
               <div className="flex flex-col gap-5">
                 <div className="overflow-x-auto rounded-xl border border-home-grau/30" role="region" aria-label={inhalt.werte.übersichtGiltHeuteNeu} tabIndex={0}>
                   <table className="w-full min-w-[640px] border-collapse">
-                    <caption className="text-left text-xs font-bold text-text-main p-2.5"><MdText text={inhalt.texte.normenstandOktober2026Deutschland} /></caption>
+                    <caption className="text-left text-xs font-bold text-text-main p-2.5"><MdText text={inhalt.texte.normenstandNovember2026Deutschland} /></caption>
                     <thead>
                       <tr>
                         <th scope="col" className={th}>Bereich</th>
@@ -294,6 +297,30 @@ export default function NormenAusblick() {
                     </tbody>
                   </table>
                 </div>
+                <div className="overflow-x-auto rounded-xl border border-home-grau/30" role="region" aria-label={inhalt.texte.entwürfeUndProjekteStand} tabIndex={0}>
+                  <table className="w-full min-w-[640px] border-collapse">
+                    <caption className="text-left text-xs font-bold text-text-main p-2.5"><MdText text={inhalt.texte.entwürfeUndProjekteStand} /></caption>
+                    <thead>
+                      <tr>
+                        <th scope="col" className={th}>Dokument</th>
+                        <th scope="col" className={th}>Art</th>
+                        <th scope="col" className={th}>Inhalt</th>
+                        <th scope="col" className={th}>Quelle</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {ENTWUERFE.map(e => (
+                        <tr key={e.was}>
+                          <th scope="row" className={`${td} font-bold whitespace-nowrap`}>{e.was}</th>
+                          <td className={td}>{e.art}</td>
+                          <td className={td}>{e.gegenstand}</td>
+                          <td className={td}>{e.quelle}</td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                  <p className="text-xs text-text-main/70 p-2.5"><MdText text={inhalt.texte.entwürfeÄndernNichts} /></p>
+                </div>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   <div className={kachel}>
                     <h3 className="font-bold text-text-main text-sm mb-1.5"><MdText text={inhalt.texte.wasHeißtDasFür} /></h3>
@@ -307,6 +334,7 @@ export default function NormenAusblick() {
                     <h3 className="font-bold text-text-main text-sm mb-1.5"><MdText text={inhalt.texte.offenePunkteStandDieses} /></h3>
                     <ul className="list-disc pl-4 space-y-1">
                       <li><MdText text={inhalt.texte.terminDerBauaufsichtlichenEinführung} /></li>
+                      <li><MdText text={inhalt.texte.veröffentlichungMvvTb20261} /></li>
                       <li><MdText text={inhalt.texte.inhaltDerNeuenNationalen} /></li>
                       <li><MdText text={inhalt.texte.verbindlicheDeutscheErcRegeln} /></li>
                       <li><MdText text={inhalt.texte.wortlautDerNeuenBindemittelbegriffe} /></li>
@@ -325,7 +353,7 @@ export default function NormenAusblick() {
       <ModulTest moduleId="normen_ausblick" />
 
       <ModuleFooter
-        lastReviewed={inhalt.werte.oktober2026ModulNeu}
+        lastReviewed={inhalt.werte.november2026Aktualisiert}
         literatur={inhalt.daten["NormenAusblick.literatur"]}
         regelwerke={inhalt.daten["NormenAusblick.regelwerke"]}
         weblinks={[
@@ -336,6 +364,10 @@ export default function NormenAusblick() {
           { title: inhalt.werte.dinMediaDinEn4, url: 'https://www.dinmedia.de/de/norm/din-en-1995-1-1/396471004' },
           { title: inhalt.werte.dinMediaDinEn5, url: 'https://www.dinmedia.de/de/norm/din-en-1993-1-1/351345321' },
           inhalt.daten["NormenAusblick.weblinks.6"],
+          { title: inhalt.werte.dinProjektDin10452A1, url: 'https://www.din.de/en/wdc-proj:din21:404330876' },
+          { title: inhalt.werte.dinEntwurfEc2Na1, url: 'https://www.din.de/en/wdc-beuth:din21:392741740' },
+          { title: inhalt.werte.dinEntwurfEc2A1, url: 'https://www.din.de/en/getting-involved/standards-committees/nabau/drafts/wdc-beuth:din21:403144094' },
+          { title: inhalt.werte.trisMvvTb20261, url: 'https://technical-regulation-information-system.ec.europa.eu/en/notification/28201' },
           { title: inhalt.werte.dinMediaDafstbHeft, url: 'https://www.dinmedia.de/de/fachliteratur/dafstb-heft-666/397094950' },
           { title: inhalt.werte.nsaiPublicConsultationPren, url: 'https://www.nsai.ie/about/news/public-consultation-concrete-part-1/' },
           { title: inhalt.werte.nsai2ndGenerationEurocodes, url: 'https://www.nsai.ie/about/news/2nd-generation-eurocodes-update-on-irelands-adoption-plan/' },

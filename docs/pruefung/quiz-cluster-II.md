@@ -380,7 +380,7 @@ Auffällig im Einzelnen (Mehrfachnennung möglich): 110 korrigiert, 0 fraglich, 
 
 - **Frage:** Welcher Grenzwert für die Formaldehydabgabe gilt seit dem 06.08.2026 EU-weit für Holzwerkstoffe (REACH Anhang XVII Nr. 77)?
 - **Richtige Antwort:** 0,062 mg/m³ in der Prüfkammer
-- **Auffälligkeit:** Vorprüfung „korrigiert“: Frage auf den EU-Stand umgestellt (Grenzwert statt Prüfverfahren): VO (EU) 2023/1464, gültig ab 06.08.2026, 0,062 mg/m³ für Holzwerkstoffe/Möbel, 0,080 mg/m³ sonst (IHK, measurlabs.com); Modultext Holzwerkstoffe nennt den Grenzwert bereits. · Prüfhinweis: „in Deutschland seit 2020“ – seit 06.08.2026 gilt EU-weit REACH Anhang XVII Eintrag 77 (0,062 mg/m³). · bereits freigegeben (verified)
+- **Auffälligkeit:** Vorprüfung „korrigiert“: Umsetzung 02.11.: Kernregel und Erklärung auf den Stand nach REACH Anh. XVII Nr. 77 umgestellt (bisher „national seit 2020 DIN EN 16516“; ChemVerbotsV-Regelung zu Formaldehyd seit 06.08.2026 gegenstandslos, UBA-FAQ; Rechtsstand O-5) – korrigiert · Prüfhinweis: „in Deutschland seit 2020“ – seit 06.08.2026 gilt EU-weit REACH Anhang XVII Eintrag 77 (0,062 mg/m³).
 - [x] ok
 - [ ] ändern: …
 
@@ -562,9 +562,9 @@ Auffällig im Einzelnen (Mehrfachnennung möglich): 110 korrigiert, 0 fraglich, 
 
 ### qn_bp_innovationen_2 · Innovationen & F&E
 
-- **Frage:** Ein neues Bindemittel ist im Labor validiert und wurde bereits erfolgreich in einem industriellen 1-m³-Mischer hergestellt; ein Pilotbauwerk und eine Zulassung gibt es noch nicht. Welcher TRL ergibt sich im Reifegrad-Check, und was ist der nächste Schritt?
+- **Frage:** Ein neues Bindemittel ist im Labor validiert, wurde in einem industriellen 1-m³-Mischer hergestellt, und daraus wurden reale Bauteile im Werk gefertigt und geprüft; ein Pilotbauwerk und eine Zulassung gibt es noch nicht. Welcher TRL ergibt sich im Reifegrad-Check, und was ist der nächste Schritt?
 - **Richtige Antwort:** TRL 6 – Pilotbauwerk über ZiE/vBG errichten
-- **Auffälligkeit:** Vorprüfung „korrigiert“: normRef ergänzt · bereits freigegeben (verified)
+- **Auffälligkeit:** Vorprüfung „korrigiert“: Umsetzung 02.11.: Reifegrad-Check Kriterium 3 um „reale Bauteile im Werk gefertigt“ ergänzt (1-m³-Mischer allein = TRL 5 wie in der TRL-Tabelle; NS5A-BI-1); Fragetext, Erklärung, Rückmeldung zu TRL 4 und Kernregel nachgezogen, Antwort unverändert – korrigiert
 - [x] ok
 - [ ] ändern: …
 

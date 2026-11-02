@@ -435,3 +435,14 @@ Bereits vorher im Test (gegengeprüft, unverändert grün): Mauerwerk, Schallsch
 | `qz24_tritt_2` | 72,9 | DIN 4109-32 Gl. 23 | stimmt |
 | `qz24_tritt_4` | 48,1 | DIN 4109-2 | stimmt |
 | `qz24_ttest_1` | 0,89 | t-Test | stimmt |
+
+## Umsetzung 02.11.2026
+
+Entscheidung: beide Carbonbeton-Fragen an den Modulrechner angleichen (Kern mit Dehnungskontrolle, E_tex = 200 GPa). Der Test `tests/quizRechenfragen.test.ts` prüft jetzt `carbonbetonBiegung(…).mRd` statt `mRdOhneDehnungskontrolle`, für `qn_carbonbeton_1` zusätzlich alle Optionen, Betonversagen und die Zwischenwerte der Erklärung.
+
+| Frage | Änderung |
+|---|---|
+| `qn_carbonbeton_1` | E_tex = 200 GPa und „wie im Modulrechner mit Dehnungskontrolle (ε_cu3 = 3,5 ‰, y = 0,8·x)“ in die Frage; richtig **rund 2,2 kNm/m** (Textilbruch-Annahme ergäbe ε_c ≈ 9,5 ‰ > 3,5 ‰ → Betonversagen: x ≈ 6,2 mm, σ_tex ≈ 1572 N/mm², z = 17,5 mm). Distraktoren: 3,0 (vereinfachtes Verfahren ohne Dehnungskontrolle, rund 36 % auf der unsicheren Seite), 3,7 (zusätzlich z = d), 2,5 (Dehnungskontrolle, aber z = d); Rückmeldungen neu. |
+| `qn_carbonbeton_2` | Zahlen 5,1 → 5,0 und 8,9 → 6,3 kNm/m („im Modulrechner, E_tex = 200 GPa“); Erklärung: y ≈ 6,6 → 8,7 mm, z ≈ 26,7 → 25,7 mm, bei 200 mm²/m versagt der Beton deutlich vor dem Textil (σ_tex ≈ 1230 statt 1923 N/mm²; bei 100 mm²/m knapp). Antwort unverändert. |
+
+Beide Fragen `verified: false`, Vermerk „Umsetzung 02.11.: … – korrigiert“; Prüflisten neu erzeugt.

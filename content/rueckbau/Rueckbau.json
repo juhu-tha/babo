@@ -116,7 +116,7 @@
     "verschärfterStaubschutzDaFasern": "Verschärfter Staubschutz, da Fasern mechanisch reizend sind. Jedoch bio-löslich und nicht krebserzeugend nachgewiesen.",
     "trgs521SchutzstufeIi": "TRGS 521 (Schutzstufe II)",
     "beispiel1MassenbilanzFür": "Beispiel 1: Massenbilanz für den Rückbau eines Bürogebäudes",
-    "dieMineralischenFraktionenBestimmen": "Die mineralischen Fraktionen bestimmen Logistik und Verwertung. Nach § 8 GewAbfV sind Beton (17 01 01) und Ziegel (17 01 02) getrennt zu halten, soweit technisch möglich und wirtschaftlich zumutbar; ab 10 m³ Abfall ist die Getrennthaltung zu dokumentieren.",
+    "dieMineralischenFraktionenBestimmen": "Die mineralischen Fraktionen bestimmen Logistik und Verwertung. Nach § 8 GewAbfV sind Beton (17 01 01) und Ziegel (17 01 02) getrennt zu halten, soweit technisch möglich und wirtschaftlich zumutbar; fallen insgesamt mehr als 10 m³ Abfall an, ist die Getrennthaltung zu dokumentieren (§ 8 Abs. 3).",
     "gewabfv8DinSpec": "GewAbfV § 8; DIN SPEC 91484:2023-09",
     "beispiel2KostenvergleichSelektiver": "Beispiel 2: Kostenvergleich selektiver Rückbau gegen Gemischentsorgung",
     "regionaleAnnahmepreiseSchwankenStark": "Regionale Annahmepreise schwanken stark; die Rechnung zeigt das Prinzip. Bei Schadstofffunden (z. B. asbesthaltiger Putz) kann die gesamte Charge als gefährlicher Abfall gelten – deshalb Schadstofferkundung vor dem Abbruch.",
@@ -256,7 +256,7 @@
         "url": "https://www.gesetze-im-internet.de/gewabfv_2017/"
       },
       {
-        "title": "TRGS 519 (Asbest), Fassung 2014, zuletzt geändert 28.01.2025",
+        "title": "TRGS 519 (Asbest), Ausgabe 2014, zuletzt geändert 28.01.2025 (GMBl 2025 S. 144)",
         "url": "https://www.baua.de/DE/Angebote/Regelwerk/TRGS/TRGS-519"
       },
       {

@@ -19,7 +19,7 @@ import { FormulaDerivationBox } from '@/src/components/ui/FormulaDerivationBox';
 import { ModulTest } from '@/src/components/quiz/ModulTest';
 import { InlineMath } from 'react-katex';
 import { formatDeZahl, formatDeWert, formatDeTeX, formatDeTeXWert } from '@/src/utils/numberFormat';
-import { GMODG_ANLAGE7, savings, dRequired, CO2_ERDGAS, type Bauteil } from '@/src/utils/bestandKern';
+import { GMODG_ANLAGE7, savings, dRequired, CO2_ERDGAS, type Bauteil, type FxBauteil } from '@/src/utils/bestandKern';
 import inhalt from '@/content/modernisierung/Modernisierung.json';
 import { MdText } from '@/src/components/inhalt/MdText';
 import { ModuleTabs, type ModulTab } from '@/src/components/ui/ModuleTabs';
@@ -31,6 +31,8 @@ interface BuildingComponentLimit {
   name: string;
   limitU: number; // W/(m²K) – aus GMODG_ANLAGE7
   bauteil: Bauteil;
+  /** nur bei Anlage-7-Sammelbauteilen mit unterschiedlichem F_x (Steildach / oberste Geschossdecke) */
+  fxBauteil?: FxBauteil;
   typicalOldU: number;
   description: string;
 }
@@ -46,11 +48,21 @@ const GMODG_COMPONENT_LIMITS: BuildingComponentLimit[] = [
   },
   { 
     id: 'roof_pitched', 
-    name: inhalt.werte.steildachObersteGeschossdecke, 
+    name: inhalt.werte.steildachSystemgrenze, 
     bauteil: 'steildach_oGD',
+    fxBauteil: 'steildach',
     limitU: GMODG_ANLAGE7.steildach_oGD, 
     typicalOldU: 1.20,
-    description: inhalt.werte.steildächerGaubenObersteGeschossdecken
+    description: inhalt.werte.steildächerGaubenFx
+  },
+  { 
+    id: 'top_ceiling', 
+    name: inhalt.werte.obersteGeschossdeckeUnbeheizterDachraum, 
+    bauteil: 'steildach_oGD',
+    fxBauteil: 'oberste_geschossdecke',
+    limitU: GMODG_ANLAGE7.steildach_oGD, 
+    typicalOldU: 1.20,
+    description: inhalt.werte.obersteGeschossdeckenFx
   },
   { 
     id: 'roof_flat', 
@@ -134,7 +146,7 @@ export default function Modernisierung() {
     // Einsparung mit Temperatur-Korrekturfaktor Fx (DIN V 4108-6) und Anlagenaufwand η_sys;
     // Amortisation auf energiebedingte Mehrkosten (ohne Sowieso-Kosten)
     const sav = savings({
-      uOld: originalU, uNew: newU, A: componentArea, bauteil: activeComponent.bauteil, Gt: hgtVal,
+      uOld: originalU, uNew: newU, A: componentArea, bauteil: activeComponent.bauteil, fxBauteil: activeComponent.fxBauteil, Gt: hgtVal,
       etaSys, price: energyPriceKwh, co2: CO2_ERDGAS, invest: totalInvestEuro,
       sowiesoKosten: sowiesoAktiv ? baseLaborCost : 0
     });
@@ -389,7 +401,7 @@ export default function Modernisierung() {
             {/* Bauteil-Wahl */}
             <div className="space-y-2">
               <span className="text-xs font-bold text-text-main/70 uppercase tracking-wide block"><MdText text={inhalt.texte.zuSanierendesBauteilWählen} /></span>
-              <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 text-xs font-semibold">
+              <div className="grid grid-cols-2 sm:grid-cols-3 gap-2 text-xs font-semibold">
                 {GMODG_COMPONENT_LIMITS.filter(c => c.id !== 'windows').map(comp => (
                   <button
                     key={comp.id}
