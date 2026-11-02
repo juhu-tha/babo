@@ -41103,9 +41103,9 @@
     "question": "Für ein Baudenkmal sollen Wandneigungen und Balkendurchbiegungen geodätisch erfasst und im Maßstab 1:50 dargestellt werden. Welche Genauigkeitsstufe des Aufmaßes ist dafür vorgesehen?",
     "options": [
       "Stufe III – detaillierte Bauaufnahme mit ± 2,5 cm",
-      "Stufe II – Standardaufmaß mit ± 2,5 cm (Hauptpunkte) bis ± 10 cm",
+      "Stufe II – Standardaufmaß mit ± 2,5 bis 10 cm",
       "Stufe I – Grobaufmaß mit Toleranz ± 5 bis 10 cm",
-      "Stufe IV – Verformungsanalyse mit ± 1 bis 2 cm im Maßstab 1:25 und größer"
+      "Stufe IV – exakte Verformungsanalyse mit ± 1 bis 2 cm"
     ],
     "correctIdx": 0,
     "explanation": "Stufe III ist laut Modul zentral für Denkmalschutz: wesentliche Verformungen werden geodätisch oder fotogrammetrisch eingemessen, Maßstab 1:50, Toleranz etwa ± 2,5 cm.",
