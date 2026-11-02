@@ -7,7 +7,8 @@
  * Je Seite N Läufe in frischem Browserkontext, berichtet wird der Median.
  *
  *   npm run build && NODE_ENV=production PORT=4206 node dist/server.cjs &
- *   node scripts/qa/perf-messung.mjs [--basis http://localhost:4206/] [--laeufe 3] [--routen a,b] [--ohne-datei]
+ *   node scripts/qa/perf-messung.mjs [--basis http://localhost:4206/] [--laeufe 3] [--routen a,b] [--ohne-datei] [--dunkel]
+ * --dunkel: Systemeinstellung dunkel (prefers-color-scheme), ohne eigene Wahl – wie ein Erstbesuch im Dunkelmodus.
  *
  * Playwright ist KEINE Projektabhängigkeit und läuft nicht in der CI: einmalig global installieren
  * (`npm i -g playwright && npx playwright install chromium`) oder `npm i --no-save playwright`.
@@ -32,6 +33,7 @@ const ai = n => { const i = process.argv.indexOf(n); return i > 0 ? process.argv
 const BASIS = (ai('--basis') ?? 'http://localhost:4206/').replace(/\/?$/, '/');
 const LAEUFE = Number(ai('--laeufe') ?? 3);
 const ROUTEN = ai('--routen')?.split(',') ?? ['start', 'mischungsberechnung', 'biegebemessung', 'bauphysik', 'feuchteschutz', 'oekobilanz_lca', 'abfaelle', 'spannbeton_grundlagen', 'glas', 'aufgaben_trainer'];
+const DUNKEL = process.argv.includes('--dunkel');
 const ZIEL = { lcp: 2500, cls: 0.1, tbt: 200, klick: 200 };
 
 // Chrome DevTools „Fast 3G“ (wie Lighthouse-Vorgabe der DevTools): 562,5 ms RTT, 1,44 Mbit/s ↓, 675 kbit/s ↑
@@ -54,7 +56,7 @@ const BEOBACHTER = () => {
 };
 
 async function messe(route) {
-  const ctx = await browser.newContext({ viewport: { width: 390, height: 844 }, deviceScaleFactor: 2, isMobile: true, hasTouch: true, locale: 'de-DE' });
+  const ctx = await browser.newContext({ viewport: { width: 390, height: 844 }, deviceScaleFactor: 2, isMobile: true, hasTouch: true, locale: 'de-DE', colorScheme: DUNKEL ? 'dark' : 'light' });
   await ctx.addInitScript(BEOBACHTER);
   const page = await ctx.newPage();
   const cdp = await ctx.newCDPSession(page);
@@ -124,7 +126,7 @@ if (!process.argv.includes('--ohne-datei')) {
   const datei = path.join(ROOT, 'docs/performance.md');
   const alt = fs.existsSync(datei) ? fs.readFileSync(datei, 'utf8') : '';
   const A = '<!-- perf-messung:start -->', E = '<!-- perf-messung:ende -->';
-  const block = `${A}\nStand ${new Date().toISOString().slice(0, 10)} · ${LAEUFE} Läufe je Seite (Median) · ${BASIS}\n\n${tabelle}\n${E}`;
+  const block = `${A}\nStand ${new Date().toISOString().slice(0, 10)} · ${LAEUFE} Läufe je Seite (Median)${DUNKEL ? ' · Dunkelmodus' : ''} · ${BASIS}\n\n${tabelle}\n${E}`;
   const neu = alt.includes(A) ? alt.replace(new RegExp(`${A}[\\s\\S]*?${E}`), block) : `${alt.trimEnd()}\n\n${block}\n`;
   fs.writeFileSync(datei, neu.trimStart());
   console.log(`→ ${path.relative(ROOT, datei)} aktualisiert`);

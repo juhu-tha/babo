@@ -20,7 +20,7 @@ Entscheidung 02.11.2026 (Befunde B2, B3, B6, B7, B9 der Live-Prüfung: docs/prue
 BB_STATISCH=1 npm run build && rm -f dist/server.cjs && cp dist/index.html dist/404.html
 ```
 
-- `npm run build` bleibt unverändert (package.json wird nicht angefasst) und erzeugt wie bisher `dist/server.cjs` für `Dockerfile` und `scripts/qa/check-bundle.mjs`.
+- `npm run build` bleibt unverändert (package.json wird nicht angefasst) und erzeugt wie bisher `dist/server.cjs` für `Dockerfile`. `scripts/qa/check-bundle.mjs` verlangt `server.cjs` im Statik-Modus nicht (`BB_STATISCH=1`, `--statisch` oder `dist/404.html` vorhanden) und läuft damit auch auf der Vercel-Ausgabe.
 - `rm -f dist/server.cjs`: Das Server-Bundle wird vor der Veröffentlichung entfernt (Befund 01.11.2026: `/server.cjs` war öffentlich abrufbar). Eine `.vercelignore` hilft hier nicht – sie wirkt nur auf die hochgeladenen Quelldateien, nicht auf die Build-Ausgabe.
 - `cp dist/index.html dist/404.html`: Unbekannte Adressen bekommen die App mit Status 404 (die App zeigt dann die Startseite) – wie im Server für unbekannte Modul-IDs.
 
