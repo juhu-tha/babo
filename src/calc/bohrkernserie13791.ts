@@ -30,7 +30,7 @@
  *            https://www.dinmedia.de/en/standard/din-en-13791-a20/351305107
  * Offene Normpunkte (Prüfbogen Normtext): T15-BS-5/NS-BD-2 (Mindeststandardabweichung), NS-BD-3 (Bezug der Kerne 1:1/2:1).
  */
-import { type Hinweis, type KeineKlasse, KEINE_KLASSE, istEndlich, hatFehler, muss, bereich, nurGueltig, type Ergebnis } from './plausibilitaet';
+import { type Hinweis, type KeineKlasse, KEINE_KLASSE, istEndlich, hatFehler, muss, bereich, nurGueltig } from './plausibilitaet';
 import { insituDruckfestigkeit13791, klasseAusInsitu13791 } from './bauwerksuntersuchung';
 import { C_CLASSES } from '../utils/bestandKern';
 
@@ -70,7 +70,8 @@ export interface BohrkernserieEingabe {
   mindestStreuung: boolean;
 }
 
-export interface BohrkernserieErgebnis extends Ergebnis {
+export interface BohrkernserieErgebnis {
+  gueltig: boolean; hinweise: Hinweis[];
   n: number; nMin: number;
   /** Werte auf den Bezugskörper umgerechnet (Bezug kern11: ×0,82) */
   werteBezug: number[];

@@ -1,5 +1,5 @@
 import React, { useMemo, useState } from 'react';
-import { BlockMath, InlineMath } from 'react-katex';
+import { BlockMath } from 'react-katex';
 import { AlertTriangle, ClipboardList, FlaskConical, Sigma } from 'lucide-react';
 import { FormulaDerivationBox } from '@/src/components/ui/FormulaDerivationBox';
 import { AuswahlGruppe, alsOption } from '@/src/components/ui/Auswahlgruppe';
@@ -70,9 +70,9 @@ export function BohrkernserieTab() {
     : [];
   const schritteKerne = [
     ...faktorSchritt,
-    { titel: 'Mittelwert', erklaerung: `n = ${r.n} Kerne`, formel: `f_{\\mathrm{m(n),is}} = \\frac{1}{n}\\sum f_{\\mathrm{is},i} = ${formatDeTeX(r.mittel, 2)}`, einheit: 'N/mm²' },
+    { titel: 'Mittelwert', erklaerung: `n = ${formatDeZahl(r.n, 0)} Kerne`, formel: `f_{\\mathrm{m(n),is}} = \\frac{1}{n}\\sum f_{\\mathrm{is},i} = ${formatDeTeX(r.mittel, 2)}`, einheit: 'N/mm²' },
     { titel: 'Standardabweichung', erklaerung: mindestStreuung ? 'gemessen und Untergrenze 8 % des Mittelwerts' : 'gemessen (ohne Untergrenze)', formel: `s = ${formatDeTeX(r.s, 2)};\\; s_{\\min} = ${formatDeTeX(V_MIN_13791, 2)} \\cdot ${formatDeTeX(r.mittel, 2)} = ${formatDeTeX(r.sMin, 2)} \\;\\Rightarrow\\; s_{\\mathrm{an}} = ${formatDeTeX(r.sEff, 2)}`, einheit: 'N/mm²' },
-    { titel: 'Streuungskriterium', erklaerung: `k_n für n = ${r.n}`, formel: `f_{\\mathrm{m(n),is}} - k_n \\cdot s_{\\mathrm{an}} = ${formatDeTeX(r.mittel, 2)} - ${formatDeTeX(r.kn, 2)} \\cdot ${formatDeTeX(r.sEff, 2)} = ${formatDeTeX(r.ausStreuung, 2)}`, einheit: 'N/mm²' },
+    { titel: 'Streuungskriterium', erklaerung: `k_n für n = ${formatDeZahl(r.n, 0)}`, formel: `f_{\\mathrm{m(n),is}} - k_n \\cdot s_{\\mathrm{an}} = ${formatDeTeX(r.mittel, 2)} - ${formatDeTeX(r.kn, 2)} \\cdot ${formatDeTeX(r.sEff, 2)} = ${formatDeTeX(r.ausStreuung, 2)}`, einheit: 'N/mm²' },
     { titel: 'Kleinstwertkriterium', erklaerung: 'M nach dem kleinsten Einzelwert', formel: `f_{\\mathrm{is,lowest}} + M = ${formatDeTeX(r.kleinster, 2)} + ${formatDeTeX(r.M, 0)} = ${formatDeTeX(r.ausKleinstwert, 2)}`, einheit: 'N/mm²' },
     { titel: 'Charakteristischer Wert', erklaerung: 'kleinerer der beiden Werte', formel: `f_{\\mathrm{ck,is}} = \\min(${formatDeTeX(r.ausStreuung, 2)};\\; ${formatDeTeX(r.ausKleinstwert, 2)}) = ${formatDeTeX(r.fckIs, 2)}`, einheit: 'N/mm²' },
   ];
@@ -139,12 +139,12 @@ export function BohrkernserieTab() {
         <p className="text-sm text-text-main/90 leading-relaxed"><MdText text={inhalt.texte.statistikText} /></p>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
           <table className="text-xs border border-home-grau/30">
-            <caption className="text-left text-xs font-bold text-text-main pb-1"><InlineMath math="k_n" /> (Student-Quantil, 5 %)</caption>
+            <caption className="text-left text-xs font-bold text-text-main pb-1"><i>k</i><sub>n</sub> (Student-Quantil, 5 %)</caption>
             <thead className="bg-off-white"><tr><th scope="col" className="p-1.5 text-left">n</th>{inhalt.daten.kn.map(z => <th scope="col" key={z.n} className="p-1.5">{z.n}</th>)}</tr></thead>
-            <tbody><tr className="border-t border-home-grau/20"><th scope="row" className="p-1.5 text-left"><InlineMath math="k_n" /></th>{inhalt.daten.kn.map(z => <td key={z.n} className="p-1.5 text-center font-mono">{z.k}</td>)}</tr></tbody>
+            <tbody><tr className="border-t border-home-grau/20"><th scope="row" className="p-1.5 text-left"><i>k</i><sub>n</sub></th>{inhalt.daten.kn.map(z => <td key={z.n} className="p-1.5 text-center font-mono">{z.k}</td>)}</tr></tbody>
           </table>
           <table className="text-xs border border-home-grau/30">
-            <caption className="text-left text-xs font-bold text-text-main pb-1">Zuschlag <InlineMath math="M" /> in N/mm²</caption>
+            <caption className="text-left text-xs font-bold text-text-main pb-1">Zuschlag <i>M</i> in N/mm²</caption>
             <tbody>{inhalt.daten.m.map(z => <tr key={z.bereich} className="border-t border-home-grau/20"><th scope="row" className="p-1.5 text-left font-normal"><MdText text={z.bereich} /></th><td className="p-1.5 text-center font-mono">{z.M}</td></tr>)}</tbody>
           </table>
         </div>
@@ -213,7 +213,7 @@ export function BohrkernserieTab() {
             <div className="grid grid-cols-2 md:grid-cols-3 gap-3 text-center">
               <div className="p-3 rounded-xl border border-home-grau/30 bg-white">
                 <span className="block text-[11px] font-bold text-home-grau uppercase">{inhalt.texte.kerneAnzahl}</span>
-                <span className="text-base font-bold text-text-main font-mono">{r.n} ({formatDeZahl(r.nMin, 0)})</span>
+                <span className="text-base font-bold text-text-main font-mono">{formatDeZahl(r.n, 0)} ({formatDeZahl(r.nMin, 0)})</span>
               </div>
               <div className="p-3 rounded-xl border border-home-grau/30 bg-white">
                 <span className="block text-[11px] font-bold text-home-grau uppercase">{inhalt.texte.mittelwert}</span>

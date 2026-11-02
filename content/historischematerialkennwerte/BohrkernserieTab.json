@@ -57,7 +57,7 @@
       { "merkmal": "Empfohlene Anzahl", "wert": "mindestens 2 Kerne über der Mindestanzahl (Reserve für Ausreißer), z. B. 10", "quelle": "BRMCA 2020" },
       { "merkmal": "Kleiner Prüfbereich (1–3 Bauteile, ≤ 10 m³)", "wert": "≥ 3 Kerne; f_ck,is = kleinster Wert, wenn die Spannweite ≤ 15 % des Mittelwerts ist", "quelle": "Sefrin et al. 2022; TFB 2021; BRMCA" },
       { "merkmal": "Ansatz B: indirekte Prüfung + Kerne (≤ 30 m³)", "wert": "Rückprall (DIN EN 12504-2) oder Ultraschall (DIN EN 12504-4) über den Prüfbereich; ≥ 3 Kerne an der Stelle der geringsten Werte; f_ck,is = Mittelwert der Kerne, Spannweite ≤ 15 %", "quelle": "Sefrin et al. 2022; BRMCA" },
-      { "merkmal": "Kalibrierte Beziehung indirekt ↔ Kern (Abschnitt 8.2)", "wert": "Beziehung an Kernen aus demselben Prüfbereich kalibrieren; Anzahl der Wertepaare am Normtext prüfen (hier nicht berechnet)", "quelle": "Inhaltsübersicht prEN 13791; TFB 2021" },
+      { "merkmal": "Kalibrierte Beziehung indirekt ↔ Kern (Abschnitt 8.2)", "wert": "Beziehung an Kernen aus demselben Prüfbereich kalibrieren; Mindestzahl der Wertepaare vorläufig, Normprüfung ausstehend (hier nicht berechnet)", "quelle": "Inhaltsübersicht prEN 13791; TFB 2021" },
       { "merkmal": "Kerndurchmesser", "wert": "bevorzugt ≥ 75 mm, mindestens 50 mm, ≥ 3 · D_max; im Zweifel üblich 100 mm", "quelle": "BRMCA 2020 (DIN EN 12504-1)" },
       { "merkmal": "Schlankheit h/d", "wert": "2:1 (1,95 … 2,05) oder 1:1 (0,90 … 1,10); Umrechnung 1:1 → 2:1 mit 0,82", "quelle": "BRMCA 2020; TFB 2021" }
     ],
