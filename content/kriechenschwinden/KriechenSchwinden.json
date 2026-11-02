@@ -83,7 +83,7 @@
     "wirksamerEModulE": "Wirksamer E-Modul E_{c,eff}(t, t_0)",
     "wirksamerEModulEc": "Wirksamer E-Modul Ec,eff",
     "betonalterTTage3": "Betonalter t (Tage)",
-    "modulRMpa": "Modul R (MPa)",
+    "modulRMpa": "E-Modul E_c,eff (MPa)",
     "anwendungsbeispielEndkriechzahlUndEndsch": "Anwendungsbeispiel: Endkriechzahl und Endschwindmaß einer Innenwand C30/37",
     "dinEn19921": "DIN EN 1992-1-1, 3.1.4 und Anhang B",
     "eineStützeUnterC": "Eine Stütze unter σ_c = 8,5 N/mm² verkürzt sich damit langfristig um etwa ε_el · (1 + φ/1,05) + ε_cs ≈ 0,26 · 3,26 + 0,46 ≈ 1,3 ‰ (Kriechanteil nach DIN EN 1992-1-1, 3.1.4(3) mit E_c = 1,05 · E_cm) – rund das Fünffache der elastischen Stauchung.",
