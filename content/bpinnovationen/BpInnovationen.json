@@ -55,7 +55,7 @@
     "zukunftBauBbsrBmwsb": "Zukunft Bau (BBSR / BMWSB)",
     "förderungVonAngewandterForschung": "Förderung von angewandter Forschung im Hoch- und Ingenieurbau. Schwerpunkte: Klimagerechtes Bauen, zirkuläre Baustoffe, Digitalisierung und Holzbau.",
     "zimZentralesInnovationsprogrammMittelsta": "ZIM – Zentrales Innovationsprogramm Mittelstand",
-    "förderungMarktnaherFueKooperationsprojek": "Förderung marktnaher FuE-Kooperationsprojekte zwischen mittelständischen Bauprodukt-Herstellern und Forschungsinstituten (Fördersätze und Höchstbeträge nach aktueller ZIM-Richtlinie – manuell prüfen).",
+    "förderungMarktnaherFueKooperationsprojek": "Förderung marktnaher FuE-Kooperationsprojekte zwischen mittelständischen Bauprodukt-Herstellern und Forschungsinstituten. Nach der ZIM-Richtlinie vom 11.12.2024 (gültig ab 2025) sind je Unternehmen bis 560 000 € und je Forschungseinrichtung bis 280 000 € zuwendungsfähig, je Kooperationsprojekt bis 3,0 Mio. €; der Fördersatz richtet sich nach der Unternehmensgröße.",
     "horizonEuropeBuilt4peoplePartnership": "Horizon Europe – Built4People Partnership",
     "multinationaleKonsortienZurDekarbonisier": "Multinationale Konsortien zur Dekarbonisierung des europäischen Gebäudebestands. Fokus auf Industrialisierung, Vorfertigung und CO₂-negative Materialien.",
     "deutscheBundesstiftungUmweltDbu": "Deutsche Bundesstiftung Umwelt (DBU)",
@@ -238,7 +238,7 @@
           "Investitionskosten für Druck- oder Begasungskammern",
           "Normative Anrechnung der negativen Emissionen in der Ökobilanz (EN 15804 Modul D/A1)"
         ],
-        "regulationPath": "Bereits industriell eingesetzt (z. B. neustark, CarbonCure); in Deutschland Nachweis über DIN EN 206 / DIN 1045-2 bzw. Einzelregelungen (manuell prüfen).",
+        "regulationPath": "Bereits industriell eingesetzt (z. B. neustark, CarbonCure); in Deutschland Nachweis über DIN EN 206 / DIN 1045-2; soweit das Verfahren davon abweicht, über eine allgemeine bauaufsichtliche Zulassung oder eine Zustimmung im Einzelfall.",
         "foerderung": "Klimaschutzverträge (BMWE), Innovation Fund (EU), Zukunft Bau"
       }
     ],

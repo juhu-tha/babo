@@ -559,7 +559,7 @@ export function nachbehandlungsdauer(entwicklung: Festigkeitsentwicklung, exposi
   }
   if (exposition === 'x0_xc1') return nurGueltig({ tage: DIN1045_3_NACHBEHANDLUNG.x0_xc1_tage, sondermassnahmen: false, hinweise });
   const tage = DIN1045_3_NACHBEHANDLUNG.mindestdauerTage[oberflaeche][entwicklung];
-  if (exposition === 'xf34') hinweise.push({ stufe: 'warnung', feld: 'exposition', text: 'Verdopplung für XF3/XF4 wie für XM nach der Wiedergabe der DIN 1045-3, Tab. 3 (vorläufig, Normtext prüfen).' });
+  if (exposition === 'xf34') hinweise.push({ stufe: 'warnung', feld: 'exposition', text: 'Verdopplung für XF3/XF4 wie für XM nach der Wiedergabe der DIN 1045-3, Tab. 3 (vorläufig, Normprüfung ausstehend).' });
   return nurGueltig({ tage: exposition === 'xm' || exposition === 'xf34' ? tage * 2 : tage, sondermassnahmen: false, hinweise });
 }
 

@@ -41100,15 +41100,15 @@
     "topic": "Genauigkeitsstufen",
     "difficulty": "Basis",
     "normRef": "Eckstein, Genauigkeitsstufen",
-    "question": "Für ein Baudenkmal sollen Wandneigungen und Balkendurchbiegungen geodätisch erfasst und im Maßstab 1:50 bzw. 1:25 dargestellt werden. Welche Genauigkeitsstufe des Aufmaßes ist dafür vorgesehen?",
+    "question": "Für ein Baudenkmal sollen Wandneigungen und Balkendurchbiegungen geodätisch erfasst und im Maßstab 1:50 dargestellt werden. Welche Genauigkeitsstufe des Aufmaßes ist dafür vorgesehen?",
     "options": [
-      "Stufe III – detaillierte Bauaufnahme mit ± 5 mm",
-      "Stufe II – Standardaufmaß mit Toleranz ± 1 bis 3 cm",
+      "Stufe III – detaillierte Bauaufnahme mit ± 2,5 cm",
+      "Stufe II – Standardaufmaß mit ± 2,5 cm (Hauptpunkte) bis ± 10 cm",
       "Stufe I – Grobaufmaß mit Toleranz ± 5 bis 10 cm",
-      "Stufe IV – Verformungsanalyse mit ± 1 bis 2 mm"
+      "Stufe IV – Verformungsanalyse mit ± 1 bis 2 cm im Maßstab 1:25 und größer"
     ],
     "correctIdx": 0,
-    "explanation": "Stufe III ist laut Modul zentral für Denkmalschutz: wesentliche Verformungen werden geodätisch oder fotogrammetrisch eingemessen, Maßstab 1:50/1:25, Toleranz etwa ± 5 mm.",
+    "explanation": "Stufe III ist laut Modul zentral für Denkmalschutz: wesentliche Verformungen werden geodätisch oder fotogrammetrisch eingemessen, Maßstab 1:50, Toleranz etwa ± 2,5 cm.",
     "bloom": "Verstehen",
     "niveau": "B",
     "distraktorFeedback": [
@@ -41120,18 +41120,16 @@
     "gapAnalysis": {
       "topic": "Genauigkeitsstufen",
       "misconception": "Die Genauigkeitsstufen werden nicht den typischen Aufgaben zugeordnet.",
-      "coreRule": "Stufe III (± 5 mm, 1:50/1:25) ist Standard für die verformungsgerechte Bauaufnahme im Denkmal.",
+      "coreRule": "Stufe III (± 2,5 cm, 1:50) ist Standard für die verformungsgerechte Bauaufnahme im Denkmal.",
       "actionableAdvice": "Arbeiten Sie den Abschnitt „Grundlagen & Genauigkeitsstufen“ im Modul Bauwerkserfassung noch einmal durch.",
       "targetModuleTab": "bauwerkserfassung",
       "targetModuleLabel": "Bauwerkserfassung"
     },
-    "reviewer": "Zweitprüfung 27.10.2026; freigegeben 27.10.2026",
-    "reviewedAt": "2026-10-27",
-    "verified": true,
+    "verified": false,
     "vorpruefung": {
-      "am": "2026-10-27",
+      "am": "2026-11-02",
       "ergebnis": "korrigiert",
-      "hinweis": "normRef ergänzt"
+      "hinweis": "Bearbeitungsvermerke 02.11.: Toleranzen und Maßstäbe der Genauigkeitsstufen II–IV im Modul an veröffentlichte Wiedergaben angeglichen (Stufe III ± 2,5 cm statt ± 5 mm, 1:50) – korrigiert"
     }
   },
   {

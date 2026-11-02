@@ -101,7 +101,7 @@
     "beispiel2GemesseneVorverformung": "Beispiel 2: Gemessene Vorverformung als Zusatzmoment",
     "dieGemesseneVerformungErhöht": "Mit der gemessenen Vorverformung ist das Ersatzstabverfahren nach DIN EN 1995-1-1, 6.3.2 nicht erfüllt (1,22 > 1). Ohne Knickbeiwert hätte der reine Querschnittsnachweis (6.19) mit 0,91 eine Reserve vorgetäuscht. Der interaktive Rechner zeigt beide Wege und zusätzlich Theorie II. Ordnung nach 5.4.4.",
     "dinEn199512": "DIN EN 1995-1-1:2010-12, 6.3.2, Gl. (6.21) und (6.23)",
-    "oktober2026Ap8": "Oktober 2026 (Holznachweise und Quellen geprüft; Genauigkeitsstufen nach Eckstein manuell abgleichen)",
+    "oktober2026Ap8": "Oktober 2026 (Holznachweise und Quellen geprüft); November 2026: Toleranzen und Maßstäbe der Genauigkeitsstufen II–IV an veröffentlichte Wiedergaben des Stufenschemas angeglichen",
     "eurocode5Holzbau": "Eurocode 5 (Holzbau)",
     "reiterBereiche": "Bereiche des Moduls Bauwerkserfassung"
   },
@@ -117,22 +117,22 @@
       {
         "level": 2,
         "name": "Stufe II (Standardaufmaß)",
-        "tol": "± 1 bis 3 cm",
-        "scale": "1:100",
+        "tol": "± 2,5 cm (Hauptpunkte) bis ± 10 cm",
+        "scale": "1:100 / 1:50",
         "desc": "Sichtbare Schrägen oder unregelmäßige Bauteile werden durch Kontrollmaße punktuell erfasst, ansonsten werden idealtypische rechte Winkel dargestellt."
       },
       {
         "level": 3,
         "name": "Stufe III (Detaillierte Bauaufnahme)",
-        "tol": "± 5 mm",
-        "scale": "1:50 / 1:25",
+        "tol": "± 2,5 cm",
+        "scale": "1:50",
         "desc": "Zentral für Denkmalschutz und historische Bausubstanz. Alle wesentlichen Bauteilverformungen (Wandneigungen, Balkendurchbiegungen) werden geodätisch/fotogrammetrisch eingemessen."
       },
       {
         "level": 4,
         "name": "Stufe IV (Umfassende Verformungsanalyse)",
-        "tol": "± 1 bis 2 mm",
-        "scale": "1:20 / 1:10",
+        "tol": "± 1 bis 2 cm (1:10: ± 0,5 cm)",
+        "scale": "1:25 / 1:20 bis 1:10",
         "desc": "Absolute Spitzenklasse. Dreidimensionale LiDAR-Registrierung jeder Krümmung, Beule und Senkung. Unverzichtbare metrologische Basis für die Simulation von Lastumlagerungen und Standsicherheitsnachweisen."
       }
     ],
@@ -241,7 +241,7 @@
     ],
     "Bauwerkserfassung.literatur": [
       "Neuhaus, H.: Ingenieurholzbau – Grundlagen, Bemessung, Nachweise, Beispiele. Wiesbaden: Springer Vieweg (aktuelle Auflage)",
-      "Eckstein, G.: Empfehlungen für Baudokumentationen. Bauaufnahme – Bauuntersuchung. Landesdenkmalamt Baden-Württemberg, Arbeitsheft 7."
+      "Eckstein, G.: Empfehlungen für Baudokumentationen. Bauaufnahme – Bauuntersuchung. Landesdenkmalamt Baden-Württemberg, Arbeitsheft 7, Stuttgart 1999."
     ],
     "Bauwerkserfassung.regelwerke": [
       {
@@ -251,8 +251,12 @@
         "title": "DIN EN 1995-1-1:2010-12 + A2:2014-07 mit NA (Eurocode 5)"
       },
       {
-        "title": "Eckstein, G.: Empfehlungen für Baudokumentationen – Genauigkeitsstufen I–IV (Landesdenkmalamt Baden-Württemberg; Toleranzangaben im Modul als Richtwerte, manuell abgleichen)",
+        "title": "Eckstein, G.: Empfehlungen für Baudokumentationen. Bauaufnahme – Bauuntersuchung. Landesdenkmalamt Baden-Württemberg, Arbeitsheft 7, Stuttgart 1999 (Genauigkeitsstufen I–IV; Toleranzen und Maßstäbe im Modul nach der Handreichung Dokumentation des Landesamts für Denkmalpflege Sachsen)",
         "url": "https://www.denkmalpflege-bw.de/"
+      },
+      {
+        "title": "Landesamt für Denkmalpflege Sachsen: Dokumentation – Handreichung (Genauigkeitsstufen I–IV mit Maßstab und Genauigkeit)",
+        "url": "https://lfd.sachsen.de/download/LfDSN_Dokumentation_Handreichung_Formular_250220.pdf"
       }
     ],
     "Bauwerkserfassung.formeln": [

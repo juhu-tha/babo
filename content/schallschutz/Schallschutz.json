@@ -121,7 +121,7 @@
       {
         "formel": "R_w \\approx 37{,}5 \\cdot \\log_{10}(m') - 42",
         "erklaerung": "Ältere empirische Näherung für einschalige Bauteile mit m' ≥ 150 kg/m² aus dem informativen Anhang der DIN EN 12354-1 (heute DIN EN ISO 12354-1); für Nachweise in Deutschland gilt DIN 4109-32.\nm': flächenbezogene Masse [kg/m²]",
-        "quelle": "DIN EN 12354-1, informativer Anhang (Zuordnung manuell prüfen)"
+        "quelle": "DIN EN 12354-1 (Ausgabe 2000), informativer Anhang (Zuordnung vorläufig, Normprüfung ausstehend)"
       },
       {
         "formel": "L'_{n,w} = L_{n,eq,0,w} - \\Delta L_w + K",

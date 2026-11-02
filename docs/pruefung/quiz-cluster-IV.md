@@ -346,9 +346,9 @@ Auffällig im Einzelnen (Mehrfachnennung möglich): 86 korrigiert, 0 fraglich, 1
 
 ### qn_bauwerkserfassung_1 · Bauwerkserfassung
 
-- **Frage:** Für ein Baudenkmal sollen Wandneigungen und Balkendurchbiegungen geodätisch erfasst und im Maßstab 1:50 bzw. 1:25 dargestellt werden. Welche Genauigkeitsstufe des Aufmaßes ist dafür vorgesehen?
-- **Richtige Antwort:** Stufe III – detaillierte Bauaufnahme mit ± 5 mm
-- **Auffälligkeit:** Vorprüfung „korrigiert“: normRef ergänzt · bereits freigegeben (verified)
+- **Frage:** Für ein Baudenkmal sollen Wandneigungen und Balkendurchbiegungen geodätisch erfasst und im Maßstab 1:50 dargestellt werden. Welche Genauigkeitsstufe des Aufmaßes ist dafür vorgesehen?
+- **Richtige Antwort:** Stufe III – detaillierte Bauaufnahme mit ± 2,5 cm
+- **Auffälligkeit:** Vorprüfung „korrigiert“: Bearbeitungsvermerke 02.11.: Toleranzen und Maßstäbe der Genauigkeitsstufen II–IV im Modul an veröffentlichte Wiedergaben angeglichen (Stufe III ± 2,5 cm statt ± 5 mm, 1:50) – korrigiert
 - [x] ok
 - [ ] ändern: …
 

@@ -144,7 +144,7 @@
     "formel085F": "Formel: ≥ 0,85 * (f_ck - 4)",
     "t2MittelwertFM": "2. Mittelwert f_m(n),is",
     "mittelwertAnforderungBasierendAuf": "Mittelwert-Anforderung basierend auf der Bohrkernanzahl.",
-    "hinweisAnzahlUndLage": "**Hinweis:** Anzahl und Lage der Bohrkerne legen Sie nach DIN EN 13791:2020-02 fest (Kriterien manuell prüfen).",
+    "hinweisAnzahlUndLage": "**Hinweis:** Anzahl und Lage der Bohrkerne legen Sie nach DIN EN 13791:2020-02 fest; die Kriterien sind hier nicht wiedergegeben (vorläufig, Normprüfung ausstehend).",
     "transportbetonwerkTbWerk": "Transportbetonwerk (TB-Werk)",
     "fCi3F": "f_ci,3 ≥ f_ck + 4 N/mm²",
     "konformitätsnachweisStandardBrMittelwert": "**Konformitätsnachweis standard:** <br>Mittelwert von 3 Probekörpern (3er-Mittel): <br>",

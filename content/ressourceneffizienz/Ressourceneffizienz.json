@@ -19,9 +19,9 @@
     "deponierungAbfallbeseitigung": "Deponierung (Abfallbeseitigung)",
     "hochwertigesRcMaterialHochbau": "Hochwertiges RC-Material (Hochbau)",
     "downcyclingSchütztZwarDeponieraum": "Downcycling schützt zwar Deponieraum, trägt aber wenig zur Baustoffautarkie bei.",
-    "politischesZielMehrRc": "Politisches Ziel: mehr RC-Beton im öffentlichen Hochbau (konkrete Zielwerte der bayerischen Strategie manuell prüfen).",
+    "politischesZielMehrRc": "Politisches Ziel: mehr RC-Beton im öffentlichen Hochbau.",
     "rStrategienDesProduktlebenszyklus": "R-Strategien des Produktlebenszyklus",
-    "bayerischesRessourceneffizienzZentrumBay": "Bayerisches Ressourceneffizienz-Zentrum Bayern (REZ)",
+    "bayerischesRessourceneffizienzZentrumBay": "Ressourceneffizienz-Zentrum Bayern (REZ)",
     "derZirkuläreProduktlebenszyklusInnovativ": "Der zirkuläre Produktlebenszyklus – Innovative R-Strategien",
     "dieSchonungDerRohstoffvorräte": "Die Schonung der Rohstoffvorräte wird durch intelligente Entwurfs- und Verwertungsstufen systematisiert. Das Spektrum reicht von der radikalen Vermeidung **(R0)** bis zur ungeliebten thermischen Entsorgung **(R9)**. Klicken Sie auf eines der Wertschöpfungsfelder in der bayerischen Heuristik-Matrix, um Praxisanwendungen im Hoch- und Tiefbau zu studieren:",
     "produkteEinsparenKlügerNutzen": "Produkte einsparen, klüger nutzen & Herstellen",
@@ -341,7 +341,7 @@
       }
     ],
     "Ressourceneffizienz.literatur": [
-      "Ressourceneffizienz-Zentrum Bayern (REZ) am LfU: Informationsangebote zum ressourceneffizienten Bauen (www.umweltpakt.bayern.de/rez; Titel manuell prüfen)",
+      "Ressourceneffizienz-Zentrum Bayern (REZ; früher am Bayerischen Landesamt für Umwelt, heute am Bayerischen Staatsministerium für Umwelt und Verbraucherschutz): Informationsangebote zum ressourceneffizienten Bauen (www.umweltpakt.bayern.de/rez)",
       "Neroth, G.; Vollenschaar, D. (Hrsg.): Wendehorst Baustoffkunde. 27. Aufl., Wiesbaden: Vieweg+Teubner 2011",
       "Sobek, W. (2022): non nobis – über das Bauen in der Zukunft (av edition)"
     ],

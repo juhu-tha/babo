@@ -561,7 +561,7 @@ export const CENTRAL_NORMEN_REGISTRY: Record<string, NormRecord> = {
     category: 'nachhaltigkeit',
     ausgabeStand: '2026-09',
     status: 'gueltig',
-    beschreibung: 'Methodik zur Bewertung der Umweltqualität von Gebäuden über alle Lebenszyklusphasen (A1–C4, Modul D getrennt); der Betrachtungszeitraum wird vom Bewertungssystem festgelegt (QNG/BNB/DGNB: 50 Jahre). Übergangsregeln in den Bewertungssystemen manuell prüfen.',
+    beschreibung: 'Methodik zur Bewertung der Umweltqualität von Gebäuden über alle Lebenszyklusphasen (A1–C4, Modul D getrennt); der Betrachtungszeitraum wird vom Bewertungssystem festgelegt (QNG/BNB/DGNB: 50 Jahre). Welche Ausgabe gilt, legt das jeweilige Bewertungssystem in seinem Regelwerk fest.',
     relevanteModule: ['nachhaltigkeit', 'lca', 'interactive_lca']
   },
   'DIN_EN_17472': {
