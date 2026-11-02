@@ -4,7 +4,7 @@
 // (Zahl, deren Herkunft eine Eigenschaft eines Kern-Ergebnisses aus src/calc/ oder den Kernen in src/utils/ ist),
 // die NICHT über einen NaN-festen Formatierer läuft:
 //   T  Template-String  `${erg.x} mm` bzw. KaTeX-Formel mit eingesetztem Wert
-//   F  .toFixed / .toPrecision / .toString / String(…) / .toLocaleString
+//   F  .toFixed / .toPrecision / .toExponential / .toString / String(…) / .toLocaleString
 //   J  rohe Zahl als JSX-Kind {erg.x}
 //   P  Zahl + Text  (erg.x + ' mm')
 //   V  Vergleich mit Kernwert als Bedingung einer Textauswahl (x > grenz ? 'ok' : …) – NaN führt immer in den
@@ -159,7 +159,7 @@ export function scanne(repo = REPO, dateien = anzeigeDateien(repo)) {
       if (ts.isTemplateSpan(n) && istZahl(n.expression) && kernwert(n.expression) && !geschuetzt(n.expression) && !imStil(n.expression)) meld(sf, n.expression, 'T', n.parent.getText());
       // F: toFixed & Co.
       const nurRundung = (k) => ts.isCallExpression(k.parent) && /^(Number|parseFloat)$/.test(k.parent.expression.getText());
-      if (ts.isCallExpression(n) && ts.isPropertyAccessExpression(n.expression) && /^(toFixed|toPrecision|toString|toLocaleString)$/.test(n.expression.name.text) && istZahl(n.expression.expression) && kernwert(n.expression.expression) && !imStil(n) && !nurRundung(n)) meld(sf, n, 'F', n.getText());
+      if (ts.isCallExpression(n) && ts.isPropertyAccessExpression(n.expression) && /^(toFixed|toPrecision|toExponential|toString|toLocaleString)$/.test(n.expression.name.text) && istZahl(n.expression.expression) && kernwert(n.expression.expression) && !imStil(n) && !nurRundung(n) && !geschuetzt(n)) meld(sf, n, 'F', n.getText());
       if (ts.isCallExpression(n) && ts.isIdentifier(n.expression) && n.expression.text === 'String' && n.arguments[0] && istZahl(n.arguments[0]) && kernwert(n.arguments[0]) && !imStil(n)) meld(sf, n, 'F', n.getText());
       // J: rohe Zahl als JSX-Kind
       if (ts.isJsxExpression(n) && n.expression && (ts.isJsxElement(n.parent) || ts.isJsxFragment(n.parent)) && istZahl(n.expression) && kernwert(n.expression)) meld(sf, n, 'J', n.getText());

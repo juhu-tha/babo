@@ -181,7 +181,7 @@ export default function StahlWerkstoffkunde({ activeTab, alloyC, alloyCr, alloyM
                 <div className={`p-4 rounded-xl shadow-md ${nR === Infinity || nR > 1e8 ? 'bg-off-white border border-home-grau/30 text-text-main' : 'bg-shiraz text-white'} transition-colors mt-2`}>
                   <div className="text-sm opacity-90 mb-1"><MdText text={inhalt.texte.ertragbareLastwechsel} /><FormulaText text="N_R" /></div>
                   <div className="text-2xl font-bold">
-                    {nR === Infinity ? inhalt.werte.dauerfest : nR > 1e8 ? inhalt.werte.t100MioDauerfest : nR.toExponential(2)}
+                    {nR === Infinity ? inhalt.werte.dauerfest : !Number.isFinite(nR) ? '–' : nR > 1e8 ? inhalt.werte.t100MioDauerfest : nR.toExponential(2)}
                   </div>
                 </div>
               </div>

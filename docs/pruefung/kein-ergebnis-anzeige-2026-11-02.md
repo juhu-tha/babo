@@ -16,7 +16,7 @@
 
 | Werkzeug | Zweck |
 |---|---|
-| `scripts/qa/kein-ergebnis-anzeige.mjs` | statische Prüfung mit dem TypeScript-Compiler: Kernwert (Herkunft aus `src/calc/` bzw. den Kernen in `src/utils/`, auch über lokale Variablen und Destrukturierung) in Template-String/KaTeX (T), `toFixed`/`String` (F), roher Zahl in JSX (J), Zahl + Text (P) ohne `formatDe*` oder NaN-geprüften Helfer; Vergleich als Bedingung, dessen NaN-Zweig grün/„ok“/✓ zeigt (V). `ALLE_VERGLEICHE=1` listet zusätzlich alle übrigen Vergleiche. |
+| `scripts/qa/kein-ergebnis-anzeige.mjs` | statische Prüfung mit dem TypeScript-Compiler: Kernwert (Herkunft aus `src/calc/` bzw. den Kernen in `src/utils/`, auch über lokale Variablen und Destrukturierung) in Template-String/KaTeX (T), `toFixed`/`toExponential`/`String` (F), roher Zahl in JSX (J), Zahl + Text (P) ohne `formatDe*` oder NaN-geprüften Helfer; Vergleich als Bedingung, dessen NaN-Zweig grün/„ok“/✓ zeigt (V). `ALLE_VERGLEICHE=1` listet zusätzlich alle übrigen Vergleiche. |
 | `scripts/qa/rechner-routen.mjs` | Routenliste: Registry-Typ `calculator` plus jedes Modul, dessen Komponente (transitiv, auch lazy) einen Kern einbindet. |
 | `scripts/qa/kein-ergebnis-browser.mjs` | Playwright: je Route und Reiter (eine Ebene verschachtelt) die ersten 6 Zahlenfelder mit 0, leer, −1 und die ersten 8 Regler mit min und max bedienen; Befund bei „NaN“/„Infinity“/„undefined“, bei einem Erfolgstext (✓, „OK“, „erfüllt“, „eingehalten“ …), der neben einem Fehlerhinweis neu erscheint, und bei Konsolenfehlern. `--json` schreibt die Tabelle. |
 | `tests/keinErgebnisAnzeige.test.ts` | Regressionstest (in `npm test`): A statische Prüfung ohne Befund außer den Ausnahmen; B 31 Klassifizierer mit NaN/±∞ → „–“ (gültige Zahl → echte Klasse), 3 Zahlenklassen → NaN; C alle 1377 ungültigen Kernfälle der Fixture aus #305 (NaN, −1, 0 je Zahlenfeld) ohne Textfeld mit einer echten Klasse, außer 7 Eingabe-Echos. |
@@ -101,6 +101,7 @@ Bewusst unverändert (Eingabe-Echos, im Test als Ausnahme geführt): Rastermaß 
 | `Schnellkarbonatisierung.tsx`, `PfasBaustoffe.tsx` | Anzahl im Rechenweg | `${n}` | `formatDeGanzzahl` |
 | `Spaltzugversuch.tsx`, `labExportUtils.ts` | CSV-Export | „NaN“ in der Zelle | leeres Feld |
 | `BimBaustoffe.tsx` | IFC-Auszug | `IFCMASSDENSITYMEASURE(NaN)` | `$` |
+| `Spannbeton.tsx`, `StahlWerkstoffkunde.tsx`, `Elastomechanik.tsx` | `toExponential` (I_c, N_R, ε) | „NaN“ | „–“ |
 
 Ausnahmen (im Test mit Begründung): Achsenbeschriftung der festen Bitumen-Reihe (Asphalt), Diagramm-Datenreihe f_req (Hydratation; NaN = Lücke), Jahreszahl der CBAM-Reihe, Formelindex der Leiteinwirkung (Sicherheitskonzept), Steinfestigkeitsklasse aus der Tabelle (Rechnung Mauerwerk), fester PFAS-Grenzwert, Hervorhebung der Schnellwahl-Schaltfläche (Spannbeton-Animation).
 
@@ -112,6 +113,10 @@ Nicht als Befund gewertet: Vergleiche, deren NaN-Zweig neutral oder rot ist (z. 
 |---|---|---|---|
 | `messen_pruefen` › Ringversuche | Erweiterungsfaktor k = −1 | Konsolenfehler `<circle> cx: "NaN"` (Youden-Plot) | Punkt „Ihr Labor“ nur bei gültigem Ergebnis; Statuskarten z-Score/E_n bei „–“ neutral (vorher rot „nicht akzeptabel“) |
 | `schnellkarbonatisierung` › Rechner | Lagerungsdauer leer | Konsolenfehler `<line>/<circle>: "NaN"` (beide Diagramme) | Achsen nur aus endlichen Eingaben, Messpunkte und Linien mit NaN entfallen |
-| `spannbeton_kennwerte` › Querschnitts-Rechner (Übersicht, Rechengang) | Querschnittshöhe h = 300 mm (Reglerminimum, |e_p| ≥ h/2) | Fehlerhinweis und zugleich **„1054 MPa ✓ OK“** und weitere Nachweise | Rechnung im Modul (nicht im Kern): bei Fehlerhinweis kein Zahlenergebnis (`ohneZahlen`), Randspannungs-Karten, Status-Badges und Nachweistabelle durch „–“ ersetzt |
+| `spannbeton_kennwerte` › Querschnitts-Rechner (Übersicht, Rechengang) | Querschnittshöhe h = 300 mm (Reglerminimum, |e_p| ≥ h/2) | Fehlerhinweis und zugleich **„1054 MPa ✓ OK“** und weitere Nachweise | Rechnung im Modul (nicht im Kern): bei Fehlerhinweis kein Zahlenergebnis (`ohneZahlen`), Randspannungs-Karten, Status-Badges und Nachweistabelle durch „–“ ersetzt; im Rechengang I_c über `toExponential` → „NaN“ (Nachlauf), jetzt „–“ |
 
 Die beiden ersten Befunde stammen aus dem ersten Lauf (nur Zahlenfelder), der dritte aus dem zweiten Lauf (mit Reglern). Nachlauf auf dem Endstand: siehe Abschnitt 4.
+
+## 5. Nebenbefund aus main
+
+Mit Nachstichprobe 5c (#307) kam `pfas.istKurzkettig` hinzu; der Grenzfalltest aus #305 (R7 Vollständigkeit) meldete die Funktion ohne Basis. Eingetragen als begründete Ausnahme (Prädikat über die Stoffdaten der PFAS-20-Liste, keine Nutzereingabe).

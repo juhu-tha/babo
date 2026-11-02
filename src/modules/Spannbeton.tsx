@@ -1187,7 +1187,7 @@ export default function Spannbeton({ bereiche }: { bereiche: readonly Spannbeton
                     </div>
                     <div className="text-[10.5px] border-t border-dashed border-slate-200 pt-1.5">
                       <div>Nenner-Struktur: <span className="text-amber-800"><MdText text={inhalt.texte.t1PAP} /></span></div>
-                      <div className="pl-4">= 1 + {formatDeZahl(materialResults.alphaP_lt, 2)} · ({formatDeZahl(materialResults.ap, 0)} / {formatDeWert(materialResults.ac)}) · [1 + ({formatDeWert(materialResults.ac)} · {formatDeWert(Math.pow(ep, 2))}) / {materialResults.ic.toExponential(2)}] · (1 + 0,8 · {formatDeZahl(materialResults.phi, 2)})</div>
+                      <div className="pl-4">= 1 + {formatDeZahl(materialResults.alphaP_lt, 2)} · ({formatDeZahl(materialResults.ap, 0)} / {formatDeWert(materialResults.ac)}) · [1 + ({formatDeWert(materialResults.ac)} · {formatDeWert(Math.pow(ep, 2))}) / {Number.isFinite(materialResults.ic) ? materialResults.ic.toExponential(2) : '–'}] · (1 + 0,8 · {formatDeZahl(materialResults.phi, 2)})</div>
                       <div className="pl-4 font-bold text-amber-850">= {formatDeZahl(materialResults.denominator, 4)}</div>
                     </div>
                     <div className="border-t border-slate-200 pt-2 text-xs">
