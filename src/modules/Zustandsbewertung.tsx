@@ -851,7 +851,7 @@ export default function Zustandsbewertung() {
                         {/* The indicator bar */}
                         <div
                           className="absolute top-0 bottom-0 w-2 bg-text-main border-2 border-white rounded-full transition-all duration-300 -translate-x-1/2"
-                          style={{ left: `${((interpolatedSchulnote - 1) / 5) * 100}%` }}
+                          style={{ left: `${interpolatedSchulnote === '–' ? 0 : ((interpolatedSchulnote - 1) / 5) * 100}%` }}
                         />
                       </div>
                     </div>

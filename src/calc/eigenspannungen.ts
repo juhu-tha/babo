@@ -12,7 +12,7 @@
  * Einheiten: Temperaturen in °C, d in m, E und Spannungen in N/mm² (Zug positiv), ε_cs in ‰.
  * Reiner Rechenkern – geprüft in tests/tranche16.test.ts.
  */
-import { type Hinweis, istEndlich, istAnzahl, hatFehler, muss, nurGueltig, MAX_STUETZSTELLEN } from './plausibilitaet';
+import { type Hinweis, istEndlich, istAnzahl, hatFehler, muss, nurGueltig, MAX_STUETZSTELLEN, KEINE_KLASSE, type KeineKlasse } from './plausibilitaet';
 import { ALPHA_T_BETON } from './zwang';
 
 /** spannungsfreie Bezugstemperatur der Zwangsanteile σ_N, σ_M (Herstelltemperatur, Lehrannahme) */
@@ -45,7 +45,7 @@ export interface EigenspannungErgebnis {
   /** größte Zugeigenspannung (≥ 0) und kleinste (Druck, ≤ 0) in N/mm² */
   maxZug: number; maxDruck: number;
   /** Lage der größten Zugeigenspannung: an einem Rand oder im Kern */
-  zugLage: 'rand' | 'kern' | 'keine';
+  zugLage: 'rand' | 'kern' | 'keine' | KeineKlasse;
   gueltig: boolean;
   hinweise: Hinweis[];
 }
@@ -60,7 +60,7 @@ export function eigenspannungsVerlauf(e: EigenspannungEingabe): EigenspannungErg
   muss(hinweise, n >= 2, 'punkte', 'Mindestens zwei Abschnitte über die Dicke.');
   // Grenzfallprüfung 02.11.2026: Abbruch vor der Schleife (vorher lief sie trotz Fehler; bei punkte = ∞ Endlosschleife)
   muss(hinweise, istAnzahl(n, 2), 'punkte', `Die Anzahl der Abschnitte muss eine ganze Zahl von 2 bis ${MAX_STUETZSTELLEN} sein.`);
-  if (hatFehler(hinweise)) return nurGueltig({ tMittel: NaN, deltaTPar: NaN, punkte: [], maxZug: NaN, maxDruck: NaN, zugLage: 'keine', gueltig: false, hinweise });
+  if (hatFehler(hinweise)) return nurGueltig({ tMittel: NaN, deltaTPar: NaN, punkte: [], maxZug: NaN, maxDruck: NaN, zugLage: KEINE_KLASSE, gueltig: false, hinweise });
 
   const d = dicke;
   const c = tMitte;
@@ -88,8 +88,8 @@ export function eigenspannungsVerlauf(e: EigenspannungEingabe): EigenspannungErg
     if (sigmaV < maxDruck) maxDruck = sigmaV;
   }
   // Rand: äußeres Viertel der halben Dicke; die Parabel hat ihre Extremwerte am Rand oder in der Mitte
-  const zugLage = maxZug <= 0 ? 'keine' : Math.abs(xMaxZug) >= 0.5 ? 'rand' : 'kern';
+  const zugLage: 'rand' | 'kern' | 'keine' | KeineKlasse = maxZug <= 0 ? 'keine' : Math.abs(xMaxZug) >= 0.5 ? 'rand' : 'kern';
   if (zugLage === 'kern') hinweise.push({ stufe: 'warnung', feld: 'tMitte', text: 'Der Kern ist kühler als die Ränder (Abkühlphase): Die Zugeigenspannungen liegen im Kern, nicht an der Oberfläche.' });
 
-  return nurGueltig({ tMittel, deltaTPar: tMitte - (tInnen + tAussen) / 2, punkte, maxZug, maxDruck, zugLage, gueltig: !hatFehler(hinweise), hinweise });
+  return nurGueltig({ tMittel, deltaTPar: tMitte - (tInnen + tAussen) / 2, punkte, maxZug, maxDruck, zugLage, gueltig: !hatFehler(hinweise), hinweise }, ['zugLage']);
 }

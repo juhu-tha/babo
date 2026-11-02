@@ -37,7 +37,7 @@
  */
 import { EC2_NA_DE } from '../data/normParams';
 import { BETONSTAHL, E_BETONSTAHL, E_BAUSTAHL, dehnungsKennwerte, fcdBeton } from '../data/kennwerte';
-import { type Hinweis, istEndlich, istAnzahl, hatFehler, muss, bereich, nurGueltig, MAX_STUETZSTELLEN } from './plausibilitaet';
+import { type Hinweis, istEndlich, istAnzahl, hatFehler, muss, bereich, nurGueltig, MAX_STUETZSTELLEN, KEINE_KLASSE, type KeineKlasse } from './plausibilitaet';
 import { formatDeZahl } from '../utils/numberFormat';
 import { maxwellRelaxation } from './kriechenSchwinden';
 
@@ -122,7 +122,7 @@ export interface WoehlerErgebnis {
   nR: number;
   /** Stützstellen N = 10⁴, 10⁵, 2·10⁶, 5·10⁶, 10⁷, 10⁸ */
   kurve: { N: number; deltaSigma: number }[];
-  bereich: 'zeitfest' | 'zwischen' | 'dauerfest' | 'ohne';
+  bereich: 'zeitfest' | 'zwischen' | 'dauerfest' | 'ohne' | KeineKlasse;
   gueltig: boolean; hinweise: Hinweis[];
 }
 
@@ -143,7 +143,7 @@ export function woehlerEc3(e: WoehlerEingabe): WoehlerErgebnis {
     muss(hinweise, e.m > 0, 'm', 'Die Neigung m muss größer als 0 sein.');
     muss(hinweise, e.deltaSigma >= 0, 'deltaSigma', 'Die Spannungsschwingbreite Δσ ist ein Betrag (≥ 0).');
   }
-  if (hatFehler(hinweise)) return nurGueltig({ deltaSigmaD: 0, deltaSigmaL: 0, nR: 0, kurve: [], bereich: 'ohne', gueltig: false, hinweise });
+  if (hatFehler(hinweise)) return nurGueltig({ deltaSigmaD: 0, deltaSigmaL: 0, nR: 0, kurve: [], bereich: KEINE_KLASSE, gueltig: false, hinweise });
   const deltaSigmaD = e.deltaSigmaC * Math.pow(N_C / N_D, 1 / e.m);
   const deltaSigmaL = deltaSigmaD * Math.pow(N_D / N_L, 1 / 5);
   let nR = 0;
@@ -155,7 +155,7 @@ export function woehlerEc3(e: WoehlerEingabe): WoehlerErgebnis {
   }
   const kurve = [1e4, 1e5, 2e6, 5e6, 1e7, 1e8].map(N => ({ N, deltaSigma: woehlerSpannung(N, e.deltaSigmaC, e.m) }));
   if (e.m !== 3) hinweise.push({ stufe: 'warnung', feld: 'm', text: `Mit m = ${formatDeZahl(e.m, 0)} verschiebt sich auch Δσ_D = Δσ_C·(2/5)^(1/m); DIN EN 1993-1-9 bildet Normalspannungen mit m = 3 und m = 5 ab.` });
-  return nurGueltig({ deltaSigmaD, deltaSigmaL, nR, kurve, bereich: ber, gueltig: true, hinweise });
+  return nurGueltig({ deltaSigmaD, deltaSigmaL, nR, kurve, bereich: ber, gueltig: true, hinweise }, ['bereich']);
 }
 
 // =============================================================================================
@@ -269,7 +269,8 @@ export function stahlSpannungBeiDehnung(s: StahlKennlinie, eps: number): number 
 
 export type Verformungsphase = 'ruhe' | 'bruch' | 'elastisch' | 'fliessplateau' | 'fliessuebergang' | 'verfestigung' | 'einschnuerung';
 
-export function stahlVerformungsphase(s: StahlKennlinie, eps: number): Verformungsphase {
+export function stahlVerformungsphase(s: StahlKennlinie, eps: number): Verformungsphase | KeineKlasse {
+  if (!Number.isFinite(eps)) return KEINE_KLASSE; // F-1 (02.11.2026): keine Zahl → keine Klasse
   if (eps <= 0) return 'ruhe';
   if (eps > s.A) return 'bruch';
   if (s.yieldType === 'ausgeprägt') {
@@ -319,7 +320,8 @@ export type Gefuegeklasse = 'unlegiert' | 'austenitisch' | 'austenitisch_mo' | '
 export const pren = (cr: number, mo: number) => cr + 3.3 * mo;
 
 /** Grobe Gefügeeinordnung nach Cr-, Ni-, Mo- und C-Gehalt in Massen-% (Reihenfolge der Abfragen wie im Modul) */
-export function gefuegeklasse(cr: number, ni: number, mo: number, c: number): Gefuegeklasse {
+export function gefuegeklasse(cr: number, ni: number, mo: number, c: number): Gefuegeklasse | KeineKlasse {
+  if (!istEndlich(cr, ni, mo, c)) return KEINE_KLASSE; // F-1 (02.11.2026): keine Zahl → keine Klasse
   if (cr < 10.5) return 'unlegiert';
   if (ni >= 8) return mo >= 2 ? 'austenitisch_mo' : 'austenitisch';
   if (ni > 1 && cr >= 18) return 'duplex';

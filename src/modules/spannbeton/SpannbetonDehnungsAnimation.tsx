@@ -53,6 +53,7 @@ export default function SpannbetonDehnungsAnimation() {
       full: { phaseTitle: inhalt.werte.vollÜberdrücktZustandI, phaseColor: 'text-emerald-800 bg-emerald-50 border-emerald-200', phaseBadge: 'bg-emerald-600 text-white' },
       limited: { phaseTitle: inhalt.werte.zustandIMitZugspannungen, phaseColor: 'text-amber-800 bg-amber-50 border-amber-200', phaseBadge: 'bg-amber-500 text-white' },
       cracked: { phaseTitle: inhalt.werte.rissbildungZustandIiMax, phaseColor: 'text-red-700 bg-red-50 border-red-200', phaseBadge: 'bg-red-600 text-white' },
+      '–': { phaseTitle: '–', phaseColor: 'text-slate-700 bg-off-white border-home-grau/30', phaseBadge: 'bg-slate-500 text-white' }, // F-1
     }[z.zustand];
     return { ...z, phaseKey: z.zustand, ...darstellung };
   }, [prestressForce, loadQ, eccentricity, tendonTrajectory, viewSection]);

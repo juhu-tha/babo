@@ -14,6 +14,14 @@ export interface Hinweis {
 
 export const istEndlich = (...werte: number[]) => werte.every(Number.isFinite);
 
+/**
+ * „Keine Klasse“: Klassifizierer (Zahl → Klasse, Stufe, Note) liefern diesen Wert für nicht endliche Eingaben
+ * statt einer echten Klasse (Entscheidung F-1 vom 02.11.2026, docs/pruefung/kein-ergebnis-anzeige-2026-11-02.md).
+ * Vorher fiel NaN bei Vergleichsketten immer in den letzten Zweig (z. B. Potential → „gering“, q_E → „H“).
+ */
+export const KEINE_KLASSE = '–' as const;
+export type KeineKlasse = typeof KEINE_KLASSE;
+
 /** Technische Obergrenze für Stützstellen, Zeitschritte und Jahresreihen (Schutz vor Endlosschleifen, kein Fachwert). */
 export const MAX_STUETZSTELLEN = 10_000;
 /** Ganze Zahl zwischen min und max (Standard: 0 … MAX_STUETZSTELLEN) – für Anzahl-Parameter von Verläufen. */
@@ -65,9 +73,16 @@ export function mitPruefung<T extends object>(werte: T, hinweise: Hinweis[]): T 
   return { ...(gueltig ? werte : ohneZahlen(werte)), gueltig, hinweise };
 }
 
-/** Wie ohneZahlen, wenn das Ergebnis ungültig ist (gueltig === false oder ein Fehlerhinweis in „hinweise“); sonst unverändert. */
-export function nurGueltig<T extends object>(e: T): T {
+/**
+ * Wie ohneZahlen, wenn das Ergebnis ungültig ist (gueltig === false oder ein Fehlerhinweis in „hinweise“); sonst unverändert.
+ * `klassen`: Textfelder mit einer aus den Eingaben abgeleiteten Klasse, Stufe oder Bewertung – bei ungültigem Ergebnis
+ * „–“ statt einer echten Klasse (Entscheidung F-1 vom 02.11.2026; der Feldtyp im Ergebnis-Interface muss „–“ zulassen).
+ */
+export function nurGueltig<T extends object>(e: T, klassen: readonly NoInfer<keyof T>[] = []): T {
   const r = e as { gueltig?: unknown; hinweise?: unknown };
   const ungueltig = r.gueltig === false || (Array.isArray(r.hinweise) && hatFehler(r.hinweise as Hinweis[]));
-  return ungueltig ? ohneZahlen(e) : e;
+  if (!ungueltig) return e;
+  const aus = ohneZahlen(e) as Record<PropertyKey, unknown>;
+  for (const k of klassen) aus[k as PropertyKey] = KEINE_KLASSE;
+  return aus as T;
 }

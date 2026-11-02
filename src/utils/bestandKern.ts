@@ -6,6 +6,7 @@
 // GModG Anlage 9) übernommen statt dupliziert (Entscheidung 29.10.2026).
 
 import { FAKTOREN } from '../calc/energieausweis';
+import { KEINE_KLASSE } from '../calc/plausibilitaet';
 
 // ---------- 1) GModG Anlage 7 (Wohngebäude), Stand 29.07.2026 ----------
 export const GMODG_ANLAGE7 = {
@@ -107,6 +108,7 @@ export const fckFromInSitu = (fckIs: number) => fckIs / 0.85;
 export const C_CLASSES = [[8, 10], [12, 15], [16, 20], [20, 25], [25, 30], [30, 37], [35, 45], [40, 50], [45, 55], [50, 60]] as const;
 /** Höchste Klasse, deren f_ck ≤ gegebenem Wert (konservative Einstufung). */
 export function classFor(fck: number) {
+  if (!Number.isFinite(fck)) return KEINE_KLASSE; // F-1 (02.11.2026): keine Zahl → keine Klasse
   let c: readonly [number, number] | null = null;
   for (const k of C_CLASSES) if (k[0] <= fck + 1e-9) c = k;
   return c ? `C${c[0]}/${c[1]}` : '< C8/10';

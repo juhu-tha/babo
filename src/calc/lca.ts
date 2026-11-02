@@ -14,7 +14,7 @@
  * Einheiten: Massen t, Mengen je Baustoffeinheit (m³ oder t), GWP in kg CO₂-Äq., Energie in kWh.
  * Reiner Rechenkern – geprüft in tests/lca.test.ts (Regressionstest gegen einen öffentlichen QNG-Beispielbericht).
  */
-import { type Hinweis, bereich, hatFehler, istEndlich, muss, nurGueltig } from './plausibilitaet';
+import { type Hinweis, bereich, hatFehler, istEndlich, muss, nurGueltig, KEINE_KLASSE, type KeineKlasse } from './plausibilitaet';
 
 export type Verwertung = 'high_grade' | 'downcycling' | 'reuse' | 'thermal';
 export type Gebaeudeart = 'wohnbau' | 'nichtwohnbau';
@@ -233,7 +233,7 @@ export interface LcaZeilenErgebnis {
   rueckgewonnen: number;
 }
 
-export type LcaAussage = 'premium' | 'plus' | 'ueberschritten' | 'neutral';
+export type LcaAussage = 'premium' | 'plus' | 'ueberschritten' | 'neutral' | KeineKlasse;
 
 export interface LcaErgebnis {
   gueltig: boolean;
@@ -303,7 +303,7 @@ export function lcaBilanz(e: LcaEingabe): LcaErgebnis {
   const leer: LcaErgebnis = {
     gueltig: false, hinweise, zeilen: [], masse: NaN, a1a3: NaN, a4: NaN, b4: NaN, c3c4: NaN, sockelTga: NaN, b6_1: NaN, b6_3: NaN, b6: NaN, d: NaN, dSockel: NaN,
     biogenGespeichert: NaN, penrtMJ: NaN, spez: SPEZ_NULL, strom: NaN, nutzerstromKWh: NaN, penrtKwhJeM2a: NaN, rueckgewonnen: NaN, kreislaufquoteGebaeude: NaN, umi: NaN,
-    enthaeltB4: e.mitB4, enthaeltB6: e.energie !== null, vollstaendig: false, aussage: 'neutral', vorlaeufig,
+    enthaeltB4: e.mitB4, enthaeltB6: e.energie !== null, vollstaendig: false, aussage: KEINE_KLASSE, vorlaeufig,
   };
   if (hatFehler(hinweise)) return nurGueltig(leer);
 
@@ -380,7 +380,7 @@ export function lcaBilanz(e: LcaEingabe): LcaErgebnis {
     penrtKwhJeM2a: penrt / flaecheJahre / 3.6,
     rueckgewonnen: rueck, kreislaufquoteGebaeude: masse > 0 ? (rueck / masse) * 100 : 0, umi: masse > 0 ? Math.round(umiSumme / masse) : 0,
     enthaeltB4, enthaeltB6, vollstaendig, aussage, vorlaeufig,
-  });
+  }, ['aussage']);
 }
 
 /**

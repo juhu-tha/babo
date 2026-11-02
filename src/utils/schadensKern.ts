@@ -72,7 +72,8 @@ export function kn13791(n: number) {
   }
   return 1.64;
 }
-export const margin13791 = (fLowest: number) => (fLowest >= 20 ? 4 : fLowest >= 16 ? 3 : fLowest >= 12 ? 2 : 1);
+/** Zuschlag M auf den Kleinstwert (DIN EN 13791); keine Zahl → NaN (F-1) */
+export const margin13791 = (fLowest: number) => (!Number.isFinite(fLowest) ? NaN : fLowest >= 20 ? 4 : fLowest >= 16 ? 3 : fLowest >= 12 ? 2 : 1);
 export function fckIs13791(values: number[]) {
   const n = values.length, m = values.reduce((a, b) => a + b, 0) / n;
   const s = Math.sqrt(values.reduce((a, b) => a + (b - m) ** 2, 0) / (n - 1));

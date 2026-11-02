@@ -362,7 +362,12 @@ export default function Asphalt() {
           let ratingColor = "bg-green-50 text-green-800 border-green-200";
           let ratingBadge = inhalt.werte.optimalVerarbeitbar;
           let ratingText = inhalt.werte.viskositätImIdealenBereich;
-          if (nta.bewertung === 'blockiert') {
+          if (nta.bewertung === '–') {
+            // F-1: ungültige Eingabe → keine Bewertung
+            ratingColor = "bg-off-white text-text-main border-home-grau/30";
+            ratingBadge = '–';
+            ratingText = '';
+          } else if (nta.bewertung === 'blockiert') {
             ratingColor = "bg-red-50 text-red-800 border-red-200";
             ratingBadge = inhalt.werte.ungenügendKritischerGrenzstopp;
             ratingText = inhalt.werte.bindemittelIstVielZu;
@@ -566,7 +571,7 @@ export default function Asphalt() {
                     {/* Feasibility Alert Box */}
                     <div className={`p-3 rounded-lg border text-xs leading-relaxed flex gap-2 items-start transition-colors duration-300 ${ratingColor}`}>
                       <div className="mt-0.5">
-                        {nta.bewertung === 'blockiert' ? (
+                        {nta.bewertung === '–' ? null : nta.bewertung === 'blockiert' ? (
                           <ShieldAlert size={14} className="text-red-700 animate-pulse" />
                         ) : nta.bewertung === 'erschwert' ? (
                           <AlertTriangle size={14} className="text-amber-700" />

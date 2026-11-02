@@ -69,7 +69,7 @@ export default function Energieausweis() {
     return {
       ...r,
       h_t_prime: formatDeZahl(r.h_t_prime, 2),
-      klasseColor: KLASSEN_FARBE[r.klasse] ?? 'bg-red-800 text-white',
+      klasseColor: r.klasse === '–' ? 'bg-slate-100 text-slate-700' : KLASSEN_FARBE[r.klasse] ?? 'bg-red-800 text-white',
     };
   }, [simBuildingType, simArea, simHuelleStandard, simVentilation, simHeizung, simRechtsstand]);
 
@@ -699,11 +699,11 @@ export default function Energieausweis() {
                   <div className="space-y-2 text-xs border-t border-home-grau/20 pt-3">
                     <div className="flex justify-between py-1 border-b border-slate-100">
                       <span className="text-slate-600"><MdText text={inhalt.texte.transmissionsverlustQT2} /></span>
-                      <strong className="font-mono">{simResults.q_t_jahr} kWh/(m²a)</strong>
+                      <strong className="font-mono">{formatDeWert(simResults.q_t_jahr)} kWh/(m²a)</strong>
                     </div>
                     <div className="flex justify-between py-1 border-b border-slate-100">
                       <span className="text-slate-600"><MdText text={inhalt.texte.lüftungsverlustQV2} /></span>
-                      <strong className="font-mono">{simResults.q_v_jahr} kWh/(m²a)</strong>
+                      <strong className="font-mono">{formatDeWert(simResults.q_v_jahr)} kWh/(m²a)</strong>
                     </div>
                     <div className="flex justify-between py-1 border-b border-slate-100 text-emerald-700">
                       <span><MdText text={inhalt.texte.solarInterneGewinneEta} /></span>
@@ -720,7 +720,9 @@ export default function Energieausweis() {
                   </div>
 
                   {/* Didaktischer Kommentar */}
-                  <div className="p-3 bg-off-white rounded-xl border border-home-grau/30 text-xxs text-text-main/80 space-y-1"><MdText text={inhalt.texte.ingenieurmäßigeEinordnung} />{simResults.klasse === 'A+' || simResults.klasse === 'A' ? (
+                  <div className="p-3 bg-off-white rounded-xl border border-home-grau/30 text-xxs text-text-main/80 space-y-1"><MdText text={inhalt.texte.ingenieurmäßigeEinordnung} />{simResults.klasse === '–' ? (
+                      <p>–</p>
+                    ) : simResults.klasse === 'A+' || simResults.klasse === 'A' ? (
                       <p><MdText text={inhalt.texte.hervorragenderPassivhausBzwEffizienzhaus} /></p>
                     ) : simResults.klasse === 'B' || simResults.klasse === 'C' ? (
                       <p><MdText text={inhalt.texte.guterZeitgemäßerStandardErfüllt} /></p>

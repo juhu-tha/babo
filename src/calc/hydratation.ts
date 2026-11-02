@@ -23,7 +23,7 @@
  * 2,12·ln(1 + f_cm/10) statt 0,30·f_ck^(2/3); Kennwerte werden nicht mehr vor der Weiterrechnung gerundet.
  * Reiner Rechenkern – geprüft in tests/hydratation.test.ts.
  */
-import { type Hinweis, istEndlich, hatFehler, muss, bereich, nurGueltig } from './plausibilitaet';
+import { type Hinweis, istEndlich, hatFehler, muss, bereich, nurGueltig, KEINE_KLASSE, type KeineKlasse } from './plausibilitaet';
 import { ZEMENT_S, betaCc, ecmVonFcm } from './betonkennwerte';
 import { fctmVonFck, fckZumAlter } from '../data/kennwerte';
 import { DIN1045_3_NACHBEHANDLUNG } from '../data/normParams';
@@ -197,10 +197,11 @@ export function adiabatischeErwaermung(zement: number, waerme: number): number {
   return (zement * waerme) / WAERMEKAPAZITAET_VOL;
 }
 
-export type Rissgefahr = 'Hoch' | 'Mittel' | 'Gering';
+export type Rissgefahr = 'Hoch' | 'Mittel' | 'Gering' | KeineKlasse;
 
 /** Einstufung der Rissgefahr aus ΔT_Kern−Rand: > 15 K hoch, > 10 K mittel */
 export function rissgefahrAusDeltaT(deltaT: number): Rissgefahr {
+  if (!Number.isFinite(deltaT)) return KEINE_KLASSE; // F-1 (02.11.2026): keine Zahl → keine Klasse
   return deltaT > 15 ? 'Hoch' : deltaT > 10 ? 'Mittel' : 'Gering';
 }
 
@@ -291,7 +292,7 @@ export function hydratation(e: HydratationEingabe): HydratationErgebnis {
     EAkt: [], ERef: [], EAktRel: [], tempKern: [], tempRand: [], tempAdiabat: [], hydratationsgrad: [],
     s, fck, fcm28, fctm28, Ecm28, Hmax: 0, t50: 0, te2d: 0, te28: 0, beta2d: 0,
     fc2d: 0, fct2d: 0, E2d: 0, fc2dRel: 0, fct2dRel: 0, E2dRel: 0,
-    maxTempDiff: 0, rissgefahr: 'Gering', fReq: Number.isFinite(fReq) ? fReq : 0, ausschalTage: null, gueltig: false, hinweise,
+    maxTempDiff: 0, rissgefahr: KEINE_KLASSE, fReq: Number.isFinite(fReq) ? fReq : 0, ausschalTage: null, gueltig: false, hinweise,
   };
   if (hatFehler(hinweise)) return nurGueltig(leer);
 
@@ -367,6 +368,7 @@ export function hydratation(e: HydratationEingabe): HydratationErgebnis {
   r.ausschalTage = ausschalTage;
   if (te > 0 && betaCc(s, te) > BETA_CC_MAX) hinweise.push({ stufe: 'warnung', feld: 'reifeVerfahren', text: 'β_cc wird im Modell auf 1,25 begrenzt.' });
   r.gueltig = !hatFehler(hinweise);
+  if (!r.gueltig) r.rissgefahr = KEINE_KLASSE; // F-1
   return r;
 }
 
@@ -523,7 +525,8 @@ export type ExpositionNB = 'x0_xc1' | 'andere' | 'xm' | 'xf34';
 export type OberflaechenTemp = 'ge25' | '15_25' | '10_15' | '5_10' | '<5';
 
 /** Klasse der Festigkeitsentwicklung aus r = f_cm,2/f_cm,28 (r ≥ 0,50 schnell, ≥ 0,30 mittel, ≥ 0,15 langsam) */
-export function festigkeitsentwicklungAusR(r: number): Festigkeitsentwicklung {
+export function festigkeitsentwicklungAusR(r: number): Festigkeitsentwicklung | KeineKlasse {
+  if (!Number.isFinite(r)) return KEINE_KLASSE; // F-1 (02.11.2026): keine Zahl → keine Klasse
   if (r >= 0.50) return 'schnell';
   if (r >= 0.30) return 'mittel';
   if (r >= 0.15) return 'langsam';
@@ -531,7 +534,8 @@ export function festigkeitsentwicklungAusR(r: number): Festigkeitsentwicklung {
 }
 
 /** Temperaturbereich der Bauteiloberfläche aus T in °C */
-export function oberflaechenTempBereich(t: number): OberflaechenTemp {
+export function oberflaechenTempBereich(t: number): OberflaechenTemp | KeineKlasse {
+  if (!Number.isFinite(t)) return KEINE_KLASSE; // F-1 (02.11.2026): keine Zahl → keine Klasse
   if (t >= 25) return 'ge25';
   if (t >= 15) return '15_25';
   if (t >= 10) return '10_15';

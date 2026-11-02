@@ -36,7 +36,7 @@ const ROSTGRADE = inhaltJson.daten.ROSTGRADE;
 
 const VORBEREITUNG = inhaltJson.daten.VORBEREITUNG;
 
-const klasseFarbe: Record<Schutzdauerklasse, string> = { L: 'bg-rose-100 text-rose-900', M: 'bg-amber-100 text-amber-900', H: 'bg-sky-100 text-sky-900', VH: 'bg-emerald-100 text-emerald-900' };
+const klasseFarbe: Record<Schutzdauerklasse | '–', string> = { L: 'bg-rose-100 text-rose-900', M: 'bg-amber-100 text-amber-900', H: 'bg-sky-100 text-sky-900', VH: 'bg-emerald-100 text-emerald-900', '–': 'bg-slate-100 text-slate-700' };
 
 export default function KorrosionsschutzBeschichtungen({ startReiter = 'einfuehrung' }: { startReiter?: Reiter }) {
   const [reiter, setReiter] = useState<Reiter>(startReiter);
@@ -64,6 +64,7 @@ export default function KorrosionsschutzBeschichtungen({ startReiter = 'einfuehr
     erfuellt: `Die Schutzdauerklasse ${ziel} (${SCHUTZDAUER[ziel].text}) wird auch bei ungünstiger Abtragsrate erreicht.`,
     grenzwertig: `Die Schutzdauerklasse ${ziel} wird nur bei günstiger Abtragsrate erreicht; ungünstig ergibt sich Klasse ${erg.klasseUnguenstig}. Schicht erhöhen oder Duplex-System wählen.`,
     nicht_erfuellt: `Die Schutzdauerklasse ${ziel} wird auch im günstigen Fall nicht erreicht (höchstens Klasse ${erg.klasseGuenstig}).`,
+    '–': '–', // F-1: ungültige Eingabe → keine Bewertung
   }[erg.bewertung];
 
   return (

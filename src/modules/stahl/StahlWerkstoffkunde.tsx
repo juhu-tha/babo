@@ -502,6 +502,7 @@ export default function StahlWerkstoffkunde({ activeTab, alloyC, alloyCr, alloyM
                 duplex: { category: inhalt.werte.duplexAustenitFerritMischgefüge, designationMatch: inhalt.werte.duplexEdelstahlZB, corrosionRating: inhalt.werte.hervorragendBisExtremHohe, corrosionColor: 'text-teal-700 bg-teal-50', microstructureDesc: inhalt.werte.bestehtAusEtwaGleichen },
                 martensitisch: { category: inhalt.werte.martensitischerChromstahlHärtbar, designationMatch: inhalt.werte.martensitischerStahlZB, corrosionRating: inhalt.werte.mäßigHärtbarDurchAbschrecken, corrosionColor: 'text-amber-700 bg-amber-50', microstructureDesc: inhalt.werte.reagiertStarkAufWärmebehandlung },
                 ferritisch: { category: inhalt.werte.ferritischerChromstahlRostfreiMagnetisch, designationMatch: inhalt.werte.ferritischerEdelstahlZB, corrosionRating: inhalt.werte.mäßigBisGut, corrosionColor: 'text-stone-700 bg-stone-50', microstructureDesc: inhalt.werte.rostfreiAberOhneNennenswerten },
+                '–': { category: '–', designationMatch: '–', corrosionRating: '–', corrosionColor: 'text-slate-700 bg-slate-100', microstructureDesc: '–' }, // F-1
               } as const;
               const { category, designationMatch, corrosionRating, corrosionColor, microstructureDesc } = TEXTE[gefuegeklasse(alloyCr, alloyNi, alloyMo, alloyC)];
 

@@ -33,7 +33,7 @@
  *
  * Lehr- und Vorbemessungswerkzeug; ersetzt keinen bauaufsichtlichen Nachweis.
  */
-import { type Hinweis, bereich, hatFehler, istEndlich, muss, nurGueltig } from './plausibilitaet';
+import { type Hinweis, bereich, hatFehler, istEndlich, muss, nurGueltig, KEINE_KLASSE, type KeineKlasse } from './plausibilitaet';
 import { formatDeZahl } from '../utils/numberFormat';
 
 /** Dauerstandsbeiwert ζ nach NA (DE) – „im Allgemeinen ζ = 0,85“ (AMz 2016, S. 7/10) */
@@ -129,7 +129,8 @@ export function fkEmpfehlungENGenormt(K: number | null | undefined, fb: number, 
 }
 
 /** Mörtelgruppe des Normalmauermörtels aus der Mörteldruckfestigkeit f_m (M 2,5 → II, M 5 → IIa, M 10 → III, M 20 → IIIa) */
-export function normalmoertelGruppe(fm: number): 'NM I' | 'NM II' | 'NM IIa' | 'NM III' | 'NM IIIa' {
+export function normalmoertelGruppe(fm: number): 'NM I' | 'NM II' | 'NM IIa' | 'NM III' | 'NM IIIa' | KeineKlasse {
+  if (!Number.isFinite(fm)) return KEINE_KLASSE; // F-1 (02.11.2026): keine Zahl → keine Klasse
   return fm < 2.5 ? 'NM I' : fm < 5 ? 'NM II' : fm < 10 ? 'NM IIa' : fm < 20 ? 'NM III' : 'NM IIIa';
 }
 
@@ -151,7 +152,9 @@ export const FVK0_NA_VORLAEUFIG: readonly string[] = ['NM I', 'NM II', 'NM IIIa'
 export function fvk0NA(moertel: MoertelEN, fm: number): { fvk0: number; gruppe: string; vorlaeufig: boolean } {
   // Grenzfallprüfung 02.11.2026: Normalmörtel ohne gültige Druckfestigkeit vorher als NM IIIa eingestuft
   if (moertel === 'NM' && !Number.isFinite(fm)) return { fvk0: NaN, gruppe: '–', vorlaeufig: false };
-  const gruppe = moertel === 'NM' ? normalmoertelGruppe(fm) : moertel;
+  const g = moertel === 'NM' ? normalmoertelGruppe(fm) : moertel;
+  if (g === KEINE_KLASSE) return { fvk0: NaN, gruppe: '–', vorlaeufig: false };
+  const gruppe = g;
   return { fvk0: FVK0_NA[gruppe], gruppe, vorlaeufig: FVK0_NA_VORLAEUFIG.includes(gruppe) };
 }
 

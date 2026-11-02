@@ -5,7 +5,7 @@
  * Geprüft in tests/ec2Spannbeton.test.ts und tests/spannbeton.test.ts.
  */
 export * from '../utils/ec2Spannbeton';
-import { type Hinweis, istEndlich, muss, hatFehler, nurGueltig } from './plausibilitaet';
+import { type Hinweis, istEndlich, muss, hatFehler, nurGueltig, type KeineKlasse } from './plausibilitaet';
 import { CONCRETE, fctmFl } from '../utils/ec2Spannbeton';
 
 export interface SpannbetonEingabe {
@@ -82,7 +82,7 @@ export const dekompressionsKraft = (M: number, kern: number, ep: number) => (M *
 export type Spanngliedlage = 'centric' | 'straight_bottom' | 'parabolic';
 export type Schnittlage = 'midspan' | 'support';
 /** Zustand des Querschnitts in der Animation */
-export type DehnungsZustand = 'cracked' | 'limited' | 'full' | 'camber' | 'support_crack';
+export type DehnungsZustand = 'cracked' | 'limited' | 'full' | 'camber' | 'support_crack' | KeineKlasse;
 
 /**
  * Feste Lehrparameter: Einfeldträger L = 20 m, Rechteck 500 × 1000 mm, C40/50, Wichte 25 kN/m³.
@@ -250,7 +250,7 @@ export function dehnungsZustand(e: DehnungsEingabe): DehnungsErgebnis {
     sigma_Mp: (-activeMp * 1e6) / Wc, sigma_Mq: (activeMq * 1e6) / Wc,
     neutralAxisDepth, P_dek, P_cr, P_bal, w_net_mm, zustand,
     gueltig: !hatFehler(hinweise), hinweise,
-  });
+  }, ['zustand']);
 }
 
 // --- „Spannbeton von 0 bis 100“ ---------------------------------------------------------------------

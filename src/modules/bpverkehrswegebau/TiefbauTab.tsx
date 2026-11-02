@@ -1,5 +1,5 @@
 // Ausgelagert aus src/modules/BpVerkehrswegebau.tsx (AP 5.2)
-import { formatDeZahl, formatDeWert } from '@/src/utils/numberFormat';
+import { formatDeZahl, formatDeWert, formatDeGanzzahl } from '@/src/utils/numberFormat';
 import React, { useState } from 'react';
 import { FormulaText } from '@/src/components/ui/FormulaText';
 import { Calculator, Droplets } from 'lucide-react';
@@ -424,7 +424,7 @@ export default function TiefbauTab({ setTiefbauArea, setTiefbauDuration, setTief
                       <div>
                         <p className="font-bold"><MdText text={inhalt.texte.konstruktiveEmpfehlung} /></p>
                         {tiefbauFss === 0.95 ? (
-                          <p className="text-[11px] mt-0.5 text-slate-900 font-medium"><MdText text={inhalt.texte.verwendungVonPpSickerboxen} /><span className="font-mono font-bold text-slate-800">{num_boxes} Standard-Sickerboxen</span><MdText text={inhalt.texte.t024mNutzkapazitätJe} /></p>
+                          <p className="text-[11px] mt-0.5 text-slate-900 font-medium"><MdText text={inhalt.texte.verwendungVonPpSickerboxen} /><span className="font-mono font-bold text-slate-800">{formatDeGanzzahl(num_boxes)} Standard-Sickerboxen</span><MdText text={inhalt.texte.t024mNutzkapazitätJe} /></p>
                         ) : (
                           <p className="text-[11px] mt-0.5 text-slate-900 font-medium"><MdText text={inhalt.texte.verwendungEinesKiesgrabensKörnung} /><span className="font-mono font-bold text-slate-800">{formatDeZahl(v_speicher_m3, 1)} m³</span><MdText text={inhalt.texte.davonSpeicherwirksamPorenraumCa} /><span className="font-mono font-bold text-slate-800">{formatDeZahl(v_nutz_m3, 1)} m³</span>.
                           </p>

@@ -52,8 +52,9 @@ export default function Erdbau() {
       'TA': inhalt.daten.Erdbau_7,
       'UL / UM': inhalt.daten.Erdbau_8,
     };
-    return TEXTE[k.gruppe];
-  }, [feinanteil, kiesanteil, sandanteil, organik, plastizitaet]);
+    // F-1: ungültige Eingabe → keine Bodengruppe
+    return TEXTE[k.gruppe] ?? { gruppe: '–', name: '–', frost: '–', tauglich: '–' };
+}, [feinanteil, kiesanteil, sandanteil, organik, plastizitaet]);
 
   // Frostschutz (vereinfacht nach RStO 12, Tab. 6/7) aus dem Rechenkern; nicht berücksichtigt sind die Zeilen B
   // (kleinräumige Klimaunterschiede), D (Lage der Gradiente) und E (Entwässerung/Randbereiche) der Tab. 7.
@@ -198,7 +199,7 @@ export default function Erdbau() {
                 <div className="mt-auto space-y-4 pt-6 border-t border-white/20">
                   <div>
                     <div className="text-white/60 text-xs font-bold uppercase mb-1">Frostempfindlichkeit</div>
-                    <div className={`inline-block px-3 py-1 rounded font-bold ${bodenKlasse.frost === 'F1' ? 'bg-slate-700 text-white' : bodenKlasse.frost === 'F2' ? 'bg-slate-500 text-white' : 'bg-shiraz text-white'}`}>
+                    <div className={`inline-block px-3 py-1 rounded font-bold ${bodenKlasse.frost === '–' ? 'bg-slate-100 text-slate-700' : bodenKlasse.frost === 'F1' ? 'bg-slate-700 text-white' :bodenKlasse.frost === 'F2' ? 'bg-slate-500 text-white' : 'bg-shiraz text-white'}`}>
                       Klasse {bodenKlasse.frost}
                     </div>
                   </div>

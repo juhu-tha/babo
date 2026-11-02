@@ -62,6 +62,7 @@ function LokalelementSimulator() {
     rissbildung: { title: inhalt.werte.spaltzugrissImBetoninneren, color: 'text-orange-700 bg-orange-50 border-orange-300' },
     oberflaechenriss: { title: inhalt.werte.durchgehenderLängsrissAnOberfläche, color: 'text-rose-700 bg-rose-50 border-rose-300' },
     abplatzung: { title: inhalt.werte.betondeckungAbgeplatztSpalling, color: 'text-red-700 bg-red-100 border-red-500 font-bold animate-pulse' },
+    '–': { title: '–', color: 'text-slate-700 bg-off-white border-home-grau/30' }, // F-1: ungültige Eingabe → keine Schadensstufe
   };
   const crackState = { code: lok.stufe, ...STUFEN[lok.stufe] };
 

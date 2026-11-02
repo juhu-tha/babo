@@ -43,6 +43,7 @@ export default function Materialoptimierung() {
     }[dafstbBauteil];
     const klasse = {
       'Referenz': { efficiencyBadge: 'bg-slate-100 text-slate-800 border-slate-300', classLabel: inhalt.werte.konventionellerStandard, classStar: 'Basis' },
+      '–': { efficiencyBadge: 'bg-slate-100 text-slate-800 border-slate-300', classLabel: '–', classStar: '–' }, // F-1
       'Klasse A+': { efficiencyBadge: 'bg-emerald-100 text-emerald-900 border-emerald-300', classLabel: inhalt.werte.thgExzellenzUltraLow, classStar: '★★★★★' },
       'Klasse A': { efficiencyBadge: 'bg-green-100 text-green-900 border-green-300', classLabel: inhalt.werte.ambitionierteDekarbonisierung, classStar: '★★★★☆' },
       'Klasse B': { efficiencyBadge: 'bg-amber-100 text-amber-900 border-amber-300', classLabel: inhalt.werte.wirtschaftlichesOptimum, classStar: '★★★☆☆' },

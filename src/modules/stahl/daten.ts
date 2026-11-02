@@ -669,6 +669,7 @@ export const calculateSteelStressAtStrain = (steel: SteelCurveDefinition, eps: n
 export const getSteelDeformationPhase = (steel: SteelCurveDefinition, eps: number) => {
   // Phasengrenzen aus dem Rechenkern, Texte aus content/stahl/daten.json
   switch (stahlVerformungsphase(steel, eps)) {
+    case '–': return { phase: '–', text: '–', color: 'text-slate-700 bg-slate-100' }; // F-1: keine Dehnung → keine Phase
     case 'ruhe': return { phase: 'Ruhezustand', text: inhalt.werte.unbelastet0Mpa, color: 'text-slate-500 bg-slate-100' };
     case 'bruch': return inhalt.daten.getSteelDeformationPhase;
     case 'elastisch': return steel.yieldType === 'ausgeprägt'

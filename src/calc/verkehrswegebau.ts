@@ -15,7 +15,7 @@
  *    Runde 5; vorher 1,3); γ_c = 1,3 nur außergewöhnlich (NA DE Tab. 2.1DE; EC2 empfohlen 1,2)
  * Einheiten stehen an den Feldern. Reiner Rechenkern – geprüft in tests/verkehrswegebau.test.ts.
  */
-import { type Hinweis, istEndlich, hatFehler, muss, nurGueltig } from './plausibilitaet';
+import { type Hinweis, istEndlich, hatFehler, muss, nurGueltig, type KeineKlasse } from './plausibilitaet';
 import { asphaltRohdichte } from './asphalt';
 
 export interface Ergebnis { gueltig: boolean; hinweise: Hinweis[] }
@@ -54,7 +54,7 @@ export function asphaltHohlraum(e: AsphaltEingabe): AsphaltErgebnis {
 export type Bettung = 'schotter_mager' | 'schotter_gut' | 'feste_fahrbahn';
 /** Lehr-Grenzspannungen gegen Gleisverwerfung in N/mm² */
 export const KNICKGRENZE: Readonly<Record<Bettung, number>> = { schotter_mager: 90, schotter_gut: 135, feste_fahrbahn: 999 };
-export type GleisStatus = 'zugKritisch' | 'zug' | 'festeFahrbahn' | 'verwerfung' | 'erhoeht' | 'unkritisch';
+export type GleisStatus = 'zugKritisch' | 'zug' | 'festeFahrbahn' | 'verwerfung' | 'erhoeht' | 'unkritisch' | KeineKlasse;
 export interface GleisErgebnis extends Ergebnis {
   deltaT: number;
   /** Temperaturspannung in N/mm² (Druck positiv) */
@@ -81,7 +81,7 @@ export function schienenTemperatur(schieneTemp: number, neutralTemp: number, bet
   else if (sigmaT >= knickGrenze * 0.7) status = 'erhoeht';
   else status = 'unkritisch';
   if (schieneTemp < -40 || schieneTemp > 70) h.push({ stufe: 'warnung', feld: 'schieneTemp', text: 'Schienentemperatur außerhalb −40 … 70 °C.' });
-  return nurGueltig({ deltaT, sigmaT, kraftSchieneKn, kraftGleisKn, knickGrenze, status, ...abschluss(h) });
+  return nurGueltig({ deltaT, sigmaT, kraftSchieneKn, kraftGleisKn, knickGrenze, status, ...abschluss(h) }, ['status']);
 }
 
 // ---------------------------------------------------------------- Betondecke

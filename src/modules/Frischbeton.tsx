@@ -76,7 +76,9 @@ export default function Frischbeton() {
   const minLpEinzelwert = lp.einzelwertMin;
   const lpKonform = lp.bewertung === 'erfuellt' || lp.bewertung === 'keineAnforderung';
   const lpGrenzbereich = lp.bewertung === 'unterMindestwert' || lp.bewertung === 'ueberObergrenze';
-  const lpMeldung = lp.bewertung === 'keineAnforderung' ? inhalt.werte.keineBauaufsichtlicheMindestluftporenanf
+  // F-1: ungültige Eingabe → keine Bewertung (neutral, „–“)
+  const lpOhne = lp.bewertung === '–';
+  const lpMeldung = lpOhne ? '–' : lp.bewertung === 'keineAnforderung' ?inhalt.werte.keineBauaufsichtlicheMindestluftporenanf
     : lp.bewertung === 'erfuellt' ? inhalt.werte.anforderungNachDin1045
     : lp.bewertung === 'unterMindestwert' ? inhalt.werte.luftgehaltUnterMindestwert
     : lp.bewertung === 'ueberObergrenze' ? inhalt.werte.luftgehaltUeberObergrenze
@@ -440,14 +442,16 @@ export default function Frischbeton() {
                   {/* Ergebnis Luftgehalt */}
                   <EingabeHinweise hinweise={lp.hinweise} />
                   <div className={`p-4 rounded-xl border flex flex-col gap-2 transition-all ${
-                    lpKonform
+                    lpOhne
+                      ? 'bg-off-white border-home-grau/30 text-text-main'
+                      : lpKonform
                       ? 'bg-emerald-50/70 border-emerald-300 text-emerald-950'
                       : lpGrenzbereich
                         ? 'bg-amber-50/70 border-amber-300 text-amber-950'
                         : 'bg-rose-50/70 border-rose-300 text-rose-950'
                   }`}>
                     <div className="flex items-center gap-2">
-                      {lpKonform ? (
+                      {lpOhne ? null : lpKonform ? (
                         <CheckCircle2 size={20} className="text-emerald-600 shrink-0" />
                       ) : (
                         <AlertTriangle size={20} className={`${lpGrenzbereich ? 'text-amber-700' : 'text-rose-600'} shrink-0`} />
