@@ -212,6 +212,7 @@ export async function vorrendern({ wurzel = process.cwd(), dist = path.join(wurz
       let nurHell = true;
       try {
         const dunkel = await eintrag.rendere(r.id);
+        if (process.env.BB_VORRENDERN_ROH) fs.writeFileSync(path.join(process.env.BB_VORRENDERN_ROH, `${r.id}.dunkel.roh.html`), dunkel.html);
         nurHell = !gleicheSchale(schale, modulSchale(dunkel.html).html);
       } catch { /* dunkel nicht renderbar → nur hell */ } finally { g.localStorage!.removeItem('theme'); }
       if (nurHell) nurHellIds.push(r.id);
