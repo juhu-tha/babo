@@ -36,6 +36,7 @@ import { ErrorBoundary } from './components/ErrorBoundary';
 import { LIZENZ_AKTIV } from './data/lizenz';
 import { lazySofort, vorladenFuer } from './routing/sofortLaden';
 import { modulPfad } from './routing/pfad';
+import { SERVER_FUNKTIONEN } from './data/betriebsart';
 
 import type { TabId } from '@/src/contexts/TabContext';
 // Nur bei Bedarf geladen (Bundle-Budget, Phase 5 AP 5.4): Modulkopf mit Lernziel-/Erkundungsdaten,
@@ -77,7 +78,8 @@ function AppContent({ vorgerendert = false, vorrendern = false }: Omit<AppProps,
   const ohneEinblenden = vorgerendert && activeTab === ersterTab.current;
   const { language, t, getTabLabel, getGroupName, getClusterName } = useLanguage();
   const [activePollParam, setActivePollParam] = useState<{ poll: string; qid?: string } | null>(() => {
-    if (typeof window !== 'undefined') {
+    // Abstimmungsansicht braucht /api/polls – im statischen Betrieb normale Seite (src/data/betriebsart.ts)
+    if (SERVER_FUNKTIONEN && typeof window !== 'undefined') {
       const params = new URLSearchParams(window.location.search);
       const poll = params.get('poll');
       if (poll) {
@@ -248,8 +250,9 @@ function AppContent({ vorgerendert = false, vorrendern = false }: Omit<AppProps,
     await exportToPDF('module-content', `THA_Baustoffkunde_${activeTab}`);
     setIsExporting(false);
   };
-  // Track analytics visit
+  // Besuchszähler (nur mit Server; im statischen Betrieb kein Aufruf, src/data/betriebsart.ts)
   React.useEffect(() => {
+    if (!SERVER_FUNKTIONEN) return;
     fetch('/api/analytics/visit', { method: 'POST' }).catch(() => {});
   }, []);
 
@@ -675,7 +678,7 @@ function AppContent({ vorgerendert = false, vorrendern = false }: Omit<AppProps,
     </div>
 
     {/* Anonymer Kurzfragebogen, höchstens einmal je Semester (Phase 6, AP 6.9) */}
-    <React.Suspense fallback={null}><Kurzfragebogen /></React.Suspense>
+    {SERVER_FUNKTIONEN && <React.Suspense fallback={null}><Kurzfragebogen /></React.Suspense>}
 
     {/* SEO-Metadaten Audit-Modal */}
     {showMetadataModal && <React.Suspense fallback={null}><MetadataAuditModal

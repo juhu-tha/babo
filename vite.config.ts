@@ -18,8 +18,11 @@ export default defineConfig(() => {
   // Stand = Build-Datum (src/data/stand.ts); über die Umgebung an Vorrendern (Kindprozess) und Schale weitergereicht
   if (!/^\d{4}-\d{2}-\d{2}$/.test(process.env.BB_STAND ?? '')) process.env.BB_STAND = tagIso();
   const stand = process.env.BB_STAND as string;
+  // Statik-Modus (Vercel ohne Server, src/data/betriebsart.ts): BB_STATISCH=1 aus vercel.json; über die Umgebung
+  // auch im Vorrendern (Kindprozess) wirksam, damit vorgerendertes HTML und App übereinstimmen
+  const statisch = process.env.BB_STATISCH === '1';
   return {
-    define: { __BB_STAND__: JSON.stringify(stand) },
+    define: { __BB_STAND__: JSON.stringify(stand), __BB_STATISCH__: JSON.stringify(statisch) },
     // quizPoolPlugin: Fragenpool quiz.json je Modul bzw. in Teilpaketen nachladen (docs/architektur.md)
     // modulKopfPlugin: Lernziele/Kurzfassung/Erkundung/Grenzen je Modul (AP 5.5)
     // modulVorladenPlugin: Modul-Chunks anhand des URL-Hashes früh vorladen (AP 5.5, scripts/vorladen-boot.js)
