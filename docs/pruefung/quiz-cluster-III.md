@@ -210,17 +210,17 @@ Auffällig im Einzelnen (Mehrfachnennung möglich): 46 korrigiert, 1 fraglich, 0
 
 ### qn_carbonbeton_1 · Carbonbeton
 
-- **Frage:** Carbonbetonplatte: h = 30 mm, c = 10 mm (d = h − c), a_tex = 80 mm²/m, f_tk = 3000 N/mm² (γ_tex = 1,3), C45/55 mit f_cd = 0,85·45/1,5. Welches Moment m_Rd ergibt sich vereinfacht mit y = F_t/(b·f_cd) und z = d − y/2?
-- **Richtige Antwort:** rund 3,0 kNm/m
-- **Auffälligkeit:** Vorprüfung „korrigiert“: normRef ergänzt · bereits freigegeben (verified)
+- **Frage:** Carbonbetonplatte: h = 30 mm, c = 10 mm (d = h − c), a_tex = 80 mm²/m, f_tk = 3000 N/mm² (γ_tex = 1,3), E_tex = 200 GPa, C45/55 mit f_cd = 0,85·45/1,5. Welches Moment m_Rd ergibt sich wie im Modulrechner mit Dehnungskontrolle (ε_cu3 = 3,5 ‰, Spannungsblock y = 0,8·x, z = d − y/2)?
+- **Richtige Antwort:** rund 2,2 kNm/m
+- **Auffälligkeit:** Vorprüfung „korrigiert“: Umsetzung 02.11.: an den Modulrechner angeglichen (E_tex = 200 GPa ergänzt, Dehnungskontrolle statt vereinfachtem Verfahren; m_Rd 3,0 → 2,2 kNm/m, Betonversagen zuerst; Distraktoren 3,0 = vereinfacht ohne Dehnungskontrolle, 3,7 und 2,5 = z = d; Quiz-Rechenfragen 02.11.) – korrigiert
 - [x] ok
 - [ ] ändern: …
 
 ### qn_carbonbeton_2 · Carbonbeton
 
-- **Frage:** h = 40 mm, c = 10 mm, f_tk = 2500 N/mm², C50/60: Wird a_tex von 100 auf 200 mm²/m verdoppelt, steigt m_Rd nur von rund 5,1 auf rund 8,9 kNm/m. Warum nicht auf das Doppelte?
+- **Frage:** h = 40 mm, c = 10 mm, f_tk = 2500 N/mm², C50/60: Wird a_tex von 100 auf 200 mm²/m verdoppelt, steigt m_Rd im Modulrechner (E_tex = 200 GPa) nur von rund 5,0 auf rund 6,3 kNm/m. Warum nicht auf das Doppelte?
 - **Richtige Antwort:** Die Druckzone y wächst mit, der Hebelarm z = d − y/2 wird kleiner
-- **Auffälligkeit:** Vorprüfung „korrigiert“: normRef ergänzt · bereits freigegeben (verified)
+- **Auffälligkeit:** Vorprüfung „korrigiert“: Umsetzung 02.11.: Zahlen an den Modulrechner angeglichen (5,1 → 5,0 und 8,9 → 6,3 kNm/m, Dehnungskontrolle mit E_tex = 200 GPa); Erklärung um Betonversagen bei 200 mm²/m ergänzt, Antwort unverändert (Quiz-Rechenfragen 02.11.) – korrigiert
 - [x] ok
 - [ ] ändern: …
 

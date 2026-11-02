@@ -38664,38 +38664,36 @@
     "topic": "Biegebemessung",
     "difficulty": "Vertiefung",
     "normRef": "DAfStb-Richtlinie nichtmetallische Bewehrung 2024",
-    "question": "Carbonbetonplatte: h = 30 mm, c = 10 mm (d = h − c), a_tex = 80 mm²/m, f_tk = 3000 N/mm² (γ_tex = 1,3), C45/55 mit f_cd = 0,85·45/1,5. Welches Moment m_Rd ergibt sich vereinfacht mit y = F_t/(b·f_cd) und z = d − y/2?",
+    "question": "Carbonbetonplatte: h = 30 mm, c = 10 mm (d = h − c), a_tex = 80 mm²/m, f_tk = 3000 N/mm² (γ_tex = 1,3), E_tex = 200 GPa, C45/55 mit f_cd = 0,85·45/1,5. Welches Moment m_Rd ergibt sich wie im Modulrechner mit Dehnungskontrolle (ε_cu3 = 3,5 ‰, Spannungsblock y = 0,8·x, z = d − y/2)?",
     "options": [
       "rund 3,7 kNm/m",
-      "rund 4,9 kNm/m",
-      "rund 3,3 kNm/m",
-      "rund 3,0 kNm/m"
+      "rund 3,0 kNm/m",
+      "rund 2,5 kNm/m",
+      "rund 2,2 kNm/m"
     ],
     "correctIdx": 3,
-    "explanation": "f_td = 3000/1,3 = 2308 N/mm²; F_t = 80 · 2308 = 184,6 kN/m. f_cd = 25,5 N/mm² → y = 184 615/(1000 · 25,5) = 7,2 mm; z = 20 − 3,6 = 16,4 mm; m_Rd = 184,6 · 0,0164 ≈ 3,0 kNm/m.",
+    "explanation": "f_td = 3000/1,3 = 2308 N/mm², ε_tex = 2308/200 000 = 11,5 ‰. Unter der Annahme Textilbruch wäre y = 80 · 2308/(1000 · 25,5) = 7,2 mm, x = 9,0 mm und ε_c = 11,5 ‰ · 9,0/11,0 ≈ 9,5 ‰ > 3,5 ‰ – der Beton versagt zuerst. Gleichgewicht mit ε_c = 3,5 ‰: x ≈ 6,2 mm, y ≈ 4,9 mm, ε_tex ≈ 7,9 ‰, σ_tex ≈ 1572 N/mm² < f_td; z = 20 − 2,5 = 17,5 mm; m_Rd = 80 · 1572 · 17,5 ≈ 2,2 kNm/m.",
     "bloom": "Anwenden",
     "niveau": "M",
     "distraktorFeedback": [
-      "Hier wurde z = d gesetzt; der Hebelarm verkleinert sich um y/2.",
-      "Die Nutzhöhe ist d = h − c = 20 mm, nicht h = 30 mm.",
-      "Für die Druckzone ist f_cd = 25,5 N/mm² maßgebend, nicht f_ck.",
+      "Hier wurde ohne Dehnungskontrolle und zusätzlich mit z = d gerechnet (184,6 kN/m · 0,020 m).",
+      "Das ist das vereinfachte Verfahren ohne Dehnungskontrolle (Textil erreicht f_td): Bei E_tex = 200 GPa erreicht der Beton aber ε_cu3 vor dem Textilbruch, 3,0 kNm/m liegen rund 36 % auf der unsicheren Seite.",
+      "Die Dehnungskontrolle ist richtig, aber der Hebelarm wurde mit z = d statt d − y/2 angesetzt (80 · 1572 · 20).",
       ""
     ],
     "gapAnalysis": {
       "topic": "Biegebemessung",
       "misconception": "Hebelarm, Nutzhöhe oder Bemessungswerte werden falsch angesetzt.",
-      "coreRule": "m_Rd = a_tex·f_td·(d − y/2) mit y = a_tex·f_td/(b·f_cd).",
+      "coreRule": "Textilbruch nur, wenn ε_c ≤ ε_cu3; sonst Gleichgewicht mit σ_tex = E_tex·ε_tex < f_td und m_Rd = a_tex·σ_tex·(d − y/2).",
       "actionableAdvice": "Arbeiten Sie den Abschnitt „Biegebemessung (vereinfacht)“ im Modul Carbonbeton noch einmal durch.",
       "targetModuleTab": "carbonbeton",
       "targetModuleLabel": "Carbonbeton"
     },
-    "reviewer": "Zweitprüfung 27.10.2026; freigegeben 27.10.2026",
-    "reviewedAt": "2026-10-27",
-    "verified": true,
+    "verified": false,
     "vorpruefung": {
-      "am": "2026-10-27",
+      "am": "2026-11-02",
       "ergebnis": "korrigiert",
-      "hinweis": "normRef ergänzt"
+      "hinweis": "Umsetzung 02.11.: an den Modulrechner angeglichen (E_tex = 200 GPa ergänzt, Dehnungskontrolle statt vereinfachtem Verfahren; m_Rd 3,0 → 2,2 kNm/m, Betonversagen zuerst; Distraktoren 3,0 = vereinfacht ohne Dehnungskontrolle, 3,7 und 2,5 = z = d; Quiz-Rechenfragen 02.11.) – korrigiert"
     }
   },
   {
@@ -38707,7 +38705,7 @@
     "topic": "Bewehrungsgrad",
     "difficulty": "Transfer",
     "normRef": "DAfStb-Richtlinie nichtmetallische Bewehrung 2024",
-    "question": "h = 40 mm, c = 10 mm, f_tk = 2500 N/mm², C50/60: Wird a_tex von 100 auf 200 mm²/m verdoppelt, steigt m_Rd nur von rund 5,1 auf rund 8,9 kNm/m. Warum nicht auf das Doppelte?",
+    "question": "h = 40 mm, c = 10 mm, f_tk = 2500 N/mm², C50/60: Wird a_tex von 100 auf 200 mm²/m verdoppelt, steigt m_Rd im Modulrechner (E_tex = 200 GPa) nur von rund 5,0 auf rund 6,3 kNm/m. Warum nicht auf das Doppelte?",
     "options": [
       "Die Druckzone y wächst mit, der Hebelarm z = d − y/2 wird kleiner",
       "Die Zugfestigkeit des Textils sinkt bei größerem Querschnitt deutlich ab",
@@ -38715,12 +38713,12 @@
       "Die Nutzhöhe d verringert sich, weil die Betondeckung zunehmen muss"
     ],
     "correctIdx": 0,
-    "explanation": "Mit doppelter Zugkraft verdoppelt sich die Druckzonenhöhe y (6,8 → 13,6 mm); der Hebelarm sinkt von etwa 26,6 auf 23,2 mm. Deshalb wächst m_Rd unterproportional – bei schlanken Bauteilen begrenzt die Dicke h die Wirksamkeit zusätzlicher Bewehrung.",
+    "explanation": "Mit mehr Bewehrung wächst die Druckzone (y ≈ 6,6 → 8,7 mm), der Hebelarm sinkt von etwa 26,7 auf 25,7 mm. Hinzu kommt: Bei 200 mm²/m erreicht der Beton ε_cu3 = 3,5 ‰ deutlich vor dem Textilbruch, das Textil wird nur mit σ_tex ≈ 1230 statt f_td = 1923 N/mm² ausgenutzt (bei 100 mm²/m knapp: ≈ 1860 N/mm²). Deshalb wächst m_Rd stark unterproportional – bei schlanken Bauteilen begrenzt die Dicke h die Wirksamkeit zusätzlicher Bewehrung.",
     "bloom": "Analysieren",
     "niveau": "M",
     "distraktorFeedback": [
       "",
-      "Im vereinfachten Modell bleibt f_td konstant; sie hängt nicht vom Querschnitt ab.",
+      "f_td ist ein Materialkennwert und hängt nicht vom Querschnitt ab; bei Betonversagen wird sie lediglich nicht voll ausgenutzt (σ_tex < f_td).",
       "γ_tex ist ein fester Bemessungsbeiwert (hier 1,3).",
       "c und d sind im Beispiel unverändert; nur a_tex wurde verdoppelt."
     ],
@@ -38732,13 +38730,11 @@
       "targetModuleTab": "carbonbeton",
       "targetModuleLabel": "Carbonbeton"
     },
-    "reviewer": "Zweitprüfung 27.10.2026; freigegeben 27.10.2026",
-    "reviewedAt": "2026-10-27",
-    "verified": true,
+    "verified": false,
     "vorpruefung": {
-      "am": "2026-10-27",
+      "am": "2026-11-02",
       "ergebnis": "korrigiert",
-      "hinweis": "normRef ergänzt"
+      "hinweis": "Umsetzung 02.11.: Zahlen an den Modulrechner angeglichen (5,1 → 5,0 und 8,9 → 6,3 kNm/m, Dehnungskontrolle mit E_tex = 200 GPa); Erklärung um Betonversagen bei 200 mm²/m ergänzt, Antwort unverändert (Quiz-Rechenfragen 02.11.) – korrigiert"
     }
   },
   {
