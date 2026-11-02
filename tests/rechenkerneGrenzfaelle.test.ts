@@ -328,6 +328,7 @@ for (const h of HAND) {
 
 // ---------------------------------------------------------------- 6. Vollständigkeit (R7)
 const AUSNAHMEN: Record<string, string> = {
+  'src/calc/pfas.ts:istKurzkettig': 'boolescher Klassifizierer nach Kettenlänge (in pfasSummenbewertung und nachstichprobe5c mitgeprüft)',
   // Plausibilitätsschicht selbst
   'src/calc/plausibilitaet.ts:*': 'Hilfsfunktionen der Plausibilitätsschicht (keine Rechenkerne).',
   // Prüffunktionen: werden in der zugehörigen Bemessungsfunktion aufgerufen und dort mitgeprüft
