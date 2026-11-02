@@ -1,10 +1,10 @@
 # Prüfliste Quiz – Cluster V: Digitales & Infos
 
-Stand: 30.10.2026 · Grundlage: `src/data/quiz.json` (Felder `vorpruefung` und `verified`), `docs/quiz-pruefhinweise.md`, Lernziele aus `src/data/lernziele.ts`. Erzeugt mit `npx tsx scripts/pruefliste.ts`; gesetzte Kreuze übernimmt das Skript beim nächsten Lauf. quiz.json wurde für diese Liste nicht verändert.
+Stand: 02.11.2026 · Grundlage: `src/data/quiz.json` (Felder `vorpruefung` und `verified`), `docs/quiz-pruefhinweise.md`, Lernziele aus `src/data/lernziele.ts`. Erzeugt mit `npx tsx scripts/pruefliste.ts`; gesetzte Kreuze übernimmt das Skript beim nächsten Lauf. quiz.json wurde für diese Liste nicht verändert.
 
-Cluster V umfasst 132 Fragen aus 22 Modulen. Aufgeführt sind 32 auffällige Fragen (Vorprüfung „korrigiert“ oder „fraglich“, offener Prüfhinweis oder neu seit 26.10.2026 ohne Freigabe) und eine Stichprobe von 5 unauffälligen Fragen. Entscheidung je Frage ankreuzen; bei „ändern“ den Änderungswunsch in die Zeile darunter schreiben.
+Cluster V umfasst 132 Fragen aus 22 Modulen. Aufgeführt sind 33 auffällige Fragen (Vorprüfung „korrigiert“ oder „fraglich“, offener Prüfhinweis oder neu seit 26.10.2026 ohne Freigabe) und eine Stichprobe von 5 unauffälligen Fragen. Entscheidung je Frage ankreuzen; bei „ändern“ den Änderungswunsch in die Zeile darunter schreiben.
 
-Auffällig im Einzelnen (Mehrfachnennung möglich): 32 korrigiert, 0 fraglich, 0 mit offenem Prüfhinweis, 0 neu seit 26.10.2026.
+Auffällig im Einzelnen (Mehrfachnennung möglich): 33 korrigiert, 0 fraglich, 0 mit offenem Prüfhinweis, 0 neu seit 26.10.2026.
 
 ## A. Auffällige Fragen
 
@@ -22,6 +22,14 @@ Auffällig im Einzelnen (Mehrfachnennung möglich): 32 korrigiert, 0 fraglich, 0
 - **Richtige Antwort:** Weil verschiedene λ-Werte verschiedene Dicken für denselben R-Wert erfordern
 - **Auffälligkeit:** Vorprüfung „korrigiert“: Distraktoren angeglichen · bereits freigegeben (verified)
 - [x] ok
+- [ ] ändern: …
+
+### q_dg_db_6 · Materialdatenbanken
+
+- **Frage:** Eine Kalksandsteinwand ist 17,5 cm dick (ρ = 1800 kg/m³). Der Datensatz nennt GWP A1–A3 = 0,13 kg CO₂-Äq./kg (Lehrwert). Wie groß ist das GWP A1–A3 je m² Wand?
+- **Richtige Antwort:** rund 41,0 kg CO₂-Äq./m²
+- **Auffälligkeit:** Vorprüfung „korrigiert“: Umsetzung 02.11.: Kalksandstein-Lehrwert zentral 0,13 kg CO₂-Äq./kg (GWP_LEHRWERTE.kalksandstein, NS3-MDB-2; vorher 0,12, Modulbeispiel 0,13) – Werte und Antworten nachgezogen (41,0; 23,4; 410; 4,1) – korrigiert
+- [ ] ok
 - [ ] ändern: …
 
 ### q_dg_mp_1 · Materialpässe

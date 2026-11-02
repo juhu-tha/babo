@@ -61,8 +61,8 @@
     "streuungRelativZumMittelwert": "Streuung relativ zum Mittelwert:",
     "verschiebenSieEinenMesswert": "Verschieben Sie einen Messwert im Diagramm oder per Regler – der Rechenweg rechnet sofort mit.",
     "dinEn19902021": "DIN EN 1990:2021-10, Anhang D",
-    "beispiel1CharakteristischerWert": "Beispiel 1: Charakteristischer Wert aus 10 Bohrkernen",
-    "mitNurN3": "Mit nur n = 3 Kernen wäre k_n = 3,37 und X_k = 27,8 N/mm² – mehr Proben lohnen sich, weil der Sicherheitsabschlag für die unsichere Streuung sinkt.",
+    "beispiel1CharakteristischerWert": "Beispiel 1: Charakteristischer Wert aus 10 Prüfwerten",
+    "mitNurN3": "Mit nur n = 3 Prüfwerten wäre k_n = 3,37 und X_k = 27,8 N/mm² – mehr Proben lohnen sich, weil der Sicherheitsabschlag für die unsichere Streuung sinkt. Für die Druckfestigkeit von Bestandsbeton aus Bohrkernen gilt nicht dieses allgemeine Verfahren, sondern DIN EN 13791 (In-situ-Druckfestigkeit, eigener Bezugskörper und Umrechnung) – siehe Modul Bauwerksdiagnose.",
     "dinEn199020212": "DIN EN 1990:2021-10, Anhang D, Tab. D1",
     "beispiel2IstDer": "Beispiel 2: Ist der Höchstwert ein Ausreißer? (Grubbs-Test)",
     "derTestZeigtNur": "Der Test zeigt nur statistische Auffälligkeit. Gestrichen werden darf der Wert erst, wenn eine technische Ursache belegt ist (z. B. Prüffehler, falsch gekennzeichneter Probekörper) – sonst verfälscht das Streichen die Streuung nach unten.",
@@ -77,7 +77,7 @@
     "Statistik.schritte": [
       {
         "titel": "Gegeben",
-        "erklaerung": "Zehn Bohrkerne aus einer Bestandsdecke, Mittelwert 38,2 N/mm², Standardabweichung 3,1 N/mm²; Variationskoeffizient vorab unbekannt.",
+        "erklaerung": "Allgemeine Prüfserie aus zehn Probekörpern, Mittelwert 38,2 N/mm², Standardabweichung 3,1 N/mm²; Variationskoeffizient vorab unbekannt.",
         "formel": "n = 10,\\quad \\bar{x} = 38{,}2,\\quad s = 3{,}1\\,\\text{N/mm}^2"
       },
       {

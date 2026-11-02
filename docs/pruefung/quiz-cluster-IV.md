@@ -1,6 +1,6 @@
 # Prüfliste Quiz – Cluster IV: Bestand & Nachhaltigkeit
 
-Stand: 30.10.2026 · Grundlage: `src/data/quiz.json` (Felder `vorpruefung` und `verified`), `docs/quiz-pruefhinweise.md`, Lernziele aus `src/data/lernziele.ts`. Erzeugt mit `npx tsx scripts/pruefliste.ts`; gesetzte Kreuze übernimmt das Skript beim nächsten Lauf. quiz.json wurde für diese Liste nicht verändert.
+Stand: 02.11.2026 · Grundlage: `src/data/quiz.json` (Felder `vorpruefung` und `verified`), `docs/quiz-pruefhinweise.md`, Lernziele aus `src/data/lernziele.ts`. Erzeugt mit `npx tsx scripts/pruefliste.ts`; gesetzte Kreuze übernimmt das Skript beim nächsten Lauf. quiz.json wurde für diese Liste nicht verändert.
 
 Cluster IV umfasst 314 Fragen aus 50 Modulen. Aufgeführt sind 103 auffällige Fragen (Vorprüfung „korrigiert“ oder „fraglich“, offener Prüfhinweis oder neu seit 26.10.2026 ohne Freigabe) und eine Stichprobe von 5 unauffälligen Fragen. Entscheidung je Frage ankreuzen; bei „ändern“ den Änderungswunsch in die Zeile darunter schreiben.
 
@@ -124,7 +124,7 @@ Auffällig im Einzelnen (Mehrfachnennung möglich): 84 korrigiert, 0 fraglich, 1
 
 - **Frage:** Eine Raumluftmessung ergibt 1400 ng/m³ PCB. Wie ist das nach PCB-Richtlinie einzuordnen?
 - **Richtige Antwort:** Zwischen Vorsorge- und Eingreifwert (300–3000 ng/m³): Quelle suchen, mittelfristig sanieren
-- **Auffälligkeit:** Vorprüfung „korrigiert“: Distraktoren angeglichen · bereits freigegeben (verified)
+- **Auffälligkeit:** Vorprüfung „korrigiert“: Umsetzung 02.11.: Erklärung um die AIR-Richtwerte 2025 ergänzt (RW I 80, RW II 800 ng/m³ PCB gesamt; Bundesgesundheitsblatt 2025, 68:201–218; Quiz-Abgleich 30.10.) – korrigiert
 - [x] ok
 - [ ] ändern: …
 
@@ -148,7 +148,7 @@ Auffällig im Einzelnen (Mehrfachnennung möglich): 84 korrigiert, 0 fraglich, 1
 
 - **Frage:** Warum deklarieren Umweltproduktdeklarationen (EPDs) nachwachsender Rohstoffe wie Holz oder Stroh in Phase A1-A3 oft negative GWP-Werte?
 - **Richtige Antwort:** Weil Bäume während des Wachstums CO2 via Photosynthese absorbieren und als biogenen Kohlenstoff physisch im Bauteil speichern (temporäre Kohlenstoffsenke).
-- **Auffälligkeit:** Vorprüfung „korrigiert“: Abgleich 30.10.: Lernhilfe „1 m³ Fichtenholz bindet ca. 800–900 kg CO₂“ an DIN EN 16449 und den zentralen Lehrwert angeglichen (KVH 500 kg/m³ −820 kg, Fichte 450 kg/m³ rund 740 kg; Durchsicht D, DSD-HO-2) – korrigiert (Bloom-Stufe, Niveau und Rückmeldungen ergänzt)
+- **Auffälligkeit:** Vorprüfung „korrigiert“: Umsetzung 02.11.: Erklärung zum biogenen Kohlenstoff nach DIN EN 15804+A2 berichtigt (Ausbuchung bei Verlassen des Produktsystems, auch bei stofflicher Verwertung; ÖKOBAUDAT Grundsätze Anhang B, Nachstichprobe 3) – korrigiert
 - [ ] ok
 - [ ] ändern: …
 

@@ -7,6 +7,7 @@ import { Monitor, Database, Settings, FileCode, Layers, ShieldCheck, Copy, Check
 import { InfoTooltip } from '@/src/components/ui/InfoTooltip';
 import inhalt from '@/content/bimbaustoffe/BimBaustoffe.json';
 import { GWP_LEHRWERTE, PROFILSTAHL_HINWEIS, type GwpLehrwertSchluessel } from '@/src/data/gwpLehrwerte';
+import { gwpRegler } from '@/src/modules/bimbaustoffe/gwpRegler';
 import { MdText } from '@/src/components/inhalt/MdText';
 
 interface MaterialArchetype {
@@ -224,9 +225,9 @@ export default function BimBaustoffe() {
                     </div>
                     <input 
                       type="range" 
-                      min={selectedId === 'holz' ? -900 : selectedId === 'stahl' ? 2000 : 10} 
-                      max={selectedId === 'holz' ? -300 : selectedId === 'stahl' ? 10000 : 400} 
-                      step={selectedId === 'mineralwolle' ? 1 : 5}
+                      min={gwpRegler(selectedId).min}
+                      max={gwpRegler(selectedId).max}
+                      step={gwpRegler(selectedId).step}
                       value={gwp} 
                       onChange={(e) => setGwp(Number(e.target.value))}
                       className="cursor-pointer"

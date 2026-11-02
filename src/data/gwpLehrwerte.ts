@@ -5,7 +5,8 @@
  *
  * Module, die daraus lesen: LCA-Rechner (src/modules/interactivelcacalc/daten.ts), Materialdatenbanken (Konsole und
  * QNG-Tabelle), LCA-Grundlagen (EPD-Musterdatenbank), Nachhaltigkeit (Wandkonfigurator, Werte je kg), DPP/EPD
- * (fiktive Muster-EPD), BIM-Baustoffe (IFC-Attribute), Materialoptimierung (Betonstahl-Referenz).
+ * (fiktive Muster-EPD), BIM-Baustoffe (IFC-Attribute), Materialoptimierung (Betonstahl-Referenz); Kalksandstein nur
+ * Materialdatenbanken (Beispiel 1 und QNG-Tabelle).
  *
  * Herkunft:
  *  - Profilstahl (Entscheidung 29.10.2026, Nachprüfung NP2-ST-2): Lehrwert 1,1 kg CO₂-Äq./kg wie bisher im LCA-Rechner;
@@ -32,6 +33,10 @@
  *    (Lehrwert, Größenordnung ÖKOBAUDAT „EPS-Hartschaum“; vorher 3,0/3,25/3,3/3,9 je Modul); Mineralwolle 1,20 kg CO₂-Äq./kg
  *    (Lehrwert für Glas- und Steinwolle, Größenordnung ÖKOBAUDAT/EPD Steinwolle mittlere Rohdichte 115 kg CO₂-Äq. je 99 kg = 1,16;
  *    vorher 0,96 im Wandkonfigurator und in der EPD-Musterdatenbank). Die Rohdichte hängt vom Produkt ab und bleibt je Modul.
+ *  - Kalksandstein (Umsetzung 02.11.2026, NS3-MDB-2): 0,13 kg CO₂-Äq./kg = 130 kg/t A1–A3 für KS-Planstein, Rohdichteklasse 1,8
+ *    (Lehrwert, Größenordnung ÖKOBAUDAT/Verbands-EPD Kalksandstein: rund 126 kg CO₂ je t nach Nachhaltigkeitsfolder des
+ *    Bundesverbands Kalksandsteinindustrie; vorläufig, ÖKOBAUDAT-Abgleich offen). Vorher im Modul Materialdatenbanken drei
+ *    Werte: Beispiel 0,13, QNG-Tabelle 110 kg/t, Quiz q_dg_db_6 0,12 kg/kg – jetzt alle 0,13.
  *  - Profilstahl-Vergleichswert (Entscheidung 30.10.2026): EPD Elektrostahl rund 0,56 kg CO₂-Äq./kg (PROFILSTAHL_EPD_ELEKTROSTAHL),
  *    wird überall neben dem Lehrwert 1,1 angezeigt.
  * Für Nachweise gelten die Datensätze der ÖKOBAUDAT bzw. die Produkt-EPD.
@@ -121,6 +126,9 @@ export const GWP_LEHRWERTE = {
     quelle: 'Lehrwert 1,1 kg CO₂-Äq./kg für Profilstahl im Marktmix (LCA-Rechner, Stahl-Modul); Spanne: Elektrostahlroute 0,56 '
       + '(EPD bauforumstahl EPD-BFS-20230271-IBG19, Profile und Stabstahl) bis Hochofenroute rund 2,9 (ÖKOBAUDAT 2024-I, '
       + 'verzinkte Profile), nach bauforumstahl-Leitfaden BFS-RL 01-101 (02/2026), Tab. 2 und 3', vorlaeufig: true },
+  kalksandstein: { name: 'Kalksandstein (KS-Planstein, Rohdichteklasse 1,8)', einheit: 't', gwp: 130, biogen: 0, rohdichte: 1800,
+    quelle: 'Lehrwert 0,13 kg CO₂-Äq./kg A1–A3 (Größenordnung ÖKOBAUDAT/Verbands-EPD Kalksandstein, rund 126 kg CO₂ je t; '
+      + 'Materialdatenbanken: Beispiel 1, QNG-Tabelle, Quiz q_dg_db_6)', vorlaeufig: true },
   eps: { name: 'EPS-Hartschaum (Dämmstoff)', einheit: 't', gwp: 3250, biogen: 0, rohdichte: 20,
     quelle: 'Lehrwert 3,25 kg CO₂-Äq./kg A1–A3 (Größenordnung ÖKOBAUDAT „EPS-Hartschaum“); Rohdichte je Produkt (Bezug 20 kg/m³)', vorlaeufig: true },
   mineralwolle: { name: 'Mineralwolle (Glas- und Steinwolle)', einheit: 't', gwp: 1200, biogen: 0, rohdichte: 30,

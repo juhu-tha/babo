@@ -175,6 +175,9 @@ export async function ladeReferenzen() {
     klasse: 'gwp', bezug: ['kg', 't'], kontext: /Betonstahl|Bewehrungsstahl|Bewehrung|B500|Baustahlmatte/ });
   if (L.profilstahl) add({ familie: 'gwp-stahl', kennung: 'Profilstahl', bezeichnung: 'GWP Profilstahl (Baustahl)', konstante: 'GWP_LEHRWERTE.profilstahl',
     werte: [L.profilstahl.gwp / 1000], klasse: 'gwp', bezug: ['kg', 't'], kontext: /Profilstahl|Baustahl|Stahlprofil|Walzprofil|Walzstahl|\bIPE\b|\bHE[ABM]\b|S235|S355|Stahlträger/ });
+  // Kalksandstein (Umsetzung 02.11.2026, NS3-MDB-2)
+  if (L.kalksandstein) add({ familie: 'gwp-mauerstein', kennung: 'Kalksandstein', bezeichnung: 'GWP Kalksandstein', konstante: 'GWP_LEHRWERTE.kalksandstein',
+    werte: [L.kalksandstein.gwp / 1000], klasse: 'gwp', bezug: ['kg', 't'], kontext: /Kalksandstein|KS-Planstein|\bKS\b/ });
   // Pflanzenkohle
   add({ familie: 'pk', kennung: 'Pflanzenkohle', bezeichnung: 'CO₂-Senke Pflanzenkohle (netto)', konstante: 'PK_NETTO_SENKE_KG', werte: [r2(bk.PK_NETTO_SENKE_KG)],
     klasse: 'gwp', bezug: ['kg', 't'], kontext: /Pflanzenkohle|Biokohle|Biochar/i });

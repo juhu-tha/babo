@@ -938,12 +938,12 @@
       "Weil der Energieaufwand in Sägewerken rechnerisch mit Null angesetzt wird."
     ],
     "correctIdx": 2,
-    "explanation": "Nachwachsende Rohstoffe absorbieren während ihres biologischen Wachstums CO₂ aus der Atmosphäre. Dies wird nach DIN EN 15804 als negativer Treibhausbeitrag (GWP-biogen) in den Herstellungsphasen A1-A3 bilanziert. Am Lebensende (Modul C3/C4) wird dieses CO₂ bei thermischer Verwertung wieder freigesetzt.",
+    "explanation": "Nachwachsende Rohstoffe absorbieren während ihres biologischen Wachstums CO₂ aus der Atmosphäre. Dies wird nach DIN EN 15804 als negativer Treibhausbeitrag (GWP-biogen) in den Herstellungsphasen A1-A3 bilanziert. Nach DIN EN 15804+A2 wird der gespeicherte biogene Kohlenstoff wieder ausgebucht, sobald das Material das Produktsystem verlässt – bei Verbrennung ebenso wie bei stofflicher Verwertung (je nach Ende der Abfalleigenschaft in C1 bis C3, bei Beseitigung in C4).",
     "bloom": "Verstehen",
     "niveau": "B",
     "distraktorFeedback": [
       "Transporte gehen als positive Emissionen in A2 bzw. A4 ein; sie können ein GWP nicht negativ machen.",
-      "Biogene Baustoffe verdampfen nicht; bei Verbrennung oder Verrottung am Lebensende (C3/C4) wird das gespeicherte CO₂ wieder freigesetzt.",
+      "Biogene Baustoffe verdampfen nicht; ihr gespeicherter Kohlenstoff wird am Lebensende wieder ausgebucht, sobald das Material das Produktsystem verlässt (Verbrennung, Verrottung oder stoffliche Verwertung).",
       "",
       "Der Energieaufwand der Sägewerke wird in A3 vollständig bilanziert; negativ wird das GWP allein durch den biogenen Kohlenstoff."
     ],
@@ -957,9 +957,9 @@
     },
     "verified": false,
     "vorpruefung": {
-      "am": "2026-10-30",
+      "am": "2026-11-02",
       "ergebnis": "korrigiert",
-      "hinweis": "Abgleich 30.10.: Lernhilfe „1 m³ Fichtenholz bindet ca. 800–900 kg CO₂“ an DIN EN 16449 und den zentralen Lehrwert angeglichen (KVH 500 kg/m³ −820 kg, Fichte 450 kg/m³ rund 740 kg; Durchsicht D, DSD-HO-2) – korrigiert (Bloom-Stufe, Niveau und Rückmeldungen ergänzt)"
+      "hinweis": "Umsetzung 02.11.: Erklärung zum biogenen Kohlenstoff nach DIN EN 15804+A2 berichtigt (Ausbuchung bei Verlassen des Produktsystems, auch bei stofflicher Verwertung; ÖKOBAUDAT Grundsätze Anhang B, Nachstichprobe 3) – korrigiert"
     }
   },
   {
@@ -7964,7 +7964,7 @@
       "Zwischen Vorsorge- und Eingreifwert (300–3000 ng/m³): nur jährliche Kontrollmessung"
     ],
     "correctIdx": 1,
-    "explanation": "300 ng/m³ ist der Vorsorgewert, 3000 ng/m³ der Eingreifwert; dazwischen sind Quellensuche und mittelfristige Sanierung angezeigt.",
+    "explanation": "300 ng/m³ ist der Vorsorgewert, 3000 ng/m³ der Eingreifwert; dazwischen sind Quellensuche und mittelfristige Sanierung angezeigt. Heute bewertet man die Raumluft nach den Richtwerten des Ausschusses für Innenraumrichtwerte (AIR, Bundesgesundheitsblatt 2025): Richtwert I 80 ng/m³, Richtwert II (Gefahrenwert) 800 ng/m³ für PCB gesamt (Summe der sechs Indikator-PCB · 5). Danach läge der Messwert von 1400 ng/m³ über dem Richtwert II – es besteht unverzüglicher Handlungsbedarf.",
     "bloom": "Anwenden",
     "niveau": "B",
     "distraktorFeedback": [
@@ -7981,13 +7981,11 @@
       "targetModuleTab": "historische_bauprodukte",
       "targetModuleLabel": "Hist. Bauprodukte"
     },
-    "reviewer": "Zweitprüfung 27.10.2026; freigegeben 27.10.2026",
-    "reviewedAt": "2026-10-27",
-    "verified": true,
+    "verified": false,
     "vorpruefung": {
-      "am": "2026-10-27",
+      "am": "2026-11-02",
       "ergebnis": "korrigiert",
-      "hinweis": "Distraktoren angeglichen"
+      "hinweis": "Umsetzung 02.11.: Erklärung um die AIR-Richtwerte 2025 ergänzt (RW I 80, RW II 800 ng/m³ PCB gesamt; Bundesgesundheitsblatt 2025, 68:201–218; Quiz-Abgleich 30.10.) – korrigiert"
     }
   },
   {
@@ -13041,19 +13039,19 @@
     "topic": "GWP einer Wand aus Datenbankwerten",
     "difficulty": "Vertiefung",
     "normRef": "DIN EN 15978",
-    "question": "Eine Kalksandsteinwand ist 17,5 cm dick (ρ = 1800 kg/m³). Der Datensatz nennt GWP A1–A3 = 0,12 kg CO₂-Äq./kg (Lehrwert). Wie groß ist das GWP A1–A3 je m² Wand?",
+    "question": "Eine Kalksandsteinwand ist 17,5 cm dick (ρ = 1800 kg/m³). Der Datensatz nennt GWP A1–A3 = 0,13 kg CO₂-Äq./kg (Lehrwert). Wie groß ist das GWP A1–A3 je m² Wand?",
     "options": [
-      "rund 21,6 kg CO₂-Äq./m²",
-      "rund 378 kg CO₂-Äq./m²",
-      "rund 3,8 kg CO₂-Äq./m²",
-      "rund 37,8 kg CO₂-Äq./m²"
+      "rund 23,4 kg CO₂-Äq./m²",
+      "rund 410 kg CO₂-Äq./m²",
+      "rund 4,1 kg CO₂-Äq./m²",
+      "rund 41,0 kg CO₂-Äq./m²"
     ],
     "correctIdx": 3,
-    "explanation": "Flächenbezogene Masse: 0,175 m · 1800 kg/m³ = 315 kg/m²; GWP = 315 · 0,12 = 37,8 kg CO₂-Äq./m². Entscheidend ist, die deklarierte Einheit (hier kg) in die Bezugsgröße des Bauteils (m²) umzurechnen.",
+    "explanation": "Flächenbezogene Masse: 0,175 m · 1800 kg/m³ = 315 kg/m²; GWP = 315 · 0,13 = 40,95 ≈ 41,0 kg CO₂-Äq./m². Entscheidend ist, die deklarierte Einheit (hier kg) in die Bezugsgröße des Bauteils (m²) umzurechnen.",
     "bloom": "Anwenden",
     "niveau": "B",
     "distraktorFeedback": [
-      "21,6 ergibt sich mit einer Dicke von 10 cm statt 17,5 cm.",
+      "23,4 ergibt sich mit einer Dicke von 10 cm statt 17,5 cm.",
       "Hier wurde mit 1,75 m statt 0,175 m gerechnet; das Ergebnis ist zehnmal zu groß.",
       "Hier wurde mit 1,75 cm gerechnet; das Ergebnis ist zehnmal zu klein.",
       ""
@@ -13067,12 +13065,11 @@
       "targetModuleLabel": "Materialdatenbanken"
     },
     "quelle": "DIN EN 15978; Lehrwert nach ÖKOBAUDAT-Größenordnung",
-    "verified": true,
-    "reviewer": "freigegeben 28.10.2026 (Zweitprüfung)",
-    "reviewedAt": "2026-10-28",
+    "verified": false,
     "vorpruefung": {
-      "am": "2026-10-26",
-      "ergebnis": "ok"
+      "am": "2026-11-02",
+      "ergebnis": "korrigiert",
+      "hinweis": "Umsetzung 02.11.: Kalksandstein-Lehrwert zentral 0,13 kg CO₂-Äq./kg (GWP_LEHRWERTE.kalksandstein, NS3-MDB-2; vorher 0,12, Modulbeispiel 0,13) – Werte und Antworten nachgezogen (41,0; 23,4; 410; 4,1) – korrigiert"
     }
   },
   {
@@ -27261,7 +27258,7 @@
     "topic": "Charakteristischer Wert und Bemessungswert",
     "difficulty": "Vertiefung",
     "normRef": "DIN EN 1990 Anhang D",
-    "question": "Fünf Bohrkerne einer Bestandsdecke ergeben den Mittelwert 42,0 N/mm² und s = 2,5 N/mm² (V_X unbekannt, k_n = 2,33). Welcher Bemessungswert X_d ergibt sich vereinfacht mit γ_M = 1,5?",
+    "question": "Eine allgemeine Prüfserie aus fünf Probekörpern ergibt den Mittelwert 42,0 N/mm² und s = 2,5 N/mm² (V_X unbekannt, k_n = 2,33). Welcher Bemessungswert X_d ergibt sich vereinfacht mit γ_M = 1,5?",
     "options": [
       "X_d ≈ 25,3 N/mm²",
       "X_d ≈ 36,2 N/mm²",
@@ -27282,16 +27279,15 @@
       "topic": "Charakteristischer Wert und Bemessungswert",
       "misconception": "Fraktilabschlag und Teilsicherheitsbeiwert werden vergessen oder vertauscht.",
       "coreRule": "X_k = x̄ − k_n · s (k_n aus DIN EN 1990 Anhang D, Tab. D1), danach X_d = X_k/γ_M.",
-      "actionableAdvice": "Arbeiten Sie den Abschnitt „Beispiel 1: Charakteristischer Wert aus 10 Bohrkernen“ im Modul Statistik noch einmal durch.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Beispiel 1: Charakteristischer Wert aus 10 Prüfwerten“ im Modul Statistik noch einmal durch.",
       "targetModuleTab": "statistik",
       "targetModuleLabel": "Statistik"
     },
-    "verified": true,
-    "reviewer": "freigegeben 28.10.2026 (Zweitprüfung)",
-    "reviewedAt": "2026-10-28",
+    "verified": false,
     "vorpruefung": {
-      "am": "2026-10-25",
-      "ergebnis": "ok"
+      "am": "2026-11-02",
+      "ergebnis": "korrigiert",
+      "hinweis": "Umsetzung 02.11.: Bohrkerne aus Bestandsdecke durch allgemeine Prüfserie ersetzt – für Bestandsbeton gilt DIN EN 13791, nicht DIN EN 1990 Anhang D mit γ_M (NS3-ST-1); Abschnittsname im Lernhinweis nachgezogen; Werte unverändert – korrigiert"
     }
   },
   {

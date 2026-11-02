@@ -192,7 +192,7 @@ export interface QngMaterial {
 export const QNG_DATA: QngMaterial[] = [
   { name: inhalt.werte.normalbetonC2530Cem, category: 'Mineralisch', unit: 'm³', gwp: GWP.betonC2530CemI.gwp, penrt: 1250, rec: inhalt.werte.sehrGutRezyklierteGesteinskörnung },
   { name: inhalt.werte.sonderbetonC3037Cem, category: 'Mineralisch', unit: 'm³', gwp: GWP.betonC3037CemIII.gwp, penrt: 950, rec: inhalt.werte.sehrGutHüttensandmischungRessourcenspare },
-  { name: inhalt.werte.kalksandsteinKsPlansteinRohdichte, category: 'Mineralisch', unit: 't', gwp: 110, penrt: 980, rec: inhalt.werte.mittelReinAufbereitetZu },
+  { name: inhalt.werte.kalksandsteinKsPlansteinRohdichte, category: 'Mineralisch', unit: 't', gwp: GWP.kalksandstein.gwp, penrt: 980, rec: inhalt.werte.mittelReinAufbereitetZu },
   { name: 'Porenbetonplanstein', category: 'Mineralisch', unit: 'm³', gwp: 185, penrt: 1850, rec: inhalt.werte.mittelRichtenFürSortenreines },
   { name: inhalt.werte.hochlochziegelUnverfüllt, category: 'Mineralisch', unit: 'm³', gwp: 220, penrt: 2300, rec: inhalt.werte.mittelVerwendungAlsZiegelmehl },
   { name: inhalt.werte.bewehrungsstahlSekundärroute100Elektro, category: 'Metalle', unit: 't', gwp: 450, penrt: 5800, rec: inhalt.werte.hervorragendUnendlichOftEinschmelzbar },

@@ -61,16 +61,16 @@ function DynamicInteractiveDegradationCalculator() {
     const projectedLifetime = Math.round(baseLifetime[material] * factorRatio);
 
     // Degradation rate % per 10 years
-    const 十YearsDegradation = Math.min(100, Math.round((degradationScore / 4.5) * 45));
+    const abbauJe10Jahre = Math.min(100, Math.round((degradationScore / 4.5) * 45));
 
     return {
       degradationScore: parseFloat(degradationScore.toFixed(2)),
       projectedLifetime,
-      十YearsDegradation,
+      abbauJe10Jahre,
     };
   };
 
-  const { degradationScore, projectedLifetime, 十YearsDegradation } = calculateDegradation();
+  const { degradationScore, projectedLifetime, abbauJe10Jahre } = calculateDegradation();
 
   // Selected material specific detailed information block
   const materialDetails = inhalt.daten["DynamicInteractiveDegradationCalculator.materialDetails"];
@@ -212,7 +212,7 @@ function DynamicInteractiveDegradationCalculator() {
 
               <div className="bg-white p-3 rounded-xl border border-slate-150 text-center">
                 <span className="text-xs text-slate-450 uppercase font-bold tracking-wider"><MdText text={inhalt.texte.qualitätsabbruchIn10J} /></span>
-                <span className="block text-3xl font-black text-slate-850 mt-1 font-mono">{十YearsDegradation}%</span>
+                <span className="block text-3xl font-black text-slate-850 mt-1 font-mono">{abbauJe10Jahre}%</span>
                 <span className="text-xs text-slate-550 mt-0.5 block"><MdText text={inhalt.texte.ebenenAbbauVerschleiß} /></span>
               </div>
             </div>

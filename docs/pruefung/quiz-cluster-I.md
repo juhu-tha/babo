@@ -1,10 +1,10 @@
 # Prüfliste Quiz – Cluster I: Grundlagen & Labor
 
-Stand: 30.10.2026 · Grundlage: `src/data/quiz.json` (Felder `vorpruefung` und `verified`), `docs/quiz-pruefhinweise.md`, Lernziele aus `src/data/lernziele.ts`. Erzeugt mit `npx tsx scripts/pruefliste.ts`; gesetzte Kreuze übernimmt das Skript beim nächsten Lauf. quiz.json wurde für diese Liste nicht verändert.
+Stand: 02.11.2026 · Grundlage: `src/data/quiz.json` (Felder `vorpruefung` und `verified`), `docs/quiz-pruefhinweise.md`, Lernziele aus `src/data/lernziele.ts`. Erzeugt mit `npx tsx scripts/pruefliste.ts`; gesetzte Kreuze übernimmt das Skript beim nächsten Lauf. quiz.json wurde für diese Liste nicht verändert.
 
-Cluster I umfasst 260 Fragen aus 38 Modulen. Aufgeführt sind 77 auffällige Fragen (Vorprüfung „korrigiert“ oder „fraglich“, offener Prüfhinweis oder neu seit 26.10.2026 ohne Freigabe) und eine Stichprobe von 5 unauffälligen Fragen. Entscheidung je Frage ankreuzen; bei „ändern“ den Änderungswunsch in die Zeile darunter schreiben.
+Cluster I umfasst 260 Fragen aus 38 Modulen. Aufgeführt sind 78 auffällige Fragen (Vorprüfung „korrigiert“ oder „fraglich“, offener Prüfhinweis oder neu seit 26.10.2026 ohne Freigabe) und eine Stichprobe von 5 unauffälligen Fragen. Entscheidung je Frage ankreuzen; bei „ändern“ den Änderungswunsch in die Zeile darunter schreiben.
 
-Auffällig im Einzelnen (Mehrfachnennung möglich): 72 korrigiert, 0 fraglich, 8 mit offenem Prüfhinweis, 1 neu seit 26.10.2026.
+Auffällig im Einzelnen (Mehrfachnennung möglich): 73 korrigiert, 0 fraglich, 8 mit offenem Prüfhinweis, 1 neu seit 26.10.2026.
 
 ## A. Auffällige Fragen
 
@@ -598,6 +598,14 @@ Auffällig im Einzelnen (Mehrfachnennung möglich): 72 korrigiert, 0 fraglich, 8
 - **Richtige Antwort:** λ̄ ≤ 0,2 oder N_Ed/N_cr ≤ 0,04
 - **Auffälligkeit:** Vorprüfung „korrigiert“: Distraktoren angeglichen · bereits freigegeben (verified)
 - [x] ok
+- [ ] ändern: …
+
+### qn_statistik_1 · Statistik
+
+- **Frage:** Eine allgemeine Prüfserie aus fünf Probekörpern ergibt den Mittelwert 42,0 N/mm² und s = 2,5 N/mm² (V_X unbekannt, k_n = 2,33). Welcher Bemessungswert X_d ergibt sich vereinfacht mit γ_M = 1,5?
+- **Richtige Antwort:** X_d ≈ 24,1 N/mm²
+- **Auffälligkeit:** Vorprüfung „korrigiert“: Umsetzung 02.11.: Bohrkerne aus Bestandsdecke durch allgemeine Prüfserie ersetzt – für Bestandsbeton gilt DIN EN 13791, nicht DIN EN 1990 Anhang D mit γ_M (NS3-ST-1); Abschnittsname im Lernhinweis nachgezogen; Werte unverändert – korrigiert
+- [ ] ok
 - [ ] ändern: …
 
 ### qn_statistik_2 · Statistik

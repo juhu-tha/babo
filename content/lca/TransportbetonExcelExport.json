@@ -674,7 +674,7 @@
         {
           "f": "C22*F22"
         },
-        "k-Wert = 0.4 anrechenbar"
+        "k-Wert 0,4 nur für Flugasche anrechenbar (Gesteinsmehl ohne Anrechnung)"
       ],
       [
         "Sand 0/4 mm (natürlich)",
@@ -744,7 +744,7 @@
         {
           "f": "C27*F27"
         },
-        "(w/z) = 155 / 290 = 0.53"
+        "(w/z)_eq = 155 / (290 + 0,4 · 40) = 0,51"
       ],
       [
         "Mischwerk-Herstellung (A3)",

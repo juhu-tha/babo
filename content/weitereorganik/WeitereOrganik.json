@@ -91,7 +91,7 @@
     "rtfotVerfahrenDinEn": "RTFOT-Verfahren (DIN EN 12607-1):",
     "rollingThinFilmOven": "Rolling Thin Film Oven Test. Simuliert die thermo-oxidative Asphalt-Alterung während des instabilen Asphalt-Heiß-Mischvorgangs.",
     "pavAlterungDinEn": "PAV-Alterung (DIN EN 14769):",
-    "pressureAgingVesselSimuliert": "Pressure Aging Vessel. Simuliert die subsequente, 10- bis 15-jährige Feld-Alterung unter hohem Sauerstoffdruck (2,1 MPa) bei 100°C.",
+    "pressureAgingVesselSimuliert": "Pressure Aging Vessel. Simuliert im Anschluss an das RTFOT die Langzeitalterung im Gebrauch – etwa 5 bis 10 Jahre Feldalterung – unter hohem Sauerstoffdruck (2,1 MPa) bei 100 °C (Literaturangabe nach AASHTO R 28 bzw. ASTM D6521).",
     "rheologischeKennzahlVerschiebung": "Rheologische Kennzahl-Verschiebung:",
     "frischbitumenKlasse5070": "Frischbitumen (Klasse 50/70)",
     "epRuk4654": "EP RuK: 46 - 54 °C",
@@ -213,7 +213,8 @@
     ],
     "WeitereOrganik.literatur": [
       "Schunck, E.; Oster, H. J.; Barthel, R.; Kießl, K.: Dach Atlas – Geneigte Dächer. München: Edition Detail (aktuelle Auflage)",
-      "Sedlbauer, K.: Vorhersage von Schimmelpilzbildung auf und in Bauteilen. Dissertation, Universität Stuttgart 2001"
+      "Sedlbauer, K.: Vorhersage von Schimmelpilzbildung auf und in Bauteilen. Dissertation, Universität Stuttgart 2001",
+      "AASHTO R 28: Standard Practice for Accelerated Aging of Asphalt Binder Using a Pressurized Aging Vessel (PAV); ASTM D6521 (gleiches Verfahren) – Angabe 5 bis 10 Jahre Gebrauchsalterung"
     ],
     "WeitereOrganik.formeln": [
       {
