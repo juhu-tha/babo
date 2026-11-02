@@ -183,7 +183,7 @@ export const KURZFASSUNG: Readonly<Record<string, readonly string[]>> = {
     "Selektiver Rückbau läuft in Phasen: Bestandserkundung, Schadstoffkataster nach VDI 6202 Blatt 1, Entfrachtung, sortenreiner Abbruch sowie Aufbereitung und Verwertung.",
     "Schadstoffe sind vor dem mineralischen Abbruch auszubauen; erst nach erfolgreicher Freigabemessung darf der Rohbau abgebrochen werden, sonst wird der Bauschutt kontaminiert.",
     "Die Epochen-Schadstoff-Matrix leitet aus dem Baujahr Verdachtsstoffe ab: Asbest und PAK bis 1970, alte KMF und PCP von 1970 bis 1990, HBCD in EPS- und XPS-Platten bis etwa 2015.",
-    "Nach § 8 GewAbfV sind Beton (17 01 01) und Ziegel (17 01 02) getrennt zu halten, soweit technisch möglich und zumutbar; ab 10 m³ Abfall ist die Getrennthaltung zu dokumentieren.",
+    "Nach § 8 GewAbfV sind Beton (17 01 01) und Ziegel (17 01 02) getrennt zu halten, soweit technisch möglich und zumutbar; fallen insgesamt mehr als 10 m³ Abfall an, ist die Getrennthaltung zu dokumentieren.",
     "Typischer Fehler: Schon 0,1 % Asbest im Putz kann bei unerkundetem Abbruch den gesamten Ziegel- und Betonbruch zu gefährlichem Abfall für die Deponie DK III machen.",
   ],
   schadensbilder: [

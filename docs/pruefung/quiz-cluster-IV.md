@@ -618,9 +618,9 @@ Auffällig im Einzelnen (Mehrfachnennung möglich): 86 korrigiert, 0 fraglich, 1
 
 ### qn_lebenszyklus_kosten_3 · Lebenszyklus & Kosten
 
-- **Frage:** Im LCC-Rechner wird ein CO₂-Schattenpreis aktiviert. Wie verändert das den Vergleich EPS-WDVS (12,5 t CO₂-Äq. Herstellung, 1,8 t/a Betrieb) gegen Holzfaser (1,5 t, 0,95 t/a)?
+- **Frage:** Im LCC-Rechner wird ein CO₂-Schattenpreis aktiviert. Wie verändert das den Vergleich EPS-WDVS (rund 4 t CO₂-Äq. Herstellung als Lehrwert, 1,8 t/a Betrieb) gegen Holzfaser (1,5 t, 0,95 t/a)?
 - **Richtige Antwort:** Zugunsten der Holzfaser, da die Klimakosten beider Varianten eingepreist werden
-- **Auffälligkeit:** Vorprüfung „korrigiert“: normRef ergänzt · bereits freigegeben (verified)
+- **Auffälligkeit:** Vorprüfung „korrigiert“: Umsetzung 02.11.: Herstellungs-GWP des EPS-WDVS im Fragetext 12,5 t → rund 4 t (Lehrwert aus GWP_LEHRWERTE.eps, 16 cm auf 150 m² = 1560 kg, Systemanteil 2400 kg, zusammen 3960 kg; NS5A-LK-1); Aussage und Antwort unverändert – korrigiert
 - [x] ok
 - [ ] ändern: …
 

@@ -88,7 +88,7 @@ export default function Bestand() {
   const [showCalculations, setShowCalculations] = useState<boolean>(false);
   
   // Sanierungskonfigurator-States
-  const [selectedComp, setSelectedComp] = useState<'wall' | 'roof' | 'floor'>('wall');
+  const [selectedComp, setSelectedComp] = useState<'wall' | 'roof' | 'ogd' | 'floor'>('wall');
   const [area, setArea] = useState<number>(100);
   const [thickness, setThickness] = useState<number>(140); // in mm
   const [lambda, setLambda] = useState<number>(0.035); // W/(mK)
@@ -106,10 +106,12 @@ export default function Bestand() {
     let gegLimit: number = GMODG_ANLAGE7.aussenwand;
     let fx = FX.aussenwand ?? 1.0;
 
-    if (selectedComp === 'roof') {
+    if (selectedComp === 'roof' || selectedComp === 'ogd') {
+      // Anlage 7: ein Höchstwert für Steildach und oberste Geschossdecke (Flachdach: 0,20);
+      // F_x nach DIN V 4108-6 getrennt: Dach als Systemgrenze 1,0, Decke zum unbeheizten Dachraum 0,8 (NS5B-BE-1)
       originalU = currentEraData.uValueRoof;
-      gegLimit = GMODG_ANLAGE7.steildach_oGD; // Steildach / oberste Geschossdecke (Flachdach: 0,20)
-      fx = FX.steildach_oGD ?? 0.8;
+      gegLimit = GMODG_ANLAGE7.steildach_oGD;
+      fx = selectedComp === 'roof' ? (FX.steildach ?? 1.0) : (FX.oberste_geschossdecke ?? 0.8);
     } else if (selectedComp === 'floor') {
       originalU = currentEraData.uValueFloor;
       gegLimit = GMODG_ANLAGE7.kellerdecke_erdreich;
@@ -357,10 +359,11 @@ export default function Bestand() {
                   {/* Component selector */}
                   <div>
                     <label className="text-xs font-semibold text-slate-700 block mb-1.5"><MdText text={inhalt.texte.bauteilFürDieSanierungsmaßnahme} /></label>
-                    <AuswahlGruppe label="Bauteil" className="grid grid-cols-3 gap-2">
+                    <AuswahlGruppe label="Bauteil" className="grid grid-cols-2 sm:grid-cols-4 gap-2">
                       {[
                         { id: 'wall' as const, label: 'Außenwand' },
-                        { id: 'roof' as const, label: inhalt.werte.steildachOgd },
+                        { id: 'roof' as const, label: inhalt.werte.steildach },
+                        { id: 'ogd' as const, label: inhalt.werte.obersteGeschossdecke },
                         { id: 'floor' as const, label: 'Kellerdecke' }
                       ].map(c => (
                         <button {...alsOption(selectedComp === c.id)}
