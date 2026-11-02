@@ -1265,7 +1265,7 @@
       "topic": "Nationale Bauprodukte",
       "misconception": "Alle Baustahlprodukte seien europäisch geregelt.",
       "coreRule": "Kein hEN → nationaler Verwendbarkeits-/Übereinstimmungsnachweis (Ü-Zeichen).",
-      "actionableAdvice": "Arbeiten Sie den Abschnitt „Nationale Bauprodukte“ im Modul BauPVO & CE-Kennzeichnung noch einmal durch.",
+      "actionableAdvice": "Arbeiten Sie das Thema „Nationale Bauprodukte“ im Modul BauPVO & CE-Kennzeichnung noch einmal durch.",
       "targetModuleTab": "bp_recht_grundlagen",
       "targetModuleLabel": "BauPVO & CE-Kennzeichnung"
     },
@@ -1308,7 +1308,7 @@
       "topic": "Bauwerksbezug nach EuGH",
       "misconception": "CE bedeute automatisch Eignung für jedes Bauwerk.",
       "coreRule": "CE + DoP liefern Leistungswerte; Abgleich mit Bauwerksanforderungen der MVV TB durch den Planer.",
-      "actionableAdvice": "Arbeiten Sie den Abschnitt „Bauwerksbezug nach EuGH“ im Modul BauPVO & CE-Kennzeichnung noch einmal durch.",
+      "actionableAdvice": "Arbeiten Sie das Thema „Bauwerksbezug nach EuGH“ im Modul BauPVO & CE-Kennzeichnung noch einmal durch.",
       "targetModuleTab": "bp_recht_grundlagen",
       "targetModuleLabel": "BauPVO & CE-Kennzeichnung"
     },
@@ -1394,7 +1394,7 @@
       "topic": "Spannungseinheiten",
       "misconception": "kN/cm² und N/mm² werden verwechselt.",
       "coreRule": "Alle Größen zuerst in N und mm umrechnen – dann ergibt sich die Spannung direkt in N/mm².",
-      "actionableAdvice": "Arbeiten Sie den Abschnitt „Spannungseinheiten“ im Modul Einheiten noch einmal durch.",
+      "actionableAdvice": "Arbeiten Sie das Thema „Spannungseinheiten“ im Modul Einheiten noch einmal durch.",
       "targetModuleTab": "einheiten",
       "targetModuleLabel": "Einheiten"
     },
@@ -1436,7 +1436,7 @@
       "topic": "Momenteinheiten",
       "misconception": "Nur einer der beiden Faktoren (kN → N oder m → mm) wird berücksichtigt.",
       "coreRule": "kNm → Nmm: Faktor 10⁶ (10³ aus der Kraft, 10³ aus der Länge).",
-      "actionableAdvice": "Arbeiten Sie den Abschnitt „Momenteinheiten“ im Modul Einheiten noch einmal durch.",
+      "actionableAdvice": "Arbeiten Sie das Thema „Momenteinheiten“ im Modul Einheiten noch einmal durch.",
       "targetModuleTab": "einheiten",
       "targetModuleLabel": "Einheiten"
     },
@@ -1478,7 +1478,7 @@
       "topic": "Flächenlasten",
       "misconception": "Die Flächenumrechnung m² → mm² (Faktor 10⁶) wird unterschätzt.",
       "coreRule": "Flächen umrechnen mit dem Quadrat des Längenfaktors: 1 m² = 10⁶ mm².",
-      "actionableAdvice": "Arbeiten Sie den Abschnitt „Flächenlasten“ im Modul Einheiten noch einmal durch.",
+      "actionableAdvice": "Arbeiten Sie das Thema „Flächenlasten“ im Modul Einheiten noch einmal durch.",
       "targetModuleTab": "einheiten",
       "targetModuleLabel": "Einheiten"
     },
@@ -1520,7 +1520,7 @@
       "topic": "Temperatur und Temperaturdifferenz",
       "misconception": "Absolute Temperatur und Temperaturdifferenz werden verwechselt.",
       "coreRule": "Temperaturdifferenzen: 1 K = 1 °C; absolute Temperaturen: T/K = ϑ/°C + 273,15.",
-      "actionableAdvice": "Arbeiten Sie den Abschnitt „Temperatur und Temperaturdifferenz“ im Modul Einheiten noch einmal durch.",
+      "actionableAdvice": "Arbeiten Sie das Thema „Temperatur und Temperaturdifferenz“ im Modul Einheiten noch einmal durch.",
       "targetModuleTab": "einheiten",
       "targetModuleLabel": "Einheiten"
     },
@@ -1562,7 +1562,7 @@
       "topic": "Charakteristischer Wert vs. Mittelwert",
       "misconception": "Charakteristischer Wert, Mittelwert und Würfelfestigkeit werden vermischt.",
       "coreRule": "C x/y: x = f_ck (Zylinder), y = f_ck,cube (Würfel); f_cm = f_ck + 8 N/mm².",
-      "actionableAdvice": "Arbeiten Sie den Abschnitt „Charakteristischer Wert vs. Mittelwert“ im Modul Kennwerte noch einmal durch.",
+      "actionableAdvice": "Arbeiten Sie das Thema „Charakteristischer Wert vs. Mittelwert“ im Modul Kennwerte noch einmal durch.",
       "targetModuleTab": "materialkennwerte",
       "targetModuleLabel": "Kennwerte"
     },
@@ -1604,7 +1604,7 @@
       "topic": "Wärmedehnung im Vergleich",
       "misconception": "Die Länge wird in m statt in mm eingesetzt oder die Zehnerpotenz falsch gelesen.",
       "coreRule": "ΔL = α_T · L₀ · ΔT; mit L₀ in mm ergibt sich ΔL in mm.",
-      "actionableAdvice": "Arbeiten Sie den Abschnitt „Wärmedehnung im Vergleich“ im Modul Kennwerte noch einmal durch.",
+      "actionableAdvice": "Arbeiten Sie das Thema „Wärmedehnung im Vergleich“ im Modul Kennwerte noch einmal durch.",
       "targetModuleTab": "materialkennwerte",
       "targetModuleLabel": "Kennwerte"
     },
@@ -1819,7 +1819,7 @@
       "topic": "Grundkombination Gl. (6.10)",
       "misconception": "Teilsicherheitsbeiwerte vertauscht oder die Leiteinwirkung mit ψ₀ abgemindert.",
       "coreRule": "Ständig ungünstig γ_G = 1,35; Leiteinwirkung γ_Q = 1,50 ohne ψ₀; Begleiteinwirkungen γ_Q · ψ₀.",
-      "actionableAdvice": "Arbeiten Sie den Abschnitt „Grundkombination Gl. (6.10)“ im Modul Eurocode noch einmal durch.",
+      "actionableAdvice": "Arbeiten Sie das Thema „Grundkombination Gl. (6.10)“ im Modul Eurocode noch einmal durch.",
       "targetModuleTab": "sicherheitskonzept",
       "targetModuleLabel": "Eurocode"
     },
@@ -1862,7 +1862,7 @@
       "topic": "Günstig wirkende ständige Einwirkung",
       "misconception": "Teilsicherheitsbeiwerte werden schematisch ohne Blick auf die Wirkungsrichtung angesetzt.",
       "coreRule": "Ungünstig: γ_G = 1,35; günstig: γ_G,inf = 1,00 (γ_Q günstig = 0).",
-      "actionableAdvice": "Arbeiten Sie den Abschnitt „Günstig wirkende ständige Einwirkung“ im Modul Eurocode noch einmal durch.",
+      "actionableAdvice": "Arbeiten Sie das Thema „Günstig wirkende ständige Einwirkung“ im Modul Eurocode noch einmal durch.",
       "targetModuleTab": "sicherheitskonzept",
       "targetModuleLabel": "Eurocode"
     },
@@ -1904,7 +1904,7 @@
       "topic": "Kombinationsbeiwerte ψ₀",
       "misconception": "ψ₀-Werte werden zwischen Einwirkungsarten verwechselt.",
       "coreRule": "ψ₀ ist je Einwirkungsart im Nationalen Anhang festgelegt.",
-      "actionableAdvice": "Arbeiten Sie den Abschnitt „Kombinationsbeiwerte ψ₀“ im Modul Eurocode noch einmal durch.",
+      "actionableAdvice": "Arbeiten Sie das Thema „Kombinationsbeiwerte ψ₀“ im Modul Eurocode noch einmal durch.",
       "targetModuleTab": "sicherheitskonzept",
       "targetModuleLabel": "Eurocode"
     },
@@ -1946,7 +1946,7 @@
       "topic": "Bemessungswert der Betonfestigkeit",
       "misconception": "Nur durch γ_C geteilt oder α_cc vergessen.",
       "coreRule": "f_cd = α_cc · f_ck / γ_C (NA Deutschland: α_cc = 0,85).",
-      "actionableAdvice": "Arbeiten Sie den Abschnitt „Bemessungswert der Betonfestigkeit“ im Modul Eurocode noch einmal durch.",
+      "actionableAdvice": "Arbeiten Sie das Thema „Bemessungswert der Betonfestigkeit“ im Modul Eurocode noch einmal durch.",
       "targetModuleTab": "sicherheitskonzept",
       "targetModuleLabel": "Eurocode"
     },
@@ -1988,7 +1988,7 @@
       "topic": "Quasi-ständige Kombination",
       "misconception": "GZT- und GZG-Kombinationen werden vermischt.",
       "coreRule": "Quasi-ständig: Σ G_k + Σ ψ₂ · Q_k (ohne γ).",
-      "actionableAdvice": "Arbeiten Sie den Abschnitt „Lastkombinationen“ im Modul Eurocode – Sicherheitskonzept noch einmal durch.",
+      "actionableAdvice": "Arbeiten Sie das Thema „Lastkombinationen“ im Modul Eurocode – Sicherheitskonzept noch einmal durch.",
       "targetModuleTab": "sicherheitskonzept",
       "targetModuleLabel": "Eurocode – Sicherheitskonzept"
     },
@@ -2073,7 +2073,7 @@
       "topic": "Geschichte des Zements",
       "misconception": "Namensgebung und technische Entwicklung werden gleichgesetzt.",
       "coreRule": "Name 1824 (Aspdin) – Sintern um 1844 (Johnson) – Klinkerbrand heute ca. 1450 °C.",
-      "actionableAdvice": "Arbeiten Sie den Abschnitt „Geschichte des Zements“ im Modul Baustoffkunde noch einmal durch.",
+      "actionableAdvice": "Arbeiten Sie das Thema „Geschichte des Zements“ im Modul Baustoffkunde noch einmal durch.",
       "targetModuleTab": "baustoffkunde",
       "targetModuleLabel": "Baustoffkunde"
     },
@@ -2114,7 +2114,7 @@
       "topic": "Verbundprinzip Stahlbeton",
       "misconception": "Die Rolle der Bewehrung wird in der Druckzone bzw. neutralen Faser gesehen.",
       "coreRule": "Beton trägt Druck, Stahl trägt Zug; Voraussetzungen: Verbund, ähnliche Wärmedehnung, Passivierung.",
-      "actionableAdvice": "Arbeiten Sie den Abschnitt „Verbundprinzip Stahlbeton“ im Modul Baustoffkunde noch einmal durch.",
+      "actionableAdvice": "Arbeiten Sie das Thema „Verbundprinzip Stahlbeton“ im Modul Baustoffkunde noch einmal durch.",
       "targetModuleTab": "baustoffkunde",
       "targetModuleLabel": "Baustoffkunde"
     },
@@ -2155,7 +2155,7 @@
       "topic": "Gefüge des Zementsteins",
       "misconception": "Der Zusammenhang zwischen w/z-Wert, Porenraum und Festigkeit ist nicht bekannt.",
       "coreRule": "Mehr Wasser → mehr Kapillarporen → geringere Festigkeit und Dichtigkeit.",
-      "actionableAdvice": "Arbeiten Sie den Abschnitt „Gefüge des Zementsteins“ im Modul Baustoffkunde noch einmal durch.",
+      "actionableAdvice": "Arbeiten Sie das Thema „Gefüge des Zementsteins“ im Modul Baustoffkunde noch einmal durch.",
       "targetModuleTab": "baustoffkunde",
       "targetModuleLabel": "Baustoffkunde"
     },
@@ -2452,7 +2452,7 @@
       "topic": "Rechtscharakter von DIN-Normen",
       "misconception": "Normen werden mit Gesetzen gleichgesetzt.",
       "coreRule": "Norm ≠ Gesetz; Verbindlichkeit über Technische Baubestimmungen oder Vertrag.",
-      "actionableAdvice": "Arbeiten Sie den Abschnitt „Rechtscharakter von DIN-Normen“ im Modul Regulatives noch einmal durch.",
+      "actionableAdvice": "Arbeiten Sie das Thema „Rechtscharakter von DIN-Normen“ im Modul Regulatives noch einmal durch.",
       "targetModuleTab": "regularien",
       "targetModuleLabel": "Regulatives"
     },
@@ -2750,7 +2750,7 @@
       "topic": "Bohrkerne: Schlankheit",
       "misconception": "Die Querdehnungsbehinderung durch die Druckplatten wird übersehen.",
       "coreRule": "h/d = 1 → Würfel, h/d = 2 → Zylinder; Zwischenwerte umrechnen.",
-      "actionableAdvice": "Arbeiten Sie den Abschnitt „Bohrkerne: Schlankheit“ im Modul Probenahme & Erkundung noch einmal durch.",
+      "actionableAdvice": "Arbeiten Sie das Thema „Bohrkerne: Schlankheit“ im Modul Probenahme & Erkundung noch einmal durch.",
       "targetModuleTab": "probenahme",
       "targetModuleLabel": "Probenahme & Erkundung"
     },
@@ -2793,7 +2793,7 @@
       "topic": "Rückprallhammer: Schlagrichtung",
       "misconception": "Es wird nur der Hinweg der Schlagmasse betrachtet, nicht der gemessene Rückprall.",
       "coreRule": "Nach unten: R zu niedrig → +ΔR; nach oben: R zu hoch → −ΔR.",
-      "actionableAdvice": "Arbeiten Sie den Abschnitt „Rückprallhammer: Schlagrichtung“ im Modul Probenahme & Erkundung noch einmal durch.",
+      "actionableAdvice": "Arbeiten Sie das Thema „Rückprallhammer: Schlagrichtung“ im Modul Probenahme & Erkundung noch einmal durch.",
       "targetModuleTab": "probenahme",
       "targetModuleLabel": "Probenahme & Erkundung"
     },
@@ -2835,7 +2835,7 @@
       "topic": "Rückprallhammer: Auswertung",
       "misconception": "Mittelwertbildung wie bei Festigkeitsprüfungen wird übertragen.",
       "coreRule": "≥ 9 Schläge, Abstand ≥ 25 mm, Median; Verwerfungskriterium: mehr als 20 % der Werte mehr als 6 Einheiten vom Median.",
-      "actionableAdvice": "Arbeiten Sie den Abschnitt „Rückprallhammer: Auswertung“ im Modul Probenahme & Erkundung noch einmal durch.",
+      "actionableAdvice": "Arbeiten Sie das Thema „Rückprallhammer: Auswertung“ im Modul Probenahme & Erkundung noch einmal durch.",
       "targetModuleTab": "probenahme",
       "targetModuleLabel": "Probenahme & Erkundung"
     },
@@ -2876,7 +2876,7 @@
       "topic": "Leichtflüchtige Schadstoffe",
       "misconception": "Die Homogenisierungsregel wird auch auf flüchtige Stoffe angewendet.",
       "coreRule": "Flüchtige Parameter: keine Homogenisierung, sofort gasdicht abfüllen.",
-      "actionableAdvice": "Arbeiten Sie den Abschnitt „Leichtflüchtige Schadstoffe“ im Modul Probenahme & Erkundung noch einmal durch.",
+      "actionableAdvice": "Arbeiten Sie das Thema „Leichtflüchtige Schadstoffe“ im Modul Probenahme & Erkundung noch einmal durch.",
       "targetModuleTab": "probenahme",
       "targetModuleLabel": "Probenahme & Erkundung"
     },
@@ -3002,7 +3002,7 @@
       "topic": "GUM: Typ-B-Beitrag der Auflösung",
       "misconception": "Die Halbbreite der Verteilung wird direkt als Standardunsicherheit verwendet.",
       "coreRule": "Rechteckverteilung mit Halbbreite a: u = a/√3 = d/√12.",
-      "actionableAdvice": "Arbeiten Sie den Abschnitt „GUM: Typ-B-Beitrag der Auflösung“ im Modul Messen & Prüfen noch einmal durch.",
+      "actionableAdvice": "Arbeiten Sie das Thema „GUM: Typ-B-Beitrag der Auflösung“ im Modul Messen & Prüfen noch einmal durch.",
       "targetModuleTab": "messen_pruefen",
       "targetModuleLabel": "Messen & Prüfen"
     },
@@ -3045,7 +3045,7 @@
       "topic": "Eignungsprüfung: z-Score",
       "misconception": "Jede Überschreitung von |z| = 2 wird als Nichtkonformität gewertet.",
       "coreRule": "Grenzen 2 und 3 für |z|; |En| ≤ 1 bei der En-Zahl.",
-      "actionableAdvice": "Arbeiten Sie den Abschnitt „Eignungsprüfung: z-Score“ im Modul Messen & Prüfen noch einmal durch.",
+      "actionableAdvice": "Arbeiten Sie das Thema „Eignungsprüfung: z-Score“ im Modul Messen & Prüfen noch einmal durch.",
       "targetModuleTab": "messen_pruefen",
       "targetModuleLabel": "Messen & Prüfen"
     },
@@ -3087,7 +3087,7 @@
       "topic": "Wiederhol- und Vergleichsgrenze",
       "misconception": "Die Standardabweichung selbst wird als Grenze für Differenzen genommen.",
       "coreRule": "r = 2,8·σ_r, R = 2,8·σ_R (2,8 ≈ 1,96·√2).",
-      "actionableAdvice": "Arbeiten Sie den Abschnitt „Wiederhol- und Vergleichsgrenze“ im Modul Messen & Prüfen noch einmal durch.",
+      "actionableAdvice": "Arbeiten Sie das Thema „Wiederhol- und Vergleichsgrenze“ im Modul Messen & Prüfen noch einmal durch.",
       "targetModuleTab": "messen_pruefen",
       "targetModuleLabel": "Messen & Prüfen"
     },
@@ -3129,7 +3129,7 @@
       "topic": "XRD und amorphe Phasen",
       "misconception": "Mengenanteil und Kristallinität werden verwechselt.",
       "coreRule": "XRD = kristalline Phasen; amorphe Anteile nur indirekt.",
-      "actionableAdvice": "Arbeiten Sie den Abschnitt „XRD und amorphe Phasen“ im Modul Analytik & Diagnostik noch einmal durch.",
+      "actionableAdvice": "Arbeiten Sie das Thema „XRD und amorphe Phasen“ im Modul Analytik & Diagnostik noch einmal durch.",
       "targetModuleTab": "analytik",
       "targetModuleLabel": "Analytik & Diagnostik"
     },
@@ -3299,7 +3299,7 @@
       "topic": "Methodenwahl",
       "misconception": "Elementanalyse und Phasenanalyse werden verwechselt.",
       "coreRule": "RFA/ICP = Elemente; XRD = Phasen; REM/μ-CT = Gefüge; MIP/NMR = Poren.",
-      "actionableAdvice": "Arbeiten Sie den Abschnitt „Methodenwahl“ im Modul Analytik & Diagnostik noch einmal durch.",
+      "actionableAdvice": "Arbeiten Sie das Thema „Methodenwahl“ im Modul Analytik & Diagnostik noch einmal durch.",
       "targetModuleTab": "analytik",
       "targetModuleLabel": "Analytik & Diagnostik"
     },
@@ -3385,7 +3385,7 @@
       "topic": "Druckfestigkeit: Belastungsgeschwindigkeit",
       "misconception": "Die Belastungsraten der verschiedenen Betonprüfungen werden verwechselt.",
       "coreRule": "Druck 0,6 ± 0,2 MPa/s; Biegezug/Spaltzug 0,04–0,06 MPa/s.",
-      "actionableAdvice": "Arbeiten Sie den Abschnitt „Druckfestigkeit: Belastungsgeschwindigkeit“ im Modul Mechanische Prüfungen noch einmal durch.",
+      "actionableAdvice": "Arbeiten Sie das Thema „Druckfestigkeit: Belastungsgeschwindigkeit“ im Modul Mechanische Prüfungen noch einmal durch.",
       "targetModuleTab": "mechanische_pruefungen",
       "targetModuleLabel": "Mechanische Prüfungen"
     },
@@ -3470,7 +3470,7 @@
       "topic": "Betonstahl-Duktilität",
       "misconception": "Die Bruchdehnung nach dem Bruch wird anstelle von A_gt verwendet.",
       "coreRule": "Duktilität = R_m/R_e und A_gt (Dehnung bei Höchstkraft).",
-      "actionableAdvice": "Arbeiten Sie den Abschnitt „Betonstahl-Duktilität“ im Modul Mechanische Prüfungen noch einmal durch.",
+      "actionableAdvice": "Arbeiten Sie das Thema „Betonstahl-Duktilität“ im Modul Mechanische Prüfungen noch einmal durch.",
       "targetModuleTab": "mechanische_pruefungen",
       "targetModuleLabel": "Mechanische Prüfungen"
     },
@@ -3554,7 +3554,7 @@
       "topic": "Biegeprüfung Holz",
       "misconception": "Formeln für 3- und 4-Punkt-Biegung bzw. Einzel- und Gesamtlast werden vermischt.",
       "coreRule": "DIN EN 408: f_m = 3Fa/(bh²), a = 6h, Stützweite 18h.",
-      "actionableAdvice": "Arbeiten Sie den Abschnitt „Biegeprüfung Holz“ im Modul Mechanische Prüfungen noch einmal durch.",
+      "actionableAdvice": "Arbeiten Sie das Thema „Biegeprüfung Holz“ im Modul Mechanische Prüfungen noch einmal durch.",
       "targetModuleTab": "mechanische_pruefungen",
       "targetModuleLabel": "Mechanische Prüfungen"
     },
@@ -3596,7 +3596,7 @@
       "topic": "Haftzugprüfung: Bruchbild",
       "misconception": "Jeder gemessene Wert wird als Haftzugfestigkeit des Systems interpretiert.",
       "coreRule": "Bruchbild immer mit angeben: A = Untergrund, A/B = Verbundfuge, Y = Klebstoff.",
-      "actionableAdvice": "Arbeiten Sie den Abschnitt „Haftzugprüfung: Bruchbild“ im Modul Virtuelle Versuche noch einmal durch.",
+      "actionableAdvice": "Arbeiten Sie das Thema „Haftzugprüfung: Bruchbild“ im Modul Virtuelle Versuche noch einmal durch.",
       "targetModuleTab": "labor",
       "targetModuleLabel": "Virtuelle Versuche"
     },
@@ -3639,7 +3639,7 @@
       "topic": "Konsistenzklassen",
       "misconception": "Die Klassengrenzen von Ausbreitmaß und Setzmaß werden verwechselt.",
       "coreRule": "F1 ≤ 340, F2 350–410, F3 420–480, F4 490–550, F5 560–620, F6 ≥ 630 mm.",
-      "actionableAdvice": "Arbeiten Sie den Abschnitt „Konsistenzklassen“ im Modul Virtuelle Versuche noch einmal durch.",
+      "actionableAdvice": "Arbeiten Sie das Thema „Konsistenzklassen“ im Modul Virtuelle Versuche noch einmal durch.",
       "targetModuleTab": "labor",
       "targetModuleLabel": "Virtuelle Versuche"
     },
@@ -3725,7 +3725,7 @@
       "topic": "Spannbeton im Biegeversuch",
       "misconception": "Die Wirkung der Vorspannung wird der Stahlsteifigkeit zugeschrieben.",
       "coreRule": "Vorspannung = planmäßiger Vordruck in der Zugzone; Risse erst nach Dekompression + f_ct,fl.",
-      "actionableAdvice": "Arbeiten Sie den Abschnitt „Spannbeton im Biegeversuch“ im Modul Virtuelle Versuche noch einmal durch.",
+      "actionableAdvice": "Arbeiten Sie das Thema „Spannbeton im Biegeversuch“ im Modul Virtuelle Versuche noch einmal durch.",
       "targetModuleTab": "labor",
       "targetModuleLabel": "Virtuelle Versuche"
     },
@@ -3768,7 +3768,7 @@
       "topic": "Bitumenkennwerte",
       "misconception": "Penetration und Erweichungspunkt werden verwechselt.",
       "coreRule": "Sorte = Penetrationsspanne (1/10 mm); höhere Zahl = weicheres Bitumen.",
-      "actionableAdvice": "Arbeiten Sie den Abschnitt „Bitumenkennwerte“ im Modul Virtuelle Versuche noch einmal durch.",
+      "actionableAdvice": "Arbeiten Sie das Thema „Bitumenkennwerte“ im Modul Virtuelle Versuche noch einmal durch.",
       "targetModuleTab": "labor",
       "targetModuleLabel": "Virtuelle Versuche"
     },
@@ -3810,7 +3810,7 @@
       "topic": "Fraktilfaktor k_n",
       "misconception": "k_n wird mit dem reinen Normalverteilungsquantil 1,645 gleichgesetzt.",
       "coreRule": "X_k = x̄ − k_n·s; k_n sinkt mit n (n = 10: 1,92; n → ∞: 1,64).",
-      "actionableAdvice": "Arbeiten Sie den Abschnitt „Fraktilfaktor k_n“ im Modul Statistik noch einmal durch.",
+      "actionableAdvice": "Arbeiten Sie das Thema „Fraktilfaktor k_n“ im Modul Statistik noch einmal durch.",
       "targetModuleTab": "statistik",
       "targetModuleLabel": "Statistik"
     },
@@ -3853,7 +3853,7 @@
       "topic": "Median und Mittelwert",
       "misconception": "Mittelwert und Median werden als gleich robust angesehen.",
       "coreRule": "Median = robust; Mittelwert und s = empfindlich gegenüber Extremwerten.",
-      "actionableAdvice": "Arbeiten Sie den Abschnitt „Median und Mittelwert“ im Modul Statistik noch einmal durch.",
+      "actionableAdvice": "Arbeiten Sie das Thema „Median und Mittelwert“ im Modul Statistik noch einmal durch.",
       "targetModuleTab": "statistik",
       "targetModuleLabel": "Statistik"
     },
@@ -3896,7 +3896,7 @@
       "topic": "Ausreißer streichen",
       "misconception": "Statistische Auffälligkeit wird mit einem Messfehler gleichgesetzt.",
       "coreRule": "Ausreißer nur mit technischem Grund streichen und im Bericht dokumentieren.",
-      "actionableAdvice": "Arbeiten Sie den Abschnitt „Ausreißer streichen“ im Modul Statistik noch einmal durch.",
+      "actionableAdvice": "Arbeiten Sie das Thema „Ausreißer streichen“ im Modul Statistik noch einmal durch.",
       "targetModuleTab": "statistik",
       "targetModuleLabel": "Statistik"
     },
@@ -3938,7 +3938,7 @@
       "topic": "Konformität Erstherstellung",
       "misconception": "Es wird nur das Einzelwertkriterium geprüft.",
       "coreRule": "Erstherstellung: f_cm ≥ f_ck + 4 und f_ci ≥ f_ck − 4.",
-      "actionableAdvice": "Arbeiten Sie den Abschnitt „Konformität Erstherstellung“ im Modul Festbeton (Statistik) noch einmal durch.",
+      "actionableAdvice": "Arbeiten Sie das Thema „Konformität Erstherstellung“ im Modul Festbeton (Statistik) noch einmal durch.",
       "targetModuleTab": "festbeton_statistik",
       "targetModuleLabel": "Festbeton (Statistik)"
     },
@@ -4148,7 +4148,7 @@
       "topic": "E-Modul nach Eurocode 2",
       "misconception": "Der E-Modul wird allein der Betonfestigkeitsklasse zugeschrieben.",
       "coreRule": "E_cm = α_E · 22 · (f_cm/10)^0,3 mit α_E nach Gesteinsart.",
-      "actionableAdvice": "Arbeiten Sie den Abschnitt „E-Modul nach Eurocode 2“ im Modul E-Modul & Mikromechanik noch einmal durch.",
+      "actionableAdvice": "Arbeiten Sie das Thema „E-Modul nach Eurocode 2“ im Modul E-Modul & Mikromechanik noch einmal durch.",
       "targetModuleTab": "emodul",
       "targetModuleLabel": "E-Modul & Mikromechanik"
     },
@@ -4190,7 +4190,7 @@
       "topic": "Voigt und Reuss",
       "misconception": "Parallel- und Reihenschaltung werden vertauscht.",
       "coreRule": "Voigt: E = Σ v_i E_i (oben); Reuss: 1/E = Σ v_i/E_i (unten).",
-      "actionableAdvice": "Arbeiten Sie den Abschnitt „Voigt und Reuss“ im Modul E-Modul & Mikromechanik noch einmal durch.",
+      "actionableAdvice": "Arbeiten Sie das Thema „Voigt und Reuss“ im Modul E-Modul & Mikromechanik noch einmal durch.",
       "targetModuleTab": "emodul",
       "targetModuleLabel": "E-Modul & Mikromechanik"
     },
@@ -4232,7 +4232,7 @@
       "topic": "Grenzhöhe unter Eigengewicht",
       "misconception": "Ein dickerer Querschnitt wird für Druck unter Eigengewicht als tragfähiger angenommen.",
       "coreRule": "Eigengewichtsspannung am Fuß: σ = ρ · g · H.",
-      "actionableAdvice": "Arbeiten Sie den Abschnitt „Grenzhöhe unter Eigengewicht“ im Modul Festigkeitsberechnungen noch einmal durch.",
+      "actionableAdvice": "Arbeiten Sie das Thema „Grenzhöhe unter Eigengewicht“ im Modul Festigkeitsberechnungen noch einmal durch.",
       "targetModuleTab": "festigkeit",
       "targetModuleLabel": "Festigkeitsberechnungen"
     },
@@ -4318,7 +4318,7 @@
       "topic": "Grenzen der LEBM",
       "misconception": "Beton wird wie Glas als ideal spröder Werkstoff behandelt.",
       "coreRule": "Glas: LEBM; Beton: quasi-spröde, Bruchenergie G_F, Maßstabseffekt.",
-      "actionableAdvice": "Arbeiten Sie den Abschnitt „Grenzen der LEBM“ im Modul Bruchmechanik noch einmal durch.",
+      "actionableAdvice": "Arbeiten Sie das Thema „Grenzen der LEBM“ im Modul Bruchmechanik noch einmal durch.",
       "targetModuleTab": "bruchmechanik",
       "targetModuleLabel": "Bruchmechanik"
     },
@@ -4361,7 +4361,7 @@
       "topic": "Euler-Fälle: Knicklänge",
       "misconception": "Die Knicklänge wird linear statt quadratisch in die Knicklast übernommen.",
       "coreRule": "F_K = π²EI/(βl)²; β = 2 (Kragstütze), 1 (gelenkig), 0,7 (eingespannt–gelenkig), 0,5 (beidseitig eingespannt).",
-      "actionableAdvice": "Arbeiten Sie den Abschnitt „Euler-Fälle: Knicklänge“ im Modul Knicken noch einmal durch.",
+      "actionableAdvice": "Arbeiten Sie das Thema „Euler-Fälle: Knicklänge“ im Modul Knicken noch einmal durch.",
       "targetModuleTab": "knicken",
       "targetModuleLabel": "Knicken"
     },
@@ -4446,7 +4446,7 @@
       "topic": "Einfeldträger: Feldmoment",
       "misconception": "Die Faktoren 1/8 (Einfeldträger) und 1/2 (Kragarm) werden verwechselt.",
       "coreRule": "Einfeldträger: M = ql²/8, V = ql/2; Kragarm: M = ql²/2, V = ql.",
-      "actionableAdvice": "Arbeiten Sie den Abschnitt „Einfeldträger: Feldmoment“ im Modul Baustatik noch einmal durch.",
+      "actionableAdvice": "Arbeiten Sie das Thema „Einfeldträger: Feldmoment“ im Modul Baustatik noch einmal durch.",
       "targetModuleTab": "baustatik",
       "targetModuleLabel": "Baustatik"
     },
@@ -4488,7 +4488,7 @@
       "topic": "Zweifeldträger: Mittelauflager",
       "misconception": "Das Mittelauflager wird wie bei zwei Einfeldträgern mit q·l angesetzt.",
       "coreRule": "Zweifeldträger gleicher Felder: A = 0,375 ql, B = 1,25 ql, M_B = −ql²/8.",
-      "actionableAdvice": "Arbeiten Sie den Abschnitt „Zweifeldträger: Mittelauflager“ im Modul Baustatik noch einmal durch.",
+      "actionableAdvice": "Arbeiten Sie das Thema „Zweifeldträger: Mittelauflager“ im Modul Baustatik noch einmal durch.",
       "targetModuleTab": "baustatik",
       "targetModuleLabel": "Baustatik"
     },
@@ -4614,7 +4614,7 @@
       "topic": "Kriechen vs. Relaxation",
       "misconception": "Kriechen und Relaxation werden synonym verwendet.",
       "coreRule": "Kriechen: σ = konst., ε wächst; Relaxation: ε = konst., σ sinkt.",
-      "actionableAdvice": "Arbeiten Sie den Abschnitt „Kriechen vs. Relaxation“ im Modul Materialmodelle noch einmal durch.",
+      "actionableAdvice": "Arbeiten Sie das Thema „Kriechen vs. Relaxation“ im Modul Materialmodelle noch einmal durch.",
       "targetModuleTab": "materialmodelle",
       "targetModuleLabel": "Materialmodelle"
     },
@@ -4782,7 +4782,7 @@
       "topic": "Temperaturfaktor f_Rsi",
       "misconception": "Der Temperaturfaktor wird mit R_si = 0,13 m²K/W gebildet.",
       "coreRule": "f_Rsi = 1 − 0,25 · U ≥ 0,70 (DIN 4108-2).",
-      "actionableAdvice": "Arbeiten Sie den Abschnitt „Temperaturfaktor f_Rsi“ im Modul Bauphysik (Wärme & Akustik) noch einmal durch.",
+      "actionableAdvice": "Arbeiten Sie das Thema „Temperaturfaktor f_Rsi“ im Modul Bauphysik (Wärme & Akustik) noch einmal durch.",
       "targetModuleTab": "bauphysik",
       "targetModuleLabel": "Bauphysik (Wärme & Akustik)"
     },
@@ -4909,7 +4909,7 @@
       "topic": "Nachhallzeit nach Sabine",
       "misconception": "Der Faktor 0,163 s/m wird vergessen oder V und A werden vertauscht.",
       "coreRule": "T = 0,163 · V/A mit A = Σ S_i · α_i.",
-      "actionableAdvice": "Arbeiten Sie den Abschnitt „Nachhallzeit nach Sabine“ im Modul Bauphysik (Wärme & Akustik) noch einmal durch.",
+      "actionableAdvice": "Arbeiten Sie das Thema „Nachhallzeit nach Sabine“ im Modul Bauphysik (Wärme & Akustik) noch einmal durch.",
       "targetModuleTab": "bauphysik",
       "targetModuleLabel": "Bauphysik (Wärme & Akustik)"
     },
@@ -4994,7 +4994,7 @@
       "topic": "Dämmdicke Bestandswand",
       "misconception": "Die Bestandswand bleibe bei der Dämmdickenberechnung unberücksichtigt.",
       "coreRule": "Erforderliche Dämmdicke d = λ_D · (1/U_Ziel − R_Bestand − R_si − R_se).",
-      "actionableAdvice": "Arbeiten Sie den Abschnitt „Dämmdicke Bestandswand“ im Modul Thermische Eigenschaften & Dämmstoffe noch einmal durch.",
+      "actionableAdvice": "Arbeiten Sie das Thema „Dämmdicke Bestandswand“ im Modul Thermische Eigenschaften & Dämmstoffe noch einmal durch.",
       "targetModuleTab": "waermeeigenschaften",
       "targetModuleLabel": "Thermische Eigenschaften & Dämmstoffe"
     },
@@ -5122,7 +5122,7 @@
       "topic": "Dämmstoffwahl Perimeter",
       "misconception": "Jeder Dämmstoff mit kleinem λ eigne sich unter der Bodenplatte.",
       "coreRule": "Unter Bodenplatten zählen Druckfestigkeit und Unempfindlichkeit gegen Wasser (z. B. Schaumglas, XPS).",
-      "actionableAdvice": "Arbeiten Sie den Abschnitt „Dämmstoffwahl Perimeter“ im Modul Thermische Eigenschaften & Dämmstoffe noch einmal durch.",
+      "actionableAdvice": "Arbeiten Sie das Thema „Dämmstoffwahl Perimeter“ im Modul Thermische Eigenschaften & Dämmstoffe noch einmal durch.",
       "targetModuleTab": "waermeeigenschaften",
       "targetModuleLabel": "Thermische Eigenschaften & Dämmstoffe"
     },
@@ -5245,7 +5245,7 @@
       "topic": "Temperatur der Grenzschicht",
       "misconception": "Die Lage der Dämmung wird für unerheblich gehalten, solange der U-Wert gleich ist.",
       "coreRule": "Gleicher U-Wert, aber unterschiedlicher Temperaturverlauf: Innendämmung verlagert die kalte Zone in die Konstruktion.",
-      "actionableAdvice": "Arbeiten Sie den Abschnitt „Temperatur der Grenzschicht“ im Modul Innendämmung vs. Außendämmung noch einmal durch.",
+      "actionableAdvice": "Arbeiten Sie das Thema „Temperatur der Grenzschicht“ im Modul Innendämmung vs. Außendämmung noch einmal durch.",
       "targetModuleTab": "daemmung_vergleich",
       "targetModuleLabel": "Innendämmung vs. Außendämmung"
     },
@@ -5287,7 +5287,7 @@
       "topic": "Nachweis Innendämmung",
       "misconception": "Das Glaser-Verfahren wird als universeller Feuchtenachweis betrachtet.",
       "coreRule": "Glaser: Diffusion stationär; kapillaraktive Systeme: hygrothermische Simulation.",
-      "actionableAdvice": "Arbeiten Sie den Abschnitt „Nachweis Innendämmung“ im Modul Innendämmung vs. Außendämmung noch einmal durch.",
+      "actionableAdvice": "Arbeiten Sie das Thema „Nachweis Innendämmung“ im Modul Innendämmung vs. Außendämmung noch einmal durch.",
       "targetModuleTab": "daemmung_vergleich",
       "targetModuleLabel": "Innendämmung vs. Außendämmung"
     },
@@ -5330,7 +5330,7 @@
       "topic": "Massekurve DIN 4109-32",
       "misconception": "Natürlicher statt dekadischer Logarithmus.",
       "coreRule": "R_w = 30,9 lg(m′/1 kg/m²) − 22,2 dB für 65 ≤ m′ ≤ 720 kg/m².",
-      "actionableAdvice": "Arbeiten Sie den Abschnitt „Massekurve DIN 4109-32“ im Modul Schallschutz noch einmal durch.",
+      "actionableAdvice": "Arbeiten Sie das Thema „Massekurve DIN 4109-32“ im Modul Schallschutz noch einmal durch.",
       "targetModuleTab": "schallschutz",
       "targetModuleLabel": "Schallschutz"
     },
@@ -5414,7 +5414,7 @@
       "topic": "Feuerwiderstand und Bezeichnungen",
       "misconception": "Feuerwiderstand und Brandverhalten (A1 bis F) werden verwechselt.",
       "coreRule": "30 min feuerhemmend, 60 min hochfeuerhemmend, 90 min feuerbeständig.",
-      "actionableAdvice": "Arbeiten Sie den Abschnitt „Feuerwiderstand und Bezeichnungen“ im Modul Brandschutz noch einmal durch.",
+      "actionableAdvice": "Arbeiten Sie das Thema „Feuerwiderstand und Bezeichnungen“ im Modul Brandschutz noch einmal durch.",
       "targetModuleTab": "brandschutz",
       "targetModuleLabel": "Brandschutz"
     },
@@ -5712,7 +5712,7 @@
       "topic": "Rechtsstand 2026",
       "misconception": "Die Gesetzesreform wird als Abschaffung aller energetischen Anforderungen verstanden.",
       "coreRule": "GEG → GModG (2026): §§ 15, 16, 79–88 in der Nummerierung erhalten (Inhalte ändern sich ab 01.01.2027); Bestand: § 35 Nachrüstung, § 36 Änderung (vormals §§ 47, 48); § 72 (Betriebsverbot) weggefallen.",
-      "actionableAdvice": "Arbeiten Sie den Abschnitt „Rechtsstand 2026“ im Modul Energieausweis noch einmal durch.",
+      "actionableAdvice": "Arbeiten Sie das Thema „Rechtsstand 2026“ im Modul Energieausweis noch einmal durch.",
       "targetModuleTab": "energieausweis",
       "targetModuleLabel": "Energieausweis"
     },
@@ -5753,7 +5753,7 @@
       "topic": "EPBD Lebenszyklus-GWP",
       "misconception": "Die gestufte Einführung wird übersehen.",
       "coreRule": "GWP-Offenlegung: 2028 (> 1000 m²), 2030 (alle Neubauten).",
-      "actionableAdvice": "Arbeiten Sie den Abschnitt „EPBD Lebenszyklus-GWP“ im Modul Daten & Regeln noch einmal durch.",
+      "actionableAdvice": "Arbeiten Sie das Thema „EPBD Lebenszyklus-GWP“ im Modul Daten & Regeln noch einmal durch.",
       "targetModuleTab": "nachhaltigkeit_daten_regeln",
       "targetModuleLabel": "Daten & Regeln"
     },
@@ -5795,7 +5795,7 @@
       "topic": "Rechtsstand Gebäudetyp E",
       "misconception": "Ein Gesetzentwurf wird für geltendes Recht gehalten.",
       "coreRule": "Entwurf ≠ Gesetz: Rechtsstand immer am Gesetzgebungsverfahren prüfen.",
-      "actionableAdvice": "Arbeiten Sie den Abschnitt „Rechtsstand Gebäudetyp E“ im Modul Daten & Regeln noch einmal durch.",
+      "actionableAdvice": "Arbeiten Sie das Thema „Rechtsstand Gebäudetyp E“ im Modul Daten & Regeln noch einmal durch.",
       "targetModuleTab": "nachhaltigkeit_daten_regeln",
       "targetModuleLabel": "Daten & Regeln"
     },
@@ -6096,7 +6096,7 @@
       "topic": "Zementart und GWP",
       "misconception": "Transport wird als Haupttreiber des Beton-GWP angesehen.",
       "coreRule": "Beton-GWP ≈ Zementgehalt × Klinkeranteil × spezifisches GWP.",
-      "actionableAdvice": "Arbeiten Sie den Abschnitt „Zementart und GWP“ im Modul Materialoptimierung noch einmal durch.",
+      "actionableAdvice": "Arbeiten Sie das Thema „Zementart und GWP“ im Modul Materialoptimierung noch einmal durch.",
       "targetModuleTab": "materialoptimierung",
       "targetModuleLabel": "Materialoptimierung"
     },
@@ -6305,7 +6305,7 @@
       "topic": "Typen von Umweltkennzeichnungen",
       "misconception": "EPD wird als Gütesiegel missverstanden.",
       "coreRule": "Typ I = Label, Typ II = Selbsterklärung, Typ III = EPD.",
-      "actionableAdvice": "Arbeiten Sie den Abschnitt „Typen von Umweltkennzeichnungen“ im Modul Zertifizierung & Deklarationen noch einmal durch.",
+      "actionableAdvice": "Arbeiten Sie das Thema „Typen von Umweltkennzeichnungen“ im Modul Zertifizierung & Deklarationen noch einmal durch.",
       "targetModuleTab": "zertifizierung_siegel",
       "targetModuleLabel": "Zertifizierung & Deklarationen"
     },
@@ -6347,7 +6347,7 @@
       "topic": "DGNB-Themenfelder und Gewichtung",
       "misconception": "Die Gewichtung älterer Systemversionen wird auf die aktuelle Version übertragen.",
       "coreRule": "DGNB Neubau 2023/2023.2: ENV, ECO, SOC je 25 %; TEC, PRO je 10 %; SITE 5 %.",
-      "actionableAdvice": "Arbeiten Sie den Abschnitt „Beispiel 1: Gesamterfüllungsgrad nach DGNB“ im Modul Zertifizierung & Deklarationen noch einmal durch.",
+      "actionableAdvice": "Arbeiten Sie das Thema „Beispiel 1: Gesamterfüllungsgrad nach DGNB“ im Modul Zertifizierung & Deklarationen noch einmal durch.",
       "targetModuleTab": "zertifizierung_siegel",
       "targetModuleLabel": "Zertifizierung & Deklarationen"
     },
@@ -6388,7 +6388,7 @@
       "topic": "DGNB-Vorzertifikat",
       "misconception": "Vorzertifikat und Zertifikat werden gleichgesetzt.",
       "coreRule": "Vorzertifikat = Zielvereinbarung in der Planung; Zertifikat = Nachweis nach Fertigstellung.",
-      "actionableAdvice": "Arbeiten Sie den Abschnitt „DGNB-Vorzertifikat“ im Modul Zertifizierung & Deklarationen noch einmal durch.",
+      "actionableAdvice": "Arbeiten Sie das Thema „DGNB-Vorzertifikat“ im Modul Zertifizierung & Deklarationen noch einmal durch.",
       "targetModuleTab": "zertifizierung_siegel",
       "targetModuleLabel": "Zertifizierung & Deklarationen"
     },
@@ -6431,7 +6431,7 @@
       "topic": "DGNB-Mindestanforderungen",
       "misconception": "Mindestanforderungen werden mit einzelnen Effizienzmaßnahmen verwechselt.",
       "coreRule": "DGNB 2023.2: Mindestanforderungen ENV1.1, SOC1.2, SITE1.1 für alle Gebäude.",
-      "actionableAdvice": "Arbeiten Sie den Abschnitt „DGNB-Mindestanforderungen“ im Modul Zertifizierung & Deklarationen noch einmal durch.",
+      "actionableAdvice": "Arbeiten Sie das Thema „DGNB-Mindestanforderungen“ im Modul Zertifizierung & Deklarationen noch einmal durch.",
       "targetModuleTab": "zertifizierung_siegel",
       "targetModuleLabel": "Zertifizierung & Deklarationen"
     },
@@ -6640,7 +6640,7 @@
       "topic": "Verwertungsquote Bau- und Abbruchabfälle",
       "misconception": "Energetische Verwertung wird in die Quote eingerechnet.",
       "coreRule": "Bau- und Abbruchabfälle: ≥ 70 Gew.-% stoffliche Verwertung.",
-      "actionableAdvice": "Arbeiten Sie den Abschnitt „Verwertungsquote Bau- und Abbruchabfälle“ im Modul Kreislaufwirtschaft noch einmal durch.",
+      "actionableAdvice": "Arbeiten Sie das Thema „Verwertungsquote Bau- und Abbruchabfälle“ im Modul Kreislaufwirtschaft noch einmal durch.",
       "targetModuleTab": "kreislauf_dpp",
       "targetModuleLabel": "Kreislaufwirtschaft"
     },
@@ -6809,7 +6809,7 @@
       "topic": "Einfluss des Zinssatzes",
       "misconception": "Der Zinssatz wird als neutral betrachtet.",
       "coreRule": "Hoher Zins → Gegenwartskosten dominieren; Sensitivitätsanalyse durchführen.",
-      "actionableAdvice": "Arbeiten Sie den Abschnitt „Einfluss des Zinssatzes“ im Modul Lebenszyklus & Kosten noch einmal durch.",
+      "actionableAdvice": "Arbeiten Sie das Thema „Einfluss des Zinssatzes“ im Modul Lebenszyklus & Kosten noch einmal durch.",
       "targetModuleTab": "lebenszyklus_kosten",
       "targetModuleLabel": "Lebenszyklus & Kosten"
     },
@@ -6851,7 +6851,7 @@
       "topic": "Innendämmung und Tauwasser",
       "misconception": "Innendämmung verhält sich bauphysikalisch wie Außendämmung.",
       "coreRule": "Innendämmung immer mit Feuchtenachweis (Glaser nur eingeschränkt, besser hygrothermische Simulation) planen.",
-      "actionableAdvice": "Arbeiten Sie den Abschnitt „Innendämmung und Tauwasser“ im Modul Altbauatlas noch einmal durch.",
+      "actionableAdvice": "Arbeiten Sie das Thema „Innendämmung und Tauwasser“ im Modul Altbauatlas noch einmal durch.",
       "targetModuleTab": "bestand",
       "targetModuleLabel": "Altbauatlas"
     },
@@ -6894,7 +6894,7 @@
       "topic": "Anforderungen bei Änderung",
       "misconception": "Jede Putzausbesserung löst Dämmpflichten aus.",
       "coreRule": "Bagatellgrenze 10 % je Bauteilgruppe; dann U-Höchstwerte nach Anlage 7 (z. B. Außenwand 0,24 W/(m²K)).",
-      "actionableAdvice": "Arbeiten Sie den Abschnitt „Anforderungen bei Änderung“ im Modul Altbauatlas noch einmal durch.",
+      "actionableAdvice": "Arbeiten Sie das Thema „Anforderungen bei Änderung“ im Modul Altbauatlas noch einmal durch.",
       "targetModuleTab": "bestand",
       "targetModuleLabel": "Altbauatlas"
     },
@@ -7106,7 +7106,7 @@
       "topic": "Verformungsgetreues Aufmaß",
       "misconception": "Planzeichnungen genügen als Grundlage der Nachrechnung.",
       "coreRule": "Maßgebend ist der Ist-Zustand: Querschnitt, Schäden und Verformung aus dem Aufmaß.",
-      "actionableAdvice": "Arbeiten Sie den Abschnitt „Verformungsgetreues Aufmaß“ im Modul Bauwerkserfassung noch einmal durch.",
+      "actionableAdvice": "Arbeiten Sie das Thema „Verformungsgetreues Aufmaß“ im Modul Bauwerkserfassung noch einmal durch.",
       "targetModuleTab": "bauwerkserfassung",
       "targetModuleLabel": "Bauwerkserfassung"
     },
@@ -7149,7 +7149,7 @@
       "topic": "Druck und Biegung im Holz",
       "misconception": "Druck- und Biegeanteil werden immer linear addiert.",
       "coreRule": "Querschnittsnachweis EC5: Druckterm quadratisch; Stabilität (6.3) separat nachweisen.",
-      "actionableAdvice": "Arbeiten Sie den Abschnitt „Druck und Biegung im Holz“ im Modul Bauwerkserfassung noch einmal durch.",
+      "actionableAdvice": "Arbeiten Sie das Thema „Druck und Biegung im Holz“ im Modul Bauwerkserfassung noch einmal durch.",
       "targetModuleTab": "bauwerkserfassung",
       "targetModuleLabel": "Bauwerkserfassung"
     },
@@ -7191,7 +7191,7 @@
       "topic": "Mörtelverträglichkeit",
       "misconception": "Je fester der Mörtel, desto dauerhafter die Mauer.",
       "coreRule": "Mörtel weicher und offenporiger als der Stein; Kalk oder NHL statt Zement.",
-      "actionableAdvice": "Arbeiten Sie den Abschnitt „Mörtelverträglichkeit“ im Modul Denkmalpflege noch einmal durch.",
+      "actionableAdvice": "Arbeiten Sie das Thema „Mörtelverträglichkeit“ im Modul Denkmalpflege noch einmal durch.",
       "targetModuleTab": "denkmalpflege",
       "targetModuleLabel": "Denkmalpflege"
     },
@@ -7234,7 +7234,7 @@
       "topic": "Energieanforderungen am Baudenkmal",
       "misconception": "Denkmäler sind von energetischen Fragen völlig ausgenommen.",
       "coreRule": "§ 105 erlaubt Abweichungen – energetische Verbesserung bleibt Ziel, wo substanzverträglich.",
-      "actionableAdvice": "Arbeiten Sie den Abschnitt „Energieanforderungen am Baudenkmal“ im Modul Denkmalpflege noch einmal durch.",
+      "actionableAdvice": "Arbeiten Sie das Thema „Energieanforderungen am Baudenkmal“ im Modul Denkmalpflege noch einmal durch.",
       "targetModuleTab": "denkmalpflege",
       "targetModuleLabel": "Denkmalpflege"
     },
@@ -7319,7 +7319,7 @@
       "topic": "Nachrüstpflicht oberste Geschossdecke",
       "misconception": "Mit dem GModG sind alle Nachrüstpflichten entfallen.",
       "coreRule": "Bestand: Nachrüstung § 35, Änderung § 36, Berechnung § 37 GModG.",
-      "actionableAdvice": "Arbeiten Sie den Abschnitt „Nachrüstpflicht oberste Geschossdecke“ im Modul Modernisierung & GModG noch einmal durch.",
+      "actionableAdvice": "Arbeiten Sie das Thema „Nachrüstpflicht oberste Geschossdecke“ im Modul Modernisierung & GModG noch einmal durch.",
       "targetModuleTab": "modernisierung",
       "targetModuleLabel": "Modernisierung & GModG"
     },
@@ -7361,7 +7361,7 @@
       "topic": "Karbonatisierungsprognose",
       "misconception": "Die Karbonatisierung schreitet linear mit der Zeit fort.",
       "coreRule": "x = k · √t; Prognose nur bei gleichbleibenden Feuchtebedingungen belastbar.",
-      "actionableAdvice": "Arbeiten Sie den Abschnitt „Karbonatisierungsprognose“ im Modul Bauwerksdiagnose & ZfP noch einmal durch.",
+      "actionableAdvice": "Arbeiten Sie das Thema „Karbonatisierungsprognose“ im Modul Bauwerksdiagnose & ZfP noch einmal durch.",
       "targetModuleTab": "bauwerksdiagnose",
       "targetModuleLabel": "Bauwerksdiagnose"
     },
@@ -7651,7 +7651,7 @@
       "topic": "Alter Betonstahl",
       "misconception": "Alter Betonstahl III entspricht B500.",
       "coreRule": "Historische Stahlbezeichnung = Streckgrenze/Zugfestigkeit; f_yk aus der Bezeichnung oder aus Proben ansetzen.",
-      "actionableAdvice": "Arbeiten Sie den Abschnitt „Alter Betonstahl“ im Modul Historische Kennwerte noch einmal durch.",
+      "actionableAdvice": "Arbeiten Sie das Thema „Alter Betonstahl“ im Modul Historische Kennwerte noch einmal durch.",
       "targetModuleTab": "historisch",
       "targetModuleLabel": "Historische Kennwerte"
     },
@@ -7693,7 +7693,7 @@
       "topic": "Streuung im Bestand",
       "misconception": "Mehr Proben verschlechtern immer das Ergebnis.",
       "coreRule": "Gemessene Streuung ersetzt Annahmen; Modellunsicherheiten bleiben zu berücksichtigen.",
-      "actionableAdvice": "Arbeiten Sie den Abschnitt „Streuung im Bestand“ im Modul Historische Kennwerte noch einmal durch.",
+      "actionableAdvice": "Arbeiten Sie das Thema „Streuung im Bestand“ im Modul Historische Kennwerte noch einmal durch.",
       "targetModuleTab": "historisch",
       "targetModuleLabel": "Historische Kennwerte"
     },
@@ -7903,7 +7903,7 @@
       "topic": "Preußische Kappendecke",
       "misconception": "Kappen tragen wie einachsige Platten ohne Horizontalkraft.",
       "coreRule": "Gewölbe = Druck + Horizontalschub; Zuganker und Auflager prüfen.",
-      "actionableAdvice": "Arbeiten Sie den Abschnitt „Preußische Kappendecke“ im Modul Hist. Bauweisen noch einmal durch.",
+      "actionableAdvice": "Arbeiten Sie das Thema „Preußische Kappendecke“ im Modul Hist. Bauweisen noch einmal durch.",
       "targetModuleTab": "historische_bauweisen",
       "targetModuleLabel": "Hist. Bauweisen"
     },
@@ -7945,7 +7945,7 @@
       "topic": "Holzschwinden",
       "misconception": "Holz schwindet in allen Richtungen gleich.",
       "coreRule": "Schwinden quer ≫ längs; Einbaufeuchte und Nutzungsfeuchte abgleichen.",
-      "actionableAdvice": "Arbeiten Sie den Abschnitt „Holzschwinden“ im Modul Hist. Bauweisen noch einmal durch.",
+      "actionableAdvice": "Arbeiten Sie das Thema „Holzschwinden“ im Modul Hist. Bauweisen noch einmal durch.",
       "targetModuleTab": "historische_bauweisen",
       "targetModuleLabel": "Hist. Bauweisen"
     },
@@ -8069,7 +8069,7 @@
       "topic": "Regelmäßige Bauwerksprüfung",
       "misconception": "Für Hochbauten gibt es keine Empfehlung zu Prüfintervallen.",
       "coreRule": "Hochbau: VDI 6200; Brücken und Ingenieurbauwerke: DIN 1076.",
-      "actionableAdvice": "Arbeiten Sie den Abschnitt „Regelmäßige Bauwerksprüfung“ im Modul Checklisten noch einmal durch.",
+      "actionableAdvice": "Arbeiten Sie das Thema „Regelmäßige Bauwerksprüfung“ im Modul Checklisten noch einmal durch.",
       "targetModuleTab": "bestand_checklisten",
       "targetModuleLabel": "Checklisten"
     },
@@ -8326,7 +8326,7 @@
       "topic": "Getrennthaltung von Bauabfällen",
       "misconception": "Die GewAbfV schreibe eine feste 90-%-Quote für Bauabfälle vor.",
       "coreRule": "Zehn Fraktionen getrennt halten; Ausnahmen begründen und ab 10 m³ dokumentieren.",
-      "actionableAdvice": "Arbeiten Sie den Abschnitt „Getrennthaltung von Bauabfällen“ im Modul Rückbau & Material noch einmal durch.",
+      "actionableAdvice": "Arbeiten Sie das Thema „Getrennthaltung von Bauabfällen“ im Modul Rückbau & Material noch einmal durch.",
       "targetModuleTab": "rueckbau",
       "targetModuleLabel": "Rückbau & Material"
     },
@@ -8536,7 +8536,7 @@
       "topic": "EBV-Anzeigepflicht",
       "misconception": "Jeder Einbau eines Ersatzbaustoffs außer BM-0 sei ab 250 m³ meldepflichtig.",
       "coreRule": "§ 22 EBV: Voranzeige 4 Wochen vorher, Abschlussanzeige nach Fertigstellung, zuständige Behörde.",
-      "actionableAdvice": "Arbeiten Sie den Abschnitt „EBV-Anzeigepflicht“ im Modul Abfälle & Altlasten noch einmal durch.",
+      "actionableAdvice": "Arbeiten Sie das Thema „EBV-Anzeigepflicht“ im Modul Abfälle & Altlasten noch einmal durch.",
       "targetModuleTab": "abfaelle",
       "targetModuleLabel": "Abfälle & Altlasten"
     },
@@ -8793,7 +8793,7 @@
       "topic": "Veranlasserpflichten GefStoffV",
       "misconception": "Die GefStoffV verpflichte jeden Bauherrn zu einer Asbestbeprobung.",
       "coreRule": "§ 5a: Informations- und Mitwirkungspflicht, keine generelle Erkundungspflicht.",
-      "actionableAdvice": "Arbeiten Sie den Abschnitt „Veranlasserpflichten GefStoffV“ im Modul Schad- und Gefahrstoffe noch einmal durch.",
+      "actionableAdvice": "Arbeiten Sie das Thema „Veranlasserpflichten GefStoffV“ im Modul Schad- und Gefahrstoffe noch einmal durch.",
       "targetModuleTab": "schadstoffe",
       "targetModuleLabel": "Schad- und Gefahrstoffe"
     },
@@ -8835,7 +8835,7 @@
       "topic": "Risikokonzept Asbest",
       "misconception": "Unterhalb einer Wirkschwelle sei Asbest unbedenklich.",
       "coreRule": "Niedrig < 10 000, mittel 10 000–100 000, hoch > 100 000 F/m³.",
-      "actionableAdvice": "Arbeiten Sie den Abschnitt „Risikokonzept Asbest“ im Modul Schad- und Gefahrstoffe noch einmal durch.",
+      "actionableAdvice": "Arbeiten Sie das Thema „Risikokonzept Asbest“ im Modul Schad- und Gefahrstoffe noch einmal durch.",
       "targetModuleTab": "schadstoffe",
       "targetModuleLabel": "Schad- und Gefahrstoffe"
     },
@@ -8877,7 +8877,7 @@
       "topic": "Kanzerogenitätsindex KMF",
       "misconception": "Die KI-Grenzen 30 und 40 werden vertauscht.",
       "coreRule": "KI ≤ 30 → 1B; 30 < KI < 40 → 2; KI ≥ 40 → keine Einstufung.",
-      "actionableAdvice": "Arbeiten Sie den Abschnitt „Künstliche Mineralfasern (KMF)“ im Modul Schad- und Gefahrstoffe noch einmal durch.",
+      "actionableAdvice": "Arbeiten Sie das Thema „Künstliche Mineralfasern (KMF)“ im Modul Schad- und Gefahrstoffe noch einmal durch.",
       "targetModuleTab": "schadstoffe",
       "targetModuleLabel": "Schad- und Gefahrstoffe"
     },
@@ -9636,7 +9636,7 @@
       "topic": "KrWG-Zielquote",
       "misconception": "Jede Baustelle müsse 70 % Recycling nachweisen.",
       "coreRule": "KrWG § 14 Abs. 2: nationales Ziel, keine Projektpflicht.",
-      "actionableAdvice": "Arbeiten Sie den Abschnitt „KrWG-Zielquote“ im Modul Ressourceneffizienz noch einmal durch.",
+      "actionableAdvice": "Arbeiten Sie das Thema „KrWG-Zielquote“ im Modul Ressourceneffizienz noch einmal durch.",
       "targetModuleTab": "ressourceneffizienz",
       "targetModuleLabel": "Ressourceneffizienz"
     },
@@ -9679,7 +9679,7 @@
       "topic": "Anzeige von Asbestarbeiten",
       "misconception": "Fest gebundener Asbestzement könne ohne Anzeige entfernt werden.",
       "coreRule": "Anzeige ≥ 1 Woche vorher; hohes Risiko nur mit Zulassung (max. 6 Jahre).",
-      "actionableAdvice": "Arbeiten Sie den Abschnitt „Anzeige von Asbestarbeiten“ im Modul Checklisten noch einmal durch.",
+      "actionableAdvice": "Arbeiten Sie das Thema „Anzeige von Asbestarbeiten“ im Modul Checklisten noch einmal durch.",
       "targetModuleTab": "rueckbau_checklisten",
       "targetModuleLabel": "Checklisten"
     },
@@ -9722,7 +9722,7 @@
       "topic": "Mobile Brechanlage",
       "misconception": "Mobile Anlagen benötigen nie eine Genehmigung.",
       "coreRule": "Zwölf-Monats-Regel der 4. BImSchV beachten (bei Abfallanlagen nur für die Behandlung am Entstehungsort); Lärm- und Staubschutz unabhängig davon.",
-      "actionableAdvice": "Arbeiten Sie den Abschnitt „Mobile Brechanlage“ im Modul Checklisten noch einmal durch.",
+      "actionableAdvice": "Arbeiten Sie das Thema „Mobile Brechanlage“ im Modul Checklisten noch einmal durch.",
       "targetModuleTab": "rueckbau_checklisten",
       "targetModuleLabel": "Checklisten"
     },
@@ -9850,7 +9850,7 @@
       "topic": "Verwertungsquote nach KrWG",
       "misconception": "Jede Form der Verwertung wird der Quote zugerechnet.",
       "coreRule": "§ 14 Abs. 2 KrWG: ≥ 70 Gew.-% stofflich (inkl. Verfüllung), ohne energetische Verwertung, ohne Boden und Steine.",
-      "actionableAdvice": "Arbeiten Sie den Abschnitt „Formeln: Verwertungsquote“ im Modul Rückbau-Checklisten noch einmal durch.",
+      "actionableAdvice": "Arbeiten Sie das Thema „Formeln: Verwertungsquote“ im Modul Rückbau-Checklisten noch einmal durch.",
       "targetModuleTab": "rueckbau_checklisten",
       "targetModuleLabel": "Rückbau-Checklisten"
     },
@@ -9978,7 +9978,7 @@
       "topic": "Chemischer Angriff",
       "misconception": "Sulfat sei über die Expositionsklasse XD geregelt.",
       "coreRule": "Sulfat: XA1 200–600, XA2 > 600–3000, XA3 > 3000–6000 mg/l.",
-      "actionableAdvice": "Arbeiten Sie den Abschnitt „Chemischer Angriff“ im Modul Prinzipien & Übersicht noch einmal durch.",
+      "actionableAdvice": "Arbeiten Sie das Thema „Chemischer Angriff“ im Modul Prinzipien & Übersicht noch einmal durch.",
       "targetModuleTab": "dauerhaftigkeit",
       "targetModuleLabel": "Prinzipien & Übersicht"
     },
@@ -10062,7 +10062,7 @@
       "topic": "Faraday-Abtrag",
       "misconception": "Korrosionsströme im µA-Bereich seien unbedeutend.",
       "coreRule": "1 µA/cm² ≈ 11,6 µm/a Eisenabtrag; Lochfraß lokal mehrfach höher.",
-      "actionableAdvice": "Arbeiten Sie den Abschnitt „Faraday-Abtrag“ im Modul Bewehrungskorrosion noch einmal durch.",
+      "actionableAdvice": "Arbeiten Sie das Thema „Faraday-Abtrag“ im Modul Bewehrungskorrosion noch einmal durch.",
       "targetModuleTab": "korrosion",
       "targetModuleLabel": "Bewehrungskorrosion"
     },
@@ -10104,7 +10104,7 @@
       "topic": "AKR-Voraussetzungen",
       "misconception": "AKR entstehe allein durch Taumittel.",
       "coreRule": "Vorbeugung über Gesteinskörnung (E I), NA-Zement/Zementgehalt oder Feuchteschutz.",
-      "actionableAdvice": "Arbeiten Sie den Abschnitt „AKR-Voraussetzungen“ im Modul Betonkorrosion noch einmal durch.",
+      "actionableAdvice": "Arbeiten Sie das Thema „AKR-Voraussetzungen“ im Modul Betonkorrosion noch einmal durch.",
       "targetModuleTab": "schadreaktionen_beton",
       "targetModuleLabel": "Betonkorrosion"
     },
@@ -10439,7 +10439,7 @@
       "topic": "Mehrere Expositionsklassen",
       "misconception": "Es genüge, die Hauptklasse zu berücksichtigen.",
       "coreRule": "Bei mehreren Klassen gelten jeweils die strengsten Grenzwerte.",
-      "actionableAdvice": "Arbeiten Sie den Abschnitt „Mehrere Expositionsklassen“ im Modul Checklisten noch einmal durch.",
+      "actionableAdvice": "Arbeiten Sie das Thema „Mehrere Expositionsklassen“ im Modul Checklisten noch einmal durch.",
       "targetModuleTab": "dauerhaftigkeit_checklisten",
       "targetModuleLabel": "Checklisten"
     },
@@ -10524,7 +10524,7 @@
       "topic": "Betondeckung auswerten",
       "misconception": "Der Mittelwert der Betondeckung sei für den Nachweis maßgebend.",
       "coreRule": "Beurteilt wird das 5-%-Quantil c_m − 1,645 · s gegenüber c_min.",
-      "actionableAdvice": "Arbeiten Sie den Abschnitt „Betondeckung auswerten“ im Modul Checklisten noch einmal durch.",
+      "actionableAdvice": "Arbeiten Sie das Thema „Betondeckung auswerten“ im Modul Checklisten noch einmal durch.",
       "targetModuleTab": "dauerhaftigkeit_checklisten",
       "targetModuleLabel": "Checklisten"
     },
@@ -10566,7 +10566,7 @@
       "topic": "Nennmaß Betondeckung",
       "misconception": "Das Mindestmaß c_min sei das Verlegemaß.",
       "coreRule": "c_nom = c_min + Δc_dev; c_min ist das Maximum aus Verbund- und Dauerhaftigkeitsanforderung.",
-      "actionableAdvice": "Arbeiten Sie den Abschnitt „Nennmaß Betondeckung“ im Modul Checklisten noch einmal durch.",
+      "actionableAdvice": "Arbeiten Sie das Thema „Nennmaß Betondeckung“ im Modul Checklisten noch einmal durch.",
       "targetModuleTab": "dauerhaftigkeit_checklisten",
       "targetModuleLabel": "Checklisten"
     },
@@ -10609,7 +10609,7 @@
       "topic": "Luftgehalt Frischbeton",
       "misconception": "Der Luftporengehalt lasse sich erst am Festbeton prüfen.",
       "coreRule": "Baustellenkontrolle des Luftgehalts: Druckausgleichsverfahren am Frischbeton.",
-      "actionableAdvice": "Arbeiten Sie den Abschnitt „Luftgehalt Frischbeton“ im Modul Checklisten noch einmal durch.",
+      "actionableAdvice": "Arbeiten Sie das Thema „Luftgehalt Frischbeton“ im Modul Checklisten noch einmal durch.",
       "targetModuleTab": "dauerhaftigkeit_checklisten",
       "targetModuleLabel": "Checklisten"
     },
@@ -10652,7 +10652,7 @@
       "topic": "WU-Selbstheilung",
       "misconception": "Selbstheilung funktioniere bei jeder Rissbreite.",
       "coreRule": "Zulässige Rissbreite für Selbstheilung: abhängig vom Druckgefälle h_w/h.",
-      "actionableAdvice": "Arbeiten Sie den Abschnitt „WU-Selbstheilung“ im Modul Checklisten noch einmal durch.",
+      "actionableAdvice": "Arbeiten Sie das Thema „WU-Selbstheilung“ im Modul Checklisten noch einmal durch.",
       "targetModuleTab": "dauerhaftigkeit_checklisten",
       "targetModuleLabel": "Checklisten"
     },
@@ -10951,7 +10951,7 @@
       "topic": "Rissursachen",
       "misconception": "Verpressen beseitige die Ursache eines Risses.",
       "coreRule": "Erst Ursache und Rissdynamik, dann Instandsetzungsverfahren.",
-      "actionableAdvice": "Arbeiten Sie den Abschnitt „Rissursachen“ im Modul Typische Bauschäden noch einmal durch.",
+      "actionableAdvice": "Arbeiten Sie das Thema „Rissursachen“ im Modul Typische Bauschäden noch einmal durch.",
       "targetModuleTab": "schadensbilder",
       "targetModuleLabel": "Typische Bauschäden"
     },
@@ -11208,7 +11208,7 @@
       "topic": "Monitoring und Prüfintervalle",
       "misconception": "Sensoren erkennen alle Schadensarten.",
       "coreRule": "SHM ergänzt Prüfungen nach DIN 1076/VDI 6200.",
-      "actionableAdvice": "Arbeiten Sie den Abschnitt „Monitoring und Prüfintervalle“ im Modul Tragwerksmonitoring (SHM) noch einmal durch.",
+      "actionableAdvice": "Arbeiten Sie das Thema „Monitoring und Prüfintervalle“ im Modul Tragwerksmonitoring (SHM) noch einmal durch.",
       "targetModuleTab": "bauwerksunters_monitoring",
       "targetModuleLabel": "Tragwerksmonitoring (SHM)"
     },
@@ -11250,7 +11250,7 @@
       "topic": "DIN 1076 Prüfarten",
       "misconception": "Brücken würden nur bei sichtbaren Schäden geprüft.",
       "coreRule": "H, E, B, laufende Beobachtung, Sonderprüfung nach DIN 1076:2026-01.",
-      "actionableAdvice": "Arbeiten Sie den Abschnitt „DIN 1076 Prüfarten“ im Modul Zustandsbewertung noch einmal durch.",
+      "actionableAdvice": "Arbeiten Sie das Thema „DIN 1076 Prüfarten“ im Modul Zustandsbewertung noch einmal durch.",
       "targetModuleTab": "vdi6200",
       "targetModuleLabel": "Zustandsbewertung"
     },
@@ -11585,7 +11585,7 @@
       "topic": "Rissmonitoring",
       "misconception": "Eine einzelne Messung genüge zur Bewertung.",
       "coreRule": "Rissbewegung mit Temperaturaufzeichnung über mindestens ein Jahr bewerten.",
-      "actionableAdvice": "Arbeiten Sie den Abschnitt „Rissmonitoring“ im Modul Schadensaufnahme-Checklisten noch einmal durch.",
+      "actionableAdvice": "Arbeiten Sie das Thema „Rissmonitoring“ im Modul Schadensaufnahme-Checklisten noch einmal durch.",
       "targetModuleTab": "schaeden_checklisten",
       "targetModuleLabel": "Schadensaufnahme-Checklisten"
     },
@@ -11712,7 +11712,7 @@
       "topic": "Rissmonitoring",
       "misconception": "Jede gemessene Rissöffnung sei ein Schadensfortschritt.",
       "coreRule": "Rissbewegung erst nach Abzug des thermischen Anteils bewerten.",
-      "actionableAdvice": "Arbeiten Sie den Abschnitt „Rissmonitoring“ im Modul Schadensaufnahme-Checklisten noch einmal durch.",
+      "actionableAdvice": "Arbeiten Sie das Thema „Rissmonitoring“ im Modul Schadensaufnahme-Checklisten noch einmal durch.",
       "targetModuleTab": "schaeden_checklisten",
       "targetModuleLabel": "Schadensaufnahme-Checklisten"
     },
@@ -11962,7 +11962,7 @@
       "topic": "Lebensdauermodell Tuutti",
       "misconception": "Ohne sichtbare Schäden sei kein Handlungsbedarf.",
       "coreRule": "Prävention ist in der Einleitungsphase am wirtschaftlichsten.",
-      "actionableAdvice": "Arbeiten Sie den Abschnitt „Lebensdauermodell Tuutti“ im Modul Schutz- & Instands.-Grundlagen noch einmal durch.",
+      "actionableAdvice": "Arbeiten Sie das Thema „Lebensdauermodell Tuutti“ im Modul Schutz- & Instands.-Grundlagen noch einmal durch.",
       "targetModuleTab": "schutz_grundlagen",
       "targetModuleLabel": "Schutz- & Instands.-Grundlagen"
     },
@@ -12048,7 +12048,7 @@
       "topic": "Elektrochemische Verfahren",
       "misconception": "KKS sei für alle Stähle gleich unkritisch.",
       "coreRule": "Bei Spannstahl: Polarisation begrenzen, Wasserstoffversprödung vermeiden.",
-      "actionableAdvice": "Arbeiten Sie den Abschnitt „Elektrochemische Verfahren“ im Modul Schutz- & Instands.-Grundlagen noch einmal durch.",
+      "actionableAdvice": "Arbeiten Sie das Thema „Elektrochemische Verfahren“ im Modul Schutz- & Instands.-Grundlagen noch einmal durch.",
       "targetModuleTab": "schutz_grundlagen",
       "targetModuleLabel": "Schutz- & Instands.-Grundlagen"
     },
@@ -12217,7 +12217,7 @@
       "topic": "Holzquerschnitt",
       "misconception": "Wenige Zentimeter Fäule seien statisch unbedeutend.",
       "coreRule": "W ∝ b · h²; Querschnittsverluste wirken überproportional.",
-      "actionableAdvice": "Arbeiten Sie den Abschnitt „Holzquerschnitt“ im Modul Instandsetzung nach Material noch einmal durch.",
+      "actionableAdvice": "Arbeiten Sie das Thema „Holzquerschnitt“ im Modul Instandsetzung nach Material noch einmal durch.",
       "targetModuleTab": "instandsetzung_materialien",
       "targetModuleLabel": "Instandsetzung nach Material"
     },
@@ -12302,7 +12302,7 @@
       "topic": "Innendämmung Nachweis",
       "misconception": "Glaser genüge für kapillaraktive Innendämmung.",
       "coreRule": "Innendämmung im Bestand: instationäre Simulation nach DIN EN 15026 / WTA 6-5.",
-      "actionableAdvice": "Arbeiten Sie den Abschnitt „Innendämmung Nachweis“ im Modul WTA-Merkblätter noch einmal durch.",
+      "actionableAdvice": "Arbeiten Sie das Thema „Innendämmung Nachweis“ im Modul WTA-Merkblätter noch einmal durch.",
       "targetModuleTab": "wta",
       "targetModuleLabel": "WTA-Merkblätter"
     },
@@ -12343,7 +12343,7 @@
       "topic": "Rechtscharakter WTA",
       "misconception": "WTA-Merkblätter seien Gesetze.",
       "coreRule": "WTA-Merkblätter: privatrechtlich, vertraglich vereinbar, Maßstab für aRdT im Bestand.",
-      "actionableAdvice": "Arbeiten Sie den Abschnitt „Rechtscharakter WTA“ im Modul WTA-Merkblätter noch einmal durch.",
+      "actionableAdvice": "Arbeiten Sie das Thema „Rechtscharakter WTA“ im Modul WTA-Merkblätter noch einmal durch.",
       "targetModuleTab": "wta",
       "targetModuleLabel": "WTA-Merkblätter"
     },
@@ -12429,7 +12429,7 @@
       "topic": "Anstrich auf Sanierputz",
       "misconception": "Ein dichter Anstrich schütze den Sanierputz zusätzlich.",
       "coreRule": "Auf Sanierputz nur diffusionsoffene, mineralische Anstriche.",
-      "actionableAdvice": "Arbeiten Sie den Abschnitt „Anstrich auf Sanierputz“ im Modul WTA-Merkblätter noch einmal durch.",
+      "actionableAdvice": "Arbeiten Sie das Thema „Anstrich auf Sanierputz“ im Modul WTA-Merkblätter noch einmal durch.",
       "targetModuleTab": "wta",
       "targetModuleLabel": "WTA-Merkblätter"
     },
@@ -12472,7 +12472,7 @@
       "topic": "Bohrlochinjektion",
       "misconception": "Bohrlöcher müssten durch die ganze Wand gehen.",
       "coreRule": "Bohrlochtiefe ≈ Wanddicke − 5 cm; Anzahl = 100 cm / Abstand.",
-      "actionableAdvice": "Arbeiten Sie den Abschnitt „Bohrlochinjektion“ im Modul WTA-Merkblätter noch einmal durch.",
+      "actionableAdvice": "Arbeiten Sie das Thema „Bohrlochinjektion“ im Modul WTA-Merkblätter noch einmal durch.",
       "targetModuleTab": "wta",
       "targetModuleLabel": "WTA-Merkblätter"
     },
@@ -12600,7 +12600,7 @@
       "topic": "Entrostungsgrad",
       "misconception": "Lose Rostentfernung mit der Drahtbürste genüge.",
       "coreRule": "Bewehrung vor dem Korrosionsschutz auf Sa 2½ strahlen.",
-      "actionableAdvice": "Arbeiten Sie den Abschnitt „Entrostungsgrad“ im Modul Instandsetzungs-Checklisten noch einmal durch.",
+      "actionableAdvice": "Arbeiten Sie das Thema „Entrostungsgrad“ im Modul Instandsetzungs-Checklisten noch einmal durch.",
       "targetModuleTab": "instandsetzung_checklisten",
       "targetModuleLabel": "Instandsetzungs-Checklisten"
     },
@@ -12643,7 +12643,7 @@
       "topic": "Rissfüllstoff",
       "misconception": "Epoxidharz eigne sich für jeden Riss.",
       "coreRule": "Ruhender Riss → kraftschlüssig (EP); bewegter Riss → dehnfähig (PUR).",
-      "actionableAdvice": "Arbeiten Sie den Abschnitt „Rissfüllstoff“ im Modul Instandsetzungs-Checklisten noch einmal durch.",
+      "actionableAdvice": "Arbeiten Sie das Thema „Rissfüllstoff“ im Modul Instandsetzungs-Checklisten noch einmal durch.",
       "targetModuleTab": "instandsetzung_checklisten",
       "targetModuleLabel": "Instandsetzungs-Checklisten"
     },
@@ -12728,7 +12728,7 @@
       "topic": "Sachkundiger Planer",
       "misconception": "Die ausführende Firma könne das Konzept selbst festlegen.",
       "coreRule": "Standsicherheitsrelevante Instandsetzung: sachkundiger Planer nach TR Instandhaltung.",
-      "actionableAdvice": "Arbeiten Sie den Abschnitt „Sachkundiger Planer“ im Modul Instandsetzungs-Checklisten noch einmal durch.",
+      "actionableAdvice": "Arbeiten Sie das Thema „Sachkundiger Planer“ im Modul Instandsetzungs-Checklisten noch einmal durch.",
       "targetModuleTab": "instandsetzung_checklisten",
       "targetModuleLabel": "Instandsetzungs-Checklisten"
     },
@@ -12771,7 +12771,7 @@
       "topic": "IFC-Norm",
       "misconception": "ISO 19650 definiere das IFC-Format.",
       "coreRule": "IFC = ISO 16739-1; Prozesse = ISO 19650.",
-      "actionableAdvice": "Arbeiten Sie den Abschnitt „IFC-Norm“ im Modul BIM für Baustoffe noch einmal durch.",
+      "actionableAdvice": "Arbeiten Sie das Thema „IFC-Norm“ im Modul BIM für Baustoffe noch einmal durch.",
       "targetModuleTab": "bim_baustoffe",
       "targetModuleLabel": "BIM für Baustoffe"
     },
@@ -12898,7 +12898,7 @@
       "topic": "Dämmstoffvergleich",
       "misconception": "Der Stoff mit dem kleinsten GWP pro m³ sei immer am besten.",
       "coreRule": "Ökobilanzvergleich nur bei gleicher Funktion.",
-      "actionableAdvice": "Arbeiten Sie den Abschnitt „Dämmstoffvergleich“ im Modul Materialdatenbanken noch einmal durch.",
+      "actionableAdvice": "Arbeiten Sie das Thema „Dämmstoffvergleich“ im Modul Materialdatenbanken noch einmal durch.",
       "targetModuleTab": "materialdatenbanken",
       "targetModuleLabel": "Materialdatenbanken"
     },
@@ -13112,7 +13112,7 @@
       "topic": "Rechtsstatus",
       "misconception": "Energiegesetze verlangten bereits Materialpässe.",
       "coreRule": "Materialpässe sind derzeit freiwillige Instrumente von Zertifizierung und Plattformen.",
-      "actionableAdvice": "Arbeiten Sie den Abschnitt „Rechtsstatus“ im Modul Materialpässe noch einmal durch.",
+      "actionableAdvice": "Arbeiten Sie das Thema „Rechtsstatus“ im Modul Materialpässe noch einmal durch.",
       "targetModuleTab": "materialpaesse",
       "targetModuleLabel": "Materialpässe"
     },
@@ -13282,7 +13282,7 @@
       "topic": "Plausibilitätskontrolle",
       "misconception": "Software-Ergebnisse bräuchten keine Kontrolle.",
       "coreRule": "Ergebnisse von Online-Tools stets mit einfacher Handrechnung prüfen.",
-      "actionableAdvice": "Arbeiten Sie den Abschnitt „Plausibilitätskontrolle“ im Modul Online-Tools & Rechner noch einmal durch.",
+      "actionableAdvice": "Arbeiten Sie das Thema „Plausibilitätskontrolle“ im Modul Online-Tools & Rechner noch einmal durch.",
       "targetModuleTab": "online_tools",
       "targetModuleLabel": "Online-Tools & Rechner"
     },
@@ -13493,7 +13493,7 @@
       "topic": "Retrieval-Augmented Generation",
       "misconception": "RAG wird mit Training oder mit fehlerfreier Suche gleichgesetzt.",
       "coreRule": "RAG = Retrieval (Suche) + Generierung mit Kontext; Ergebnis prüfen.",
-      "actionableAdvice": "Arbeiten Sie den Abschnitt „RAG und LLMs“ im Modul KI: Überblick & Grundlagen noch einmal durch.",
+      "actionableAdvice": "Arbeiten Sie das Thema „RAG und LLMs“ im Modul KI: Überblick & Grundlagen noch einmal durch.",
       "targetModuleTab": "ki_ueberblick",
       "targetModuleLabel": "KI: Überblick & Grundlagen"
     },
@@ -13536,7 +13536,7 @@
       "topic": "F1-Wert",
       "misconception": "Eine hohe Genauigkeit zeige allein ein gutes Modell an.",
       "coreRule": "F1 = harmonisches Mittel aus Precision und Recall.",
-      "actionableAdvice": "Arbeiten Sie den Abschnitt „F1-Wert“ im Modul KI: Überblick & Grundlagen noch einmal durch.",
+      "actionableAdvice": "Arbeiten Sie das Thema „F1-Wert“ im Modul KI: Überblick & Grundlagen noch einmal durch.",
       "targetModuleTab": "ki_ueberblick",
       "targetModuleLabel": "KI: Überblick & Grundlagen"
     },
@@ -13578,7 +13578,7 @@
       "topic": "Begriffshierarchie",
       "misconception": "KI und Deep Learning seien Synonyme.",
       "coreRule": "KI ⊃ ML ⊃ DL; große Sprachmodelle sind DL-Modelle.",
-      "actionableAdvice": "Arbeiten Sie den Abschnitt „Begriffshierarchie“ im Modul KI: Überblick & Grundlagen noch einmal durch.",
+      "actionableAdvice": "Arbeiten Sie das Thema „Begriffshierarchie“ im Modul KI: Überblick & Grundlagen noch einmal durch.",
       "targetModuleTab": "ki_ueberblick",
       "targetModuleLabel": "KI: Überblick & Grundlagen"
     },
@@ -13748,7 +13748,7 @@
       "topic": "Tokenbudget",
       "misconception": "Das gesamte Kontextfenster stehe für Dokumente zur Verfügung.",
       "coreRule": "Systemprompt und Antwort verbrauchen ebenfalls Kontext.",
-      "actionableAdvice": "Arbeiten Sie den Abschnitt „Tokenbudget“ im Modul KI: Prompting-Praxis noch einmal durch.",
+      "actionableAdvice": "Arbeiten Sie das Thema „Tokenbudget“ im Modul KI: Prompting-Praxis noch einmal durch.",
       "targetModuleTab": "ki_prompting",
       "targetModuleLabel": "KI: Prompting-Praxis"
     },
@@ -13790,7 +13790,7 @@
       "topic": "Zitatprüfung",
       "misconception": "Eine Stichprobe ersetze die Einzelprüfung.",
       "coreRule": "Jede KI-Quellenangabe wird an der Originalquelle verifiziert.",
-      "actionableAdvice": "Arbeiten Sie den Abschnitt „Zitatprüfung“ im Modul KI: LLM-Praxis noch einmal durch.",
+      "actionableAdvice": "Arbeiten Sie das Thema „Zitatprüfung“ im Modul KI: LLM-Praxis noch einmal durch.",
       "targetModuleTab": "ki_llmpraxis",
       "targetModuleLabel": "KI: LLM-Praxis"
     },
@@ -14130,7 +14130,7 @@
       "topic": "Datenpanne nach DSGVO",
       "misconception": "Die Meldefrist für Datenpannen wird unterschätzt.",
       "coreRule": "Art. 33 DSGVO: Meldung möglichst binnen 72 h; Art. 34: Betroffene bei hohem Risiko.",
-      "actionableAdvice": "Arbeiten Sie den Abschnitt „DSGVO & Betriebsgeheimnisse“ im Modul KI: Fehler, Recht & Ethik noch einmal durch.",
+      "actionableAdvice": "Arbeiten Sie das Thema „DSGVO & Betriebsgeheimnisse“ im Modul KI: Fehler, Recht & Ethik noch einmal durch.",
       "targetModuleTab": "ki_recht_ethik",
       "targetModuleLabel": "KI: Fehler, Recht & Ethik"
     },
@@ -14384,7 +14384,7 @@
       "topic": "Emissionen lokaler KI",
       "misconception": "Rechenzeit lokal verursache keine Emissionen.",
       "coreRule": "CO₂ = Energie · Emissionsfaktor des Strommixes.",
-      "actionableAdvice": "Arbeiten Sie den Abschnitt „Emissionen lokaler KI“ im Modul KI: Unabhängige KI-Seiten noch einmal durch.",
+      "actionableAdvice": "Arbeiten Sie das Thema „Emissionen lokaler KI“ im Modul KI: Unabhängige KI-Seiten noch einmal durch.",
       "targetModuleTab": "ki_ressourcen",
       "targetModuleLabel": "KI: Unabhängige KI-Seiten"
     },
@@ -14464,7 +14464,7 @@
       "topic": "Ranglisten nutzen",
       "misconception": "Das Modell auf Platz 1 sei für jede Fachaufgabe das beste.",
       "coreRule": "Ranglisten als Vorauswahl, Entscheidung nach eigenem Fachtest.",
-      "actionableAdvice": "Arbeiten Sie den Abschnitt „Ranglisten nutzen“ im Modul KI: Unabhängige KI-Seiten noch einmal durch.",
+      "actionableAdvice": "Arbeiten Sie das Thema „Ranglisten nutzen“ im Modul KI: Unabhängige KI-Seiten noch einmal durch.",
       "targetModuleTab": "ki_ressourcen",
       "targetModuleLabel": "KI: Unabhängige KI-Seiten"
     },
@@ -14506,7 +14506,7 @@
       "topic": "Unsicherheit Benchmark",
       "misconception": "Mehr als ein Prozentpunkt Abstand sei immer ein echter Unterschied.",
       "coreRule": "u = 1,96 · √(p(1−p)/n).",
-      "actionableAdvice": "Arbeiten Sie den Abschnitt „Unsicherheit Benchmark“ im Modul KI: Unabhängige KI-Seiten noch einmal durch.",
+      "actionableAdvice": "Arbeiten Sie das Thema „Unsicherheit Benchmark“ im Modul KI: Unabhängige KI-Seiten noch einmal durch.",
       "targetModuleTab": "ki_ressourcen",
       "targetModuleLabel": "KI: Unabhängige KI-Seiten"
     },
@@ -14632,7 +14632,7 @@
       "topic": "Lernzeit planen",
       "misconception": "Die Videolänge sei der gesamte Lernaufwand.",
       "coreRule": "Lernzeit = Videozeit · Übungsfaktor; dann auf die Wochen verteilen.",
-      "actionableAdvice": "Arbeiten Sie den Abschnitt „Lernzeit planen“ im Modul KI: Onlinekurse noch einmal durch.",
+      "actionableAdvice": "Arbeiten Sie das Thema „Lernzeit planen“ im Modul KI: Onlinekurse noch einmal durch.",
       "targetModuleTab": "ki_onlinekurse",
       "targetModuleLabel": "KI: Onlinekurse"
     },
@@ -14802,7 +14802,7 @@
       "topic": "Modellgrenzen",
       "misconception": "KI-Modelle seien allgemeingültige Materialgesetze.",
       "coreRule": "Prognosen nur im Datenbereich nutzen und experimentell bestätigen.",
-      "actionableAdvice": "Arbeiten Sie den Abschnitt „Modellgrenzen“ im Modul KI in der Baustoffkunde noch einmal durch.",
+      "actionableAdvice": "Arbeiten Sie das Thema „Modellgrenzen“ im Modul KI in der Baustoffkunde noch einmal durch.",
       "targetModuleTab": "ki_baustoffe",
       "targetModuleLabel": "KI in der Baustoffkunde"
     },
@@ -14971,7 +14971,7 @@
       "topic": "RMSE und Ausreißer",
       "misconception": "RMSE und MAE seien austauschbar.",
       "coreRule": "RMSE gewichtet große Fehler stärker; RMSE ≥ MAE.",
-      "actionableAdvice": "Arbeiten Sie den Abschnitt „RMSE und Ausreißer“ im Modul KI in der Baustoffkunde noch einmal durch.",
+      "actionableAdvice": "Arbeiten Sie das Thema „RMSE und Ausreißer“ im Modul KI in der Baustoffkunde noch einmal durch.",
       "targetModuleTab": "ki_baustoffe",
       "targetModuleLabel": "KI in der Baustoffkunde"
     },
@@ -15014,7 +15014,7 @@
       "topic": "Datenleck",
       "misconception": "Validierung auf Trainingsdaten sei zulässig.",
       "coreRule": "Strikte Trennung von Trainings- und Validierungsdaten.",
-      "actionableAdvice": "Arbeiten Sie den Abschnitt „Datenleck“ im Modul KI in der Baustoffkunde noch einmal durch.",
+      "actionableAdvice": "Arbeiten Sie das Thema „Datenleck“ im Modul KI in der Baustoffkunde noch einmal durch.",
       "targetModuleTab": "ki_baustoffe",
       "targetModuleLabel": "KI in der Baustoffkunde"
     },
@@ -15142,7 +15142,7 @@
       "topic": "HOAI-Leistungsphasen 6 und 7",
       "misconception": "Vorbereitung und Mitwirkung bei der Vergabe werden verwechselt.",
       "coreRule": "LPH 6: LV aufstellen; LPH 7: Angebote einholen, prüfen, werten.",
-      "actionableAdvice": "Arbeiten Sie den Abschnitt „Planung & Ausschreibung (AVA)“ im Modul Planung & Ausschreibung noch einmal durch.",
+      "actionableAdvice": "Arbeiten Sie das Thema „Planung & Ausschreibung (AVA)“ im Modul Planung & Ausschreibung noch einmal durch.",
       "targetModuleTab": "px_planung",
       "targetModuleLabel": "Planung & Ausschreibung"
     },
@@ -15185,7 +15185,7 @@
       "topic": "Gewichtung der Leistungsphasen",
       "misconception": "Der Aufwand der Bauüberwachung wird unterschätzt.",
       "coreRule": "HOAI Gebäude: LPH 8 = 32 %, LPH 5 = 25 %, LPH 3 = 15 %.",
-      "actionableAdvice": "Arbeiten Sie den Abschnitt „Planung & Ausschreibung (AVA)“ im Modul Planung & Ausschreibung noch einmal durch.",
+      "actionableAdvice": "Arbeiten Sie das Thema „Planung & Ausschreibung (AVA)“ im Modul Planung & Ausschreibung noch einmal durch.",
       "targetModuleTab": "px_planung",
       "targetModuleLabel": "Planung & Ausschreibung"
     },
@@ -15228,7 +15228,7 @@
       "topic": "Bedarfspositionen",
       "misconception": "Bedarfspositionen werden als Mittel gegen Nachträge angesehen.",
       "coreRule": "§ 7 Abs. 1 Nr. 4 VOB/A: Bedarfspositionen grundsätzlich nicht aufnehmen.",
-      "actionableAdvice": "Arbeiten Sie den Abschnitt „Planung & Ausschreibung (AVA)“ im Modul Planung & Ausschreibung noch einmal durch.",
+      "actionableAdvice": "Arbeiten Sie das Thema „Planung & Ausschreibung (AVA)“ im Modul Planung & Ausschreibung noch einmal durch.",
       "targetModuleTab": "px_planung",
       "targetModuleLabel": "Planung & Ausschreibung"
     },
@@ -15270,7 +15270,7 @@
       "topic": "Ungewöhnliches Wagnis",
       "misconception": "Unkalkulierbare Risiken werden als normal einpreisbar angesehen.",
       "coreRule": "§ 7 Abs. 1 Nr. 3 VOB/A: kein ungewöhnliches Wagnis; Baugrundrisiko beim Auftraggeber.",
-      "actionableAdvice": "Arbeiten Sie den Abschnitt „Planung & Ausschreibung (AVA)“ im Modul Planung & Ausschreibung noch einmal durch.",
+      "actionableAdvice": "Arbeiten Sie das Thema „Planung & Ausschreibung (AVA)“ im Modul Planung & Ausschreibung noch einmal durch.",
       "targetModuleTab": "px_planung",
       "targetModuleLabel": "Planung & Ausschreibung"
     },
@@ -15735,7 +15735,7 @@
       "topic": "Pumpdruck Burj Khalifa",
       "misconception": "Die Rohrreibung sei der einzige Druckanteil.",
       "coreRule": "p_hydro = ρ · g · H; 1 bar = 10⁵ Pa.",
-      "actionableAdvice": "Arbeiten Sie den Abschnitt „Pumpdruck Burj Khalifa“ im Modul Kuriositäten & Rekorde noch einmal durch.",
+      "actionableAdvice": "Arbeiten Sie das Thema „Pumpdruck Burj Khalifa“ im Modul Kuriositäten & Rekorde noch einmal durch.",
       "targetModuleTab": "kuriositaeten",
       "targetModuleLabel": "Kuriositäten & Rekorde"
     },
@@ -15820,7 +15820,7 @@
       "topic": "UHPC-Stütze",
       "misconception": "Die Fläche sinke linear mit der Differenz der Festigkeiten.",
       "coreRule": "A ~ 1/f_cd; Einsparung = 1 − f_cd,1/f_cd,2.",
-      "actionableAdvice": "Arbeiten Sie den Abschnitt „UHPC-Stütze“ im Modul Kuriositäten & Rekorde noch einmal durch.",
+      "actionableAdvice": "Arbeiten Sie das Thema „UHPC-Stütze“ im Modul Kuriositäten & Rekorde noch einmal durch.",
       "targetModuleTab": "kuriositaeten",
       "targetModuleLabel": "Kuriositäten & Rekorde"
     },
@@ -15862,7 +15862,7 @@
       "topic": "Eiffelturm-Anstrich",
       "misconception": "Schweißeisen rostet nicht.",
       "coreRule": "Instandhaltung des Korrosionsschutzes ist wirksamer als jede Werkstoffreserve.",
-      "actionableAdvice": "Arbeiten Sie den Abschnitt „Eiffelturm-Anstrich“ im Modul Kuriositäten & Rekorde noch einmal durch.",
+      "actionableAdvice": "Arbeiten Sie das Thema „Eiffelturm-Anstrich“ im Modul Kuriositäten & Rekorde noch einmal durch.",
       "targetModuleTab": "kuriositaeten",
       "targetModuleLabel": "Kuriositäten & Rekorde"
     },
@@ -16201,7 +16201,7 @@
       "topic": "Maßgebende Expositionsklasse",
       "misconception": "Maßgebend sei die zuerst genannte Klasse.",
       "coreRule": "Bei mehreren Expositionsklassen gilt jeweils der strengste Grenzwert.",
-      "actionableAdvice": "Arbeiten Sie den Abschnitt „Maßgebende Expositionsklasse“ im Modul Mischungsberechnung noch einmal durch.",
+      "actionableAdvice": "Arbeiten Sie das Thema „Maßgebende Expositionsklasse“ im Modul Mischungsberechnung noch einmal durch.",
       "targetModuleTab": "mischungsberechnung",
       "targetModuleLabel": "Mischungsberechnung"
     },
@@ -16286,7 +16286,7 @@
       "topic": "Wasserzugabe bei Lieferung",
       "misconception": "Etwas Wasser schade nicht.",
       "coreRule": "Konsistenz nur nach Vorgabe des Herstellers anpassen und dokumentieren.",
-      "actionableAdvice": "Arbeiten Sie den Abschnitt „Wasserzugabe bei Lieferung“ im Modul Herstellung & Einbau noch einmal durch.",
+      "actionableAdvice": "Arbeiten Sie das Thema „Wasserzugabe bei Lieferung“ im Modul Herstellung & Einbau noch einmal durch.",
       "targetModuleTab": "herstellung_einbau",
       "targetModuleLabel": "Herstellung & Einbau"
     },
@@ -16621,7 +16621,7 @@
       "topic": "Wärmeminderung",
       "misconception": "Eine Abdeckung kühle den Kern.",
       "coreRule": "Kerntemperatur senken: weniger Wärme (LH, weniger Zement) und kühler Frischbeton.",
-      "actionableAdvice": "Arbeiten Sie den Abschnitt „Wärmeminderung“ im Modul Hydratation & Folgen noch einmal durch.",
+      "actionableAdvice": "Arbeiten Sie das Thema „Wärmeminderung“ im Modul Hydratation & Folgen noch einmal durch.",
       "targetModuleTab": "hydratation_folgen",
       "targetModuleLabel": "Hydratation & Folgen"
     },
@@ -16749,7 +16749,7 @@
       "topic": "Charakteristische Festigkeit",
       "misconception": "Der Mittelwert sei die charakteristische Festigkeit.",
       "coreRule": "Nur 5 % der Ergebnisse dürfen unter f_ck liegen.",
-      "actionableAdvice": "Arbeiten Sie den Abschnitt „Charakteristische Festigkeit“ im Modul Festbeton noch einmal durch.",
+      "actionableAdvice": "Arbeiten Sie das Thema „Charakteristische Festigkeit“ im Modul Festbeton noch einmal durch.",
       "targetModuleTab": "festbeton",
       "targetModuleLabel": "Festbeton"
     },
@@ -17212,7 +17212,7 @@
       "topic": "Normung neuer Bindemittel",
       "misconception": "Alle CO₂-armen Bindemittel bräuchten eine Einzelzulassung.",
       "coreRule": "Klinkerarme Normzemente nach DIN EN 197-5; alkaliaktivierte Bindemittel über Zulassung/Bauartgenehmigung.",
-      "actionableAdvice": "Arbeiten Sie den Abschnitt „Normung neuer Bindemittel“ im Modul Entwicklungen noch einmal durch.",
+      "actionableAdvice": "Arbeiten Sie das Thema „Normung neuer Bindemittel“ im Modul Entwicklungen noch einmal durch.",
       "targetModuleTab": "innovative_werkstoffe",
       "targetModuleLabel": "Entwicklungen"
     },
@@ -17254,7 +17254,7 @@
       "topic": "Konformität stetige Herstellung",
       "misconception": "Die gemessene Standardabweichung dürfe auch unter 3 N/mm² angesetzt werden.",
       "coreRule": "Rechenwert σ ≥ 3 N/mm²; f_cm ≥ f_ck + 1,48·σ.",
-      "actionableAdvice": "Arbeiten Sie den Abschnitt „Konformität stetige Herstellung“ im Modul Qualitätssicherung noch einmal durch.",
+      "actionableAdvice": "Arbeiten Sie das Thema „Konformität stetige Herstellung“ im Modul Qualitätssicherung noch einmal durch.",
       "targetModuleTab": "qualitaetssicherung",
       "targetModuleLabel": "Qualitätssicherung"
     },
@@ -17296,7 +17296,7 @@
       "topic": "Konformität Erstherstellung",
       "misconception": "Jedes Einzelergebnis müsse f_ck erreichen.",
       "coreRule": "Erstherstellung: f_cm ≥ f_ck + 4; f_ci ≥ f_ck − 4.",
-      "actionableAdvice": "Arbeiten Sie den Abschnitt „Konformität Erstherstellung“ im Modul Qualitätssicherung noch einmal durch.",
+      "actionableAdvice": "Arbeiten Sie das Thema „Konformität Erstherstellung“ im Modul Qualitätssicherung noch einmal durch.",
       "targetModuleTab": "qualitaetssicherung",
       "targetModuleLabel": "Qualitätssicherung"
     },
@@ -17423,7 +17423,7 @@
       "topic": "Lieferscheinkontrolle",
       "misconception": "Die Frist beginne erst mit der Ankunft auf der Baustelle.",
       "coreRule": "Entladen spätestens 90 min nach der ersten Wasserzugabe.",
-      "actionableAdvice": "Arbeiten Sie den Abschnitt „Lieferscheinkontrolle“ im Modul Qualitätssicherung noch einmal durch.",
+      "actionableAdvice": "Arbeiten Sie das Thema „Lieferscheinkontrolle“ im Modul Qualitätssicherung noch einmal durch.",
       "targetModuleTab": "qualitaetssicherung",
       "targetModuleLabel": "Qualitätssicherung"
     },
@@ -17507,7 +17507,7 @@
       "topic": "Klassenkombination",
       "misconception": "Es sei nur die strengste einzelne Klasse anzugeben.",
       "coreRule": "Alle zutreffenden Klassen angeben; der strengste Grenzwert je Kriterium gilt.",
-      "actionableAdvice": "Arbeiten Sie den Abschnitt „Klassenkombination“ im Modul Expositionsklassen noch einmal durch.",
+      "actionableAdvice": "Arbeiten Sie das Thema „Klassenkombination“ im Modul Expositionsklassen noch einmal durch.",
       "targetModuleTab": "expositionsklassen",
       "targetModuleLabel": "Expositionsklassen"
     },
@@ -17717,7 +17717,7 @@
       "topic": "AKR-Feuchtigkeitsklassen",
       "misconception": "Parkdecks seien Innenbauteile (WO).",
       "coreRule": "Feuchte + externe Alkalizufuhr → WA.",
-      "actionableAdvice": "Arbeiten Sie den Abschnitt „AKR-Feuchtigkeitsklassen“ im Modul Expositionsklassen noch einmal durch.",
+      "actionableAdvice": "Arbeiten Sie das Thema „AKR-Feuchtigkeitsklassen“ im Modul Expositionsklassen noch einmal durch.",
       "targetModuleTab": "expositionsklassen",
       "targetModuleLabel": "Expositionsklassen"
     },
@@ -17844,7 +17844,7 @@
       "topic": "WU-Mindestdicken",
       "misconception": "Für Wände und Bodenplatten gälten dieselben Mindestdicken.",
       "coreRule": "WU-Richtlinie: BK 1, Ortbetonwand ≥ 240 mm.",
-      "actionableAdvice": "Arbeiten Sie den Abschnitt „WU-Mindestdicken“ im Modul Betonpraxis noch einmal durch.",
+      "actionableAdvice": "Arbeiten Sie das Thema „WU-Mindestdicken“ im Modul Betonpraxis noch einmal durch.",
       "targetModuleTab": "betonpraxis",
       "targetModuleLabel": "Betonpraxis"
     },
@@ -18139,7 +18139,7 @@
       "topic": "Querkraft ohne Bewehrung",
       "misconception": "Dickere Platten hätten eine höhere bezogene Schubtragfähigkeit.",
       "coreRule": "k = 1 + √(200/d) ≤ 2,0.",
-      "actionableAdvice": "Arbeiten Sie den Abschnitt „Querkraft ohne Bewehrung“ im Modul Stahlbeton noch einmal durch.",
+      "actionableAdvice": "Arbeiten Sie das Thema „Querkraft ohne Bewehrung“ im Modul Stahlbeton noch einmal durch.",
       "targetModuleTab": "stahlbeton",
       "targetModuleLabel": "Stahlbeton"
     },
@@ -18350,7 +18350,7 @@
       "topic": "Beanspruchungsklassen",
       "misconception": "Beanspruchungs- und Nutzungsklasse seien dasselbe.",
       "coreRule": "BK = Wassereinwirkung, NK = Nutzungsanforderung.",
-      "actionableAdvice": "Arbeiten Sie den Abschnitt „Beanspruchungsklassen“ im Modul WU-Bauwerke noch einmal durch.",
+      "actionableAdvice": "Arbeiten Sie das Thema „Beanspruchungsklassen“ im Modul WU-Bauwerke noch einmal durch.",
       "targetModuleTab": "wu-bauwerke",
       "targetModuleLabel": "WU-Bauwerke"
     },
@@ -18730,7 +18730,7 @@
       "topic": "Gesteinsgruppen",
       "misconception": "Marmor sei ein Ablagerungsgestein, weil er aus Kalk besteht.",
       "coreRule": "Kalkstein → Marmor (Metamorphose).",
-      "actionableAdvice": "Arbeiten Sie den Abschnitt „Gesteinsgruppen“ im Modul Gesteine noch einmal durch.",
+      "actionableAdvice": "Arbeiten Sie das Thema „Gesteinsgruppen“ im Modul Gesteine noch einmal durch.",
       "targetModuleTab": "gesteine",
       "targetModuleLabel": "Gesteine"
     },
@@ -19026,7 +19026,7 @@
       "topic": "Steinformate",
       "misconception": "NF und DF seien gleich hoch.",
       "coreRule": "NF = 240 × 115 × 71 mm.",
-      "actionableAdvice": "Arbeiten Sie den Abschnitt „Steinformate“ im Modul Mauerwerk noch einmal durch.",
+      "actionableAdvice": "Arbeiten Sie das Thema „Steinformate“ im Modul Mauerwerk noch einmal durch.",
       "targetModuleTab": "mauerwerk",
       "targetModuleLabel": "Mauerwerk"
     },
@@ -19068,7 +19068,7 @@
       "topic": "Mauermörtelklassen",
       "misconception": "Die alten Mörtelgruppen seien direkt die Festigkeit in N/mm².",
       "coreRule": "MG IIa ≙ M 5.",
-      "actionableAdvice": "Arbeiten Sie den Abschnitt „Mauermörtelklassen“ im Modul Putze & Mörtel noch einmal durch.",
+      "actionableAdvice": "Arbeiten Sie das Thema „Mauermörtelklassen“ im Modul Putze & Mörtel noch einmal durch.",
       "targetModuleTab": "putzemoertel",
       "targetModuleLabel": "Putze & Mörtel"
     },
@@ -19110,7 +19110,7 @@
       "topic": "Putzmörtelklassen",
       "misconception": "CS-Klassen beschrieben die Haftzugfestigkeit.",
       "coreRule": "CS II: 1,5–5,0 N/mm².",
-      "actionableAdvice": "Arbeiten Sie den Abschnitt „Putzmörtelklassen“ im Modul Putze & Mörtel noch einmal durch.",
+      "actionableAdvice": "Arbeiten Sie das Thema „Putzmörtelklassen“ im Modul Putze & Mörtel noch einmal durch.",
       "targetModuleTab": "putzemoertel",
       "targetModuleLabel": "Putze & Mörtel"
     },
@@ -19406,7 +19406,7 @@
       "topic": "Kalkarten",
       "misconception": "Hydraulische Kalke erhärteten nur an der Luft.",
       "coreRule": "NHL = natürlicher hydraulischer Kalk.",
-      "actionableAdvice": "Arbeiten Sie den Abschnitt „Kalkarten“ im Modul Kalk noch einmal durch.",
+      "actionableAdvice": "Arbeiten Sie das Thema „Kalkarten“ im Modul Kalk noch einmal durch.",
       "targetModuleTab": "kalk",
       "targetModuleLabel": "Kalk"
     },
@@ -19743,7 +19743,7 @@
       "topic": "Glasarten",
       "misconception": "Vorspannen ändere nur das Bruchbild, nicht die Festigkeit.",
       "coreRule": "Float 45 – TVG 70 – ESG 120 N/mm².",
-      "actionableAdvice": "Arbeiten Sie den Abschnitt „Glasarten“ im Modul Glas noch einmal durch.",
+      "actionableAdvice": "Arbeiten Sie das Thema „Glasarten“ im Modul Glas noch einmal durch.",
       "targetModuleTab": "glas",
       "targetModuleLabel": "Glas"
     },
@@ -20165,7 +20165,7 @@
       "topic": "Plattenarten",
       "misconception": "OSB sei grundsätzlich nur für den Trockenbereich geeignet.",
       "coreRule": "OSB/3, OSB/4: tragend, Feuchtbereich.",
-      "actionableAdvice": "Arbeiten Sie den Abschnitt „Plattenarten“ im Modul Holzwerkstoffe noch einmal durch.",
+      "actionableAdvice": "Arbeiten Sie das Thema „Plattenarten“ im Modul Holzwerkstoffe noch einmal durch.",
       "targetModuleTab": "holzwerkstoffe",
       "targetModuleLabel": "Holzwerkstoffe"
     },
@@ -21394,7 +21394,7 @@
       "topic": "Schichtenprinzip",
       "misconception": "Die Dämmung übernimmt den Witterungsschutz.",
       "coreRule": "VHF: Bekleidung + Hinterlüftung schützen, Dämmung dämmt, Wand trägt.",
-      "actionableAdvice": "Arbeiten Sie den Abschnitt „Schichtenprinzip“ im Modul Werkstoff-Kombinationen noch einmal durch.",
+      "actionableAdvice": "Arbeiten Sie das Thema „Schichtenprinzip“ im Modul Werkstoff-Kombinationen noch einmal durch.",
       "targetModuleTab": "kombinationen",
       "targetModuleLabel": "Werkstoff-Kombinationen"
     },
@@ -21859,7 +21859,7 @@
       "topic": "Emissionshandel",
       "misconception": "Alle Baustoffbetriebe nähmen am Emissionshandel teil.",
       "coreRule": "EU-ETS: Klinker-, Kalk-, Glas- und Keramikherstellung oberhalb der Schwellen.",
-      "actionableAdvice": "Arbeiten Sie den Abschnitt „Emissionshandel“ im Modul Baustoffindustrie noch einmal durch.",
+      "actionableAdvice": "Arbeiten Sie das Thema „Emissionshandel“ im Modul Baustoffindustrie noch einmal durch.",
       "targetModuleTab": "bp_baustoffindustrie",
       "targetModuleLabel": "Baustoffindustrie"
     },
@@ -21901,7 +21901,7 @@
       "topic": "Marktstruktur",
       "misconception": "Die Marktstruktur sei zufällig gewachsen.",
       "coreRule": "Investitionsbedarf und Wert je Tonne bestimmen Größe und Liefergebiet.",
-      "actionableAdvice": "Arbeiten Sie den Abschnitt „Marktstruktur“ im Modul Baustoffindustrie noch einmal durch.",
+      "actionableAdvice": "Arbeiten Sie das Thema „Marktstruktur“ im Modul Baustoffindustrie noch einmal durch.",
       "targetModuleTab": "bp_baustoffindustrie",
       "targetModuleLabel": "Baustoffindustrie"
     },
@@ -21944,7 +21944,7 @@
       "topic": "Recherchequellen",
       "misconception": "Lobbyarbeit sei nicht öffentlich dokumentiert.",
       "coreRule": "Lobbyregister des Bundestages: Interessenvertretung transparent.",
-      "actionableAdvice": "Arbeiten Sie den Abschnitt „Recherchequellen“ im Modul Baustoffindustrie noch einmal durch.",
+      "actionableAdvice": "Arbeiten Sie das Thema „Recherchequellen“ im Modul Baustoffindustrie noch einmal durch.",
       "targetModuleTab": "bp_baustoffindustrie",
       "targetModuleLabel": "Baustoffindustrie"
     },
@@ -22115,7 +22115,7 @@
       "topic": "CE und Ü",
       "misconception": "CE = gute Qualität.",
       "coreRule": "CE = Leistungserklärung; Eignung im Bauwerk prüft der Planer.",
-      "actionableAdvice": "Arbeiten Sie den Abschnitt „CE und Ü“ im Modul Bauproduktenrecht noch einmal durch.",
+      "actionableAdvice": "Arbeiten Sie das Thema „CE und Ü“ im Modul Bauproduktenrecht noch einmal durch.",
       "targetModuleTab": "bp_recht",
       "targetModuleLabel": "Bauproduktenrecht"
     },
@@ -22243,7 +22243,7 @@
       "topic": "AVCP-System 4",
       "misconception": "Jedes CE-Produkt sei fremdüberwacht.",
       "coreRule": "System 4: Hersteller allein (Typbestimmung + WPK).",
-      "actionableAdvice": "Arbeiten Sie den Abschnitt „AVCP-System 4“ im Modul Bauproduktenrecht noch einmal durch.",
+      "actionableAdvice": "Arbeiten Sie das Thema „AVCP-System 4“ im Modul Bauproduktenrecht noch einmal durch.",
       "targetModuleTab": "bp_recht",
       "targetModuleLabel": "Bauproduktenrecht"
     },
@@ -22328,7 +22328,7 @@
       "topic": "Verifizierung EPD",
       "misconception": "EPDs seien behördliche Zulassungen.",
       "coreRule": "EPD: Typ-III-Deklaration, unabhängig verifiziert (ISO 14025, EN 15804).",
-      "actionableAdvice": "Arbeiten Sie den Abschnitt „Verifizierung EPD“ im Modul Bauproduktenrecht noch einmal durch.",
+      "actionableAdvice": "Arbeiten Sie das Thema „Verifizierung EPD“ im Modul Bauproduktenrecht noch einmal durch.",
       "targetModuleTab": "bp_recht",
       "targetModuleLabel": "Bauproduktenrecht"
     },
@@ -22455,7 +22455,7 @@
       "topic": "w/z-Wert prüfen",
       "misconception": "Ein kleinerer w/z-Wert verletze die Grenze.",
       "coreRule": "w/z = Wasser / Zement; Anforderung ist ein Höchstwert.",
-      "actionableAdvice": "Arbeiten Sie den Abschnitt „w/z-Wert prüfen“ im Modul Beton (Bauprodukt) noch einmal durch.",
+      "actionableAdvice": "Arbeiten Sie das Thema „w/z-Wert prüfen“ im Modul Beton (Bauprodukt) noch einmal durch.",
       "targetModuleTab": "bp_beton",
       "targetModuleLabel": "Beton (Bauprodukt)"
     },
@@ -22541,7 +22541,7 @@
       "topic": "Kennzeichnung Transportbeton",
       "misconception": "Alle Bauprodukte trügen ein CE-Zeichen.",
       "coreRule": "Beton (DIN 1045-2): nationaler Übereinstimmungsnachweis, Ü-Zeichen auf dem Lieferschein.",
-      "actionableAdvice": "Arbeiten Sie den Abschnitt „Kennzeichnung Transportbeton“ im Modul Beton (Bauprodukt) noch einmal durch.",
+      "actionableAdvice": "Arbeiten Sie das Thema „Kennzeichnung Transportbeton“ im Modul Beton (Bauprodukt) noch einmal durch.",
       "targetModuleTab": "bp_beton",
       "targetModuleLabel": "Beton (Bauprodukt)"
     },
@@ -22584,7 +22584,7 @@
       "topic": "Festlegung nach Eigenschaften",
       "misconception": "Bei Beton nach Eigenschaften lege der Besteller die Rezeptur fest.",
       "coreRule": "Beton nach Eigenschaften: Besteller legt Eigenschaften fest, Hersteller die Rezeptur.",
-      "actionableAdvice": "Arbeiten Sie den Abschnitt „Festlegung nach Eigenschaften“ im Modul Beton (Bauprodukt) noch einmal durch.",
+      "actionableAdvice": "Arbeiten Sie das Thema „Festlegung nach Eigenschaften“ im Modul Beton (Bauprodukt) noch einmal durch.",
       "targetModuleTab": "bp_beton",
       "targetModuleLabel": "Beton (Bauprodukt)"
     },
@@ -23136,7 +23136,7 @@
       "topic": "Hohlraumgehalt Asphalt",
       "misconception": "Der Hohlraumgehalt sei die Dichtedifferenz.",
       "coreRule": "V = (1 − Raumdichte/Rohdichte) · 100 %.",
-      "actionableAdvice": "Arbeiten Sie den Abschnitt „Hohlraumgehalt Asphalt“ im Modul Verkehrswegebau noch einmal durch.",
+      "actionableAdvice": "Arbeiten Sie das Thema „Hohlraumgehalt Asphalt“ im Modul Verkehrswegebau noch einmal durch.",
       "targetModuleTab": "bp_verkehrswegebau",
       "targetModuleLabel": "Verkehrswegebau"
     },
@@ -23179,7 +23179,7 @@
       "topic": "Regenabfluss",
       "misconception": "Die gesamte Regenmenge fließe ab.",
       "coreRule": "Q = ψ · r · A; 1 ha = 10 000 m².",
-      "actionableAdvice": "Arbeiten Sie den Abschnitt „Regenabfluss“ im Modul Verkehrswegebau noch einmal durch.",
+      "actionableAdvice": "Arbeiten Sie das Thema „Regenabfluss“ im Modul Verkehrswegebau noch einmal durch.",
       "targetModuleTab": "bp_verkehrswegebau",
       "targetModuleLabel": "Verkehrswegebau"
     },
@@ -23645,7 +23645,7 @@
       "topic": "Zellstruktur",
       "misconception": "Alle Hartschäume sind offenzellig.",
       "coreRule": "EPS, XPS, PIR, PF: geschlossenzellig.",
-      "actionableAdvice": "Arbeiten Sie den Abschnitt „Zellstruktur“ im Modul Dämmstoffe (Bauprodukte) noch einmal durch.",
+      "actionableAdvice": "Arbeiten Sie das Thema „Zellstruktur“ im Modul Dämmstoffe (Bauprodukte) noch einmal durch.",
       "targetModuleTab": "bp_daemmung",
       "targetModuleLabel": "Dämmstoffe (Bauprodukte)"
     },
@@ -23730,7 +23730,7 @@
       "topic": "Dübelarten",
       "misconception": "Alle Dübel wirken über Spreizung.",
       "coreRule": "Spreizung – Formschluss – Stoffschluss.",
-      "actionableAdvice": "Arbeiten Sie den Abschnitt „Dübelarten“ im Modul Befestigungstechnik noch einmal durch.",
+      "actionableAdvice": "Arbeiten Sie das Thema „Dübelarten“ im Modul Befestigungstechnik noch einmal durch.",
       "targetModuleTab": "bp_befestigung",
       "targetModuleLabel": "Befestigungstechnik"
     },
@@ -23773,7 +23773,7 @@
       "topic": "Fugenbemessung",
       "misconception": "Die Fugenbreite entspricht der Bewegung.",
       "coreRule": "b_min = Δl / ZGV.",
-      "actionableAdvice": "Arbeiten Sie den Abschnitt „Fugenbemessung“ im Modul Kleb- & Dichtstoffe noch einmal durch.",
+      "actionableAdvice": "Arbeiten Sie das Thema „Fugenbemessung“ im Modul Kleb- & Dichtstoffe noch einmal durch.",
       "targetModuleTab": "bp_klebstoffe",
       "targetModuleLabel": "Kleb- & Dichtstoffe"
     },
@@ -24154,7 +24154,7 @@
       "topic": "Bemessungsfestigkeit",
       "misconception": "k_mod wird als zusätzlicher Sicherheitsfaktor im Nenner verstanden.",
       "coreRule": "f_d = k_mod · f_k / γ_M.",
-      "actionableAdvice": "Arbeiten Sie den Abschnitt „Bemessungsfestigkeit“ im Modul Holzprodukte noch einmal durch.",
+      "actionableAdvice": "Arbeiten Sie das Thema „Bemessungsfestigkeit“ im Modul Holzprodukte noch einmal durch.",
       "targetModuleTab": "bp_holzprodukte",
       "targetModuleLabel": "Holzprodukte"
     },
@@ -24196,7 +24196,7 @@
       "topic": "Kriechen",
       "misconception": "Der Kurzzeit-E-Modul wird für Dauerlasten verwendet.",
       "coreRule": "Bei Kunststoffen den zeitabhängigen Kriechmodul ansetzen.",
-      "actionableAdvice": "Arbeiten Sie den Abschnitt „Kriechen“ im Modul Kunststoffe (Bauprodukte) noch einmal durch.",
+      "actionableAdvice": "Arbeiten Sie das Thema „Kriechen“ im Modul Kunststoffe (Bauprodukte) noch einmal durch.",
       "targetModuleTab": "bp_kunststoffe",
       "targetModuleLabel": "Kunststoffe (Bauprodukte)"
     },
@@ -24366,7 +24366,7 @@
       "topic": "Glasfestigkeit",
       "misconception": "Glasfestigkeit wird als reine Materialkonstante gesehen.",
       "coreRule": "Vorspannung erhöht die nutzbare Biegezugfestigkeit.",
-      "actionableAdvice": "Arbeiten Sie den Abschnitt „Glasfestigkeit“ im Modul Gläser noch einmal durch.",
+      "actionableAdvice": "Arbeiten Sie das Thema „Glasfestigkeit“ im Modul Gläser noch einmal durch.",
       "targetModuleTab": "bp_glaeser",
       "targetModuleLabel": "Gläser"
     },
@@ -24451,7 +24451,7 @@
       "topic": "Normung",
       "misconception": "Lehmsteine werden der Ziegelnorm zugeordnet.",
       "coreRule": "Tragendes Lehmmauerwerk: DIN 18940.",
-      "actionableAdvice": "Arbeiten Sie den Abschnitt „Normung“ im Modul Lehmbauprodukte noch einmal durch.",
+      "actionableAdvice": "Arbeiten Sie das Thema „Normung“ im Modul Lehmbauprodukte noch einmal durch.",
       "targetModuleTab": "bp_lehmbauprodukte",
       "targetModuleLabel": "Lehmbauprodukte"
     },
@@ -24622,7 +24622,7 @@
       "topic": "Profilwahl",
       "misconception": "Nur I_y wird betrachtet.",
       "coreRule": "Stützen: breite Flansche (HEA/HEB), Träger: IPE.",
-      "actionableAdvice": "Arbeiten Sie den Abschnitt „Profilwahl“ im Modul Stahlbauprofile noch einmal durch.",
+      "actionableAdvice": "Arbeiten Sie das Thema „Profilwahl“ im Modul Stahlbauprofile noch einmal durch.",
       "targetModuleTab": "bp_stahlbauprofile",
       "targetModuleLabel": "Stahlbauprofile"
     },
@@ -24707,7 +24707,7 @@
       "topic": "Eigengewicht Profil",
       "misconception": "Profilfläche und Metergewicht seien zahlengleich.",
       "coreRule": "Metergewicht = A · ρ; 1 cm² Stahl ≈ 0,785 kg/m.",
-      "actionableAdvice": "Arbeiten Sie den Abschnitt „Eigengewicht Profil“ im Modul Stahlbauprofile noch einmal durch.",
+      "actionableAdvice": "Arbeiten Sie das Thema „Eigengewicht Profil“ im Modul Stahlbauprofile noch einmal durch.",
       "targetModuleTab": "bp_stahlbauprofile",
       "targetModuleLabel": "Stahlbauprofile"
     },
@@ -24750,7 +24750,7 @@
       "topic": "Breitflanschreihen",
       "misconception": "HEA, HEB und HEM seien unterschiedliche Stahlsorten.",
       "coreRule": "HEA leicht – HEB normal – HEM verstärkt.",
-      "actionableAdvice": "Arbeiten Sie den Abschnitt „Breitflanschreihen“ im Modul Stahlbauprofile noch einmal durch.",
+      "actionableAdvice": "Arbeiten Sie das Thema „Breitflanschreihen“ im Modul Stahlbauprofile noch einmal durch.",
       "targetModuleTab": "bp_stahlbauprofile",
       "targetModuleLabel": "Stahlbauprofile"
     },
@@ -24793,7 +24793,7 @@
       "topic": "Schlankheit",
       "misconception": "Für das Knicken zähle die starke Achse.",
       "coreRule": "λ = L_cr / i; maßgebend ist die Achse mit kleinem i.",
-      "actionableAdvice": "Arbeiten Sie den Abschnitt „Schlankheit“ im Modul Stahlbauprofile noch einmal durch.",
+      "actionableAdvice": "Arbeiten Sie das Thema „Schlankheit“ im Modul Stahlbauprofile noch einmal durch.",
       "targetModuleTab": "bp_stahlbauprofile",
       "targetModuleLabel": "Stahlbauprofile"
     },
@@ -24836,7 +24836,7 @@
       "topic": "IPE hochkant",
       "misconception": "Die Einbaulage sei gleichgültig.",
       "coreRule": "Biegung um die starke Achse nutzen: W_y ≫ W_z.",
-      "actionableAdvice": "Arbeiten Sie den Abschnitt „IPE hochkant“ im Modul Stahlbauprofile noch einmal durch.",
+      "actionableAdvice": "Arbeiten Sie das Thema „IPE hochkant“ im Modul Stahlbauprofile noch einmal durch.",
       "targetModuleTab": "bp_stahlbauprofile",
       "targetModuleLabel": "Stahlbauprofile"
     },
@@ -25304,7 +25304,7 @@
       "topic": "dataholz-Bauteilkatalog",
       "misconception": "Der Bauteilkatalog wird mit Bemessungs- oder Normenwerkzeugen verwechselt.",
       "coreRule": "dataholz: klassifizierte Aufbauten mit Brand-, Schall-, Wärme- und Ökokennwerten.",
-      "actionableAdvice": "Arbeiten Sie den Abschnitt „Interaktiver dataholz.eu Bauteilexplorer“ im Modul Werkstoffe & dataholz noch einmal durch.",
+      "actionableAdvice": "Arbeiten Sie das Thema „Interaktiver dataholz.eu Bauteilexplorer“ im Modul Werkstoffe & dataholz noch einmal durch.",
       "targetModuleTab": "holzbau_werkstoffe",
       "targetModuleLabel": "Werkstoffe & dataholz"
     },
@@ -25390,7 +25390,7 @@
       "topic": "Trockenbau-Akustik",
       "misconception": "Mehr Masse wird als Verschlechterung der Entkopplung angesehen.",
       "coreRule": "Größere Schalenmasse und weichere Feder senken f₀.",
-      "actionableAdvice": "Arbeiten Sie den Abschnitt „Trockenbau-Akustik“ im Modul Innenausbau noch einmal durch.",
+      "actionableAdvice": "Arbeiten Sie das Thema „Trockenbau-Akustik“ im Modul Innenausbau noch einmal durch.",
       "targetModuleTab": "innenausbau",
       "targetModuleLabel": "Innenausbau"
     },
@@ -25475,7 +25475,7 @@
       "topic": "Oberflächenqualität",
       "misconception": "Q3 wird als höchste Stufe angesehen.",
       "coreRule": "Höchste Anforderungen: Q4 mit Flächenspachtelung.",
-      "actionableAdvice": "Arbeiten Sie den Abschnitt „Oberflächenqualität“ im Modul Innenausbau noch einmal durch.",
+      "actionableAdvice": "Arbeiten Sie das Thema „Oberflächenqualität“ im Modul Innenausbau noch einmal durch.",
       "targetModuleTab": "innenausbau",
       "targetModuleLabel": "Innenausbau"
     },
@@ -25687,7 +25687,7 @@
       "topic": "Kriechverformung",
       "misconception": "Kriechen sei gegenüber der elastischen Dehnung klein.",
       "coreRule": "ε_tot = σ/E_cm · (1 + φ) + ε_cs.",
-      "actionableAdvice": "Arbeiten Sie den Abschnitt „Kriechverformung“ im Modul Kriechen & Schwinden noch einmal durch.",
+      "actionableAdvice": "Arbeiten Sie das Thema „Kriechverformung“ im Modul Kriechen & Schwinden noch einmal durch.",
       "targetModuleTab": "kriechen_schwinden",
       "targetModuleLabel": "Kriechen & Schwinden"
     },
@@ -25773,7 +25773,7 @@
       "topic": "Begriff",
       "misconception": "Eigenspannungen werden mit Zwangsspannungen gleichgesetzt.",
       "coreRule": "Eigenspannungen: selbst im Gleichgewicht, unabhängig von Lagerung.",
-      "actionableAdvice": "Arbeiten Sie den Abschnitt „Begriff“ im Modul Eigenspannungen noch einmal durch.",
+      "actionableAdvice": "Arbeiten Sie das Thema „Begriff“ im Modul Eigenspannungen noch einmal durch.",
       "targetModuleTab": "eigenspannungen",
       "targetModuleLabel": "Eigenspannungen"
     },
@@ -25857,7 +25857,7 @@
       "topic": "Temperaturzerlegung",
       "misconception": "Jede Temperaturänderung wird als spannungserzeugend angesehen.",
       "coreRule": "Nur T_V erzeugt Eigenspannungen.",
-      "actionableAdvice": "Arbeiten Sie den Abschnitt „Temperaturzerlegung“ im Modul Eigenspannungen noch einmal durch.",
+      "actionableAdvice": "Arbeiten Sie das Thema „Temperaturzerlegung“ im Modul Eigenspannungen noch einmal durch.",
       "targetModuleTab": "eigenspannungen",
       "targetModuleLabel": "Eigenspannungen"
     },
@@ -25899,7 +25899,7 @@
       "topic": "Eigenspannung berechnen",
       "misconception": "Die ganze Temperaturdifferenz erzeuge Spannung.",
       "coreRule": "Nur der nichtlineare Anteil T_V erzeugt Eigenspannungen; am Rand −2/3 · ΔT_par.",
-      "actionableAdvice": "Arbeiten Sie den Abschnitt „Eigenspannung berechnen“ im Modul Eigenspannungen noch einmal durch.",
+      "actionableAdvice": "Arbeiten Sie das Thema „Eigenspannung berechnen“ im Modul Eigenspannungen noch einmal durch.",
       "targetModuleTab": "eigenspannungen",
       "targetModuleLabel": "Eigenspannungen"
     },
@@ -25941,7 +25941,7 @@
       "topic": "Schwindeigenspannungen",
       "misconception": "Ohne Last gebe es keine Spannungen.",
       "coreRule": "Ungleichmäßiges Schwinden: Randzug, Kerndruck, Gleichgewicht N = 0.",
-      "actionableAdvice": "Arbeiten Sie den Abschnitt „Schwindeigenspannungen“ im Modul Eigenspannungen noch einmal durch.",
+      "actionableAdvice": "Arbeiten Sie das Thema „Schwindeigenspannungen“ im Modul Eigenspannungen noch einmal durch.",
       "targetModuleTab": "eigenspannungen",
       "targetModuleLabel": "Eigenspannungen"
     },
@@ -33033,7 +33033,7 @@
       "topic": "Frostsicherer Oberbau",
       "misconception": "Der Tabellenwert sei bereits die Mindestdicke.",
       "coreRule": "Mindestdicke = Ausgangswert (Tab. 6) + Mehr-/Minderdicken (Tab. 7).",
-      "actionableAdvice": "Arbeiten Sie den Abschnitt „Frostsicherer Oberbau“ im Modul Dimensionierung (RStO 12/24) noch einmal durch.",
+      "actionableAdvice": "Arbeiten Sie das Thema „Frostsicherer Oberbau“ im Modul Dimensionierung (RStO 12/24) noch einmal durch.",
       "targetModuleTab": "bp_verkehr_rsto",
       "targetModuleLabel": "Dimensionierung (RStO 12/24)"
     },
@@ -33076,7 +33076,7 @@
       "topic": "Tragfähigkeit Frostschutzschicht",
       "misconception": "Planum und Frostschutzschicht hätten dieselbe Anforderung.",
       "coreRule": "E_V2: Planum ≥ 45 MPa; FSS ≥ 120 MPa (Bk100–Bk1,8) bzw. ≥ 100 MPa.",
-      "actionableAdvice": "Arbeiten Sie den Abschnitt „Tragfähigkeit Frostschutzschicht“ im Modul Dimensionierung (RStO 12/24) noch einmal durch.",
+      "actionableAdvice": "Arbeiten Sie das Thema „Tragfähigkeit Frostschutzschicht“ im Modul Dimensionierung (RStO 12/24) noch einmal durch.",
       "targetModuleTab": "bp_verkehr_rsto",
       "targetModuleLabel": "Dimensionierung (RStO 12/24)"
     },
@@ -33119,7 +33119,7 @@
       "topic": "Dübel in Betondecken",
       "misconception": "Dübel verhinderten Längsbewegungen.",
       "coreRule": "Querscheinfuge: Dübel (Querkraft, Längsbewegung frei); Längsfuge: Anker.",
-      "actionableAdvice": "Arbeiten Sie den Abschnitt „Dübel in Betondecken“ im Modul Dimensionierung (RStO 12/24) noch einmal durch.",
+      "actionableAdvice": "Arbeiten Sie das Thema „Dübel in Betondecken“ im Modul Dimensionierung (RStO 12/24) noch einmal durch.",
       "targetModuleTab": "bp_verkehr_rsto",
       "targetModuleLabel": "Dimensionierung (RStO 12/24)"
     },
@@ -35687,7 +35687,7 @@
       "topic": "Fugenbreite",
       "misconception": "Die zulässige Gesamtverformung wird nicht als Bezug der Bewegung verwendet.",
       "coreRule": "b = ΔL / ZGV + Toleranz; ΔL = L · α · ΔT.",
-      "actionableAdvice": "Arbeiten Sie den Abschnitt „Fugen-Dimensions-Rechner (DIN 18540)“ im Modul Kleb- & Dichtstoffe noch einmal durch.",
+      "actionableAdvice": "Arbeiten Sie das Thema „Fugen-Dimensions-Rechner (DIN 18540)“ im Modul Kleb- & Dichtstoffe noch einmal durch.",
       "targetModuleTab": "bp_klebstoffe",
       "targetModuleLabel": "Kleb- & Dichtstoffe"
     },
@@ -35729,7 +35729,7 @@
       "topic": "Fugentiefe und Hinterfüllung",
       "misconception": "Fugentiefe und Hinterfüllschnur werden nicht aus der Fugenbreite abgeleitet.",
       "coreRule": "t = b/2 + 2 mm (b > 15 mm); Ø Rundschnur ≈ 1,25 · b.",
-      "actionableAdvice": "Arbeiten Sie den Abschnitt „Fugen-Dimensions-Rechner (DIN 18540)“ im Modul Kleb- & Dichtstoffe noch einmal durch.",
+      "actionableAdvice": "Arbeiten Sie das Thema „Fugen-Dimensions-Rechner (DIN 18540)“ im Modul Kleb- & Dichtstoffe noch einmal durch.",
       "targetModuleTab": "bp_klebstoffe",
       "targetModuleLabel": "Kleb- & Dichtstoffe"
     },
@@ -36657,7 +36657,7 @@
       "topic": "Tragfähigkeit Lehmsteinwand",
       "misconception": "Abminderung für Schlankheit oder Teilsicherheitsbeiwert werden ausgelassen.",
       "coreRule": "N_Rd = Φ · t · f_k/γ_M mit h_ef = β · h und λ = h_ef/t.",
-      "actionableAdvice": "Arbeiten Sie den Abschnitt „Tragfähigkeitsprüfung nach DIN 18940 (Mauerwerksbemessung)“ im Modul Lehmbauprodukte noch einmal durch.",
+      "actionableAdvice": "Arbeiten Sie das Thema „Tragfähigkeitsprüfung nach DIN 18940 (Mauerwerksbemessung)“ im Modul Lehmbauprodukte noch einmal durch.",
       "targetModuleTab": "bp_lehmbauprodukte",
       "targetModuleLabel": "Lehmbauprodukte"
     },
@@ -36887,7 +36887,7 @@
     "moduleTitle": "Ausgangsstoffe des Betons",
     "topic": "Mehlkorngehalt",
     "difficulty": "Vertiefung",
-    "normRef": "DIN 1045-2:2023-08 (Mehlkorngehalt)",
+    "normRef": "DIN 1045-2:2023-08 (Mehlkorngehalt; vorläufig, Normprüfung ausstehend)",
     "question": "C30/37, XF1, D_max = 16 mm, Zementgehalt z = 330 kg/m³. Höchstwerte: 400 kg/m³ bei z ≤ 300 kg/m³ und 450 kg/m³ bei z ≥ 350 kg/m³. Welcher höchstzulässige Mehlkorngehalt ergibt sich?",
     "options": [
       "400 kg/m³",
@@ -36896,7 +36896,7 @@
       "415 kg/m³"
     ],
     "correctIdx": 1,
-    "explanation": "Linear interpoliert: 400 + (330 − 300)/(350 − 300) · 50 = 430 kg/m³. Zwischenwerte der Tabelle sind nach DIN 1045-2 linear zu interpolieren.",
+    "explanation": "Linear interpoliert: 400 + (330 − 300)/(350 − 300) · 50 = 430 kg/m³. Zwischenwerte der Tabelle sind nach DIN 1045-2 linear zu interpolieren. Der Bezug der Höchstwerte auf DIN 1045-2:2023-08 ist vorläufig, Normprüfung ausstehend (das Modul führt sie nach DIN 1045-2:2008-08, Tab. F.4.1, und nennt sie für die Ausgabe 2023-08 als entfallen).",
     "bloom": "Anwenden",
     "niveau": "B",
     "distraktorFeedback": [
@@ -36913,13 +36913,11 @@
       "targetModuleTab": "grundlagen",
       "targetModuleLabel": "Ausgangsstoffe des Betons"
     },
-    "reviewer": "Zweitprüfung 27.10.2026; freigegeben 27.10.2026",
-    "reviewedAt": "2026-10-27",
-    "verified": true,
+    "verified": false,
     "vorpruefung": {
-      "am": "2026-10-26",
-      "ergebnis": "korrigiert",
-      "hinweis": "Höchstwerte 400/450 kg/m³ (XF/XM, D_max ≥ 16 mm, bis C50/60) und Interpolationsregel nach aktuellem Tabellenwerk bestätigt (Heidelberg Materials, Betontechnische Daten 6.3.4); normRef auf die Registry-Ausgabe 2023-08 umgestellt. Tabellennummer der Ausgabe 2023-08 öffentlich nicht verifizierbar und daher weggelassen (2008-08: Tab. F.4.1)."
+      "am": "2026-11-02",
+      "ergebnis": "fraglich",
+      "hinweis": "Höchstwerte 400/450 kg/m³ (XF/XM, D_max ≥ 16 mm, bis C50/60) und Interpolationsregel nach aktuellem Tabellenwerk bestätigt (Heidelberg Materials, Betontechnische Daten 6.3.4); normRef auf die Registry-Ausgabe 2023-08 umgestellt. Tabellennummer der Ausgabe 2023-08 öffentlich nicht verifizierbar und daher weggelassen (2008-08: Tab. F.4.1). · Umsetzung 02.11.: Quiz (DIN 1045-2:2023-08) und Modul (Werte aus DIN 1045-2:2008-08, Höchstwerte in 2023-08 entfallen) widersprechen sich in der Normausgabe; beide Stellen als „vorläufig, Normprüfung ausstehend“ gekennzeichnet, Inhalt unverändert – am Normtext DIN 1045-2:2023-08 klären"
     }
   },
   {
@@ -38773,7 +38771,7 @@
       "topic": "Holzrahmenbau",
       "misconception": "Rahmen-, Massiv- und Skelettbau werden im Tragprinzip nicht unterschieden.",
       "coreRule": "Holzrahmenbau: Ständerwerk + aussteifende Beplankung = Scheibe.",
-      "actionableAdvice": "Arbeiten Sie den Abschnitt „Bauweise A: Holzrahmen- & Holztafelbau“ im Modul Konstruktionsweisen noch einmal durch.",
+      "actionableAdvice": "Arbeiten Sie das Thema „Bauweise A: Holzrahmen- & Holztafelbau“ im Modul Konstruktionsweisen noch einmal durch.",
       "targetModuleTab": "holzbau_konstruktion",
       "targetModuleLabel": "Konstruktionsweisen"
     },
@@ -38815,7 +38813,7 @@
       "topic": "Brettsperrholz",
       "misconception": "BSP wird wie ein homogenes Vollholz ohne Lagenaufbau betrachtet.",
       "coreRule": "BSP: kreuzweise verklebte Lagen, zweiachsiger Lastabtrag, Rollschub in den Querlagen.",
-      "actionableAdvice": "Arbeiten Sie den Abschnitt „Bauweise B: Massivholzbau (BSP / CLT)“ im Modul Konstruktionsweisen noch einmal durch.",
+      "actionableAdvice": "Arbeiten Sie das Thema „Bauweise B: Massivholzbau (BSP / CLT)“ im Modul Konstruktionsweisen noch einmal durch.",
       "targetModuleTab": "holzbau_konstruktion",
       "targetModuleLabel": "Konstruktionsweisen"
     },
@@ -38857,7 +38855,7 @@
       "topic": "Eignung Skelettbau",
       "misconception": "Wandartige Bauweisen werden auch für große Spannweiten und offene Fassaden gewählt.",
       "coreRule": "Skelettbau: stabförmiges BSH-Tragwerk, getrennte Fassade → große Spannweiten, Glasflächen.",
-      "actionableAdvice": "Arbeiten Sie den Abschnitt „Bauweise C: Skelettbau“ im Modul Konstruktionsweisen noch einmal durch.",
+      "actionableAdvice": "Arbeiten Sie das Thema „Bauweise C: Skelettbau“ im Modul Konstruktionsweisen noch einmal durch.",
       "targetModuleTab": "holzbau_konstruktion",
       "targetModuleLabel": "Konstruktionsweisen"
     },
@@ -38941,7 +38939,7 @@
       "topic": "Aufstockung",
       "misconception": "Masse wird bei Aufstockungen höher gewichtet als die Tragreserve des Bestands.",
       "coreRule": "Aufstockung: leichte, vorgefertigte Holzbauweise; kurze Montage, wenig Baufeuchte.",
-      "actionableAdvice": "Arbeiten Sie den Abschnitt „Bauweise A: Holzrahmen- & Holztafelbau“ im Modul Konstruktionsweisen noch einmal durch.",
+      "actionableAdvice": "Arbeiten Sie das Thema „Bauweise A: Holzrahmen- & Holztafelbau“ im Modul Konstruktionsweisen noch einmal durch.",
       "targetModuleTab": "holzbau_konstruktion",
       "targetModuleLabel": "Konstruktionsweisen"
     },
@@ -39390,7 +39388,7 @@
       "rund 41,4 kN"
     ],
     "correctIdx": 0,
-    "explanation": "(385/350)^0,8 = 1,079; f_ax = 12 · 1,079 = 12,95 N/mm². F_ax,Rk = 12,95 · 8 · 100 = 10 360 N ≈ 10,4 kN.",
+    "explanation": "(385/350)^0,8 = 1,079; f_ax = 12 · 1,079 = 12,95 N/mm². F_ax,Rk = 12,95 · 8 · 100 = 10 360 N ≈ 10,4 kN. Die Frage rechnet nach DIN EN 1995-1-1, Gl. (8.40a), mit einem deklarierten Ausziehparameter f_ax,k = 12 N/mm² (Herstellerangabe). Das Modul rechnet ohne Herstellerwert mit Gl. (8.39): f_ax,k = 0,52 · 8^−0,5 · 100^−0,1 · 385^0,8 = 13,6 N/mm², F_ax,Rk = 13,6 · 8 · 100 ≈ 10,9 kN.",
     "bloom": "Anwenden",
     "niveau": "M",
     "distraktorFeedback": [
@@ -39407,13 +39405,11 @@
       "targetModuleTab": "holzbau_verbindung",
       "targetModuleLabel": "Verbindungen & Anschlüsse"
     },
-    "reviewer": "Zweitprüfung 27.10.2026; freigegeben 27.10.2026",
-    "reviewedAt": "2026-10-27",
-    "verified": true,
+    "verified": false,
     "vorpruefung": {
-      "am": "2026-10-27",
+      "am": "2026-11-02",
       "ergebnis": "korrigiert",
-      "hinweis": "normRef ergänzt"
+      "hinweis": "normRef ergänzt · Umsetzung 02.11.: Erklärung ergänzt – Frage rechnet mit Gl. (8.40a) und deklariertem f_ax,k = 12 N/mm² (10,4 kN), das Modul mit Gl. (8.39) (f_ax,k = 13,6 N/mm², rund 10,9 kN); Antwort unverändert"
     }
   },
   {
@@ -39655,7 +39651,7 @@
       "topic": "Deckenschwingung",
       "misconception": "Eigenmasse oder Spannweitenterm werden falsch eingesetzt.",
       "coreRule": "f₁ = π/(2L²)·√(EI/m) mit m = Eigen- + Zusatzmasse; Anwendungsgrenze f₁ > 8 Hz.",
-      "actionableAdvice": "Arbeiten Sie den Abschnitt „CLT Decken-Schwingungs-Eigenfrequenzrechner“ im Modul Bauphysik & Brandschutz noch einmal durch.",
+      "actionableAdvice": "Arbeiten Sie das Thema „CLT Decken-Schwingungs-Eigenfrequenzrechner“ im Modul Bauphysik & Brandschutz noch einmal durch.",
       "targetModuleTab": "holzbau_bauphysik",
       "targetModuleLabel": "Bauphysik & Brandschutz"
     },
@@ -40740,7 +40736,7 @@
       "topic": "Störstoffe im Betonrecycling",
       "misconception": "Gipsanhaftungen werden als harmlose Verunreinigung angesehen.",
       "coreRule": "Gips ist ein Störstoff im mineralischen Recycling: Sulfat führt zu Ettringittreiben – vorher sortenrein ausbauen.",
-      "actionableAdvice": "Arbeiten Sie den Abschnitt „Problematische Stoffverbünde & Störstoffe“ im Modul Kreislaufwirtschaft noch einmal durch.",
+      "actionableAdvice": "Arbeiten Sie das Thema „Problematische Stoffverbünde & Störstoffe“ im Modul Kreislaufwirtschaft noch einmal durch.",
       "targetModuleTab": "kreislauf_dpp",
       "targetModuleLabel": "Kreislaufwirtschaft"
     },
@@ -40783,7 +40779,7 @@
       "topic": "Biogener Kohlenstoff",
       "misconception": "Holzfeuchte oder Molmassenverhältnis werden bei der CO₂-Speicherberechnung falsch berücksichtigt.",
       "coreRule": "m_CO₂ = 44/12 · c_f · ρ_u/(1 + u/100) · V.",
-      "actionableAdvice": "Arbeiten Sie den Abschnitt „Biogen gespeichertes CO₂ (Anwendungsbeispiel)“ im Modul Ressourcen & Umwelt noch einmal durch.",
+      "actionableAdvice": "Arbeiten Sie das Thema „Biogen gespeichertes CO₂ (Anwendungsbeispiel)“ im Modul Ressourcen & Umwelt noch einmal durch.",
       "targetModuleTab": "ressourcen_umwelt",
       "targetModuleLabel": "Ressourcen & Umwelt"
     },
@@ -40867,7 +40863,7 @@
       "topic": "Sommerlicher Wärmeschutz",
       "misconception": "Die Phasenverschiebung wird mit Wärmeleitfähigkeit oder Diffusionswiderstand verwechselt.",
       "coreRule": "Kleine Temperaturleitfähigkeit a = λ/(ρ · c) bedeutet große Phasenverschiebung.",
-      "actionableAdvice": "Arbeiten Sie den Abschnitt „Technische Vergleiche (NaWaRo)“ im Modul Ressourcen & Umwelt noch einmal durch.",
+      "actionableAdvice": "Arbeiten Sie das Thema „Technische Vergleiche (NaWaRo)“ im Modul Ressourcen & Umwelt noch einmal durch.",
       "targetModuleTab": "ressourcen_umwelt",
       "targetModuleLabel": "Ressourcen & Umwelt"
     },
@@ -40951,7 +40947,7 @@
       "topic": "Abzinsung einer Einmalzahlung",
       "misconception": "Zukünftige Zahlungen werden nominal oder linear statt mit dem Abzinsungsfaktor bewertet.",
       "coreRule": "Barwert einer Einmalzahlung: BW = C_t/(1 + r)^t.",
-      "actionableAdvice": "Arbeiten Sie den Abschnitt „Beispiel 2: Ersatzinvestition (Barwertmethode)“ im Modul Lebenszyklus & Kosten noch einmal durch.",
+      "actionableAdvice": "Arbeiten Sie das Thema „Beispiel 2: Ersatzinvestition (Barwertmethode)“ im Modul Lebenszyklus & Kosten noch einmal durch.",
       "targetModuleTab": "lebenszyklus_kosten",
       "targetModuleLabel": "Lebenszyklus & Kosten"
     },
@@ -41289,7 +41285,7 @@
       "topic": "Kristallisationsdruck",
       "misconception": "Logarithmus oder Übersättigung werden in der Correns-Gleichung falsch eingesetzt.",
       "coreRule": "p = R · T/V_m · ln(c/c_s); schon geringe Übersättigung übersteigt die Steinzugfestigkeit.",
-      "actionableAdvice": "Arbeiten Sie den Abschnitt „Beispiel 1: Kristallisationsdruck nach Correns“ im Modul Denkmalpflege noch einmal durch.",
+      "actionableAdvice": "Arbeiten Sie das Thema „Beispiel 1: Kristallisationsdruck nach Correns“ im Modul Denkmalpflege noch einmal durch.",
       "targetModuleTab": "denkmalpflege",
       "targetModuleLabel": "Denkmalpflege"
     },
@@ -42259,7 +42255,7 @@
       "topic": "Epochen-Schadstoff-Matrix",
       "misconception": "Schadstoffe werden nicht über das Baujahr eingegrenzt.",
       "coreRule": "Baujahr eingrenzen: bis 1970 Asbest/PAK/PCB/Blei, 1970–1990 KMF alt/PCP/Formaldehyd, ab 1990 HBCD/FCKW.",
-      "actionableAdvice": "Arbeiten Sie den Abschnitt „Schadstoff-Detektor (Epochenmatrix)“ im Modul Rückbau & Material noch einmal durch.",
+      "actionableAdvice": "Arbeiten Sie das Thema „Schadstoff-Detektor (Epochenmatrix)“ im Modul Rückbau & Material noch einmal durch.",
       "targetModuleTab": "rueckbau",
       "targetModuleLabel": "Rückbau & Material"
     },
@@ -42472,7 +42468,7 @@
       "topic": "Wahl des Aufbereitungsverfahrens",
       "misconception": "Aufbereitungsverfahren werden ohne Blick auf Bodenart und Schadstofftyp gewählt.",
       "coreRule": "Verfahren nach Matrix und Schadstoff: sandig + Schwermetall → Wäsche; tonig + Schwermetall → Immobilisierung; organisch → bio/thermisch.",
-      "actionableAdvice": "Arbeiten Sie den Abschnitt „Aufbereitungs-Simulator“ im Modul Boden- & Materialaufbereitung noch einmal durch.",
+      "actionableAdvice": "Arbeiten Sie das Thema „Aufbereitungs-Simulator“ im Modul Boden- & Materialaufbereitung noch einmal durch.",
       "targetModuleTab": "boden_materialaufbereitung",
       "targetModuleLabel": "Boden- & Materialaufbereitung"
     },
@@ -42514,7 +42510,7 @@
       "topic": "R-Strategien",
       "misconception": "Die R-Strategien Remanufacture, Refurbish und Repurpose werden verwechselt.",
       "coreRule": "R0 Refuse … R6 Remanufacture (gleiche Funktion), R7 Repurpose (andere Funktion), R8 Recycle, R9 Recover.",
-      "actionableAdvice": "Arbeiten Sie den Abschnitt „Informieren: R-Strategien“ im Modul Ressourceneffizienz noch einmal durch.",
+      "actionableAdvice": "Arbeiten Sie das Thema „Informieren: R-Strategien“ im Modul Ressourceneffizienz noch einmal durch.",
       "targetModuleTab": "ressourceneffizienz",
       "targetModuleLabel": "Ressourceneffizienz"
     },
@@ -42556,7 +42552,7 @@
       "topic": "Transportoptimierung",
       "misconception": "Einsparung und Gesamtemission werden verwechselt oder Volumen statt Masse eingesetzt.",
       "coreRule": "ΔCO₂ = Masse [t] · ΔDistanz [km] · Faktor [kg CO₂/(t·km)].",
-      "actionableAdvice": "Arbeiten Sie den Abschnitt „Handeln: Baustoff-Simulator“ im Modul Ressourceneffizienz noch einmal durch.",
+      "actionableAdvice": "Arbeiten Sie das Thema „Handeln: Baustoff-Simulator“ im Modul Ressourceneffizienz noch einmal durch.",
       "targetModuleTab": "ressourceneffizienz",
       "targetModuleLabel": "Ressourceneffizienz"
     },
@@ -42598,7 +42594,7 @@
       "topic": "ROI-Rechner Abfallvermeidung",
       "misconception": "Ersparnis und verbleibende Kosten werden verwechselt.",
       "coreRule": "Ersparnis = Gesamtmasse · Abfallquote · Vermeidungsquote · Entsorgungspreis.",
-      "actionableAdvice": "Arbeiten Sie den Abschnitt „Nutzen: ROI-Rechner“ im Modul Ressourceneffizienz noch einmal durch.",
+      "actionableAdvice": "Arbeiten Sie das Thema „Nutzen: ROI-Rechner“ im Modul Ressourceneffizienz noch einmal durch.",
       "targetModuleTab": "ressourceneffizienz",
       "targetModuleLabel": "Ressourceneffizienz"
     },
@@ -42724,7 +42720,7 @@
       "topic": "Wurzel-t-Gesetz",
       "misconception": "Das Wurzel-t-Gesetz wird falsch nach der Zeit aufgelöst.",
       "coreRule": "x_c = k · √t ⇒ t = (x_c/k)²; doppelte Deckung bedeutet vierfache Zeit.",
-      "actionableAdvice": "Arbeiten Sie den Abschnitt „Beispiel 2: Karbonatisierung einer Außenwand“ im Modul Prinzipien & Übersicht noch einmal durch.",
+      "actionableAdvice": "Arbeiten Sie das Thema „Beispiel 2: Karbonatisierung einer Außenwand“ im Modul Prinzipien & Übersicht noch einmal durch.",
       "targetModuleTab": "dauerhaftigkeit",
       "targetModuleLabel": "Prinzipien & Übersicht"
     },
@@ -42851,7 +42847,7 @@
       "topic": "Chlorideindringen",
       "misconception": "Die Fehlerfunktion wird falsch angewendet oder der Faktor 2 vergessen.",
       "coreRule": "C(x,t) = C_s · [1 − erf(x/(2√(D_app · t)))]; Vergleich mit C_crit ≈ 0,5 M.-% v. z.",
-      "actionableAdvice": "Arbeiten Sie den Abschnitt „Chlorid (2. Fick’sches Gesetz)“ im Modul Bewehrungskorrosion noch einmal durch.",
+      "actionableAdvice": "Arbeiten Sie das Thema „Chlorid (2. Fick’sches Gesetz)“ im Modul Bewehrungskorrosion noch einmal durch.",
       "targetModuleTab": "korrosion",
       "targetModuleLabel": "Bewehrungskorrosion"
     },
@@ -42936,7 +42932,7 @@
       "topic": "Feuchte und Korrosionsrate",
       "misconception": "Mehr Wasser wird mit schnellerer Korrosion gleichgesetzt.",
       "coreRule": "Korrosion braucht Elektrolyt und Sauerstoff; Maximum im Feuchtebereich 75–85 %, bei Sättigung O₂-limitiert.",
-      "actionableAdvice": "Arbeiten Sie den Abschnitt „Lokalelement-Simulator“ im Modul Bewehrungskorrosion noch einmal durch.",
+      "actionableAdvice": "Arbeiten Sie das Thema „Lokalelement-Simulator“ im Modul Bewehrungskorrosion noch einmal durch.",
       "targetModuleTab": "korrosion",
       "targetModuleLabel": "Bewehrungskorrosion"
     },
@@ -42978,7 +42974,7 @@
       "topic": "Alkalieintrag",
       "misconception": "Massenprozent werden bei der Umrechnung falsch dezimal angesetzt.",
       "coreRule": "Alkalieintrag A = Zementgehalt · Na₂O-Äquivalent/100.",
-      "actionableAdvice": "Arbeiten Sie den Abschnitt „AKR (Alkali-Kieselsäure-Reaktion)“ im Modul Betonkorrosion noch einmal durch.",
+      "actionableAdvice": "Arbeiten Sie das Thema „AKR (Alkali-Kieselsäure-Reaktion)“ im Modul Betonkorrosion noch einmal durch.",
       "targetModuleTab": "schadreaktionen_beton",
       "targetModuleLabel": "Betonkorrosion"
     },
@@ -43020,7 +43016,7 @@
       "topic": "Feuchtigkeitsklassen",
       "misconception": "Die Feuchtigkeitsklassen WA und WS werden nicht unterschieden.",
       "coreRule": "WO trocken, WF feucht, WA feucht + Alkalizufuhr von außen, WS feucht + starke Alkalizufuhr (Tausalz) und hohe dynamische Beanspruchung.",
-      "actionableAdvice": "Arbeiten Sie den Abschnitt „AKR (Alkali-Kieselsäure-Reaktion)“ im Modul Betonkorrosion noch einmal durch.",
+      "actionableAdvice": "Arbeiten Sie das Thema „AKR (Alkali-Kieselsäure-Reaktion)“ im Modul Betonkorrosion noch einmal durch.",
       "targetModuleTab": "schadreaktionen_beton",
       "targetModuleLabel": "Betonkorrosion"
     },
@@ -43106,7 +43102,7 @@
       "topic": "AKR-Gegenmaßnahmen",
       "misconception": "AKR-Maßnahmen werden unabhängig von Feuchte- und Alkaliempfindlichkeitsklasse gewählt.",
       "coreRule": "AKR braucht reaktive Körnung, Alkalien und Feuchte; bei WS + E III: Körnung tauschen oder Gutachten.",
-      "actionableAdvice": "Arbeiten Sie den Abschnitt „AKR (Alkali-Kieselsäure-Reaktion)“ im Modul Betonkorrosion noch einmal durch.",
+      "actionableAdvice": "Arbeiten Sie das Thema „AKR (Alkali-Kieselsäure-Reaktion)“ im Modul Betonkorrosion noch einmal durch.",
       "targetModuleTab": "schadreaktionen_beton",
       "targetModuleLabel": "Betonkorrosion"
     },
@@ -43235,7 +43231,7 @@
       "topic": "Einbringmenge Holzschutzmittel",
       "misconception": "Lösungsaufnahme und Wirkstoffeinbringung werden verwechselt.",
       "coreRule": "R = Lösungsaufnahme · Konzentration/Holzvolumen; Vergleich mit der Zulassung.",
-      "actionableAdvice": "Arbeiten Sie den Abschnitt „Chemischer Holzschutz & Einbringverfahren“ im Modul Holzkorrosion noch einmal durch.",
+      "actionableAdvice": "Arbeiten Sie das Thema „Chemischer Holzschutz & Einbringverfahren“ im Modul Holzkorrosion noch einmal durch.",
       "targetModuleTab": "holzkorrosion",
       "targetModuleLabel": "Holzkorrosion"
     },
@@ -43321,7 +43317,7 @@
       "topic": "Pilling-Bedworth-Verhältnis",
       "misconception": "Das Pilling-Bedworth-Verhältnis wird mit der Spannungsreihe verwechselt.",
       "coreRule": "PBR = V_Oxid/V_Metall; 1 ≤ PBR ≤ 2 schützend, PBR > 2 abblätternd.",
-      "actionableAdvice": "Arbeiten Sie den Abschnitt „Deckschichten & Pilling-Bedworth-Verhältnis“ im Modul Metallkorrosion noch einmal durch.",
+      "actionableAdvice": "Arbeiten Sie das Thema „Deckschichten & Pilling-Bedworth-Verhältnis“ im Modul Metallkorrosion noch einmal durch.",
       "targetModuleTab": "metallkorrosion",
       "targetModuleLabel": "Metallkorrosion"
     },
@@ -43447,7 +43443,7 @@
       "topic": "Werkstoffwahl Edelstahl",
       "misconception": "Nichtrostende Stähle werden unabhängig von ihrer Lochfraßbeständigkeit als gleichwertig angesehen.",
       "coreRule": "PREN = %Cr + 3,3 · %Mo + 16 · %N; meerwasserbeständig etwa ab PREN 40.",
-      "actionableAdvice": "Arbeiten Sie den Abschnitt „Lochfraßkorrosion (PREN-Index)“ im Modul Metallkorrosion noch einmal durch.",
+      "actionableAdvice": "Arbeiten Sie das Thema „Lochfraßkorrosion (PREN-Index)“ im Modul Metallkorrosion noch einmal durch.",
       "targetModuleTab": "metallkorrosion",
       "targetModuleLabel": "Metallkorrosion"
     },
@@ -43616,7 +43612,7 @@
       "topic": "Schutzmaßnahme Dachbahn",
       "misconception": "Schutzmaßnahmen werden ohne Bezug zum maßgebenden Alterungsmechanismus gewählt.",
       "coreRule": "Temperatur- und UV-Reduktion (Bekiesung, Begrünung, helle Oberflächen) verlangsamt die Bitumenalterung.",
-      "actionableAdvice": "Arbeiten Sie den Abschnitt „Beispiel 1: Beschleunigung der thermischen Alterung (Arrhenius)“ im Modul Weitere Organik noch einmal durch.",
+      "actionableAdvice": "Arbeiten Sie das Thema „Beispiel 1: Beschleunigung der thermischen Alterung (Arrhenius)“ im Modul Weitere Organik noch einmal durch.",
       "targetModuleTab": "weitere_organik",
       "targetModuleLabel": "Weitere Organik"
     },
@@ -43743,7 +43739,7 @@
       "topic": "Rückprall bei karbonatisiertem Beton",
       "misconception": "Rückprallwerte werden ohne Kalibrierung direkt als Festigkeit interpretiert.",
       "coreRule": "Rückprall → Festigkeit nur mit Bohrkernkalibrierung desselben Bauteils (DIN EN 13791); Karbonatisierung erhöht R.",
-      "actionableAdvice": "Arbeiten Sie den Abschnitt „Schmidt-Hammer & Karbonatisierung“ im Modul Tragwerksmonitoring (SHM) noch einmal durch.",
+      "actionableAdvice": "Arbeiten Sie das Thema „Schmidt-Hammer & Karbonatisierung“ im Modul Tragwerksmonitoring (SHM) noch einmal durch.",
       "targetModuleTab": "bauwerksunters_monitoring",
       "targetModuleLabel": "Tragwerksmonitoring (SHM)"
     },
@@ -43870,7 +43866,7 @@
       "topic": "Intervalle nach VDI 6200",
       "misconception": "Prüfungsarten und Intervalle der VDI 6200 werden verwechselt.",
       "coreRule": "VDI 6200 CC3: Begehung 1–2 a, Inspektion 2–3 a, eingehende Überprüfung 6–9 a.",
-      "actionableAdvice": "Arbeiten Sie den Abschnitt „VDI 6200 – Prüfungsarten und Intervalle“ im Modul Zustandsbewertung noch einmal durch.",
+      "actionableAdvice": "Arbeiten Sie das Thema „VDI 6200 – Prüfungsarten und Intervalle“ im Modul Zustandsbewertung noch einmal durch.",
       "targetModuleTab": "vdi6200",
       "targetModuleLabel": "Zustandsbewertung"
     },
@@ -43912,7 +43908,7 @@
       "topic": "Handlungsbedarf aus Einzelbewertung",
       "misconception": "Der Handlungsbedarf wird nur aus der Standsicherheit abgeleitet.",
       "coreRule": "Maßgebend ist das ungünstigste Kriterium; S = 4 oder V = 4 erfordern sofortige Maßnahmen.",
-      "actionableAdvice": "Arbeiten Sie den Abschnitt „Notenrechner und Handlungsempfehlungen“ im Modul Zustandsbewertung noch einmal durch.",
+      "actionableAdvice": "Arbeiten Sie das Thema „Notenrechner und Handlungsempfehlungen“ im Modul Zustandsbewertung noch einmal durch.",
       "targetModuleTab": "vdi6200",
       "targetModuleLabel": "Zustandsbewertung"
     },
@@ -43998,7 +43994,7 @@
       "topic": "Restquerschnitt Stahl",
       "misconception": "Bei kreisförmigen Querschnitten wird linear statt quadratisch gerechnet.",
       "coreRule": "A_Rest/A_0 = (d − 2 · Δr)²/d²; der Abtrag wirkt ringsum.",
-      "actionableAdvice": "Arbeiten Sie den Abschnitt „Instandsetzung Metalle“ im Modul Instandsetzung nach Material noch einmal durch.",
+      "actionableAdvice": "Arbeiten Sie das Thema „Instandsetzung Metalle“ im Modul Instandsetzung nach Material noch einmal durch.",
       "targetModuleTab": "instandsetzung_materialien",
       "targetModuleLabel": "Instandsetzung nach Material"
     },
@@ -44040,7 +44036,7 @@
       "topic": "Taupunktabstand beim Beschichten",
       "misconception": "Der erforderliche Sicherheitsabstand zum Taupunkt wird übersehen.",
       "coreRule": "T_Stahl ≥ T_Tau + 3 K während des gesamten Strahl- und Beschichtungsvorgangs.",
-      "actionableAdvice": "Arbeiten Sie den Abschnitt „Instandsetzung Metalle (Schadensfall Beschichtung)“ im Modul Instandsetzung nach Material noch einmal durch.",
+      "actionableAdvice": "Arbeiten Sie das Thema „Instandsetzung Metalle (Schadensfall Beschichtung)“ im Modul Instandsetzung nach Material noch einmal durch.",
       "targetModuleTab": "instandsetzung_materialien",
       "targetModuleLabel": "Instandsetzung nach Material"
     },
@@ -44082,7 +44078,7 @@
       "topic": "Salzbelastetes Mauerwerk",
       "misconception": "Feuchte und Salze sollen durch dichte Schichten „eingesperrt“ werden.",
       "coreRule": "Salzbelastetes Mauerwerk: Ursache beheben (Horizontalsperre) und diffusionsoffenen WTA-Sanierputz verwenden.",
-      "actionableAdvice": "Arbeiten Sie den Abschnitt „Instandsetzung Mauerwerk & Naturstein“ im Modul Instandsetzung nach Material noch einmal durch.",
+      "actionableAdvice": "Arbeiten Sie das Thema „Instandsetzung Mauerwerk & Naturstein“ im Modul Instandsetzung nach Material noch einmal durch.",
       "targetModuleTab": "instandsetzung_materialien",
       "targetModuleLabel": "Instandsetzung nach Material"
     },
@@ -44632,7 +44628,7 @@
       "topic": "k-Wert-Ansatz",
       "misconception": "Der k-Wert oder die Anrechnungsgrenze wird falsch berücksichtigt.",
       "coreRule": "(w/z)_eq = w/(c + k · f_anr) mit f_anr = min(f; f_max).",
-      "actionableAdvice": "Arbeiten Sie den Abschnitt „B. k-Wert-Ansatz für Zusatzstoffe“ im Modul Beton: Mischungsentwurf noch einmal durch.",
+      "actionableAdvice": "Arbeiten Sie das Thema „B. k-Wert-Ansatz für Zusatzstoffe“ im Modul Beton: Mischungsentwurf noch einmal durch.",
       "targetModuleTab": "rechnung_beton",
       "targetModuleLabel": "Beton: Mischungsentwurf"
     },
@@ -45304,7 +45300,7 @@
       "topic": "Bemessungsdruckfestigkeit",
       "misconception": "Dauerstandsbeiwert ζ oder Teilsicherheitsbeiwert γ_M werden vergessen oder falsch angewendet.",
       "coreRule": "f_d = ζ · f_k/γ_M mit ζ = 0,85 und γ_M = 1,5 (DIN EN 1996-3/NA, wie im Modul).",
-      "actionableAdvice": "Arbeiten Sie den Abschnitt „Schritt 1: Rechnerische Mauerwerksfestigkeit f_d“ im Modul Mauerwerk: Tragfähigkeit noch einmal durch.",
+      "actionableAdvice": "Arbeiten Sie das Thema „Schritt 1: Rechnerische Mauerwerksfestigkeit f_d“ im Modul Mauerwerk: Tragfähigkeit noch einmal durch.",
       "targetModuleTab": "rechnung_mauerwerk",
       "targetModuleLabel": "Mauerwerk: Tragfähigkeit"
     },
@@ -45345,7 +45341,7 @@
       "topic": "Schlankheit",
       "misconception": "Einheiten werden gemischt oder der Grenzwert falsch erinnert.",
       "coreRule": "Schlankheit = h_ef/t ≤ 27 (DIN EN 1996-1-1, 5.5.1.4).",
-      "actionableAdvice": "Arbeiten Sie den Abschnitt „Schritt 2: Wirksame Schlankheit bestimmen“ im Modul Mauerwerk: Tragfähigkeit noch einmal durch.",
+      "actionableAdvice": "Arbeiten Sie das Thema „Schritt 2: Wirksame Schlankheit bestimmen“ im Modul Mauerwerk: Tragfähigkeit noch einmal durch.",
       "targetModuleTab": "rechnung_mauerwerk",
       "targetModuleLabel": "Mauerwerk: Tragfähigkeit"
     },
@@ -45388,7 +45384,7 @@
       "topic": "Abminderungsfaktor",
       "misconception": "Die quadratische Abhängigkeit von der Schlankheit wird übersehen.",
       "coreRule": "Φ = 0,85 − 0,0011 · (h_ef/t)²; Φ sinkt quadratisch mit der Schlankheit.",
-      "actionableAdvice": "Arbeiten Sie den Abschnitt „Schritt 3: Abminderungsfaktor Φ bestimmen“ im Modul Mauerwerk: Tragfähigkeit noch einmal durch.",
+      "actionableAdvice": "Arbeiten Sie das Thema „Schritt 3: Abminderungsfaktor Φ bestimmen“ im Modul Mauerwerk: Tragfähigkeit noch einmal durch.",
       "targetModuleTab": "rechnung_mauerwerk",
       "targetModuleLabel": "Mauerwerk: Tragfähigkeit"
     },
@@ -45429,7 +45425,7 @@
       "topic": "Traglastwiderstand",
       "misconception": "Φ oder der Bemessungswert der Festigkeit (mit ζ) fehlen im Widerstand.",
       "coreRule": "N_Rd = Φ · t · f_d je Meter Wandlänge.",
-      "actionableAdvice": "Arbeiten Sie den Abschnitt „Schritt 4: Vertikaler Traglastwiderstand N_Rd“ im Modul Mauerwerk: Tragfähigkeit noch einmal durch.",
+      "actionableAdvice": "Arbeiten Sie das Thema „Schritt 4: Vertikaler Traglastwiderstand N_Rd“ im Modul Mauerwerk: Tragfähigkeit noch einmal durch.",
       "targetModuleTab": "rechnung_mauerwerk",
       "targetModuleLabel": "Mauerwerk: Tragfähigkeit"
     },
@@ -45472,7 +45468,7 @@
       "topic": "Grenzschlankheit und Wandhöhe",
       "misconception": "Anwendungsgrenzen, Schlankheit und Tragfähigkeit werden getrennt statt gemeinsam beurteilt.",
       "coreRule": "Wandhöhe (Regelfall ≤ 2,75 m, erweiterte Bedingungen z. B. Innenwand t ≥ 115 mm bis 3,60 m), h_ef/t ≤ 27 und η = N_Ed/N_Rd ≤ 1 müssen gleichzeitig erfüllt sein.",
-      "actionableAdvice": "Arbeiten Sie den Abschnitt „Schritt 2: Wirksame Schlankheit bestimmen“ im Modul Mauerwerk: Tragfähigkeit noch einmal durch.",
+      "actionableAdvice": "Arbeiten Sie das Thema „Schritt 2: Wirksame Schlankheit bestimmen“ im Modul Mauerwerk: Tragfähigkeit noch einmal durch.",
       "targetModuleTab": "rechnung_mauerwerk",
       "targetModuleLabel": "Mauerwerk: Tragfähigkeit"
     },
@@ -45515,7 +45511,7 @@
       "topic": "Steinart und Wanddicke",
       "misconception": "Der Einfluss der Wanddicke wird nur linear und nicht zusätzlich über Φ berücksichtigt.",
       "coreRule": "Dickere Wände: größeres t und kleineres h_ef/t → Φ steigt; höhere Steinfestigkeit → f_d steigt.",
-      "actionableAdvice": "Arbeiten Sie den Abschnitt „Ausnutzungsgrad (Eurocode 6)“ im Modul Mauerwerk: Tragfähigkeit noch einmal durch.",
+      "actionableAdvice": "Arbeiten Sie das Thema „Ausnutzungsgrad (Eurocode 6)“ im Modul Mauerwerk: Tragfähigkeit noch einmal durch.",
       "targetModuleTab": "rechnung_mauerwerk",
       "targetModuleLabel": "Mauerwerk: Tragfähigkeit"
     },
@@ -46184,7 +46180,7 @@
       "topic": "Verbesserungsmaßnahmen",
       "misconception": "Schallschutz wird mit Wärmedämmung verwechselt oder die Bedeutung der Masse unterschätzt.",
       "coreRule": "Luftschalldämmung einschaliger Wände: Masse erhöhen, Flankenübertragung verringern.",
-      "actionableAdvice": "Arbeiten Sie den Abschnitt „Schritt 4: Soll-Ist-Vergleich“ im Modul Bauakustik: Schallschutz noch einmal durch.",
+      "actionableAdvice": "Arbeiten Sie das Thema „Schritt 4: Soll-Ist-Vergleich“ im Modul Bauakustik: Schallschutz noch einmal durch.",
       "targetModuleTab": "rechnung_schallschutz",
       "targetModuleLabel": "Bauakustik: Schallschutz"
     },
@@ -47492,7 +47488,7 @@
       "topic": "Prompt-Taktiken",
       "misconception": "Prompt-Taktiken werden unabhängig von ihrem Zweck eingesetzt.",
       "coreRule": "Format → Few-Shot; Rechenweg → Chain of Thought; Lücken → Rückfragen; Fehler → Prüfdurchlauf.",
-      "actionableAdvice": "Arbeiten Sie den Abschnitt „Bewährte Taktiken“ im Modul Prompting-Praxis noch einmal durch.",
+      "actionableAdvice": "Arbeiten Sie das Thema „Bewährte Taktiken“ im Modul Prompting-Praxis noch einmal durch.",
       "targetModuleTab": "ki_prompting",
       "targetModuleLabel": "Prompting-Praxis"
     },
@@ -48591,7 +48587,7 @@
       "topic": "Bedenkenanmeldung im Störfall",
       "misconception": "Bei technisch bedenklichen Anordnungen wird das falsche oder kein formales Instrument gewählt.",
       "coreRule": "Bedenklich angeordnete Ausführung → schriftliche Bedenkenanmeldung nach § 4 Abs. 3 VOB/B.",
-      "actionableAdvice": "Arbeiten Sie den Abschnitt „Lernszenarien: Feuchtigkeitsschutz & Baurecht“ im Modul Bautagebuch noch einmal durch.",
+      "actionableAdvice": "Arbeiten Sie das Thema „Lernszenarien: Feuchtigkeitsschutz & Baurecht“ im Modul Bautagebuch noch einmal durch.",
       "targetModuleTab": "px_bautagebuch",
       "targetModuleLabel": "Bautagebuch"
     },
@@ -53176,7 +53172,7 @@
       "topic": "Zement im Auge",
       "misconception": "Die Alkalität des Zementleims wird unterschätzt.",
       "coreRule": "Augenkontakt mit Zement: 10–15 min spülen, dann Augenarzt.",
-      "actionableAdvice": "Lesen Sie im Modul Laborsicherheit den Abschnitt „Notfall- und Sofortmaßnahmen“ noch einmal.",
+      "actionableAdvice": "Lesen Sie im Modul Laborsicherheit das Thema „Notfall- und Sofortmaßnahmen“ noch einmal.",
       "targetModuleTab": "labor_sicherheit",
       "targetModuleLabel": "Laborsicherheit"
     },
