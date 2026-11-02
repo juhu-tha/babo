@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useLayoutEffect, useRef } from 'react';
 import {
   MoreHorizontal,
   GraduationCap,
@@ -23,6 +23,7 @@ import { LanguageSwitcher } from './components/navigation/LanguageSwitcher';
 import { LanguageBanner } from './components/navigation/LanguageBanner';
 import { ladeBeschreibungen } from './metaDescriptions';
 import { AccessibilityToolbar } from './components/a11y/AccessibilityToolbar';
+import { leseSeitenbreite, setzeBreitenKlasse, waehleSeitenbreite, alsSeitenbreite, type Bildschirmbreite } from './utils/seitenbreite';
 import { META_CLUSTERS, GROUP_TO_CLUSTER } from './data/metaClusters';
 import { MODUL_KERN } from './registry/kern';
 import { MODULTEST_IN_APP } from './data/quizZuordnung';
@@ -71,6 +72,16 @@ interface AppProps {
   /** Vorrendern im Build (scripts/vorrendern.ts): Modulkopf und Inhalt in getrennten Suspense-Grenzen */
   vorrendern?: boolean;
 }
+
+/** Breitenschalter: Sichtbarkeit je Fassung über die Klasse an <html>, Stil wie bisher je Zustand */
+const BREITEN_SCHALTER: ReadonlyArray<{ breite: Bildschirmbreite; sichtbar: string; stil: string }> = [
+  { breite: 'standard', sichtbar: 'hidden breite-standard:sm:flex',
+    stil: 'bg-off-white dark:bg-slate-800 hover:bg-home-grau/20 dark:hover:bg-slate-700 border-home-grau/20 dark:border-slate-700' },
+  { breite: 'wide', sichtbar: 'hidden sm:flex breite-standard:hidden! breite-full:hidden!',
+    stil: 'bg-shiraz/10 border-shiraz/40 text-shiraz dark:text-rose-300 font-semibold' },
+  { breite: 'full', sichtbar: 'hidden breite-full:sm:flex',
+    stil: 'bg-shiraz text-white border-shiraz shadow-xs font-semibold' },
+];
 
 function AppContent({ vorgerendert = false, vorrendern = false }: Omit<AppProps, 'startTab'>) {
   const { activeTab, setActiveTab, theme, toggleTheme } = useTabContext();
@@ -136,25 +147,15 @@ function AppContent({ vorgerendert = false, vorrendern = false }: Omit<AppProps,
     return () => mq.removeEventListener('change', aendern);
   }, []);
   const [sidebarCollapsed, setSidebarCollapsed] = useState(false);
-  const [screenWidth, setScreenWidth] = useState<'standard' | 'wide' | 'full'>(() => {
-    try {
-      const saved = localStorage.getItem('baustoffboard_screen_width');
-      if (saved === 'standard' || saved === 'wide' || saved === 'full') return saved;
-      const legacyFluid = localStorage.getItem('baustoffboard_fluid_width');
-      if (legacyFluid !== null) return legacyFluid === 'true' ? 'full' : 'standard';
-      return 'wide';
-    } catch {
-      return 'wide';
-    }
-  });
-  const fluidWidth = screenWidth === 'full';
+  // Seitenbreite: Zustand nur für Bedienung (title/aria-label, nächster Schritt); das Bild schaltet über die Klasse
+  // an <html> (src/utils/seitenbreite.ts), damit die vorgerenderte Seite in jeder Breite dem ersten Bild entspricht
+  const [screenWidth, setScreenWidth] = useState<Bildschirmbreite>(leseSeitenbreite);
+  useLayoutEffect(() => { setzeBreitenKlasse(screenWidth); }, [screenWidth]);
 
   useEffect(() => {
     const handleWidthChange = (e: Event) => {
-      const custom = e as CustomEvent<'standard' | 'wide' | 'full'>;
-      if (custom.detail && (custom.detail === 'standard' || custom.detail === 'wide' || custom.detail === 'full')) {
-        setScreenWidth(custom.detail);
-      }
+      const b = alsSeitenbreite(e);
+      if (b) setScreenWidth(b);
     };
     window.addEventListener('baustoffboard_width_change', handleWidthChange);
     return () => window.removeEventListener('baustoffboard_width_change', handleWidthChange);
@@ -548,47 +549,44 @@ function AppContent({ vorgerendert = false, vorrendern = false }: Omit<AppProps,
             <div className="hidden sm:flex items-center gap-2 ml-auto">
               <LanguageSwitcher />
               <AccessibilityToolbar />
-              <button 
-                onClick={() => {
-                  const next: 'standard' | 'wide' | 'full' = screenWidth === 'standard' ? 'wide' : screenWidth === 'wide' ? 'full' : 'standard';
-                  setScreenWidth(next);
-                  try {
-                    localStorage.setItem('baustoffboard_screen_width', next);
-                    localStorage.setItem('baustoffboard_fluid_width', next === 'full' ? 'true' : 'false');
-                    window.dispatchEvent(new CustomEvent('baustoffboard_width_change', { detail: next }));
-                  } catch {}
-                }}
-                className={`hidden sm:flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg text-text-main dark:text-white transition-colors border cursor-pointer ${
-                  screenWidth === 'full' 
-                    ? 'bg-shiraz text-white border-shiraz shadow-xs font-semibold' 
-                    : screenWidth === 'wide'
-                    ? 'bg-shiraz/10 border-shiraz/40 text-shiraz dark:text-rose-300 font-semibold'
-                    : 'bg-off-white dark:bg-slate-800 hover:bg-home-grau/20 dark:hover:bg-slate-700 border-home-grau/20 dark:border-slate-700'
-                }`}
-                title={
-                  screenWidth === 'standard'
-                    ? (language === 'en' ? "Width: Standard 1152px (Click for Wide 1536px)" : "Bildschirmbreite: Standard 1152px (Klicken für Breit 1536px)")
-                    : screenWidth === 'wide'
-                    ? (language === 'en' ? "Width: Wide 1536px (Click for Full Width 100%)" : "Bildschirmbreite: Breit 1536px (Klicken für 100% Vollbild)")
-                    : (language === 'en' ? "Width: Full 100% (Click for Standard 1152px)" : "Bildschirmbreite: 100% Vollbild (Klicken für Standard 1152px)")
-                }
-                aria-label={`${screenWidth === 'standard' ? (language === 'en' ? 'Standard' : 'Standard (1152px)') : screenWidth === 'wide' ? (language === 'en' ? 'Wide' : 'Breit (1536px)') : (language === 'en' ? '100% Full' : '100% Vollbild')} – ${language === 'en' ? 'page width' : 'Seitenbreite'}`}
-              >
-                {screenWidth === 'full' ? (
-                  <Maximize2 size={14} className="text-white" />
-                ) : screenWidth === 'wide' ? (
-                  <LayoutGrid size={14} className="text-shiraz dark:text-rose-400" />
-                ) : (
-                  <Columns size={14} />
-                )}
-                <span className="text-xs font-medium leading-none select-none hidden lg:inline">
-                  {screenWidth === 'standard' 
-                    ? (language === 'en' ? 'Standard' : 'Standard (1152px)') 
-                    : screenWidth === 'wide'
-                    ? (language === 'en' ? 'Wide' : 'Breit (1536px)')
-                    : (language === 'en' ? '100% Full' : '100% Vollbild')}
-                </span>
-              </button>
+              {/* Breitenschalter in drei Fassungen, je eine sichtbar über die Klasse an <html> (breite-standard:/breite-full:,
+                  sonst Breit) statt nach screenWidth: gleiche Ausgabe in allen Breiten (vorgerenderte Seite). Die Klassen je
+                  Fassung sind die bisherigen, damit die Sonderregeln in src/index.css (Dunkelmodus, Kontrast) wie zuvor
+                  greifen; ausgeblendete Fassungen (display: none) sind weder fokussierbar noch für Screenreader sichtbar. */}
+              {BREITEN_SCHALTER.map(v => (
+                <button
+                  key={v.breite}
+                  onClick={() => {
+                    const next: Bildschirmbreite = screenWidth === 'standard' ? 'wide' : screenWidth === 'wide' ? 'full' : 'standard';
+                    setScreenWidth(next);
+                    waehleSeitenbreite(next);
+                  }}
+                  className={`${v.sichtbar} items-center gap-1.5 px-2.5 py-1.5 rounded-lg text-text-main dark:text-white transition-colors border cursor-pointer ${v.stil}`}
+                  title={
+                    screenWidth === 'standard'
+                      ? (language === 'en' ? "Width: Standard 1152px (Click for Wide 1536px)" : "Bildschirmbreite: Standard 1152px (Klicken für Breit 1536px)")
+                      : screenWidth === 'wide'
+                      ? (language === 'en' ? "Width: Wide 1536px (Click for Full Width 100%)" : "Bildschirmbreite: Breit 1536px (Klicken für 100% Vollbild)")
+                      : (language === 'en' ? "Width: Full 100% (Click for Standard 1152px)" : "Bildschirmbreite: 100% Vollbild (Klicken für Standard 1152px)")
+                  }
+                  aria-label={`${screenWidth === 'standard' ? (language === 'en' ? 'Standard' : 'Standard (1152px)') : screenWidth === 'wide' ? (language === 'en' ? 'Wide' : 'Breit (1536px)') : (language === 'en' ? '100% Full' : '100% Vollbild')} – ${language === 'en' ? 'page width' : 'Seitenbreite'}`}
+                >
+                  {v.breite === 'full' ? (
+                    <Maximize2 size={14} className="text-white" />
+                  ) : v.breite === 'wide' ? (
+                    <LayoutGrid size={14} className="text-shiraz dark:text-rose-400" />
+                  ) : (
+                    <Columns size={14} />
+                  )}
+                  <span className="text-xs font-medium leading-none select-none hidden lg:inline">
+                    {v.breite === 'standard'
+                      ? (language === 'en' ? 'Standard' : 'Standard (1152px)')
+                      : v.breite === 'wide'
+                      ? (language === 'en' ? 'Wide' : 'Breit (1536px)')
+                      : (language === 'en' ? '100% Full' : '100% Vollbild')}
+                  </span>
+                </button>
+              ))}
               <button 
                 onClick={toggleTheme} 
                 className="flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg bg-off-white dark:bg-slate-800 hover:bg-home-grau/20 dark:hover:bg-slate-700 text-text-main dark:text-white transition-colors border border-home-grau/20 dark:border-slate-700 cursor-pointer"
@@ -616,17 +614,8 @@ function AppContent({ vorgerendert = false, vorrendern = false }: Omit<AppProps,
           const label = m ? getTabLabel(m.id, m.titel ?? m.label) : 'BaustoffBoard';
           return activeTab === 'start' ? 'BaustoffBoard – Lern- und Wissensplattform der TH Augsburg' : `${label} – BaustoffBoard`;
         })()}</h1>
-        <div 
-          data-fluid={screenWidth === 'full' ? "true" : "false"}
-          data-width={screenWidth}
-          className={`mx-auto flex flex-col min-h-full transition-all duration-200 ${
-            screenWidth === 'full'
-              ? 'w-full max-w-none'
-              : screenWidth === 'wide'
-              ? 'w-full max-w-[1536px]'
-              : 'w-full max-w-6xl'
-          }`}
-        >
+        {/* Breite per Klasse an <html> (src/utils/seitenbreite.ts), nicht nach screenWidth – s. Breitenschalter */}
+        <div className="mx-auto flex flex-col min-h-full transition-all duration-200 w-full max-w-[1536px] breite-standard:max-w-6xl breite-full:max-w-none">
           <LanguageBanner />
           <div id="module-content" className={`${ohneEinblenden ? '' : 'animate-in fade-in slide-in-from-bottom-4 duration-500 '}pb-8 relative flex-1`}>
             {/* Running Header auf jeder Druckseite */}

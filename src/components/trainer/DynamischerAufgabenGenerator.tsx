@@ -12,7 +12,8 @@ interface GeneratorTask {
   category: string;
   title: string;
   difficulty: 'Basis' | 'Mittel' | 'Fortgeschritten'; // Trainer-eigene Stufen (nicht Quizpool)
-  generate: () => {
+  /** z: Zufallsquelle (0 ≤ z() < 1); Standard Math.random, für die erste Aufgabe fester Startwert */
+  generate: (z?: () => number) => {
     params: Record<string, number | string>;
     questionText: string;
     correctAnswer: number;
@@ -31,10 +32,10 @@ const GENERATOR_TASKS: GeneratorTask[] = [
     category: 'Labor & Betonprüfung',
     title: 'Spaltzugfestigkeit & axiale Zugfestigkeit',
     difficulty: 'Basis',
-    generate: () => {
+    generate: (z = Math.random) => {
       const d = 150; // mm
       const L = 300; // mm
-      const F_kN = Math.floor(Math.random() * 160) + 140; // 140 to 300 kN
+      const F_kN = Math.floor(z() * 160) + 140; // 140 to 300 kN
       const F_N = F_kN * 1000;
       const f_ct_sp = (2 * F_N) / (Math.PI * L * d);
       const f_ctm = 0.9 * f_ct_sp;
@@ -87,11 +88,11 @@ const GENERATOR_TASKS: GeneratorTask[] = [
     category: 'Mechanik & Stabilität',
     title: 'Kritische Knicklast nach Euler (Fall 2)',
     difficulty: 'Mittel',
-    generate: () => {
+    generate: (z = Math.random) => {
       const eulerFall = 2; // Beidseitig gelenkig -> beta = 1.0
-      const L_m = Number((Math.random() * 3.5 + 3.0).toFixed(1)); // 3.0 to 6.5 m
+      const L_m = Number((z() * 3.5 + 3.0).toFixed(1)); // 3.0 to 6.5 m
       const L_mm = L_m * 1000;
-      const I_cm4 = Math.floor(Math.random() * 800) + 400; // 400 to 1200 cm4
+      const I_cm4 = Math.floor(z() * 800) + 400; // 400 to 1200 cm4
       const I_mm4 = I_cm4 * 10000;
       const E_MPa = 210000; // N/mm2 für Stahl
 
@@ -146,11 +147,11 @@ const GENERATOR_TASKS: GeneratorTask[] = [
     category: 'Massivbau & Eurocode 2',
     title: 'Kriechdehnung unter Dauerlast',
     difficulty: 'Mittel',
-    generate: () => {
+    generate: (z = Math.random) => {
       const fck = 30; // C30/37
       const Ecm = 33000; // MPa
-      const sigma_c = Number((Math.random() * 3 + 7).toFixed(1)); // 7.0 to 10.0 MPa
-      const phi = Number((Math.random() * 0.8 + 2.1).toFixed(2)); // 2.10 to 2.90
+      const sigma_c = Number((z() * 3 + 7).toFixed(1)); // 7.0 to 10.0 MPa
+      const phi = Number((z() * 0.8 + 2.1).toFixed(2)); // 2.10 to 2.90
 
       const eps_el = sigma_c / Ecm; // elastische Dehnung (-)
       // Kriechdehnung nach DIN EN 1992-1-1, 3.1.4(3): φ bezieht sich auf E_c = 1,05 · E_cm
@@ -204,10 +205,10 @@ const GENERATOR_TASKS: GeneratorTask[] = [
     category: 'Betontechnologie',
     title: 'Äquivalenter Wasserzementwert mit Flugasche',
     difficulty: 'Basis',
-    generate: () => {
+    generate: (z = Math.random) => {
       const zement = 320; // kg/m3
       const wasser = 168; // kg/m3
-      const flugasche = Math.floor(Math.random() * 30) + 50; // 50 to 80 kg/m3
+      const flugasche = Math.floor(z() * 30) + 50; // 50 to 80 kg/m3
       const k = 0.40; // k-Wert Flugasche nach DIN EN 206
 
       const wz_eq = wasser / (zement + k * flugasche);
@@ -254,8 +255,8 @@ const GENERATOR_TASKS: GeneratorTask[] = [
     category: 'Bauphysik & Wärmeschutz',
     title: 'Wärmedurchgangskoeffizient (U-Wert) einer Außenwand',
     difficulty: 'Mittel',
-    generate: () => {
-      const d_daemmung_cm = Math.floor(Math.random() * 6) + 12; // 12 to 18 cm
+    generate: (z = Math.random) => {
+      const d_daemmung_cm = Math.floor(z() * 6) + 12; // 12 to 18 cm
       const d_daemm_m = d_daemmung_cm / 100;
       const lambda_daemm = 0.035; // W/mK
 
@@ -313,6 +314,23 @@ const GENERATOR_TASKS: GeneratorTask[] = [
   }
 ];
 
+/**
+ * Fester Startwert für die erste Aufgabe (LCP 02.11.2026, docs/pruefung/lcp-breite-2026-11-02.md): Die vorgerenderte
+ * Seite /modul/aufgaben_trainer und das erste Bild von React zeigen dieselbe Aufgabe; „Neue Werte würfeln“ und der Wechsel
+ * der Aufgabe würfeln danach mit Math.random. Erzeuger mulberry32 (32 bit, gleichverteilt in [0, 1)).
+ */
+const STARTWERT = 20261102;
+function festerZufall(startwert: number): () => number {
+  let a = startwert >>> 0;
+  return () => {
+    a = (a + 0x6d2b79f5) >>> 0;
+    let t = a;
+    t = Math.imul(t ^ (t >>> 15), t | 1);
+    t ^= t + Math.imul(t ^ (t >>> 7), t | 61);
+    return ((t ^ (t >>> 14)) >>> 0) / 4294967296;
+  };
+}
+
 export function DynamischerAufgabenGenerator() {
   const [selectedTaskId, setSelectedTaskId] = useState<string>('spaltzug');
   const [userAnswer, setUserAnswer] = useState<string>('');
@@ -328,7 +346,7 @@ export function DynamischerAufgabenGenerator() {
   }, [selectedTaskId]);
 
   // Current generated instance
-  const [taskInstance, setTaskInstance] = useState(() => currentTaskDef.generate());
+  const [taskInstance, setTaskInstance] = useState(() => currentTaskDef.generate(festerZufall(STARTWERT)));
 
   // Reroll values when task changes or user clicks reroll
   const handleReroll = (taskId = selectedTaskId) => {

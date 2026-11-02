@@ -11,7 +11,8 @@
  *      setzen → dist/modul/<id>.html; Liste, Aliase und inaktive Adressen → dist/modul/routen.json (für server.ts).
  * Die Seite ist wie die Startseiten-Schale `inert` und nur sichtbar, wenn scripts/startschale-boot.js sie zur
  * Adresse und den Einstellungen passend findet (im Dunkelmodus nur, wenn ein zweiter, dunkler Durchlauf dasselbe
- * Markup ergibt – sonst Kennung data-nur-hell im Kopf); React ersetzt sie (src/main.tsx wartet dafür die Chunks ab).
+ * Markup ergibt – sonst Kennung data-nur-hell im Kopf; ebenso in Standard- und Vollbreite, sonst data-nur-breit);
+ * React ersetzt sie (src/main.tsx wartet dafür die Chunks ab).
  * Abschalten (z. B. für schnelle Probe-Builds): BB_OHNE_VORRENDERN=1.
  */
 import fs from 'fs';
@@ -134,15 +135,27 @@ export function gleicheSchale(hell: string, dunkel: string): boolean {
 
 /** Kennung im Kopf: Schale nur im Hellmodus zeigen (scripts/startschale-boot.js liest sie) */
 export const NUR_HELL = 'data-nur-hell';
+/** Kennung im Kopf: Schale nur in der Voreinstellung „Breit“ zeigen (Seitenbreite, 02.11.2026) */
+export const NUR_BREIT = 'data-nur-breit';
+
+/**
+ * Vergleichsdurchläufe je Modulseite: Einstellung im Node-Speicher setzen, erneut rendern, Schale vergleichen.
+ * Weicht sie ab, erhält die Seite die Kennung und bleibt mit dieser Einstellung ohne Schale.
+ */
+const VERGLEICHE: ReadonlyArray<{ name: string; schluessel: string; wert: string; kennung: 'nurHell' | 'nurBreit' }> = [
+  { name: 'dunkel', schluessel: 'theme', wert: 'dark', kennung: 'nurHell' },
+  { name: 'standard', schluessel: 'baustoffboard_screen_width', wert: 'standard', kennung: 'nurBreit' },
+  { name: 'voll', schluessel: 'baustoffboard_screen_width', wert: 'full', kennung: 'nurBreit' },
+];
 
 /** vollständige HTML-Datei einer Modulseite aus dist/index.html */
-export function baueSeite(vorlage: string, startRoot: string, route: RouteInfo, schale: string, { nurHell = false }: { nurHell?: boolean } = {}): string {
+export function baueSeite(vorlage: string, startRoot: string, route: RouteInfo, schale: string, { nurHell = false, nurBreit = false }: { nurHell?: boolean; nurBreit?: boolean } = {}): string {
   if (!vorlage.includes(startRoot)) throw new Error('baueSeite: Startseiten-Schale nicht in dist/index.html gefunden');
   const titel = maskiere(`BaustoffBoard THA - ${route.label}`);
   const url = maskiere(BASIS_URL + modulPfad(route.id));
   let s = vorlage.replace(startRoot, () => `<div id="root"><div data-schale inert>${schale}</div></div>`);
   // vor dem Inline-Skript startschale-boot.js (direkt hinter <meta charset>), das die Kennung liest
-  s = s.replace(KOPF_ANKER, () => `${KOPF_ANKER}\n    <meta name="bb-vorgerendert" content="${maskiere(route.id)}"${nurHell ? ` ${NUR_HELL}` : ''} />`);
+  s = s.replace(KOPF_ANKER, () => `${KOPF_ANKER}\n    <meta name="bb-vorgerendert" content="${maskiere(route.id)}"${nurHell ? ` ${NUR_HELL}` : ''}${nurBreit ? ` ${NUR_BREIT}` : ''} />`);
   s = ersetze(s, /<title>[\s\S]*?<\/title>/, `<title>${titel}</title>`, '<title>');
   s = ersetze(s, /<link rel="canonical" href="[^"]*"/, `<link rel="canonical" href="${url}"`, 'canonical');
   s = ersetze(s, /<meta property="og:url" content="[^"]*"/, `<meta property="og:url" content="${url}"`, 'og:url');
@@ -198,6 +211,7 @@ export async function vorrendern({ wurzel = process.cwd(), dist = path.join(wurz
   const ids: string[] = [];
   const meldungen: string[] = [];
   const nurHellIds: string[] = [];
+  const nurBreitIds: string[] = [];
   let bytes = 0;
   for (const r of eintrag.routen()) {
     if (nur && !nur.includes(r.id)) continue;
@@ -206,17 +220,24 @@ export async function vorrendern({ wurzel = process.cwd(), dist = path.join(wurz
       const { html, fehler } = await eintrag.rendere(r.id);
       if (process.env.BB_VORRENDERN_ROH) fs.writeFileSync(path.join(process.env.BB_VORRENDERN_ROH, `${r.id}.roh.html`), html);
       const { html: schale, hinweise } = modulSchale(html);
-      // zweiter Durchlauf im Dunkelmodus (TabContext liest localStorage 'theme'): weicht die Schale ab (Komponenten,
-      // die nach theme statt per Klasse dark umschalten), bleibt sie im Dunkelmodus aus
-      g.localStorage!.setItem('theme', 'dark');
-      let nurHell = true;
-      try {
-        const dunkel = await eintrag.rendere(r.id);
-        if (process.env.BB_VORRENDERN_ROH) fs.writeFileSync(path.join(process.env.BB_VORRENDERN_ROH, `${r.id}.dunkel.roh.html`), dunkel.html);
-        nurHell = !gleicheSchale(schale, modulSchale(dunkel.html).html);
-      } catch { /* dunkel nicht renderbar → nur hell */ } finally { g.localStorage!.removeItem('theme'); }
-      if (nurHell) nurHellIds.push(r.id);
-      const seite = baueSeite(vorlage, startRoot, r, schale, { nurHell });
+      // weitere Durchläufe dunkel (TabContext liest localStorage 'theme') sowie in Standard- und Vollbreite (App liest
+      // baustoffboard_screen_width): weicht die Schale ab (Komponenten, die nach Zustand statt per Klasse an <html>
+      // umschalten), bleibt sie mit dieser Einstellung aus
+      const kennung = { nurHell: false, nurBreit: false };
+      for (const v of VERGLEICHE) {
+        if (kennung[v.kennung]) continue;
+        g.localStorage!.setItem(v.schluessel, v.wert);
+        let gleich = false;
+        try {
+          const anders = await eintrag.rendere(r.id);
+          if (process.env.BB_VORRENDERN_ROH) fs.writeFileSync(path.join(process.env.BB_VORRENDERN_ROH, `${r.id}.${v.name}.roh.html`), anders.html);
+          gleich = gleicheSchale(schale, modulSchale(anders.html).html);
+        } catch { /* nicht renderbar → Kennung */ } finally { g.localStorage!.removeItem(v.schluessel); }
+        if (!gleich) kennung[v.kennung] = true;
+      }
+      if (kennung.nurHell) nurHellIds.push(r.id);
+      if (kennung.nurBreit) nurBreitIds.push(r.id);
+      const seite = baueSeite(vorlage, startRoot, r, schale, kennung);
       fs.writeFileSync(path.join(zielDir, `${r.id}.html`), seite);
       ids.push(r.id);
       bytes += seite.length;
@@ -232,7 +253,8 @@ export async function vorrendern({ wurzel = process.cwd(), dist = path.join(wurz
   console.log(`vorrendern: ${ids.length} Modulseiten nach dist/modul/ (Ø ${(bytes / Math.max(1, ids.length) / 1024).toFixed(0)} kB) in ${s} s`);
   for (const m of meldungen) console.log(`  · ${m}`);
   if (nurHellIds.length) console.log(`  · Schale nur im Hellmodus (Markup dunkel anders): ${nurHellIds.join(', ')}`);
-  return { ids, meldungen, nurHell: nurHellIds };
+  if (nurBreitIds.length) console.log(`  · Schale nur in Breit (Markup in Standard-/Vollbreite anders): ${nurBreitIds.join(', ')}`);
+  return { ids, meldungen, nurHell: nurHellIds, nurBreit: nurBreitIds };
 }
 
 if (process.argv[1] && path.resolve(process.argv[1]) === fileURLToPath(import.meta.url)) {
