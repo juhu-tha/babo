@@ -23405,7 +23405,7 @@
     "categoryLabel": "Dauerhaftigkeit & Schäden",
     "moduleId": "bp_abdichtung",
     "moduleTitle": "Abdichtungen",
-    "topic": "Wassereinwirkungsklassen",
+    "topic": "Wasserbeanspruchungsklassen",
     "difficulty": "Basis",
     "normRef": "DIN 18533-1",
     "question": "Welche Wasserbeanspruchungsklasse gilt für drückendes Wasser mit einer Eintauchtiefe von 2,5 m?",
@@ -23426,10 +23426,10 @@
       "W3-E bezeichnet nicht drückendes Wasser auf erdüberschütteten Decken, nicht drückendes Grundwasser."
     ],
     "gapAnalysis": {
-      "topic": "Wassereinwirkungsklassen",
+      "topic": "Wasserbeanspruchungsklassen",
       "misconception": "Jedes Grundwasser ist W2.2-E.",
       "coreRule": "Grenze W2.1/W2.2 bei 3 m Eintauchtiefe.",
-      "actionableAdvice": "Arbeiten Sie den Abschnitt „Wassereinwirkungsklassen“ im Modul Abdichtungen noch einmal durch.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Wasserbeanspruchungsklassen“ im Modul Abdichtungen noch einmal durch.",
       "targetModuleTab": "bp_abdichtung",
       "targetModuleLabel": "Abdichtungen"
     },
@@ -23437,7 +23437,7 @@
     "vorpruefung": {
       "am": "2026-10-26",
       "ergebnis": "korrigiert",
-      "hinweis": "Begriff an DIN 18533-1:2026-06 angepasst („Wasserbeanspruchungsklasse“, DIN Media). Grundstruktur W1-E bis W4-E bestätigt (Bauprofessor 16.09.2026); Unterklassen W2.1-E/W2.2-E mit 3-m-Grenze nur durch Herstellerbeitrag bestätigt (MC-Bauchemie, Stand 05.08.2026) – Abgleich am Normtext offen."
+      "hinweis": "Begriff an DIN 18533-1:2026-06 angepasst („Wasserbeanspruchungsklasse“, DIN Media). Grundstruktur W1-E bis W4-E bestätigt (Bauprofessor 16.09.2026); Unterklassen W2.1-E/W2.2-E mit 3-m-Grenze nur durch Herstellerbeitrag bestätigt (MC-Bauchemie, Stand 05.08.2026) – Abgleich am Normtext offen. Begriff angeglichen 02.11."
     },
     "reviewer": "Zweitprüfung 27.10.2026; freigegeben 27.10.2026",
     "reviewedAt": "2026-10-27"
@@ -35202,7 +35202,7 @@
     "categoryLabel": "Dauerhaftigkeit & Schäden",
     "moduleId": "bp_abdichtung",
     "moduleTitle": "Abdichtungen",
-    "topic": "Wassereinwirkungsklasse",
+    "topic": "Wasserbeanspruchungsklasse",
     "difficulty": "Vertiefung",
     "normRef": "DIN 18533-1",
     "question": "Ein Keller steht in wenig durchlässigem Lehmboden; eine funktionsfähige Dränung nach DIN 4095 ist vorhanden. Welche Wasserbeanspruchungsklasse ergibt der Berater?",
@@ -35223,8 +35223,8 @@
       "W3-E gilt für erdüberschüttete Decken, nicht für Kellerwände."
     ],
     "gapAnalysis": {
-      "topic": "Wassereinwirkungsklasse",
-      "misconception": "Die Wirkung einer Dränung auf die Wassereinwirkungsklasse wird übersehen.",
+      "topic": "Wasserbeanspruchungsklasse",
+      "misconception": "Die Wirkung einer Dränung auf die Wasserbeanspruchungsklasse wird übersehen.",
       "coreRule": "Lehmboden ohne Dränung → W2-E; mit funktionsfähiger Dränung → W1-E.",
       "actionableAdvice": "Arbeiten Sie den Abschnitt „DIN-Klassen-Berater & Systeme“ im Modul Abdichtungen noch einmal durch.",
       "targetModuleTab": "bp_abdichtung",
@@ -35234,7 +35234,7 @@
     "vorpruefung": {
       "am": "2026-10-26",
       "ergebnis": "korrigiert",
-      "hinweis": "Begriff an DIN 18533-1:2026-06 angepasst („Wasserbeanspruchungsklasse“, DIN Media); Grundstruktur W1-E bis W4-E bestätigt (Bauprofessor 16.09.2026). Unterklasse W1.2-E (mit Dränung) nur durch Herstellerbeitrag bestätigt (MC-Bauchemie, 08/2026)."
+      "hinweis": "Begriff an DIN 18533-1:2026-06 angepasst („Wasserbeanspruchungsklasse“, DIN Media); Grundstruktur W1-E bis W4-E bestätigt (Bauprofessor 16.09.2026). Unterklasse W1.2-E (mit Dränung) nur durch Herstellerbeitrag bestätigt (MC-Bauchemie, 08/2026). Begriff angeglichen 02.11."
     },
     "reviewer": "Zweitprüfung 27.10.2026; freigegeben 27.10.2026",
     "reviewedAt": "2026-10-27"

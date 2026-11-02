@@ -194,7 +194,7 @@ const COURSES: OnlineCourse[] = [
     justification: inhalt.werte.höchsteAkademischeQualitätWissenschaftli,
     constructionTransfer: inhalt.werte.idealZurVorbereitungAuf2,
     highlightTopics: [inhalt.werte.einführungInDieKi, inhalt.werte.verantwortungsvollerUmgangMitDaten, inhalt.werte.mathematischeFundamente, inhalt.werte.zertifikatEctsAnerkennung],
-    recommendedStart: inhalt.werte.kursDrMedKi
+    recommendedStart: inhalt.werte.kursElementsOfAi
   }
 ];
 

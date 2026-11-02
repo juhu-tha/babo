@@ -48,7 +48,7 @@
     "gesetzlichVerpflichtend": "Pflichtpunkt (Norm)",
     "standDerTechnik": "Stand der Technik",
     "beispiel1MaßgebendeBetonanforderungen": "Beispiel 1: Maßgebende Betonanforderungen bei mehreren Expositionsklassen",
-    "dieBetondeckungRichtetSich": "Die Betondeckung richtet sich nach der Klasse mit der größten Anforderung (hier XD1: c_min,dur = 40 mm, c_nom = 55 mm). Werte nach DIN 1045-2, Tabellen F.2.1/F.2.2 – am Normtext der Ausgabe 2023-08 prüfen.",
+    "dieBetondeckungRichtetSich": "Die Betondeckung richtet sich nach der Klasse mit der größten Anforderung (hier XD1: c_min,dur = 40 mm, c_nom = 55 mm). Grenzwerte für w/z, Festigkeitsklasse und Zementgehalt nach DIN 1045-2:2023-08, Tab. F.2.1/F.2.2 (vorläufig, Normprüfung ausstehend); c_min,dur nach DIN EN 1992-1-1/NA, Tab. 4.4DE.",
     "din1045220232": "DIN 1045-2:2023-08; DIN EN 206:2021-06",
     "beispiel2AuswertungEiner": "Beispiel 2: Auswertung einer Betondeckungsmessung",
     "eineKnappeUnterschreitungDes": "Eine knappe Unterschreitung des Mindestmaßes im 5-%-Quantil ist mit dem Tragwerksplaner zu bewerten (z. B. Oberflächenschutz, Instandhaltungsplanung). Das DBV-Merkblatt Betondeckung und Bewehrung beschreibt Mess- und Auswerteverfahren.",
