@@ -685,7 +685,7 @@ export default function SpannbetonDehnungsAnimation() {
               </span>
               <span className={`font-mono font-bold text-sm ${
                 (viewSection === 'midspan' ? calc.sigma_bot : calc.sigma_top) > fctm ? 'text-red-600' :
-                (viewSection === 'midspan' ? calc.sigma_bot : calc.sigma_top) > 0 ? 'text-amber-600' : 'text-emerald-700'
+                !calc.gueltig ? 'text-slate-700' : (viewSection === 'midspan' ? calc.sigma_bot : calc.sigma_top) > 0 ? 'text-amber-600' : 'text-emerald-700'
               }`}>
                 {viewSection === 'midspan'
                   ? (calc.sigma_bot > 0 ? `+${formatDeZahl(calc.sigma_bot, 2)}` : formatDeZahl(calc.sigma_bot, 2))
@@ -808,15 +808,15 @@ export default function SpannbetonDehnungsAnimation() {
                 </text>
 
                 {/* Unterrand-Dehnungspunkt */}
-                <circle cx={botEpsX} cy={botY} r="4" fill={calc.eps_bot > 0 ? '#dc2626' : '#059669'} stroke="#ffffff" strokeWidth="1.5" />
-                <line x1={zeroX} y1={botY} x2={botEpsX} y2={botY} stroke={calc.eps_bot > 0 ? '#dc2626' : '#059669'} strokeWidth="1.5" />
+                <circle cx={botEpsX} cy={botY} r="4" fill={!calc.gueltig ? '#64748b' : calc.eps_bot > 0 ? '#dc2626' : '#059669'} stroke="#ffffff" strokeWidth="1.5" />
+                <line x1={zeroX} y1={botY} x2={botEpsX} y2={botY} stroke={!calc.gueltig ? '#64748b' : calc.eps_bot > 0 ? '#dc2626' : '#059669'} strokeWidth="1.5" />
                 <text
                   x={botEpsX + (calc.eps_bot > 0 ? 8 : -8)}
                   y={botY + 5}
                   textAnchor={calc.eps_bot > 0 ? 'start' : 'end'}
                   fontSize="9.5"
                   fontWeight="bold"
-                  fill={calc.eps_bot > 0 ? '#dc2626' : '#059669'}
+                  fill={!calc.gueltig ? '#64748b' : calc.eps_bot > 0 ? '#dc2626' : '#059669'}
                 >
                   ε_u = {calc.eps_bot > 0 ? `+${formatDeZahl(calc.eps_bot, 3)}` : formatDeZahl(calc.eps_bot, 3)} ‰
                   {calc.eps_bot > 0 ? ' (Zug!)' : ' (Druck)'}
@@ -888,9 +888,9 @@ export default function SpannbetonDehnungsAnimation() {
                       {/* Spannungsgerade */}
                       <line x1={topSigX} y1={topY} x2={botSigX} y2={botY} stroke="#059669" strokeWidth="2.8" />
                       <circle cx={topSigX} cy={topY} r="4" fill="#059669" />
-                      <circle cx={botSigX} cy={botY} r="4" fill={calc.sigma_bot > 0 ? '#dc2626' : '#059669'} />
+                      <circle cx={botSigX} cy={botY} r="4" fill={!calc.gueltig ? '#64748b' : calc.sigma_bot > 0 ? '#dc2626' : '#059669'}/>
 
-                      <text x={topSigX - 8} y={topY - 4} textAnchor="end" fontSize="9.5" fontWeight="bold" fill={calc.sigma_top > 0 ? '#dc2626' : '#059669'}>
+                      <text x={topSigX - 8} y={topY - 4} textAnchor="end" fontSize="9.5" fontWeight="bold" fill={!calc.gueltig ? '#64748b' : calc.sigma_top > 0 ? '#dc2626' : '#059669'}>
                         σ_o = {calc.sigma_top > 0 ? `+${formatDeZahl(calc.sigma_top, 2)}` : formatDeZahl(calc.sigma_top, 2)} MPa {calc.sigma_top > 0 ? '(Zug!)' : '(Druck)'}
                       </text>
                       <text
@@ -899,7 +899,7 @@ export default function SpannbetonDehnungsAnimation() {
                         textAnchor={calc.sigma_bot > 0 ? 'start' : 'end'}
                         fontSize="9.5"
                         fontWeight="bold"
-                        fill={calc.sigma_bot > fctm ? '#dc2626' : calc.sigma_bot > 0 ? '#d97706' : '#059669'}
+                        fill={!calc.gueltig ? '#64748b' : calc.sigma_bot > fctm ? '#dc2626' : calc.sigma_bot > 0 ? '#d97706' : '#059669'}
                       >
                         σ_u = {calc.sigma_bot > 0 ? `+${formatDeZahl(calc.sigma_bot, 2)}` : formatDeZahl(calc.sigma_bot, 2)} MPa
                       </text>
@@ -980,7 +980,7 @@ export default function SpannbetonDehnungsAnimation() {
             <div className="bg-white p-2.5 rounded-lg border border-slate-200">
               <span className="text-[10px] text-slate-500 uppercase tracking-wider block"><MdText text={inhalt.texte.unterrandDehnungU} /></span>
               <span className={`font-mono font-bold text-sm ${
-                calc.eps_bot > 0 ? 'text-red-600' : 'text-emerald-700'
+                !calc.gueltig ? 'text-slate-700' : calc.eps_bot > 0 ? 'text-red-600' : 'text-emerald-700'
               }`}>
                 {calc.eps_bot > 0 ? `+${formatDeZahl(calc.eps_bot, 3)}` : formatDeZahl(calc.eps_bot, 3)} ‰
               </span>

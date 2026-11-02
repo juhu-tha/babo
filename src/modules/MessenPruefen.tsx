@@ -468,7 +468,7 @@ export default function MessenPruefen() {
 
                     <div className="mt-4 pt-3 border-t border-slate-200/70 text-[11px] text-slate-700 leading-snug">
                       {rvStats.enStatus === '–' ? null : rvStats.enStatus === 'ok' ? (
-                        <span className="text-blue-900font-medium flex items-center gap-1.5">
+                        <span className="text-blue-900 font-medium flex items-center gap-1.5">
                           <CheckCircle2 size={14} className="shrink-0 text-blue-700" /><MdText text={inhalt.texte.dieDeklarierteMessunsicherheitDeckt} /></span>
                       ) : (
                         <span className="text-rose-800 font-bold flex items-center gap-1.5">

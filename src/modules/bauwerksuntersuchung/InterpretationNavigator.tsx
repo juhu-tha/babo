@@ -428,6 +428,8 @@ export default function InterpretationNavigator() {
                       <span className="text-slate-500"><MdText text={inhalt.texte.deckungNichtGemessen} /></span>
                     ) : evaluation.isCarbDepassivated ? (
                       <span className="text-rose-700 font-semibold"><MdText text={inhalt.texte.bewehrungVollständigDepassiviertD} /></span>
+                    ) : !Number.isFinite(evaluation.passivierungsReserve) ? (
+                      <span>–</span>
                     ) : evaluation.passivierungsReserve < 10 ? (
                       <span className="text-amber-700"><MdText text={inhalt.texte.restreserveKnapp10Mm} /></span>
                     ) : (

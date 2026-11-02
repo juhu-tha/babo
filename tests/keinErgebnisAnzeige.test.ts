@@ -44,6 +44,7 @@ const AUSNAHMEN: { datei: string; muster: RegExp; grund: string }[] = [
   { datei: 'src/modules/Sicherheitskonzept.tsx', muster: /k\.massgebend/, grund: 'Index der Leiteinwirkung (ganze Zahl), Formelindex' },
   { datei: 'src/modules/beispielrechnungen/RechnungMauerwerk.tsx', muster: /e\.sfk/, grund: 'Steinfestigkeitsklasse aus der Tabelle (Text der Klasse)' },
   { datei: 'src/modules/PfasBaustoffe.tsx', muster: /PFAS_GRENZWERTE\.pfas20/, grund: 'fester Grenzwert (Konstante), keine Rechnung' },
+  { datei: 'src/modules/spannbeton/SpannbetonDehnungsAnimation.tsx', muster: /Math\.abs\(prestressForce - calc\.P_(dek|cr|bal)\) < 30/, grund: 'Hervorhebung der Schnellwahl-Schaltfläche (aktive Vorspannstufe), keine Nachweisaussage' },
 ];
 const befunde = (scanne() as { datei: string; zeile: number; art: string; text: string }[])
   .filter(b => !AUSNAHMEN.some(a => a.datei === b.datei && a.muster.test(b.text)));
