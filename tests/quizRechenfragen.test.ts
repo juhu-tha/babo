@@ -7,7 +7,7 @@
 // mit Begründung stehen), damit neue Fragen nicht ungeprüft bleiben.
 import { QUIZ_QUESTIONS } from '../src/data/quizData';
 import { formatDeZahl } from '../src/utils/numberFormat';
-import { fdAusFk, phi2, bemesseWandVereinfacht, ZETA_MW, GAMMA_M_MW, SCHLANKHEIT_MAX, H_ERWEITERT_INNEN_MAX } from '../src/calc/mauerwerk';
+import { fdAusFk, fkNA, phi2, bemesseWandVereinfacht, ZETA_MW, GAMMA_M_MW, SCHLANKHEIT_MAX, H_ERWEITERT_INNEN_MAX } from '../src/calc/mauerwerk';
 import { rwMassiv, wandSchalldaemmung, PUTZ_MASSE_BEIDSEITIG } from '../src/calc/schall';
 import { istSieblinie, regelDurchgang } from '../src/calc/mischung';
 import { funktionelleEinheitBauteil } from '../src/calc/lca';
@@ -43,7 +43,9 @@ const OHNE_RECHNUNG: Record<string, string> = {};
 // ------------------------------------------------------------------------------------------------
 {
   VOLL_ABGEDECKT.add('rechnung_mauerwerk');
-  const fkKS = 5.6, fkHLz = 3.2;
+  // KS: Tafelwert des Moduls (KS L 12, NM III; Abgleich 02.11.2026), HLz: Annahme der Fragen (3,2 N/mm², nicht in der Tafel)
+  const fkKS = fkNA('KSL-12-NMIII')?.fk ?? NaN, fkHLz = 3.2;
+  pruefe(fkKS === 5.6, `Tafelwert KS L 12/NM III ist ${fkKS} statt 5,6 N/mm² – qn_rechnung_mauerwerk_1/_5/_6 anpassen`);
   const fdKS = fdAusFk(fkKS), fdHLz = fdAusFk(fkHLz);
   const ohneZeta = (fk: number) => fdAusFk(fk, 1);
   const phiW = (hEf_m: number, t_mm: number) => phi2(hEf_m * 1000, t_mm, 1);

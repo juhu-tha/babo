@@ -1,0 +1,70 @@
+# Quiz-Text-Abgleich (02.11.2026) – Quizfragen gegen ihren Modultext
+
+**Stand:** 02.11.2026 (Branch `quiz/erklaerung-text-11-02`, Basis origin/main d31cd52a)
+**Anlass:** Nachstichprobe 4 (`docs/pruefung/nachstichprobe4-2026-11-02.md`, PR #292): Fehler stecken jetzt vor allem in Quiz-Erklärungen, die bei Korrekturen am Modultext nicht nachgezogen wurden, oder umgekehrt.
+**Auftrag:** alle 1304 Fragen in `src/data/quiz.json` systematisch gegen ihr Modul abgleichen; eindeutig falsch gewordene Fragen korrigieren, falsche Modultexte melden, Strittiges als Frage mit Vorschlag; leichte Dauerprüfung für zentrale Lehrwerte in Quiztexten.
+**Nicht bearbeitet (anderer Auftrag):** `q_vdi_1`, `q_bpx_5`, `qn_rechnung_stahlbeton_4`.
+
+## Vorgehen
+
+1. **Prüfskript** `scripts/qa/quiz-text-abgleich.mjs` (neu, wiederverwendbar, Laufzeit rund 5 s, mit `--seit` rund 12 s). Je Frage liest es Frage, richtige Antwort, Erklärung, Distraktor-Rückmeldungen, Lernhilfe (`gapAnalysis`) und `normRef` – nicht die falschen Optionen selbst – und gleicht sie mit dem Text des Moduls ab (Komponente und Importkette wie `scripts/qa/kennwert-abgleich.mjs`, also `content/<modul>/*.json`, Modul-TSX und modulbezogene Daten):
+   - **(W)** Größe = Wert mit Einheit (Formelzeichen wie `c_min,dur`, `w/z`, `μ_lim` oder Begriff unmittelbar vor der Zahl): dieselbe Größe kommt im Modul vor, aber nie mit dem Wert der Frage (Rundung und Spannen berücksichtigt).
+   - **(K)** Klassen- und Stufenbegriffe (CC1–3, RC, Expositions-, AKR-Feuchtigkeits-, Beton-/Holz-/Stahlfestigkeits-, LAGA-Einbau-, EBV-Material-, Konsistenz-, Korrosivitäts-, Nutzungs-, Gebrauchs-, Feuerwiderstands-, Euro-/Baustoff-, Wassereinwirkungs-, RStO-Belastungs-, WU-Beanspruchungsklassen, Bewertungsstufen, Zementarten, Mörtelgruppen): im Modul nicht genannt, oder ein Bezugswort steht im Modul nur neben anderen Klassen derselben Familie.
+   - **(N)** Norm-, Abschnitts- und Tabellenverweise mit Ausgabe: Ausgabe weicht von allen Ausgaben derselben Norm im Modul bzw. von `src/data/centralNormenRegistry.ts` ab; Tabelle/Abschnitt wird im Modul nicht genannt.
+   - **(Z)** Zahlenwerte gegen die zentralen Konstanten (`pruefeKennwerte` aus `kennwert-abgleich.mjs`: `zementGwp.ts`, `gwpLehrwerte.ts`, `kennwerte.ts`, `SCHWINDBEIWERTE`, `CONCRETE`, Energieausweis-Faktoren, A4-Transport, Pflanzenkohle), jetzt auch in Rückmeldungen und Lernhilfe.
+   - **(A)** Lernhilfe „Arbeiten Sie den Abschnitt „…“ … durch“: Abschnittsname im Modultext nicht gefunden.
+   - **(D)** mit `--seit <rev>`: Angaben (Werte, Klasse am Bezugswort, Normausgabe, Fachwörter ≥ 10 Buchstaben, Wortfolgen aus vier Wörtern), die seit `<rev>` aus dem Modultext entfallen sind und in einer Frage des Moduls noch stehen (Modul korrigiert, Quiz nicht), und Angaben, die aus einer Frage entfernt wurden und im Modul weiter stehen (Quiz korrigiert, Modul nicht). Läufe gegen `2a9c24ef` (25.10., nach dem Auslagern der Fachtexte nach `content/`) und `f0d70b43` (20.10., vor der Modulprüfung).
+2. **Zusatzsuchen** (Sitzungsablage, nicht im Repository): alte Wortlaute aus allen „behoben“-/„korrigiert“-Einträgen in `docs/pruefung/*.md` im Quiz gesucht; veraltete Begriffe (ÜK 3, Bauregelliste, EnEV, VO 305/2011, DIN 1045-1, DIN 18195, Ü-Zeichen, Prüfingenieur u. a.) im Quiz gesucht und gegen den Modultext gelesen.
+3. **Sichtung:** jeder Treffer der Arten D, Z, N (stark) und K (stark) sowie alle W-Treffer außerhalb von Rechenfragen von Hand gegen den Modultext (und bei Rechenfragen gegen die Rechnung) gelesen. Treffer sind Prüfaufträge, kein Urteil.
+
+## Ergebnis
+
+| | Anzahl |
+|---|---|
+| Fragen gesamt | 1304 (18 ohne eigene Modul-Einheit: `bauchemie`, `instandhaltung`, `zwang` je 6 – über gemeinsam genutzte Dateien, nur Zusatzsuchen) |
+| Treffer statischer Abgleich (W/K/N/Z/A) | 208 / 153 / 19 / 6 / 233 (nach Korrektur) |
+| Treffer Änderungsabgleich seit 25.10. / seit 20.10. | 40 / 62 |
+| **korrigiert** (Quiz falsch geworden) | **6 Fragen** (Tabelle 1) |
+| Fragen mit Vorschlag (strittig) | 2 (Tabelle 2) |
+| Modultext falsch | keiner gefunden |
+| Hinweis ohne Änderung | 233 Lernhilfe-Verweise auf nicht vorhandene Abschnittsnamen (Abschnitt „Hinweise“) |
+
+Die korrigierten Fragen stehen auf `verified: false` (Prüfer und Datum entfernt), `vorpruefung` mit Datum 02.11.2026, Ergebnis „korrigiert“ und Vermerk „Abgleich 02.11.: … – korrigiert“; Prüflisten mit `npx tsx scripts/pruefliste.ts` neu erzeugt. Antwortoptionen und richtige Antworten sind unverändert; alle Rechnungen bleiben gültig.
+
+### Tabelle 1 – korrigierte Fragen
+
+| Frage | Befund | vorher | nachher | Grund |
+|---|---|---|---|---|
+| `qn_bp_verkehr_pruefung_4` | Erklärung nennt den Lehrwert als normative Anforderung | „Der Wert liegt im Zielbereich 1,5 bis 4,5 Vol.-% für Deckschichten.“ | „Der Wert liegt im Lehrbereich des Moduls von 1,5 bis 4,5 Vol.-%; maßgebend sind die Anforderungen je Mischgutsorte nach TL/ZTV Asphalt-StB 26.“ | Modul seit T7-PR-1 (`module-tranche-7.md`): Bereich ist pauschaler Lehrwert, „Konform (ZTV Asphalt-StB Zielbereich … für Deckschichten)“ wurde dort als falsch entfernt; Quiz nicht nachgezogen (D-Treffer „Zielbereich“) |
+| `qn_bp_verkehr_pruefung_5` | wie oben, in Frage, Erklärung und Rückmeldung 2 | „nach dem Zielbereich des Moduls“; „Der Zielbereich für Deckschichten liegt bei 1,5 bis 4,5 Vol.-%.“; „Der Zielbereich im Modul …“ | „nach dem Lehrbereich des Moduls“; „Der Lehrbereich des Moduls liegt bei 1,5 bis 4,5 Vol.-% (maßgebend sind die Anforderungen je Mischgutsorte nach TL/ZTV Asphalt-StB 26).“; „Der Lehrbereich im Modul …“ | wie oben; T7-PR-1 hatte die Frage wegen „des Moduls“ als richtig belassen, die Erklärung verallgemeinerte den Lehrwert aber wieder auf „Deckschichten“ |
+| `qn_rechnung_mauerwerk_1` | Frage schreibt dem Modul einen festen KS-Wert zu | „Für Kalksandstein-Mauerwerk setzt das Modul f_k = 5,6 N/mm² … an.“ | „Für Kalksand-Lochsteine KS L, SFK 12, mit Normalmauermörtel NM III weist die f_k-Tafel des Moduls f_k = 5,6 N/mm² aus; das Modul rechnet mit … ζ = 0,85 und γ_M = 1,5.“ | Modul wählt f_k seit 26.10. aus der NA-Tafel (`FK_TAFEL_NA` in `src/calc/mauerwerk.ts`, Vorgabe KS XL 12 DM mit 9,4 N/mm²); die feste Belegung KS 5,6 / HLz 3,2 ist entfallen (D-Treffer „5,6 N/mm²“). 5,6 N/mm² ist der Tafelwert KS L 12/NM III. f_d = 3,17 N/mm² unverändert |
+| `qn_rechnung_mauerwerk_6` | Frage nennt KS 5,6 und HLz 3,2 N/mm² als Werte „nach dem Modul“ | „Welcher Vergleich der Ausnutzungsgrade nach dem Modul (f_d = ζ · f_k/γ_M; KS: f_k = 5,6; HLz: f_k = 3,2 N/mm²) ist richtig?“ | „Welcher Vergleich der Ausnutzungsgrade ist mit dem Ansatz des Moduls (f_d = ζ · f_k/γ_M) richtig, wenn für Kalksandstein f_k = 5,6 N/mm² (KS L 12, NM III) und für den Hochlochziegel f_k = 3,2 N/mm² angenommen werden?“ | wie oben; die Tafel enthält für Hochlochziegel 3,5 bis 5,7 N/mm², 3,2 ist jetzt als Annahme bezeichnet. Ausnutzungsgrade unverändert (`tests/quizRechenfragen.test.ts`) |
+| `q_ho_1` | Rückmeldung 3 ordnet die Fassadenschalung GK 3.2 zu | „GK 3.2 betrifft bewittertes Holz ohne Erdkontakt, z. B. eine ungeschützte Fassadenschalung.“ | „GK 3.2 betrifft bewittertes Holz ohne Erdkontakt, an dem sich Wasser ansammeln kann, z. B. waagerechte Terrassendielen.“ | GK-Matrix des Moduls (`Holzkorrosion.tsx`): GK 3.1 „Wasser kann rasch abfließen“, GK 3.2 „Feuchtigkeitsansammlungen möglich“; `qn_holzkorrosion_4` desselben Moduls nennt senkrechte Fassaden als GK 3.1 und Terrassendielen als GK 3.2 (DIN 68800-1) |
+| `qn_materialoptimierung_2` | Lernhilfe nennt einen falschen Richtlinientitel | „DAfStb-Richtlinie: Treibhausgasoptimierte Tragwerke aus Stahlbeton“ | „DAfStb-Richtlinie: Treibhausgasreduzierte Tragwerke aus Beton, Stahlbeton oder Spannbeton“ | Modul (Reiter und Literatur) führt den Titel der Richtlinie seit der Modulprüfung so; Quiz-Lernhilfe nicht nachgezogen (D-Treffer Wortfolge) |
+
+### Tabelle 2 – Fragen mit Vorschlag (nicht geändert)
+
+| Frage | Befund | Vorschlag |
+|---|---|---|
+| `qn_grundlagen_2` (Mehlkorn) | **Quiz und Modul widersprechen sich in der Normausgabe.** Die Frage wurde am 26.10. auf `normRef` „DIN 1045-2:2023-08 (Mehlkorngehalt)“ und „Zwischenwerte … sind nach DIN 1045-2 linear zu interpolieren“ umgestellt (Beleg: Heidelberg Materials, Betontechnische Daten). Das Modul sagt dagegen: „Die Werte entsprechen DIN 1045-2:2008-08 (Tab. F.4.1/F.4.2). In DIN 1045-2:2023-08 sind Höchstwerte des Mehlkorngehalts entfallen; stattdessen gilt ab F3 und C25/30 ein Mindest-Leimvolumen“ (F-Freigabe-Stelle laut Tranche 9). | Am Normtext DIN 1045-2:2023-08 klären. Trifft der Modultext zu: Quiz auf `normRef` „DIN 1045-2:2008-08, Tab. F.4.1 (Lehrwerte des Moduls)“ und „Zwischenwerte werden wie im Modul linear interpoliert“ zurückstellen. Gelten die Höchstwerte weiter: Modultext berichtigen. Bis dahin beide Stellen „vorläufig, Normprüfung ausstehend“. |
+| `qn_holzbau_verbindung_4` (Ausziehen Schraube) | Die Frage rechnet mit „Lehrwert f_ax,k = 12 N/mm²“ und F_ax,Rk = f_ax,k · k_α · (ρ_k/350)^0,8 · d · l_ef (Form der DIN EN 1995-1-1, Gl. (8.40a) mit deklariertem Ausziehparameter): 10,4 kN. Das Modul (Kern seit Tranche 10) rechnet nur noch mit Gl. (8.39) f_ax,k = 0,52 · d^−0,5 · l_ef^−0,1 · ρ_k^0,8; für d = 8 mm, l_ef = 100 mm, ρ_k = 385 kg/m³: f_ax,k = 13,6 N/mm², F_ax,Rk = 10,9 kN. Die Frage ist in sich richtig, der Lehrwert 12 N/mm² steht aber nicht mehr im Modul. T10-HV-2 (NA DE) ist offen. | Entweder Erklärung um „Gl. (8.40a) mit deklariertem f_ax,k (Herstellerangabe nach EN 14592/ETA); das Modul rechnet mit Gl. (8.39)“ ergänzen, oder die Frage auf Gl. (8.39) umstellen (≈ 10,9 kN, Distraktoren neu). Vorschlag: erste Variante, weil sie den Normweg (8.40a) zeigt; nach Entscheidung zu T10-HV-2. |
+
+### Modultext-Befunde
+
+Kein Fall, in dem der Modultext falsch und die Frage richtig war. Die „umgekehrten“ D-Treffer (Quiz korrigiert, Modul nicht) waren alle erklärt: `qn_rechnung_schallschutz_2/_3/_5` (alte Massekurve 32,4 · lg m′ − 26,0 steht nur noch als Historie in `src/calc/schall.ts`), `qn_grundlagen_2` (Tabelle 2), `q_iax_3`, `q_ab_2`, `qn_rechnung_mauerwerk_5` (Umformulierung).
+
+### Hinweise (keine Änderung)
+
+- **Lernhilfe-Abschnittsnamen (A):** 233 Fragen (222 freigegeben) verweisen mit „Arbeiten Sie den Abschnitt „…“ … durch“ auf einen Abschnittsnamen, der im Modultext nicht vorkommt (Beispiele: `q_einh_1` „Spannungseinheiten“, `q_ec0_3` „Kombinationsbeiwerte ψ₀“, `q_prob_3` „Rückprallhammer: Schlagrichtung“). Die Namen beschreiben das Thema, sind aber keine Überschriften; fachlich ist nichts falsch, deshalb keine Korrektur (würde 222 Freigaben aufheben). Vorschlag: Vorlage künftig „Wiederholen Sie im Modul … das Thema „…““ oder bei der nächsten Überarbeitung je Modul echte Überschriften einsetzen; Liste mit `node scripts/qa/quiz-text-abgleich.mjs --json <datei>` (Art A).
+- **Treffer ohne Befund:** Die übrigen W-/K-Treffer sind Rechenergebnisse und Eingabewerte, Werte aus anderen Beispielen desselben Moduls oder allgemein richtige Klassenangaben, die das Modul nicht wiederholt (z. B. Konsistenzklassen F1–F6 in `q_lab_2`, Sulfatgrenzen XA1–XA3 in `q_dh_3`, RStO-Belastungsklassen, DIN 18534-Klassen). Stichprobenhaft gegen die Normwerte gelesen, kein Fehler. Die Z-Abweichungen (6) sind in `tests/quizTextAbgleich.test.ts` einzeln begründet.
+- **Grenzen des Skripts:** Die drei Befunde der Nachstichprobe 4 (`q_vdi_1` Zuordnung „Hallen mit großen Stützweiten (CC3)“, `q_bpx_5` Einstufung K = 0,276, `qn_rechnung_stahlbeton_4` Rundung μ_lim) findet es nicht: Es erkennt wörtlich abweichende Werte, Klassen, Ausgaben und gestrichene Wortlaute, aber keine Fehl-Interpretationen von Bereichsgrenzen, Rundungen gerechneter Werte oder sinngemäß falsche Zuordnungen. Diese bleiben Aufgabe der Nachrechnung und der Durchsicht (Vorschlag aus NS4: bei jeder Moduländerung den Quiz-Pool desselben Moduls nach dem geänderten Begriff durchsuchen – dafür jetzt `--seit <rev> --modul <id>`).
+
+## Dauerprüfung
+
+- **`tests/quizTextAbgleich.test.ts`** (neu, rund 2 s): (1) Erkennung des Skripts (LaTeX-Vereinheitlichung, Größe = Wert, Klassen, W-/N-/K-Treffer an Mustertexten); (2) **Ratsche Kennwerte:** alle Kennwerte in Antwort, Erklärung, Rückmeldungen und Lernhilfe aller Fragen werden gegen die zentralen Konstanten geprüft – jede neue Abweichung (etwa nach einer Änderung von `gwpLehrwerte.ts`, `zementGwp.ts`, `kennwerte.ts`, `SCHWINDBEIWERTE`, `CONCRETE`, QNG- oder A4-Werten) schlägt fehl, bis die Frage nachgezogen oder die Abweichung begründet in `ERLAUBT` steht; eine nicht mehr auftretende Ausnahme muss gestrichen werden; (3) **α_E** (Basalt 1,2, Quarzit 1,0, Kalkstein 0,9, Sandstein 0,7) in allen Fragen, die α_E nennen, gegen `ALPHA_E` (`src/calc/betonkennwerte.ts`).
+- **`tests/quizRechenfragen.test.ts`:** f_k für Kalksandstein jetzt aus der Tafel (`fkNA('KSL-12-NMIII')`) statt als Zahl; ändert sich der Tafelwert, fallen `qn_rechnung_mauerwerk_1/_5/_6` auf.
+- Aufruf für die nächste Korrekturrunde: `node scripts/qa/quiz-text-abgleich.mjs --seit <Stand vor der Runde> --json-seit <datei>` – die D-Treffer sind die Fragen, deren Modul sich geändert hat.
+
+## Geänderte Dateien
+
+`scripts/qa/quiz-text-abgleich.mjs` (neu), `tests/quizTextAbgleich.test.ts` (neu), `tests/quizRechenfragen.test.ts`, `src/data/quiz.json` (6 Fragen), `docs/pruefung/quiz-cluster-*.md` (neu erzeugt), dieser Bericht.
