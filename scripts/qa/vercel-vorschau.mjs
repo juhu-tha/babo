@@ -1,0 +1,68 @@
+#!/usr/bin/env node
+/**
+ * Lokale Vorschau des statischen Betriebs wie auf Vercel (docs/betrieb-vercel.md) – ohne Express-Server.
+ * Liefert dist/ aus und wendet vercel.json an: redirects, Dateisystem mit cleanUrls/trailingSlash, rewrites,
+ * 404.html, headers (Sicherheits-Header einschließlich CSP, Cache-Control). /api/* gibt es nicht (404).
+ *
+ *   BB_STATISCH=1 npm run build && rm -f dist/server.cjs && cp dist/index.html dist/404.html   (= buildCommand)
+ *   PORT=4501 node scripts/qa/vercel-vorschau.mjs [dist]
+ *
+ * Nachbildung nur für die in vercel.json benutzten Muster (feste Pfade und „/<präfix>/(.*)“).
+ */
+import fs from 'fs';
+import http from 'http';
+import path from 'path';
+
+const wurzel = path.resolve(process.argv[2] ?? 'dist');
+const konfig = JSON.parse(fs.readFileSync(path.resolve('vercel.json'), 'utf8'));
+const port = Number(process.env.PORT) || 4501;
+
+const TYPEN = {
+  '.html': 'text/html; charset=utf-8', '.js': 'text/javascript; charset=utf-8', '.mjs': 'text/javascript; charset=utf-8',
+  '.css': 'text/css; charset=utf-8', '.json': 'application/json; charset=utf-8', '.svg': 'image/svg+xml',
+  '.png': 'image/png', '.jpg': 'image/jpeg', '.jpeg': 'image/jpeg', '.webp': 'image/webp', '.ico': 'image/x-icon',
+  '.woff2': 'font/woff2', '.woff': 'font/woff', '.ttf': 'font/ttf', '.txt': 'text/plain; charset=utf-8',
+  '.xml': 'application/xml; charset=utf-8', '.webmanifest': 'application/manifest+json', '.wasm': 'application/wasm',
+};
+
+/** „/(.*)“, „/assets/(.*)“ oder fester Pfad → RegExp */
+const muster = q => new RegExp('^' + q.split('(.*)').map(t => t.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')).join('(.*)') + '$');
+const kopfRegeln = (konfig.headers ?? []).map(r => ({ re: muster(r.source), headers: r.headers }));
+
+function datei(p) {
+  const f = path.join(wurzel, p);
+  if (!f.startsWith(wurzel)) return null;
+  try { return fs.statSync(f).isFile() ? f : null; } catch { return null; }
+}
+
+function senden(res, pfad, status, f, kopf = {}) {
+  for (const r of kopfRegeln) if (r.re.test(pfad)) for (const h of r.headers) res.setHeader(h.key, h.value);
+  for (const [k, v] of Object.entries(kopf)) res.setHeader(k, v);
+  if (!f) { res.writeHead(status); return res.end(); }
+  res.setHeader('Content-Type', TYPEN[path.extname(f).toLowerCase()] ?? 'application/octet-stream');
+  res.writeHead(status);
+  fs.createReadStream(f).pipe(res);
+}
+
+http.createServer((req, res) => {
+  const url = new URL(req.url ?? '/', 'http://x');
+  let pfad;
+  try { pfad = decodeURIComponent(url.pathname); } catch { return senden(res, url.pathname, 400, null); }
+  const suche = url.search;
+  // 1. trailingSlash: false
+  if (konfig.trailingSlash === false && pfad.length > 1 && pfad.endsWith('/')) return senden(res, pfad, 308, null, { Location: pfad.replace(/\/+$/, '') + suche });
+  // 2. redirects (vor dem Dateisystem)
+  for (const r of konfig.redirects ?? []) if (muster(r.source).test(pfad)) return senden(res, pfad, r.permanent ? 308 : 307, null, { Location: r.destination + suche });
+  // 3. cleanUrls: *.html und /index → saubere Adresse
+  if (konfig.cleanUrls && /\.html$/.test(pfad) && datei(pfad)) {
+    const sauber = pfad.replace(/(\/index)?\.html$/, '') || '/';
+    return senden(res, pfad, 308, null, { Location: sauber + suche });
+  }
+  // 4. Dateisystem
+  const f = pfad === '/' ? datei('/index.html') : datei(pfad) ?? (konfig.cleanUrls ? datei(pfad + '.html') : null);
+  if (f) return senden(res, pfad, 200, f);
+  // 5. rewrites
+  for (const r of konfig.rewrites ?? []) if (muster(r.source).test(pfad)) { const z = datei(r.destination); if (z) return senden(res, pfad, 200, z); }
+  // 6. 404.html
+  return senden(res, pfad, 404, datei('/404.html'));
+}).listen(port, '127.0.0.1', () => console.log(`Vercel-Vorschau (statisch) auf http://127.0.0.1:${port} – ${wurzel}`));

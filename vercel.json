@@ -1,0 +1,90 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "framework": "vite",
+  "buildCommand": "BB_STATISCH=1 npm run build && rm -f dist/server.cjs && cp dist/index.html dist/404.html",
+  "outputDirectory": "dist",
+  "cleanUrls": true,
+  "trailingSlash": false,
+  "redirects": [
+    { "source": "/modul/start", "destination": "/", "permanent": true },
+    { "source": "/modul/aufgaben_info", "destination": "/modul/aufgaben_beton", "permanent": true },
+    { "source": "/modul/baubetrieb", "destination": "/modul/px_bauleitung", "permanent": true },
+    { "source": "/modul/bauprodukte", "destination": "/modul/bauprodukte_info", "permanent": true },
+    { "source": "/modul/bauteilbemessung", "destination": "/modul/stahlbeton_bemessung", "permanent": true },
+    { "source": "/modul/bauwerksuntersuchung", "destination": "/modul/bauwerksdiagnose", "permanent": true },
+    { "source": "/modul/biegezugversuch", "destination": "/modul/labor", "permanent": true },
+    { "source": "/modul/crrem", "destination": "/modul/lca_regulatorik", "permanent": true },
+    { "source": "/modul/daten_regeln", "destination": "/modul/nachhaltigkeit_daten_regeln", "permanent": true },
+    { "source": "/modul/datenundregeln", "destination": "/modul/nachhaltigkeit_daten_regeln", "permanent": true },
+    { "source": "/modul/digitales_gesamt", "destination": "/modul/digitales_info", "permanent": true },
+    { "source": "/modul/divider_digitales", "destination": "/modul/digitales_info", "permanent": true },
+    { "source": "/modul/dpp_epd", "destination": "/modul/dpp", "permanent": true },
+    { "source": "/modul/epbd", "destination": "/modul/nachhaltigkeit_daten_regeln", "permanent": true },
+    { "source": "/modul/ermuedung", "destination": "/modul/mechanische_pruefungen", "permanent": true },
+    { "source": "/modul/festigkeitsberechnungen", "destination": "/modul/festigkeit", "permanent": true },
+    { "source": "/modul/frischbetontemperatur", "destination": "/modul/frischbeton", "permanent": true },
+    { "source": "/modul/hydratation", "destination": "/modul/hydratation_folgen", "permanent": true },
+    { "source": "/modul/infos_info", "destination": "/modul/informationsquellen", "permanent": true },
+    { "source": "/modul/kreislaufwirtschaft", "destination": "/modul/kreislauf_dpp", "permanent": true },
+    { "source": "/modul/lca", "destination": "/modul/oekobilanz_lca", "permanent": true },
+    { "source": "/modul/lcc", "destination": "/modul/lebenszyklus_kosten", "permanent": true },
+    { "source": "/modul/lebensdauern", "destination": "/modul/lebenszyklus_kosten", "permanent": true },
+    { "source": "/modul/lokales", "destination": "/modul/labor", "permanent": true },
+    { "source": "/modul/moduluebersicht", "destination": "/modul/modulstruktur", "permanent": true },
+    { "source": "/modul/nachhaltigkeit", "destination": "/modul/nachhaltigkeit_info", "permanent": true },
+    { "source": "/modul/nachhaltigkeit_regeln", "destination": "/modul/nachhaltigkeit_daten_regeln", "permanent": true },
+    { "source": "/modul/obsoleted_ref", "destination": "/modul/literatur", "permanent": true },
+    { "source": "/modul/porositaet", "destination": "/modul/baustoffkenngroessen", "permanent": true },
+    { "source": "/modul/praxisbeispiele", "destination": "/modul/px_planung", "permanent": true },
+    { "source": "/modul/preisentwicklung", "destination": "/modul/lebenszyklus_kosten", "permanent": true },
+    { "source": "/modul/produktsiegel", "destination": "/modul/zertifizierung_siegel", "permanent": true },
+    { "source": "/modul/qng", "destination": "/modul/lca_rechner", "permanent": true },
+    { "source": "/modul/ressourcen_emissionen", "destination": "/modul/ressourcen_umwelt", "permanent": true },
+    { "source": "/modul/sdg", "destination": "/modul/nachhaltigkeit_daten_regeln", "permanent": true },
+    { "source": "/modul/sonderbeton", "destination": "/modul/sonderbetone", "permanent": true },
+    { "source": "/modul/spannbeton", "destination": "/modul/spannbeton_grundlagen", "permanent": true },
+    { "source": "/modul/stahlbau", "destination": "/modul/stahl", "permanent": true },
+    { "source": "/modul/stahlbeton", "destination": "/modul/stahlbeton_bemessung", "permanent": true },
+    { "source": "/modul/statistische_versuchsplanung", "destination": "/modul/statistik", "permanent": true },
+    { "source": "/modul/steifigkeit", "destination": "/modul/emodul", "permanent": true },
+    { "source": "/modul/stoffstroeme", "destination": "/modul/nachhaltigkeit_daten_regeln", "permanent": true },
+    { "source": "/modul/taxonomie", "destination": "/modul/nachhaltigkeit_daten_regeln", "permanent": true },
+    { "source": "/modul/vl_baustoffe", "destination": "/modul/vl_baustoffkunde", "permanent": true },
+    { "source": "/modul/vl_bestand", "destination": "/modul/vl_bauen_im_bestand", "permanent": true },
+    { "source": "/modul/vl_instandsetzung", "destination": "/modul/vl_instandhaltung", "permanent": true },
+    { "source": "/modul/vl_nachhaltigkeit", "destination": "/modul/vl_nachhaltiges_bauen", "permanent": true },
+    { "source": "/modul/vl_schaeden", "destination": "/modul/vl_bauschaeden", "permanent": true },
+    { "source": "/modul/vl_ueberblick", "destination": "/modul/vl_bauen_im_bestand", "permanent": true },
+    { "source": "/modul/vorlesung", "destination": "/modul/vl_bauen_im_bestand", "permanent": true },
+    { "source": "/modul/vorlesungen", "destination": "/modul/vl_bauen_im_bestand", "permanent": true },
+    { "source": "/modul/zementchemie", "destination": "/modul/bindemittel", "permanent": true },
+    { "source": "/modul/zertifizierung", "destination": "/modul/zertifizierung_siegel", "permanent": true }
+  ],
+  "rewrites": [
+    { "source": "/modul/admin", "destination": "/index.html" }
+  ],
+  "headers": [
+    {
+      "source": "/(.*)",
+      "headers": [
+        { "key": "Content-Security-Policy", "value": "default-src 'self'; script-src 'self' 'sha256-j4Pd9+sXhkCQ7xDaLjiQ666iC4y0Lieoov1lrGnKIsQ=' 'sha256-BFb0NML2DlVlsVkGsAw4aK2USvCEigFPAzjY26sxvJo=' https://translate.google.com https://translate.googleapis.com https://translate-pa.googleapis.com; style-src 'self' 'unsafe-inline' https://translate.googleapis.com https://www.gstatic.com; img-src 'self' data: blob: https:; font-src 'self' data:; connect-src 'self' data: blob: https://translate.googleapis.com https://translate-pa.googleapis.com; media-src 'self' blob:; worker-src 'self' blob:; manifest-src 'self'; frame-src 'self' https://www.youtube-nocookie.com https://www.youtube.com; frame-ancestors 'self' https://baustoffboard.de https://www.baustoffboard.de; object-src 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests" },
+        { "key": "X-Content-Type-Options", "value": "nosniff" },
+        { "key": "Referrer-Policy", "value": "strict-origin-when-cross-origin" },
+        { "key": "Permissions-Policy", "value": "camera=(), microphone=(), geolocation=(), payment=()" },
+        { "key": "Strict-Transport-Security", "value": "max-age=31536000" }
+      ]
+    },
+    {
+      "source": "/assets/(.*)",
+      "headers": [
+        { "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }
+      ]
+    },
+    {
+      "source": "/fonts/(.*)",
+      "headers": [
+        { "key": "Cache-Control", "value": "public, max-age=604800" }
+      ]
+    }
+  ]
+}

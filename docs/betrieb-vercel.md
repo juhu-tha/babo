@@ -1,0 +1,70 @@
+# Betrieb auf Vercel (statisch, ohne Server)
+
+Entscheidung 02.11.2026: Die Seite läuft auf Vercel (https://babo-zeta.vercel.app/) rein statisch; der Express-Server (`server.ts`) wird dort weggelassen, alle `/api`-Adressen antworten mit 404. Der Betrieb mit Server (`npm start`, `Dockerfile`, docs/betrieb-cloud-run.md) bleibt unverändert möglich.
+
+## Dateien
+
+| Datei | Zweck |
+|---|---|
+| `vercel.json` | Build-Befehl, Ausgabeordner `dist`, saubere Adressen, Weiterleitungen, Sicherheits- und Cache-Header |
+| `scripts/vercelKonfig.ts` | erzeugt in `vercel.json` die Content-Security-Policy (Hashes der Inline-Skripte) und die Weiterleitungen der Modul-Aliase; ohne Argument nur Prüfung |
+| `src/data/betriebsart.ts` | Statik-Modus (`STATISCH`, `SERVER_FUNKTIONEN`) aus dem Build-Schalter `BB_STATISCH=1` |
+| `scripts/qa/vercel-vorschau.mjs` | lokale Vorschau von `dist/` mit den Regeln aus `vercel.json`, ohne Express |
+| `tests/statikModus.test.ts` | Regressionstest: Schalter, /api-Sperren, `vercel.json`, Ort des Server-Bundles |
+
+## Build
+
+`vercel.json` setzt den Build-Befehl (er hat Vorrang vor der Einstellung im Vercel-Projekt):
+
+```
+BB_STATISCH=1 npm run build && rm -f dist/server.cjs && cp dist/index.html dist/404.html
+```
+
+- `npm run build` bleibt unverändert (package.json wird nicht angefasst) und erzeugt wie bisher `dist/server.cjs` für `Dockerfile` und `scripts/qa/check-bundle.mjs`.
+- `rm -f dist/server.cjs`: Das Server-Bundle wird vor der Veröffentlichung entfernt (Befund 01.11.2026: `/server.cjs` war öffentlich abrufbar). Eine `.vercelignore` hilft hier nicht – sie wirkt nur auf die hochgeladenen Quelldateien, nicht auf die Build-Ausgabe.
+- `cp dist/index.html dist/404.html`: Unbekannte Adressen bekommen die App mit Status 404 (die App zeigt dann die Startseite) – wie im Server für unbekannte Modul-IDs.
+
+## Statik-Modus
+
+`BB_STATISCH=1` setzt in `vite.config.ts` die Konstante `__BB_STATISCH__` (Client-Build und Vorrendern). Ein Build-Schalter statt einer Probe von `/api/health`, weil die Probe selbst ein /api-Aufruf mit 404 und damit ein Konsolenfehler wäre und ihr Ergebnis erst nach dem ersten Bild feststünde. Abgeschaltet sind dann:
+
+| Funktion | Endpunkt | Verhalten statisch |
+|---|---|---|
+| Besucherzähler | `/api/analytics/visit` | kein Aufruf |
+| Kurzfragebogen | `/api/feedback` | wird nicht eingeblendet |
+| Live-Abstimmung in den Vorlesungen, Abstimmungsansicht `?poll=…` | `/api/polls…` | ausgeblendet, `?poll=` öffnet die normale Seite |
+| Admin-Anmeldung und -Sitzung | `/api/admin…` | Hinweis statt Anmeldeformular |
+| KI-Analyse | `/api/gemini/analyze` | ohnehin abgeschaltet (`src/data/kiSchalter.ts`), statisch immer aus |
+
+Neue `/api`-Aufrufe im Client meldet `tests/statikModus.test.ts`, bis sie hinter `SERVER_FUNKTIONEN` stehen.
+
+## Adressen
+
+- `cleanUrls`: `/modul/<id>` liefert die vorgerenderte `dist/modul/<id>.html`; `/modul/<id>.html` und `/index.html` leiten auf die saubere Adresse um, `trailingSlash: false` entfernt einen Schrägstrich am Ende.
+- Aliase (`AKTIVE_ALIASE` in `src/registry/modules.ts`) und `/modul/start` → dauerhafte Weiterleitung (308) auf die kanonische Adresse.
+- `/modul/admin` (nicht vorgerendert) → `index.html`.
+- Unbekannte Modul-IDs, abgeschaltete Seiten (Lernpfade) und alle übrigen Adressen → `404.html` mit Status 404. Groß geschriebene IDs (`/modul/Glas`) zeigen ebenfalls die App mit Status 404; sie stellt die Adresse auf die kanonische Schreibweise um.
+
+## Header
+
+- Content-Security-Policy erzwungen (Begründung je Direktive in `scripts/vercelKonfig.ts`): `script-src` ohne `'unsafe-inline'`, die zwei Inline-Skripte per SHA-256; `frame-ancestors` erlaubt die Einbettung über baustoffboard.de. Kein `X-Frame-Options`, weil es diese Einbettung nicht zulassen könnte.
+- `X-Content-Type-Options: nosniff`, `Referrer-Policy` und `Permissions-Policy` wie `server.ts`, `Strict-Transport-Security`.
+- `/assets/*` (Dateinamen mit Hash): `public, max-age=31536000, immutable`; `/fonts/*`: eine Woche; alles andere Vercel-Standard (immer neu prüfen).
+
+Rückweg bei CSP-Problemen: in `vercel.json` den Schlüssel `Content-Security-Policy` in `Content-Security-Policy-Report-Only` umbenennen (ein Commit).
+
+## Pflege
+
+- Nach Änderungen an `scripts/startschale-boot.js`, `scripts/vorladen-boot.js` oder an den Aliasen: `npx tsx scripts/vercelKonfig.ts --schreiben` (sonst schlägt `npm test` fehl).
+- Lokale Prüfung wie auf Vercel:
+
+```
+BB_STATISCH=1 npm run build && rm -f dist/server.cjs && cp dist/index.html dist/404.html
+PORT=4501 node scripts/qa/vercel-vorschau.mjs
+```
+
+## In Vercel prüfen (nach dem Merge, beim nächsten Deploy)
+
+1. Projekt → Settings → Build and Deployment: Framework „Vite“, Output Directory `dist`; abweichende Angaben werden von `vercel.json` überschrieben, sollten aber nicht widersprechen.
+2. Settings → Environment Variables: keine Geheimnisse (`GEMINI_API_KEY`, `ADMIN_PASSWORD` u. a.) – sie werden statisch nicht gebraucht; insbesondere keine Variable mit Präfix `VITE_`, denn die landet im ausgelieferten JavaScript.
+3. Nach dem Deploy: `https://babo-zeta.vercel.app/server.cjs` → 404; `/modul/glas` → 200; Antwort-Header enthalten `Content-Security-Policy`; Browser-Konsole auf Start- und Modulseiten ohne Fehler.
