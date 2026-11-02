@@ -3,9 +3,10 @@
  * Startseite (Rahmen und Begrüßungskarte, scripts/startschale.html) in <div id="root"> von dist/index.html.
  * Sie erscheint, sobald HTML und CSS da sind – ohne auf den Einstiegs-Chunk (≈ 100 kB gzip) zu warten; React
  * ersetzt sie beim ersten Rendern. Sichtbar ist sie nur, wenn das Inline-Skript scripts/startschale-boot.js
- * (Anfang von <head>) die Klasse bb-schale setzt – nicht bei Modul-Direktlink, Umfrage, Englisch oder anderer
- * Seitenbreite, weil das erste Bild von React dann anders aussähe. Im Dunkelmodus steht sie seit 02.11.2026 auch:
- * Ihr Markup ist hell und dunkel gleich (Farben über dark:-Klassen, Klasse dark vor dem ersten Bild gesetzt).
+ * (Anfang von <head>) die Klasse bb-schale setzt – nicht bei Modul-Direktlink, Umfrage oder Englisch, weil das
+ * erste Bild von React dann anders aussähe. Im Dunkelmodus und in jeder Seitenbreite steht sie seit 02.11.2026 auch:
+ * Ihr Markup ist dafür gleich (Farben über dark:-Klassen, Breite über breite-standard:/breite-full:; die Klassen
+ * dark und bb-breite-* setzt das Boot-Skript vor dem ersten Bild).
  * Die Versionszeile kommt aus src/data/stand.ts (Version aus package.json, Stand = Build-Datum über BB_STAND). Neu erzeugen: scripts/qa/startschale-erzeugen.mjs.
  */
 import fs from 'fs';
