@@ -4,7 +4,7 @@
  * Reiner Rechenkern – geprüft in tests/stahlbau.test.ts.
  */
 import { formatDeZahl } from '../utils/numberFormat';
-import { type Hinweis, hatFehler, istEndlich, muss, bereich } from './plausibilitaet';
+import { type Hinweis, hatFehler, istEndlich, muss, bereich, nurGueltig } from './plausibilitaet';
 import { BAUSTAHL_EC3, E_BAUSTAHL } from '../data/kennwerte';
 import { GWP_LEHRWERTE } from '../data/gwpLehrwerte';
 
@@ -118,11 +118,11 @@ export function bemesseZugstab(e: ZugEingabe): ZugErgebnis {
     muss(h, e.Anet > 0 && e.Anet <= e.A, 'Anet', 'Die Nettoquerschnittsfläche A_net muss zwischen 0 und A liegen.');
     muss(h, e.nEd >= 0, 'nEd', 'N_Ed ist der Betrag der Zugkraft und muss ≥ 0 sein.');
   }
-  if (hatFehler(h)) return { NplRd: 0, NuRd: 0, NtRd: 0, ausnutzung: 0, nettoMassgebend: false, hinweise: h };
+  if (hatFehler(h)) return nurGueltig({ NplRd: 0, NuRd: 0, NtRd: 0, ausnutzung: 0, nettoMassgebend: false, hinweise: h });
   const NplRd = (e.A * 100 * g.fy) / EC3_NA_DE.gammaM0 / 1000;          // Gl. (6.6)
   const NuRd = (0.9 * e.Anet * 100 * g.fu) / EC3_NA_DE.gammaM2 / 1000;  // Gl. (6.7)
   const NtRd = Math.min(NplRd, NuRd);
-  return { NplRd, NuRd, NtRd, ausnutzung: e.nEd / NtRd, nettoMassgebend: NuRd < NplRd, hinweise: h };
+  return nurGueltig({ NplRd, NuRd, NtRd, ausnutzung: e.nEd / NtRd, nettoMassgebend: NuRd < NplRd, hinweise: h });
 }
 
 // ---------------------------------------------------------------------------------------------
@@ -138,7 +138,7 @@ export function biegewiderstandY(p: Walzprofil, guete: Stahlguete): BiegeErgebni
   const hinweise: Hinweis[] = [];
   if (klasse.klasse === 4) hinweise.push({ stufe: 'warnung', feld: 'klasse', text: 'Querschnittsklasse 4 unter Biegung: M_c,Rd mit W_eff nach DIN EN 1993-1-5 – hier nicht berechnet.' });
   const McRd = klasse.klasse <= 2 ? MplRd : MelRd;
-  return { klasse, MplRd, MelRd, McRd, hinweise };
+  return nurGueltig({ klasse, MplRd, MelRd, McRd, hinweise });
 }
 
 // ---------------------------------------------------------------------------------------------
@@ -215,7 +215,7 @@ export function bemesseDruckstab(e: DruckstabEingabe): DruckstabErgebnis {
   const p = profil(e.profil);
   const g = STAHLGUETEN[e.guete];
   if (hatFehler(hinweise) || !p || !g) {
-    return { p, fy: g?.fy ?? 0, eps: 0, lambda1: 0, klasse: null, NcRd: 0, y: LEER_ACHSE, z: LEER_ACHSE, vorschlagY: 'b', vorschlagZ: 'c', NbRd: 0, NRd: 0, massgebend: 'z', ausnutzung: 0, vernachlaessigbar: false, hinweise };
+    return nurGueltig({ p, fy: g?.fy ?? 0, eps: 0, lambda1: 0, klasse: null, NcRd: 0, y: LEER_ACHSE, z: LEER_ACHSE, vorschlagY: 'b', vorschlagZ: 'c', NbRd: 0, NRd: 0, massgebend: 'z', ausnutzung: 0, vernachlaessigbar: false, hinweise });
   }
   const fy = g.fy;
   const klasse = klassifiziere(p, fy, 'druck');
@@ -252,7 +252,7 @@ export function bemesseDruckstab(e: DruckstabEingabe): DruckstabErgebnis {
   if (lqMax > 2) {
     hinweise.push({ stufe: 'warnung', feld: 'schlank', text: `Sehr schlanker Stab (λ̄ = ${formatDeZahl(lqMax, 2)}): Die Tragfähigkeit liegt weit unter A·f_y; ein steiferes Profil oder kürzere Knicklängen sind meist wirtschaftlicher.` });
   }
-  return { p, fy, eps: klasse.eps, lambda1: lambda1(fy), klasse, NcRd, y, z, vorschlagY, vorschlagZ, NbRd, NRd, massgebend, ausnutzung, vernachlaessigbar, hinweise };
+  return nurGueltig({ p, fy, eps: klasse.eps, lambda1: lambda1(fy), klasse, NcRd, y, z, vorschlagY, vorschlagZ, NbRd, NRd, massgebend, ausnutzung, vernachlaessigbar, hinweise });
 }
 
 // ---------------------------------------------------------------------------------------------

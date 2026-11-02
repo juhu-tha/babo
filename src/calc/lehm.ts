@@ -11,7 +11,7 @@
  * Geändert: Die stillen Untergrenzen (ρ ≥ 1200, f ≥ 0,5, s ≥ 0,1) entfallen. Sie wirkten im Reglerbereich nie;
  * außerhalb des Kalibrierbereichs warnt der Kern stattdessen. Reiner Rechenkern – geprüft in tests/lehm.test.ts.
  */
-import { type Hinweis, istEndlich, hatFehler, muss, bereich } from './plausibilitaet';
+import { type Hinweis, istEndlich, hatFehler, muss, bereich, nurGueltig } from './plausibilitaet';
 
 /** Bereich der Regler im Modul (Teile bzw. % Herstellfeuchte), in dem das Lehrmodell gezeigt wird */
 export const LEHM_MODELLBEREICH = { tonProzent: [3, 60], sandProzent: [15, 85], wasserProzent: [5, 25] } as const;
@@ -29,7 +29,7 @@ export function lehmSchaetzmodell(e: LehmEingabe): LehmErgebnis {
   muss(h, e.ton >= 0 && e.schluff >= 0 && e.sand >= 0 && e.ton + e.schluff + e.sand > 0, 'anteile', 'Die Anteile dürfen nicht negativ sein, ihre Summe muss größer als 0 sein.');
   muss(h, e.wasser >= 0 && e.wasser < 100, 'wasser', 'Die Herstellfeuchte muss zwischen 0 und 100 % liegen.');
   if (hatFehler(h)) {
-    return { tonProzent: NaN, schluffProzent: NaN, sandProzent: NaN, rohdichte: NaN, druckfestigkeit: NaN, schwinden: NaN, lambda: NaN, sorption: NaN, gueltig: false, hinweise: h };
+    return nurGueltig({ tonProzent: NaN, schluffProzent: NaN, sandProzent: NaN, rohdichte: NaN, druckfestigkeit: NaN, schwinden: NaN, lambda: NaN, sorption: NaN, gueltig: false, hinweise: h });
   }
   const summe = e.ton + e.schluff + e.sand;
   const pT = (e.ton / summe) * 100, pU = (e.schluff / summe) * 100, pS = (e.sand / summe) * 100;
@@ -43,5 +43,5 @@ export function lehmSchaetzmodell(e: LehmEingabe): LehmErgebnis {
   bereich(h, 'sand', pS, B.sandProzent[0], B.sandProzent[1], 'Sand-/Kiesanteil außerhalb des Bereichs, für den das Lehrmodell gedacht ist.');
   bereich(h, 'wasser', e.wasser, B.wasserProzent[0], B.wasserProzent[1], 'Herstellfeuchte außerhalb 5 … 25 %: Lehrmodell nicht anwendbar.');
   h.push({ stufe: 'warnung', feld: 'modell', text: 'Lehrmodell ohne Normbezug: Für Stampflehm nennt die Fachliteratur Druckfestigkeiten von etwa 2 bis 4 N/mm²; Bemessungswerte nur nach DIN 18940 und Prüfung am Baustoff.' });
-  return { tonProzent: pT, schluffProzent: pU, sandProzent: pS, rohdichte, druckfestigkeit, schwinden, lambda, sorption, gueltig: true, hinweise: h };
+  return nurGueltig({ tonProzent: pT, schluffProzent: pU, sandProzent: pS, rohdichte, druckfestigkeit, schwinden, lambda, sorption, gueltig: true, hinweise: h });
 }

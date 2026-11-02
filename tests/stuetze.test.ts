@@ -1,5 +1,6 @@
 // Rechenkern Stützenbemessung (Umsetzungsplan Phase 4, AP 4.3)
 import { bemesseStuetze, betonDruckPR, interaktionskurve, muGrenze, type StuetzeEingabe } from '../src/calc/stuetze';
+import { keinErgebnis, zahlenPassen } from './hilfen/keinErgebnis';
 
 const fehler: string[] = [];
 const pruefe = (ok: boolean, msg: string) => { if (!ok) fehler.push(msg); };
@@ -91,14 +92,14 @@ pruefe(rS2.as_tot_req > rS2.as_tot_req_block, 'Parabel-Rechteck liegt bei hoher 
 // 4. Unsinnige Eingaben
 for (const u of [{ d1: 15 }, { b: 0 }, { l0: 0 }, { nEd: -100 }, { fck: 0 }, { mEd: NaN }] as Partial<StuetzeEingabe>[]) {
   const ru = bemesseStuetze({ ...basis, ...u });
-  pruefe([ru.as_final, ru.mu_Ed, ru.nu_Ed].every(Number.isFinite) && ru.hinweise.some(x => x.stufe === 'fehler'), JSON.stringify(u));
+  pruefe(keinErgebnis([ru.as_final, ru.mu_Ed, ru.nu_Ed]) && ru.hinweise.some(x => x.stufe === 'fehler'), JSON.stringify(u));
 }
 // 5. Fuzz (200 Fälle, Iteration ist rechenintensiv)
 let seed = 3;
 const z = (a: number, c: number) => { seed = (seed * 1103515245 + 12345) % 2147483648; return a + (c - a) * (seed / 2147483648); };
 for (let i = 0; i < 200; i++) {
   const ru = bemesseStuetze({ b: z(-5, 100), h: z(-5, 100), d1: z(-1, 12), l0: z(-1, 12), nEd: z(-500, 8000), mEd: z(-50, 1200), fck: z(-5, 90), fyk: z(-5, 600) });
-  if (![ru.as_final, ru.mu_Ed, ru.nu_Ed, ru.lambda].every(Number.isFinite)) { pruefe(false, `Fuzz ${i}`); break; }
+  if (!zahlenPassen(ru, [ru.as_final, ru.mu_Ed, ru.nu_Ed, ru.lambda])) { pruefe(false, `Fuzz ${i}`); break; }
 }
 
 if (fehler.length) { for (const f of fehler) console.error(`FAIL: ${f}`); process.exit(1); }

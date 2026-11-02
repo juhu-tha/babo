@@ -9,7 +9,7 @@
  */
 import { EC2_NA_DE } from '../data/normParams';
 import { fcdBeton } from '../data/kennwerte';
-import { type Hinweis, bereich, hatFehler, istEndlich, muss } from './plausibilitaet';
+import { type Hinweis, bereich, hatFehler, istEndlich, muss, nurGueltig } from './plausibilitaet';
 
 export interface DurchstanzEingabe {
   form: 'rund' | 'rechteckig';
@@ -64,7 +64,9 @@ export interface DurchstanzErgebnis {
 
 export function pruefeDurchstanzen(e: DurchstanzEingabe): Hinweis[] {
   const h: Hinweis[] = [];
-  muss(h, istEndlich(e.vEd, e.d, e.c, e.cx, e.cy, e.fck, e.rhoL, e.beta ?? 1.1, e.aRand ?? 0), 'eingabe', 'Alle Eingaben müssen Zahlen sein.');
+  // Grenzfallprüfung 02.11.2026: f_yk mitprüfen (vorher NaN ohne Hinweis); ohne Angabe 500 N/mm²
+  muss(h, istEndlich(e.vEd, e.d, e.c, e.cx, e.cy, e.fck, e.rhoL, e.beta ?? 1.1, e.aRand ?? 0, e.fyk ?? 500), 'eingabe', 'Alle Eingaben müssen Zahlen sein.');
+  if (!hatFehler(h)) muss(h, (e.fyk ?? 500) > 0, 'fyk', 'f_yk muss größer als 0 sein.');
   if (hatFehler(h)) return h;
   muss(h, e.d > 0, 'd', 'Die statische Nutzhöhe d muss größer als 0 sein.');
   muss(h, e.form === 'rund' ? e.c > 0 : e.cx > 0 && e.cy > 0, 'c', 'Die Stützenabmessungen müssen größer als 0 sein.');
@@ -87,7 +89,7 @@ export function bemesseDurchstanzen(e: DurchstanzEingabe): DurchstanzErgebnis {
     u0: 0, u1: 0, u1Voll: 0, beta: 0, u0_d: 0, CRdc: 0, rhoL_eff: 0, vEd_stress: 0, vRdc: 0, vRdMax: 0,
     needsReinforcement: false, isOverloaded: false, asw_req_ring: 0, hinweise,
   };
-  if (hatFehler(hinweise)) return leer;
+  if (hatFehler(hinweise)) return nurGueltig(leer);
 
   const lage = e.lage ?? 'innen';
   const beta = e.beta ?? betaNaDe(lage);
@@ -119,5 +121,5 @@ export function bemesseDurchstanzen(e: DurchstanzEingabe): DurchstanzErgebnis {
   if (isOverloaded) hinweise.push({ stufe: 'warnung', feld: 'vEd', text: 'v_Ed überschreitet v_Rd,max = 1,4·v_Rd,c. Deckenstärke, Stützenquerschnitt oder Betonfestigkeit erhöhen.' });
   if (rhoL_eff < e.rhoL) hinweise.push({ stufe: 'warnung', feld: 'rhoL', text: 'ρ_l ist auf min(0,02; 0,5·f_cd/f_yd) begrenzt (NA DE 6.4.4).' });
 
-  return { u0, u1, u1Voll, beta, u0_d, CRdc, rhoL_eff, vEd_stress, vRdc, vRdMax, needsReinforcement, isOverloaded, asw_req_ring, hinweise };
+  return nurGueltig({ u0, u1, u1Voll, beta, u0_d, CRdc, rhoL_eff, vEd_stress, vRdc, vRdMax, needsReinforcement, isOverloaded, asw_req_ring, hinweise });
 }

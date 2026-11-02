@@ -10,11 +10,11 @@
  *  - pH-Wert und Hydroxidionenkonzentration bei 25 °C: pH = 14 + lg[OH⁻]
  * Reiner Rechenkern – geprüft in tests/bauchemie.test.ts.
  */
-import { type Hinweis, istEndlich, hatFehler, muss } from './plausibilitaet';
+import { type Hinweis, istEndlich, istAnzahl, hatFehler, muss, nurGueltig, MAX_STUETZSTELLEN } from './plausibilitaet';
 import { tiefeNach, zeitBisTiefe } from './schnellkarbonatisierung';
 
 export interface Ergebnis { gueltig: boolean; hinweise: Hinweis[] }
-const abschluss = (h: Hinweis[]): Ergebnis => ({ gueltig: !hatFehler(h), hinweise: h });
+const abschluss = (h: Hinweis[]): Ergebnis => nurGueltig(({ gueltig: !hatFehler(h), hinweise: h }));
 const runde1 = (x: number) => Math.round(x * 10) / 10;
 
 // ---------------------------------------------------------------- Stellmittel / Rheologie
@@ -50,11 +50,11 @@ export function stellmittelRheologie(konzentration: number, scherrate: number): 
   const dosierung: Dosierung = konzentration < STELLMITTEL_OPTIMAL.min ? 'unter' : konzentration <= STELLMITTEL_OPTIMAL.max ? 'optimal' : 'ueber';
   const kraftaufwand: Kraftaufwand = viskositaet > 15 ? 'hoch' : viskositaet < 4 ? 'leicht' : 'optimal';
   if (konzentration > 2) h.push({ stufe: 'warnung', feld: 'konzentration', text: 'Das Lehrmodell ist für Stellmittelgehalte bis 2 % angelegt.' });
-  return {
+  return nurGueltig({
     kurve: SCHERRATEN.map(s => stellmittelViskositaet(konzentration, s)),
     referenz: SCHERRATEN.map(() => VISKOSITAET_REFERENZ),
     viskositaet, ruhe: scherrate < SCHERRATE_RUHE, dosierung, kraftaufwand, ...abschluss(h),
-  };
+  });
 }
 
 // ---------------------------------------------------------------- AKR (Lehrmodell)
@@ -69,10 +69,11 @@ export interface AkrErgebnis extends Ergebnis { jahre: number[]; dehnung: number
 export function akrKurve(alkali: number, feuchte: number, jahre = 20): AkrErgebnis {
   const h: Hinweis[] = [];
   muss(h, istEndlich(alkali, feuchte, jahre) && alkali >= 0 && feuchte >= 0 && feuchte <= 100, 'eingabe', 'Alkaligehalt ≥ 0 und Feuchte zwischen 0 und 100 % erforderlich.');
-  muss(h, Number.isInteger(jahre) && jahre >= 1, 'jahre', 'Die Anzahl der Jahre muss eine ganze Zahl ≥ 1 sein.');
-  const n = Number.isInteger(jahre) && jahre >= 1 ? jahre : 0;
+  // Grenzfallprüfung 02.11.2026: Obergrenze (vorher Ausnahme „Invalid array length“ bei sehr großer Jahreszahl)
+  muss(h, istAnzahl(jahre, 1), 'jahre', `Die Anzahl der Jahre muss eine ganze Zahl von 1 bis ${MAX_STUETZSTELLEN} sein.`);
+  const n = istAnzahl(jahre, 1) ? jahre : 0;
   const t = Array.from({ length: n }, (_, i) => i + 1);
-  return { jahre: t, dehnung: t.map(x => akrDehnung(alkali, feuchte, x)), ...abschluss(h) };
+  return nurGueltig({ jahre: t, dehnung: t.map(x => akrDehnung(alkali, feuchte, x)), ...abschluss(h) });
 }
 
 // ---------------------------------------------------------------- Karbonatisierung
@@ -90,7 +91,7 @@ export const karbonatisierungstiefe = (kMmJeWurzelA: number, tJahre: number) => 
 export function zeitBisBewehrung(deckungMm: number, kMmJeWurzelA: number): { jahre: number } & Ergebnis {
   const h: Hinweis[] = [];
   muss(h, istEndlich(deckungMm, kMmJeWurzelA) && deckungMm >= 0 && kMmJeWurzelA > 0, 'eingabe', 'Deckung ≥ 0 und K > 0 erforderlich.');
-  return { jahre: zeitBisTiefe(deckungMm, kMmJeWurzelA), ...abschluss(h) };
+  return nurGueltig({ jahre: zeitBisTiefe(deckungMm, kMmJeWurzelA), ...abschluss(h) });
 }
 
 // ---------------------------------------------------------------- Stöchiometrie
@@ -154,7 +155,7 @@ export function stoffumsatz(ausgang: string, ziel: string, masseAusgang: number,
   muss(h, Number.isFinite(mAusgang) && Number.isFinite(mZiel), 'formel', 'Summenformel nicht lesbar oder Element nicht hinterlegt.');
   muss(h, istEndlich(masseAusgang, nuAusgang, nuZiel) && masseAusgang >= 0 && nuAusgang > 0 && nuZiel > 0, 'eingabe', 'Masse ≥ 0 und stöchiometrische Zahlen > 0 erforderlich.');
   const verhaeltnis = (nuZiel * mZiel) / (nuAusgang * mAusgang);
-  return { mAusgang, mZiel, verhaeltnis, masse: masseAusgang * verhaeltnis, ...abschluss(h) };
+  return nurGueltig({ mAusgang, mZiel, verhaeltnis, masse: masseAusgang * verhaeltnis, ...abschluss(h) });
 }
 
 // ---------------------------------------------------------------- pH-Wert

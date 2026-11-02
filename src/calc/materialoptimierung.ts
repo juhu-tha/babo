@@ -12,7 +12,7 @@
  *  - Klasse: ≥ 50 % A+, ≥ 40 % A, ≥ 25 % B, ≥ 10 % C, sonst Referenz (Lehreinteilung)
  * Einheiten: kg CO₂e; spezifisch je Bezugsgröße (m² bzw. m). Reiner Rechenkern – geprüft in tests/materialoptimierung.test.ts.
  */
-import { type Hinweis, hatFehler } from './plausibilitaet';
+import { type Hinweis, hatFehler, nurGueltig } from './plausibilitaet';
 import { ZEMENT_GWP_KG } from '../data/zementGwp';
 import { GWP_LEHRWERTE, LEHRBETON_C3037 } from '../data/gwpLehrwerte';
 
@@ -105,11 +105,11 @@ export function dafstbVergleich(e: DafstbEingabe): DafstbErgebnis {
   const diffAbs = Math.max(0, refTotalGwp - optTotalGwp);
   const diffPct = Math.max(0, ((refTotalGwp - optTotalGwp) / refTotalGwp) * 100);
   if (e.pruefalter === 56 && e.zement === 'cem1') hinweise.push({ stufe: 'warnung', feld: 'pruefalter', text: 'Der Abschlag für 56 Tage Prüfalter ist bei CEM I kaum begründbar (geringe Nacherhärtung).' });
-  return {
+  return nurGueltig({
     label: b.label, areaUnit: b.einheit, refArea: b.bezug,
     refBetonVol: b.referenz.betonM3, refStahlKg: b.referenz.stahlKg, optBetonVol: opt.betonM3, optStahlKg: opt.stahlKg,
     optConcreteGwpPerM3, refConcreteGwpTotal, refSteelGwpTotal, refTotalGwp, refSpecificGwp: refTotalGwp / b.bezug,
     optConcreteGwpTotal, optSteelGwpTotal, optTotalGwp, optSpecificGwp: optTotalGwp / b.bezug,
     diffAbs, diffPct, efficiencyClass: effizienzKlasseThg(diffPct), gueltig: !hatFehler(hinweise), hinweise,
-  };
+  });
 }

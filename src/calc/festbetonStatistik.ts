@@ -11,7 +11,7 @@
  *  - Schnellevaluator Konformität aus Einzelwerten (Modul Festbeton, Reiter 4): konformitaetDruck
  * Einheiten: N/mm². Reiner Rechenkern – geprüft in tests/festbetonStatistik.test.ts.
  */
-import { type Hinweis, istEndlich, hatFehler, muss, bereich } from './plausibilitaet';
+import { type Hinweis, istEndlich, hatFehler, muss, bereich, nurGueltig } from './plausibilitaet';
 import { stichprobe } from './statistik';
 import { fckCubeVonFck } from '../data/kennwerte';
 import { formatDeZahl } from '../utils/numberFormat';
@@ -73,7 +73,7 @@ export function festbetonStatistik(e: FestbetonStatistikEingabe): FestbetonStati
   bereich(hinweise, 'alphaCc', e.alphaCc, 0.8, 1.0, 'α_cc liegt außerhalb 0,8 … 1,0 (DIN EN 1992-1-1/NA: 0,85).');
   if (e.sigma >= 0 && anzeigeSigma < SIGMA_MIN_STETIG && e.pruefArt === 'stetig') hinweise.push({ stufe: 'warnung', feld: 'sigma', text: 'σ < 3 N/mm²: Für das Kriterium der stetigen Herstellung wird σ = 3 N/mm² angesetzt (DIN 1045-2).' });
   if (e.format === 'wuerfel') hinweise.push({ stufe: 'warnung', feld: 'format', text: `Würfelanzeige über f_ck,cube/f_ck = ${formatDeZahl(faktor, 3)} der Festigkeitsklasse (Tab. 3.1, linear zwischen den Klassen) statt pauschal 1,25.` });
-  return { fckCyl, fcd, faktor, anzeigeFcm, anzeigeSigma, anzeigeFck, mindestMittelwert, mindestEinzelwert, gueltig: !hatFehler(hinweise), hinweise };
+  return nurGueltig({ fckCyl, fcd, faktor, anzeigeFcm, anzeigeSigma, anzeigeFck, mindestMittelwert, mindestEinzelwert, gueltig: !hatFehler(hinweise), hinweise });
 }
 
 // ---------------------------------------------------------------- Schnellevaluator Konformität (Modul Festbeton, Reiter 4)
@@ -129,5 +129,5 @@ export function konformitaetDruck(e: KonformitaetEingabe): KonformitaetErgebnis 
   const anzahlOk = e.pruefArt === 'erst' ? n >= 3 : n >= 15;
   if (e.pruefArt === 'stetig' && n > 1 && sigmaBasis < SIGMA_MIN_KONFORMITAET) hinweise.push({ stufe: 'warnung', feld: 'werte', text: 'σ < 3 N/mm²: Nach DIN 1045-2 wird σ = 3 N/mm² angesetzt.' });
   if (e.pruefArt === 'stetig' && !hatVorserie) hinweise.push({ stufe: 'warnung', feld: 'sigma', text: 'Ohne σ der vorausgehenden Prüfreihe wird σ ersatzweise aus derselben Stichprobe geschätzt; DIN EN 206 verlangt bei stetiger Herstellung σ aus einer vorausgehenden Prüfreihe (mindestens 35 Werte).' });
-  return { n, mittelwert, minimum, s, sigmaAngesetzt, sollMittelwert, sollEinzelwert, mittelOk, einzelOk, anzahlOk, bestanden: mittelOk && einzelOk && anzahlOk, gueltig: !hatFehler(hinweise), hinweise };
+  return nurGueltig({ n, mittelwert, minimum, s, sigmaAngesetzt, sollMittelwert, sollEinzelwert, mittelOk, einzelOk, anzahlOk, bestanden: mittelOk && einzelOk && anzahlOk, gueltig: !hatFehler(hinweise), hinweise });
 }

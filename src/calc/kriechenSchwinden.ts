@@ -20,7 +20,7 @@
  * begrenzt. betonkennwerte.ts verwendet dieselben Bausteine und dieselben Hinweise (h0Hinweise) – keine Klemmung mehr.
  * Reiner Rechenkern – geprüft in tests/kriechenSchwinden.test.ts.
  */
-import { type Hinweis, istEndlich, hatFehler, muss } from './plausibilitaet';
+import { type Hinweis, istEndlich, hatFehler, muss, nurGueltig } from './plausibilitaet';
 
 export type Zementklasse = 'S' | 'N' | 'R';
 
@@ -37,6 +37,7 @@ export const ZEMENT_ALPHA: Readonly<Record<Zementklasse, number>> = { S: -1, N: 
 
 /** Geometriebeiwert k_h nach Tab. 3.3, linear interpoliert (h₀ in mm) */
 export function beiwertKh(h0: number): number {
+  if (Number.isNaN(h0)) return NaN; // Grenzfallprüfung 02.11.2026: NaN-Eingabe nicht als Zahl ausgeben
   if (h0 <= 100) return 1.0;
   if (h0 <= 200) return 1.0 - ((h0 - 100) / 100) * 0.15;
   if (h0 <= 300) return 0.85 - ((h0 - 200) / 100) * 0.10;
@@ -189,12 +190,12 @@ export function kriechSchwindModell(e: KriechSchwindEingabe): KriechSchwindModel
   h0Hinweise(hinweise, h0, 'h0');
   if (t0 < 1) hinweise.push({ stufe: 'warnung', feld: 't0', text: 't₀ < 1 d: Das wirksame Belastungsalter wird nach Gl. (B.9) auf mindestens 0,5 d gesetzt.' });
 
-  return {
+  return nurGueltig({
     eingabe: { ...e }, fcm, Ecm, alpha1, alpha2, alpha3,
     phiRH: pRH, betaFcm: bFcm, t0eff, betaT0: bT0, phi0, betaH: bH,
     betaRH: bRH, epsCd0: eCd0, kh, epsCaInf,
     gueltig: !hatFehler(hinweise), hinweise,
-  };
+  });
 }
 
 /** Kriechzahl φ(t,t₀) (lineares Kriechen, σ_c ≤ 0,45·f_ck(t₀)); 0 für t ≤ t₀ */
@@ -317,6 +318,7 @@ export const RELAXATION_ZEITPUNKTE_H: readonly number[] = [1, 10, 100, 1000, 100
  * μ = σ_pi/f_pk; für μ ≤ 0,5 wird die Relaxation vernachlässigt (Lehrannahme des Moduls). t in Stunden.
  */
 export function spannstahlRelaxation(klasse: Relaxationsklasse, mu: number, tStunden: number): number {
+  if (Number.isNaN(mu) || Number.isNaN(tStunden)) return NaN; // Grenzfallprüfung 02.11.2026: NaN-Eingabe nicht als Zahl ausgeben
   if (!(mu > 0.5)) return 0;
   const { rho1000, k1, k2 } = RELAXATION_KLASSEN[klasse] ?? RELAXATION_KLASSEN['2'];
   return k1 * rho1000 * Math.exp(k2 * mu) * Math.pow(tStunden / 1000, 0.75 * (1 - mu)) * 1e-5 * 100;
@@ -335,10 +337,12 @@ export function relaxationsVerlauf(klasse: Relaxationsklasse, mu: number, zeitpu
   muss(hinweise, istEndlich(mu), 'mu', 'Das Spannungsniveau muss eine endliche Zahl sein.');
   muss(hinweise, mu > 0 && mu < 1, 'mu', 'Das Spannungsniveau σ_pi/f_pk muss zwischen 0 und 1 liegen.');
   muss(hinweise, klasse in RELAXATION_KLASSEN, 'klasse', 'Unbekannte Relaxationsklasse (1, 2 oder 3).');
+  // Grenzfallprüfung 02.11.2026: Zeitpunkte prüfen (vorher NaN/∞ ohne Hinweis)
+  muss(hinweise, zeitpunkteH.every(t => Number.isFinite(t) && t >= 0), 't', 'Die Zeitpunkte müssen Zahlen ≥ 0 h sein.');
   if (mu > 0.8) hinweise.push({ stufe: 'warnung', feld: 'mu', text: 'μ > 0,8: Die Relaxationsgleichungen sind für übliche Spannungsniveaus bis etwa 0,8·f_pk aufgestellt.' });
   if (mu <= 0.5) hinweise.push({ stufe: 'warnung', feld: 'mu', text: 'μ ≤ 0,5: Die Relaxation wird im Lehrmodell vernachlässigt (Verlust 0).' });
   if (zeitpunkteH.some(t => t > 500000)) hinweise.push({ stufe: 'warnung', feld: 't', text: 'Über 500 000 h (≈ 57 Jahre) hinaus ist die Relaxationsfunktion nicht abgesichert.' });
-  return { zeitpunkteH: [...zeitpunkteH], verlustProzent: zeitpunkteH.map(t => spannstahlRelaxation(klasse, mu, t)), gueltig: !hatFehler(hinweise), hinweise };
+  return nurGueltig({ zeitpunkteH: [...zeitpunkteH], verlustProzent: zeitpunkteH.map(t => spannstahlRelaxation(klasse, mu, t)), gueltig: !hatFehler(hinweise), hinweise });
 }
 
 // ---------------------------------------------------------------------------------------------
@@ -383,10 +387,10 @@ export function rheologieKennwerte(wert0: number, tau: number, tEnde = 10): Rheo
   const sigmaEndeMaxwell = maxwellRelaxation(wert0, tEnde, tau);
   const sigmaEndeZener = zenerRelaxation(wert0, tEnde, tau);
   const epsEl = lehrDehnungPromille(wert0);
-  return {
+  return nurGueltig({
     halbwertszeit: halbwertszeit(tau), sigmaEndeMaxwell, sigmaEndeZener,
     abbauMaxwellProzent: ((wert0 - sigmaEndeMaxwell) / wert0) * 100,
     epsEl, epsEndeKelvin: kelvinKriechen(epsEl, tEnde, tau), epsEndeMaxwell: maxwellKriechen(epsEl, tEnde, tau),
     gueltig: !hatFehler(hinweise), hinweise,
-  };
+  });
 }

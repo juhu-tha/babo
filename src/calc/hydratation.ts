@@ -23,7 +23,7 @@
  * 2,12·ln(1 + f_cm/10) statt 0,30·f_ck^(2/3); Kennwerte werden nicht mehr vor der Weiterrechnung gerundet.
  * Reiner Rechenkern – geprüft in tests/hydratation.test.ts.
  */
-import { type Hinweis, istEndlich, hatFehler, muss, bereich } from './plausibilitaet';
+import { type Hinweis, istEndlich, hatFehler, muss, bereich, nurGueltig } from './plausibilitaet';
 import { ZEMENT_S, betaCc, ecmVonFcm } from './betonkennwerte';
 import { fctmVonFck, fckZumAlter } from '../data/kennwerte';
 import { DIN1045_3_NACHBEHANDLUNG } from '../data/normParams';
@@ -115,11 +115,13 @@ export function zementbeiwertS(klasse: ZementFestigkeitsklasse, erhaertung: Erha
 
 /** β_cc(t_e) nach Gl. (3.2), auf 1,25 begrenzt; für t_e ≤ 0 gilt β_cc = 0 */
 export function betaCcBegrenzt(s: number, te: number): number {
+  if (Number.isNaN(s) || Number.isNaN(te)) return NaN; // Grenzfallprüfung 02.11.2026: NaN-Eingabe nicht als Zahl ausgeben
   return te > 0 ? Math.min(BETA_CC_MAX, betaCc(s, te)) : 0;
 }
 
 /** Exponent α in Gl. (3.4): 1 für t < 28 d, 2/3 für t ≥ 28 d */
 export function zugExponent(t: number): number {
+  if (Number.isNaN(t)) return NaN; // Grenzfallprüfung 02.11.2026: NaN-Eingabe nicht als Zahl ausgeben
   return t < 28 ? 1.0 : 2 / 3;
 }
 
@@ -172,7 +174,7 @@ export function waermeKennwerte(zementArt: Zementart, erhaertung: Erhaertung, zu
   let { Hmax, t50 } = ZEMENT_WAERME[zementArt];
   if (erhaertung === 'R') { Hmax += 20; t50 *= 0.7; }
   if (erhaertung === 'L') { Hmax -= 20; t50 *= 1.4; }
-  const zsRatio = zement > 0 ? zusatzstoffMenge / zement : 0;
+  const zsRatio = Number.isNaN(zement) || Number.isNaN(zusatzstoffMenge) ? NaN : zement > 0 ? zusatzstoffMenge / zement : 0; // Grenzfallprüfung 02.11.2026: NaN nicht als 0
   if (zusatzstoff === 'FA') { Hmax -= 100 * zsRatio; t50 *= (1 + 0.6 * zsRatio); }
   if (zusatzstoff === 'SF') { Hmax += 100 * zsRatio; t50 *= (1 - 1.0 * zsRatio); }
   return { Hmax, t50, zsRatio };
@@ -180,11 +182,13 @@ export function waermeKennwerte(zementArt: Zementart, erhaertung: Erhaertung, zu
 
 /** Freigesetzte Hydratationswärme Q(t_e) = H_max·t_e/(t_e + t_50) in J/g */
 export function hydratationswaerme(Hmax: number, t50: number, te: number): number {
+  if (Number.isNaN(Hmax) || Number.isNaN(t50) || Number.isNaN(te)) return NaN; // Grenzfallprüfung 02.11.2026: NaN-Eingabe nicht als Zahl ausgeben
   return te > 0 ? Hmax * (te / (te + t50)) : 0;
 }
 
 /** Hydratationsgrad α(t_e) = Q(t_e)/H_max = t_e/(t_e + t_50) */
 export function hydratationsgrad(t50: number, te: number): number {
+  if (Number.isNaN(t50) || Number.isNaN(te)) return NaN; // Grenzfallprüfung 02.11.2026: NaN-Eingabe nicht als Zahl ausgeben
   return te > 0 ? te / (te + t50) : 0;
 }
 
@@ -289,7 +293,7 @@ export function hydratation(e: HydratationEingabe): HydratationErgebnis {
     fc2d: 0, fct2d: 0, E2d: 0, fc2dRel: 0, fct2dRel: 0, E2dRel: 0,
     maxTempDiff: 0, rissgefahr: 'Gering', fReq: Number.isFinite(fReq) ? fReq : 0, ausschalTage: null, gueltig: false, hinweise,
   };
-  if (hatFehler(hinweise)) return leer;
+  if (hatFehler(hinweise)) return nurGueltig(leer);
 
   // Anwendungsbereich (Warnungen; die Rechnung bleibt unverändert)
   bereich(hinweise, 'zement', zement, 250, 450, 'Zementgehalt außerhalb 250 … 450 kg/m³: Wärmeansatz nur für übliche Betone abgestimmt.');
@@ -428,7 +432,7 @@ export function reissrahmen(e: ReissrahmenEingabe): ReissrahmenErgebnis {
   muss(hinweise, zement.baseHeat >= 0 && zement.hydrationSpeed > 0 && zement.strengthSpeed > 0, 'zement', 'Die Zementkennwerte müssen positiv sein.');
   muss(hinweise, fasergehalt >= 0, 'fasergehalt', 'Der Fasergehalt darf nicht negativ sein.');
   muss(hinweise, festhaltegrad >= 0 && festhaltegrad <= 100, 'festhaltegrad', 'Der Festhaltegrad muss zwischen 0 und 100 % liegen.');
-  if (hatFehler(hinweise)) return { punkte: [], rissStunde: null, maxTemp: Number.isFinite(tFrisch) ? tFrisch : 0, gueltig: false, hinweise };
+  if (hatFehler(hinweise)) return nurGueltig({ punkte: [], rissStunde: null, maxTemp: Number.isFinite(tFrisch) ? tFrisch : 0, gueltig: false, hinweise });
   bereich(hinweise, 'fasergehalt', fasergehalt, 0, 60, 'Fasergehalt über 60 kg/m³: Faseransatz nur bis 60 kg/m³ abgestimmt.');
   bereich(hinweise, 'tFrisch', tFrisch, 5, 35, 'Frischbetontemperatur außerhalb 5 … 35 °C.');
 
@@ -462,7 +466,7 @@ export function reissrahmen(e: ReissrahmenEingabe): ReissrahmenErgebnis {
     }
     return { ...pt, displayStress, isPointCracked: gerissen };
   });
-  return { punkte, rissStunde, maxTemp, gueltig: true, hinweise };
+  return nurGueltig({ punkte, rissStunde, maxTemp, gueltig: true, hinweise });
 }
 
 // ---------------------------------------------------------------------------------------------
@@ -500,13 +504,13 @@ export function verdunstungsrate(e: VerdunstungEingabe): VerdunstungErgebnis {
   muss(hinweise, tLuft > -18 && tBeton > -18, 'temperatur', 'Die Gleichung ist nur für Temperaturen über −18 °C definiert.');
   muss(hinweise, rh >= 0 && rh <= 100, 'rh', 'Die relative Luftfeuchte muss zwischen 0 und 100 % liegen.');
   muss(hinweise, wind >= 0, 'wind', 'Die Windgeschwindigkeit darf nicht negativ sein.');
-  if (hatFehler(hinweise)) return { E: 0, Eroh: 0, kritisch: false, gueltig: false, hinweise };
+  if (hatFehler(hinweise)) return nurGueltig({ E: 0, Eroh: 0, kritisch: false, gueltig: false, hinweise });
   bereich(hinweise, 'temperatur', Math.min(tLuft, tBeton), 5, 40, 'Temperaturen außerhalb 5 … 40 °C: Die Näherungsgleichung ist für übliche Baustellenbedingungen abgestimmt.');
   bereich(hinweise, 'wind', wind, 0, 40, 'Windgeschwindigkeit über 40 km/h: außerhalb des Diagrammbereichs nach ACI 305R.');
   const Eroh = 5 * (Math.pow(tBeton + 18, 2.5) - (rh / 100) * Math.pow(tLuft + 18, 2.5)) * (wind + 4) * 1e-6;
   if (Eroh < 0) hinweise.push({ stufe: 'warnung', feld: 'rh', text: 'Rechenwert negativ (Luft wärmer und feuchter als der Beton): Es verdunstet kein Wasser, E = 0.' });
   const E = Math.max(0, Eroh);
-  return { E, Eroh, kritisch: E > VERDUNSTUNG_KRITISCH, gueltig: true, hinweise };
+  return nurGueltig({ E, Eroh, kritisch: E > VERDUNSTUNG_KRITISCH, gueltig: true, hinweise });
 }
 
 // ---------------------------------------------------------------------------------------------
@@ -551,12 +555,12 @@ export function nachbehandlungsdauer(entwicklung: Festigkeitsentwicklung, exposi
   const hinweise: Hinweis[] = [];
   if (oberflaeche === '<5') {
     hinweise.push({ stufe: 'warnung', feld: 'oberflaeche', text: 'Unter 5 °C: Nachbehandlungsdauer um die Zeit verlängern, in der die Oberflächentemperatur unter 5 °C lag; Winterbaumaßnahmen (Wärmedämmung, Beheizung) zusätzlich.' });
-    return { tage: null, sondermassnahmen: true, hinweise };
+    return nurGueltig({ tage: null, sondermassnahmen: true, hinweise });
   }
-  if (exposition === 'x0_xc1') return { tage: DIN1045_3_NACHBEHANDLUNG.x0_xc1_tage, sondermassnahmen: false, hinweise };
+  if (exposition === 'x0_xc1') return nurGueltig({ tage: DIN1045_3_NACHBEHANDLUNG.x0_xc1_tage, sondermassnahmen: false, hinweise });
   const tage = DIN1045_3_NACHBEHANDLUNG.mindestdauerTage[oberflaeche][entwicklung];
   if (exposition === 'xf34') hinweise.push({ stufe: 'warnung', feld: 'exposition', text: 'Verdopplung für XF3/XF4 wie für XM nach der Wiedergabe der DIN 1045-3, Tab. 3 (vorläufig, Normtext prüfen).' });
-  return { tage: exposition === 'xm' || exposition === 'xf34' ? tage * 2 : tage, sondermassnahmen: false, hinweise };
+  return nurGueltig({ tage: exposition === 'xm' || exposition === 'xf34' ? tage * 2 : tage, sondermassnahmen: false, hinweise });
 }
 
 // ---------------------------------------------------------------------------------------------
@@ -625,7 +629,7 @@ export function praxisbeispielMassigesBauteil(e: PraxisEingabe): PraxisErgebnis 
   const zeit = Array.from({ length: Math.round(L.dauer / L.dt) + 1 }, (_, i) => i * L.dt);
   if (hatFehler(hinweise)) {
     const leer = zeit.map(() => NaN);
-    return { T_max: NaN, maxStress: NaN, crackRisk: false, As_min: NaN, zeit, temperatur: leer, spannung: leer, zugfestigkeit: leer, gueltig: false, hinweise };
+    return nurGueltig({ T_max: NaN, maxStress: NaN, crackRisk: false, As_min: NaN, zeit, temperatur: leer, spannung: leer, zugfestigkeit: leer, gueltig: false, hinweise });
   }
   const deltaT_ad = (e.zementgehalt / 100) * zem.waerme;
   const thicknessFactor = 1 - Math.exp(-e.dicke);
@@ -659,5 +663,5 @@ export function praxisbeispielMassigesBauteil(e: PraxisEingabe): PraxisErgebnis 
   const Act = 100 * hc_eff;
   const As_min = (L.kc * L.k * L.fctm * Act) / L.sigmaS;
 
-  return { T_max, maxStress, crackRisk, As_min, zeit, temperatur, spannung, zugfestigkeit, gueltig: true, hinweise };
+  return nurGueltig({ T_max, maxStress, crackRisk, As_min, zeit, temperatur, spannung, zugfestigkeit, gueltig: true, hinweise });
 }

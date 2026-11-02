@@ -3,7 +3,7 @@ import { formatDeIntl } from '../utils/numberFormat';
  * Stoffraumrechnung für 1 m³ Beton und Wasserzementwert nach DIN EN 206 / DIN 1045-2.
  * Reiner Rechenkern – geprüft in tests/mischung.test.ts. Die Anforderungen der Expositionsklassen bleiben im Modul.
  */
-import { type Hinweis, istEndlich } from './plausibilitaet';
+import { type Hinweis, istEndlich, nurGueltig } from './plausibilitaet';
 import { ZEMENT_GWP_KG } from '../data/zementGwp';
 
 export interface Fraktion { anteil: number; feuchte: number; wa: number } // M.-% der Gesteinskörnung, Gesamtfeuchte, Wasseraufnahme [M.-%]
@@ -88,7 +88,9 @@ export const RHO = { fa: 2.2, sf: 2.2, hues: 2.9, biochar: 1.5, zusatzmittel: 1.
 
 export function pruefeMischung(e: MischungEingabe): Hinweis[] {
   const h: Hinweis[] = [];
-  const zahlen = [e.zement, e.rhoZement, e.wasser, e.fa, e.sf, e.hues, e.biochar, e.zusatzmittel, e.luft, e.stahlfaser, e.ppFaser, e.rhoGestein, ...e.fraktionen.flatMap(f => [f.anteil, f.feuchte, f.wa])];
+  // Grenzfallprüfung 02.11.2026: auch Pflanzenkohle-Feuchte/-Wasseraufnahme, k-Werte und f-Grenze prüfen (vorher NaN ohne Hinweis)
+  const zahlen = [e.zement, e.rhoZement, e.wasser, e.fa, e.sf, e.hues, e.biochar, e.zusatzmittel, e.luft, e.stahlfaser, e.ppFaser, e.rhoGestein, ...e.fraktionen.flatMap(f => [f.anteil, f.feuchte, f.wa]),
+    e.biocharFeuchte, e.biocharWa, e.k.fa, e.k.sf, e.k.hues, e.k.biochar, e.maxFaFaktor];
   if (!istEndlich(...zahlen)) return [{ stufe: 'fehler', feld: 'eingabe', text: 'Alle Eingaben müssen Zahlen sein.' }];
   if (e.zement <= 0) h.push({ stufe: 'fehler', feld: 'zement', text: 'Der Zementgehalt muss größer als 0 sein (sonst ist der w/z-Wert nicht definiert).' });
   if (e.wasser <= 0) h.push({ stufe: 'fehler', feld: 'wasser', text: 'Der Wassergehalt muss größer als 0 sein.' });
@@ -161,7 +163,7 @@ export function stoffraum(e: MischungEingabe) {
   if (!fehlerhaft && !xfOhneSf && e.sf > maxSf + 1e-9) hinweise.push({ stufe: 'warnung', feld: 'sf', text: 'Silikastaub über s/z = 0,11: Der Überschuss wird im äquivalenten w/z-Wert nicht angerechnet.' });
   const bindemittelEq = e.zement + e.k.fa * anrechenbarFa + e.k.sf * anrechenbarSf + e.k.hues * e.hues + e.k.biochar * e.biochar;
 
-  return {
+  return nurGueltig({
     hinweise, fehlerhaft, vol, volGestein, masseGestein, fraktionen: fr,
     wasserAusGestein, wasserAusBiochar, zugabewasser: e.wasser - wasserAusGestein - wasserAusBiochar,
     kernwasser, gesamtwasser: e.wasser + kernwasser,
@@ -172,7 +174,7 @@ export function stoffraum(e: MischungEingabe) {
     maxFa, anrechenbarFa, maxSf, anrechenbarSf, maxFaKombination,
     volLeim: vol.zement + vol.wasser + vol.fa + vol.sf + vol.hues + vol.biochar + vol.zusatzmittel,
     rohdichte: fehlerhaft ? NaN : (e.zement + e.wasser + kernwasser + e.fa + e.sf + e.hues + e.biochar + e.zusatzmittel + e.stahlfaser + e.ppFaser + masseGestein) / 1000,
-  };
+  });
 }
 
 // ---------------------------------------------------------------------------------------------------
@@ -208,13 +210,13 @@ export function walzKurve(wz: number, klasse: WalzKlasse) {
   if (!(klasse in WALZ_A)) hinweise.push({ stufe: 'fehler', feld: 'klasse', text: 'Unbekannte Zementfestigkeitsklasse.' });
   const fehler = hinweise.some(x => x.stufe === 'fehler');
   const stuetzstellen = walzStuetzstellen();
-  return {
+  return nurGueltig({
     festigkeit: fehler ? NaN : walzFestigkeit(wz, klasse),
     stuetzstellen,
     kurven: WALZ_KLASSEN.map(k => ({ klasse: k, werte: stuetzstellen.map(x => walzFestigkeit(x, k)) })),
     gueltig: !fehler,
     hinweise,
-  };
+  });
 }
 
 // ---------------------------------------------------------------------------------------------------

@@ -12,7 +12,7 @@
  * Ergebnisse mit Einheit im Namen (…Mm, …Mm2, …Mm4, …KN, …KNm2, …Joule). Linear-elastische Rechnung auch oberhalb
  * der Fließgrenze (Lehrvereinfachung, als Warnung gemeldet). Reiner Rechenkern – geprüft in tests/mechanischeKenngroessen.test.ts.
  */
-import { type Hinweis, istEndlich, hatFehler, muss } from './plausibilitaet';
+import { type Hinweis, istEndlich, hatFehler, muss, nurGueltig } from './plausibilitaet';
 
 export type Werkstoffkategorie = 'Metall' | 'Mineralisch' | 'Organisch' | 'Verbund' | 'Glas';
 
@@ -78,6 +78,8 @@ export function stabKenngroessen(e: StabEingabe): StabErgebnis {
   const mat = e.werkstoff;
   muss(hinweise, istEndlich(mat.E, mat.nu, mat.fy, mat.fu, mat.dichte, e.kraftKn, e.laengeM, e.durchmesserMm, e.breiteMm, e.hoeheMm, e.kriechZahl, e.schwindPromille), 'eingabe', 'Alle Eingaben müssen endliche Zahlen sein.');
   muss(hinweise, mat.E > 0, 'E', 'Der E-Modul muss größer als 0 sein.');
+  // Grenzfallprüfung 02.11.2026: negative Kriechzahl vorher ohne Hinweis (φ = −1 → E_eff = ∞)
+  muss(hinweise, !(e.kriechZahl < 0), 'kriechZahl', 'Die Kriechzahl darf nicht negativ sein.');
   muss(hinweise, mat.nu > -1 && mat.nu < 0.5, 'nu', 'Die Querdehnzahl muss zwischen −1 und 0,5 liegen.');
   muss(hinweise, e.laengeM > 0, 'laengeM', 'Die Stablänge muss größer als 0 sein.');
   if (e.querschnitt === 'rund') muss(hinweise, e.durchmesserMm > 0, 'durchmesserMm', 'Der Durchmesser muss größer als 0 sein.');
@@ -147,12 +149,12 @@ export function stabKenngroessen(e: StabEingabe): StabErgebnis {
   if (e.lastArt === 'zug' && !isSproede && mat.kategorie !== 'Metall') hinweise.push({ stufe: 'warnung', feld: 'werkstoff', text: 'Holz und Faserverbund versagen auf Zug spröde; als „Fließgrenze“ wird hier f_y (Druckfestigkeit) angesetzt.' });
   if (e.kriechZahl < 0 || e.schwindPromille < 0) hinweise.push({ stufe: 'warnung', feld: 'kriechZahl', text: 'Kriechzahl und Schwindmaß werden als nicht negative Beträge erwartet.' });
 
-  return {
+  return nurGueltig({
     A0_mm2, d0_mm, I_mm4, I_y_mm4, I_z_mm4, I_min_mm4, EA_kN, EA_MN, EI_kNm2, EI_min_kNm2, federsteifigkeit_kN_m, biegedurchbiegung_mm,
     sigma, absSigma, zulSpannung, fliessGrenze, auslastungFestigkeit, auslastungFliess, isSproede, isPlastisch, isVersagt,
     F_K_kN, knickAuslastung, isKnickGefaehrdet, epsilon, epsilonPromille, epsilonProzent, deltaL_mm, endLaenge_mm,
     epsilonQ, deltaD_mm, endD_mm, U_Joule, G_MPa, K_MPa, effEModulKriechen, deltaL_kriechen_mm, deltaL_elastisch_plus_kriechen_mm,
     deltaL_schwinden_mm, deltaL_gesamt_mm, endLaengeGesamt_mm, masse_kg,
     gueltig: !hatFehler(hinweise), hinweise,
-  };
+  });
 }

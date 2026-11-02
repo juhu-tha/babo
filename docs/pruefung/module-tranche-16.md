@@ -315,6 +315,8 @@ Entscheidung Prof. Huber vom 02.11.2026: „alle Vorschläge übernehmen“. Umg
 
 **Weitere Hinweise (nicht geändert):** `content/sonderbetone/Sonderbetone.json` nennt „DAfStb Heft 555“ als Quelle für ΔT_Kern-Rand ≤ 15–20 K (anderes, bereits geprüftes Modul; Zuordnung wie bei T16-ZW-3 fraglich). „VDI 6205 / Rückbaubarkeit“ in der Nachhaltigkeits-Checkliste weiterhin nicht bestätigt (Kenntnisstand: Rückbau VDI 6210).
 
+**Nachtrag 02.11.2026 (umgesetzt):** beide Hinweise nach Entscheidung umgesetzt – `sonderbetone`: Quelle „DAfStb-Richtlinie Massige Bauteile aus Beton (Ausgabe April 2010)“ wie T16-ZW-3; `nachhaltigkeit_checklisten`: „VDI 6210 / Rückbaubarkeit“. Einzelheiten und Quelle in `docs/pruefung/quiz-text-abgleich-2026-11-02.md`, Abschnitt „Umsetzung 02.11.2026“.
+
 ## Normtext offen
 
 Nur am Normtext bzw. Original zu klären; im Modul mit „vorläufig, Normprüfung ausstehend“ gekennzeichnet (F-Freigabe-Liste im Admin-Bereich):

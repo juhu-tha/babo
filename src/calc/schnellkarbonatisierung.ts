@@ -13,7 +13,7 @@
  *      t_c = (c / K_nat)²
  * Reiner Rechenkern – geprüft in tests/schnellkarbonatisierung.test.ts.
  */
-import { type Hinweis, istEndlich, hatFehler } from './plausibilitaet';
+import { type Hinweis, istEndlich, hatFehler, nurGueltig } from './plausibilitaet';
 
 export interface Messpunkt {
   /** Lagerungsdauer bei erhöhter CO₂-Konzentration in Tagen */
@@ -117,16 +117,16 @@ export function schnellkarbonatisierung(e: KarbonatisierungEingabe): Karbonatisi
   else if (e.cNat >= e.cAcc) hinweise.push({ stufe: 'fehler', feld: 'cNat', text: 'Die natürliche CO₂-Konzentration muss kleiner als die Prüfkonzentration sein.' });
   if (!istEndlich(e.deckung) || e.deckung <= 0) hinweise.push({ stufe: 'fehler', feld: 'deckung', text: 'Die Betondeckung muss größer als 0 sein.' });
   if (!istEndlich(e.nutzungsdauer) || e.nutzungsdauer <= 0) hinweise.push({ stufe: 'fehler', feld: 'nutzungsdauer', text: 'Die Nutzungsdauer muss größer als 0 sein.' });
-  if (hatFehler(hinweise)) return leer;
+  if (hatFehler(hinweise)) return nurGueltig(leer);
 
   const reg = wurzelZeitRegression(punkte, e.mitAchsenabschnitt);
   if (!Number.isFinite(reg.k)) {
     hinweise.push({ stufe: 'fehler', feld: 'punkte', text: 'Aus den Messpunkten lässt sich keine Steigung bestimmen.' });
-    return { ...leer, reg };
+    return nurGueltig({ ...leer, reg }); // Grenzfallprüfung 02.11.2026: Fehler → ohne Zwischenwerte
   }
   if (reg.k <= 0) {
     hinweise.push({ stufe: 'fehler', feld: 'punkte', text: 'Die Regression ergibt keinen positiven Karbonatisierungskoeffizienten – Messwerte prüfen (Tiefe muss mit der Zeit zunehmen).' });
-    return { ...leer, reg };
+    return nurGueltig({ ...leer, reg }); // Grenzfallprüfung 02.11.2026: Fehler → ohne Zwischenwerte
   }
 
   const faktor = umrechnungsfaktor(e.cAcc, e.cNat);
@@ -146,5 +146,5 @@ export function schnellkarbonatisierung(e: KarbonatisierungEingabe): Karbonatisi
   if (e.cNat < 0.03 || e.cNat > 0.1) hinweise.push({ stufe: 'warnung', feld: 'cNat', text: 'Die Außenluft enthält derzeit etwa 0,042 Vol.-% CO₂; Innenräume und Tunnel liegen teils höher.' });
   if (kNat > 10) hinweise.push({ stufe: 'warnung', feld: 'punkte', text: 'K_nat über 10 mm/√a entspricht einem sehr karbonatisierungsanfälligen Beton – Messwerte und Einheiten (Tage, mm) prüfen.' });
 
-  return { reg, kAC: reg.k, faktor, kNat, xNutzung, tDeckung, ausreichend, gueltig: true, hinweise };
+  return nurGueltig({ reg, kAC: reg.k, faktor, kNat, xNutzung, tDeckung, ausreichend, gueltig: true, hinweise });
 }

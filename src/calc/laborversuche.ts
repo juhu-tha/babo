@@ -17,7 +17,7 @@
  *    R_c = F_c / 1600 mm²; Mittelwert der sechs Druckfestigkeiten mit ±10-%-Regel.
  * Reine Rechenkerne – geprüft in tests/laborversuche.test.ts.
  */
-import { type Hinweis, hatFehler } from './plausibilitaet';
+import { type Hinweis, hatFehler, nurGueltig, unvollstaendigeZeilen } from './plausibilitaet';
 
 const mittel = (x: readonly number[]) => (x.length ? x.reduce((a, b) => a + b, 0) / x.length : NaN);
 const stdabw = (x: readonly number[]) => {
@@ -110,16 +110,17 @@ export interface PotentialErgebnis {
 
 export function potentialReihe(e: PotentialEingabe): PotentialErgebnis {
   const hinweise: Hinweis[] = [];
-  if (!(e.volumen > 0)) hinweise.push({ stufe: 'fehler', feld: 'volumen', text: 'Das Lösungsvolumen muss größer als 0 sein.' });
+  if (!(Number.isFinite(e.volumen) && e.volumen > 0)) hinweise.push({ stufe: 'fehler', feld: 'volumen', text: 'Das Lösungsvolumen muss größer als 0 sein.' });
   if (!(e.pH >= 7 && e.pH <= 14)) hinweise.push({ stufe: 'fehler', feld: 'pH', text: 'Der pH-Wert muss zwischen 7 und 14 liegen.' });
   if (!(e.sprung > 0)) hinweise.push({ stufe: 'fehler', feld: 'sprung', text: 'Die Sprungschwelle muss größer als 0 mV sein.' });
   if (!Number.isFinite(e.eBezugSHE)) hinweise.push({ stufe: 'fehler', feld: 'bezug', text: 'Bezugselektrode wählen.' });
   const ms = e.messungen.filter(m => Number.isFinite(m.mNaCl) && Number.isFinite(m.eMess));
+  unvollstaendigeZeilen(hinweise, e.messungen.map(m => [m.mNaCl, m.eMess]), 'messungen');
   if (ms.length < 2) hinweise.push({ stufe: 'fehler', feld: 'messungen', text: 'Mindestens zwei vollständige Messzeilen (NaCl-Zugabe und Potential) eintragen.' });
   if (ms.some(m => m.mNaCl < 0)) hinweise.push({ stufe: 'fehler', feld: 'mNaCl', text: 'Die NaCl-Zugabe kann nicht negativ sein.' });
   if (ms.some((m, i) => i > 0 && m.mNaCl < ms[i - 1].mNaCl)) hinweise.push({ stufe: 'warnung', feld: 'mNaCl', text: 'Die NaCl-Menge ist kumuliert einzutragen und sollte von Zeile zu Zeile zunehmen.' });
   if (ms.some(m => Math.abs(m.eMess) > 1500)) hinweise.push({ stufe: 'warnung', feld: 'eMess', text: 'Potentiale über ±1500 mV sind unplausibel – Anschluss, Messbereich und Vorzeichen prüfen.' });
-  if (hatFehler(hinweise)) return { gueltig: false, punkte: [], cOH: NaN, sprungIndex: -1, hinweise };
+  if (hatFehler(hinweise)) return nurGueltig({ gueltig: false, punkte: [], cOH: NaN, sprungIndex: -1, hinweise });
 
   const cOH = 10 ** (e.pH - 14);
   const punkte: PotentialPunkt[] = ms.map((m, i) => {
@@ -130,7 +131,7 @@ export function potentialReihe(e: PotentialEingabe): PotentialErgebnis {
   });
   const sprungIndex = punkte.findIndex((p, i) => i > 0 && p.delta <= -e.sprung);
   if (ms[0].mNaCl > 0) hinweise.push({ stufe: 'warnung', feld: 'mNaCl', text: 'Die erste Zeile sollte die Nullmessung ohne NaCl sein (Ruhepotential des passiven Stahls).' });
-  return { gueltig: true, punkte, cOH, sprungIndex, hinweise };
+  return nurGueltig({ gueltig: true, punkte, cOH, sprungIndex, hinweise });
 }
 
 // ─────────────────────────────────────────────────────────────────────────────
@@ -188,14 +189,15 @@ export const abtragsrate = (dm: number, flaeche: number, rho: number, tage: numb
 
 export function auslagerung(e: AuslagerungsEingabe): AuslagerungsErgebnis {
   const hinweise: Hinweis[] = [];
-  if (!(e.tage > 0)) hinweise.push({ stufe: 'fehler', feld: 'tage', text: 'Die Auslagerungsdauer muss größer als 0 Tage sein.' });
-  if (!(e.rho > 0)) hinweise.push({ stufe: 'fehler', feld: 'rho', text: 'Die Dichte muss größer als 0 sein.' });
-  if (!(e.blind >= 0)) hinweise.push({ stufe: 'fehler', feld: 'blind', text: 'Der Blindwert kann nicht negativ sein (0 eintragen, wenn keine Blindprobe gebeizt wurde).' });
+  if (!(Number.isFinite(e.tage) && e.tage > 0)) hinweise.push({ stufe: 'fehler', feld: 'tage', text: 'Die Auslagerungsdauer muss größer als 0 Tage sein.' });
+  if (!(Number.isFinite(e.rho) && e.rho > 0)) hinweise.push({ stufe: 'fehler', feld: 'rho', text: 'Die Dichte muss größer als 0 sein.' });
+  if (!(Number.isFinite(e.blind) && e.blind >= 0)) hinweise.push({ stufe: 'fehler', feld: 'blind', text: 'Der Blindwert kann nicht negativ sein (0 eintragen, wenn keine Blindprobe gebeizt wurde).' });
   const ps = e.proben.filter(p => [p.d, p.l, p.m0, p.m1].every(Number.isFinite));
+  unvollstaendigeZeilen(hinweise, e.proben.map(p => [p.d, p.l, p.m0, p.m1]), 'proben');
   if (ps.length < 1) hinweise.push({ stufe: 'fehler', feld: 'proben', text: 'Mindestens eine vollständige Probenzeile eintragen.' });
   if (ps.some(p => !(p.d > 0 && p.l > 0))) hinweise.push({ stufe: 'fehler', feld: 'geometrie', text: 'Durchmesser und Länge müssen größer als 0 sein.' });
   if (ps.some(p => !(p.m0 > 0 && p.m1 > 0))) hinweise.push({ stufe: 'fehler', feld: 'masse', text: 'Die Massen müssen größer als 0 sein.' });
-  if (hatFehler(hinweise)) return { gueltig: false, werte: [], mittelVKorr: NaN, sVKorr: NaN, mittelRate: NaN, hinweise };
+  if (hatFehler(hinweise)) return nurGueltig({ gueltig: false, werte: [], mittelVKorr: NaN, sVKorr: NaN, mittelRate: NaN, hinweise });
 
   const werte = ps.map(p => {
     const flaeche = stabflaeche(p.d, p.l);
@@ -208,7 +210,7 @@ export function auslagerung(e: AuslagerungsEingabe): AuslagerungsErgebnis {
   if (ps.length < 3) hinweise.push({ stufe: 'warnung', feld: 'proben', text: 'Für eine Streuungsangabe mindestens drei Parallelproben auslagern.' });
   if (e.tage < 14) hinweise.push({ stufe: 'warnung', feld: 'tage', text: 'Bei kurzer Dauer überschätzt die Hochrechnung auf ein Jahr meist die Rate (anfänglich höhere Korrosion).' });
   const v = werte.map(w => w.vKorr);
-  return { gueltig: true, werte, mittelVKorr: mittel(v), sVKorr: stdabw(v), mittelRate: mittel(werte.map(w => w.rate)), hinweise };
+  return nurGueltig({ gueltig: true, werte, mittelVKorr: mittel(v), sVKorr: stdabw(v), mittelRate: mittel(werte.map(w => w.rate)), hinweise });
 }
 
 // ─────────────────────────────────────────────────────────────────────────────
@@ -271,12 +273,13 @@ export const frischRohdichte = (mLeer: number, mVoll: number, vol: number) => ru
 export function frischbeton(proben: readonly FrischbetonProbe[], sollRohdichte: number): FrischbetonErgebnis {
   const hinweise: Hinweis[] = [];
   const ps = proben.filter(p => [p.d1, p.d2, p.mLeer, p.mVoll, p.vol, p.a1, p.g].every(Number.isFinite));
+  unvollstaendigeZeilen(hinweise, proben.map(p => [p.d1, p.d2, p.mLeer, p.mVoll, p.vol, p.a1, p.g]), 'proben');
   if (ps.length < 1) hinweise.push({ stufe: 'fehler', feld: 'proben', text: 'Mindestens eine vollständige Zeile eintragen (Ausbreitmaß, Wägung, Luftgehalt).' });
   if (ps.some(p => !(p.d1 > 0 && p.d2 > 0))) hinweise.push({ stufe: 'fehler', feld: 'd', text: 'Die Ausbreitdurchmesser müssen größer als 0 sein.' });
   if (ps.some(p => !(p.vol > 0))) hinweise.push({ stufe: 'fehler', feld: 'vol', text: 'Das Behältervolumen muss größer als 0 sein.' });
   if (ps.some(p => !(p.mVoll > p.mLeer))) hinweise.push({ stufe: 'fehler', feld: 'masse', text: 'Der gefüllte Behälter muss schwerer sein als der leere.' });
   if (ps.some(p => p.a1 < 0 || p.g < 0)) hinweise.push({ stufe: 'fehler', feld: 'luft', text: 'Luftgehalt und Korrekturfaktor können nicht negativ sein.' });
-  if (hatFehler(hinweise)) return { gueltig: false, werte: [], mittelF: NaN, mittelRohdichte: NaN, mittelLuft: NaN, hinweise };
+  if (hatFehler(hinweise)) return nurGueltig({ gueltig: false, werte: [], mittelF: NaN, mittelRohdichte: NaN, mittelLuft: NaN, hinweise });
 
   const werte = ps.map(p => {
     const f = ausbreitmass(p.d1, p.d2);
@@ -287,17 +290,19 @@ export function frischbeton(proben: readonly FrischbetonProbe[], sollRohdichte: 
       luftAusDichte: sollRohdichte > 0 ? (1 - rohdichte / sollRohdichte) * 100 : NaN,
     };
   });
+  // Grenzfallprüfung 02.11.2026: fehlende Soll-Rohdichte vorher ohne Hinweis
+  if (!(Number.isFinite(sollRohdichte) && sollRohdichte > 0)) hinweise.push({ stufe: 'warnung', feld: 'soll', text: 'Ohne Soll-Rohdichte > 0 entfällt die Gegenprobe des Luftgehalts.' });
   if (ps.some(p => Math.abs(p.d1 - p.d2) > 50)) hinweise.push({ stufe: 'warnung', feld: 'd', text: 'd₁ und d₂ weichen um mehr als 50 mm ab – Ausbreittisch waagerecht? Kuchen einseitig verlaufen? Versuch ggf. wiederholen.' });
   if (werte.some(w => w.f < 340 || w.f > 620)) hinweise.push({ stufe: 'warnung', feld: 'd', text: 'Ausbreitmaß außerhalb von 340 bis 620 mm – dafür ist der Ausbreitversuch nur eingeschränkt geeignet (Setzmaß bzw. Setzfließmaß wählen).' });
   if (werte.some(w => w.rohdichte < 2000 || w.rohdichte > 2600)) hinweise.push({ stufe: 'warnung', feld: 'masse', text: 'Rohdichte außerhalb 2000 bis 2600 kg/m³ – für Normalbeton unplausibel (Wägung, Volumen, Verdichtung prüfen).' });
   if (werte.some(w => w.luft < 0)) hinweise.push({ stufe: 'warnung', feld: 'luft', text: 'Korrigierter Luftgehalt negativ – Korrekturfaktor G größer als der Ablesewert.' });
-  return {
+  return nurGueltig({
     gueltig: true, werte,
     mittelF: mittel(werte.map(w => w.f)),
     mittelRohdichte: mittel(werte.map(w => w.rohdichte)),
     mittelLuft: mittel(werte.map(w => w.luft)),
     hinweise,
-  };
+  });
 }
 
 // ─────────────────────────────────────────────────────────────────────────────
@@ -355,10 +360,11 @@ export const trockenFaktor = (fcDry: number) => (fcDry > 60 / 0.92 ? 0.95 : 0.92
 export function druckpruefung(e: DruckEingabe): DruckErgebnis {
   const hinweise: Hinweis[] = [];
   const ws = e.wuerfel.filter(w => Number.isFinite(w.a) && Number.isFinite(w.b) && Number.isFinite(w.F));
+  unvollstaendigeZeilen(hinweise, e.wuerfel.map(w => [w.a, w.b, w.F]), 'wuerfel');
   if (ws.length < 1) hinweise.push({ stufe: 'fehler', feld: 'wuerfel', text: 'Mindestens einen Würfel mit Kantenlängen und Höchstkraft eintragen.' });
   if (ws.some(w => !(w.a > 0 && w.b > 0))) hinweise.push({ stufe: 'fehler', feld: 'geometrie', text: 'Die Kantenlängen müssen größer als 0 sein.' });
   if (ws.some(w => !(w.F > 0))) hinweise.push({ stufe: 'fehler', feld: 'F', text: 'Die Höchstkraft muss größer als 0 sein.' });
-  if (hatFehler(hinweise)) return { gueltig: false, werte: [], faktor: 1, fcm: NaN, fmin: NaN, s: NaN, erreicht: '–', hinweise };
+  if (hatFehler(hinweise)) return nurGueltig({ gueltig: false, werte: [], faktor: 1, fcm: NaN, fmin: NaN, s: NaN, erreicht: '–', hinweise });
 
   const roh = ws.map(w => druckfestigkeit(w.F, w.a, w.b));
   const faktor = e.trocken ? trockenFaktor(mittel(roh)) : 1;
@@ -379,7 +385,7 @@ export function druckpruefung(e: DruckEingabe): DruckErgebnis {
   if (ws.length < 3) hinweise.push({ stufe: 'warnung', feld: 'wuerfel', text: 'Die vereinfachte Konformitätsbewertung setzt mindestens drei Würfel voraus.' });
   if (werte.some(w => Number.isFinite(w.rohdichte) && (w.rohdichte < 2000 || w.rohdichte > 2600))) hinweise.push({ stufe: 'warnung', feld: 'm', text: 'Rohdichte außerhalb 2000 bis 2600 kg/m³ – Masse und Maße prüfen.' });
   if (ws.length >= 2 && (Math.max(...f) - fmin) > 0.15 * fcm) hinweise.push({ stufe: 'warnung', feld: 'F', text: 'Spannweite der Einzelwerte über 15 % des Mittelwerts – Bruchbilder, Herstellung und Lagerung prüfen.' });
-  return { gueltig: true, werte, faktor, fcm, fmin, s: stdabw(f), erreicht, ziel, hinweise };
+  return nurGueltig({ gueltig: true, werte, faktor, fcm, fmin, s: stdabw(f), erreicht, ziel, hinweise });
 }
 
 // ─────────────────────────────────────────────────────────────────────────────
@@ -419,15 +425,17 @@ export interface DruckMittel {
 
 /** Mittelwert der Druckfestigkeiten mit ±10-%-Regel nach DIN EN 196-1 */
 export function druckMittel196(werte: readonly number[]): DruckMittel {
+  // Grenzfallprüfung 02.11.2026: nicht endliche Einzelwerte vorher als gültiges NaN-Mittel
+  if (!werte.length || !werte.every(Number.isFinite)) return { mittel: NaN, verworfen: NaN, gueltig: false };
   const m6 = mittel(werte);
   const abw = werte.map(v => Math.abs(v - m6) / m6);
   const ausreisser = abw.filter(a => a > 0.1).length;
-  if (ausreisser === 0) return { mittel: m6, verworfen: -1, gueltig: true };
+  if (ausreisser === 0) return nurGueltig({ mittel: m6, verworfen: -1, gueltig: true });
   const iMax = abw.indexOf(Math.max(...abw));
   const rest = werte.filter((_, i) => i !== iMax);
   const m5 = mittel(rest);
   const ok = rest.every(v => Math.abs(v - m5) / m5 <= 0.1);
-  return { mittel: m5, verworfen: iMax, gueltig: ok };
+  return nurGueltig({ mittel: m5, verworfen: iMax, gueltig: ok });
 }
 
 export interface MoertelErgebnis {
@@ -446,10 +454,11 @@ export interface MoertelErgebnis {
 export function moertelprismen(prismen: readonly Prisma[], alterTage: number): MoertelErgebnis {
   const hinweise: Hinweis[] = [];
   const ps = prismen.filter(p => [p.Ff, p.Fc1, p.Fc2].every(Number.isFinite));
+  unvollstaendigeZeilen(hinweise, prismen.map(p => [p.Ff, p.Fc1, p.Fc2]), 'prismen');
   if (ps.length < 1) hinweise.push({ stufe: 'fehler', feld: 'prismen', text: 'Mindestens ein Prisma mit Biegezug- und zwei Druckbruchkräften eintragen.' });
   if (ps.some(p => !(p.Ff > 0 && p.Fc1 > 0 && p.Fc2 > 0))) hinweise.push({ stufe: 'fehler', feld: 'F', text: 'Die Bruchkräfte müssen größer als 0 sein.' });
   const leer: MoertelErgebnis = { gueltig: false, rf: [], rc: [], rfMittel: NaN, druck: { mittel: NaN, verworfen: -1, gueltig: false }, klasse: '–', hinweise };
-  if (hatFehler(hinweise)) return leer;
+  if (hatFehler(hinweise)) return nurGueltig(leer);
 
   const rf = ps.map(p => biegezugPrisma(p.Ff));
   const rc = ps.flatMap(p => [druckPrisma(p.Fc1), druckPrisma(p.Fc2)]);
@@ -463,5 +472,5 @@ export function moertelprismen(prismen: readonly Prisma[], alterTage: number): M
   } else if (alterTage !== 28) {
     hinweise.push({ stufe: 'warnung', feld: 'alter', text: 'Die Normfestigkeit der Zementfestigkeitsklasse bezieht sich auf 28 Tage; bei anderem Prüfalter wird keine Klasse angegeben.' });
   }
-  return { gueltig: true, rf, rc, rfMittel: mittel(rf), druck, klasse, hinweise };
+  return nurGueltig({ gueltig: true, rf, rc, rfMittel: mittel(rf), druck, klasse, hinweise });
 }

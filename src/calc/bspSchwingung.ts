@@ -17,7 +17,7 @@
  * daher nicht abgebildet (vorläufig, F-Freigabe); der Anwendungsgrenzwert 8 Hz der EN 1995-1-1, 7.3.3(1), ist belegt
  * (Dlubal, Wissensdatenbank KB 000694, 29.03.2021).
  */
-import { type Hinweis, bereich, hatFehler, istEndlich, muss } from './plausibilitaet';
+import { type Hinweis, bereich, hatFehler, istEndlich, muss, nurGueltig } from './plausibilitaet';
 
 /** Materialkennwerte BSP nach proHolz Austria, Bemessung Brettsperrholz Band II (2018): E_0,mean und G_r,mean Tab. 3-2 (S. 12), Wichte Tab. 3-1 (S. 11) */
 export const BSP_KENNWERTE = {
@@ -150,7 +150,7 @@ export function bspSchwingung(e: BspSchwingungEingabe): BspSchwingungErgebnis {
     verfahrenAngesetzt: e.verfahren, f1: 0, b_F: 0, b_ef: 0, w1kN: 0,
     f1UeberAnwendungsgrenze: false, wUnterOrientierungI: false, wUnterOrientierungII: false, hinweise,
   };
-  if (hatFehler(hinweise)) return leer;
+  if (hatFehler(hinweise)) return nurGueltig(leer);
 
   const l = e.spannweite;
   const dicke = lagen.reduce((s, t) => s + t, 0);
@@ -197,14 +197,14 @@ export function bspSchwingung(e: BspSchwingungEingabe): BspSchwingungErgebnis {
   if (f1 < ORIENTIERUNG.f1Min) hinweise.push({ stufe: 'warnung', feld: 'f1', text: 'f₁ < 4,5 Hz: Resonanz mit der Schrittfrequenz ist möglich; Decke konstruktiv anpassen.' });
   if (EI_estrich > 0) hinweise.push({ stufe: 'warnung', feld: 'estrichDicke', text: 'Estrichsteifigkeit angesetzt: nur zulässig, wenn der Estrich dauerhaft ungerissen und ohne Fugen quer zur Spannrichtung ausgeführt wird (Annahme prüfen).' });
 
-  return {
+  return nurGueltig({
     dicke, eigenmasse, masse, EI_l_netto, EI_l_gamma, gamma_aussen, EI_b, EI_estrich, EI_l, EI_b_ges, verfahrenAngesetzt,
     f1, b_F, b_ef, w1kN,
     f1UeberAnwendungsgrenze: f1 > ORIENTIERUNG.f1KlasseI,
     wUnterOrientierungI: w1kN <= ORIENTIERUNG.wKlasseI,
     wUnterOrientierungII: w1kN <= ORIENTIERUNG.wKlasseII,
     hinweise,
-  };
+  });
 }
 
 /** Lehr-Beispielaufbauten [mm]; reale Aufbauten sind herstellerabhängig (Zulassung/ETA). */

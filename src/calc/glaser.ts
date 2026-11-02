@@ -19,7 +19,7 @@
  * Massen in kg/m², Ströme in kg/(m²·h), Drücke in Pa, s_d in m.
  * Lehr- und Vorbemessungswerkzeug; ersetzt keinen Nachweis und keine hygrothermische Simulation (DIN EN 15026).
  */
-import { type Hinweis, istEndlich } from './plausibilitaet';
+import { type Hinweis, istEndlich, nurGueltig } from './plausibilitaet';
 import { psat, pruefeSchichten, type Schicht } from './waermeschutz';
 import { formatDeZahl } from '../utils/numberFormat';
 
@@ -163,14 +163,14 @@ export function glaser(
   if (!(delta0 > 0)) hinweise.push({ stufe: 'fehler', feld: 'delta0', text: 'δ₀ muss größer als 0 sein.' });
 
   if (hinweise.some(x => x.stufe === 'fehler')) {
-    return {
+    return nurGueltig({
       gueltig: false as const, hinweise,
       U: NaN, R_T: NaN, pi: NaN, pe: NaN, sdGes: NaN,
       grenzen: { sd: [] as number[], T: [] as number[], psat: [] as number[], p: [] as number[] },
       verlauf: { sd: [] as number[], T: [] as number[], psat: [] as number[], p: [] as number[] },
       zonen: [] as GlaserZone[], tauwasser: false, oberflaechenTauwasser: false,
       gc: NaN, mc: NaN, gev: NaN, mev: NaN, trocknungsTage: NaN, kriterien: [] as GlaserKriterium[],
-    };
+    });
   }
 
   // 1. Temperaturen und s_d an den Schichtgrenzen
@@ -278,7 +278,7 @@ export function glaser(
   ] : [];
 
   const anGrenzen = (arr: readonly number[]) => [0, ...schichten.map((_, k) => (k + 1) * N)].map(i => arr[i]);
-  return {
+  return nurGueltig({
     gueltig: true as const, hinweise,
     U, R_T, pi, pe, sdGes,
     /** Werte an Oberflächen und Schichtgrenzen (Index 0 = raumseitige Oberfläche) */
@@ -287,7 +287,7 @@ export function glaser(
     verlauf: { sd: vSd, T: vT, psat: vPs, p: pVerlauf },
     zonen, tauwasser, oberflaechenTauwasser,
     gc, mc, gev, mev, trocknungsTage, kriterien,
-  };
+  });
 }
 
 export type GlaserErgebnis = ReturnType<typeof glaser>;
