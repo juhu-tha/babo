@@ -7,7 +7,7 @@
     "technischeHochschuleAugsburg": "TECHNISCHE HOCHSCHULE AUGSBURG",
     "fakultätFürArchitekturUnd": "Fakultät für Architektur und Bauwesen",
     "lebenszyklusanalyseLccGutachtenNach": "Lebenszyklusanalyse (LCC-Gutachten) nach DIN 18960",
-    "wirtschaftlichkeitsprüfungProfDrIng": "Wirtschaftlichkeitsprüfung • Prof. Dr.-Ing. Jürgen Huber • Baustoffkunde & Bauchemie",
+    "wirtschaftlichkeitsprüfungBaustoffkunde": "Wirtschaftlichkeitsprüfung • Baustoffkunde & Bauchemie",
     "untersuchtesBauteilszenario": "Untersuchtes Bauteilszenario:",
     "betrachtungszeitraum": "• Betrachtungszeitraum: ",
     "kalkulationszinssatzR": "• Kalkulationszinssatz ($r$): ",
@@ -115,7 +115,7 @@
           "lifespan": 30,
           "replacementCost": 16000,
           "eolCost": 4500,
-          "embodiedCO2": 12500,
+          "embodiedCO2": 3960,
           "operatingCO2": 1800,
           "details": [
             "Kunststoffbasiertes System mit geringer dynamischer Wärmespeicherung",

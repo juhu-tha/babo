@@ -160,8 +160,8 @@
       },
       {
         "titel": "2. Aluminium",
-        "formel": "\\Delta l = 6000 \\cdot 24 \\cdot 10^{-6} \\cdot 80 \\approx 11{,}5\\,\\text{mm}",
-        "erklaerung": "α_Al ≈ 24 · 10⁻⁶/K."
+        "formel": "\\Delta l = 6000 \\cdot 23 \\cdot 10^{-6} \\cdot 80 \\approx 11{,}0\\,\\text{mm}",
+        "erklaerung": "α_Al = 23 · 10⁻⁶/K (DIN EN 1999-1-1, 3.2.5)."
       },
       {
         "titel": "3. Stahl",
@@ -202,7 +202,7 @@
     "Metalle.formeln": [
       {
         "formel": "\\Delta l = l_0 \\cdot \\alpha_T \\cdot \\Delta T",
-        "erklaerung": "Thermische Längendehnung: l0 = Ausgangslänge, alpha_T = Längenausdehnungskoeffizient (z.B. Stahl: 12·10⁻⁶ 1/K, Aluminium: 24·10⁻⁶ 1/K, Zink (rein): ca. 30·10⁻⁶ 1/K, Titanzink (DIN EN 988, in Walzrichtung): ca. 22·10⁻⁶ 1/K), Delta T = Temperaturdifferenz.",
+        "erklaerung": "Thermische Längendehnung: l0 = Ausgangslänge, alpha_T = Längenausdehnungskoeffizient (z.B. Stahl: 12·10⁻⁶ 1/K, Aluminium: 23·10⁻⁶ 1/K, Zink (rein): ca. 30·10⁻⁶ 1/K, Titanzink (DIN EN 988, in Walzrichtung): ca. 22·10⁻⁶ 1/K), Delta T = Temperaturdifferenz.",
         "quelle": "DIN EN 1993-1-1 / Physik"
       },
       {

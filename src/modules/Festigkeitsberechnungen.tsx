@@ -24,6 +24,7 @@ import {
 } from 'chart.js';
 import inhalt from '@/content/festigkeitsberechnungen/Festigkeitsberechnungen.json';
 import { grenzhoehen, wuerfelstapel } from '@/src/calc/festigkeitsvergleich';
+import { ALUMINIUM_6060_T6 } from '@/src/data/kennwerte';
 import { MdText } from '@/src/components/inhalt/MdText';
 
 ChartJS.register(
@@ -47,8 +48,12 @@ type Material = {
 
 // Lehrvergleich: Beton f_ck/f_ctm und E_cm nach DIN EN 1992-1-1 Tab. 3.1, Stahl f_y/f_u (Mindestwerte),
 // Holz C24 nach DIN EN 338:2016-07 wie src/data/kennwerte.ts (HOLZ_EN338.C24: f_t,0,k = 14,5, f_c,0,k = 21 N/mm²,
-// Eigengewicht mit ρ_mean = 420 kg/m³; Abgleich in tests/kennwerte.test.ts), übrige Werte typische Literaturwerte (Größenordnung).
-const materials: Record<string, Material> = inhalt.daten.materials;
+// Eigengewicht mit ρ_mean = 420 kg/m³; Abgleich in tests/kennwerte.test.ts), Aluminium EN AW-6060 T6 aus dem zentralen
+// Lehrwert ALUMINIUM_6060_T6 (R_p0,2 / R_m nach DIN EN 755-2), übrige Werte typische Literaturwerte (Größenordnung).
+const materials: Record<string, Material> = {
+  ...inhalt.daten.materials,
+  alu: { ...inhalt.daten.materials.alu, fc: ALUMINIUM_6060_T6.f02, ft: ALUMINIUM_6060_T6.fu },
+};
 
 type Reiter = 'eigengewicht' | 'spannungszustand';
 const REITER: readonly ModulTab<Reiter>[] = [

@@ -134,8 +134,10 @@
   "werte": {
     "außenwandPutzWdvsBekleidung": "Außenwand (Putz / WDVS / Bekleidung)",
     "außenwändeGegenAußenluftAnlage": "Außenwände gegen Außenluft (Anlage 7 Nr. 1, § 36 GModG). Innendämmung: keine Höchstwertanforderung, Nachweis Tauwasserfreiheit nach DIN 4108-3 / WTA 6-4/6-5.",
-    "steildachObersteGeschossdecke": "Steildach / Oberste Geschossdecke",
-    "steildächerGaubenObersteGeschossdecken": "Steildächer, Gauben, oberste Geschossdecken und Wände zu unbeheiztem Dachraum (Anlage 7 Nr. 5a/5b; § 35 / § 36 GModG).",
+    "steildachSystemgrenze": "Steildach (Dach als Systemgrenze)",
+    "obersteGeschossdeckeUnbeheizterDachraum": "Oberste Geschossdecke (zum unbeheizten Dachraum)",
+    "steildächerGaubenFx": "Steildächer und Gauben als Systemgrenze (Anlage 7 Nr. 5a/5b; § 36 GModG). Temperatur-Korrekturfaktor F_x = 1,0 (DIN V 4108-6).",
+    "obersteGeschossdeckenFx": "Oberste Geschossdecken und Wände zu unbeheiztem Dachraum (Anlage 7 Nr. 5a/5b; § 35 / § 36 GModG). Temperatur-Korrekturfaktor F_x = 0,8 (DIN V 4108-6).",
     "flachdächerGegenAußenluftInklusive": "Flachdächer gegen Außenluft inklusive Warm- und Umkehrdächer (§ 36 GModG).",
     "kellerdeckeGegenUnbeheiztErdreich": "Kellerdecke (gegen unbeheizt / Erdreich)",
     "deckenNachUntenGegen": "Decken nach unten gegen Erdreich oder unbeheizte Kellerräume (§ 36 GModG).",

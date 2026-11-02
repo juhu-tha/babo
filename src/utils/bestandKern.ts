@@ -36,20 +36,37 @@ export const JAZ_WAERMEPUMPE = 3.5;
 /** Emissionsfaktor Wärmepumpe je kWh Wärme = Netzstrom/JAZ [kg CO₂-Äq./kWh] */
 export const CO2_WAERMEPUMPE = CO2_STROM / JAZ_WAERMEPUMPE;
 
-/** Temperatur-Korrekturfaktor Fx (DIN V 4108-6, Tab. 3, Auswahl). */
-export const FX: Partial<Record<Bauteil, number>> = {
-  aussenwand: 1.0, steildach_oGD: 0.8, flachdach: 1.0, kellerdecke_erdreich: 0.6, decke_aussenluft: 1.0,
+/**
+ * Bauteil für den Temperatur-Korrekturfaktor: Anlage 7 fasst Steildach und oberste Geschossdecke unter einem
+ * Höchstwert (0,24) zusammen, DIN V 4108-6 unterscheidet sie beim F_x (Umsetzung 02.11.2026, NS5B-BE-1).
+ */
+export type FxBauteil = Exclude<Bauteil, 'steildach_oGD'> | 'steildach' | 'oberste_geschossdecke';
+
+/**
+ * Temperatur-Korrekturfaktor Fx (DIN V 4108-6, Tab. 3, Auswahl): Außenwand und Dach als Systemgrenze 1,0;
+ * Dachgeschossdecke zum nicht ausgebauten Dachraum 0,8 (Beleg: WEKA „Temperatur-Korrekturfaktoren“, Auszug
+ * DIN V 4108-6 Tab. 3, abgerufen 02.11.2026); Kellerdecke 0,6.
+ */
+export const FX: Partial<Record<FxBauteil, number>> = {
+  aussenwand: 1.0, steildach: 1.0, oberste_geschossdecke: 0.8, flachdach: 1.0, kellerdecke_erdreich: 0.6, decke_aussenluft: 1.0,
 };
+
+/** F_x-Bauteil zu einem Anlage-7-Bauteil; für „steildach_oGD“ ist die Angabe Pflicht (kein stiller Rückfall). */
+export function fxBauteilVon(bauteil: Bauteil, fxBauteil?: FxBauteil): FxBauteil {
+  if (fxBauteil) return fxBauteil;
+  if (bauteil === 'steildach_oGD') throw new Error('Steildach oder oberste Geschossdecke angeben (F_x 1,0 bzw. 0,8)');
+  return bauteil;
+}
 
 /** U-Wert nach zusätzlicher Dämmschicht (vereinfachend ohne Befestigungs-/Luftschichtkorrekturen, DIN EN ISO 6946). */
 export const uRetrofit = (uOld: number, d_m: number, lambda: number) => 1 / (1 / uOld + d_m / lambda);
 /** Dämmdicke, die für U_ziel erforderlich ist. */
 export const dRequired = (uOld: number, uTarget: number, lambda: number) => Math.max(0, lambda * (1 / uTarget - 1 / uOld));
 
-export interface SavingsInput { uOld: number; uNew: number; A: number; bauteil: Bauteil; Gt: number; etaSys: number; price: number; co2: number; invest: number; sowiesoKosten?: number; }
+export interface SavingsInput { uOld: number; uNew: number; A: number; bauteil: Bauteil; fxBauteil?: FxBauteil; Gt: number; etaSys: number; price: number; co2: number; invest: number; sowiesoKosten?: number; }
 /** Endenergie-Einsparung [kWh/a] = ΔU·A·Fx·Gt·24/1000 / η_Anlage; statische Amortisation mit energiebedingten Mehrkosten. */
 export function savings(i: SavingsInput) {
-  const fx = FX[i.bauteil] ?? 1.0;
+  const fx = FX[fxBauteilVon(i.bauteil, i.fxBauteil)] ?? 1.0;
   const qNutz = (i.uOld - i.uNew) * i.A * fx * i.Gt * 24 / 1000;
   const qEnd = qNutz / i.etaSys;
   const euro = qEnd * i.price;
