@@ -17379,18 +17379,16 @@
     "gapAnalysis": {
       "topic": "Betonbauqualitätsklassen",
       "misconception": "BBQ- und Überwachungsklassen seien dasselbe.",
-      "coreRule": "BBQ-N/E/S nach DIN 1045-1000; ÜK 1–3 nach DIN 1045-3.",
+      "coreRule": "BBQ-N/E/S nach DIN 1045-1000; ÜK 1 und ÜK 2 nach DIN 1045-3:2023-08 (die frühere ÜK 3 ist entfallen).",
       "actionableAdvice": "Arbeiten Sie den Abschnitt „Betonbauqualitätsklassen“ im Modul Qualitätssicherung noch einmal durch.",
       "targetModuleTab": "qualitaetssicherung",
       "targetModuleLabel": "Qualitätssicherung"
     },
-    "verified": true,
-    "reviewer": "freigegeben 28.10.2026 (Zweitprüfung)",
-    "reviewedAt": "2026-10-28",
+    "verified": false,
     "vorpruefung": {
-      "am": "2026-10-25",
+      "am": "2026-11-02",
       "ergebnis": "korrigiert",
-      "hinweis": "Zweitprüfung 27.10.: Option 4, Rückmeldung und Erklärung: DIN 1045-3:2023-08 kennt nur noch ÜK 1 und ÜK 2 (ÜK 3 entfallen; Quelle SCHWENK, Beton-Herstellung nach den aktuellen Normen, 2026) korrigiert."
+      "hinweis": "Nachstichprobe 5c 02.11.: Merksatz (gapAnalysis) „ÜK 1–3 nach DIN 1045-3“ → „ÜK 1 und ÜK 2 nach DIN 1045-3:2023-08 (die frühere ÜK 3 ist entfallen)“, wie Modultext, Option 4 und Erklärung (NS5C-QS-1; die Zweitprüfung 27.10. hatte Option, Rückmeldung und Erklärung bereits berichtigt) – korrigiert"
     }
   },
   {

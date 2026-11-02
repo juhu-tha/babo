@@ -148,7 +148,7 @@ Auffällig im Einzelnen (Mehrfachnennung möglich): 46 korrigiert, 1 fraglich, 0
 
 - **Frage:** Welche Betonbauqualitätsklassen kennt DIN 1045-1000?
 - **Richtige Antwort:** BBQ-N, BBQ-E und BBQ-S
-- **Auffälligkeit:** Vorprüfung „korrigiert“: Zweitprüfung 27.10.: Option 4, Rückmeldung und Erklärung: DIN 1045-3:2023-08 kennt nur noch ÜK 1 und ÜK 2 (ÜK 3 entfallen; Quelle SCHWENK, Beton-Herstellung nach den aktuellen Normen, 2026) korrigiert. · Normenabgleich: DIN 1045-3:2023: DIN Media nennt DIN 1045-3:2023-08 → Ausgabe bestätigt · bereits freigegeben (verified)
+- **Auffälligkeit:** Vorprüfung „korrigiert“: Nachstichprobe 5c 02.11.: Merksatz (gapAnalysis) „ÜK 1–3 nach DIN 1045-3“ → „ÜK 1 und ÜK 2 nach DIN 1045-3:2023-08 (die frühere ÜK 3 ist entfallen)“, wie Modultext, Option 4 und Erklärung (NS5C-QS-1; die Zweitprüfung 27.10. hatte Option, Rückmeldung und Erklärung bereits berichtigt) – korrigiert · Normenabgleich: DIN 1045-3:2023: DIN Media nennt DIN 1045-3:2023-08 → Ausgabe bestätigt
 - [ ] ok
 - [x] ändern: DIN 1045-3:2023 kennt nur noch ÜK 1 und ÜK 2 – Option 4, Rückmeldung und Erklärung angepasst, korrigiert
 

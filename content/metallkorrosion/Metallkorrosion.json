@@ -86,7 +86,7 @@
     "korrosionsschutzNachSystematikDer": " Korrosionsschutz nach Systematik der DIN EN ISO 12944",
     "derWirksameKorrosionsschutzVon": "Der wirksame Korrosionsschutz von Stählen gliedert sich nach ISO 12944 in die quantitative Erfassung der Umgebungsschärfe, die konstruktive Reduktion von Schadstellen und die gezielte Werkstoffbarriere:",
     "t1KorrosivitätskategorienNachDin": "1. Korrosivitätskategorien nach DIN EN ISO 12944-2",
-    "derPlanerMussDie": "Der Planer muss die Umwelt vorab in standardisierte Kategorien einordnen (Schutzdauerklassen L, M, H, VH):",
+    "derPlanerMussDie": "Der Planer muss die Umwelt vorab in standardisierte Korrosivitätskategorien einordnen (C1 bis CX) und die geforderte Schutzdauer festlegen (L, M, H, VH nach Teil 1):",
     "c1Unbedeutend": "C1 (Unbedeutend)",
     "beheizteInnenräumeZB": "Beheizte Innenräume (z. B. Schulen, Büros) ohne Kondensationsgefahr.",
     "ländlicheBereicheMitGeringer": "Ländliche Bereiche mit geringer atmosphärischer Schadstoffbelastung. Ungeheizte Hallen.",
