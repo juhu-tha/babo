@@ -1,5 +1,5 @@
 import inhalt from '@/content/mechanischekenngroessen/daten.json';
-import { BAUSTAHL_EC3, E_BAUSTAHL } from '@/src/data/kennwerte';
+import { BAUSTAHL_EC3, E_BAUSTAHL, ALUMINIUM_6060, ALPHA_T_ALUMINIUM } from '@/src/data/kennwerte';
 export interface MaterialData {
   id: string;
   name: string;
@@ -83,11 +83,11 @@ export const MATERIALIEN: Record<string, MaterialData> = {
     kategorie: 'Metall',
     E: 70000,
     nu: 0.33,
-    fy: 160, // Rp0,2
-    fu: 215,
+    fy: ALUMINIUM_6060.T66.f02, // Rp0,2 (T66, zentraler Lehrwert)
+    fu: ALUMINIUM_6060.T66.fu,
     epsBreak: 12.0,
     dichte: 2700,
-    alphaT: 23.0,
+    alphaT: ALPHA_T_ALUMINIUM,
     phiKriechen: 0.0,
     epsSchwinden: 0.0,
     beschreibung: inhalt.werte.leichtmetallMitGeringemE

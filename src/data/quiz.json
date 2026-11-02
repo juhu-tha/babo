@@ -20236,7 +20236,7 @@
       "8 mg je 100 g Platte (Perforator)"
     ],
     "correctIdx": 1,
-    "explanation": "REACH Anhang XVII Nr. 77 (VO (EU) 2023/1464) begrenzt seit 06.08.2026 die Formaldehydkonzentration in der Prüfkammer auf 0,062 mg/m³ für Holzwerkstoffe und Möbel (0,080 mg/m³ für andere Erzeugnisse, Fahrzeuginnenräume ab 2027). Nachweis nach Anlage 14, bevorzugt nach EN 717-1, EN 16516 zulässig. In Deutschland galt bereits seit 2020 die ChemVerbotsV mit Prüfung nach DIN EN 16516 („E05“).",
+    "explanation": "REACH Anhang XVII Nr. 77 (VO (EU) 2023/1464) begrenzt seit 06.08.2026 die Formaldehydkonzentration in der Prüfkammer auf 0,062 mg/m³ für Holzwerkstoffe und Möbel (0,080 mg/m³ für andere Erzeugnisse, Fahrzeuginnenräume ab 2027). Nachweis nach Anlage 14, bevorzugt nach EN 717-1, EN 16516 zulässig. In Deutschland galt von 2020 bis zum 05.08.2026 die ChemVerbotsV mit Prüfung nach DIN EN 16516 („E05“); diese nationale Regelung ist seit 06.08.2026 gegenstandslos.",
     "bloom": "Erinnern",
     "niveau": "B",
     "distraktorFeedback": [
@@ -20248,19 +20248,17 @@
     "gapAnalysis": {
       "topic": "Emissionen",
       "misconception": "E1 nach altem Verfahren reiche weiterhin aus.",
-      "coreRule": "Seit 06.08.2026 EU-weit 0,062 mg/m³ in der Prüfkammer (REACH Anh. XVII Nr. 77); national seit 2020 DIN EN 16516.",
+      "coreRule": "Seit 06.08.2026 EU-weit 0,062 mg/m³ in der Prüfkammer (REACH Anh. XVII Nr. 77); die nationale Regelung der ChemVerbotsV (2020 bis 05.08.2026, Prüfung nach DIN EN 16516) ist damit gegenstandslos.",
       "actionableAdvice": "Arbeiten Sie den Abschnitt „Emissionen“ im Modul Holzwerkstoffe noch einmal durch.",
       "targetModuleTab": "holzwerkstoffe",
       "targetModuleLabel": "Holzwerkstoffe"
     },
-    "verified": true,
+    "verified": false,
     "vorpruefung": {
-      "am": "2026-10-26",
+      "am": "2026-11-02",
       "ergebnis": "korrigiert",
-      "hinweis": "Frage auf den EU-Stand umgestellt (Grenzwert statt Prüfverfahren): VO (EU) 2023/1464, gültig ab 06.08.2026, 0,062 mg/m³ für Holzwerkstoffe/Möbel, 0,080 mg/m³ sonst (IHK, measurlabs.com); Modultext Holzwerkstoffe nennt den Grenzwert bereits."
-    },
-    "reviewer": "Zweitprüfung 27.10.2026; freigegeben 27.10.2026",
-    "reviewedAt": "2026-10-27"
+      "hinweis": "Umsetzung 02.11.: Kernregel und Erklärung auf den Stand nach REACH Anh. XVII Nr. 77 umgestellt (bisher „national seit 2020 DIN EN 16516“; ChemVerbotsV-Regelung zu Formaldehyd seit 06.08.2026 gegenstandslos, UBA-FAQ; Rechtsstand O-5) – korrigiert"
+    }
   },
   {
     "id": "q_dms_1",
@@ -29887,22 +29885,22 @@
     "topic": "Spezifische Festigkeit",
     "difficulty": "Transfer",
     "normRef": "",
-    "question": "Aluminium (f_t = 200 N/mm², ρ = 2700 kg/m³) hat eine geringere Zugfestigkeit als Baustahl S235 (f_u = 360 N/mm², ρ = 7850 kg/m³). Wie verhalten sich die Reißlängen?",
+    "question": "Aluminium EN AW-6060 T6 (f_t = 190 N/mm², ρ = 2700 kg/m³) hat eine geringere Zugfestigkeit als Baustahl S235 (f_u = 360 N/mm², ρ = 7850 kg/m³). Wie verhalten sich die Reißlängen?",
     "options": [
-      "Stahl ≈ 4,7 km, Aluminium ≈ 2,6 km – die höhere Festigkeit gewinnt",
-      "Stahl ≈ 4,7 km, Aluminium ≈ 7,6 km – die geringe Dichte überwiegt",
+      "Stahl ≈ 4,7 km, Aluminium ≈ 2,5 km – die höhere Festigkeit gewinnt",
+      "Stahl ≈ 4,7 km, Aluminium ≈ 7,2 km – die geringe Dichte überwiegt",
       "Beide ≈ 4,7 km, weil die Reißlänge nur von der Dichte abhängt",
-      "Stahl ≈ 47 km, Aluminium ≈ 76 km – die geringe Dichte überwiegt"
+      "Stahl ≈ 47 km, Aluminium ≈ 72 km – die geringe Dichte überwiegt"
     ],
     "correctIdx": 1,
-    "explanation": "L = f/(ρ · g): Stahl 360 · 10⁶/(7850 · 9,81) = 4,7 km; Aluminium 200 · 10⁶/(2700 · 9,81) = 7,6 km. Entscheidend ist die Festigkeit je Gewicht (spezifische Festigkeit), nicht die Festigkeit allein.",
+    "explanation": "L = f/(ρ · g): Stahl 360 · 10⁶/(7850 · 9,81) = 4,7 km; Aluminium 190 · 10⁶/(2700 · 9,81) = 7,2 km. Entscheidend ist die Festigkeit je Gewicht (spezifische Festigkeit), nicht die Festigkeit allein.",
     "bloom": "Analysieren",
     "niveau": "M",
     "distraktorFeedback": [
       "Hier wurde nur die Festigkeit verglichen; Aluminium ist fast dreimal leichter und hat daher die größere Reißlänge.",
       "",
       "Die Reißlänge hängt vom Verhältnis f_t/ρ ab; dieses ist bei Aluminium größer als bei Stahl.",
-      "Die Ergebnisse sind um den Faktor 10 zu groß; mit g = 9,81 m/s² ergeben sich 4,7 km bzw. 7,6 km."
+      "Die Ergebnisse sind um den Faktor 10 zu groß; mit g = 9,81 m/s² ergeben sich 4,7 km bzw. 7,2 km."
     ],
     "gapAnalysis": {
       "topic": "Spezifische Festigkeit",
@@ -29912,12 +29910,11 @@
       "targetModuleTab": "festigkeit",
       "targetModuleLabel": "Festigkeitsberechnungen"
     },
-    "verified": true,
-    "reviewer": "freigegeben 28.10.2026 (Zweitprüfung)",
-    "reviewedAt": "2026-10-28",
+    "verified": false,
     "vorpruefung": {
-      "am": "2026-10-25",
-      "ergebnis": "ok"
+      "am": "2026-11-02",
+      "ergebnis": "korrigiert",
+      "hinweis": "Umsetzung 02.11.: Aluminium auf den zentralen Lehrwert EN AW-6060 T6 umgestellt (f_t 200 → 190 N/mm², DIN EN 755-2; Reißlänge 7,6 → 7,2 km, Distraktoren 2,5 bzw. 72 km) – korrigiert"
     }
   },
   {
@@ -31912,7 +31909,7 @@
     "topic": "Reifegrad-Check",
     "difficulty": "Vertiefung",
     "normRef": "ISO 16290",
-    "question": "Ein neues Bindemittel ist im Labor validiert und wurde bereits erfolgreich in einem industriellen 1-m³-Mischer hergestellt; ein Pilotbauwerk und eine Zulassung gibt es noch nicht. Welcher TRL ergibt sich im Reifegrad-Check, und was ist der nächste Schritt?",
+    "question": "Ein neues Bindemittel ist im Labor validiert, wurde in einem industriellen 1-m³-Mischer hergestellt, und daraus wurden reale Bauteile im Werk gefertigt und geprüft; ein Pilotbauwerk und eine Zulassung gibt es noch nicht. Welcher TRL ergibt sich im Reifegrad-Check, und was ist der nächste Schritt?",
     "options": [
       "TRL 4 – genormte Reihenprüfungen an Prismen durchführen",
       "TRL 8 – werkseigene Produktionskontrolle aufbauen",
@@ -31920,11 +31917,11 @@
       "TRL 2 – Rezeptur und Wirkprinzip formulieren"
     ],
     "correctIdx": 2,
-    "explanation": "Der Scale-up im Werk führt im Rechner auf TRL 6. Der nächste Meilenstein ist ein Pilotbauwerk über Zustimmung im Einzelfall bzw. vorhabenbezogene Bauartgenehmigung, parallel der Zulassungsantrag beim DIBt.",
+    "explanation": "Scale-up und Fertigung realer Bauteile im Werk führen im Rechner auf TRL 6 (der 1-m³-Mischer allein entspricht nach der TRL-Tabelle TRL 5). Der nächste Meilenstein ist ein Pilotbauwerk über Zustimmung im Einzelfall bzw. vorhabenbezogene Bauartgenehmigung, parallel der Zulassungsantrag beim DIBt.",
     "bloom": "Anwenden",
     "niveau": "B",
     "distraktorFeedback": [
-      "TRL 4 ist mit der Laborvalidierung erreicht; der Werks-Scale-up hebt das Projekt bereits darüber.",
+      "TRL 4 ist mit der Laborvalidierung erreicht; Scale-up und reale Bauteile im Werk heben das Projekt bereits darüber.",
       "TRL 8 setzt eine erteilte abZ/aBG oder ETA voraus, die noch fehlt.",
       "",
       "TRL 2 beschreibt nur das formulierte Konzept; das Projekt ist deutlich weiter."
@@ -31932,19 +31929,17 @@
     "gapAnalysis": {
       "topic": "Reifegrad-Check",
       "misconception": "Der Reifegrad wird ohne Bezug auf die tatsächlich erreichten Meilensteine eingeschätzt.",
-      "coreRule": "Labor validiert → TRL 4; Werks-Scale-up → TRL 6; Pilotbau → 7; Zulassung → 8; Serie → 9.",
+      "coreRule": "Labor validiert → TRL 4; 1-m³-Mischer → TRL 5; reale Bauteile im Werk → TRL 6; Pilotbau → 7; Zulassung → 8; Serie → 9.",
       "actionableAdvice": "Arbeiten Sie den Abschnitt „Interaktiver TRL-Rechner“ im Modul Innovationen & F&E noch einmal durch.",
       "targetModuleTab": "bp_innovationen",
       "targetModuleLabel": "Innovationen & F&E"
     },
-    "verified": true,
+    "verified": false,
     "vorpruefung": {
-      "am": "2026-10-27",
+      "am": "2026-11-02",
       "ergebnis": "korrigiert",
-      "hinweis": "normRef ergänzt"
-    },
-    "reviewer": "Zweitprüfung 27.10.2026; freigegeben 27.10.2026",
-    "reviewedAt": "2026-10-27"
+      "hinweis": "Umsetzung 02.11.: Reifegrad-Check Kriterium 3 um „reale Bauteile im Werk gefertigt“ ergänzt (1-m³-Mischer allein = TRL 5 wie in der TRL-Tabelle; NS5A-BI-1); Fragetext, Erklärung, Rückmeldung zu TRL 4 und Kernregel nachgezogen, Antwort unverändert – korrigiert"
+    }
   },
   {
     "id": "qn_bp_innovationen_3",
@@ -38667,38 +38662,36 @@
     "topic": "Biegebemessung",
     "difficulty": "Vertiefung",
     "normRef": "DAfStb-Richtlinie nichtmetallische Bewehrung 2024",
-    "question": "Carbonbetonplatte: h = 30 mm, c = 10 mm (d = h − c), a_tex = 80 mm²/m, f_tk = 3000 N/mm² (γ_tex = 1,3), C45/55 mit f_cd = 0,85·45/1,5. Welches Moment m_Rd ergibt sich vereinfacht mit y = F_t/(b·f_cd) und z = d − y/2?",
+    "question": "Carbonbetonplatte: h = 30 mm, c = 10 mm (d = h − c), a_tex = 80 mm²/m, f_tk = 3000 N/mm² (γ_tex = 1,3), E_tex = 200 GPa, C45/55 mit f_cd = 0,85·45/1,5. Welches Moment m_Rd ergibt sich wie im Modulrechner mit Dehnungskontrolle (ε_cu3 = 3,5 ‰, Spannungsblock y = 0,8·x, z = d − y/2)?",
     "options": [
       "rund 3,7 kNm/m",
-      "rund 4,9 kNm/m",
-      "rund 3,3 kNm/m",
-      "rund 3,0 kNm/m"
+      "rund 3,0 kNm/m",
+      "rund 2,5 kNm/m",
+      "rund 2,2 kNm/m"
     ],
     "correctIdx": 3,
-    "explanation": "f_td = 3000/1,3 = 2308 N/mm²; F_t = 80 · 2308 = 184,6 kN/m. f_cd = 25,5 N/mm² → y = 184 615/(1000 · 25,5) = 7,2 mm; z = 20 − 3,6 = 16,4 mm; m_Rd = 184,6 · 0,0164 ≈ 3,0 kNm/m.",
+    "explanation": "f_td = 3000/1,3 = 2308 N/mm², ε_tex = 2308/200 000 = 11,5 ‰. Unter der Annahme Textilbruch wäre y = 80 · 2308/(1000 · 25,5) = 7,2 mm, x = 9,0 mm und ε_c = 11,5 ‰ · 9,0/11,0 ≈ 9,5 ‰ > 3,5 ‰ – der Beton versagt zuerst. Gleichgewicht mit ε_c = 3,5 ‰: x ≈ 6,2 mm, y ≈ 4,9 mm, ε_tex ≈ 7,9 ‰, σ_tex ≈ 1572 N/mm² < f_td; z = 20 − 2,5 = 17,5 mm; m_Rd = 80 · 1572 · 17,5 ≈ 2,2 kNm/m.",
     "bloom": "Anwenden",
     "niveau": "M",
     "distraktorFeedback": [
-      "Hier wurde z = d gesetzt; der Hebelarm verkleinert sich um y/2.",
-      "Die Nutzhöhe ist d = h − c = 20 mm, nicht h = 30 mm.",
-      "Für die Druckzone ist f_cd = 25,5 N/mm² maßgebend, nicht f_ck.",
+      "Hier wurde ohne Dehnungskontrolle und zusätzlich mit z = d gerechnet (184,6 kN/m · 0,020 m).",
+      "Das ist das vereinfachte Verfahren ohne Dehnungskontrolle (Textil erreicht f_td): Bei E_tex = 200 GPa erreicht der Beton aber ε_cu3 vor dem Textilbruch, 3,0 kNm/m liegen rund 36 % auf der unsicheren Seite.",
+      "Die Dehnungskontrolle ist richtig, aber der Hebelarm wurde mit z = d statt d − y/2 angesetzt (80 · 1572 · 20).",
       ""
     ],
     "gapAnalysis": {
       "topic": "Biegebemessung",
       "misconception": "Hebelarm, Nutzhöhe oder Bemessungswerte werden falsch angesetzt.",
-      "coreRule": "m_Rd = a_tex·f_td·(d − y/2) mit y = a_tex·f_td/(b·f_cd).",
+      "coreRule": "Textilbruch nur, wenn ε_c ≤ ε_cu3; sonst Gleichgewicht mit σ_tex = E_tex·ε_tex < f_td und m_Rd = a_tex·σ_tex·(d − y/2).",
       "actionableAdvice": "Arbeiten Sie den Abschnitt „Biegebemessung (vereinfacht)“ im Modul Carbonbeton noch einmal durch.",
       "targetModuleTab": "carbonbeton",
       "targetModuleLabel": "Carbonbeton"
     },
-    "reviewer": "Zweitprüfung 27.10.2026; freigegeben 27.10.2026",
-    "reviewedAt": "2026-10-27",
-    "verified": true,
+    "verified": false,
     "vorpruefung": {
-      "am": "2026-10-27",
+      "am": "2026-11-02",
       "ergebnis": "korrigiert",
-      "hinweis": "normRef ergänzt"
+      "hinweis": "Umsetzung 02.11.: an den Modulrechner angeglichen (E_tex = 200 GPa ergänzt, Dehnungskontrolle statt vereinfachtem Verfahren; m_Rd 3,0 → 2,2 kNm/m, Betonversagen zuerst; Distraktoren 3,0 = vereinfacht ohne Dehnungskontrolle, 3,7 und 2,5 = z = d; Quiz-Rechenfragen 02.11.) – korrigiert"
     }
   },
   {
@@ -38710,7 +38703,7 @@
     "topic": "Bewehrungsgrad",
     "difficulty": "Transfer",
     "normRef": "DAfStb-Richtlinie nichtmetallische Bewehrung 2024",
-    "question": "h = 40 mm, c = 10 mm, f_tk = 2500 N/mm², C50/60: Wird a_tex von 100 auf 200 mm²/m verdoppelt, steigt m_Rd nur von rund 5,1 auf rund 8,9 kNm/m. Warum nicht auf das Doppelte?",
+    "question": "h = 40 mm, c = 10 mm, f_tk = 2500 N/mm², C50/60: Wird a_tex von 100 auf 200 mm²/m verdoppelt, steigt m_Rd im Modulrechner (E_tex = 200 GPa) nur von rund 5,0 auf rund 6,3 kNm/m. Warum nicht auf das Doppelte?",
     "options": [
       "Die Druckzone y wächst mit, der Hebelarm z = d − y/2 wird kleiner",
       "Die Zugfestigkeit des Textils sinkt bei größerem Querschnitt deutlich ab",
@@ -38718,12 +38711,12 @@
       "Die Nutzhöhe d verringert sich, weil die Betondeckung zunehmen muss"
     ],
     "correctIdx": 0,
-    "explanation": "Mit doppelter Zugkraft verdoppelt sich die Druckzonenhöhe y (6,8 → 13,6 mm); der Hebelarm sinkt von etwa 26,6 auf 23,2 mm. Deshalb wächst m_Rd unterproportional – bei schlanken Bauteilen begrenzt die Dicke h die Wirksamkeit zusätzlicher Bewehrung.",
+    "explanation": "Mit mehr Bewehrung wächst die Druckzone (y ≈ 6,6 → 8,7 mm), der Hebelarm sinkt von etwa 26,7 auf 25,7 mm. Hinzu kommt: Bei 200 mm²/m erreicht der Beton ε_cu3 = 3,5 ‰ deutlich vor dem Textilbruch, das Textil wird nur mit σ_tex ≈ 1230 statt f_td = 1923 N/mm² ausgenutzt (bei 100 mm²/m knapp: ≈ 1860 N/mm²). Deshalb wächst m_Rd stark unterproportional – bei schlanken Bauteilen begrenzt die Dicke h die Wirksamkeit zusätzlicher Bewehrung.",
     "bloom": "Analysieren",
     "niveau": "M",
     "distraktorFeedback": [
       "",
-      "Im vereinfachten Modell bleibt f_td konstant; sie hängt nicht vom Querschnitt ab.",
+      "f_td ist ein Materialkennwert und hängt nicht vom Querschnitt ab; bei Betonversagen wird sie lediglich nicht voll ausgenutzt (σ_tex < f_td).",
       "γ_tex ist ein fester Bemessungsbeiwert (hier 1,3).",
       "c und d sind im Beispiel unverändert; nur a_tex wurde verdoppelt."
     ],
@@ -38735,13 +38728,11 @@
       "targetModuleTab": "carbonbeton",
       "targetModuleLabel": "Carbonbeton"
     },
-    "reviewer": "Zweitprüfung 27.10.2026; freigegeben 27.10.2026",
-    "reviewedAt": "2026-10-27",
-    "verified": true,
+    "verified": false,
     "vorpruefung": {
-      "am": "2026-10-27",
+      "am": "2026-11-02",
       "ergebnis": "korrigiert",
-      "hinweis": "normRef ergänzt"
+      "hinweis": "Umsetzung 02.11.: Zahlen an den Modulrechner angeglichen (5,1 → 5,0 und 8,9 → 6,3 kNm/m, Dehnungskontrolle mit E_tex = 200 GPa); Erklärung um Betonversagen bei 200 mm²/m ergänzt, Antwort unverändert (Quiz-Rechenfragen 02.11.) – korrigiert"
     }
   },
   {
@@ -41014,7 +41005,7 @@
     "topic": "CO₂-Schattenpreis",
     "difficulty": "Transfer",
     "normRef": "ISO 15686-5",
-    "question": "Im LCC-Rechner wird ein CO₂-Schattenpreis aktiviert. Wie verändert das den Vergleich EPS-WDVS (12,5 t CO₂-Äq. Herstellung, 1,8 t/a Betrieb) gegen Holzfaser (1,5 t, 0,95 t/a)?",
+    "question": "Im LCC-Rechner wird ein CO₂-Schattenpreis aktiviert. Wie verändert das den Vergleich EPS-WDVS (rund 4 t CO₂-Äq. Herstellung als Lehrwert, 1,8 t/a Betrieb) gegen Holzfaser (1,5 t, 0,95 t/a)?",
     "options": [
       "Nicht, da Schattenpreise nur in der Ökobilanz und nicht in der LCC erscheinen",
       "Zugunsten des EPS-WDVS, da seine Herstellungsemissionen früher anfallen und zählen",
@@ -41039,13 +41030,11 @@
       "targetModuleTab": "lebenszyklus_kosten",
       "targetModuleLabel": "Lebenszyklus & Kosten"
     },
-    "reviewer": "Zweitprüfung 27.10.2026; freigegeben 27.10.2026",
-    "reviewedAt": "2026-10-27",
-    "verified": true,
+    "verified": false,
     "vorpruefung": {
-      "am": "2026-10-27",
+      "am": "2026-11-02",
       "ergebnis": "korrigiert",
-      "hinweis": "normRef ergänzt"
+      "hinweis": "Umsetzung 02.11.: Herstellungs-GWP des EPS-WDVS im Fragetext 12,5 t → rund 4 t (Lehrwert aus GWP_LEHRWERTE.eps, 16 cm auf 150 m² = 1560 kg, Systemanteil 2400 kg, zusammen 3960 kg; NS5A-LK-1); Aussage und Antwort unverändert – korrigiert"
     }
   },
   {
@@ -52094,7 +52083,7 @@
     "bloom": "Anwenden",
     "niveau": "B",
     "distraktorFeedback": [
-      "Die Fläche wurde in cm² statt mm² eingesetzt und die Kraft nicht in N umgerechnet.",
+      "6,0 entsteht, wenn die Kraft (900 kN) nur durch die Kantenlänge 150 mm statt durch die Fläche 22 500 mm² geteilt wird.",
       "Hier wurde nur durch 15 000 statt 22 500 mm² geteilt.",
       "",
       "Bei der Umrechnung von kN auf N fehlt eine Zehnerpotenz."
@@ -52107,12 +52096,11 @@
       "targetModuleTab": "labor_druckfestigkeit",
       "targetModuleLabel": "Handout Druckfestigkeit an Würfeln"
     },
-    "verified": true,
-    "reviewer": "freigegeben 28.10.2026 (Zweitprüfung)",
-    "reviewedAt": "2026-10-28",
+    "verified": false,
     "vorpruefung": {
-      "am": "2026-10-25",
-      "ergebnis": "ok"
+      "am": "2026-11-02",
+      "ergebnis": "korrigiert",
+      "hinweis": "Nachstichprobe 5b 02.11.: Rückmeldung zu 6,0 MPa berichtigt (bisher „Fläche in cm², Kraft nicht in N“ – das ergibt 900/225 = 4,0; 6,0 = 900/150, Kantenlänge statt Fläche; NS5B-LD-1) – korrigiert"
     }
   },
   {

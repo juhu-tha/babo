@@ -23,6 +23,23 @@
  */
 import { type Hinweis, bereich, hatFehler, istEndlich, muss, nurGueltig } from './plausibilitaet';
 import { ersatzzyklen } from './lca';
+import { GWP_LEHRWERTE } from '../data/gwpLehrwerte';
+
+/**
+ * EPS-WDVS im Szenario „Außenwand-Dämmsystem (150 m²)“: Herstellung A1–A3 als Lehrwert (Umsetzung 02.11.2026, NS5A-LK-1;
+ * vorher pauschal 12 500 kg). EPS-Anteil aus dem zentralen Lehrwert GWP_LEHRWERTE.eps (3,25 kg CO₂-Äq./kg, 20 kg/m³)
+ * mit 16 cm Dicke; Systemanteil (Kleber, Armierungsschicht, Oberputz, Dübel) als Lehrwert 16 kg CO₂-Äq./m², so dass das
+ * Gesamtsystem in der Größenordnung von 20 bis 35 kg CO₂-Äq./m² liegt (Nachstichprobe 5a) – vorläufig.
+ */
+export const EPS_WDVS_SZENARIO = { dickeM: 0.16, flaecheM2: 150, systemanteilKgJeM2: 16 } as const;
+
+/** Herstellungs-GWP eines EPS-WDVS [kg CO₂-Äq.]: EPS-Masse · GWP_LEHRWERTE.eps + Systemanteil · Fläche */
+export function epsWdvsGwp(dickeM: number, flaecheM2: number, systemanteilKgJeM2: number) {
+  const epsMasseKg = dickeM * flaecheM2 * GWP_LEHRWERTE.eps.rohdichte;
+  const epsKg = epsMasseKg * GWP_LEHRWERTE.eps.gwp / 1000;
+  const systemKg = systemanteilKgJeM2 * flaecheM2;
+  return { epsMasseKg, epsKg, systemKg, gesamtKg: epsKg + systemKg };
+}
 
 /** Preissteigerungsfaktor im Jahr t nach BNB 2.1.1 (Steigerung ab dem 2. Jahr): (1 + p)^(t − 1) für t ≥ 1, 1 für t = 0 */
 export const steigerungsfaktor = (p: number, t: number) => Math.pow(1 + p, Math.max(0, t - 1));

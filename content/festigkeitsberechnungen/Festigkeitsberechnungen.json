@@ -85,10 +85,10 @@
         "color": "#334155"
       },
       "alu": {
-        "name": "Aluminium (EN AW-6060, Richtwert)",
+        "name": "Aluminium EN AW-6060 T6 (R_p0,2 / R_m, Lehrwert)",
         "rho": 2700,
-        "fc": 160,
-        "ft": 200,
+        "fc": 150,
+        "ft": 190,
         "E": 70000,
         "color": "#94a3b8"
       },
