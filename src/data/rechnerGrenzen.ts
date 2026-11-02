@@ -58,10 +58,10 @@ export const RECHNER_GRENZEN: Readonly<Record<string, RechnerGrenzen>> = {
     ],
   },
   spannbeton_grundlagen: {
-    kurz: 'Lehrdemos zur Vorspannung: Dehnungsanimation eines Spannbetonträgers sowie Stauchungsverlust, Lastausgleich und Litzenanzahl im Leitfaden „Von 0 bis 100“.',
+    kurz: 'Lehrdemos zur Vorspannung: Dehnungsanimation eines Spannbetonträgers sowie Stauchungsverlust, Lastausgleich und Litzenanzahl im Leitfaden „Von 0 auf 100“.',
     grenzen: [
       'Dehnungsanimation: Lehrträger L = 20 m, 500 × 1000 mm, C40/50 (E_cm, f_ctm aus Tab. 3.1), linear-elastisch am Bruttoquerschnitt; Randzug gegen f_ctm,fl (3.1.8), danach qualitativ.',
-      '„Von 0 bis 100“: Verlust durch Betonstauchung Δσ = E·Δε ohne Relaxation; Lastausgleich u = 8·P·f/L²; Litzen = ⌈P/173 kN⌉ (150 mm² · 1360 N/mm², 15 % Verluste als Lehrannahme).',
+      '„Von 0 auf 100“: Verlust durch Betonstauchung Δσ = E·Δε ohne Relaxation; Lastausgleich u = 8·P·f/L²; Litzen = ⌈P/173 kN⌉ (150 mm² · 1360 N/mm², 15 % Verluste als Lehrannahme).',
     ],
   },
   holzbau_bemessung: {

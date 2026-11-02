@@ -104,7 +104,7 @@ export const LERNZIELE: Readonly<Record<string, ModulLernziele>> = {
     ziele: [
       { stufe: "Verstehen", text: "die Reindichte, Rohdichte und Schüttdichte voneinander abgrenzen und den Zusammenhang mit Porosität und Hohlraumgehalt erläutern." },
       { stufe: "Anwenden", text: "aus Massen- und Volumenangaben Dichten, Porosität und Wasseraufnahme eines Baustoffs berechnen." },
-      { stufe: "Anwenden", text: "den Wasseraufnahmekoeffizienten, den s_d-Wert und den Wärmeeindringkoeffizienten eines Baustoffs aus gegebenen Kennwerten ermitteln." },
+      { stufe: "Anwenden", text: "den Wasseraufnahmekoeffizienten, den s_d-Wert, den U-Wert einer einschichtigen Wand und den Wärmeeindringkoeffizienten eines Baustoffs aus gegebenen Kennwerten ermitteln." },
       { stufe: "Anwenden", text: "die Normalspannung, elastische Dehnung, Verkürzung und Ausnutzungsgrad einer zentrisch gedrückten Säule berechnen." },
       { stufe: "Analysieren", text: "elastische Dehnung, Kriechen, Schwinden und Relaxation im zeitlichen Verlauf unterscheiden und ihren Einfluss auf die Gesamtverformung vergleichen." },
     ],
