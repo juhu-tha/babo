@@ -77,6 +77,10 @@ done
 
 Abdeckung geprüft gegen alle Nicht-ASCII-Zeichen in `src/` (268 verschiedene): alle 131, die Inter überhaupt enthält, sind in der Teilmenge (u. a. α–ω, Δ Σ Φ Ψ Ω, ≤ ≥ ≈ ≠ √ ∞ ∑ ∫ ∂ −, · × ÷ ± ‰ ° ² ³ ⁰–⁹ ₀–₆ ₓ, ← → ⇒, ①–⑥, ✓ ✗). Die übrigen (Emoji, Kastenlinien ─ ├ └, ∝ ≙ ⌀ …) liefert auch die TTF nicht – sie kamen schon vorher aus System-Schriften.
 
+## Vorgerenderte Modulseiten (LCP 02.11.2026)
+
+Messung der vorgerenderten Seiten `/modul/<id>` über die statische Vercel-Vorschau, Ursachen und Maßnahmen (Vorlade-Karte je Seite hinter dem CSS, fehlende Vorlade-Listen, jsPDF bei Bedarf, Schrift erst nach dem Austausch durch React, Erstpfad-Ratsche in `check-bundle`): `docs/pruefung/lcp-module-2026-11-02.md`. Alle gemessenen Modulseiten im Hellmodus jetzt LCP 1,83–1,99 s.
+
 ## Ergebnisse
 
 <!-- perf-messung:start -->

@@ -58,6 +58,10 @@ export function modulVorladenPlugin(wurzel = process.cwd()): Plugin {
         const chunks = Object.values(bundle).filter((c): c is OutputChunk => c.type === 'chunk');
         const nachModul = new Map<string, OutputChunk>();
         for (const c of chunks) if (c.facadeModuleId) nachModul.set(c.facadeModuleId.split('?')[0], c);
+        // Rückfall: Modul ohne eigenen Fassaden-Chunk (z. B. Spannbeton, Bodenmechanik, TTZ-Weiterbildungspfad –
+        // sonst leere Vorlade-Liste, Modul-Chunk erst nach dem Einstieg, LCP 02.11.2026) → Chunk, der es enthält
+        const enthalten = new Map<string, OutputChunk>();
+        for (const c of chunks) for (const m of c.moduleIds) if (!enthalten.has(m.split('?')[0])) enthalten.set(m.split('?')[0], c);
         const einstieg = chunks.find(c => c.isEntry);
         // bereits über index.html geladen (Einstieg + statische Importe) → nicht erneut aufführen
         const geladen = new Set<string>();
@@ -85,7 +89,9 @@ export function modulVorladenPlugin(wurzel = process.cwd()): Plugin {
         const datei = (rel: string) => {
           const p = path.resolve(routing, rel);
           for (const e of ['.tsx', '.ts', '/index.tsx', '/index.ts']) if (nachModul.has(p + e)) return nachModul.get(p + e);
-          return nachModul.get(p);
+          if (nachModul.has(p)) return nachModul.get(p);
+          for (const e of ['.tsx', '.ts', '/index.tsx', '/index.ts']) if (enthalten.has(p + e)) return enthalten.get(p + e);
+          return undefined;
         };
         const z = leseZuordnung(fs.readFileSync(path.join(routing, 'ModulInhalt.tsx'), 'utf8'));
         // je Komponente eine Liste (mehrere IDs teilen sich oft eine Komponente, z. B. ki_*)
@@ -111,6 +117,8 @@ export function modulVorladenPlugin(wurzel = process.cwd()): Plugin {
         const modulKopf = liste(datei('./ModulKopf'));
         const t = Object.fromEntries([...z.tabs].map(([id, name]) => [id, fuer(name)]));
         const p = z.praefixe.map(([praefix, name]) => [praefix, fuer(name)]);
+        const leer = Object.entries(t).filter(([, c]) => komponenten[c].length === 0).map(([id]) => id);
+        if (leer.length) console.warn(`modul-vorladen: kein Modul-Chunk gefunden für ${leer.join(', ')} (Vorladen entfällt)`);
         const karte = {
           b: basis + assetsDir + '/',
           d: dateien.map(f => f.startsWith(assetsDir + '/') ? f.slice(assetsDir.length + 1) : '../' + f),

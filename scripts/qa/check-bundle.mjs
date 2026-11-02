@@ -24,6 +24,9 @@ const KB = 1024;
 // anstehende Registry-Einträge (je Modul ≈ 20 Byte gzip im Auszug).
 const GRENZE_EINSTIEG = 108;
 const GRENZE_CHUNK = 300;
+// LCP 02.11.2026: Erstpfad je vorgerenderter Modulseite (Summe der vorgeladenen JS-Chunks ohne Einstieg, gzip -9).
+// Vorher max. 235,2 kB (Lebenszykluskosten mit jsPDF), nachher 217,5 kB (KI-Module, Chunk KiBaustoffe); Grenze mit Puffer.
+const GRENZE_ERSTPFAD = 225;
 // Ausnahmen mit eigener Ratsche (Basisname des Chunks → kB); derzeit keine.
 const AUSNAHMEN = {};
 
@@ -95,7 +98,31 @@ const sammle = dir => { for (const e of fs.readdirSync(dir, { withFileTypes: tru
 sammle(DIST);
 if (schriften.length) console.log(`  Schriften: ${schriften.length} Dateien, ${kb(schriften.reduce((s, x) => s + x.n, 0))} kB`);
 
+// Erstpfad der vorgerenderten Modulseiten (LCP 02.11.2026, docs/pruefung/lcp-module-2026-11-02.md): was die
+// Vorlade-Karte je Seite sofort anfordert (ohne Einstieg). Schwere Bibliotheken nur bei Bedarf (Export, 3D, Excel).
+const ERSTPFAD_VERBOTEN = ['jspdf.es.min', 'html2canvas.esm', 'xlsx', 'shapes', 'QuizDashboard'];
+const gzCache = new Map();
+const gzAsset = f => { if (!gzCache.has(f)) gzCache.set(f, fs.existsSync(path.join(ASSETS, f)) ? gz(path.join(ASSETS, f)) : 0); return gzCache.get(f); };
+const erstpfad = [];
+const modulDir = path.join(DIST, 'modul');
+for (const datei of fs.readdirSync(modulDir).filter(f => f.endsWith('.html'))) {
+  const id = datei.slice(0, -5);
+  const m = /<script type="application\/json" id="modul-vorladen">([\s\S]*?)<\/script>/.exec(fs.readFileSync(path.join(modulDir, datei), 'utf8'));
+  if (!m) continue;
+  const k = JSON.parse(m[1]);
+  const hat = (o, s) => Object.prototype.hasOwnProperty.call(o, s);
+  const c = hat(k.t, id) ? k.t[id] : k.p.find(([p]) => id.startsWith(p))?.[1];
+  const dateien = [...new Set([...k.i, ...k.k, ...(c === undefined ? [] : k.c[c]), ...(hat(k.h, id) ? [k.h[id]] : [])].map(i => k.d[i]).filter(f => f.endsWith('.js')))];
+  erstpfad.push({ id, gz: dateien.reduce((s, f) => s + gzAsset(f), 0), verboten: dateien.filter(f => ERSTPFAD_VERBOTEN.includes(basis(f))) });
+}
+erstpfad.sort((a, b) => b.gz - a.gz);
+if (erstpfad.length) console.log(`  Erstpfad Modulseiten (Vorlade-Karte, ohne Einstieg): max. ${erstpfad[0].id} ${kb(erstpfad[0].gz)} kB gzip (Grenze ${GRENZE_ERSTPFAD} kB), Median ${kb(erstpfad[Math.floor(erstpfad.length / 2)].gz)} kB`);
+
 const fehler = [];
+for (const e of erstpfad) {
+  if (e.verboten.length) fehler.push(`Modulseite ${e.id} lädt ${e.verboten.join(', ')} im Erstpfad vor (nur bei Bedarf per import() laden)`);
+  if (e.gz > GRENZE_ERSTPFAD * KB) fehler.push(`Erstpfad ${e.id} ${kb(e.gz)} kB > ${GRENZE_ERSTPFAD} kB`);
+}
 if (einstiegGz > GRENZE_EINSTIEG * KB) fehler.push(`Einstieg ${kb(einstiegGz)} kB > ${String(GRENZE_EINSTIEG).replace(".", ",")} kB`);
 for (const c of chunks) {
   const grenze = AUSNAHMEN[basis(c.f)] ?? GRENZE_CHUNK;
