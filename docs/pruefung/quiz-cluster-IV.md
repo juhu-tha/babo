@@ -1,10 +1,10 @@
 # Prüfliste Quiz – Cluster IV: Bestand & Nachhaltigkeit
 
-Stand: 30.10.2026 · Grundlage: `src/data/quiz.json` (Felder `vorpruefung` und `verified`), `docs/quiz-pruefhinweise.md`, Lernziele aus `src/data/lernziele.ts`. Erzeugt mit `npx tsx scripts/pruefliste.ts`; gesetzte Kreuze übernimmt das Skript beim nächsten Lauf. quiz.json wurde für diese Liste nicht verändert.
+Stand: 02.11.2026 · Grundlage: `src/data/quiz.json` (Felder `vorpruefung` und `verified`), `docs/quiz-pruefhinweise.md`, Lernziele aus `src/data/lernziele.ts`. Erzeugt mit `npx tsx scripts/pruefliste.ts`; gesetzte Kreuze übernimmt das Skript beim nächsten Lauf. quiz.json wurde für diese Liste nicht verändert.
 
-Cluster IV umfasst 314 Fragen aus 50 Modulen. Aufgeführt sind 103 auffällige Fragen (Vorprüfung „korrigiert“ oder „fraglich“, offener Prüfhinweis oder neu seit 26.10.2026 ohne Freigabe) und eine Stichprobe von 5 unauffälligen Fragen. Entscheidung je Frage ankreuzen; bei „ändern“ den Änderungswunsch in die Zeile darunter schreiben.
+Cluster IV umfasst 314 Fragen aus 50 Modulen. Aufgeführt sind 104 auffällige Fragen (Vorprüfung „korrigiert“ oder „fraglich“, offener Prüfhinweis oder neu seit 26.10.2026 ohne Freigabe) und eine Stichprobe von 5 unauffälligen Fragen. Entscheidung je Frage ankreuzen; bei „ändern“ den Änderungswunsch in die Zeile darunter schreiben.
 
-Auffällig im Einzelnen (Mehrfachnennung möglich): 84 korrigiert, 0 fraglich, 11 mit offenem Prüfhinweis, 12 neu seit 26.10.2026.
+Auffällig im Einzelnen (Mehrfachnennung möglich): 85 korrigiert, 0 fraglich, 11 mit offenem Prüfhinweis, 12 neu seit 26.10.2026.
 
 ## A. Auffällige Fragen
 
@@ -118,6 +118,14 @@ Auffällig im Einzelnen (Mehrfachnennung möglich): 84 korrigiert, 0 fraglich, 1
 - **Richtige Antwort:** Austrocknung verändert Querschnitte und Verbindungen, quer zur Faser stärker als längs
 - **Auffälligkeit:** Vorprüfung „korrigiert“: Distraktoren angeglichen · bereits freigegeben (verified)
 - [x] ok
+- [ ] ändern: …
+
+### q_ho_1 · Holzkorrosion
+
+- **Frage:** Welche Gebrauchsklasse gilt für einen Holzpfahl mit ständigem Erdkontakt?
+- **Richtige Antwort:** GK 4
+- **Auffälligkeit:** Vorprüfung „korrigiert“: Abgleich 02.11.: Rückmeldung zu GK 3.2 nannte die ungeschützte Fassadenschalung als Beispiel; nach der GK-Matrix des Moduls (und qn_holzkorrosion_4) ist eine senkrechte Fassade GK 3.1 (Wasser läuft rasch ab), GK 3.2 gilt bei Wasseranlagerung – korrigiert
+- [ ] ok
 - [ ] ändern: …
 
 ### q_hp_1 · Hist. Bauprodukte
@@ -620,7 +628,7 @@ Auffällig im Einzelnen (Mehrfachnennung möglich): 84 korrigiert, 0 fraglich, 1
 
 - **Frage:** Warum lässt sich nach dem Modul der Zementgehalt um etwa 8 bis 10 % senken, wenn die Konformitätsprüfung der Druckfestigkeit auf 56 statt 28 Tage festgelegt wird?
 - **Richtige Antwort:** Hüttensand und Puzzolane hydratisieren langsam; ihr Beitrag wird erst nach 56 Tagen erfasst
-- **Auffälligkeit:** Vorprüfung „korrigiert“: normRef ergänzt · bereits freigegeben (verified)
+- **Auffälligkeit:** Vorprüfung „korrigiert“: normRef ergänzt · Abgleich 02.11.: Lernhilfe nannte die Richtlinie „Treibhausgasoptimierte Tragwerke aus Stahlbeton“; Titel wie im Modul „Treibhausgasreduzierte Tragwerke aus Beton, Stahlbeton oder Spannbeton“ – korrigiert
 - [x] ok
 - [ ] ändern: …
 

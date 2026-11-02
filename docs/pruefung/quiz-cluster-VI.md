@@ -1,6 +1,6 @@
 # Prüfliste Quiz – Cluster VI: Studium & Lehre
 
-Stand: 30.10.2026 · Grundlage: `src/data/quiz.json` (Felder `vorpruefung` und `verified`), `docs/quiz-pruefhinweise.md`, Lernziele aus `src/data/lernziele.ts`. Erzeugt mit `npx tsx scripts/pruefliste.ts`; gesetzte Kreuze übernimmt das Skript beim nächsten Lauf. quiz.json wurde für diese Liste nicht verändert.
+Stand: 02.11.2026 · Grundlage: `src/data/quiz.json` (Felder `vorpruefung` und `verified`), `docs/quiz-pruefhinweise.md`, Lernziele aus `src/data/lernziele.ts`. Erzeugt mit `npx tsx scripts/pruefliste.ts`; gesetzte Kreuze übernimmt das Skript beim nächsten Lauf. quiz.json wurde für diese Liste nicht verändert.
 
 Cluster VI umfasst 60 Fragen aus 10 Modulen. Aufgeführt sind 25 auffällige Fragen (Vorprüfung „korrigiert“ oder „fraglich“, offener Prüfhinweis oder neu seit 26.10.2026 ohne Freigabe) und eine Stichprobe von 5 unauffälligen Fragen. Entscheidung je Frage ankreuzen; bei „ändern“ den Änderungswunsch in die Zeile darunter schreiben.
 
@@ -58,9 +58,9 @@ Auffällig im Einzelnen (Mehrfachnennung möglich): 25 korrigiert, 0 fraglich, 0
 
 ### qn_rechnung_mauerwerk_1 · Mauerwerk: Tragfähigkeit
 
-- **Frage:** Für Kalksandstein-Mauerwerk setzt das Modul f_k = 5,6 N/mm², den Dauerstandsbeiwert ζ = 0,85 und γ_M = 1,5 an. Welcher Bemessungswert f_d ergibt sich?
+- **Frage:** Für Kalksand-Lochsteine KS L, SFK 12, mit Normalmauermörtel NM III weist die f_k-Tafel des Moduls f_k = 5,6 N/mm² aus; das Modul rechnet mit dem Dauerstandsbeiwert ζ = 0,85 und γ_M = 1,5. Welcher Bemessungswert f_d ergibt sich?
 - **Richtige Antwort:** f_d = 3,17 N/mm²
-- **Auffälligkeit:** Vorprüfung „korrigiert“: Gutachten 27.10.2026: Rechnung auf f_d = ζ · f_k/γ_M mit ζ = 0,85 umgestellt wie im Modul (src/calc/mauerwerk.ts); Werte und Distraktoren mit dem Rechenkern neu gerechnet, abgesichert in tests/quizRechenfragen.test.ts. · bereits freigegeben (verified)
+- **Auffälligkeit:** Vorprüfung „korrigiert“: Gutachten 27.10.2026: Rechnung auf f_d = ζ · f_k/γ_M mit ζ = 0,85 umgestellt wie im Modul (src/calc/mauerwerk.ts); Werte und Distraktoren mit dem Rechenkern neu gerechnet, abgesichert in tests/quizRechenfragen.test.ts. · Abgleich 02.11.: Frage sagte „Für Kalksandstein-Mauerwerk setzt das Modul f_k = 5,6 N/mm² an“; das Modul wählt f_k aus der NA-Tafel (src/calc/mauerwerk.ts, FK_TAFEL_NA), 5,6 N/mm² gilt dort für KS L 12 mit NM III; Rechnung unverändert – korrigiert
 - [x] ok
 - [ ] ändern: …
 
@@ -98,9 +98,9 @@ Auffällig im Einzelnen (Mehrfachnennung möglich): 25 korrigiert, 0 fraglich, 0
 
 ### qn_rechnung_mauerwerk_6 · Mauerwerk: Tragfähigkeit
 
-- **Frage:** Eine Wand (h_ef = 2,75 m, Φ2 maßgebend) erhält N_Ed = 150 kN/m. Welcher Vergleich der Ausnutzungsgrade nach dem Modul (f_d = ζ · f_k/γ_M; KS: f_k = 5,6; HLz: f_k = 3,2 N/mm²) ist richtig?
+- **Frage:** Eine Wand (h_ef = 2,75 m, Φ2 maßgebend) erhält N_Ed = 150 kN/m. Welcher Vergleich der Ausnutzungsgrade ist mit dem Ansatz des Moduls (f_d = ζ · f_k/γ_M) richtig, wenn für Kalksandstein f_k = 5,6 N/mm² (KS L 12, NM III) und für den Hochlochziegel f_k = 3,2 N/mm² angenommen werden?
 - **Richtige Antwort:** KS 17,5 cm: η ≈ 0,47; HLz 17,5 cm: η ≈ 0,82; HLz 24 cm: η ≈ 0,49
-- **Auffälligkeit:** Vorprüfung „korrigiert“: Gutachten 27.10.2026: Rechnung auf f_d = ζ · f_k/γ_M mit ζ = 0,85 umgestellt wie im Modul (src/calc/mauerwerk.ts); Werte und Distraktoren mit dem Rechenkern neu gerechnet, abgesichert in tests/quizRechenfragen.test.ts. · bereits freigegeben (verified)
+- **Auffälligkeit:** Vorprüfung „korrigiert“: Gutachten 27.10.2026: Rechnung auf f_d = ζ · f_k/γ_M mit ζ = 0,85 umgestellt wie im Modul (src/calc/mauerwerk.ts); Werte und Distraktoren mit dem Rechenkern neu gerechnet, abgesichert in tests/quizRechenfragen.test.ts. · Abgleich 02.11.: Frage nannte KS f_k = 5,6 und HLz f_k = 3,2 N/mm² als Werte „nach dem Modul“; das Modul wählt f_k aus der NA-Tafel (HLz-Einträge 3,5 bis 5,7 N/mm²), die Werte sind jetzt als Annahme bezeichnet; Rechnung unverändert – korrigiert
 - [x] ok
 - [ ] ändern: …
 
