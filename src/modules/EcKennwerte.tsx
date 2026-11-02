@@ -24,16 +24,15 @@ import inhalt from '@/content/eckennwerte/EcKennwerte.json';
 import { MdText } from '@/src/components/inhalt/MdText';
 
 type Reiter = 'grundlagen' | 'statistik' | 'beton' | 'baustoffe' | 'beispiele' | 'rechner' | 'grenzen';
-const T = inhalt.texte, W = inhalt.werte;
 
 const REITER: readonly ModulTab<Reiter>[] = [
-  { id: 'grundlagen', label: W.reiterGrundlagen, icon: BookOpen },
-  { id: 'statistik', label: W.reiterStatistik, icon: Sigma },
-  { id: 'beton', label: W.reiterBeton, icon: Layers },
-  { id: 'baustoffe', label: W.reiterBaustoffe, icon: Boxes },
-  { id: 'beispiele', label: W.reiterBeispiele, icon: ListChecks },
-  { id: 'rechner', label: W.reiterRechner, icon: Calculator },
-  { id: 'grenzen', label: W.reiterGrenzen, icon: ShieldAlert },
+  { id: 'grundlagen', label: inhalt.werte.reiterGrundlagen, icon: BookOpen },
+  { id: 'statistik', label: inhalt.werte.reiterStatistik, icon: Sigma },
+  { id: 'beton', label: inhalt.werte.reiterBeton, icon: Layers },
+  { id: 'baustoffe', label: inhalt.werte.reiterBaustoffe, icon: Boxes },
+  { id: 'beispiele', label: inhalt.werte.reiterBeispiele, icon: ListChecks },
+  { id: 'rechner', label: inhalt.werte.reiterRechner, icon: Calculator },
+  { id: 'grenzen', label: inhalt.werte.reiterGrenzen, icon: ShieldAlert },
 ];
 
 const karte = 'bg-white p-5 sm:p-6 rounded-2xl shadow-sm border border-home-grau/30';
@@ -65,10 +64,10 @@ const KLED_LISTE = Object.entries(KLED_NAME) as [string, KLED][];
 const NKL: readonly Nutzungsklasse[] = [1, 2, 3];
 const BETON_TABELLE = Object.values(BETON_EC2).sort((a, b) => a.fck - b.fck);
 const KN_SPALTEN = [3, 4, 5, 6, 8, 10, 20, 30, Infinity];
-const ART_NAME: Record<EcZeile['art'], string> = { mittel: W.artMittel, charakteristisch: W.artChar, bemessung: W.artBem, steifigkeit: W.artSteif, beiwert: W.artBeiwert };
+const ART_NAME: Record<EcZeile['art'], string> = { mittel: inhalt.werte.artMittel, charakteristisch: inhalt.werte.artChar, bemessung: inhalt.werte.artBem, steifigkeit: inhalt.werte.artSteif, beiwert: inhalt.werte.artBeiwert };
 const klassenName = (b: EcBaustoff, k: string) => {
   if (b !== 'mauerwerk') return k;
-  if (k === 'frei') return W.freiEingabe;
+  if (k === 'frei') return inhalt.werte.freiEingabe;
   const e = fkNA(k);
   return e ? `${e.stein}, ${zahl(e.sfk, 0)}, ${e.moertel} (f_k = ${zahl(e.fk, 1)} N/mm²)` : k;
 };
@@ -88,7 +87,7 @@ function KennwertTabelle({ zeilen, titel }: { zeilen: readonly EcZeile[]; titel:
     <div className="overflow-x-auto">
       <table className="w-full border-collapse min-w-[520px]">
         <caption className="text-left text-xs font-bold text-text-main pb-2">{titel}</caption>
-        <thead><tr><th scope="col" className={th}>{W.spGroesse}</th><th scope="col" className={th}>{W.spBenennung}</th><th scope="col" className={th}>{W.spWert}</th><th scope="col" className={th}>{W.spEinheit}</th></tr></thead>
+        <thead><tr><th scope="col" className={th}>{inhalt.werte.spGroesse}</th><th scope="col" className={th}>{inhalt.werte.spBenennung}</th><th scope="col" className={th}>{inhalt.werte.spWert}</th><th scope="col" className={th}>{inhalt.werte.spEinheit}</th></tr></thead>
         <tbody>{zeilen.map(z => (
           <tr key={z.zeichen} className={z.art === 'bemessung' ? 'bg-shiraz/5' : ''}>
             <th scope="row" className={td}><MdText text={`$${z.zeichen}$`} /></th>
@@ -102,7 +101,7 @@ function KennwertTabelle({ zeilen, titel }: { zeilen: readonly EcZeile[]; titel:
   );
 }
 
-const SERIE_BEISPIEL = pruefwerteAusText(W.serieVorgabe);
+const SERIE_BEISPIEL = pruefwerteAusText(inhalt.werte.serieVorgabe);
 
 export default function EcKennwerte() {
   const [reiter, setReiter] = useState<Reiter>('grundlagen');
@@ -116,7 +115,7 @@ export default function EcKennwerte() {
   const [fkText, setFkText] = useState('6,0');
   const [zeta, setZeta] = useState(0.85);
   // Prüfserie
-  const [serieText, setSerieText] = useState(W.serieVorgabe);
+  const [serieText, setSerieText] = useState(inhalt.werte.serieVorgabe);
   const [vxText, setVxText] = useState('');
   const [verteilung, setVerteilung] = useState<Verteilung>('normal');
   const [gammaSerie, setGammaSerie] = useState<number>(GAMMA_WIDERSTAND.beton.staendig);
@@ -142,46 +141,46 @@ export default function EcKennwerte() {
   const c = BETON_EC2['C30/37'];
 
   const schritte = erg.gueltig ? [
-    { titel: W.charakteristisch, erklaerung: `${BAUSTOFF_NAME[baustoff]} ${klassenName(baustoff, klasse)}`, formel: `X_k = ${tex(erg.xk, 1)}\\,\\text{N/mm}^2` },
-    { titel: REGEL[baustoff].regel, erklaerung: situation === 'staendig' ? W.staendig : W.aussergewoehnlich, formel: `${REGEL[baustoff].zeichen} = ${tex(erg.gamma, 2)}, \\quad \\eta = ${tex(erg.beiwert, 2)}` },
-    { titel: W.bemessung, erklaerung: W.verhaeltnis, formel: `${bemessungsTeX(baustoff, erg.xk, erg.beiwert, erg.gamma, erg.xd)}, \\quad X_d/X_k = ${tex(erg.verhaeltnis, 3)}` },
+    { titel: inhalt.werte.charakteristisch, erklaerung: `${BAUSTOFF_NAME[baustoff]} ${klassenName(baustoff, klasse)}`, formel: `X_k = ${tex(erg.xk, 1)}\\,\\text{N/mm}^2` },
+    { titel: REGEL[baustoff].regel, erklaerung: situation === 'staendig' ? inhalt.werte.staendig : inhalt.werte.aussergewoehnlich, formel: `${REGEL[baustoff].zeichen} = ${tex(erg.gamma, 2)}, \\quad \\eta = ${tex(erg.beiwert, 2)}` },
+    { titel: inhalt.werte.bemessung, erklaerung: inhalt.werte.verhaeltnis, formel: `${bemessungsTeX(baustoff, erg.xk, erg.beiwert, erg.gamma, erg.xd)}, \\quad X_d/X_k = ${tex(erg.verhaeltnis, 3)}` },
   ] : [];
 
   return (
     <div className="flex flex-col gap-8 pb-12">
       <div className={`${karte} flex flex-col gap-5`}>
         <div>
-          <h2 className="text-xl font-bold text-text-main flex items-center gap-2"><Scale className="w-5 h-5 text-shiraz" /><MdText text={T.titel} /></h2>
-          <p className="text-xs text-text-main/70 font-mono mt-1"><MdText text={T.untertitel} /></p>
+          <h2 className="text-xl font-bold text-text-main flex items-center gap-2"><Scale className="w-5 h-5 text-shiraz" /><MdText text={inhalt.texte.titel} /></h2>
+          <p className="text-xs text-text-main/70 font-mono mt-1"><MdText text={inhalt.texte.untertitel} /></p>
         </div>
-        <p className={absatz}><MdText text={T.einleitung} /></p>
+        <p className={absatz}><MdText text={inhalt.texte.einleitung} /></p>
         <div className="p-4 rounded-xl border border-amber-300/60 bg-amber-50 text-xs text-text-main/85 leading-relaxed flex items-start gap-2.5">
           <GraduationCap size={16} className="text-amber-700 shrink-0 mt-0.5" />
-          <p><MdText text={T.lehrhinweis} /></p>
+          <p><MdText text={inhalt.texte.lehrhinweis} /></p>
         </div>
 
-        <ModuleTabs label={W.reiterLabel} tabs={REITER} aktiv={reiter} onWechsel={setReiter}>
+        <ModuleTabs label={inhalt.werte.reiterLabel} tabs={REITER} aktiv={reiter} onWechsel={setReiter}>
           <div className="pt-5 animate-in fade-in duration-300">
             {reiter === 'grundlagen' && (
               <div className="flex flex-col gap-5">
-                <p className={absatz}><MdText text={T.kKette} /></p>
+                <p className={absatz}><MdText text={inhalt.texte.kKette} /></p>
                 <div className={formelKasten}>
                   <BlockMath math="\underbrace{f_m,\ s}_{\text{Prüfung}} \;\longrightarrow\; \underbrace{X_k = f_m - k_n \cdot s}_{\text{5-\%-Quantil}} \;\longrightarrow\; \underbrace{X_d = \eta \cdot \frac{X_k}{\gamma_M}}_{\text{Bemessungswert}}" />
                 </div>
-                <p className={absatz}><MdText text={T.kSemi} /></p>
+                <p className={absatz}><MdText text={inhalt.texte.kSemi} /></p>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                  <div className={kasten}><p><MdText text={T.kEinwirkung} /></p></div>
-                  <div className={kasten}><p><MdText text={T.kWiderstand} /></p></div>
+                  <div className={kasten}><p><MdText text={inhalt.texte.kEinwirkung} /></p></div>
+                  <div className={kasten}><p><MdText text={inhalt.texte.kWiderstand} /></p></div>
                 </div>
                 <div className={formelKasten}>
-                  <p className="text-xs text-text-main/70 mb-1"><MdText text={T.kNachweis} /></p>
+                  <p className="text-xs text-text-main/70 mb-1"><MdText text={inhalt.texte.kNachweis} /></p>
                   <BlockMath math="E_d = E\{\gamma_G \cdot G_k;\ \gamma_Q \cdot Q_k\} \;\le\; R_d = R\left\{\eta \cdot \frac{X_k}{\gamma_M}\right\}" />
                 </div>
-                <p className={absatz}><MdText text={T.kSituationen} /></p>
+                <p className={absatz}><MdText text={inhalt.texte.kSituationen} /></p>
                 <div className="overflow-x-auto">
                   <table className="w-full border-collapse min-w-[560px]">
-                    <caption className="text-left text-xs font-bold text-text-main pb-2">{T.kTabelleTitel}</caption>
-                    <thead><tr><th scope="col" className={th}>{W.spBaustoff}</th><th scope="col" className={th}>{W.spBeiwert}</th><th scope="col" className={th}>{W.staendig}</th><th scope="col" className={th}>{W.aussergewoehnlich}</th><th scope="col" className={th}>{W.spBeiwertZusatz}</th><th scope="col" className={th}>{W.spRegel}</th></tr></thead>
+                    <caption className="text-left text-xs font-bold text-text-main pb-2">{inhalt.texte.kTabelleTitel}</caption>
+                    <thead><tr><th scope="col" className={th}>{inhalt.werte.spBaustoff}</th><th scope="col" className={th}>{inhalt.werte.spBeiwert}</th><th scope="col" className={th}>{inhalt.werte.staendig}</th><th scope="col" className={th}>{inhalt.werte.aussergewoehnlich}</th><th scope="col" className={th}>{inhalt.werte.spBeiwertZusatz}</th><th scope="col" className={th}>{inhalt.werte.spRegel}</th></tr></thead>
                     <tbody>{BAUSTOFFE.map(b => (
                       <tr key={b.id}>
                         <th scope="row" className={td}>{b.name}</th>
@@ -193,72 +192,72 @@ export default function EcKennwerte() {
                       </tr>
                     ))}</tbody>
                   </table>
-                  <p className="text-xs text-text-main/70 mt-2">* <MdText text={T.kTabelleHinweis} /></p>
+                  <p className="text-xs text-text-main/70 mt-2">* <MdText text={inhalt.texte.kTabelleHinweis} /></p>
                 </div>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                  <div className={kasten}><p><MdText text={T.kAlphaCc} /></p></div>
-                  <div className={kasten}><p><MdText text={T.kKmod} /></p></div>
-                  <div className={kasten}><p><MdText text={T.kZeta} /></p></div>
-                  <div className={kasten}><p><MdText text={T.kStahl} /></p></div>
+                  <div className={kasten}><p><MdText text={inhalt.texte.kAlphaCc} /></p></div>
+                  <div className={kasten}><p><MdText text={inhalt.texte.kKmod} /></p></div>
+                  <div className={kasten}><p><MdText text={inhalt.texte.kZeta} /></p></div>
+                  <div className={kasten}><p><MdText text={inhalt.texte.kStahl} /></p></div>
                 </div>
-                <Querverweis ziel="sicherheitskonzept" titel={T.querSicherheitTitel} linkText={W.zumModulSicherheit}><p><MdText text={T.querSicherheit} /></p></Querverweis>
+                <Querverweis ziel="sicherheitskonzept" titel={inhalt.texte.querSicherheitTitel} linkText={inhalt.werte.zumModulSicherheit}><p><MdText text={inhalt.texte.querSicherheit} /></p></Querverweis>
               </div>
             )}
 
             {reiter === 'statistik' && (
               <div className="flex flex-col gap-5">
-                <p className={absatz}><MdText text={T.sVerteilung} /></p>
+                <p className={absatz}><MdText text={inhalt.texte.sVerteilung} /></p>
                 <div className={formelKasten}>
                   <BlockMath math={`X_k = m_X - 1{,}645 \\cdot \\sigma_X, \\qquad P(X < X_k) = \\Phi(-1{,}645) = ${tex(unterschreitung(1.645) * 100, 1)}\\,\\%`} />
                 </div>
-                <p className={absatz}><MdText text={T.sLognormal} /></p>
+                <p className={absatz}><MdText text={inhalt.texte.sLognormal} /></p>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                  <div className={kasten}><p><MdText text={T.sVariation} /></p></div>
-                  <div className={kasten}><p><MdText text={T.sVariationFolge} /></p></div>
+                  <div className={kasten}><p><MdText text={inhalt.texte.sVariation} /></p></div>
+                  <div className={kasten}><p><MdText text={inhalt.texte.sVariationFolge} /></p></div>
                 </div>
-                <p className={absatz}><MdText text={T.sKn} /></p>
+                <p className={absatz}><MdText text={inhalt.texte.sKn} /></p>
                 <div className="overflow-x-auto">
                   <table className="w-full border-collapse min-w-[560px]">
-                    <caption className="text-left text-xs font-bold text-text-main pb-2">{T.sKnTitel}</caption>
+                    <caption className="text-left text-xs font-bold text-text-main pb-2">{inhalt.texte.sKnTitel}</caption>
                     <thead><tr><th scope="col" className={th}>n</th>{KN_SPALTEN.map(n => <th scope="col" key={n} className={th}>{Number.isFinite(n) ? n : '∞'}</th>)}</tr></thead>
                     <tbody>
-                      <tr><th scope="row" className={td}>{W.vxBekanntZeile}</th>{KN_SPALTEN.map(n => <td key={n} className={`${td} font-mono`}>{zahl(fraktilfaktorKnBekannt(n), 2)}</td>)}</tr>
-                      <tr><th scope="row" className={td}>{W.vxUnbekannt}</th>{KN_SPALTEN.map(n => <td key={n} className={`${td} font-mono`}>{zahl(fraktilfaktorKn(n), 2)}</td>)}</tr>
+                      <tr><th scope="row" className={td}>{inhalt.werte.vxBekanntZeile}</th>{KN_SPALTEN.map(n => <td key={n} className={`${td} font-mono`}>{zahl(fraktilfaktorKnBekannt(n), 2)}</td>)}</tr>
+                      <tr><th scope="row" className={td}>{inhalt.werte.vxUnbekannt}</th>{KN_SPALTEN.map(n => <td key={n} className={`${td} font-mono`}>{zahl(fraktilfaktorKn(n), 2)}</td>)}</tr>
                     </tbody>
                   </table>
                 </div>
                 <div className={kasten}>
-                  <p><MdText text={T.sAcht} /></p>
+                  <p><MdText text={inhalt.texte.sAcht} /></p>
                   <div className="overflow-x-auto"><BlockMath math={`f_{cm} - f_{ck} = 8\\,\\text{N/mm}^2 = 1{,}645 \\cdot \\sigma \\;\\Rightarrow\\; \\sigma = \\frac{8}{1{,}645} = ${tex(sigmaAusVorhalt(8), 2)}\\,\\text{N/mm}^2`} /></div>
-                  <p className="mt-2"><MdText text={T.sAchtFolge} /></p>
+                  <p className="mt-2"><MdText text={inhalt.texte.sAchtFolge} /></p>
                 </div>
-                <p className={absatz}><MdText text={T.sMittelVsChar} /></p>
+                <p className={absatz}><MdText text={inhalt.texte.sMittelVsChar} /></p>
                 <div className={kasten}>
-                  <p><MdText text={T.sKonformitaet} /></p>
+                  <p><MdText text={inhalt.texte.sKonformitaet} /></p>
                   <ul className="list-disc pl-5 mt-2 space-y-1">
-                    <li><MdText text={T.sKrit1} /></li>
-                    <li><MdText text={T.sKrit2} /></li>
+                    <li><MdText text={inhalt.texte.sKrit1} /></li>
+                    <li><MdText text={inhalt.texte.sKrit2} /></li>
                   </ul>
-                  <p className="mt-2"><MdText text={T.sKonfDeutung} /></p>
+                  <p className="mt-2"><MdText text={inhalt.texte.sKonfDeutung} /></p>
                 </div>
-                <p className={absatz}><MdText text={T.sIs} /></p>
+                <p className={absatz}><MdText text={inhalt.texte.sIs} /></p>
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-                  <Querverweis ziel="statistik" titel={T.querStatistikTitel} linkText={W.zumModulStatistik}><p><MdText text={T.querStatistik} /></p></Querverweis>
-                  <Querverweis ziel="festbeton_statistik" titel={T.querFestbetonTitel} linkText={W.zumModulFestbeton}><p><MdText text={T.querFestbeton} /></p></Querverweis>
-                  <Querverweis ziel="historisch" titel={T.querHistTitel} linkText={W.zumModulHist}><p><MdText text={T.querHist} /></p></Querverweis>
+                  <Querverweis ziel="statistik" titel={inhalt.texte.querStatistikTitel} linkText={inhalt.werte.zumModulStatistik}><p><MdText text={inhalt.texte.querStatistik} /></p></Querverweis>
+                  <Querverweis ziel="festbeton_statistik" titel={inhalt.texte.querFestbetonTitel} linkText={inhalt.werte.zumModulFestbeton}><p><MdText text={inhalt.texte.querFestbeton} /></p></Querverweis>
+                  <Querverweis ziel="historisch" titel={inhalt.texte.querHistTitel} linkText={inhalt.werte.zumModulHist}><p><MdText text={inhalt.texte.querHist} /></p></Querverweis>
                 </div>
               </div>
             )}
 
             {reiter === 'beton' && (
               <div className="flex flex-col gap-5">
-                <p className={absatz}><MdText text={T.bEinleitung} /></p>
+                <p className={absatz}><MdText text={inhalt.texte.bEinleitung} /></p>
                 <div className="overflow-x-auto">
                   <table className="w-full border-collapse min-w-[760px]">
-                    <caption className="text-left text-xs font-bold text-text-main pb-2">{T.bTabelleTitel}</caption>
+                    <caption className="text-left text-xs font-bold text-text-main pb-2">{inhalt.texte.bTabelleTitel}</caption>
                     <thead><tr>
-                      {['Klasse', 'f_{ck}', 'f_{ck,cube}', 'f_{cm}', 'f_{ctm}', 'f_{ctk;0,05}', 'f_{ctk;0,95}', 'E_{cm}', '\\varepsilon_{c2}', '\\varepsilon_{cu2}', 'n', 'f_{cd}'].map((s, i) => (
-                        <th scope="col" key={s} className={th}>{i === 0 ? W.spKlasse : <MdText text={`$${s}$`} />}</th>
+                      {['Klasse', 'f_{ck}', 'f_{ck,cube}', 'f_{cm}', 'f_{ctm}', 'f_{ctk;0{,}05}', 'f_{ctk;0{,}95}', 'E_{cm}', '\\varepsilon_{c2}', '\\varepsilon_{cu2}', 'n', 'f_{cd}'].map((s, i) => (
+                        <th scope="col" key={s} className={th}>{i === 0 ? inhalt.werte.spKlasse : <MdText text={`$${s}$`} />}</th>
                       ))}
                     </tr></thead>
                     <tbody>{BETON_TABELLE.map(k => (
@@ -278,17 +277,17 @@ export default function EcKennwerte() {
                       </tr>
                     ))}</tbody>
                   </table>
-                  <p className="text-xs text-text-main/70 mt-2"><MdText text={T.bTabelleHinweis} /></p>
+                  <p className="text-xs text-text-main/70 mt-2"><MdText text={inhalt.texte.bTabelleHinweis} /></p>
                 </div>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                  <div className={kasten}><p><MdText text={T.bFctm} /></p></div>
-                  <div className={kasten}><p><MdText text={T.bEcm} /></p></div>
-                  <div className={kasten}><p><MdText text={T.bDehnung} /></p></div>
-                  <div className={kasten}><p><MdText text={T.bFcd} /></p></div>
+                  <div className={kasten}><p><MdText text={inhalt.texte.bFctm} /></p></div>
+                  <div className={kasten}><p><MdText text={inhalt.texte.bEcm} /></p></div>
+                  <div className={kasten}><p><MdText text={inhalt.texte.bDehnung} /></p></div>
+                  <div className={kasten}><p><MdText text={inhalt.texte.bFcd} /></p></div>
                 </div>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                  <Querverweis ziel="betonkennwerte" titel={T.querBetonTitel} linkText={W.zumModulBeton}><p><MdText text={T.querBeton} /></p></Querverweis>
-                  <Querverweis ziel="stahlbeton_bemessung" titel={T.querStbTitel} linkText={W.zumModulStb}><p><MdText text={T.querStb} /></p></Querverweis>
+                  <Querverweis ziel="betonkennwerte" titel={inhalt.texte.querBetonTitel} linkText={inhalt.werte.zumModulBeton}><p><MdText text={inhalt.texte.querBeton} /></p></Querverweis>
+                  <Querverweis ziel="stahlbeton_bemessung" titel={inhalt.texte.querStbTitel} linkText={inhalt.werte.zumModulStb}><p><MdText text={inhalt.texte.querStb} /></p></Querverweis>
                 </div>
               </div>
             )}
@@ -296,110 +295,110 @@ export default function EcKennwerte() {
             {reiter === 'baustoffe' && (
               <div className="flex flex-col gap-5">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                  <div className={kasten}><p><MdText text={T.wBetonstahl} /></p></div>
-                  <div className={kasten}><p><MdText text={T.wBaustahl} /></p></div>
+                  <div className={kasten}><p><MdText text={inhalt.texte.wBetonstahl} /></p></div>
+                  <div className={kasten}><p><MdText text={inhalt.texte.wBaustahl} /></p></div>
                 </div>
-                <p className={absatz}><MdText text={T.wHolz} /></p>
+                <p className={absatz}><MdText text={inhalt.texte.wHolz} /></p>
                 <div className="overflow-x-auto">
                   <table className="w-full border-collapse min-w-[520px]">
-                    <caption className="text-left text-xs font-bold text-text-main pb-2">{T.wKmodTitel}</caption>
-                    <thead><tr><th scope="col" className={th}>{W.nkl}</th>{KLED_LISTE.map(([name]) => <th scope="col" key={name} className={th}>{name}</th>)}</tr></thead>
+                    <caption className="text-left text-xs font-bold text-text-main pb-2">{inhalt.texte.wKmodTitel}</caption>
+                    <thead><tr><th scope="col" className={th}>{inhalt.werte.nkl}</th>{KLED_LISTE.map(([name]) => <th scope="col" key={name} className={th}>{name}</th>)}</tr></thead>
                     <tbody>{NKL.map(n => (
                       <tr key={n}><th scope="row" className={td}>NKL {n}</th>{KLED_LISTE.map(([name, k]) => <td key={name} className={`${td} font-mono`}>{zahl(KMOD[n][k], 2)}</td>)}</tr>
                     ))}</tbody>
                   </table>
-                  <p className="text-xs text-text-main/70 mt-2"><MdText text={T.wNkl} /></p>
+                  <p className="text-xs text-text-main/70 mt-2"><MdText text={inhalt.texte.wNkl} /></p>
                 </div>
-                <p className={absatz}><MdText text={T.wMauerwerk} /></p>
+                <p className={absatz}><MdText text={inhalt.texte.wMauerwerk} /></p>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                  <Querverweis ziel="stahlbau_ec3" titel={T.querStahlTitel} linkText={W.zumModulStahl}><p><MdText text={T.querStahl} /></p></Querverweis>
-                  <Querverweis ziel="holzbau_bemessung" titel={T.querHolzTitel} linkText={W.zumModulHolz}><p><MdText text={T.querHolz} /></p></Querverweis>
-                  <Querverweis ziel="mauerwerk" titel={T.querMwTitel} linkText={W.zumModulMw}><p><MdText text={T.querMw} /></p></Querverweis>
+                  <Querverweis ziel="stahlbau_ec3" titel={inhalt.texte.querStahlTitel} linkText={inhalt.werte.zumModulStahl}><p><MdText text={inhalt.texte.querStahl} /></p></Querverweis>
+                  <Querverweis ziel="holzbau_bemessung" titel={inhalt.texte.querHolzTitel} linkText={inhalt.werte.zumModulHolz}><p><MdText text={inhalt.texte.querHolz} /></p></Querverweis>
+                  <Querverweis ziel="mauerwerk" titel={inhalt.texte.querMwTitel} linkText={inhalt.werte.zumModulMw}><p><MdText text={inhalt.texte.querMw} /></p></Querverweis>
                 </div>
               </div>
             )}
 
             {reiter === 'beispiele' && (
               <div className="flex flex-col gap-5">
-                <p className={absatz}><MdText text={T.eEinleitung} /></p>
+                <p className={absatz}><MdText text={inhalt.texte.eEinleitung} /></p>
                 <section className={kasten}>
-                  <h3 className="font-bold text-text-main text-sm mb-1.5">{T.e1Titel}</h3>
-                  <p><MdText text={T.e1Text} /></p>
+                  <h3 className="font-bold text-text-main text-sm mb-1.5">{inhalt.texte.e1Titel}</h3>
+                  <p><MdText text={inhalt.texte.e1Text} /></p>
                   <div className="overflow-x-auto">
                     <BlockMath math={`f_{cm} = f_{ck} + 8 = ${tex(c.fck)} + 8 = ${tex(w(bsp.c30, 'f_{cm}'))}\\,\\text{N/mm}^2`} />
-                    <BlockMath math={`f_{ctm} = 0{,}30 \\cdot f_{ck}^{2/3} = 0{,}30 \\cdot ${tex(c.fck)}^{2/3} = ${tex(0.3 * Math.pow(c.fck, 2 / 3), 2)} \\approx ${tex(w(bsp.c30, 'f_{ctm}'), 1)}\\,\\text{N/mm}^2, \\quad f_{ctk;0,05} = 0{,}7 \\cdot f_{ctm} = ${tex(w(bsp.c30, 'f_{ctk;0,05}'), 1)}\\,\\text{N/mm}^2`} />
+                    <BlockMath math={`f_{ctm} = 0{,}30 \\cdot f_{ck}^{2/3} = 0{,}30 \\cdot ${tex(c.fck)}^{2/3} = ${tex(0.3 * Math.pow(c.fck, 2 / 3), 2)} \\approx ${tex(w(bsp.c30, 'f_{ctm}'), 1)}\\,\\text{N/mm}^2, \\quad f_{ctk;0{,}05} = 0{,}7 \\cdot f_{ctm} = ${tex(w(bsp.c30, 'f_{ctk;0{,}05}'), 1)}\\,\\text{N/mm}^2`} />
                     <BlockMath math={`E_{cm} = 22\\,000 \\cdot \\left(\\frac{${tex(c.fcm)}}{10}\\right)^{0{,}3} = ${tex(22000 * Math.pow(c.fcm / 10, 0.3), 0)} \\approx ${tex(w(bsp.c30, 'E_{cm}'), 0)}\\,\\text{N/mm}^2`} />
                     <BlockMath math={bemessungsTeX('beton', bsp.c30.xk, bsp.c30.beiwert, bsp.c30.gamma, bsp.c30.xd)} />
-                    <BlockMath math={`f_{ctd} = \\alpha_{ct} \\cdot \\frac{f_{ctk;0,05}}{\\gamma_C} = 0{,}85 \\cdot \\frac{${tex(w(bsp.c30, 'f_{ctk;0,05}'), 1)}}{${tex(bsp.c30.gamma, 2)}} = ${tex(w(bsp.c30, 'f_{ctd}'), 2)}\\,\\text{N/mm}^2`} />
+                    <BlockMath math={`f_{ctd} = \\alpha_{ct} \\cdot \\frac{f_{ctk;0{,}05}}{\\gamma_C} = 0{,}85 \\cdot \\frac{${tex(w(bsp.c30, 'f_{ctk;0{,}05}'), 1)}}{${tex(bsp.c30.gamma, 2)}} = ${tex(w(bsp.c30, 'f_{ctd}'), 2)}\\,\\text{N/mm}^2`} />
                   </div>
-                  <p className="mt-1"><MdText text={T.e1Fazit} /></p>
+                  <p className="mt-1"><MdText text={inhalt.texte.e1Fazit} /></p>
                 </section>
                 <section className={kasten}>
-                  <h3 className="font-bold text-text-main text-sm mb-1.5">{T.e2Titel}</h3>
-                  <p><MdText text={T.e2Text} /></p>
+                  <h3 className="font-bold text-text-main text-sm mb-1.5">{inhalt.texte.e2Titel}</h3>
+                  <p><MdText text={inhalt.texte.e2Text} /></p>
                   <div className="overflow-x-auto">
                     <BlockMath math={bemessungsTeX('betonstahl', bsp.b500.xk, 1, bsp.b500.gamma, bsp.b500.xd)} />
-                    <BlockMath math={`\\varepsilon_{yd} = \\frac{f_{yd}}{E_s} = \\frac{${tex(bsp.b500.xd, 1)}}{${tex(w(bsp.b500, 'E_s'), 0)}} = ${tex(w(bsp.b500, '\\varepsilon_{yd}'), 2)}\\,\\text{‰}`} />
+                    <BlockMath math={`\\varepsilon_{yd} = \\frac{f_{yd}}{E_s} = \\frac{${tex(bsp.b500.xd, 1)}}{${tex(w(bsp.b500, 'E_s'), 0)}} = ${tex(w(bsp.b500, '\\varepsilon_{yd}'), 2)} \\cdot 10^{-3}`} />
                   </div>
                 </section>
                 <section className={kasten}>
-                  <h3 className="font-bold text-text-main text-sm mb-1.5">{T.e3Titel}</h3>
-                  <p><MdText text={T.e3Text} /></p>
+                  <h3 className="font-bold text-text-main text-sm mb-1.5">{inhalt.texte.e3Titel}</h3>
+                  <p><MdText text={inhalt.texte.e3Text} /></p>
                   <div className="overflow-x-auto">
                     <BlockMath math={`\\frac{f_y}{\\gamma_{M0}} = \\frac{${tex(bsp.s355.xk)}}{${tex(EC3_NA_DE.gammaM0, 1)}} = ${tex(w(bsp.s355, 'f_y/\\gamma_{M0}'), 1)}, \\quad \\frac{f_y}{\\gamma_{M1}} = \\frac{${tex(bsp.s355.xk)}}{${tex(EC3_NA_DE.gammaM1, 1)}} = ${tex(w(bsp.s355, 'f_y/\\gamma_{M1}'), 1)}, \\quad \\frac{0{,}9 \\cdot f_u}{\\gamma_{M2}} = \\frac{0{,}9 \\cdot ${tex(w(bsp.s355, 'f_u'))}}{${tex(EC3_NA_DE.gammaM2, 2)}} = ${tex(w(bsp.s355, '0{,}9\\,f_u/\\gamma_{M2}'), 1)}\\;\\text{N/mm}^2`} />
                   </div>
                 </section>
                 <section className={kasten}>
-                  <h3 className="font-bold text-text-main text-sm mb-1.5">{T.e4Titel}</h3>
-                  <p><MdText text={T.e4Text} /></p>
+                  <h3 className="font-bold text-text-main text-sm mb-1.5">{inhalt.texte.e4Titel}</h3>
+                  <p><MdText text={inhalt.texte.e4Text} /></p>
                   <div className="overflow-x-auto">
                     <BlockMath math={bemessungsTeX('holz', bsp.gl24.xk, bsp.gl24.beiwert, bsp.gl24.gamma, bsp.gl24.xd)} />
                   </div>
-                  <p className="mt-1"><MdText text={T.e4Fazit} /></p>
+                  <p className="mt-1"><MdText text={inhalt.texte.e4Fazit} /></p>
                 </section>
                 <section className={kasten}>
-                  <h3 className="font-bold text-text-main text-sm mb-1.5">{T.e5Titel}</h3>
-                  <p><MdText text={T.e5Text} /></p>
+                  <h3 className="font-bold text-text-main text-sm mb-1.5">{inhalt.texte.e5Titel}</h3>
+                  <p><MdText text={inhalt.texte.e5Text} /></p>
                   <div className="overflow-x-auto"><BlockMath math={bemessungsTeX('mauerwerk', bsp.mw.xk, bsp.mw.beiwert, bsp.mw.gamma, bsp.mw.xd)} /></div>
                 </section>
                 <section className={kasten}>
-                  <h3 className="font-bold text-text-main text-sm mb-1.5">{T.e6Titel}</h3>
-                  <p><MdText text={T.e6Text} /></p>
+                  <h3 className="font-bold text-text-main text-sm mb-1.5">{inhalt.texte.e6Titel}</h3>
+                  <p><MdText text={inhalt.texte.e6Text} /></p>
                   <p className="font-mono text-xs mt-1">{SERIE_BEISPIEL.map(v => zahl(v, 1)).join('; ')}</p>
                   <div className="overflow-x-auto">
                     <BlockMath math={`m_x = ${tex(bsp.sNorm.mittelwert, 2)}, \\quad s_x = ${tex(bsp.sNorm.stdAbw, 2)}, \\quad V_x = ${tex(bsp.sNorm.vx, 3)}\\quad(\\text{N/mm}^2)`} />
                     <BlockMath math={`X_k = m_x - k_n \\cdot s_x = ${tex(bsp.sNorm.mittelwert, 2)} - ${tex(bsp.sNorm.kn, 2)} \\cdot ${tex(bsp.sNorm.stdAbw, 2)} = ${tex(bsp.sNorm.xk, 1)}\\,\\text{N/mm}^2 \\quad (\\text{lognormal: } ${tex(bsp.sLog.xk, 1)})`} />
                     <BlockMath math={`X_d = 0{,}85 \\cdot \\frac{${tex(bsp.sNorm.xk, 1)}}{1{,}5} = ${tex(bsp.sNorm.xd, 1)}\\,\\text{N/mm}^2`} />
                   </div>
-                  <p className="mt-1"><MdText text={T.e6Fazit} /></p>
+                  <p className="mt-1"><MdText text={inhalt.texte.e6Fazit} /></p>
                 </section>
               </div>
             )}
 
             {reiter === 'rechner' && (
               <div className="flex flex-col gap-5">
-                <p className={absatz}><MdText text={T.rEinleitung} /></p>
+                <p className={absatz}><MdText text={inhalt.texte.rEinleitung} /></p>
                 <div className="grid grid-cols-1 lg:grid-cols-12 gap-5">
                   <div className="lg:col-span-5 flex flex-col gap-4">
                     <div>
-                      <p className="text-xs font-bold text-text-main mb-1.5" id="ec-baustoff">{W.baustoff}</p>
-                      <AuswahlGruppe label={W.baustoff} className="flex flex-wrap gap-2" aria-labelledby="ec-baustoff">
+                      <p className="text-xs font-bold text-text-main mb-1.5" id="ec-baustoff">{inhalt.werte.baustoff}</p>
+                      <AuswahlGruppe label={inhalt.werte.baustoff} className="flex flex-wrap gap-2" aria-labelledby="ec-baustoff">
                         {BAUSTOFFE.map(b => <button key={b.id} type="button" className={knopf(baustoff === b.id)} {...alsOption(baustoff === b.id)} onClick={() => wechsleBaustoff(b.id)}>{b.name}</button>)}
                       </AuswahlGruppe>
                     </div>
-                    <label className="flex flex-col gap-1 text-xs font-bold text-text-main">{W.klasse}
+                    <label className="flex flex-col gap-1 text-xs font-bold text-text-main">{inhalt.werte.klasse}
                       <select className={auswahlKlasse} value={klasse} onChange={ev => setKlasse(ev.target.value)}>
                         {EC_KLASSEN[baustoff].map(k => <option key={k} value={k}>{klassenName(baustoff, k)}</option>)}
                       </select>
                     </label>
-                    <label className="flex flex-col gap-1 text-xs font-bold text-text-main">{W.situation}
+                    <label className="flex flex-col gap-1 text-xs font-bold text-text-main">{inhalt.werte.situation}
                       <select className={auswahlKlasse} value={situation} onChange={ev => setSituation(ev.target.value as Bemessungssituation)}>
-                        <option value="staendig">{W.staendig}</option>
-                        <option value="aussergewoehnlich">{W.aussergewoehnlich}</option>
+                        <option value="staendig">{inhalt.werte.staendig}</option>
+                        <option value="aussergewoehnlich">{inhalt.werte.aussergewoehnlich}</option>
                       </select>
                     </label>
                     {baustoff === 'beton' && (
-                      <label className="flex flex-col gap-1 text-xs font-bold text-text-main">{W.alphaCc}
+                      <label className="flex flex-col gap-1 text-xs font-bold text-text-main">{inhalt.werte.alphaCc}
                         <select className={auswahlKlasse} value={alphaCc} onChange={ev => setAlphaCc(Number(ev.target.value))}>
                           <option value={ALPHA_CC}>{zahl(ALPHA_CC, 2)} (NA DE)</option>
                           <option value={ALPHA_CC_EN_EMPFEHLUNG}>{zahl(ALPHA_CC_EN_EMPFEHLUNG, 2)} (EN-Empfehlung, Vergleich)</option>
@@ -408,12 +407,12 @@ export default function EcKennwerte() {
                     )}
                     {baustoff === 'holz' && (
                       <div className="grid grid-cols-2 gap-3">
-                        <label className="flex flex-col gap-1 text-xs font-bold text-text-main">{W.nkl}
+                        <label className="flex flex-col gap-1 text-xs font-bold text-text-main">{inhalt.werte.nkl}
                           <select className={auswahlKlasse} value={nkl} onChange={ev => setNkl(Number(ev.target.value) as Nutzungsklasse)}>
                             {NKL.map(n => <option key={n} value={n}>NKL {n}</option>)}
                           </select>
                         </label>
-                        <label className="flex flex-col gap-1 text-xs font-bold text-text-main">{W.kled}
+                        <label className="flex flex-col gap-1 text-xs font-bold text-text-main">{inhalt.werte.kled}
                           <select className={auswahlKlasse} value={kled} onChange={ev => setKled(ev.target.value as KLED)}>
                             {KLED_LISTE.map(([name, k]) => <option key={k} value={k}>{name}</option>)}
                           </select>
@@ -423,11 +422,11 @@ export default function EcKennwerte() {
                     {baustoff === 'mauerwerk' && (
                       <div className="grid grid-cols-2 gap-3">
                         {klasse === 'frei' && (
-                          <label className="flex flex-col gap-1 text-xs font-bold text-text-main">{W.fkFrei}
+                          <label className="flex flex-col gap-1 text-xs font-bold text-text-main">{inhalt.werte.fkFrei}
                             <input className={feldKlasse} inputMode="decimal" value={fkText} onChange={ev => setFkText(ev.target.value)} />
                           </label>
                         )}
-                        <label className="flex flex-col gap-1 text-xs font-bold text-text-main">{W.zeta}
+                        <label className="flex flex-col gap-1 text-xs font-bold text-text-main">{inhalt.werte.zeta}
                           <select className={auswahlKlasse} value={zeta} onChange={ev => setZeta(Number(ev.target.value))}>
                             <option value={0.85}>0,85 (Dauerlast)</option>
                             <option value={1}>1,00 (kurzzeitig, vorläufig)</option>
@@ -439,7 +438,7 @@ export default function EcKennwerte() {
                   </div>
                   <div className="lg:col-span-7 flex flex-col gap-4">
                     <div className="grid grid-cols-3 gap-3" aria-live="polite">
-                      {[[W.charakteristisch, erg.xk], [W.bemessung, erg.xd], [W.verhaeltnis, erg.verhaeltnis]].map(([name, wert], i) => (
+                      {[[inhalt.werte.charakteristisch, erg.xk], [inhalt.werte.bemessung, erg.xd], [inhalt.werte.verhaeltnis, erg.verhaeltnis]].map(([name, wert], i) => (
                         <div key={String(name)} className="p-3 rounded-xl border border-home-grau/30 bg-off-white text-center">
                           <div className="text-[11px] text-text-main/70">{name}</div>
                           <div className="font-mono font-bold text-lg text-shiraz">{zahl(Number(wert), i === 2 ? 3 : 1)}{i < 2 ? ' N/mm²' : ''}</div>
@@ -447,32 +446,32 @@ export default function EcKennwerte() {
                       ))}
                     </div>
                     <KennwertTabelle zeilen={erg.zeilen} titel={`${BAUSTOFF_NAME[baustoff]} ${erg.gueltig ? klassenName(baustoff, klasse) : '–'}`} />
-                    <FormulaDerivationBox live title={W.rechenweg} zielGleichung="X_d = \eta \cdot X_k / \gamma_M" schritte={schritte} normQuelle={REGEL[baustoff].regel} />
+                    <FormulaDerivationBox live title={inhalt.werte.rechenweg} zielGleichung="X_d = \eta \cdot X_k / \gamma_M" schritte={schritte} normQuelle={REGEL[baustoff].regel} />
                   </div>
                 </div>
 
                 <div className={`${kasten} flex flex-col gap-3`}>
-                  <h3 className="font-bold text-text-main text-sm">{T.rSerieTitel}</h3>
-                  <p className="text-xs"><MdText text={T.rSerieText} /></p>
+                  <h3 className="font-bold text-text-main text-sm">{inhalt.texte.rSerieTitel}</h3>
+                  <p className="text-xs"><MdText text={inhalt.texte.rSerieText} /></p>
                   <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-3">
-                    <label className="flex flex-col gap-1 text-xs font-bold text-text-main md:col-span-2">{W.werte}
+                    <label className="flex flex-col gap-1 text-xs font-bold text-text-main md:col-span-2">{inhalt.werte.werte}
                       <input className={feldKlasse} value={serieText} onChange={ev => setSerieText(ev.target.value)} />
                     </label>
-                    <label className="flex flex-col gap-1 text-xs font-bold text-text-main">{W.vx}
+                    <label className="flex flex-col gap-1 text-xs font-bold text-text-main">{inhalt.werte.vx}
                       <input className={feldKlasse} inputMode="decimal" value={vxText} onChange={ev => setVxText(ev.target.value)} />
                     </label>
-                    <label className="flex flex-col gap-1 text-xs font-bold text-text-main">{W.verteilung}
+                    <label className="flex flex-col gap-1 text-xs font-bold text-text-main">{inhalt.werte.verteilung}
                       <select className={auswahlKlasse} value={verteilung} onChange={ev => setVerteilung(ev.target.value as Verteilung)}>
-                        <option value="normal">{W.normal}</option>
-                        <option value="lognormal">{W.lognormal}</option>
+                        <option value="normal">{inhalt.werte.normal}</option>
+                        <option value="lognormal">{inhalt.werte.lognormal}</option>
                       </select>
                     </label>
-                    <label className="flex flex-col gap-1 text-xs font-bold text-text-main">{W.gammaSerie}
+                    <label className="flex flex-col gap-1 text-xs font-bold text-text-main">{inhalt.werte.gammaSerie}
                       <select className={auswahlKlasse} value={gammaSerie} onChange={ev => setGammaSerie(Number(ev.target.value))}>
                         {[...new Set(BAUSTOFFE.map(b => GAMMA_WIDERSTAND[b.id].staendig))].map(g => <option key={g} value={g}>{zahl(g, 2)}</option>)}
                       </select>
                     </label>
-                    <label className="flex flex-col gap-1 text-xs font-bold text-text-main">{W.beiwertSerie}
+                    <label className="flex flex-col gap-1 text-xs font-bold text-text-main">{inhalt.werte.beiwertSerie}
                       <select className={auswahlKlasse} value={beiwertSerie} onChange={ev => setBeiwertSerie(Number(ev.target.value))}>
                         {[1, ALPHA_CC, 0.8, 0.6].map(b => <option key={b} value={b}>{zahl(b, 2)}</option>)}
                       </select>
@@ -481,8 +480,8 @@ export default function EcKennwerte() {
                   <EingabeHinweise hinweise={serie.hinweise} />
                   <div className="overflow-x-auto">
                     <table className="w-full border-collapse min-w-[560px]">
-                      <caption className="text-left text-xs font-bold text-text-main pb-2">{T.rKetteTitel}</caption>
-                      <thead><tr>{[W.anzahl, W.mittelwert, W.stdAbw, W.variationskoeffizient, W.kn, W.charakteristisch, W.vorhalt, W.bemessung].map(s => <th scope="col" key={s} className={th}>{s}</th>)}</tr></thead>
+                      <caption className="text-left text-xs font-bold text-text-main pb-2">{inhalt.texte.rKetteTitel}</caption>
+                      <thead><tr>{[inhalt.werte.anzahl, inhalt.werte.mittelwert, inhalt.werte.stdAbw, inhalt.werte.variationskoeffizient, inhalt.werte.kn, inhalt.werte.charakteristisch, inhalt.werte.vorhalt, inhalt.werte.bemessung].map(s => <th scope="col" key={s} className={th}>{s}</th>)}</tr></thead>
                       <tbody><tr>
                         <td className={`${td} font-mono`}>{zahl(serie.n, 0)}</td>
                         <td className={`${td} font-mono`}>{zahl(serie.mittelwert, 2)}</td>
@@ -502,27 +501,27 @@ export default function EcKennwerte() {
             {reiter === 'grenzen' && (
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div className="p-4 rounded-xl border border-home-grau/30 bg-white text-xs text-text-main/80 leading-relaxed">
-                  <h3 className="font-bold text-text-main text-sm mb-1.5">{W.grLeistetTitel}</h3><MdText text={T.gLeistet} /></div>
+                  <h3 className="font-bold text-text-main text-sm mb-1.5">{inhalt.werte.grLeistetTitel}</h3><MdText text={inhalt.texte.gLeistet} /></div>
                 <div className="p-4 rounded-xl border border-home-grau/30 bg-white text-xs text-text-main/80 leading-relaxed">
-                  <h3 className="font-bold text-text-main text-sm mb-1.5">{W.grNichtTitel}</h3><MdText text={T.gNicht} /></div>
+                  <h3 className="font-bold text-text-main text-sm mb-1.5">{inhalt.werte.grNichtTitel}</h3><MdText text={inhalt.texte.gNicht} /></div>
                 <div className="p-4 rounded-xl border border-amber-300/60 bg-amber-50 text-xs text-text-main/85 leading-relaxed">
-                  <h3 className="font-bold text-text-main text-sm mb-1.5">{W.grVorlaeufigTitel}</h3><MdText text={T.gVorlaeufig} /></div>
+                  <h3 className="font-bold text-text-main text-sm mb-1.5">{inhalt.werte.grVorlaeufigTitel}</h3><MdText text={inhalt.texte.gVorlaeufig} /></div>
                 <div className="p-4 rounded-xl border border-home-grau/30 bg-white text-xs text-text-main/80 leading-relaxed">
-                  <h3 className="font-bold text-text-main text-sm mb-1.5">{T.gFehler}</h3>
+                  <h3 className="font-bold text-text-main text-sm mb-1.5">{inhalt.texte.gFehler}</h3>
                   <ul className="list-disc pl-4 space-y-1">
-                    <li><MdText text={T.gFehler1} /></li>
-                    <li><MdText text={T.gFehler2} /></li>
-                    <li><MdText text={T.gFehler3} /></li>
-                    <li><MdText text={T.gFehler4} /></li>
-                    <li><MdText text={T.gFehler5} /></li>
+                    <li><MdText text={inhalt.texte.gFehler1} /></li>
+                    <li><MdText text={inhalt.texte.gFehler2} /></li>
+                    <li><MdText text={inhalt.texte.gFehler3} /></li>
+                    <li><MdText text={inhalt.texte.gFehler4} /></li>
+                    <li><MdText text={inhalt.texte.gFehler5} /></li>
                   </ul>
                 </div>
                 <div className="md:col-span-2 p-4 rounded-xl border border-home-grau/30 bg-off-white text-xs text-text-main/85 leading-relaxed flex flex-col gap-2">
-                  <h3 className="font-bold text-text-main text-sm">{T.gAusblickTitel}</h3>
-                  <p><MdText text={T.gAusblick} /></p>
-                  <p><MdText text={T.gAusblick2} /></p>
+                  <h3 className="font-bold text-text-main text-sm">{inhalt.texte.gAusblickTitel}</h3>
+                  <p><MdText text={inhalt.texte.gAusblick} /></p>
+                  <p><MdText text={inhalt.texte.gAusblick2} /></p>
                 </div>
-                <Querverweis className="md:col-span-2" ziel="normen_ausblick" titel={T.querNormenTitel} linkText={W.zumModulNormen}><p><MdText text={T.querNormen} /></p></Querverweis>
+                <Querverweis className="md:col-span-2" ziel="normen_ausblick" titel={inhalt.texte.querNormenTitel} linkText={inhalt.werte.zumModulNormen}><p><MdText text={inhalt.texte.querNormen} /></p></Querverweis>
               </div>
             )}
           </div>
@@ -532,10 +531,10 @@ export default function EcKennwerte() {
       <ModulTest moduleId="ec_kennwerte" />
 
       <ModuleFooter
-        lastReviewed={W.stand}
+        lastReviewed={inhalt.werte.stand}
         normIds={['DIN_EN_1990', 'DIN_EN_1992_1_1', 'DIN_EN_1993_1_1', 'DIN_EN_1995_1_1', 'DIN_EN_1996_1_1', 'DIN_EN_206', 'DIN_EN_338', 'DIN_EN_10025']}
-        literatur={inhalt.daten['ecKennwerte.literatur']}
-        formeln={inhalt.daten['ecKennwerte.formeln']}
+        literatur={inhalt.daten["ecKennwerte.literatur"]}
+        formeln={inhalt.daten["ecKennwerte.formeln"]}
       />
     </div>
   );

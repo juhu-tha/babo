@@ -3,7 +3,7 @@
  *
  * Vom Kennwert zum Bemessungswert, baustoffübergreifend und nur aus den zentralen Konstanten:
  *   Beton        f_cd = α_cc · f_ck / γ_C               (fcdBeton, ALPHA_CC, GAMMA_C – src/data/kennwerte.ts)
- *                f_ctd = α_ct · f_ctk;0,05 / γ_C        (α_ct = 0,85 nach NA, EC2_BETON_NA)
+ *                f_ctd = α_ct · f_ctk;0{,}05 / γ_C        (α_ct = 0,85 nach NA, EC2_BETON_NA)
  *   Betonstahl   f_yd = f_yk / γ_S                     (BETONSTAHL, GAMMA_S)
  *   Baustahl     f_y / γ_M0, f_y / γ_M1, 0,9 · f_u / γ_M2  (BAUSTAHL_EC3, EC3_NA_DE)
  *   Holz         X_d = k_mod · X_k / γ_M               (HOLZ_EN338, BSH_EN14080, KMOD, bemessungswert – holzbau.ts)
@@ -131,8 +131,8 @@ export function ecKennwerte(e: EcKennwertEingabe): EcKennwertErgebnis {
       z('f_{ck,cube}', 'charakteristische Würfeldruckfestigkeit', c.fck_cube, 'N/mm²', 'charakteristisch'),
       z('f_{cm}', 'Mittelwert der Zylinderdruckfestigkeit', c.fcm, 'N/mm²', 'mittel'),
       z('f_{ctm}', 'Mittelwert der zentrischen Zugfestigkeit', c.fctm, 'N/mm²', 'mittel'),
-      z('f_{ctk;0,05}', 'Zugfestigkeit, 5-%-Quantil', c.fctk_005, 'N/mm²', 'charakteristisch'),
-      z('f_{ctk;0,95}', 'Zugfestigkeit, 95-%-Quantil', c.fctk_095, 'N/mm²', 'charakteristisch'),
+      z('f_{ctk;0{,}05}', 'Zugfestigkeit, 5-%-Quantil', c.fctk_005, 'N/mm²', 'charakteristisch'),
+      z('f_{ctk;0{,}95}', 'Zugfestigkeit, 95-%-Quantil', c.fctk_095, 'N/mm²', 'charakteristisch'),
       z('E_{cm}', 'Elastizitätsmodul (Sekante, Quarzit)', c.Ecm, 'N/mm²', 'steifigkeit'),
       z('\\varepsilon_{c2}', 'Dehnung bei Erreichen der Festigkeit (Parabel-Rechteck)', c.eps_c2, '‰', 'beiwert'),
       z('\\varepsilon_{cu2}', 'Bruchdehnung (Parabel-Rechteck)', c.eps_cu2, '‰', 'beiwert'),
@@ -191,7 +191,7 @@ export function ecKennwerte(e: EcKennwertEingabe): EcKennwertErgebnis {
       z('f_{c,0,k}', 'Druckfestigkeit parallel zur Faser', h.fc0k, 'N/mm²', 'charakteristisch'),
       z('f_{v,k}', 'Schubfestigkeit', h.fvk, 'N/mm²', 'charakteristisch'),
       z('E_{0,mean}', 'Elastizitätsmodul, Mittelwert', h.E0mean, 'N/mm²', 'steifigkeit'),
-      z('E_{0,05}', 'Elastizitätsmodul, 5-%-Quantil', h.E005, 'N/mm²', 'steifigkeit'),
+      z('E_{0{,}05}', 'Elastizitätsmodul, 5-%-Quantil', h.E005, 'N/mm²', 'steifigkeit'),
       z('\\rho_k', 'Rohdichte, 5-%-Quantil', h.rhok, 'kg/m³', 'charakteristisch'),
       z('k_{mod}', 'Modifikationsbeiwert (Nutzungsklasse, Lasteinwirkungsdauer)', kmod, '–', 'beiwert'),
       z('f_{m,d}', 'Bemessungswert der Biegefestigkeit', xd, 'N/mm²', 'bemessung'),
