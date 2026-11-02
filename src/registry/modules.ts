@@ -1189,7 +1189,7 @@ export const MODULE = [
     suche: ['künstliche intelligenz', 'prompting', 'agenten', 'machine learning', 'llm', 'ki-assistent', 'chat-ki', 'sprachmodell', 'ki', 'ai'] },
   { id: 'kriechen', label: 'Kriechen & Schwinden', icon: 'BookOpen',
     meta: 'Kriechen und Schwinden von Beton nach DIN EN 1992-1-1 (Anhang B), wirksamer E-Modul und Relaxation von Spannstahl.' },
-  { id: 'nachhaltigkeit_checklisten', label: 'Nachhaltigkeits-Checklisten', icon: 'ClipboardList',
+  { id: 'nachhaltigkeit_checklisten', label: 'Nachhaltigkeits-Checklisten', icon: 'ClipboardList', gruppe: 'Nachhaltigkeit',
     baum: { titel: 'Nachhaltigkeits-Checklisten', typ: 'info', kurz: 'DGNB-Planungschecklisten, Zirkularitäts-Audits und EPD-Verifizierungen.', icon: 'ClipboardList' },
     meta: 'Systematische Checklisten für nachhaltige Planungs- (DGNB), Ausschreibungs- und Materialauswahlprozesse.' },
   { id: 'querkraftbemessung', label: 'Querkraftbemessung', icon: 'BookOpen',

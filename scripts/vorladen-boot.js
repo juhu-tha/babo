@@ -8,7 +8,7 @@
     if (!el) return;
     var k = JSON.parse(el.textContent || '{}');
     // Modul aus dem Pfad /modul/<id>, auf der Startseite aus einem alten Hash-Link /#<id> (Z52, src/routing/pfad.ts)
-    var m = /^\/modul\/([^/]+)\/?$/.exec(location.pathname);
+    var m = /^\/modul\/([^/]+?)(?:\.html)?\/?$/.exec(location.pathname);
     var tab = (m ? decodeURIComponent(m[1]) : decodeURIComponent(location.hash.slice(1))).trim().toLowerCase() || 'start';
     var hat = function (o, s) { return Object.prototype.hasOwnProperty.call(o, s); };
     var c = hat(k.t, tab) ? k.t[tab] : undefined;

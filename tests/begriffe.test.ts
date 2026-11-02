@@ -13,6 +13,13 @@ const REGELN: { name: string; muster: RegExp; erlaubt?: RegExp }[] = [
     erlaubt: /pflanzliche Zuschlagstoffe|Zuschlagstoffe \(Kalk\)|strukturverbessernden Zuschlagstoffen|'rc-zuschlag'/,
   },
   { name: 'Euler-Fall arabisch', muster: /Euler-?[Ff]äll?e? [IV]+\b|Eulerfall/g },
+  // Entscheidung 02.11.2026: Normbegriff je Norm. DIN 18533:2026-06 sagt „Wasserbeanspruchungsklasse“ (W1-E bis W4-E;
+  // „Wassereinwirkungsklasse“ nur als Begriff der Ausgabe 2017-07); DIN 18534/18535 behalten „Wassereinwirkungsklasse“ (W0-I bis W3-I, W1-B bis W3-B).
+  {
+    name: 'Wasserbeanspruchungsklasse (DIN 18533:2026-06)',
+    muster: /\bWassereinwirkungsklassen?\b/g,
+    erlaubt: /2017|W[0-4]-[IB]\b|DIN 1853[45]|Dusche/,
+  },
 ];
 
 const dateien = (fs.readdirSync('src', { recursive: true }) as string[])

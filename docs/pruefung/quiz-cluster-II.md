@@ -2,9 +2,9 @@
 
 Stand: 02.11.2026 · Grundlage: `src/data/quiz.json` (Felder `vorpruefung` und `verified`), `docs/quiz-pruefhinweise.md`, Lernziele aus `src/data/lernziele.ts`. Erzeugt mit `npx tsx scripts/pruefliste.ts`; gesetzte Kreuze übernimmt das Skript beim nächsten Lauf. quiz.json wurde für diese Liste nicht verändert.
 
-Cluster II umfasst 344 Fragen aus 56 Modulen. Aufgeführt sind 114 auffällige Fragen (Vorprüfung „korrigiert“ oder „fraglich“, offener Prüfhinweis oder neu seit 26.10.2026 ohne Freigabe) und eine Stichprobe von 5 unauffälligen Fragen. Entscheidung je Frage ankreuzen; bei „ändern“ den Änderungswunsch in die Zeile darunter schreiben.
+Cluster II umfasst 344 Fragen aus 56 Modulen. Aufgeführt sind 115 auffällige Fragen (Vorprüfung „korrigiert“ oder „fraglich“, offener Prüfhinweis oder neu seit 26.10.2026 ohne Freigabe) und eine Stichprobe von 5 unauffälligen Fragen. Entscheidung je Frage ankreuzen; bei „ändern“ den Änderungswunsch in die Zeile darunter schreiben.
 
-Auffällig im Einzelnen (Mehrfachnennung möglich): 109 korrigiert, 0 fraglich, 16 mit offenem Prüfhinweis, 0 neu seit 26.10.2026.
+Auffällig im Einzelnen (Mehrfachnennung möglich): 110 korrigiert, 0 fraglich, 16 mit offenem Prüfhinweis, 0 neu seit 26.10.2026.
 
 ## A. Auffällige Fragen
 
@@ -20,7 +20,7 @@ Auffällig im Einzelnen (Mehrfachnennung möglich): 109 korrigiert, 0 fraglich, 
 
 - **Frage:** Welche Wasserbeanspruchungsklasse gilt für drückendes Wasser mit einer Eintauchtiefe von 2,5 m?
 - **Richtige Antwort:** W2.1-E
-- **Auffälligkeit:** Vorprüfung „korrigiert“: Begriff an DIN 18533-1:2026-06 angepasst („Wasserbeanspruchungsklasse“, DIN Media). Grundstruktur W1-E bis W4-E bestätigt (Bauprofessor 16.09.2026); Unterklassen W2.1-E/W2.2-E mit 3-m-Grenze nur durch Herstellerbeitrag bestätigt (MC-Bauchemie, Stand 05.08.2026) – Abgleich am Normtext offen. · bereits freigegeben (verified)
+- **Auffälligkeit:** Vorprüfung „korrigiert“: Begriff an DIN 18533-1:2026-06 angepasst („Wasserbeanspruchungsklasse“, DIN Media). Grundstruktur W1-E bis W4-E bestätigt (Bauprofessor 16.09.2026); Unterklassen W2.1-E/W2.2-E mit 3-m-Grenze nur durch Herstellerbeitrag bestätigt (MC-Bauchemie, Stand 05.08.2026) – Abgleich am Normtext offen. Begriff angeglichen 02.11. · bereits freigegeben (verified)
 - [x] ok
 - [ ] ändern: …
 
@@ -500,7 +500,7 @@ Auffällig im Einzelnen (Mehrfachnennung möglich): 109 korrigiert, 0 fraglich, 
 
 - **Frage:** Ein Keller steht in wenig durchlässigem Lehmboden; eine funktionsfähige Dränung nach DIN 4095 ist vorhanden. Welche Wasserbeanspruchungsklasse ergibt der Berater?
 - **Richtige Antwort:** W1-E: Bodenfeuchte, die Dränung verhindert den Aufstau
-- **Auffälligkeit:** Vorprüfung „korrigiert“: Begriff an DIN 18533-1:2026-06 angepasst („Wasserbeanspruchungsklasse“, DIN Media); Grundstruktur W1-E bis W4-E bestätigt (Bauprofessor 16.09.2026). Unterklasse W1.2-E (mit Dränung) nur durch Herstellerbeitrag bestätigt (MC-Bauchemie, 08/2026). · bereits freigegeben (verified)
+- **Auffälligkeit:** Vorprüfung „korrigiert“: Begriff an DIN 18533-1:2026-06 angepasst („Wasserbeanspruchungsklasse“, DIN Media); Grundstruktur W1-E bis W4-E bestätigt (Bauprofessor 16.09.2026). Unterklasse W1.2-E (mit Dränung) nur durch Herstellerbeitrag bestätigt (MC-Bauchemie, 08/2026). Begriff angeglichen 02.11. · bereits freigegeben (verified)
 - [x] ok
 - [ ] ändern: …
 
@@ -692,8 +692,16 @@ Auffällig im Einzelnen (Mehrfachnennung möglich): 109 korrigiert, 0 fraglich, 
 
 - **Frage:** Probekörper: Bitumen 5,0 M.-% (ρ_B = 1,02 g/cm³), Gestein 95,0 M.-% (ρ_G = 2,70 g/cm³), gemessene Raumdichte ρ_r = 2,40 g/cm³. Wie groß ist der Hohlraumgehalt?
 - **Richtige Antwort:** ca. 3,8 Vol.-%
-- **Auffälligkeit:** Vorprüfung „korrigiert“: normRef ergänzt · bereits freigegeben (verified)
+- **Auffälligkeit:** Vorprüfung „korrigiert“: normRef ergänzt · Abgleich 02.11.: Erklärung nannte 1,5 bis 4,5 Vol.-% als „Zielbereich für Deckschichten“; das Modul führt den Bereich seit T7-PR-1 als Lehrbereich (Anforderungen je Mischgutsorte nach TL/ZTV Asphalt-StB 26) – korrigiert
 - [x] ok
+- [ ] ändern: …
+
+### qn_bp_verkehr_pruefung_5 · Labor-Prüfmethoden
+
+- **Frage:** Für eine Deckschicht aus Asphaltbeton wird ein Hohlraumgehalt von 1,2 Vol.-% ermittelt. Wie ist das nach dem Lehrbereich des Moduls zu bewerten?
+- **Richtige Antwort:** Zu dicht – Gefahr von Bindemittelanreicherung und Spurrinnen
+- **Auffälligkeit:** Vorprüfung „korrigiert“: Abgleich 02.11.: Frage, Erklärung und Rückmeldung nannten 1,5 bis 4,5 Vol.-% als „Zielbereich für Deckschichten“; das Modul führt den Bereich seit T7-PR-1 als Lehrbereich (Anforderungen je Mischgutsorte) – korrigiert
+- [ ] ok
 - [ ] ändern: …
 
 ### qn_bp_verkehr_pruefung_6 · Labor-Prüfmethoden

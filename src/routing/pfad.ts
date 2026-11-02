@@ -12,10 +12,14 @@ export function modulPfad(id: string): string {
   return id === 'start' ? '/' : MODUL_PRAEFIX + encodeURIComponent(id);
 }
 
-/** Modul-ID aus einem Pfad: '/' → 'start', '/modul/<id>' → id (klein, dekodiert), sonst null */
+/**
+ * Modul-ID aus einem Pfad: '/' → 'start', '/modul/<id>' → id (klein, dekodiert), sonst null.
+ * Auch '/modul/<id>.html' (Dateiname der vorgerenderten Seite): Rein statische Bereitstellung (Vercel, 02.11.2026)
+ * liefert die Datei unter diesem Pfad aus; ohne die Endung zeigte die App sonst die Startseite.
+ */
 export function tabAusPfad(pfad: string): string | null {
   if (pfad === '/' || pfad === '' || pfad === '/index.html') return 'start';
-  const m = /^\/modul\/([^/]+)\/?$/.exec(pfad);
+  const m = /^\/modul\/([^/]+?)(?:\.html)?\/?$/.exec(pfad);
   if (!m) return null;
   try { return decodeURIComponent(m[1]).trim().toLowerCase() || null; } catch { return null; }
 }

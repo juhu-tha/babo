@@ -17,12 +17,14 @@ console.log('--- Test: Pfad-Routing und Vorrendern ---');
 pruefe(modulPfad('start') === '/' && modulPfad('glas') === '/modul/glas' && modulPfad('wu-bauwerke') === '/modul/wu-bauwerke', 'modulPfad');
 pruefe(tabAusPfad('/') === 'start' && tabAusPfad('/index.html') === 'start', 'tabAusPfad Startseite');
 pruefe(tabAusPfad('/modul/glas') === 'glas' && tabAusPfad('/modul/Glas/') === 'glas' && tabAusPfad('/modul/wu-bauwerke') === 'wu-bauwerke', 'tabAusPfad Modul');
+// Dateiname der vorgerenderten Seite (rein statische Bereitstellung, Vercel 02.11.2026)
+pruefe(tabAusPfad('/modul/glas.html') === 'glas' && tabAusPfad('/modul/Glas.html/') === 'glas' && tabAusPfad('/modul/wu-bauwerke.html') === 'wu-bauwerke', 'tabAusPfad mit .html');
 pruefe(tabAusPfad('/modul/') === null && tabAusPfad('/modul/a/b') === null && tabAusPfad('/assets/x.js') === null && tabAusPfad('/modul/%E0%A4%A') === null, 'tabAusPfad ungültig');
 pruefe(tabAusHash('#Glas') === 'glas' && tabAusHash('') === null && tabAusHash('#') === null, 'tabAusHash');
 for (const id of ['glas', 'oekobilanz_lca', 'wu-bauwerke']) pruefe(tabAusPfad(modulPfad(id)) === id, `Hin und zurück: ${id}`);
 // Inline-Skripte (vor dem Einstiegs-Chunk) verwenden dieselbe Pfadregel
 for (const f of ['scripts/startschale-boot.js', 'scripts/vorladen-boot.js']) {
-  pruefe(fs.readFileSync(f, 'utf8').includes('/^\\/modul\\/([^/]+)\\/?$/'), `${f}: Pfadregel weicht von src/routing/pfad.ts ab`);
+  pruefe(fs.readFileSync(f, 'utf8').includes('/^\\/modul\\/([^/]+?)(?:\\.html)?\\/?$/'), `${f}: Pfadregel weicht von src/routing/pfad.ts ab`);
 }
 
 // 2. HTML-Werkzeuge: Rundlauf und Zuschnitt

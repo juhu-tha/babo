@@ -1,5 +1,6 @@
 import React, { Suspense, useEffect, useState } from 'react';
 import { adminLogin, adminLogout, verifyAdminSession } from '@/src/utils/adminAuth';
+import { SERVER_FUNKTIONEN, HINWEIS_OHNE_SERVER } from '@/src/data/betriebsart';
 import { FragenFreigabe } from '@/src/components/admin/FragenFreigabe';
 import { MeineModule } from '@/src/components/admin/MeineModule';
 import { KurzfragebogenAuswertung } from '@/src/components/admin/KurzfragebogenAuswertung';
@@ -145,6 +146,8 @@ export default function Admin() {
   const [errorMessage, setErrorMessage] = useState('');
 
   useEffect(() => {
+    // Sitzungsprüfung braucht /api/admin/session – im statischen Betrieb kein Aufruf (src/data/betriebsart.ts)
+    if (!SERVER_FUNKTIONEN) return;
     let active = true;
     verifyAdminSession().then(valid => {
       if (active && valid) setIsAuthenticated(true);
@@ -199,6 +202,7 @@ export default function Admin() {
             Dieser Administrationsbereich enthält das Gutachten mit Maßnahmen, die Zulieferungen, den Umsetzungsplan (Phasen 0–6), die Prüfpunkte „F-Freigabe“, die Quiz-Prüflisten und den Auditprompt.
           </p>
 
+          {SERVER_FUNKTIONEN ? (
           <form onSubmit={handleLogin} className="space-y-4">
             <div className="relative">
               <input
@@ -226,6 +230,12 @@ export default function Admin() {
               <Lock size={16} /> {isChecking ? 'Kennwort wird geprüft …' : <>Entsperren &amp; Fortfahren</>}
             </button>
           </form>
+          ) : (
+            <div role="status" className="text-sm text-text-main/80 bg-off-white p-4 rounded-xl border border-home-grau/30 leading-relaxed">
+              <p>{HINWEIS_OHNE_SERVER}</p>
+              <a href="/" className="inline-block mt-3 font-bold text-shiraz underline underline-offset-2 hover:text-shiraz/80 focus-visible:ring-2 focus-visible:ring-shiraz rounded">Zur Startseite</a>
+            </div>
+          )}
 
           <div className="mt-6 pt-5 border-t border-home-grau/20 text-[11px] text-text-main/50">
             Autorisierter Zugang für Dozierende und Modulverantwortliche der THA.

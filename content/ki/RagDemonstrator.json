@@ -35,7 +35,7 @@
     "ragAusReineLlm": "RAG AUS (Reine LLM-Intuition)",
     "welcheBetonrezepturUndBetondeckung2": "Welche Betonrezeptur und Betondeckung fordert die Norm für eine frost- und tausalzbeanspruchte Tiefgaragenrampe?",
     "wieHochSindDie": "Wie hoch sind die Teilsicherheitsbeiwerte für Beton und Stahl nach deutschem Eurocode 2?",
-    "welcheWassereinwirkungsklasseGiltFür": "Welche Wassereinwirkungsklasse gilt für eine Kellerwand gegen drückendes Grundwasser nach DIN 18533?",
+    "welcheWassereinwirkungsklasseGiltFür": "Welche Wasserbeanspruchungsklasse gilt für eine Kellerwand gegen drückendes Grundwasser nach DIN 18533?",
     "retrievalTiefeTopK": "Retrieval-Tiefe Top-K"
   },
   "daten": {

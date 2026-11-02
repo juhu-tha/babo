@@ -120,6 +120,14 @@ Auffällig im Einzelnen (Mehrfachnennung möglich): 85 korrigiert, 0 fraglich, 1
 - [x] ok
 - [ ] ändern: …
 
+### q_ho_1 · Holzkorrosion
+
+- **Frage:** Welche Gebrauchsklasse gilt für einen Holzpfahl mit ständigem Erdkontakt?
+- **Richtige Antwort:** GK 4
+- **Auffälligkeit:** Vorprüfung „korrigiert“: Abgleich 02.11.: Rückmeldung zu GK 3.2 nannte die ungeschützte Fassadenschalung als Beispiel; nach der GK-Matrix des Moduls (und qn_holzkorrosion_4) ist eine senkrechte Fassade GK 3.1 (Wasser läuft rasch ab), GK 3.2 gilt bei Wasseranlagerung – korrigiert
+- [ ] ok
+- [ ] ändern: …
+
 ### q_hp_1 · Hist. Bauprodukte
 
 - **Frage:** Eine Raumluftmessung ergibt 1400 ng/m³ PCB. Wie ist das nach PCB-Richtlinie einzuordnen?
@@ -628,7 +636,7 @@ Auffällig im Einzelnen (Mehrfachnennung möglich): 85 korrigiert, 0 fraglich, 1
 
 - **Frage:** Warum lässt sich nach dem Modul der Zementgehalt um etwa 8 bis 10 % senken, wenn die Konformitätsprüfung der Druckfestigkeit auf 56 statt 28 Tage festgelegt wird?
 - **Richtige Antwort:** Hüttensand und Puzzolane hydratisieren langsam; ihr Beitrag wird erst nach 56 Tagen erfasst
-- **Auffälligkeit:** Vorprüfung „korrigiert“: normRef ergänzt · bereits freigegeben (verified)
+- **Auffälligkeit:** Vorprüfung „korrigiert“: normRef ergänzt · Abgleich 02.11.: Lernhilfe nannte die Richtlinie „Treibhausgasoptimierte Tragwerke aus Stahlbeton“; Titel wie im Modul „Treibhausgasreduzierte Tragwerke aus Beton, Stahlbeton oder Spannbeton“ – korrigiert
 - [x] ok
 - [ ] ändern: …
 

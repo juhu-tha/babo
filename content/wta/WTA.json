@@ -150,7 +150,7 @@
     "wta46Din2": "WTA 4-6 + DIN 18533",
     "nachträglicheBauwerksabdichtungErdberühr": "Nachträgliche Bauwerksabdichtung erdberührter Bauteile",
     "standWta46": "Stand: WTA 4-6-24/D / DIN 18533-1:2017-07 + A1:2018-09 (neu: 2026-06)",
-    "dasWtaMerkblatt4": "Das **WTA-Merkblatt 4-6** regelt die fachgerechte Planung und Ausführung der nachträglichen Abdichtung von erdberührten Bestandsbauwerken (Außenabdichtung, Innenabdichtung, Querschnittsabdichtung). Die Einordnung der Beanspruchung erfolgt zwingend harmonisiert nach den Wassereinwirkungsklassen der **DIN 18533**.",
+    "dasWtaMerkblatt4": "Das **WTA-Merkblatt 4-6** regelt die fachgerechte Planung und Ausführung der nachträglichen Abdichtung von erdberührten Bestandsbauwerken (Außenabdichtung, Innenabdichtung, Querschnittsabdichtung). Die Einordnung der Beanspruchung erfolgt zwingend harmonisiert nach den Wassereinwirkungsklassen der **DIN 18533** (Ausgabe 2017-07; seit 2026-06 „Wasserbeanspruchungsklassen“).",
     "hinweisZurNeuausgabeDin": "**Hinweis zur Neuausgabe:** DIN 18533-1:2026-06 ersetzt die Ausgabe 2017-07 und A1:2018-09. Die Klassen heißen dort „Wasserbeanspruchungsklassen“ (Grundstruktur W1-E bis W4-E bleibt), Riss- und Rissüberbrückungsklassen wurden zusammengeführt. Die Wassereinwirkungen aus dem Baugrund (E1, E2-S, E2-G) werden aus DIN 4095-1 übernommen und in Beanspruchungen der Abdichtung umgesetzt. Die folgenden Unterklassen geben den Stand 2017-07 wieder, auf den sich das WTA-Merkblatt 4-6-24/D bezieht.",
     "t1WassereinwirkungDin18533": "1. Wassereinwirkung (DIN 18533)",
     "w1EBisW4": "W1-E bis W4-E",

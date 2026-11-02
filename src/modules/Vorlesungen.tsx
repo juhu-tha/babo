@@ -19,6 +19,7 @@ import {
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
 import { useTabContext, TabId } from '@/src/contexts/TabContext';
 import LecturePollSession from '@/src/components/polls/LecturePollSession';
+import { SERVER_FUNKTIONEN } from '@/src/data/betriebsart';
 import inhalt from '@/content/vorlesungen/Vorlesungen.json';
 import { MdText } from '@/src/components/inhalt/MdText';
 import { ReiterLeiste, alsReiter, reiterPanel } from '../components/ui/Auswahlgruppe';
@@ -331,8 +332,8 @@ function LectureModuleView({
         </div>
       </div>
 
-      {/* Live Audience Response Poll (Kick-Off / 1. Vorlesungsstunde) */}
-      <LecturePollSession lectureId={lectureId} lectureTitle={title} />
+      {/* Live-Abstimmung (Kick-Off / 1. Vorlesungsstunde) – braucht /api/polls, im statischen Betrieb ausgeblendet */}
+      {SERVER_FUNKTIONEN && <LecturePollSession lectureId={lectureId} lectureTitle={title} />}
 
       {/* Materials & Download Placeholder Section */}
       <div className="bg-white p-6 rounded-2xl shadow-sm border border-home-grau/30">

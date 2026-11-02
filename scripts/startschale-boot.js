@@ -10,7 +10,7 @@
     var meta = document.querySelector('meta[name="bb-vorgerendert"]');
     var seite = meta ? meta.getAttribute('content') : 'start';
     var pfad = location.pathname;
-    var m = /^\/modul\/([^/]+)\/?$/.exec(pfad);
+    var m = /^\/modul\/([^/]+?)(?:\.html)?\/?$/.exec(pfad);
     var hash = decodeURIComponent(location.hash.slice(1)).trim().toLowerCase();
     var adresse = m ? decodeURIComponent(m[1]).trim().toLowerCase()
       : (pfad === '/' || pfad === '/index.html') && (hash === '' || hash === 'start') ? 'start' : '';

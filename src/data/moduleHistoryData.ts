@@ -58,7 +58,7 @@ export const MODULE_HISTORY_DATA: Record<string, GroupHistory> = {
         title: 'Second Generation Eurocodes & Klimaresilienz',
         category: 'Normung',
         description: 'Umfassende Neuausgabe der Eurocodes (Eurocode Generation 2). Integration harmonisierter Regeln zur Wiederverwendung bestehender Bauteile, Bemessung unter extremen Klimawandellasten (Wind, Starkregen, Schnee) und ressourceneffiziente Grenzwertdefinitionen.',
-        impact: 'Planungsingenieure bilanzieren Bestandsreserven rechtlich belastbar und planen für eine veränderte klimatische Belastungssituation.',
+        impact: 'Nach der bauaufsichtlichen Einführung (in Deutschland Stand Oktober 2026 noch ausstehend; es gelten die eingeführten Ausgaben der 1. Generation) können Bestandsreserven einheitlicher bewertet (EN 1990-2) und veränderte klimatische Einwirkungen berücksichtigt werden.',
         keyReference: 'CEN/TC 250 Mandate M/515'
       }
     ],
@@ -716,7 +716,7 @@ export const MODULE_HISTORY_DATA: Record<string, GroupHistory> = {
         keyReference: 'Untersuchungsausschuss Kongresshalle Berlin'
       },
       {
-        era: '1976',
+        era: '1970er Jahre',
         title: 'Gründung der WTA (Wissenschaftlich-Technische Arbeitsgemeinschaft)',
         category: 'Normung',
         description: 'Gründung der WTA e.V. zur interdisziplinären Erforschung und Schließung von Regelungslücken in Bauwerkserhaltung, Denkmalpflege und Sanierungspraxis.',
@@ -744,7 +744,7 @@ export const MODULE_HISTORY_DATA: Record<string, GroupHistory> = {
         title: 'Forensische Sensorik, Mikrotomographie & KI-Mängelanalyse',
         category: 'Technologie',
         description: 'Einsatz industrieller Computertomographie (µCT) für Baustoffgefüge, Drohnenthermografie mit KI-Schadenserkennung und laseroptische Verformungsanalysen bei Gerichtsgutachten.',
-        impact: 'Beweissichere, unstrittige Schadensursachenzuordnung ohne aufwändige destruktive Großbaustellen-Freilegungen.',
+        impact: 'Besser belegte Schadensursachenzuordnung mit weniger zerstörenden Freilegungen; die Beweiswürdigung bleibt Sache des Gerichts (§ 286 ZPO).',
         keyReference: 'BVS-Richtlinien / DGSV'
       }
     ],
@@ -760,8 +760,8 @@ export const MODULE_HISTORY_DATA: Record<string, GroupHistory> = {
         era: '1970er–1980er Jahre',
         title: 'Reparaturkrisen & erste PCC-Mörtel',
         category: 'Technologie',
-        description: 'Frühe Versuche, Betonschäden mit reinem Zementmörtel oder Teeranstrichen auszubessern, scheitern dramatisch an schlechter Haftung und Schwindrissen. Entwicklung kunststoffmodifizierter zementgebundener Mörtel (PCC) und Reaktionsharze (SPCC).',
-        impact: 'Erkenntnis, dass Reparaturmörtel denselben thermischen Ausdehnungskoeffizienten und E-Modul wie der Altbeton aufweisen müssen.',
+        description: 'Frühe Versuche, Betonschäden mit reinem Zementmörtel oder Teeranstrichen auszubessern, scheitern dramatisch an schlechter Haftung und Schwindrissen. Entwicklung kunststoffmodifizierter zementgebundener Mörtel (PCC, im Spritzverfahren SPCC) und von Reaktionsharzmörteln (PC).',
+        impact: 'Erkenntnis, dass Reparaturmörtel in E-Modul und thermischer Dehnung mit dem Altbeton verträglich sein sollten.',
         keyReference: 'Forschungsgemeinschaft Bauen und Wohnen'
       },
       {
@@ -797,7 +797,7 @@ export const MODULE_HISTORY_DATA: Record<string, GroupHistory> = {
         keyReference: 'DIN EN ISO 12696 / ZTV-ING'
       }
     ],
-    keyTakeaway: 'Die Instandsetzung entwickelte sich vom empirischen Flicken zu einer baurechtlich hochregulierten Ingenieurdisziplin, bei der Planung durch Sachkundige Planer (SKP) und SIVV-Qualifikation gesetzlich gefordert sind.'
+    keyTakeaway: 'Die Instandsetzung entwickelte sich vom empirischen Flicken zu einer baurechtlich hochregulierten Ingenieurdisziplin, bei der die Planung durch Sachkundige Planer (SKP) bauaufsichtlich gefordert ist (TR Instandhaltung über die MVV TB) und qualifiziertes Ausführungspersonal (z. B. SIVV-Schein) nachzuweisen ist.'
   },
 
   praxiswissen: {

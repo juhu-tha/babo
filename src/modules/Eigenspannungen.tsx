@@ -24,6 +24,7 @@ import {
 import inhalt from '@/content/eigenspannungen/Eigenspannungen.json';
 import { ModuleTabs } from '@/src/components/ui/ModuleTabs';
 import { MdText } from '@/src/components/inhalt/MdText';
+import { eigenspannungsVerlauf } from '@/src/calc/eigenspannungen';
 
 ChartJS.register(
   CategoryScale,
@@ -55,82 +56,22 @@ export default function Eigenspannungen() {
   const [fCtmEarly, setFCtmEarly] = useState(1.5); // MPa (Zugfestigkeit im frühen Alter)
   const [epsilonCs, setEpsilonCs] = useState(0.0); // ‰ (Schwinddehnung am Rand)
 
+  // Rechnung: src/calc/eigenspannungen.ts (Zerlegung T_N, T_M, T_V; parabolisches Schwinden), geprüft in tests/tranche16.test.ts
   const betonResults = useMemo(() => {
-    const labels = [];
-    const stressTotalData = [];
-    const stressNData = [];
-    const stressMData = [];
-    const stressVData = [];
-    const alphaT = 10e-6; // 1/K
-    
-    const points = 50;
-    
-    // Parabolische Temperaturverteilung über den Querschnitt
-    // T(x) = a*x^2 + b*x + c
-    // x geht von -d/2 (innen) bis +d/2 (außen)
-    const d = thicknessBeton;
-    const c = tMitte;
-    const b = (tAussen - tInnen) / d;
-    const a = (4 / (d * d)) * ((tAussen + tInnen) / 2 - tMitte);
-
-    // Zerlegung der Temperatur
-    // T_avg = 1/d * int T(x) dx = a/12 * d^2 + c
-    const tAvg = (a / 12) * d * d + c;
-    
-    // Schwinddehnungsprofil (parabolisch, max am Rand, 0 in der Mitte)
-    // epsilon_cs(x) = epsilonCs * 1e-3 * (2x/d)^2
-    
-    let maxTensile = 0;
-    let maxCompressive = 0;
-
-    for (let i = 0; i <= points; i++) {
-      const xRatio = (i / points) * 2 - 1; // -1 to 1 (entspricht 2x/d)
-      const x = (xRatio * d) / 2;
-      labels.push(`${formatDeZahl((x * 100), 0)} cm`);
-      
-      const tX = a * x * x + b * x + c;
-      const tN = tAvg;
-      const tM = b * x;
-      const tV = tX - tN - tM;
-
-      // Schwinddehnung (negativ, da Verkürzung)
-      const epsCsX = -epsilonCs * 1e-3 * Math.pow(xRatio, 2);
-      // Mittlere Schwinddehnung (N-Anteil)
-      const epsCsN = -epsilonCs * 1e-3 * (1/3); // Integral von x^2 von -1 bis 1 ist 2/3, geteilt durch 2 ist 1/3
-      
-      // Eigenspannungsanteil aus Schwinden: sigma = E * (eps_total - eps_free)
-      // eps_total = epsCsN (da M-Anteil aus Symmetriegründen 0 ist)
-      // eps_free = epsCsX
-      const epsCsV = epsCsN - epsCsX;
-
-      // Spannungen bei voller Einspannung (Zwang)
-      // sigma_total = -E * alphaT * DeltaT + E * eps_cs
-      // Hier nehmen wir an, dass die Bezugstemperatur (spannungsfrei) 20°C ist.
-      // Für Eigenspannungen (V) ist die Bezugstemperatur egal, da sie sich heraushebt.
-      // Die Eigenspannungen (ohne äußeren Zwang) sind:
-      const sigmaV = -eModulBeton * alphaT * tV + eModulBeton * epsCsV;
-      
-      // Wenn das Bauteil voll eingespannt ist (N und M behindert):
-      // sigma_total = E * (0 - eps_free)
-      const sigmaTotal = -eModulBeton * alphaT * (tX - 20) - eModulBeton * epsCsX; // Annahme: 20°C war Herstelltemperatur
-      const sigmaN = -eModulBeton * alphaT * (tN - 20) - eModulBeton * epsCsN;
-      const sigmaM = -eModulBeton * alphaT * tM;
-
-      stressTotalData.push(sigmaTotal);
-      stressNData.push(sigmaN);
-      stressMData.push(sigmaM);
-      stressVData.push(sigmaV);
-
-      if (sigmaV > maxTensile) maxTensile = sigmaV;
-      if (sigmaV < maxCompressive) maxCompressive = sigmaV;
-    }
-
+    const r = eigenspannungsVerlauf({ tInnen, tMitte, tAussen, eModul: eModulBeton, dicke: thicknessBeton, epsCsPromille: epsilonCs });
+    const labels = r.punkte.map(p => `${formatDeZahl((p.x * 100), 0)} cm`);
+    const stressVData = r.punkte.map(p => p.sigmaV);
+    const stressNData = r.punkte.map(p => p.sigmaN);
+    const stressMData = r.punkte.map(p => p.sigmaM);
+    const maxTensile = r.maxZug;
+    const maxCompressive = r.maxDruck;
     const crackRisk = maxTensile > fCtmEarly;
 
     return {
       maxTensile,
       maxCompressive,
       crackRisk,
+      zugLage: r.zugLage,
       chartData: {
         labels,
         datasets: [
@@ -228,18 +169,18 @@ export default function Eigenspannungen() {
           <div className="lg:col-span-2 flex flex-col gap-6">
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <div className="bg-white p-4 rounded-xl border border-home-grau/30 shadow-sm">
-                    <div className="text-xs text-home-grau uppercase tracking-wider mb-1"><MdText text={inhalt.texte.maxZugeigenspannungRand} /></div>
+                    <div className="text-xs text-home-grau uppercase tracking-wider mb-1"><MdText text={betonResults.zugLage === 'kern' ? inhalt.texte.maxZugeigenspannungKern : inhalt.texte.maxZugeigenspannungRand} /></div>
                     <div className={`text-2xl font-bold ${betonResults.crackRisk ? 'text-red-600' : 'text-emerald-600'}`}>+{formatDeZahl(betonResults.maxTensile, 1)} MPa</div>
                     <div className="text-xs text-text-main/60 mt-1">
                       {betonResults.crackRisk ? (
-                        <span className="text-red-600 font-medium"><MdText text={inhalt.texte.gefahrVonOberflächenrissenF} /></span>
+                        <span className="text-red-600 font-medium"><MdText text={betonResults.zugLage === 'kern' ? inhalt.texte.gefahrVonKernrissenF : inhalt.texte.gefahrVonOberflächenrissenF} /></span>
                       ) : (
-                        <span className="text-emerald-600 font-medium"><MdText text={inhalt.texte.keineOberflächenrisseFCtm} /></span>
+                        <span className="text-emerald-600 font-medium"><MdText text={betonResults.zugLage === 'kern' ? inhalt.texte.keineKernrisseFCtm : inhalt.texte.keineOberflächenrisseFCtm} /></span>
                       )}
                     </div>
                   </div>
                   <div className="bg-white p-4 rounded-xl border border-home-grau/30 shadow-sm">
-                    <div className="text-xs text-home-grau uppercase tracking-wider mb-1"><MdText text={inhalt.texte.maxDruckeigenspannungKern} /></div>
+                    <div className="text-xs text-home-grau uppercase tracking-wider mb-1"><MdText text={betonResults.zugLage === 'kern' ? inhalt.texte.maxDruckeigenspannungRand : inhalt.texte.maxDruckeigenspannungKern} /></div>
                     <div className="text-2xl font-bold text-blue-600">{formatDeZahl(betonResults.maxCompressive, 1)} MPa</div>
                     <div className="text-xs text-text-main/60 mt-1"><MdText text={inhalt.texte.ausgleichsspannungImQuerschnitt} /></div>
                   </div>
