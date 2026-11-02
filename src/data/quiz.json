@@ -10181,7 +10181,7 @@
     "distraktorFeedback": [
       "",
       "GK 2 gilt für Holz ohne Bewitterung mit nur gelegentlicher Befeuchtung, nicht für Erdkontakt.",
-      "GK 3.2 betrifft bewittertes Holz ohne Erdkontakt, z. B. eine ungeschützte Fassadenschalung.",
+      "GK 3.2 betrifft bewittertes Holz ohne Erdkontakt, an dem sich Wasser ansammeln kann, z. B. waagerechte Terrassendielen.",
       "GK 5 ist Holz im Meerwasser mit Gefährdung durch Holzschädlinge im Salzwasser vorbehalten."
     ],
     "gapAnalysis": {
@@ -10192,12 +10192,11 @@
       "targetModuleTab": "holzkorrosion",
       "targetModuleLabel": "Holzkorrosion"
     },
-    "verified": true,
-    "reviewer": "freigegeben 28.10.2026 (Zweitprüfung)",
-    "reviewedAt": "2026-10-28",
+    "verified": false,
     "vorpruefung": {
-      "am": "2026-10-25",
-      "ergebnis": "ok"
+      "am": "2026-11-02",
+      "ergebnis": "korrigiert",
+      "hinweis": "Abgleich 02.11.: Rückmeldung zu GK 3.2 nannte die ungeschützte Fassadenschalung als Beispiel; nach der GK-Matrix des Moduls (und qn_holzkorrosion_4) ist eine senkrechte Fassade GK 3.1 (Wasser läuft rasch ab), GK 3.2 gilt bei Wasseranlagerung – korrigiert"
     }
   },
   {
@@ -33790,7 +33789,7 @@
       "ca. 8,3 Vol.-%"
     ],
     "correctIdx": 1,
-    "explanation": "ρ_max = 100 / (95,0/2,70 + 5,0/1,02) = 2,495 g/cm³; V = (1 − 2,40/2,495) · 100 ≈ 3,8 Vol.-%. Der Wert liegt im Zielbereich 1,5 bis 4,5 Vol.-% für Deckschichten.",
+    "explanation": "ρ_max = 100 / (95,0/2,70 + 5,0/1,02) = 2,495 g/cm³; V = (1 − 2,40/2,495) · 100 ≈ 3,8 Vol.-%. Der Wert liegt im Lehrbereich des Moduls von 1,5 bis 4,5 Vol.-%; maßgebend sind die Anforderungen je Mischgutsorte nach TL/ZTV Asphalt-StB 26.",
     "bloom": "Anwenden",
     "niveau": "M",
     "distraktorFeedback": [
@@ -33807,14 +33806,12 @@
       "targetModuleTab": "bp_verkehr_pruefung",
       "targetModuleLabel": "Labor-Prüfmethoden"
     },
-    "verified": true,
+    "verified": false,
     "vorpruefung": {
-      "am": "2026-10-27",
+      "am": "2026-11-02",
       "ergebnis": "korrigiert",
-      "hinweis": "normRef ergänzt"
-    },
-    "reviewer": "Zweitprüfung 27.10.2026; freigegeben 27.10.2026",
-    "reviewedAt": "2026-10-27"
+      "hinweis": "normRef ergänzt · Abgleich 02.11.: Erklärung nannte 1,5 bis 4,5 Vol.-% als „Zielbereich für Deckschichten“; das Modul führt den Bereich seit T7-PR-1 als Lehrbereich (Anforderungen je Mischgutsorte nach TL/ZTV Asphalt-StB 26) – korrigiert"
+    }
   },
   {
     "id": "qn_bp_verkehr_pruefung_5",
@@ -33825,7 +33822,7 @@
     "topic": "Bewertung Hohlraum",
     "difficulty": "Transfer",
     "normRef": "ZTV Asphalt-StB",
-    "question": "Für eine Deckschicht aus Asphaltbeton wird ein Hohlraumgehalt von 1,2 Vol.-% ermittelt. Wie ist das nach dem Zielbereich des Moduls zu bewerten?",
+    "question": "Für eine Deckschicht aus Asphaltbeton wird ein Hohlraumgehalt von 1,2 Vol.-% ermittelt. Wie ist das nach dem Lehrbereich des Moduls zu bewerten?",
     "options": [
       "Zu offen – Gefahr von Wassereintritt, Alterung und Frostschäden",
       "Konform, da der Zielbereich 1,0 bis 3,0 Vol.-% beträgt",
@@ -33833,12 +33830,12 @@
       "Konform, da weniger Hohlraum die Standfestigkeit in jedem Fall erhöht"
     ],
     "correctIdx": 2,
-    "explanation": "Der Zielbereich für Deckschichten liegt bei 1,5 bis 4,5 Vol.-%. Mit 1,2 Vol.-% ist das Gefüge zu dicht: Bitumen reichert sich an der Oberfläche an, es drohen Spurrinnen.",
+    "explanation": "Der Lehrbereich des Moduls liegt bei 1,5 bis 4,5 Vol.-% (maßgebend sind die Anforderungen je Mischgutsorte nach TL/ZTV Asphalt-StB 26). Mit 1,2 Vol.-% ist das Gefüge zu dicht: Bitumen reichert sich an der Oberfläche an, es drohen Spurrinnen.",
     "bloom": "Bewerten",
     "niveau": "M",
     "distraktorFeedback": [
       "Diese Folgen gelten für zu hohe Hohlraumgehalte über 4,5 Vol.-%.",
-      "Der Zielbereich im Modul liegt bei 1,5 bis 4,5 Vol.-%.",
+      "Der Lehrbereich im Modul liegt bei 1,5 bis 4,5 Vol.-%.",
       "",
       "Zu wenig Hohlraum lässt das Bitumen an die Oberfläche treten und senkt die Standfestigkeit."
     ],
@@ -33850,12 +33847,11 @@
       "targetModuleTab": "bp_verkehr_pruefung",
       "targetModuleLabel": "Labor-Prüfmethoden"
     },
-    "verified": true,
-    "reviewer": "freigegeben 28.10.2026 (Zweitprüfung)",
-    "reviewedAt": "2026-10-28",
+    "verified": false,
     "vorpruefung": {
-      "am": "2026-10-25",
-      "ergebnis": "ok"
+      "am": "2026-11-02",
+      "ergebnis": "korrigiert",
+      "hinweis": "Abgleich 02.11.: Frage, Erklärung und Rückmeldung nannten 1,5 bis 4,5 Vol.-% als „Zielbereich für Deckschichten“; das Modul führt den Bereich seit T7-PR-1 als Lehrbereich (Anforderungen je Mischgutsorte) – korrigiert"
     }
   },
   {
@@ -40421,17 +40417,15 @@
       "topic": "Prüfalter 56 Tage",
       "misconception": "Das spätere Prüfalter wird als rechnerischer Trick oder als Sicherheitsabschlag missverstanden.",
       "coreRule": "Prüfalter 56 d nutzt die langsame Nacherhärtung klinkerarmer Bindemittel aus und spart Zement.",
-      "actionableAdvice": "Arbeiten Sie den Abschnitt „DAfStb-Richtlinie: Treibhausgasoptimierte Tragwerke aus Stahlbeton“ im Modul Materialoptimierung noch einmal durch.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „DAfStb-Richtlinie: Treibhausgasreduzierte Tragwerke aus Beton, Stahlbeton oder Spannbeton“ im Modul Materialoptimierung noch einmal durch.",
       "targetModuleTab": "materialoptimierung",
       "targetModuleLabel": "Materialoptimierung"
     },
-    "reviewer": "Zweitprüfung 27.10.2026; freigegeben 27.10.2026",
-    "reviewedAt": "2026-10-27",
-    "verified": true,
+    "verified": false,
     "vorpruefung": {
-      "am": "2026-10-27",
+      "am": "2026-11-02",
       "ergebnis": "korrigiert",
-      "hinweis": "normRef ergänzt"
+      "hinweis": "normRef ergänzt · Abgleich 02.11.: Lernhilfe nannte die Richtlinie „Treibhausgasoptimierte Tragwerke aus Stahlbeton“; Titel wie im Modul „Treibhausgasreduzierte Tragwerke aus Beton, Stahlbeton oder Spannbeton“ – korrigiert"
     }
   },
   {
@@ -45296,7 +45290,7 @@
     "topic": "Bemessungsdruckfestigkeit",
     "difficulty": "Basis",
     "normRef": "DIN EN 1996-3",
-    "question": "Für Kalksandstein-Mauerwerk setzt das Modul f_k = 5,6 N/mm², den Dauerstandsbeiwert ζ = 0,85 und γ_M = 1,5 an. Welcher Bemessungswert f_d ergibt sich?",
+    "question": "Für Kalksand-Lochsteine KS L, SFK 12, mit Normalmauermörtel NM III weist die f_k-Tafel des Moduls f_k = 5,6 N/mm² aus; das Modul rechnet mit dem Dauerstandsbeiwert ζ = 0,85 und γ_M = 1,5. Welcher Bemessungswert f_d ergibt sich?",
     "options": [
       "f_d = 7,14 N/mm²",
       "f_d = 3,73 N/mm²",
@@ -45321,13 +45315,11 @@
       "targetModuleTab": "rechnung_mauerwerk",
       "targetModuleLabel": "Mauerwerk: Tragfähigkeit"
     },
-    "reviewer": "Zweitprüfung 27.10.2026; freigegeben 27.10.2026",
-    "reviewedAt": "2026-10-27",
-    "verified": true,
+    "verified": false,
     "vorpruefung": {
-      "am": "2026-10-27",
+      "am": "2026-11-02",
       "ergebnis": "korrigiert",
-      "hinweis": "Gutachten 27.10.2026: Rechnung auf f_d = ζ · f_k/γ_M mit ζ = 0,85 umgestellt wie im Modul (src/calc/mauerwerk.ts); Werte und Distraktoren mit dem Rechenkern neu gerechnet, abgesichert in tests/quizRechenfragen.test.ts."
+      "hinweis": "Gutachten 27.10.2026: Rechnung auf f_d = ζ · f_k/γ_M mit ζ = 0,85 umgestellt wie im Modul (src/calc/mauerwerk.ts); Werte und Distraktoren mit dem Rechenkern neu gerechnet, abgesichert in tests/quizRechenfragen.test.ts. · Abgleich 02.11.: Frage sagte „Für Kalksandstein-Mauerwerk setzt das Modul f_k = 5,6 N/mm² an“; das Modul wählt f_k aus der NA-Tafel (src/calc/mauerwerk.ts, FK_TAFEL_NA), 5,6 N/mm² gilt dort für KS L 12 mit NM III; Rechnung unverändert – korrigiert"
     }
   },
   {
@@ -45509,7 +45501,7 @@
     "topic": "Steinart und Wanddicke",
     "difficulty": "Vertiefung",
     "normRef": "DIN EN 1996-3",
-    "question": "Eine Wand (h_ef = 2,75 m, Φ2 maßgebend) erhält N_Ed = 150 kN/m. Welcher Vergleich der Ausnutzungsgrade nach dem Modul (f_d = ζ · f_k/γ_M; KS: f_k = 5,6; HLz: f_k = 3,2 N/mm²) ist richtig?",
+    "question": "Eine Wand (h_ef = 2,75 m, Φ2 maßgebend) erhält N_Ed = 150 kN/m. Welcher Vergleich der Ausnutzungsgrade ist mit dem Ansatz des Moduls (f_d = ζ · f_k/γ_M) richtig, wenn für Kalksandstein f_k = 5,6 N/mm² (KS L 12, NM III) und für den Hochlochziegel f_k = 3,2 N/mm² angenommen werden?",
     "options": [
       "KS 17,5 cm: η ≈ 0,47; HLz 17,5 cm: η ≈ 0,82; HLz 24 cm: η ≈ 0,49",
       "KS 17,5 cm: η ≈ 0,82; HLz 17,5 cm: η ≈ 0,47; HLz 24 cm: η ≈ 0,49",
@@ -45534,13 +45526,11 @@
       "targetModuleTab": "rechnung_mauerwerk",
       "targetModuleLabel": "Mauerwerk: Tragfähigkeit"
     },
-    "reviewer": "Zweitprüfung 27.10.2026; freigegeben 27.10.2026",
-    "reviewedAt": "2026-10-27",
-    "verified": true,
+    "verified": false,
     "vorpruefung": {
-      "am": "2026-10-27",
+      "am": "2026-11-02",
       "ergebnis": "korrigiert",
-      "hinweis": "Gutachten 27.10.2026: Rechnung auf f_d = ζ · f_k/γ_M mit ζ = 0,85 umgestellt wie im Modul (src/calc/mauerwerk.ts); Werte und Distraktoren mit dem Rechenkern neu gerechnet, abgesichert in tests/quizRechenfragen.test.ts."
+      "hinweis": "Gutachten 27.10.2026: Rechnung auf f_d = ζ · f_k/γ_M mit ζ = 0,85 umgestellt wie im Modul (src/calc/mauerwerk.ts); Werte und Distraktoren mit dem Rechenkern neu gerechnet, abgesichert in tests/quizRechenfragen.test.ts. · Abgleich 02.11.: Frage nannte KS f_k = 5,6 und HLz f_k = 3,2 N/mm² als Werte „nach dem Modul“; das Modul wählt f_k aus der NA-Tafel (HLz-Einträge 3,5 bis 5,7 N/mm²), die Werte sind jetzt als Annahme bezeichnet; Rechnung unverändert – korrigiert"
     }
   },
   {
