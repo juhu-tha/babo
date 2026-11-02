@@ -1,11 +1,10 @@
 {
   "texte": {
-    "setztEineAbgestimmteNeufassung": " Setzt eine abgestimmte Neufassung von DIN 1045-2 voraus; ein Termin ist öffentlich nicht bekannt.",
+    "setztEineAbgestimmteNeufassung": " Setzt eine abgestimmte Neufassung von DIN 1045-2 voraus. Das Normungsprojekt DIN 1045-2/A1 läuft seit Juli 2026; ein Entwurf und ein Termin sind öffentlich nicht bekannt.",
     "forschungsberichtZurAnwendbarkeit2025": " Forschungsbericht zur Anwendbarkeit (2025): Einführung „ab 2027 (Plan A)“ möglich.",
     "fachveröffentlichungRwth2025Erwartet": " Fachveröffentlichung (RWTH, 2025) erwartet die Einführung 2027 einschließlich NA – keine amtliche Festlegung.",
     "ausblickNeueNormengenerationBeton": " Ausblick: neue Normengeneration (Beton und Eurocodes)",
     "dinEn2061": "DIN EN 206-1/-2:2026, Expositionswiderstandsklassen und Eurocodes der 2. Generation – was erschienen ist und was (noch) gilt",
-    "standOktober2026Für": "**Stand Oktober 2026:** Für Bemessung und Ausführung in Deutschland gelten weiterhin die bauaufsichtlich eingeführten Ausgaben (MVV TB 2025/1): DIN EN 206:2021-06 mit DIN 1045-2:2023-08 und die Eurocodes der Ausgaben ab 2010-12 mit Nationalen Anhängen. Dieses Modul gibt einen Ausblick auf Grundlage öffentlich zugänglicher Quellen; die Normtexte selbst wurden nicht ausgewertet. Punkte mit ",
     "sindÖffentlichNichtBelegt": " sind öffentlich nicht belegt.",
     "dieErsteEurocodeGeneration": "Die erste Eurocode-Generation wurde in Deutschland ab 2012 bauaufsichtlich eingeführt. Schon 2012 erteilte die EU-Kommission den Normungsauftrag **M/515**, die Eurocodes zu überarbeiten und ihren Anwendungsbereich zu erweitern; CEN/TC 250 begann 2016 mit der Arbeit. Parallel überarbeitete CEN/TC 104 die Betonnorm EN 206. Beide Vorhaben sind aufeinander bezogen: EN 206-1:2026 wurde an die überarbeitete EN 1992-1-1:2023 angeglichen.",
     "anwendbarkeitEaseOfUse": "Anwendbarkeit („Ease of Use“)",
@@ -33,7 +32,7 @@
     "dieDeutschenGrenzwerteStehen": "Die deutschen Grenzwerte stehen bis auf Weiteres in DIN 1045-2:2023-08.",
     "anhangMBestimmungenAm": "Anhang M (Bestimmungen am Verwendungsort) in die Einleitung, Anhang L in den Haupttext; Angleichung an EN 1992-1-1:2023.",
     "warumDinEn206": "Warum DIN EN 206:2021-06 noch maßgebend ist",
-    "inDeutschlandWirdDin": "In Deutschland wird DIN EN 206 nur zusammen mit dem nationalen Anwendungsdokument DIN 1045-2 angewendet; dort stehen etwa die Grenzwerte je Expositionsklasse. Eine auf DIN EN 206-1:2026 abgestimmte Neufassung von DIN 1045-2 und deren bauaufsichtliche Einführung stehen aus. ",
+    "inDeutschlandWirdDin": "In Deutschland wird DIN EN 206 nur zusammen mit dem nationalen Anwendungsdokument DIN 1045-2 angewendet; dort stehen etwa die Grenzwerte je Expositionsklasse. Eine auf DIN EN 206-1:2026 abgestimmte Neufassung von DIN 1045-2 und deren bauaufsichtliche Einführung stehen aus; das Normungsprojekt DIN 1045-2/A1 (Änderung zu DIN 1045-2:2023-08) wurde im Juli 2026 begonnen. ",
     "dieHeuteGeltendenGrenzwerte": "Die heute geltenden Grenzwerte nach DIN 1045-2:2023-08 und die Mindestbetondeckung nach DIN EN 1992-1-1/NA behandelt das Modul Dauerhaftigkeit.",
     "en199211": "EN 1992-1-1:2023 führt **Expositionswiderstandsklassen (ERC)** ein. Sie ersetzen die bisherigen Anforderungsklassen (S1 bis S6) als Zwischenschritt zur Betondeckung: Die Mindestbetondeckung für die Dauerhaftigkeit ergibt sich aus der Expositionsklasse *und* der ERC des Betons. Erfasst werden die bewehrungskorrosionsrelevanten Einwirkungen Karbonatisierung (XRC) und Chlorideindringen (XRDS); Frost und chemischer Angriff nicht.",
     "xrcKarbonatisierung": "XRC – Karbonatisierung",
@@ -51,7 +50,7 @@
     "europäischerZeitplan": " Europäischer Zeitplan",
     "zwischenDerSpätestenNationalen": "Zwischen der spätesten nationalen Veröffentlichung und der Zurückziehung liegt eine Koexistenzphase, in der beide Generationen nebeneinander stehen; die irische Normungsorganisation NSAI spricht für ihren Zeitplan von zwölf Monaten. Nationale Anhänge müssen neu erarbeitet werden.",
     "standInDeutschland": "Stand in Deutschland",
-    "dieDinFassungenErscheinen": "Die DIN-Fassungen erscheinen schrittweise (z. B. EC3-1-1 im April 2025, EC2-1-1 im September 2025, EC5-1-1 im September 2026). Bauaufsichtlich eingeführt ist nach MVV TB 2025/1 weiterhin die 1. Generation. Die Zurückziehung einer DIN-Norm allein ändert daran nichts: Maßgebend für das Bauordnungsrecht ist, welche Ausgabe die Technischen Baubestimmungen nennen. Bei der 1. Generation wurde das Paket aus EC 0 bis 9 zum 01.07.2012 verbindlich, nachdem Normen und Nationale Anhänge vorlagen.",
+    "dieDinFassungenErscheinen": "Die DIN-Fassungen erscheinen schrittweise (z. B. EC3-1-1 im April 2025, EC2-1-1 im September 2025, EC5-1-1 im September 2026). Bauaufsichtlich eingeführt ist nach MVV TB 2025/1 weiterhin die 1. Generation. Der Entwurf der MVV TB 2026/1 ist bei der EU-Kommission notifiziert (TRIS 2026/0349/DE, Stillhaltefrist bis 12.10.2026), aber noch nicht veröffentlicht; ob er Eurocodes der 2. Generation (etwa DIN EN 1992-1-1:2025-09) aufnimmt, geht aus der Notifizierung nicht hervor (vorläufig, Normprüfung ausstehend). Die Zurückziehung einer DIN-Norm allein ändert daran nichts: Maßgebend für das Bauordnungsrecht ist, welche Ausgabe die Technischen Baubestimmungen nennen. Bei der 1. Generation wurde das Paket aus EC 0 bis 9 zum 01.07.2012 verbindlich, nachdem Normen und Nationale Anhänge vorlagen.",
     "einForschungsberichtDerInitiative": "Ein Forschungsbericht der Initiative Praxisgerechte Regelwerke (2025) hält die Einführung „ab 2027 (Plan A)“ für möglich; eine abschließende Bewertung sei erst nach Vorlage aller finalen Nationalen Anhänge möglich. Für EC2 wird in einer Fachveröffentlichung die Einführung 2027 einschließlich NA erwartet. ",
     "ec2DinEn1992": "EC2 – DIN EN 1992-1-1:2025-09",
     "vollständigeTechnischeÜberarbeitungInhal": "vollständige technische Überarbeitung; Inhalte von EN 1992-2 (Brücken) und EN 1992-3 (Behälter) aufgenommen, neue Anhänge K bis S",
@@ -68,7 +67,6 @@
     "ec3DinEn1993": "EC3 – DIN EN 1993-1-1:2025-04",
     "stahlsortenBisS700Elliptische": "Stahlsorten bis S700, elliptische Hohlprofile, neue Verfahren für Querschnitte der Klasse 3 und für den Biegedrillknicknachweis, Ablaufdiagramm zur Tragwerksberechnung.",
     "teilsicherheitsbeiwerteUndKombinationsre": "Teilsicherheitsbeiwerte und Kombinationsregeln nach der eingeführten DIN EN 1990 mit NA behandelt das Modul Eurocode-Sicherheitskonzept.",
-    "normenstandOktober2026Deutschland": "Normenstand Oktober 2026 (Deutschland)",
     "giltHeuteBauaufsichtlich": "Gilt heute (bauaufsichtlich)",
     "neuErschienen": "Neu erschienen",
     "voraussichtlichEingeführt": "Voraussichtlich eingeführt",
@@ -81,7 +79,12 @@
     "inhaltDerNeuenNationalen": "Inhalt der neuen Nationalen Anhänge und einer Neufassung von DIN 1045-2",
     "verbindlicheDeutscheErcRegeln": "verbindliche deutsche ERC-Regeln und Umrechnungsfaktor für DIN EN 12390-12",
     "wortlautDerNeuenBindemittelbegriffe": "Wortlaut der neuen Bindemittelbegriffe und der CO₂-Klassen in der Endfassung",
-    "denWegVonDer": "Den Weg von der Norm über die MVV TB in das Landesrecht und den Unterschied zwischen Norm und Technischer Baubestimmung behandelt das Modul Regulatives & Normung."
+    "denWegVonDer": "Den Weg von der Norm über die MVV TB in das Landesrecht und den Unterschied zwischen Norm und Technischer Baubestimmung behandelt das Modul Regulatives & Normung.",
+    "standNovember2026Für": "**Stand November 2026:** Für Bemessung und Ausführung in Deutschland gelten weiterhin die bauaufsichtlich eingeführten Ausgaben (MVV TB 2025/1): DIN EN 206:2021-06 mit DIN 1045-2:2023-08 und die Eurocodes der Ausgaben ab 2010-12 mit Nationalen Anhängen. Dieses Modul gibt einen Ausblick auf Grundlage öffentlich zugänglicher Quellen; die Normtexte selbst wurden nicht ausgewertet. Punkte mit ",
+    "normenstandNovember2026Deutschland": "Normenstand November 2026 (Deutschland)",
+    "veröffentlichungMvvTb20261": "Veröffentlichung der MVV TB 2026/1 und ihr Inhalt zu DIN EN 206-1:2026 und den Eurocodes der 2. Generation",
+    "entwürfeUndProjekteStand": "Entwürfe und Normungsprojekte (Stand November 2026)",
+    "entwürfeÄndernNichts": "Entwürfe ändern die Gültigkeit der bisherigen Ausgaben nicht. Sie zeigen, wohin sich die Regeln bewegen; für Bemessung und Prüfung gelten die eingeführten bzw. aktuellen Ausgaben."
   },
   "werte": {
     "dinEn2061": "DIN EN 206-1/-2:2026",
@@ -96,13 +99,13 @@
     "en19902023Erschienen": "EN 1990-1:2023+A1:2026 (Teil 1: Neubauten; vormals EN 1990:2023); Deutsche Fassung DIN EN 1990-1:2026-12 angekündigt (DIN Media: vorbestellbar), NA im Entwurf",
     "eurocode2Betonbau": "Eurocode 2: Betonbau",
     "dinEn19921": "DIN EN 1992-1-1:2011-01 + A1:2015-03 mit NA:2013-04",
-    "dinEn199212": "DIN EN 1992-1-1:2025-09 (Deutsche Fassung EN 1992-1-1:2023; ersetzt auch DIN EN 1992-2 und DIN EN 1992-3); neuer NA: noch offen",
+    "dinEn199212": "DIN EN 1992-1-1:2025-09 (Deutsche Fassung EN 1992-1-1:2023; ersetzt auch DIN EN 1992-2 und DIN EN 1992-3); Entwurf des neuen NA: E DIN EN 1992-1-1/NA1:2025-08; Entwurf der Änderung: E DIN EN 1992-1-1/A1:2026-05",
     "eurocode3Stahlbau": "Eurocode 3: Stahlbau",
     "dinEn19931": "DIN EN 1993-1-1:2010-12 + A1:2014-07 mit NA",
     "dinEn199312": "DIN EN 1993-1-1:2025-04 (Deutsche Fassung EN 1993-1-1:2022); neuer NA: noch offen",
     "eurocode5Holzbau": "Eurocode 5: Holzbau",
     "dinEn19951": "DIN EN 1995-1-1:2010-12 + A2:2014-07 mit NA:2013-08",
-    "dinEn199512": "DIN EN 1995-1-1:2026-09 (Deutsche Fassung EN 1995-1-1:2025); NA ausstehend",
+    "dinEn199512": "DIN EN 1995-1-1:2026-09 (Deutsche Fassung EN 1995-1-1:2025); NA ausstehend; Entwurf der Änderung: E DIN EN 1995-1-1/A1:2026-10",
     "bereicheDesModulsAusblick": "Bereiche des Moduls Ausblick neue Normengeneration",
     "dinAusgabeNichtGeprüft": "DIN-Ausgabe nicht geprüft",
     "änderungenInDinEn": "Änderungen in DIN EN 206-1:2026-07",
@@ -117,7 +120,6 @@
     "übersichtGiltHeuteNeu": "Übersicht: gilt heute, neu erschienen, voraussichtlich eingeführt",
     "wieNormenVerbindlichWerden": "Wie Normen verbindlich werden",
     "zumModulRegulativesNormung": "Zum Modul Regulatives & Normung",
-    "oktober2026ModulNeu": "Oktober 2026 (Modul neu erstellt aus öffentlichen Quellen)",
     "dinMediaDinEn": "DIN Media: DIN EN 206-1:2026-07 (Änderungsvermerk)",
     "dinMediaDinEn2": "DIN Media: DIN EN 206-2:2026-07 (Änderungsvermerk)",
     "dinMediaDinEn3": "DIN Media: DIN EN 1992-1-1:2025-09 (Änderungsvermerk)",
@@ -132,7 +134,12 @@
     "irbKurzberichtEaseOf": "IRB: Kurzbericht Ease of Use der künftigen Eurocodes (2025)",
     "bauforumstahlEurocodesAufCen": "bauforumstahl: Eurocodes auf CEN-Ebene veröffentlicht (März 2026)",
     "energiforskPetersonErcBetongdagen": "Energiforsk: Peterson, ERC (Betongdagen 2025)",
-    "fachkommissionBautechnikSchreibenZur": "Fachkommission Bautechnik: Schreiben zur Einführung der Eurocodes (2010)"
+    "fachkommissionBautechnikSchreibenZur": "Fachkommission Bautechnik: Schreiben zur Einführung der Eurocodes (2010)",
+    "november2026Aktualisiert": "November 2026 (Ausblick um Normungsprojekte, Entwürfe und MVV TB 2026/1 ergänzt; Modul erstellt Oktober 2026 aus öffentlichen Quellen)",
+    "trisMvvTb20261": "EU-Kommission, TRIS: Notifizierung 2026/0349/DE (Entwurf MVV TB 2026/1)",
+    "dinProjektDin10452A1": "DIN: Normungsprojekt DIN 1045-2/A1",
+    "dinEntwurfEc2Na1": "DIN: Entwurf DIN EN 1992-1-1/NA1:2025-08",
+    "dinEntwurfEc2A1": "DIN: Entwurf DIN EN 1992-1-1/A1:2026-05"
   },
   "daten": {
     "ZEITSTRAHL": [
@@ -188,11 +195,12 @@
       {
         "title": "DIN EN 1990 mit NA (1. Generation, eingeführt); EN 1990-1:2023+A1:2026 (2. Generation, Teil 1: Neubauten; DIN EN 1990-1:2026-12 angekündigt) und EN 1990-2 (bestehende Tragwerke)"
       },
-      {
-        "title": "DIN EN 12390-12:2020-04 (Prüfung von Festbeton - Teil 12: Bestimmung des Karbonatisierungswiderstandes von Beton - Beschleunigtes Karbonatisierungsverfahren)"
-      },
+      "DIN_EN_12390_12",
       {
         "title": "MVV TB 2025/1 (Muster-Verwaltungsvorschrift Technische Baubestimmungen)"
+      },
+      {
+        "title": "MVV TB 2026/1 (Entwurf, notifiziert als TRIS 2026/0349/DE; Veröffentlichung ausstehend)"
       }
     ],
     "NormenAusblick.weblinks.0": {
@@ -211,6 +219,68 @@
       {
         "formel": "x_{c,50} \\approx \\mathrm{XRC} \\cdot \\sqrt{50\\,\\text{a}}",
         "erklaerung": "Lesebeispiel: XRC-Klassenzahl als Karbonatisierungsrate in mm/√a, Tiefe nach 50 Jahren unter Referenzbedingungen (Lesart nach Andrade/Izquierdo 2023, nicht aus dem Normtext)."
+      }
+    ],
+    "ENTWUERFE": [
+      {
+        "was": "DIN 1045-2/A1",
+        "art": "Normungsprojekt (seit 13.07.2026)",
+        "gegenstand": "Änderung zu DIN 1045-2:2023-08, Abstimmung auf DIN EN 206-1:2026; noch kein Entwurf",
+        "quelle": "DIN"
+      },
+      {
+        "was": "E DIN EN 1992-1-1/NA1:2025-08",
+        "art": "Entwurf",
+        "gegenstand": "Nationaler Anhang zu EC2 der 2. Generation",
+        "quelle": "DIN"
+      },
+      {
+        "was": "E DIN EN 1992-1-1/A1:2026-05",
+        "art": "Entwurf",
+        "gegenstand": "Änderung zu EN 1992-1-1:2023 (prA1:2026)",
+        "quelle": "DIN"
+      },
+      {
+        "was": "MVV TB 2026/1",
+        "art": "Entwurf, notifiziert",
+        "gegenstand": "TRIS 2026/0349/DE (eingegangen 09.07.2026); Änderungen in A1–A3, A5, B2–B4, C2–C4; Veröffentlichung ausstehend",
+        "quelle": "EU-Kommission (TRIS)"
+      },
+      {
+        "was": "E DIN EN 1995-1-1/A1:2026-10",
+        "art": "Entwurf",
+        "gegenstand": "Änderung zu EN 1995-1-1:2025 (EC5, 2. Generation)",
+        "quelle": "DIN Media"
+      },
+      {
+        "was": "E DIN EN 1996-1-1/A1:2026-05",
+        "art": "Entwurf",
+        "gegenstand": "Änderung zu EN 1996-1-1:2022 (EC6 Mauerwerk, 2. Generation); deutsche Ausgabe DIN EN 1996-1-1 der 2. Generation nicht belegt (vorläufig, Normprüfung ausstehend)",
+        "quelle": "DIN Media"
+      },
+      {
+        "was": "E DIN EN 197-1:2026-08",
+        "art": "Entwurf",
+        "gegenstand": "prEN 197-1:2026, u. a. CEM II/C-M und CEM VI aufgenommen, Recyclingbetonmehl als Bestandteil, Festigkeitsklassen neu definiert",
+        "quelle": "DIN Media"
+      },
+      {
+        "was": "E DIN EN 196-1:2026-08",
+        "art": "Entwurf",
+        "gegenstand": "Prüfverfahren für Zement – Bestimmung der Festigkeit (prEN 196-1:2026)",
+        "quelle": "DIN"
+      },
+      {
+        "was": "E DIN EN 12390-12:2025-11",
+        "art": "Entwurf",
+        "gegenstand": "Beschleunigtes Karbonatisierungsverfahren (prEN 12390-12:2025); maßgebend bleibt 2020-04",
+        "quelle": "DIN Media"
+      },
+      {
+        "was": "E DIN 4109-1:2026-09",
+        "art": "Entwurf",
+        "gegenstand": "Schallschutz im Hochbau – Anforderungen; Tabellen teils geändert, Außenlärm neu gefasst",
+        "quelle": "DIN Media"
       }
     ]
   }

@@ -68,6 +68,8 @@ Status-Feld: Die Entwürfe ändern die Gültigkeit der bisherigen Ausgaben nicht
 | Texte mit DIN EN 12390-12:2020-04 (8 Fundstellen) | Ausgabe 2020-04 | gilt weiter; Entwurf 2025-11 liegt vor | ggf. Hinweis „Entwurf 2025-11“ |
 | aus 10/2026 bekannt (`docs/normen-check/2026-10.md`, Abschnitt 4) | DIN 4108-2:2013-02, DIN EN 15978:2012-10, DIN 1045-2:2008, DIN EN 1992-1-1:2011/2023-08, DIN 18945–18947:2018-12 u. a. | weiterhin offen | getrennt behandeln |
 
+**Umsetzung 02.11.2026:** Zeilen 1–5 und 7 umgesetzt (Ausgaben über die Registry, Normenausblick Stand November 2026, Hinweis Entwurf DIN EN 12390-12:2025-11); Gleichung (5) DIN EN 12390-18 betrifft den Rechner nicht. Einzelheiten: `docs/pruefung/normen-fristen-folge-2026-11-02.md`.
+
 ## 4. Offene Punkte
 
 - MVV TB 2026/1: Veröffentlichung abwarten; danach Einführung EC2/EC3/EC5 der 2. Generation und DIN EN 206-1:2026 prüfen.
