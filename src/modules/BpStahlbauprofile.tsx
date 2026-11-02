@@ -492,8 +492,9 @@ export default function BpStahlbauprofile() {
                     onChange={(e) => setSafetyFactor(Number(e.target.value))}
                     className="w-full p-2 text-sm border border-home-grau rounded-md bg-white focus:outline-none"
                   >
-                    <option value={1.0}>1,00 (Empfohlen EC3)</option>
-                    <option value={1.1}>1,10 (Nationaler Anhang)</option>
+                    {/* NS5B-SP-1: DIN EN 1993-1-1/NA legt γ_M0 = 1,00 fest; 1,10 ist γ_M1 (Stabilität), hier nur zum Vergleich */}
+                    <option value={1.0}>1,00 (EC3, auch NA Deutschland)</option>
+                    <option value={1.1}>1,10 (Vergleich: γ_M1 nach NA)</option>
                   </select>
                 </div>
               </div>
