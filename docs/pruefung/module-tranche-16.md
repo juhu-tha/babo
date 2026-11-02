@@ -1,7 +1,7 @@
 # Modulprüfung Tranche 16 – Module ohne Prüfvermerk (Befundliste zur Freigabe)
 
 **Stand:** 02.11.2026 (Branch `pruefung/tranche-16-11-02`, Basis origin/main d31cd52a)
-**Status:** Vorschlag zur fachlichen Freigabe – noch nicht bestätigt.
+**Status:** Entscheidungen vom 02.11.2026 umgesetzt; alle 16 Module freigegeben (Abschnitt „Freigabe 02.11.2026“).
 
 > Mit dieser Befundliste wurden **keine** Prüfvermerke gesetzt und `src/data/pruefvermerke.ts` nicht geändert (tests/tranche16.test.ts prüft, dass die Module dieser Tranche ohne Eintrag bleiben). Quizfragen wurden nicht geändert: Keine Frage ist durch die Korrekturen falsch geworden.
 
@@ -289,3 +289,63 @@ Keiner aus der Menge „ohne Eintrag“: Nach Abzug der begründeten Ausschlüss
 - Eigenes Python-Skript (eigene Umsetzung von EC2 Anhang B/3.1.4/3.3.2, Zwang, Zerlegung T_N/T_M/T_V mit Schwindparabel, Quantil, Magnus, Darrfeuchte, Konfusionsmatrix); 94 Prüfungen als `tests/tranche16.test.ts`.
 - QA (lokal): `npx tsc --noEmit`, `npm test` (alle Tests, inkl. `erkundung`, `rechnerGrenzen`, `zahlformatTausender`, `pruefvermerke`), `check:formeln` (4501 Formeln, 0 fehlerhaft), `check:zahlen`, `check-design`, `check-verwaist --strict`, `check-any`, Build, `check-bundle`; `a11y-reiter` (desk, mob, desk-dunkel) auf `zwang`, `eigenspannungen`, `kriechen`, `nachhaltigkeit_checklisten`, `dauerhaftigkeit_checklisten`, `instandsetzung_checklisten`, `ki_ueberblick`, `ki_onlinekurse`, `grundlagen_info`, `instandsetzung_info`: 105 Reiter-Prüfungen, 0 Verstöße; Sichtprüfung Zwang/Eigenspannungen (Grenzfall Kern) ohne Konsolenfehler.
 - Öffentliche Quellen: [DIN Media, DAfStb-Heft 466](https://dinmedia.de/en/publication/heft-466-dafstb/3721089); [BTU Cottbus-Senftenberg, Übersicht DAfStb-Richtlinien](https://www-docs.b-tu.de/bibliothek/public/suchen/dafstb.pdf).
+
+---
+
+## Umsetzung 02.11.2026
+
+Entscheidung Prof. Huber vom 02.11.2026: „alle Vorschläge übernehmen“. Umgesetzt im Branch `umsetzung/tranche16-11-02` (nach #293); Prüfungen in `tests/umsetzungT16_20261102.test.ts`.
+
+| Kennung | Modul | gewählte Fassung | Quelle | Status |
+|---|---|---|---|---|
+| T16-ZW-3 | `zwang` | Angabe „DAfStb Heft 555: Erläuterungen zur DAfStb-Richtlinie Massige Bauteile aus Beton“ gestrichen; ersetzt durch „DAfStb-Richtlinie Massige Bauteile aus Beton (Ausgabe April 2010)“. Ein Erläuterungsheft zu dieser Richtlinie ist im Verzeichnis nicht nachgewiesen; Heft 555 gehört nach Kenntnisstand zur WU-Richtlinie (so auch `content/wubauwerke/WUBauwerke.json`). | [BTU Cottbus-Senftenberg, Übersicht DAfStb-Richtlinien](https://www-docs.b-tu.de/bibliothek/public/suchen/dafstb.pdf) (Richtlinie „Apr 10“, kein Erläuterungsheft genannt) | erledigt |
+| T16-NC-2 | `nachhaltigkeit_checklisten` | „mit 25 Vol.-% rezyklierter Gesteinskörnung (Projektziel; DIN 1045-2, Anhang E rechnet in Vol.-%)“ statt „mindestens 25 M.-% Gesteinskörnung-Substitut“; Höchstanteile bleiben „vorläufig, Normprüfung ausstehend“ | Entscheidung; DIN 1045-2:2023-08, Anhang E (wie T9-GL-1a) | erledigt |
+| T16-NC-3 | `nachhaltigkeit_checklisten` | `gruppe: 'Nachhaltigkeit'` in `src/registry/modules.ts` (letzter Eintrag der Gruppe, wie die übrigen Checklisten); Typ bleibt `info`, daher weiterhin kein Fachmodul | Entscheidung | erledigt |
+| (T11-ZS-2) | `nachhaltigkeit_checklisten` | „QNG-Steckbrief 313“ wie in `zertifizierung_siegel` (Umsetzung 29.10.) durch „QNG-Anhangdokument 3.1.3 „Schadstoffvermeidung in Baumaterialien““ ersetzt; die Zuordnung der Produktpositionen (vorher „Anhang 1/3“) als „vorläufig, Normprüfung ausstehend“ gekennzeichnet | docs/pruefung/module-tranche-11.md, Umsetzung 29.10.2026 | gekennzeichnet |
+| T16-DC-2 | `dauerhaftigkeit_checklisten` | Beispiel 1: „Grenzwerte für w/z, Festigkeitsklasse und Zementgehalt nach DIN 1045-2:2023-08, Tab. F.2.1/F.2.2 (vorläufig, Normprüfung ausstehend); c_min,dur nach DIN EN 1992-1-1/NA, Tab. 4.4DE“ (vorher „am Normtext der Ausgabe 2023-08 prüfen“; c_min,dur steht nicht in DIN 1045-2) | Normtext | gekennzeichnet |
+| T16-IC-2 | `instandsetzung_checklisten` | CFK-Untergrund: „kein Einzelwert < 1,2 N/mm² (kleinster Einzelwert vorläufig, Normprüfung ausstehend)“; Weblink: „Bundesgütegemeinschaft Instandsetzung von Betonbauwerken e.V. (Kürzel „BÜV“ vorläufig, Normprüfung ausstehend)“; in `scripts/auditDaten.ts` dem Fachgebiet Beton & Stahlbeton zugeordnet (Alternativen `Betonbauwerk`, `f_ctm` angehängt) | Normtext/Original | gekennzeichnet |
+| T16-KU-2 | `ki_ueberblick` | Reiter „Stand heute“: „bis zu 40 % CO₂-Einsparung“, „80 % Zeitersparnis“, „präzise vorher“, „drastisch“, „Einsturzprävention“ gestrichen bzw. ohne Zahl formuliert. Reiter „Ausblick“: „Erwarteter Effekt“, „könnte“, „Ziel sind“ statt „laufen künftig in Millisekunden auf dem Tablet“, „mikrosekundengenau“, „fehlerfrei“. Ebenso die Nutzenzeilen im Reiter Kernbegriffe (Vergleich klassisch/KI: „70–80 %“, „15 %“, „70 %“, „80 %“, „90 %“, „Faktor 10/20“, „0 unbemerkte Ausführungsfehler“) – dort „Erwartung: …“ ohne Zahl | keine belastbare Quelle für die Zahlen; Entscheidung | erledigt |
+| T16-KO-2 | `ki_onlinekurse` | „Dr. med. KI / …“ ersetzt durch „Elements of AI“ (Universität Helsinki und Reaktor; Einstieg in maschinelles Lernen und neuronale Netze, rund 50 Stunden); Schlüssel `kursElementsOfAi` | [KI-Campus, Kursseite Elements of AI](https://ki-campus.org/en/learning-opportunities/courses/elements-ai) (50 h, Beginner, ML-Typen, neuronale Netze) | erledigt |
+| T16-MI-2 | `schaeden_info` | Historie: „1970er Jahre“ statt „1976“. Öffentlich nur mittelbar belegt (Forenbeitrag von 2001 zum „25-jährigen Bestehen“), nicht eindeutig | [bau.de-Forum, „25 Jahre WTA“](https://bau.de/forum/sonst/10615.php); [Baunetz Wissen, WTA](https://www.baunetzwissen.de/bauen-im-bestand/tipps/beratungsstellen/wissenschaftlich-technische-arbeitsgemeinschaft-fuer-bauwerkserhaltung-und-denkmalpflege-148730) (ohne Jahr) | erledigt |
+| T16-MI-5 | `digitales_info` | „MAWEG“ gestrichen („ÖKOBAUDAT und WECOBIS“) | – (keine Datenbank dieses Namens nachweisbar) | erledigt |
+| T16-ALL-1/-2 | alle 16 | wie vorgeschlagen: kein Prüfvermerk in der App (keine Fachmodule; `src/data/pruefvermerke.ts` unverändert); für `kriechen`, `zwang`, `eigenspannungen` genügen Lernziele/Kurzfassung des Hauptmoduls `hydratation_folgen` | Entscheidung | erledigt |
+| Begriff | app-weit | Normbegriff je Norm: **DIN 18533 → „Wasserbeanspruchungsklasse“** (Ausgabe 2026-06; „Wassereinwirkungsklasse“ nur als Begriff der Ausgabe 2017-07), DIN 18534/18535 behalten „Wassereinwirkungsklasse“ (W-I/W-B), WU-Richtlinie behält „Beanspruchungsklasse“. Geändert: `baustoffe_info` (W2.1-E), Text zum WTA-Merkblatt 4-6 (Ausgabe 2017-07 genannt), Lernziel `px_planung`, RAG-Demonstrator (Beispielfrage; das Fundstück aus der Ausgabe 2017-07 bleibt), Quiz `q_bab_1` und `qn_bp_abdichtung_1` (nur Felder `topic`/`gapAnalysis`; `verified` bleibt, Vermerk „Begriff angeglichen 02.11.“). Neue Regel in `tests/begriffe.test.ts` und `docs/begriffe.md` | [DIN Media, DIN 18533-1:2026-06](https://www.dinmedia.de/de/norm/din-18533-1/399850897): „die ehemaligen Wassereinwirkungsklassen in Wasserbeanspruchungsklassen umbenannt“; docs/fachklaerung-2026-10-26.md | erledigt (Richtung siehe Hinweis) |
+
+**Hinweis zur Begriffsrichtung:** Die Vorgabe nannte „Wassereinwirkungsklasse (Begriff der DIN 18533)“. Nach dem Änderungsvermerk von DIN Media heißt der Begriff in der geltenden Ausgabe 2026-06 „Wasserbeanspruchungsklasse“; die Fachklärung vom 26.10.2026 hatte die App bereits so umgestellt. Umgesetzt wurde daher die Regel „Normbegriff der jeweiligen Norm“: Rest-Fundstellen mit dem alten Begriff wurden auf „Wasserbeanspruchungsklasse“ angeglichen, nicht umgekehrt.
+
+**Weitere Hinweise (nicht geändert):** `content/sonderbetone/Sonderbetone.json` nennt „DAfStb Heft 555“ als Quelle für ΔT_Kern-Rand ≤ 15–20 K (anderes, bereits geprüftes Modul; Zuordnung wie bei T16-ZW-3 fraglich). „VDI 6205 / Rückbaubarkeit“ in der Nachhaltigkeits-Checkliste weiterhin nicht bestätigt (Kenntnisstand: Rückbau VDI 6210).
+
+## Normtext offen
+
+Nur am Normtext bzw. Original zu klären; im Modul mit „vorläufig, Normprüfung ausstehend“ gekennzeichnet (F-Freigabe-Liste im Admin-Bereich):
+
+| Kennung | Modul | Fundstelle | zu prüfen |
+|---|---|---|---|
+| T16-DC-2 | `dauerhaftigkeit_checklisten` | Beispiel 1 (`dieBetondeckungRichtetSich`) | Grenzwerte w/z, Festigkeitsklasse, Zementgehalt in DIN 1045-2:2023-08, Tab. F.2.1/F.2.2 |
+| T16-IC-2 | `instandsetzung_checklisten` | CFK-Lamellen (`mittelwertFCtm1`); Weblink BÜV | kleinster Einzelwert 1,2 oder 1,0 N/mm² (DAfStb-Richtlinie Verstärken mit geklebter Bewehrung bzw. Zulassung); Kürzel der Bundesgütegemeinschaft |
+| T11-ZS-2 | `nachhaltigkeit_checklisten` | QNG-Verweise (`qngSteckbrief313*`) | Zuordnung der Produktpositionen im QNG-Anhangdokument 3.1.3 |
+
+## Freigabe 02.11.2026
+
+Entscheidung vom 02.11.2026: „alle Vorschläge übernehmen“. Die Module sind keine Fachmodule im Sinne von `istFachmodul` (T16-ALL-1); die Freigabe ist daher nur hier dokumentiert, `src/data/pruefvermerke.ts` bleibt unverändert. Normtextpunkte (T16-DC-2, T16-IC-2, T11-ZS-2) gelten als erledigt, weil sie gekennzeichnet sind (Abschnitt „Normtext offen“).
+
+Freigegeben:
+
+- `kriechen` – Fachlich geprüft am 02.11.2026 (T16-KS-1/-2 behoben, #293)
+- `eigenspannungen` – Fachlich geprüft am 02.11.2026 (T16-ES-1 behoben, #293)
+- `schaeden_checklisten` – Fachlich geprüft am 02.11.2026 (ohne Befund)
+- `grundlagen_info` – Fachlich geprüft am 02.11.2026 (T16-MI-1 behoben, #293)
+- `labor_info` – Fachlich geprüft am 02.11.2026 (ohne Befund)
+- `baustoffe_info` – Fachlich geprüft am 02.11.2026 (Begriff angeglichen)
+- `instandsetzung_info` – Fachlich geprüft am 02.11.2026 (T16-MI-4 behoben, #293)
+- `praxiswissen_info` – Fachlich geprüft am 02.11.2026 (ohne Befund)
+- `zwang` – Fachlich geprüft am 02.11.2026 (T16-ZW-3 umgesetzt)
+- `nachhaltigkeit_checklisten` – Fachlich geprüft am 02.11.2026 (T16-NC-2/-3 umgesetzt, T11-ZS-2 gekennzeichnet)
+- `dauerhaftigkeit_checklisten` – Fachlich geprüft am 02.11.2026 (T16-DC-2 gekennzeichnet)
+- `instandsetzung_checklisten` – Fachlich geprüft am 02.11.2026 (T16-IC-2 gekennzeichnet)
+- `ki_ueberblick` – Fachlich geprüft am 02.11.2026 (T16-KU-2 umgesetzt)
+- `ki_onlinekurse` – Fachlich geprüft am 02.11.2026 (T16-KO-2 umgesetzt)
+- `schaeden_info` – Fachlich geprüft am 02.11.2026 (T16-MI-2 umgesetzt)
+- `digitales_info` – Fachlich geprüft am 02.11.2026 (T16-MI-5 umgesetzt)
+
+Nicht freigegeben: keines.

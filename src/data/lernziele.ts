@@ -1709,7 +1709,7 @@ export const LERNZIELE: Readonly<Record<string, ModulLernziele>> = {
     niveau: "B", minuten: 45, vorwissen: ["expositionsklassen", "regularien"],
     ziele: [
       { stufe: "Analysieren", text: "Tragwerks- und Architekturplanung an den HOAI-Schnittstellen der Leistungsphasen 3, 5 und 6 auf Kollisionen bei Durchbrüchen, Schächten und Stützen prüfen." },
-      { stufe: "Anwenden", text: "Expositionsklassen, Nachbehandlungsklassen und Wassereinwirkungsklasse nach DIN 18533 im Leistungsverzeichnis eindeutig festlegen." },
+      { stufe: "Anwenden", text: "Expositionsklassen, Nachbehandlungsklassen und Wasserbeanspruchungsklasse nach DIN 18533 im Leistungsverzeichnis eindeutig festlegen." },
       { stufe: "Anwenden", text: "das Nennmaß der Betondeckung c_nom für ein Außenbauteil der Expositionsklasse XC4 berechnen." },
       { stufe: "Analysieren", text: "Unverträglichkeiten wie lösemittelhaltigen Bitumenvoranstrich auf XPS oder verzinkten Stahl an Eichenholz im LV erkennen und durch Vorgaben ausschließen." },
       { stufe: "Bewerten", text: "die Gleichwertigkeit eines Alternativprodukts zum Leitprodukt nach VOB/A an funktionalen Leistungsmerkmalen wie dem Wärmedurchlasswiderstand beurteilen." },

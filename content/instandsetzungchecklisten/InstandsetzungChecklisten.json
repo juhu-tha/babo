@@ -126,7 +126,7 @@
     "cfkLamellenverklebungBetonoberflächenzug": "CFK-Lamellenverklebung: Betonoberflächenzugfestigkeit",
     "vorDemAufklebenStatisch": "Vor dem Aufkleben statisch tragender Carbonfaserlamellen muss der Betonuntergrund kugelgestrahlt und auf Haftzugfestigkeit geprüft werden.",
     "dibtZulassungCfkDafstb": "DIBt Zulassung CFK / DAfStb-Richtlinie",
-    "mittelwertFCtm1": "Mittelwert f_ctm >= 1,5 N/mm²; kein Einzelwert < 1,2 N/mm²",
+    "mittelwertFCtm1": "Mittelwert f_ctm >= 1,5 N/mm²; kein Einzelwert < 1,2 N/mm² (kleinster Einzelwert vorläufig, Normprüfung ausstehend)",
     "t6QualitätssicherungSivvDokumentation": "6. Qualitätssicherung, SIVV-Dokumentation & Abnahme",
     "bautagebuchAbreißversucheGewährleistungU": "Bautagebuch, Abreißversuche, Gewährleistung und Instandhaltungsverträge.",
     "bauüberwachungDurchFachkundigesPersonal": "Bauüberwachung durch fachkundiges Personal (z. B. SIVV-Schein) & lückenloses Bautagebuch",
@@ -198,7 +198,7 @@
         "url": "https://www.dibt.de"
       },
       {
-        "title": "Bundesgütegemeinschaft Instandsetzung von Betonbauwerken e.V. (BÜV)",
+        "title": "Bundesgütegemeinschaft Instandsetzung von Betonbauwerken e.V. (Kürzel „BÜV“ vorläufig, Normprüfung ausstehend)",
         "url": "https://www.buev.de"
       },
       {
