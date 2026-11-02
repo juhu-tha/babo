@@ -3,8 +3,8 @@
 import fs from 'fs';
 import { STATISCH, SERVER_FUNKTIONEN } from '../src/data/betriebsart';
 import { KI_FUNKTION_AKTIV } from '../src/data/kiSchalter';
-import { abweichungen, csp, leseKonfig, weiterleitungen } from '../scripts/vercelKonfig';
-import { AKTIVE_MODULE } from '../src/registry/modules';
+import { abweichungen, csp, leseKonfig, weiterleitungen, VERCEL_HOST } from '../scripts/vercelKonfig';
+import { AKTIVE_MODULE, INAKTIVE_ADRESSEN } from '../src/registry/modules';
 
 const fehler: string[] = [];
 const pruefe = (ok: boolean, msg: string) => { if (!ok) fehler.push(msg); };
@@ -67,8 +67,8 @@ pruefe(rewrites.some(r => r.source === '/modul/admin' && r.destination === '/ind
 pruefe(!rewrites.some(r => r.source.startsWith('/api')), 'kein rewrite für /api (bleibt 404)');
 
 // 5. Sicherheits-Header
-const regeln = (k.headers ?? []) as { source: string; headers: { key: string; value: string }[] }[];
-const alle = new Map((regeln.find(r => r.source === '/(.*)')?.headers ?? []).map(h => [h.key, h.value]));
+const regeln = (k.headers ?? []) as { source: string; has?: { type: string; value: string }[]; headers: { key: string; value: string }[] }[];
+const alle = new Map((regeln.find(r => r.source === '/(.*)' && !r.has)?.headers ?? []).map(h => [h.key, h.value]));
 const richtlinie = alle.get('Content-Security-Policy') ?? '';
 pruefe(richtlinie === csp(), 'CSP aus scripts/vercelKonfig.ts');
 pruefe(richtlinie.includes("default-src 'self'") && !richtlinie.includes('unsafe-eval'), "CSP: default-src 'self', kein 'unsafe-eval'");
@@ -81,6 +81,16 @@ pruefe(/camera=\(\)/.test(alle.get('Permissions-Policy') ?? ''), 'Permissions-Po
 pruefe(!alle.has('X-Frame-Options'), 'kein X-Frame-Options (würde die Einbettung über baustoffboard.de verhindern)');
 const cache = (q: string) => regeln.find(r => r.source === q)?.headers.find(h => h.key === 'Cache-Control')?.value ?? '';
 pruefe(/max-age=31536000, immutable/.test(cache('/assets/(.*)')), 'gehashte Assets: ein Jahr, immutable');
+// noindex: *.vercel.app (baustoffboard.de bleibt kanonisch) und abgeschaltete Seiten
+const vercelRegel = regeln.find(r => r.has?.some(h => h.type === 'host'));
+const hostRe = new RegExp('^' + VERCEL_HOST + '$');
+pruefe(!!vercelRegel && vercelRegel.source === '/(.*)' && vercelRegel.headers.some(h => h.key === 'X-Robots-Tag' && h.value === 'noindex'), 'X-Robots-Tag noindex für *.vercel.app');
+pruefe(hostRe.test('babo-zeta.vercel.app') && hostRe.test('babo-git-x-juhu.vercel.app') && !hostRe.test('baustoffboard.de') && !hostRe.test('www.baustoffboard.de'), 'Host-Bedingung trifft nur *.vercel.app');
+pruefe(!regeln.some(r => !r.has && r.source === '/(.*)' && r.headers.some(h => h.key === 'X-Robots-Tag')), 'kein noindex ohne Host-Bedingung');
+const inaktivRegel = regeln.find(r => r.source.startsWith('/modul/(') && r.headers.some(h => h.key === 'X-Robots-Tag'));
+pruefe(!!inaktivRegel && INAKTIVE_ADRESSEN.every(a => new RegExp('^' + inaktivRegel.source + '$').test('/modul/' + a)) && !new RegExp('^' + inaktivRegel!.source + '$').test('/modul/glas'), 'noindex für abgeschaltete Seiten (Lernpfade)');
+const sitemap = lies('public/sitemap.xml');
+pruefe(sitemap.includes('https://baustoffboard.de/') && !sitemap.includes('vercel.app') && lies('index.html').includes('<link rel="canonical" href="https://baustoffboard.de/" />'), 'canonical und Sitemap bleiben auf baustoffboard.de');
 pruefe(abweichungen().length === 0, `vercel.json aktuell (${abweichungen().join('; ')}) – npx tsx scripts/vercelKonfig.ts --schreiben`);
 
 // 6. Mit statischem Build (BB_STATISCH=1 npm run build): dist ohne /api-Aufrufe im vorgerenderten Vorlesungsbereich

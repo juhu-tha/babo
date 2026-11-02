@@ -25,9 +25,11 @@ const TYPEN = {
   '.xml': 'application/xml; charset=utf-8', '.webmanifest': 'application/manifest+json', '.wasm': 'application/wasm',
 };
 
-/** „/(.*)“, „/assets/(.*)“ oder fester Pfad → RegExp */
-const muster = q => new RegExp('^' + q.split('(.*)').map(t => t.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')).join('(.*)') + '$');
-const kopfRegeln = (konfig.headers ?? []).map(r => ({ re: muster(r.source), headers: r.headers }));
+/** fester Pfad, „/(.*)“, „/assets/(.*)“ oder „/modul/(a|b)“ → RegExp (Klammergruppen bleiben reguläre Ausdrücke) */
+const muster = q => new RegExp('^' + q.replace(/\./g, '\\.').replace(/\\\.\*/g, '.*') + '$');
+/** has-Bedingung „host“ (Wert als regulärer Ausdruck, ganzer Hostname) */
+const hostPasst = (has, host) => (has ?? []).every(h => h.type !== 'host' || new RegExp('^' + h.value + '$').test(host));
+const kopfRegeln = (konfig.headers ?? []).map(r => ({ re: muster(r.source), has: r.has, headers: r.headers }));
 
 function datei(p) {
   const f = path.join(wurzel, p);
@@ -35,8 +37,9 @@ function datei(p) {
   try { return fs.statSync(f).isFile() ? f : null; } catch { return null; }
 }
 
+let host = '';
 function senden(res, pfad, status, f, kopf = {}) {
-  for (const r of kopfRegeln) if (r.re.test(pfad)) for (const h of r.headers) res.setHeader(h.key, h.value);
+  for (const r of kopfRegeln) if (r.re.test(pfad) && hostPasst(r.has, host)) for (const h of r.headers) res.setHeader(h.key, h.value);
   for (const [k, v] of Object.entries(kopf)) res.setHeader(k, v);
   if (!f) { res.writeHead(status); return res.end(); }
   res.setHeader('Content-Type', TYPEN[path.extname(f).toLowerCase()] ?? 'application/octet-stream');
@@ -46,6 +49,7 @@ function senden(res, pfad, status, f, kopf = {}) {
 
 http.createServer((req, res) => {
   const url = new URL(req.url ?? '/', 'http://x');
+  host = String(req.headers.host ?? '').replace(/:\d+$/, '');
   let pfad;
   try { pfad = decodeURIComponent(url.pathname); } catch { return senden(res, url.pathname, 400, null); }
   const suche = url.search;

@@ -1,7 +1,8 @@
 /**
  * vercel.json für den statischen Betrieb auf Vercel (Entscheidung 02.11.2026, docs/betrieb-vercel.md):
- * Content-Security-Policy und Weiterleitungen der Modul-Aliase werden hier erzeugt, damit sie mit dem
- * Quelltext übereinstimmen (Inline-Skripte, Registry). Der Rest von vercel.json wird von Hand gepflegt.
+ * Content-Security-Policy, Weiterleitungen der Modul-Aliase und die noindex-Regeln (abgeschaltete Seiten,
+ * *.vercel.app) werden hier erzeugt, damit sie mit dem Quelltext übereinstimmen (Inline-Skripte, Registry).
+ * Der Rest von vercel.json wird von Hand gepflegt.
  *
  *   npx tsx scripts/vercelKonfig.ts            prüft, ob vercel.json aktuell ist (Exit 1 sonst)
  *   npx tsx scripts/vercelKonfig.ts --schreiben schreibt CSP und Weiterleitungen in vercel.json
@@ -12,7 +13,7 @@ import crypto from 'crypto';
 import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
-import { AKTIVE_ALIASE } from '../src/registry/modules';
+import { AKTIVE_ALIASE, INAKTIVE_ADRESSEN } from '../src/registry/modules';
 import { modulPfad } from '../src/routing/pfad';
 
 const wurzel = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
@@ -77,7 +78,25 @@ export function weiterleitungen(): Weiterleitung[] {
   return liste;
 }
 
-type Konfig = { redirects?: Weiterleitung[]; headers?: { source: string; headers: { key: string; value: string }[] }[] } & Record<string, unknown>;
+type Kopfregel = { source: string; has?: { type: string; value: string }[]; headers: { key: string; value: string }[] };
+
+/** Host-Muster der Vercel-Adressen (babo-zeta.vercel.app, Vorschau-Deployments) */
+export const VERCEL_HOST = '(?<vercel>.+)\\.vercel\\.app';
+
+/**
+ * noindex-Regeln: abgeschaltete Seiten (INAKTIVE_ADRESSEN, wie die Hinweisseite in server.ts) und alle Seiten unter
+ * *.vercel.app, solange baustoffboard.de die kanonische Adresse ist (canonical und Sitemap bleiben unverändert).
+ */
+export function noindexRegeln(): Kopfregel[] {
+  const noindex = [{ key: 'X-Robots-Tag', value: 'noindex' }];
+  return [
+    { source: `/modul/(${[...INAKTIVE_ADRESSEN].sort().join('|')})`, headers: noindex },
+    { source: '/(.*)', has: [{ type: 'host', value: VERCEL_HOST }], headers: noindex },
+  ];
+}
+const istNoindex = (h: Kopfregel) => h.headers.length === 1 && h.headers[0].key === 'X-Robots-Tag';
+
+type Konfig = { redirects?: Weiterleitung[]; headers?: Kopfregel[] } & Record<string, unknown>;
 
 export function leseKonfig(): Konfig {
   return JSON.parse(fs.readFileSync(VERCEL_DATEI, 'utf8')) as Konfig;
@@ -86,10 +105,10 @@ export function leseKonfig(): Konfig {
 /** Konfiguration mit aktueller CSP und aktuellen Weiterleitungen */
 export function aktualisiert(k: Konfig): Konfig {
   const neu: Konfig = { ...k, redirects: weiterleitungen() };
-  neu.headers = (k.headers ?? []).map(h => h.source !== '/(.*)' ? h : {
+  neu.headers = [...(k.headers ?? []).filter(h => !istNoindex(h)).map(h => h.source !== '/(.*)' || h.has ? h : {
     ...h,
     headers: h.headers.map(e => e.key === 'Content-Security-Policy' ? { ...e, value: csp() } : e),
-  });
+  }), ...noindexRegeln()];
   return neu;
 }
 
@@ -99,8 +118,9 @@ export function abweichungen(): string[] {
   const soll = aktualisiert(k);
   const fehler: string[] = [];
   if (JSON.stringify(k.redirects) !== JSON.stringify(soll.redirects)) fehler.push('redirects (Modul-Aliase) nicht aktuell');
-  const ist = k.headers?.find(h => h.source === '/(.*)')?.headers.find(e => e.key === 'Content-Security-Policy')?.value;
+  const ist = k.headers?.find(h => h.source === '/(.*)' && !h.has)?.headers.find(e => e.key === 'Content-Security-Policy')?.value;
   if (ist !== csp()) fehler.push('Content-Security-Policy nicht aktuell (Inline-Skripte geändert?)');
+  if (JSON.stringify((k.headers ?? []).filter(istNoindex)) !== JSON.stringify(noindexRegeln())) fehler.push('noindex-Regeln nicht aktuell (abgeschaltete Seiten geändert?)');
   return fehler;
 }
 

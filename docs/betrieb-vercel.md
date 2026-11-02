@@ -1,13 +1,13 @@
 # Betrieb auf Vercel (statisch, ohne Server)
 
-Entscheidung 02.11.2026: Die Seite läuft auf Vercel (https://babo-zeta.vercel.app/) rein statisch; der Express-Server (`server.ts`) wird dort weggelassen, alle `/api`-Adressen antworten mit 404. Der Betrieb mit Server (`npm start`, `Dockerfile`, docs/betrieb-cloud-run.md) bleibt unverändert möglich.
+Entscheidung 02.11.2026 (Befunde B2, B3, B6, B7, B9 der Live-Prüfung: docs/pruefung/vercel-live-2026-11-02.md): Die Seite läuft auf Vercel (https://babo-zeta.vercel.app/) rein statisch; der Express-Server (`server.ts`) wird dort weggelassen, alle `/api`-Adressen antworten mit 404. Der Betrieb mit Server (`npm start`, `Dockerfile`, docs/betrieb-cloud-run.md) bleibt unverändert möglich.
 
 ## Dateien
 
 | Datei | Zweck |
 |---|---|
 | `vercel.json` | Build-Befehl, Ausgabeordner `dist`, saubere Adressen, Weiterleitungen, Sicherheits- und Cache-Header |
-| `scripts/vercelKonfig.ts` | erzeugt in `vercel.json` die Content-Security-Policy (Hashes der Inline-Skripte) und die Weiterleitungen der Modul-Aliase; ohne Argument nur Prüfung |
+| `scripts/vercelKonfig.ts` | erzeugt in `vercel.json` die Content-Security-Policy (Hashes der Inline-Skripte), die Weiterleitungen der Modul-Aliase und die noindex-Regeln; ohne Argument nur Prüfung |
 | `src/data/betriebsart.ts` | Statik-Modus (`STATISCH`, `SERVER_FUNKTIONEN`) aus dem Build-Schalter `BB_STATISCH=1` |
 | `scripts/qa/vercel-vorschau.mjs` | lokale Vorschau von `dist/` mit den Regeln aus `vercel.json`, ohne Express |
 | `tests/statikModus.test.ts` | Regressionstest: Schalter, /api-Sperren, `vercel.json`, Ort des Server-Bundles |
@@ -49,13 +49,14 @@ Neue `/api`-Aufrufe im Client meldet `tests/statikModus.test.ts`, bis sie hinter
 
 - Content-Security-Policy erzwungen (Begründung je Direktive in `scripts/vercelKonfig.ts`): `script-src` ohne `'unsafe-inline'`, die zwei Inline-Skripte per SHA-256; `frame-ancestors` erlaubt die Einbettung über baustoffboard.de. Kein `X-Frame-Options`, weil es diese Einbettung nicht zulassen könnte.
 - `X-Content-Type-Options: nosniff`, `Referrer-Policy` und `Permissions-Policy` wie `server.ts`, `Strict-Transport-Security`.
+- `X-Robots-Tag: noindex` für alle Adressen unter `*.vercel.app` (Host-Bedingung `has`), solange baustoffboard.de die kanonische Adresse ist – `canonical` und Sitemap bleiben auf baustoffboard.de; außerdem für die abgeschalteten Seiten (Lernpfade, wie die Hinweisseite in `server.ts`).
 - `/assets/*` (Dateinamen mit Hash): `public, max-age=31536000, immutable`; `/fonts/*`: eine Woche; alles andere Vercel-Standard (immer neu prüfen).
 
 Rückweg bei CSP-Problemen: in `vercel.json` den Schlüssel `Content-Security-Policy` in `Content-Security-Policy-Report-Only` umbenennen (ein Commit).
 
 ## Pflege
 
-- Nach Änderungen an `scripts/startschale-boot.js`, `scripts/vorladen-boot.js` oder an den Aliasen: `npx tsx scripts/vercelKonfig.ts --schreiben` (sonst schlägt `npm test` fehl).
+- Nach Änderungen an `scripts/startschale-boot.js`, `scripts/vorladen-boot.js`, an den Aliasen oder an abgeschalteten Seiten: `npx tsx scripts/vercelKonfig.ts --schreiben` (sonst schlägt `npm test` fehl).
 - Lokale Prüfung wie auf Vercel:
 
 ```
@@ -66,5 +67,6 @@ PORT=4501 node scripts/qa/vercel-vorschau.mjs
 ## In Vercel prüfen (nach dem Merge, beim nächsten Deploy)
 
 1. Projekt → Settings → Build and Deployment: Framework „Vite“, Output Directory `dist`; abweichende Angaben werden von `vercel.json` überschrieben, sollten aber nicht widersprechen.
-2. Settings → Environment Variables: keine Geheimnisse (`GEMINI_API_KEY`, `ADMIN_PASSWORD` u. a.) – sie werden statisch nicht gebraucht; insbesondere keine Variable mit Präfix `VITE_`, denn die landet im ausgelieferten JavaScript.
-3. Nach dem Deploy: `https://babo-zeta.vercel.app/server.cjs` → 404; `/modul/glas` → 200; Antwort-Header enthalten `Content-Security-Policy`; Browser-Konsole auf Start- und Modulseiten ohne Fehler.
+2. Für den Statik-Modus ist nichts einzustellen: `BB_STATISCH=1` steht im Build-Befehl von `vercel.json`.
+3. Settings → Environment Variables: keine Geheimnisse (`GEMINI_API_KEY`, `ADMIN_PASSWORD` u. a.) – sie werden statisch nicht gebraucht; insbesondere keine Variable mit Präfix `VITE_`, denn die landet im ausgelieferten JavaScript.
+4. Nach dem Deploy: `https://babo-zeta.vercel.app/server.cjs` → 404; `/modul/glas` → 200; Antwort-Header enthalten `Content-Security-Policy`; `X-Robots-Tag: noindex` unter babo-zeta.vercel.app; Browser-Konsole auf Start- und Modulseiten ohne Fehler und ohne /api-Aufrufe.
