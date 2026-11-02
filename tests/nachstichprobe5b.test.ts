@@ -80,7 +80,7 @@ const stahl = readFileSync('src/modules/BpStahlbauprofile.tsx', 'utf8');
 gilt(!/1,10 \(Nationaler Anhang\)/.test(stahl) && /γ_M1 nach NA/.test(stahl), 'NS5B-SP-1: γ_M0 = 1,10 nicht mehr als Wert des Nationalen Anhangs bezeichnet');
 const hw = holzwerkstoffe.texte.kompliziertDurchBindemittelanteileNach;
 gilt(!/und AltholzV hat/.test(hw) && /gleichrangig/.test(hw), 'NS5B-HW-1: AltholzV stellt stoffliche und energetische Verwertung gleichrangig');
-gilt(/Referentenentwurf vom 26\.10\.2026, u\. a\. § 650o BGB-E, noch kein Gesetz/.test(praxis.texte.überregulierungAbbauenMaterialkreisläufe) && !/das neue Gebäudetyp-E-Gesetz/.test(praxis.texte.überregulierungAbbauenMaterialkreisläufe),
+gilt(/geplante Gebäudetyp-E-Gesetz \(Entwurf/.test(praxis.texte.überregulierungAbbauenMaterialkreisläufe) && !/das neue Gebäudetyp-E-Gesetz/.test(praxis.texte.überregulierungAbbauenMaterialkreisläufe),
   'NS5B-LR-1: Gebäudetyp-E-Gesetz als Entwurf bezeichnet');
 gilt(denkmal.texte.art6BaydschgUmgebung === 'Art. 6 Abs. 1 Satz 2 BayDSchG', 'NS5B-DP-1: Fundstelle Umgebungsschutz vollständig');
 const ld1 = (quiz as { id: string; verified?: boolean; distraktorFeedback?: string[] }[]).find(q => q.id === 'qn_labor_druckfestigkeit_1');
