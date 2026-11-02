@@ -50,7 +50,7 @@
     "europäischerZeitplan": " Europäischer Zeitplan",
     "zwischenDerSpätestenNationalen": "Zwischen der spätesten nationalen Veröffentlichung und der Zurückziehung liegt eine Koexistenzphase, in der beide Generationen nebeneinander stehen; die irische Normungsorganisation NSAI spricht für ihren Zeitplan von zwölf Monaten. Nationale Anhänge müssen neu erarbeitet werden.",
     "standInDeutschland": "Stand in Deutschland",
-    "dieDinFassungenErscheinen": "Die DIN-Fassungen erscheinen schrittweise (z. B. EC3-1-1 im April 2025, EC2-1-1 im September 2025, EC5-1-1 im September 2026). Bauaufsichtlich eingeführt ist nach MVV TB 2025/1 weiterhin die 1. Generation. Der Entwurf der MVV TB 2026/1 ist bei der EU-Kommission notifiziert (TRIS 2026/0349/DE, Stillhaltefrist bis 12.10.2026), aber noch nicht veröffentlicht; ob er Eurocodes der 2. Generation aufnimmt, geht aus der Notifizierung nicht hervor (vorläufig, Normprüfung ausstehend). Die Zurückziehung einer DIN-Norm allein ändert daran nichts: Maßgebend für das Bauordnungsrecht ist, welche Ausgabe die Technischen Baubestimmungen nennen. Bei der 1. Generation wurde das Paket aus EC 0 bis 9 zum 01.07.2012 verbindlich, nachdem Normen und Nationale Anhänge vorlagen.",
+    "dieDinFassungenErscheinen": "Die DIN-Fassungen erscheinen schrittweise (z. B. EC3-1-1 im April 2025, EC2-1-1 im September 2025, EC5-1-1 im September 2026). Bauaufsichtlich eingeführt ist nach MVV TB 2025/1 weiterhin die 1. Generation. Der Entwurf der MVV TB 2026/1 ist bei der EU-Kommission notifiziert (TRIS 2026/0349/DE, Stillhaltefrist bis 12.10.2026), aber noch nicht veröffentlicht; ob er Eurocodes der 2. Generation (etwa DIN EN 1992-1-1:2025-09) aufnimmt, geht aus der Notifizierung nicht hervor (vorläufig, Normprüfung ausstehend). Die Zurückziehung einer DIN-Norm allein ändert daran nichts: Maßgebend für das Bauordnungsrecht ist, welche Ausgabe die Technischen Baubestimmungen nennen. Bei der 1. Generation wurde das Paket aus EC 0 bis 9 zum 01.07.2012 verbindlich, nachdem Normen und Nationale Anhänge vorlagen.",
     "einForschungsberichtDerInitiative": "Ein Forschungsbericht der Initiative Praxisgerechte Regelwerke (2025) hält die Einführung „ab 2027 (Plan A)“ für möglich; eine abschließende Bewertung sei erst nach Vorlage aller finalen Nationalen Anhänge möglich. Für EC2 wird in einer Fachveröffentlichung die Einführung 2027 einschließlich NA erwartet. ",
     "ec2DinEn1992": "EC2 – DIN EN 1992-1-1:2025-09",
     "vollständigeTechnischeÜberarbeitungInhal": "vollständige technische Überarbeitung; Inhalte von EN 1992-2 (Brücken) und EN 1992-3 (Behälter) aufgenommen, neue Anhänge K bis S",
@@ -225,61 +225,61 @@
       {
         "was": "DIN 1045-2/A1",
         "art": "Normungsprojekt (seit 13.07.2026)",
-        "inhalt": "Änderung zu DIN 1045-2:2023-08, Abstimmung auf DIN EN 206-1:2026; noch kein Entwurf",
+        "gegenstand": "Änderung zu DIN 1045-2:2023-08, Abstimmung auf DIN EN 206-1:2026; noch kein Entwurf",
         "quelle": "DIN"
       },
       {
         "was": "E DIN EN 1992-1-1/NA1:2025-08",
         "art": "Entwurf",
-        "inhalt": "Nationaler Anhang zu EC2 der 2. Generation",
+        "gegenstand": "Nationaler Anhang zu EC2 der 2. Generation",
         "quelle": "DIN"
       },
       {
         "was": "E DIN EN 1992-1-1/A1:2026-05",
         "art": "Entwurf",
-        "inhalt": "Änderung zu EN 1992-1-1:2023 (prA1:2026)",
+        "gegenstand": "Änderung zu EN 1992-1-1:2023 (prA1:2026)",
         "quelle": "DIN"
       },
       {
         "was": "MVV TB 2026/1",
         "art": "Entwurf, notifiziert",
-        "inhalt": "TRIS 2026/0349/DE (eingegangen 09.07.2026); Änderungen in A1–A3, A5, B2–B4, C2–C4; Veröffentlichung ausstehend",
+        "gegenstand": "TRIS 2026/0349/DE (eingegangen 09.07.2026); Änderungen in A1–A3, A5, B2–B4, C2–C4; Veröffentlichung ausstehend",
         "quelle": "EU-Kommission (TRIS)"
       },
       {
         "was": "E DIN EN 1995-1-1/A1:2026-10",
         "art": "Entwurf",
-        "inhalt": "Änderung zu EN 1995-1-1:2025 (EC5, 2. Generation)",
+        "gegenstand": "Änderung zu EN 1995-1-1:2025 (EC5, 2. Generation)",
         "quelle": "DIN Media"
       },
       {
         "was": "E DIN EN 1996-1-1/A1:2026-05",
         "art": "Entwurf",
-        "inhalt": "Änderung zu EN 1996-1-1:2022 (EC6, 2. Generation); deutsche Ausgabe der 2. Generation nicht belegt (vorläufig, Normprüfung ausstehend)",
+        "gegenstand": "Änderung zu EN 1996-1-1:2022 (EC6 Mauerwerk, 2. Generation); deutsche Ausgabe DIN EN 1996-1-1 der 2. Generation nicht belegt (vorläufig, Normprüfung ausstehend)",
         "quelle": "DIN Media"
       },
       {
         "was": "E DIN EN 197-1:2026-08",
         "art": "Entwurf",
-        "inhalt": "prEN 197-1:2026, u. a. CEM II/C-M und CEM VI aufgenommen, Recyclingbetonmehl als Bestandteil, Festigkeitsklassen neu definiert",
+        "gegenstand": "prEN 197-1:2026, u. a. CEM II/C-M und CEM VI aufgenommen, Recyclingbetonmehl als Bestandteil, Festigkeitsklassen neu definiert",
         "quelle": "DIN Media"
       },
       {
         "was": "E DIN EN 196-1:2026-08",
         "art": "Entwurf",
-        "inhalt": "Prüfverfahren für Zement – Bestimmung der Festigkeit (prEN 196-1:2026)",
+        "gegenstand": "Prüfverfahren für Zement – Bestimmung der Festigkeit (prEN 196-1:2026)",
         "quelle": "DIN"
       },
       {
         "was": "E DIN EN 12390-12:2025-11",
         "art": "Entwurf",
-        "inhalt": "Beschleunigtes Karbonatisierungsverfahren (prEN 12390-12:2025); maßgebend bleibt 2020-04",
+        "gegenstand": "Beschleunigtes Karbonatisierungsverfahren (prEN 12390-12:2025); maßgebend bleibt 2020-04",
         "quelle": "DIN Media"
       },
       {
         "was": "E DIN 4109-1:2026-09",
         "art": "Entwurf",
-        "inhalt": "Schallschutz im Hochbau – Anforderungen; Tabellen teils geändert, Außenlärm neu gefasst",
+        "gegenstand": "Schallschutz im Hochbau – Anforderungen; Tabellen teils geändert, Außenlärm neu gefasst",
         "quelle": "DIN Media"
       }
     ]

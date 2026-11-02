@@ -79,7 +79,7 @@ const STAND: readonly Zeile[] = [
 const ZEITSTRAHL: readonly { wann: string; was: string; quelle: string }[] = inhalt.daten.ZEITSTRAHL;
 
 /** Entwürfe und Normungsprojekte (Stand November 2026, docs/pruefung/normausgaben-2026-11.md) */
-const ENTWUERFE: readonly { was: string; art: string; inhalt: string; quelle: string }[] = inhalt.daten.ENTWUERFE;
+const ENTWUERFE: readonly { was: string; art: string; gegenstand: string; quelle: string }[] = inhalt.daten.ENTWUERFE;
 
 export default function NormenAusblick() {
   const [reiter, setReiter] = useState<Reiter>('warum');
@@ -313,7 +313,7 @@ export default function NormenAusblick() {
                         <tr key={e.was}>
                           <th scope="row" className={`${td} font-bold whitespace-nowrap`}>{e.was}</th>
                           <td className={td}>{e.art}</td>
-                          <td className={td}>{e.inhalt}</td>
+                          <td className={td}>{e.gegenstand}</td>
                           <td className={td}>{e.quelle}</td>
                         </tr>
                       ))}
