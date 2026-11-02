@@ -211,7 +211,7 @@ export default function Frischbetondruck() {
             <option value="F3">F3 (weicher Beton)</option>
             <option value="F4">F4 (sehr weich)</option>
             <option value="F5">F5 (fließfähig)</option>
-            <option value="SVB">SVB (hydrostatisch; F6 manuell prüfen)</option>
+            <option value="SVB">SVB (voller hydrostatischer Druck; F6 nicht gesondert abgebildet)</option>
           </select>
         </div>
 

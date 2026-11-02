@@ -394,7 +394,7 @@
       },
       {
         "formel": "L_{300} \\ge 1{,}5\\,\\% \\quad \\text{und} \\quad a \\le 0{,}20\\,\\text{mm}",
-        "erklaerung": "Mikroluftporengehalt (Poren ≤ 0,30 mm) und Abstandsfaktor im Festbeton als Kenngrößen des Frost-Tausalz-Widerstands (Prüfung nach DIN EN 480-11; Grenzwerte als Lehrwerte, maßgebend DIN 1045-2/ZTV – manuell prüfen).",
+        "erklaerung": "Mikroluftporengehalt (Poren ≤ 0,30 mm) und Abstandsfaktor im Festbeton als Kenngrößen des Frost-Tausalz-Widerstands (Prüfung nach DIN EN 480-11; Grenzwerte als Lehrwerte, maßgebend DIN 1045-2 bzw. ZTV-ING/TL Beton-StB; vorläufig, Normprüfung ausstehend).",
         "quelle": "DIN EN 480-11"
       }
     ]

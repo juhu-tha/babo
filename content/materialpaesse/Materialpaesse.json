@@ -6,7 +6,7 @@
     "ressourcentransparenzLückenloseDokumenta": "**Ressourcentransparenz:** Lückenlose Dokumentation der Bauteile (Bill of Material, BOM).",
     "zirkuläresPotenzialGenaueAngabe": "**Zirkuläres Potenzial:** Genaue Angabe, ob Werkstoffe geklebt oder zerstörungsfrei demontierbar sind.",
     "gebäudeRestwertErmittlungDes": "**Gebäude-Restwert:** Ermittlung des ökonomischen Werts der Rohstoffe für den Tag des Rückbaus.",
-    "klimaschutznachweisBasisFürDgnb": "**Klimaschutznachweis:** Basis für DGNB-Zertifizierungen und den im Koalitionsvertrag 2021 angekündigten digitalen Gebäuderessourcenpass (bislang nicht gesetzlich eingeführt; Stand 10/2026, manuell prüfen).",
+    "klimaschutznachweisBasisFürDgnb": "**Klimaschutznachweis:** Basis für DGNB-Zertifizierungen und den im Koalitionsvertrag 2021 angekündigten digitalen Gebäuderessourcenpass (bislang nicht gesetzlich eingeführt, Stand 10/2026).",
     "dieMadasterPlattform": "Die Madaster-Plattform",
     "einGebäudeWirdAls": "Ein Gebäude wird als 3D-BIM-Datensatz (meist offene IFC-Dateien) hochgeladen.",
     "dasPortalBerechnetDen": "Das Portal berechnet den herstellerübergreifenden **Circularity Indicator (CI)** der Rohstoffe.",

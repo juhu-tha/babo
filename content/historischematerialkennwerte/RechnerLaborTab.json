@@ -37,7 +37,7 @@
     "t2Feuchtigkeitskorrektur": "2. Feuchtigkeitskorrektur: ",
     "t3Stahleinlagenminderung": "3. Stahleinlagenminderung: ",
     "t4MaßstabsfaktorBohrkern": "4. Maßstabsfaktor (Ø-Bohrkern): ",
-    "hinweisDieFaktorenK": "Hinweis: Die Faktoren k_moist, k_rebar und k_dia stehen nicht in DIN EN 13791 (Literaturwerte, z. B. Concrete Society TR 11 / ACI 214.4R – Quelle prüfen). DIN EN 13791 verlangt bewehrungsfreie Kerne.",
+    "hinweisDieFaktorenK": "Hinweis: Die Faktoren k_moist, k_rebar und k_dia stehen nicht in DIN EN 13791 (Literaturwerte: Feuchte- und Durchmesserfaktor nach ACI 214.4R-10, Bewehrungsfaktor nach Concrete Society Technical Report 11; Zahlenwerte vorläufig, Normprüfung ausstehend). DIN EN 13791 verlangt bewehrungsfreie Kerne.",
     "stichprobeCharakteristischerWertUnd": "Stichprobe: charakteristischer Wert und Druckfestigkeitsklasse",
     "inSituFestigkeitenAller": "In-situ-Festigkeiten aller Kerne f_is [N/mm²], getrennt durch Semikolon:",
     "mittelwert": " · Mittelwert",

@@ -32,7 +32,7 @@
     "stationärerTemperaturverlaufNachDin": "Stationärer Temperaturverlauf nach DIN EN ISO 6946:2018-03",
     "beispiel2WoherKommt": "Beispiel 2: Woher kommt der Temperaturfaktor f_Rsi ≥ 0,70?",
     "dieBestandswandAusBeispiel": "Für den Nachweis nach DIN 4108-2 ist f_Rsi mit dem erhöhten Übergangswiderstand R_si = 0,25 m²K/W zu rechnen: Die ungedämmte Bestandswand aus Beispiel 1 erreicht dann schon in der ungestörten Fläche mit R_T = 0,25 + 0,54 + 0,04 = 0,83 m²K/W nur f_Rsi = 1 − 0,25/0,83 = 0,698 < 0,70 – knapp verfehlt (mit R_si = 0,13 wären es rechnerisch 0,82). Mit 6 cm Dämmung (R_T = 2,33 m²K/W) steigt f_Rsi auf 1 − 0,25/2,33 = 0,89. Kritisch bleiben Ecken, Fensteranschlüsse und einbindende Innenwände, für die f_Rsi mit Wärmebrückenberechnung (DIN EN ISO 10211) nachzuweisen ist.",
-    "din410822013": "DIN 4108-2:2013-02 (Neuausgabe 2026-05 manuell abgleichen); DIN EN ISO 13788:2013-05",
+    "din410822013": "DIN 4108-2:2013-02 (Abgleich mit der Neuausgabe 2026-05 vorläufig, Normprüfung ausstehend); DIN EN ISO 13788:2013-05",
     "oktober2026Ap6": "Oktober 2026 (Temperaturverläufe, Temperaturfaktor, Normausgaben und Literatur geprüft)"
   },
   "daten": {
@@ -101,7 +101,7 @@
       {
         "formel": "f_{Rsi} = \\frac{\\theta_{si} - T_e}{T_i - T_e} \\ge 0{,}70",
         "erklaerung": "Temperaturfaktor f_Rsi an der ungünstigsten Stelle zur Vermeidung von Schimmelpilzwachstum (entspricht ca. 12,6 °C Oberflächentemperatur bei 20 °C / 50 % r. F. innen und −5 °C außen; Kriterium 80 % r. F. an der Oberfläche).",
-        "quelle": "DIN 4108-2:2013-02 (Neuausgabe 2026-05 – Änderungen manuell prüfen)"
+        "quelle": "DIN 4108-2:2013-02 (Abgleich mit der Neuausgabe 2026-05 vorläufig, Normprüfung ausstehend)"
       }
     ]
   }

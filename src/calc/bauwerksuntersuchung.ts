@@ -126,7 +126,7 @@ export function rueckprallMesssatz(werte: readonly number[]): RueckprallMesssatz
   const anteil = abweichend.length / werte.length;
   const verworfen = anteil > RUECKPRALL_MESSSATZ.anteilMax + 1e-12;
   if (werte.length < RUECKPRALL_MESSSATZ.nMin) h.push({ stufe: 'warnung', feld: 'messsatz', text: `Weniger als ${RUECKPRALL_MESSSATZ.nMin} Einzelwerte: DIN EN 12504-2 verlangt mindestens 9 gültige Schläge je Prüffläche.` });
-  if (verworfen) h.push({ stufe: 'warnung', feld: 'messsatz', text: 'Mehr als 20 % der Einzelwerte weichen um mehr als 6 Einheiten vom Median ab: Messsatz verwerfen und wiederholen (DIN EN 12504-2; vorläufig, Normtext prüfen).' });
+  if (verworfen) h.push({ stufe: 'warnung', feld: 'messsatz', text: 'Mehr als 20 % der Einzelwerte weichen um mehr als 6 Einheiten vom Median ab: Messsatz verwerfen und wiederholen (DIN EN 12504-2:2012; vorläufig, Normprüfung ausstehend – nach Sekundärquellen nennt die Ausgabe 2021-10 statt 6 Einheiten 25 % des Medians).' });
   return nurGueltig({ n: werte.length, median, abweichend, anteil, verworfen, ...abschluss(h) });
 }
 

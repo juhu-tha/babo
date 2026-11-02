@@ -46,7 +46,7 @@
     "rwKnicklaengeTitel": "Knicklänge",
     "rwKnicklaenge": "Die lichte Wandhöhe h wird mit dem Beiwert β abgemindert: β = 0,75 für eine oben und unten gehaltene Wand mit Einspannung durch Massivdecken, β = 1,0 für eine oben und unten gelenkig gehaltene Wand. Frei auskragende Wände (β = 2,0) bildet der Rechner nicht ab.",
     "rwSchlankheitTitel": "Schlankheit",
-    "rwSchlankheit": "Die Schlankheit ist das Verhältnis von Knicklänge zu Wanddicke. Der Rechner setzt als Lehrannahme die Grenze λ ≤ 21 an (Grenzwert nach DIN 18940 manuell prüfen).",
+    "rwSchlankheit": "Die Schlankheit ist das Verhältnis von Knicklänge zu Wanddicke. Der Rechner setzt als Lehrannahme die Grenze λ ≤ 21 an (vorläufig, Normprüfung ausstehend: Grenzwert nach DIN 18940).",
     "rwFestigkeitTitel": "Bemessungswert der Druckfestigkeit",
     "rwFestigkeit": "Die charakteristische Mauerwerksdruckfestigkeit f_k ergibt sich aus der gewählten Festigkeitsklasse (Rechenwert des Moduls) und wird durch den Teilsicherheitsbeiwert γ_M = 2,0 geteilt.",
     "rwAbminderungTitel": "Abminderungsbeiwert",
@@ -145,7 +145,7 @@
     "BpLehmbauprodukte.formeln": [
       {
         "formel": "\\lambda = \\frac{h_{ef}}{t} \\leq 21",
-        "erklaerung": "Schlankheit der Wand (Grenzwert 21 als Lehrannahme; maßgebender Wert nach DIN 18940 manuell prüfen).",
+        "erklaerung": "Schlankheit der Wand (Grenzwert 21 als Lehrannahme; maßgebender Wert nach DIN 18940 vorläufig, Normprüfung ausstehend).",
         "quelle": "DIN 18940 Kap. 6.2"
       },
       {
