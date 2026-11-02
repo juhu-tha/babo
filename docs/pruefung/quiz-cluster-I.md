@@ -2,9 +2,9 @@
 
 Stand: 02.11.2026 · Grundlage: `src/data/quiz.json` (Felder `vorpruefung` und `verified`), `docs/quiz-pruefhinweise.md`, Lernziele aus `src/data/lernziele.ts`. Erzeugt mit `npx tsx scripts/pruefliste.ts`; gesetzte Kreuze übernimmt das Skript beim nächsten Lauf. quiz.json wurde für diese Liste nicht verändert.
 
-Cluster I umfasst 260 Fragen aus 38 Modulen. Aufgeführt sind 79 auffällige Fragen (Vorprüfung „korrigiert“ oder „fraglich“, offener Prüfhinweis oder neu seit 26.10.2026 ohne Freigabe) und eine Stichprobe von 5 unauffälligen Fragen. Entscheidung je Frage ankreuzen; bei „ändern“ den Änderungswunsch in die Zeile darunter schreiben.
+Cluster I umfasst 260 Fragen aus 38 Modulen. Aufgeführt sind 80 auffällige Fragen (Vorprüfung „korrigiert“ oder „fraglich“, offener Prüfhinweis oder neu seit 26.10.2026 ohne Freigabe) und eine Stichprobe von 5 unauffälligen Fragen. Entscheidung je Frage ankreuzen; bei „ändern“ den Änderungswunsch in die Zeile darunter schreiben.
 
-Auffällig im Einzelnen (Mehrfachnennung möglich): 74 korrigiert, 0 fraglich, 8 mit offenem Prüfhinweis, 1 neu seit 26.10.2026.
+Auffällig im Einzelnen (Mehrfachnennung möglich): 75 korrigiert, 0 fraglich, 8 mit offenem Prüfhinweis, 1 neu seit 26.10.2026.
 
 ## A. Auffällige Fragen
 
@@ -413,6 +413,14 @@ Auffällig im Einzelnen (Mehrfachnennung möglich): 74 korrigiert, 0 fraglich, 8
 - **Frage:** Welche Reißlänge hat ein frei hängender Stab aus Nadelholz C24 (f_t,0,k = 14,5 N/mm², ρ_mean = 420 kg/m³)?
 - **Richtige Antwort:** L ≈ 3,5 km
 - **Auffälligkeit:** Vorprüfung „korrigiert“: Zweitprüfung 28.10. (Abgleich Runde 3): C24-Kennwerte an DIN EN 338:2016-07 bzw. src/data/kennwerte.ts angeglichen (f_t,0,k 14,5 statt 14 N/mm², ρ_mean 420 statt 450 kg/m³), neu gerechnet: 3,5 km; Distraktoren 35 km/5,1 km/350 m – korrigiert
+- [ ] ok
+- [ ] ändern: …
+
+### qn_festigkeit_5 · Festigkeitsberechnungen
+
+- **Frage:** Aluminium EN AW-6060 T6 (f_t = 190 N/mm², ρ = 2700 kg/m³) hat eine geringere Zugfestigkeit als Baustahl S235 (f_u = 360 N/mm², ρ = 7850 kg/m³). Wie verhalten sich die Reißlängen?
+- **Richtige Antwort:** Stahl ≈ 4,7 km, Aluminium ≈ 7,2 km – die geringe Dichte überwiegt
+- **Auffälligkeit:** Vorprüfung „korrigiert“: Umsetzung 02.11.: Aluminium auf den zentralen Lehrwert EN AW-6060 T6 umgestellt (f_t 200 → 190 N/mm², DIN EN 755-2; Reißlänge 7,6 → 7,2 km, Distraktoren 2,5 bzw. 72 km) – korrigiert
 - [ ] ok
 - [ ] ändern: …
 

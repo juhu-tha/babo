@@ -360,11 +360,11 @@
     {
       "id": "aluminium",
       "categoryId": "metalle",
-      "name": "Aluminium (EN AW-6060)",
+      "name": "Aluminium (EN AW-6060 T6)",
       "properties": {
         "density": 2700,
         "eModul": 70000,
-        "compressive": 160,
+        "compressive": 150,
         "tensile": 190,
         "thermalCond": 160,
         "thermalExp": 23,

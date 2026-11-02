@@ -182,6 +182,7 @@ const HAND: { datei: string; name: string; args: unknown[]; fest?: string[]; wer
   { datei: 'src/calc/laborversuche.ts', name: 'moertelprismen', args: [[{ Ff: 2.9, Fc1: 79.2, Fc2: 81 }, { Ff: 3.1, Fc1: 80.1, Fc2: 78.5 }, { Ff: 3.0, Fc1: 82.3, Fc2: 79.6 }], 28] },
   { datei: 'src/calc/laborversuche.ts', name: 'druckMittel196', args: [[49.5, 50.6, 50.1, 40.6, 51.4, 49.8]] },
   { datei: 'src/utils/schadensKern.ts', name: 'fckIs13791', args: [[28, 30, 31, 27, 29, 33, 26, 30]], art: 'formel' },
+  { datei: 'src/calc/lcc.ts', name: 'epsWdvsGwp', args: [0.16, 150, 16], art: 'formel' },
 ];
 for (const h of HAND) {
   const fn = module[h.datei]?.[h.name];
@@ -373,6 +374,7 @@ const AUSNAHMEN: Record<string, string> = {
   'src/calc/statistik.ts:einstichprobenTTestKennwerte': 'Kennwerte aus stichprobe()', 'src/calc/statistik.ts:zweistichprobenTTestKennwerte': 'Kennwerte aus stichprobe()',
   'src/calc/boden.ts:zustandsgrenzen': 'eigener Test (tests/boden.test.ts)', 'src/calc/durchstanzen.ts:bemesseDurchstanzen': 'Fixture',
   'src/calc/mischung.ts:istSieblinie': 'Typ Größtkorn', 'src/calc/mischung.ts:regelDurchgang': 'Typ Größtkorn',
+  'src/utils/bestandKern.ts:fxBauteilVon': 'Zuordnung aus Bauteiltyp (in savings mitgeprüft)',
 };
 for (const d of KERN_DATEIEN) for (const [name, wert] of Object.entries(module[d])) {
   if (typeof wert !== 'function') continue;

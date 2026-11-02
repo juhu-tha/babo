@@ -92,7 +92,7 @@
     "mitDerNovellierungDer": "Mit der Novellierung der **Gefahrstoffverordnung (GefStoffV)** (in Kraft seit 5. Dezember 2024) werden die Mitwirkungs- und Informationspflichten des Veranlassers (Bauherrn) bei Tätigkeiten an baulichen oder technischen Anlagen geregelt.",
     "informationDerVeranlasserÜbergibt": "**Information:** Der Veranlasser übergibt alle ihm vorliegenden Informationen zur Bau- und Nutzungsgeschichte und zu vorhandenen oder vermuteten Gefahrstoffen (z. B. Putze, Spachtelmassen, Fliesenkleber) und sichtet zumutbar verfügbare Unterlagen.",
     "baujahrBeiBaujahrVor": "**Baujahr:** Bei Baujahr vor 1993 oder nach 1996 genügt die Angabe des Baujahrs; bei Errichtung zwischen 1993 und 1996 ist der Baubeginn mitzuteilen (§ 5a Abs. 2). Die Pflichten gelten auch für Privathaushalte.",
-    "schutzmaßnahmenDasAusführendeUnternehmen": "**Schutzmaßnahmen:** Das ausführende Unternehmen ermittelt im Rahmen der Gefährdungsbeurteilung, ob Asbestfasern freigesetzt werden können, und ordnet die Tätigkeit dem niedrigen, mittleren oder hohen Risiko zu (§ 11a; TRGS 519, Fassung 2014 mit Änderung vom 28.01.2025).",
+    "schutzmaßnahmenDasAusführendeUnternehmen": "**Schutzmaßnahmen:** Das ausführende Unternehmen ermittelt im Rahmen der Gefährdungsbeurteilung, ob Asbestfasern freigesetzt werden können, und ordnet die Tätigkeit dem niedrigen, mittleren oder hohen Risiko zu (§ 11a; TRGS 519, Ausgabe 2014 mit Änderung vom 28.01.2025, GMBl 2025 S. 144).",
     "interaktiverAsbestBaujahrCheck": "Interaktiver Asbest-Baujahr-Check",
     "verschiebenSieDenRegler": "Verschieben Sie den Regler auf das Baujahr Ihres Altbauprojekts, um die Informationspflichten nach § 5a GefStoffV und den Asbestverdacht einzuschätzen.",
     "asbestverdachtBaujahrVorDem": "🚨 ASBESTVERDACHT! Baujahr vor dem Verbot (31.10.1993). Der Veranlasser teilt das Baujahr und alle vorliegenden Informationen mit (§ 5a GefStoffV); das ausführende Unternehmen muss in der Gefährdungsbeurteilung von möglichem Asbest ausgehen oder durch Erkundung (VDI 6202 Blatt 3) ausschließen.",
@@ -427,7 +427,7 @@
         "url": "https://www.gesetze-im-internet.de/gefstoffv_2010/"
       },
       {
-        "title": "TRGS 519 (Asbest: Abbruch-, Sanierungs- oder Instandhaltungsarbeiten), Fassung 2014, zuletzt geändert 28.01.2025",
+        "title": "TRGS 519 (Asbest: Abbruch-, Sanierungs- oder Instandhaltungsarbeiten), Ausgabe 2014, zuletzt geändert 28.01.2025 (GMBl 2025 S. 144)",
         "url": "https://www.baua.de/DE/Angebote/Regelwerk/TRGS/TRGS-519"
       },
       {
