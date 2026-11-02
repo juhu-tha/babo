@@ -21,7 +21,8 @@ const texSumme = (werte: number[], n = 0) =>
 import inhalt from '@/content/lcc/LCC.json';
 import { MdText } from '@/src/components/inhalt/MdText';
 import { EingabeHinweise } from '@/src/components/ui/EingabeHinweise';
-import { lccVergleich, type LccOption } from '@/src/calc/lcc';
+import { lccVergleich, epsWdvsGwp, EPS_WDVS_SZENARIO, type LccOption } from '@/src/calc/lcc';
+import { GWP_LEHRWERTE } from '@/src/data/gwpLehrwerte';
 import { AuswahlGruppe, ReiterLeiste, alsOption, alsReiter, reiterPanel } from '../components/ui/Auswahlgruppe';
 
 // Define the scenario profiles for LCC calculation
@@ -50,7 +51,13 @@ interface ScenarioConfig {
   optionB: OptionConfig;
 }
 
-const SCENARIOS: ScenarioConfig[] = inhalt.daten.SCENARIOS;
+// EPS-WDVS (Szenario Dämmung): Herstellungs-GWP aus dem zentralen Lehrwert abgeleitet, Rechnung als Merkmal sichtbar (NS5A-LK-1)
+const EPS_WDVS = epsWdvsGwp(EPS_WDVS_SZENARIO.dickeM, EPS_WDVS_SZENARIO.flaecheM2, EPS_WDVS_SZENARIO.systemanteilKgJeM2);
+const EPS_WDVS_RECHNUNG = `Herstellung A1–A3 (Lehrwert, vorläufig): EPS ${formatDeZahl(EPS_WDVS_SZENARIO.dickeM, 2)} m · ${formatDeWert(EPS_WDVS_SZENARIO.flaecheM2)} m² · ${formatDeWert(GWP_LEHRWERTE.eps.rohdichte)} kg/m³ · ${formatDeZahl(GWP_LEHRWERTE.eps.gwp / 1000, 2)} kg CO₂-Äq./kg = ${formatDeWert(EPS_WDVS.epsKg)} kg; Kleber, Armierung, Putz und Dübel ${formatDeWert(EPS_WDVS_SZENARIO.systemanteilKgJeM2)} kg/m² · ${formatDeWert(EPS_WDVS_SZENARIO.flaecheM2)} m² = ${formatDeWert(EPS_WDVS.systemKg)} kg; zusammen ${formatDeWert(EPS_WDVS.gesamtKg)} kg CO₂-Äq.`;
+const SCENARIOS: ScenarioConfig[] = (inhalt.daten.SCENARIOS as ScenarioConfig[]).map(s => s.id !== 'daemmung' ? s : {
+  ...s,
+  optionA: { ...s.optionA, embodiedCO2: EPS_WDVS.gesamtKg, details: [...s.optionA.details, EPS_WDVS_RECHNUNG] },
+});
 
 export default function LCC() {
   const [activeTab, setActiveTab ] = useState<'rechner' | 'theorie'>('rechner');
@@ -76,7 +83,7 @@ export default function LCC() {
   const [generalInflation, setGeneralInflation] = useState<number>(1.5); // Allgemeine Inflation i in %
   const [analysisPeriod, setAnalysisPeriod] = useState<number>(50); // Zeitraum N in Jahren
 
-  // Professor's Added Parameters: CO2 Shadow price & KfW Government Subsidies
+  // Zusatzparameter: CO₂-Schattenpreis und Förderzuschuss
   const [co2PricingEnabled, setCo2PricingEnabled] = useState<boolean>(true);
   const [co2BasePrice, setCo2BasePrice] = useState<number>(75); // base price in € / t (e.g. 2026 German tier)
   const [co2Escalation, setCo2Escalation] = useState<number>(5.0); // annual co2 tax increase in %
@@ -157,7 +164,7 @@ export default function LCC() {
               <span><MdText text={inhalt.texte.fakultätFürArchitekturUnd} /></span>
             </div>
             <h2 className="text-base font-bold text-slate-900 mt-4 uppercase tracking-wide"><MdText text={inhalt.texte.lebenszyklusanalyseLccGutachtenNach} /></h2>
-            <p className="text-[11px] text-slate-500 mt-1 font-mono"><MdText text={inhalt.texte.wirtschaftlichkeitsprüfungProfDrIng} /></p>
+            <p className="text-[11px] text-slate-500 mt-1 font-mono"><MdText text={inhalt.texte.wirtschaftlichkeitsprüfungBaustoffkunde} /></p>
             <div className="grid grid-cols-2 gap-4 mt-6 p-4 bg-slate-50 rounded-xl text-left text-xs border border-home-grau/25">
               <div>
                 <span className="font-bold text-slate-950 block mb-1"><MdText text={inhalt.texte.untersuchtesBauteilszenario} /></span>
@@ -288,7 +295,7 @@ export default function LCC() {
                 <span className="text-[9px] text-slate-400 block font-mono"><MdText text={inhalt.texte.jährlicheTeuerungsrateFürLohnarbeiten} /></span>
               </div>
 
-              {/* Professor Huber Enhancements: CO2 & Subsidy */}
+              {/* Ergänzungen: CO₂-Schattenpreis und Förderung */}
               <div className="border-t border-slate-150 pt-4 mt-2 space-y-4">
                 <span className="text-[10px] font-bold text-slate-500 uppercase tracking-wider block font-mono"><MdText text={inhalt.texte.wissenschaftlicheParameter} /></span>
 

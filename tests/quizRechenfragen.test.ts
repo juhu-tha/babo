@@ -466,11 +466,15 @@ const zm = (x: number, n: number) => (x < 0 ? `−${z(-x, n)}` : z(x, n)); // Mi
   PRUEFUNGEN.push({ id: 'q_matm_2', richtig: `${z(binghamScherrate(800, 500, 50), 0)} s⁻¹` });
   PRUEFUNGEN.push({ id: 'qn_materialmodelle_2', richtig: `σ ≈ ${z(maxwellSpannung(20, 10, 5), 2)} MPa` });
   PRUEFUNGEN.push({ id: 'q_sta_2', richtig: z(abminderungStahlBrand(600).ky, 2), erklaerung: [`500 °C ${z(abminderungStahlBrand(500).ky, 2)}`, `700 °C ${z(abminderungStahlBrand(700).ky, 2)}`] });
-  // Carbonbeton: Die Fragen nennen ausdrücklich das vereinfachte Verfahren ohne Dehnungskontrolle (Textil erreicht f_td).
-  // Der Kern rechnet seit T9-CB-1 mit Dehnungskontrolle; mit E_tex = 200 GPa versagt in beiden Fällen der Beton zuerst
-  // (m_Rd kleiner) – offene Frage im Bericht 02.11.2026, daher hier der Vergleichswert des Kerns ohne Dehnungskontrolle.
-  const cb = (h: number, aTex: number, fTk: number, fCk: number) => carbonbetonBiegung({ h, c: 10, aTex, fTk, eTexGPa: 200, fCk }).mRdOhneDehnungskontrolle;
-  PRUEFUNGEN.push({ id: 'qn_carbonbeton_1', richtig: `rund ${z(cb(30, 80, 3000, 45), 1)} kNm/m` });
+  // Carbonbeton (Umsetzung 02.11.2026): Fragen an den Modulrechner angeglichen – Kernwert mit Dehnungskontrolle
+  // (E_tex = 200 GPa, ε_cu3 = 3,5 ‰); in allen drei Fällen versagt der Beton vor dem Textil.
+  const cbE = (h: number, aTex: number, fTk: number, fCk: number) => carbonbetonBiegung({ h, c: 10, aTex, fTk, eTexGPa: 200, fCk });
+  const cb = (h: number, aTex: number, fTk: number, fCk: number) => cbE(h, aTex, fTk, fCk).mRd;
+  const cb1 = cbE(30, 80, 3000, 45);
+  pruefe(cb1.versagen === 'beton' && cbE(40, 200, 2500, 50).versagen === 'beton', 'qn_carbonbeton: Betonversagen laut Kern erwartet');
+  PRUEFUNGEN.push({ id: 'qn_carbonbeton_1', richtig: `rund ${z(cb1.mRd, 1)} kNm/m`, frage: ['E_tex = 200 GPa'],
+    optionen: [`rund ${z((80 * cb1.fTd * cb1.d) / 1e6, 1)} kNm/m`, `rund ${z(cb1.mRdOhneDehnungskontrolle, 1)} kNm/m`, `rund ${z((80 * cb1.sigmaTex * cb1.d) / 1e6, 1)} kNm/m`, `rund ${z(cb1.mRd, 1)} kNm/m`],
+    erklaerung: [`σ_tex ≈ ${z(Math.round(cb1.sigmaTex), 0)} N/mm²`, `z = 20 − ${z(cb1.y / 2, 1)} = ${z(cb1.z, 1)} mm`] });
   PRUEFUNGEN.push({ id: 'qn_carbonbeton_2', richtig: 'Die Druckzone y wächst mit, der Hebelarm z = d − y/2 wird kleiner', frage: [`von rund ${z(cb(40, 100, 2500, 50), 1)} auf rund ${z(cb(40, 200, 2500, 50), 1)} kNm/m`] });
   PRUEFUNGEN.push({ id: 'qn_formaenderungen_bl_1', richtig: `w ≈ ${z(einfeldQ(2, 4, 10, 10000).w * 1000, 2)} mm` });
   const kr = kragF(2, 12, 2, 4000);

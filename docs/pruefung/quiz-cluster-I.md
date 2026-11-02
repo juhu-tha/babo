@@ -2,9 +2,9 @@
 
 Stand: 02.11.2026 · Grundlage: `src/data/quiz.json` (Felder `vorpruefung` und `verified`), `docs/quiz-pruefhinweise.md`, Lernziele aus `src/data/lernziele.ts`. Erzeugt mit `npx tsx scripts/pruefliste.ts`; gesetzte Kreuze übernimmt das Skript beim nächsten Lauf. quiz.json wurde für diese Liste nicht verändert.
 
-Cluster I umfasst 260 Fragen aus 38 Modulen. Aufgeführt sind 78 auffällige Fragen (Vorprüfung „korrigiert“ oder „fraglich“, offener Prüfhinweis oder neu seit 26.10.2026 ohne Freigabe) und eine Stichprobe von 5 unauffälligen Fragen. Entscheidung je Frage ankreuzen; bei „ändern“ den Änderungswunsch in die Zeile darunter schreiben.
+Cluster I umfasst 260 Fragen aus 38 Modulen. Aufgeführt sind 80 auffällige Fragen (Vorprüfung „korrigiert“ oder „fraglich“, offener Prüfhinweis oder neu seit 26.10.2026 ohne Freigabe) und eine Stichprobe von 5 unauffälligen Fragen. Entscheidung je Frage ankreuzen; bei „ändern“ den Änderungswunsch in die Zeile darunter schreiben.
 
-Auffällig im Einzelnen (Mehrfachnennung möglich): 73 korrigiert, 0 fraglich, 8 mit offenem Prüfhinweis, 1 neu seit 26.10.2026.
+Auffällig im Einzelnen (Mehrfachnennung möglich): 75 korrigiert, 0 fraglich, 8 mit offenem Prüfhinweis, 1 neu seit 26.10.2026.
 
 ## A. Auffällige Fragen
 
@@ -416,6 +416,14 @@ Auffällig im Einzelnen (Mehrfachnennung möglich): 73 korrigiert, 0 fraglich, 8
 - [ ] ok
 - [ ] ändern: …
 
+### qn_festigkeit_5 · Festigkeitsberechnungen
+
+- **Frage:** Aluminium EN AW-6060 T6 (f_t = 190 N/mm², ρ = 2700 kg/m³) hat eine geringere Zugfestigkeit als Baustahl S235 (f_u = 360 N/mm², ρ = 7850 kg/m³). Wie verhalten sich die Reißlängen?
+- **Richtige Antwort:** Stahl ≈ 4,7 km, Aluminium ≈ 7,2 km – die geringe Dichte überwiegt
+- **Auffälligkeit:** Vorprüfung „korrigiert“: Umsetzung 02.11.: Aluminium auf den zentralen Lehrwert EN AW-6060 T6 umgestellt (f_t 200 → 190 N/mm², DIN EN 755-2; Reißlänge 7,6 → 7,2 km, Distraktoren 2,5 bzw. 72 km) – korrigiert
+- [ ] ok
+- [ ] ändern: …
+
 ### qn_festigkeit_mohr_3 · Festigkeitsberechnungen
 
 - **Frage:** Der Schnitt durch einen Bauteilpunkt wird um den Winkel θ gedreht. Wie bewegt sich der zugehörige Bildpunkt auf dem Mohr'schen Spannungskreis?
@@ -503,6 +511,14 @@ Auffällig im Einzelnen (Mehrfachnennung möglich): 73 korrigiert, 0 fraglich, 8
 - **Auffälligkeit:** Vorprüfung „korrigiert“: Rückmeldung zu Option 1 berichtigt; Distraktor 3: 1000 → 780 µm/a; Zweitprüfung 27.10.: Distraktor 1: 9,9 → 10 µm/a (99,6/10 gerundet) korrigiert · bereits freigegeben (verified)
 - [ ] ok
 - [x] ändern: Distraktor 1 9,9 → 10 µm/a, korrigiert
+
+### qn_labor_druckfestigkeit_1 · Handout Druckfestigkeit an Würfeln
+
+- **Frage:** Ein Würfel mit 150 mm × 150 mm Druckfläche bricht bei F = 900 kN. Wie groß ist seine Druckfestigkeit?
+- **Richtige Antwort:** 40,0 MPa
+- **Auffälligkeit:** Vorprüfung „korrigiert“: Nachstichprobe 5b 02.11.: Rückmeldung zu 6,0 MPa berichtigt (bisher „Fläche in cm², Kraft nicht in N“ – das ergibt 900/225 = 4,0; 6,0 = 900/150, Kantenlänge statt Fläche; NS5B-LD-1) – korrigiert
+- [ ] ok
+- [ ] ändern: …
 
 ### qn_labor_frischbeton_4 · Handout Frischbetonprüfungen
 

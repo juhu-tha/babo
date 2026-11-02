@@ -184,6 +184,62 @@ export const CENTRAL_NORMEN_REGISTRY: Record<string, NormRecord> = {
     beschreibung: 'Druckprüfung an Würfeln und Zylindern mit Belastungsrate (0,6 ± 0,2) MPa/s, Beurteilung der Bruchbilder.',
     relevanteModule: ['labor_druckfestigkeit', 'festbeton', 'mechanische_pruefungen']
   },
+  // Folge Ausgabenprüfung 11/2026 (docs/pruefung/normen-fristen-folge-2026-11-02.md): Dauerhaftigkeitsprüfungen
+  // der Reihe DIN EN 12390 und DIN 4226-101/-102 zentral geführt, damit die Fußzeilen nicht mehr fest verdrahtet sind.
+  'DIN_EN_12390_10': {
+    id: 'DIN_EN_12390_10',
+    code: 'DIN EN 12390-10:2019-08',
+    title: 'Prüfung von Festbeton - Teil 10: Bestimmung des Karbonatisierungswiderstandes von Beton bei atmosphärischer Konzentration von Kohlenstoffdioxid',
+    category: 'beton',
+    ausgabeStand: '2019-08',
+    status: 'gueltig',
+    url: 'https://www.dinmedia.de/de/norm/din-en-12390-10/307154009',
+    beschreibung: 'Referenzverfahren für den Karbonatisierungswiderstand bei natürlicher CO₂-Konzentration (deutlich längere Prüfdauer als das beschleunigte Verfahren nach DIN EN 12390-12). Aktuelle Ausgabe 2019-08 (berichtigte Fassung der Ausgabe 2019-03).',
+    relevanteModule: ['korrosion', 'schnellkarbonatisierung', 'normen_ausblick']
+  },
+  'DIN_EN_12390_12': {
+    id: 'DIN_EN_12390_12',
+    code: 'DIN EN 12390-12:2020-04',
+    title: 'Prüfung von Festbeton - Teil 12: Bestimmung des Karbonatisierungswiderstandes von Beton - Beschleunigtes Karbonatisierungsverfahren',
+    category: 'beton',
+    ausgabeStand: '2020-04',
+    status: 'gueltig',
+    url: 'https://www.dinmedia.de/en/draft-standard/din-en-12390-12/395558732',
+    beschreibung: 'Beschleunigte Karbonatisierung bei (3,0 ± 0,5) Vol.-% CO₂, 57 % r. F. und 20 °C; Auswertung des Karbonatisierungskoeffizienten K_AC über √t. Entwurf DIN EN 12390-12:2025-11 (prEN 12390-12:2025) liegt vor; maßgebend bleibt die Ausgabe 2020-04.',
+    relevanteModule: ['schnellkarbonatisierung', 'korrosion', 'lebensdauerbemessung', 'biokohlebeton', 'normen_ausblick']
+  },
+  'DIN_EN_12390_18': {
+    id: 'DIN_EN_12390_18',
+    code: 'DIN EN 12390-18:2025-02',
+    title: 'Prüfung von Festbeton - Teil 18: Bestimmung des Chloridmigrationskoeffizienten (EN 12390-18:2021+A1:2024)',
+    category: 'beton',
+    ausgabeStand: '2025-02',
+    status: 'gueltig',
+    url: 'https://www.dinmedia.de/de/norm/din-en-12390-18/384233984',
+    beschreibung: 'Schnellmigrationstest (RCM) zur Bestimmung des Chloridmigrationskoeffizienten. Die Ausgabe 2025-02 ersetzt DIN EN 12390-18:2021-09; mit A1:2024 u. a. Einheiten der Symbole x_d und x_max ergänzt, Legende Bild 2 berichtigt und Gleichung (5) in 9.2 (Berechnung des Migrationskoeffizienten aus dem Versuch) angepasst. Die Lebensdauerbemessung übernimmt D_RCM,0 als Eingabewert und wertet Gleichung (5) nicht aus.',
+    relevanteModule: ['lebensdauerbemessung', 'korrosion']
+  },
+  'DIN_4226_101': {
+    id: 'DIN_4226_101',
+    code: 'DIN 4226-101:2025-11',
+    title: 'Rezyklierte Gesteinskörnungen für Beton nach DIN EN 12620 - Teil 101: Typen und geregelte gefährliche Substanzen',
+    category: 'beton',
+    ausgabeStand: '2025-11',
+    status: 'gueltig',
+    beschreibung: 'Typen rezyklierter Gesteinskörnung für Beton und Anforderungen an geregelte gefährliche Substanzen. Die Ausgabe 2025-11 ersetzt DIN 4226-101:2017-08.',
+    relevanteModule: ['sonderbetone', 'gesteine']
+  },
+  'DIN_4226_102': {
+    id: 'DIN_4226_102',
+    code: 'DIN 4226-102:2025-11',
+    title: 'Rezyklierte Gesteinskörnungen für Beton nach DIN EN 12620 - Teil 102: Typprüfung und Werkseigene Produktionskontrolle',
+    category: 'beton',
+    ausgabeStand: '2025-11',
+    status: 'gueltig',
+    url: 'https://www.dinmedia.de/de/norm/din-4226-102/391976582',
+    beschreibung: 'Typprüfung und werkseigene Produktionskontrolle für rezyklierte Gesteinskörnungen. Die Ausgabe 2025-11 ersetzt DIN 4226-102:2017-08.',
+    relevanteModule: ['sonderbetone', 'gesteine']
+  },
   'DIN_EN_196_1': {
     id: 'DIN_EN_196_1',
     code: 'DIN EN 196-1:2016-11',

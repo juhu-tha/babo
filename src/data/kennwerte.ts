@@ -242,6 +242,26 @@ export const E_BAUSTAHL = 210000;
  */
 export const LAMBDA_ALUMINIUM = 160;
 
+/**
+ * Wärmedehnzahl von Aluminiumlegierungen α_T = 23 · 10⁻⁶ 1/K (DIN EN 1999-1-1, 3.2.5; Herstellerdatenblatt EN AW-6060:
+ * 23,4 · 10⁻⁶ 1/K für 20–100 °C). Lehrwert für alle Module (Umsetzung 02.11.2026, Nachstichprobe 5b: vorher 23 bzw. 24).
+ */
+export const ALPHA_T_ALUMINIUM = 23;
+
+/**
+ * Lehrwerte EN AW-6060, Strangpressprofil t ≤ 5 mm, Mindestwerte nach DIN EN 755-2 (Herstellerdatenblatt 6060,
+ * Stand 03/2020, Abruf 02.11.2026): Zustand T6 Zugfestigkeit R_m = 190 N/mm², 0,2-%-Dehngrenze R_p0,2 = 150 N/mm²;
+ * Zustand T66 R_m = 215 N/mm², R_p0,2 = 160 N/mm². Standard-Lehrwert ist T6 (Umsetzung 02.11.2026, Nachstichprobe 5b:
+ * vorher 190 bzw. 200 N/mm² ohne Zustandsangabe). Gleichheit mit materials.json, den Modulen und dem Quiz prüft
+ * tests/umsetzungFolge_20261102b.test.ts.
+ */
+export const ALUMINIUM_6060 = {
+  T6: { fu: 190, f02: 150 },
+  T66: { fu: 215, f02: 160 },
+} as const;
+/** Standard-Lehrwert Aluminium (EN AW-6060 T6) */
+export const ALUMINIUM_6060_T6 = ALUMINIUM_6060.T6;
+
 export type BetonstahlSorte = 'B500A' | 'B500B';
 
 /** Elastizitätsmodul von Betonstahl E_s = 200 000 N/mm² nach DIN EN 1992-1-1, 3.2.7(4) */
