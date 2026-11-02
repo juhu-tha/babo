@@ -596,7 +596,7 @@ export const MODULE_HISTORY_DATA: Record<string, GroupHistory> = {
         era: '2020 bis 2026',
         title: 'Paradigmenwechsel: Bestandserhalt als primärer Klimaschutz',
         category: 'Paradigmenwechsel',
-        description: 'Rund zwei Drittel des Wohnungsbauvolumens in Deutschland entfallen heute auf Bestandsmaßnahmen (DIW-Bauvolumenrechnung). Initiativen für eine Umbauordnung und das Gebäudetyp-E-Vorhaben (Gesetzentwurf 2024, neuer Anlauf mit Eckpunkten 2025) zielen auf Erleichterungen für das Bauen im Bestand. 2026 erscheint mit EN 1990-2 erstmals eine europäische Norm zur Bewertung und Ertüchtigung bestehender Tragwerke.',
+        description: 'Rund zwei Drittel des Wohnungsbauvolumens in Deutschland entfallen heute auf Bestandsmaßnahmen (DIW-Bauvolumenrechnung). Initiativen für eine Umbauordnung und das Gebäudetyp-E-Vorhaben (Gesetzentwurf 2024, Eckpunkte 2025, Referentenentwurf vom 26.10.2026) zielen auf Erleichterungen für das Bauen im Bestand. 2026 erscheint mit EN 1990-2 erstmals eine europäische Norm zur Bewertung und Ertüchtigung bestehender Tragwerke.',
         impact: 'Der Bestand wird als unverzichtbarer CO2-Speicher begriffen; Sanierung und Umnutzung genießen Vorrang vor Neubau.',
         keyReference: 'Bundesstiftung Baukultur; Gebäudetyp-E-Vorhaben; EN 1990-2:2026'
       }
@@ -645,7 +645,7 @@ export const MODULE_HISTORY_DATA: Record<string, GroupHistory> = {
         era: '2024 bis 2026',
         title: 'Urban Mining, R-Beton, GefStoffV-Novelle & Kreislaufwirtschaft 2.0',
         category: 'Werkstoffwende',
-        description: 'Verstärkter Einsatz rezyklierter Gesteinskörnungen (Typ 1 und Typ 2 nach DIN EN 12620) für R-Beton. Die GefStoffV-Novelle (in Kraft 05.12.2024) regelt Informationspflichten des Veranlassers (§ 5a) und Asbesttätigkeiten (§ 11a); neue Regeln wie DIN SPEC 91484 (2023), VDI 6210 Blatt 1 (2025), DIN SPEC 91525 (2026) sowie die Neufassungen von TRGS 521 und TRGS 524 (2026) folgen. Eine EBV-Novelle liegt seit August 2026 als Referentenentwurf vor.',
+        description: 'Verstärkter Einsatz rezyklierter Gesteinskörnungen (Typ 1 und Typ 2 nach DIN EN 12620) für R-Beton. Die GefStoffV-Novelle (in Kraft 05.12.2024; geändert mit Wirkung vom 20.12.2025, u. a. Genehmigung für Asbest-Abbrucharbeiten nach § 11a Abs. 4a) regelt Informationspflichten des Veranlassers (§ 5a) und Asbesttätigkeiten (§ 11a); neue Regeln wie DIN SPEC 91484 (2023), VDI 6210 Blatt 1 (2025), DIN SPEC 91525 (2026) sowie die Neufassungen von TRGS 521 und TRGS 524 (2026) folgen. Eine EBV-Novelle liegt seit 15.07.2026 als Referentenentwurf vor (Stand 11/2026).',
         impact: 'Schließung des mineralischen Stoffkreislaufs im Hochbau bei gleichzeitiger Schonung natürlicher Kies- und Sandvorkommen.',
         keyReference: 'DIN EN 12620 / GefStoffV 2024 / DIN SPEC 91484'
       }
