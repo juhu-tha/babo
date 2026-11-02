@@ -2,9 +2,9 @@
 
 Stand: 02.11.2026 · Grundlage: `src/data/quiz.json` (Felder `vorpruefung` und `verified`), `docs/quiz-pruefhinweise.md`, Lernziele aus `src/data/lernziele.ts`. Erzeugt mit `npx tsx scripts/pruefliste.ts`; gesetzte Kreuze übernimmt das Skript beim nächsten Lauf. quiz.json wurde für diese Liste nicht verändert.
 
-Cluster IV umfasst 314 Fragen aus 50 Modulen. Aufgeführt sind 103 auffällige Fragen (Vorprüfung „korrigiert“ oder „fraglich“, offener Prüfhinweis oder neu seit 26.10.2026 ohne Freigabe) und eine Stichprobe von 5 unauffälligen Fragen. Entscheidung je Frage ankreuzen; bei „ändern“ den Änderungswunsch in die Zeile darunter schreiben.
+Cluster IV umfasst 314 Fragen aus 50 Modulen. Aufgeführt sind 104 auffällige Fragen (Vorprüfung „korrigiert“ oder „fraglich“, offener Prüfhinweis oder neu seit 26.10.2026 ohne Freigabe) und eine Stichprobe von 5 unauffälligen Fragen. Entscheidung je Frage ankreuzen; bei „ändern“ den Änderungswunsch in die Zeile darunter schreiben.
 
-Auffällig im Einzelnen (Mehrfachnennung möglich): 84 korrigiert, 0 fraglich, 11 mit offenem Prüfhinweis, 12 neu seit 26.10.2026.
+Auffällig im Einzelnen (Mehrfachnennung möglich): 85 korrigiert, 0 fraglich, 11 mit offenem Prüfhinweis, 12 neu seit 26.10.2026.
 
 ## A. Auffällige Fragen
 
@@ -302,6 +302,14 @@ Auffällig im Einzelnen (Mehrfachnennung möglich): 84 korrigiert, 0 fraglich, 1
 - **Richtige Antwort:** 0,88 M.-%, kein NA-Zement
 - **Auffälligkeit:** Prüfhinweis: Zementart im Fragetext nennen (0,60 % gilt für CEM I-NA). · bereits freigegeben (verified)
 - [x] ok
+- [ ] ändern: …
+
+### q_vdi_1 · Bauwerksprüfung & VDI 6200
+
+- **Frage:** Welches Ziel verfolgt die Richtlinie VDI 6200 'Standsicherheit von Bauwerken' bei der Einstufung in Schadensfolgeklassen (CC1 bis CC3)?
+- **Richtige Antwort:** Systematische Definition von Inspektionsintervallen und Prüfungstiefen (fachkundige Sichtprüfung bis eingehende statische Überprüfung) zur Verhinderung plötzlicher Einstürze von Hochbauten (z. B. Hallendächern).
+- **Auffälligkeit:** Vorprüfung „korrigiert“: Umsetzung 02.11.: Erklärung nach Modultext: CC3 = Versammlungsstätten > 5000 Personen, Stadien; Sporthallen und Industriebauten CC2; eingehende Überprüfung durch besonders fachkundige Person (NS4-VDI-2) – korrigiert
+- [ ] ok
 - [ ] ändern: …
 
 ### q_zs_6 · Zertifizierung & Deklarationen

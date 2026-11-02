@@ -877,18 +877,29 @@
       "Ausschließliche Bewertung des Brandschutzes von Hochhäusern."
     ],
     "correctIdx": 1,
-    "explanation": "Nach Halleneinstürzen (Bad Reichenhall, Kattowitz) regelt die VDI 6200 die Überprüfungspflichten für Tragwerke. Bauwerke werden nach Schadensfolge (Personengefährdung) und Robustheit klassifiziert; Hallen mit großen Stützweiten (CC3) müssen in regelmäßigen Zyklen durch sachkundige Prüfingenieure untersucht werden.",
+    "explanation": "Nach Halleneinstürzen (Bad Reichenhall, Kattowitz) regelt die VDI 6200 die Überprüfung bestehender Tragwerke. Bauwerke werden nach Schadensfolge (CC1 bis CC3, z. B. CC3 für Versammlungsstätten mit mehr als 5000 Personen) eingestuft; je höher die Klasse, desto kürzer die Intervalle von Begehung, Inspektion und eingehender Überprüfung durch eine besonders fachkundige Person.",
+    "bloom": "Verstehen",
+    "niveau": "B",
+    "distraktorFeedback": [
+      "Förderprogramme der KfW sind kein Gegenstand der VDI 6200; die Richtlinie betrifft die Standsicherheit bestehender Bauwerke.",
+      "",
+      "Steuerliche Fragen regelt die VDI 6200 nicht; sie legt Überprüfungsintervalle und -tiefen für Tragwerke fest.",
+      "Die VDI 6200 betrifft die Standsicherheit von Hochbauten allgemein, nicht allein den Brandschutz von Hochhäusern."
+    ],
     "gapAnalysis": {
       "topic": "Bauwerksüberwachung nach VDI 6200",
       "misconception": "Unkenntnis der gesetzlichen Betreiberverantwortung und Inspektionsstufen bei bestehenden Tragwerken.",
-      "coreRule": "CC1 = geringe Folgen; CC2 = mittlere Folgen; CC3 = hohe Folgen (Versammlungsstätten, Hallen > 12m Spannweite). Prüfungstiefen: Stufe 1 bis 3.",
-      "actionableAdvice": "Lesen Sie im Modul Zustandsbewertung die Matrix der Prüfungsintervalle (1, 3 und 6 Jahre) nach VDI 6200.",
+      "coreRule": "CC1 = geringe Folgen; CC2 = mittlere Folgen (z. B. Sporthallen, Industriebauten); CC3 = hohe Folgen (z. B. Versammlungsstätten für mehr als 5000 Personen, Stadien, Kongresshallen). Je höher die Klasse, desto kürzer die Intervalle.",
+      "actionableAdvice": "Lesen Sie im Modul Zustandsbewertung die Tabelle der Überprüfungsintervalle je Schadensfolgeklasse (Begehung, Inspektion, eingehende Überprüfung) nach VDI 6200.",
       "targetModuleTab": "vdi6200",
       "targetModuleLabel": "Zustandsbewertung"
     },
-    "reviewer": "freigegeben",
-    "reviewedAt": "2026-09-28",
-    "verified": true
+    "verified": false,
+    "vorpruefung": {
+      "am": "2026-11-02",
+      "ergebnis": "korrigiert",
+      "hinweis": "Umsetzung 02.11.: Erklärung nach Modultext: CC3 = Versammlungsstätten > 5000 Personen, Stadien; Sporthallen und Industriebauten CC2; eingehende Überprüfung durch besonders fachkundige Person (NS4-VDI-2) – korrigiert"
+    }
   },
   {
     "id": "q_schadstoff_1",
@@ -17906,7 +17917,7 @@
       "0,60"
     ],
     "correctIdx": 1,
-    "explanation": "(175 − 70)/380 = 0,276 ≈ 0,28 – geringes Bluten nach Krells Einteilung.",
+    "explanation": "(175 − 70)/380 = 0,276 ≈ 0,28 – nach der Einteilung des Moduls normales Zusammenhaltevermögen (0,27 < K ≤ 0,31).",
     "bloom": "Anwenden",
     "niveau": "B",
     "distraktorFeedback": [
@@ -17923,12 +17934,11 @@
       "targetModuleTab": "betonpraxis",
       "targetModuleLabel": "Betonpraxis"
     },
-    "verified": true,
-    "reviewer": "freigegeben 28.10.2026 (Zweitprüfung)",
-    "reviewedAt": "2026-10-28",
+    "verified": false,
     "vorpruefung": {
-      "am": "2026-10-25",
-      "ergebnis": "ok"
+      "am": "2026-11-02",
+      "ergebnis": "korrigiert",
+      "hinweis": "Umsetzung 02.11.: Einordnung von K = 0,276 nach der Einteilung des Moduls („normales Zusammenhaltevermögen“ statt „geringes Bluten“), Antwort unverändert (NS4-BP-2) – korrigiert"
     }
   },
   {
@@ -44909,7 +44919,7 @@
     "topic": "Grenze der Druckzone",
     "difficulty": "Transfer",
     "normRef": "DIN EN 1992-1-1",
-    "question": "Ein Balken b/h = 25/45 cm (C25/30, d = 40,5 cm) soll M_Ed = 300 kNm aufnehmen. Das bezogene Moment beträgt μ_Ed = 0,516. Wie ist das Ergebnis mit μ_lim = 0,296 (ξ_lim = 0,45, NA DE) aus dem Modul zu bewerten?",
+    "question": "Ein Balken b/h = 25/45 cm (C25/30, d = 40,5 cm) soll M_Ed = 300 kNm aufnehmen. Das bezogene Moment beträgt μ_Ed = 0,516. Wie ist das Ergebnis mit μ_lim = 0,295 (ξ_lim = 0,45, NA DE) aus dem Modul zu bewerten?",
     "options": [
       "Zulässig, da μ_Ed nur bei Platten gegen den Grenzwert μ_lim geprüft werden muss",
       "Ohne Druckbewehrung unzulässig; Querschnitt vergrößern oder Druckbewehrung einlegen",
@@ -44917,7 +44927,7 @@
       "Unzulässig; allein eine höhere Stahlgüte als B500B behebt das Problem hier zuverlässig"
     ],
     "correctIdx": 1,
-    "explanation": "μ_Ed = 0,516 > μ_lim = 0,296: Die Betondruckzone reicht ohne Druckbewehrung nicht aus, ein sprödes Betonversagen droht. Abhilfe schaffen größere Abmessungen (vor allem h), eine höhere Betonfestigkeit oder Druckbewehrung.",
+    "explanation": "μ_Ed = 0,516 > μ_lim = 0,295: Die Betondruckzone reicht ohne Druckbewehrung nicht aus, ein sprödes Betonversagen droht. Abhilfe schaffen größere Abmessungen (vor allem h), eine höhere Betonfestigkeit oder Druckbewehrung.",
     "bloom": "Bewerten",
     "niveau": "M",
     "distraktorFeedback": [
@@ -44934,13 +44944,11 @@
       "targetModuleTab": "rechnung_stahlbeton",
       "targetModuleLabel": "Massivbau: Biegung"
     },
-    "reviewer": "Zweitprüfung 27.10.2026; freigegeben 27.10.2026",
-    "reviewedAt": "2026-10-27",
-    "verified": true,
+    "verified": false,
     "vorpruefung": {
-      "am": "2026-10-27",
+      "am": "2026-11-02",
       "ergebnis": "korrigiert",
-      "hinweis": "Distraktoren angeglichen"
+      "hinweis": "Distraktoren angeglichen · Umsetzung 02.11.: μ_lim = 0,295 wie Modul und Kern (0,8 · 0,45 · (1 − 0,4 · 0,45) = 0,2952) statt 0,296, Ergebnis unverändert (NS4-RS-1) – korrigiert"
     }
   },
   {

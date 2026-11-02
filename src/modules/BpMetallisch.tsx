@@ -19,6 +19,7 @@ import {
 import { useTabContext } from '@/src/contexts/TabContext';
 import { InnovationPraxisSection } from '@/src/components/ui/InnovationPraxisSection';
 import inhalt from '@/content/bpmetallisch/BpMetallisch.json';
+import { LAMBDA_ALUMINIUM } from '@/src/data/kennwerte';
 import { MdText } from '@/src/components/inhalt/MdText';
 
 function MetalThematicLinks({ current }: { current: 'baustoff' | 'bauprodukt' | 'dauerhaftigkeit' }) {
@@ -107,6 +108,7 @@ export interface MetalMaterial {
   density: number; // kg/m³
   potential: number; // Volt vs Standard Hydrogen Electrode
   lambda: number; // W/(m·K)
+  lambdaHinweis?: string; // Zusatz zur Kennwertkarte (z. B. Bemessungswert gegen Reinmetall)
   alpha: number; // 10^-6 / K
   description: string;
   crystalStructure?: string;
@@ -122,7 +124,8 @@ export interface MetalMaterial {
 
 export const metalsDb: MetalMaterial[] = [
   inhalt.daten["metalsDb.zinc"],
-  inhalt.daten["metalsDb.aluminum"],
+  // λ zentral aus kennwerte.ts (DIN EN ISO 10456, Entscheidung 30.10.2026); Umsetzung 02.11.2026 (NS4-ME-1)
+  { ...inhalt.daten["metalsDb.aluminum"], lambda: LAMBDA_ALUMINIUM },
   inhalt.daten["metalsDb.steel"],
   {
     id: 'stainless',
@@ -311,6 +314,7 @@ export default function BpMetallisch() {
               <div className="bg-slate-50/80 p-3 rounded-xl border border-home-grau/30">
                 <span className="text-[10px] text-text-main/50 block font-bold uppercase mb-0.5"><MdText text={inhalt.texte.wärmeleitfähigkeit} /></span>
                 <span className="text-sm font-extrabold font-mono text-slate-800">{formatDeWert(selectedMetal.lambda)} W/(m·K)</span>
+                {selectedMetal.lambdaHinweis && <span className="text-[10px] text-text-main/70 block leading-tight mt-0.5">{selectedMetal.lambdaHinweis}</span>}
               </div>
               <div className="bg-slate-50/80 p-3 rounded-xl border border-home-grau/30">
                 <span className="text-[10px] text-text-main/50 block font-bold uppercase mb-0.5"><MdText text={inhalt.texte.wärmedehnung} /></span>
