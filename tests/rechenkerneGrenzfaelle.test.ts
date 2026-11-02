@@ -328,7 +328,6 @@ for (const h of HAND) {
 
 // ---------------------------------------------------------------- 6. Vollständigkeit (R7)
 const AUSNAHMEN: Record<string, string> = {
-  'src/calc/pfas.ts:istKurzkettig': 'boolescher Klassifizierer nach Kettenlänge (in pfasSummenbewertung und nachstichprobe5c mitgeprüft)',
   // Plausibilitätsschicht selbst
   'src/calc/plausibilitaet.ts:*': 'Hilfsfunktionen der Plausibilitätsschicht (keine Rechenkerne).',
   // Prüffunktionen: werden in der zugehörigen Bemessungsfunktion aufgerufen und dort mitgeprüft
@@ -363,6 +362,7 @@ const AUSNAHMEN: Record<string, string> = {
   'src/calc/pruefverfahren.ts:messwerteAusText': 'Textparser', 'src/calc/mauerwerk.ts:fkNA': 'Tabellenzugriff (Steinart, Mörtel)',
   'src/calc/mischung.ts:kombinationsGrenze': 'Tabellenzugriff (Zementart)', 'src/calc/sommerWaermeschutz.ts:fcAusTabelle': 'Tabellenzugriff',
   'src/calc/stahlbau.ts:profil': 'Tabellenzugriff', 'src/utils/rheologySim.ts:controlFor': 'Tabellenzugriff',
+  'src/calc/pfas.ts:istKurzkettig': 'Prädikat über Stoffdaten der PFAS-20-Liste (keine Nutzereingabe; neu mit Nachstichprobe 5c)',
   'src/calc/hydratation.ts:praxisbeispielMassigesBauteil': 'festes Praxisbeispiel ohne Eingaben',
   // Zufallszahlen und Monte-Carlo-Bausteine (in lebensdauerbemessung mitgeprüft)
   'src/calc/lebensdauer.ts:zufallsgenerator': 'Zufallszahlen', 'src/calc/lebensdauer.ts:standardNormal': 'Zufallszahlen', 'src/calc/lebensdauer.ts:gammaZufall': 'Zufallszahlen',
