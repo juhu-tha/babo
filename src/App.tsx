@@ -271,13 +271,12 @@ function AppContent({ vorgerendert = false, vorrendern = false }: Omit<AppProps,
     metaDescription.setAttribute('content', descriptionText);
 
     // Dynamic document title update for better user context and crawler indexing
+    // Fenstertitel mit dem Modultitel (baum.titel, sonst Menübeschriftung) wie die vorgerenderte Seite
+    // (Regel Modultitel 03.11.2026, docs/architektur.md)
     let tabLabel = "";
-    for (const group of tabGroups) {
-      const found = group.tabs.find((t) => t.id === activeTab);
-      if (found) {
-        tabLabel = found.label;
-        break;
-      }
+    if (tabGroups.some(g => g.tabs.some(t => t.id === activeTab))) {
+      const m = MODUL_KERN.get(activeTab);
+      tabLabel = m?.titel ?? m?.label ?? '';
     }
     // Unbekannte Adresse: eigener Titel, nicht indexieren (Status 404 kommt vom Server bzw. von Vercel)
     let robots = document.querySelector('meta[name="robots"][data-bb-404]');
@@ -654,8 +653,8 @@ function AppContent({ vorgerendert = false, vorrendern = false }: Omit<AppProps,
                 <div>
                   <p className="text-2xl font-bold text-text-main">{t('testProtocol')}</p>
                   <p className="text-sm text-text-main/80 mt-1">Modul: {(() => {
-                    const tabObj = tabGroups.flatMap(g => g.tabs).find(t => t.id === activeTab);
-                    return tabObj ? getTabLabel(tabObj.id, tabObj.label) : activeTab;
+                    const m = MODUL_KERN.get(activeTab);
+                    return m ? getTabLabel(m.id, m.titel ?? m.label) : activeTab;
                   })()}</p>
                   <p className="text-sm text-text-main/80">{t('date')}: {new Date().toLocaleDateString(language === 'en' ? "en-US" : "de-DE")}</p>
                 </div>
