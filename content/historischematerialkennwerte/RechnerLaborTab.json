@@ -44,7 +44,7 @@
     "fCkIsK": "f_ck,is (k_n = ",
     "fCkFCk": "f_ck = f_ck,is / 0,85",
     "mindestens3KernwerteEingeben": "Mindestens 3 Kernwerte eingeben – aus einem einzelnen Kern darf weder eine Festigkeitsklasse noch ein Bemessungswert abgeleitet werden.",
-    "charakteristischerWertAls5": "Charakteristischer Wert als 5-%-Fraktile (log-normal, V unbekannt) nach DIN EN 1990 Anhang D; Umrechnung auf die Druckfestigkeitsklasse nach DIN EN 13791. Für die verbindliche Bewertung Verfahren und Mindestanzahl der geltenden DIN EN 13791:2020-02 + A20 anwenden.",
+    "charakteristischerWertAls5": "Charakteristischer Wert als 5-%-Fraktile (log-normal, V unbekannt) nach DIN EN 1990 Anhang D; Umrechnung auf die Druckfestigkeitsklasse nach DIN EN 13791. Für die verbindliche Bewertung Verfahren und Mindestanzahl der geltenden DIN EN 13791:2020-02 + A20 anwenden. Probenanzahl, Mindeststandardabweichung und Statistik nach DIN EN 13791: Reiter „Bohrkernserie (DIN EN 13791)“.",
     "protokollDinEn772": "Protokoll: DIN EN 772-1 & EC6",
     "normfestigkeitStein": "Normfestigkeit Stein ",
     "druckflächeA": "Druckfläche A",

@@ -1562,7 +1562,7 @@ export const LERNZIELE: Readonly<Record<string, ModulLernziele>> = {
       { stufe: "Anwenden", text: "aus Bohrkernen, Mauersteinprüfungen und Zugversuchen an Stahlproben Kennwerte nach DIN EN 13791, Eurocode 6 und DIN EN ISO 6892-1 ermitteln." },
       { stufe: "Anwenden", text: "den lognormalen Bemessungswert einer Bestandsfestigkeit aus Mittelwert, Variationskoeffizient, α_R und β berechnen." },
       { stufe: "Analysieren", text: "die konventionelle Neubaubemessung, modifizierte Teilsicherheitsbeiwerte nach DBV-Merkblatt und die versuchsgestützte Bemessung nach EN 1990-2:2026 vergleichen." },
-      { stufe: "Bewerten", text: "beurteilen, wann Stichprobenumfang und Streuung eine Tragreserve im Bestand belegen und warum aus einem einzelnen Kern keine Festigkeitsklasse folgt." },
+      { stufe: "Bewerten", text: "Kernanzahl und Streuung einer Bohrkernserie nach DIN EN 13791 beurteilen, f_ck,is über k_n und Kleinstwertkriterium einer Klasse zuordnen und begründen, warum ein einzelner Kern keine Klasse belegt." },
     ],
   },
   abfaelle: {
@@ -1590,18 +1590,16 @@ export const LERNZIELE: Readonly<Record<string, ModulLernziele>> = {
     ziele: [
       { stufe: "Verstehen", text: "den Baumangel als Abweichung der Ist- von der Soll-Beschaffenheit nach § 633 BGB vom Bauschaden als Folge abgrenzen und Gewährleistung von Garantie unterscheiden." },
       { stufe: "Anwenden", text: "das Ende der Verjährungsfrist von Mängelansprüchen nach BGB und VOB/B ab Abnahme einschließlich der Wirkung einer schriftlichen Mängelrüge berechnen." },
-      { stufe: "Anwenden", text: "die Mindestbreite einer elastischen Fassadenfuge aus thermischer Längenänderung und zulässiger Gesamtverformung des Dichtstoffs berechnen." },
-      { stufe: "Analysieren", text: "Fugenschäden wie Flankenabriss, Kohäsionsbruch, Blasenbildung und Randzonenverschmutzung auf Planungs- oder Verarbeitungsfehler zurückführen." },
       { stufe: "Bewerten", text: "für eine Störung im Bauablauf die passende Anzeige nach VOB/B (Bedenken, Behinderung, Mängelrüge, Nachtrag) auswählen und Form und Adressat begründen." },
     ],
   },
   schadensbilder: {
     niveau: "B", minuten: 75, vorwissen: ["bauschaeden", "bauphysik"],
     ziele: [
-      { stufe: "Verstehen", text: "Schadensbilder aus Feuchte und Schimmel, Rissen, Korrosion, stofflichen Unverträglichkeiten sowie Tief- und Ingenieurbau ihren Ursachen zuordnen." },
-      { stufe: "Anwenden", text: "die rechnerische Rissbreite w_k einer Stahlbetonwand nach DIN EN 1992-1-1 berechnen und mit dem Grenzwert der Expositionsklasse vergleichen." },
-      { stufe: "Anwenden", text: "mit der linear-elastischen Bruchmechanik die Spannungsintensität eines Randrisses und die kritische Risslänge bei sprödem Versagen berechnen." },
-      { stufe: "Analysieren", text: "an einem Schadensszenario juristischen Status, verantwortlichen Bauakteur, zuständige Versicherung und Sanierungsmethode herausarbeiten." },
+      { stufe: "Verstehen", text: "Schadensbilder aus Feuchte und Schimmel, Rissen, Korrosion, stofflichen Unverträglichkeiten, Tief- und Ingenieurbau sowie Kleb- und Dichtstoffen ihren Ursachen zuordnen." },
+      { stufe: "Anwenden", text: "die rechnerische Rissbreite w_k nach DIN EN 1992-1-1 und mit der linear-elastischen Bruchmechanik die kritische Risslänge eines Randrisses berechnen." },
+      { stufe: "Anwenden", text: "die Mindestbreite einer elastischen Fassadenfuge aus thermischer Längenänderung und zulässiger Gesamtverformung des Dichtstoffs berechnen." },
+      { stufe: "Analysieren", text: "Fugenschäden wie Flankenabriss, Kohäsionsbruch, Blasenbildung und Randzonenverschmutzung sowie Schadensszenarien auf Planungs- oder Verarbeitungsfehler zurückführen." },
       { stufe: "Bewerten", text: "für Risse und Feuchteschäden geeignete Diagnose- und Instandsetzungsverfahren wie Potenzialfeldmessung, Ultraschall oder Rissinjektion auswählen." },
     ],
   },

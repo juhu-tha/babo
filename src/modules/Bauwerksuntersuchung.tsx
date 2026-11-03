@@ -72,7 +72,7 @@ export default function Bauwerksuntersuchung({ bereiche }: { bereiche: readonly 
       bullets: inhalt.daten["Bauwerksuntersuchung.stepsDetails.1.bullets"],
       standards: inhalt.daten["Bauwerksuntersuchung.stepsDetails.1.standards"],
       linkText: inhalt.werte.klassischeBauschadensbilderAnalysieren,
-      linkTab: "bauschaeden"
+      linkTab: "schadensbilder"
     },
     {
       id: 3,
@@ -254,7 +254,7 @@ export default function Bauwerksuntersuchung({ bereiche }: { bereiche: readonly 
                 <span className="text-xs text-slate-500"><MdText text={inhalt.texte.röntgendiffraktometrieXrdRemMikroskopie} /></span>
               </button>
               <button
-                onClick={() => setActiveTab('bauschaeden')}
+                onClick={() => setActiveTab('schadensbilder')}
                 className="p-3 bg-white hover:bg-slate-100 border border-home-grau/30 hover:border-shiraz/40 rounded-xl text-left transition-all cursor-pointer flex flex-col gap-1"
               >
                 <span className="font-bold text-xs text-slate-800">Schadensbilder</span>
