@@ -18,12 +18,13 @@ import {
 import { Line } from 'react-chartjs-2';
 import '@/src/lib/chartSetup';
 import { InfoTooltip } from '@/src/components/ui/InfoTooltip';
-import { Layers, Ruler, Calculator, BookOpen, ArrowRight, ShieldAlert } from 'lucide-react';
+import { Layers, Ruler, Calculator, BookOpen, ArrowRight, ShieldAlert, RotateCcw, RotateCw, Undo2 } from 'lucide-react';
 import { useTabContext } from '@/src/contexts/TabContext';
 import BaustoffProfil from '@/src/components/ui/BaustoffProfil';
 import inhalt from '@/content/mauerwerk/Mauerwerk.json';
 import { MdText } from '@/src/components/inhalt/MdText';
 import { ModuleTabs, type ModulTab } from '@/src/components/ui/ModuleTabs';
+import { AuswahlGruppe, alsOption } from '@/src/components/ui/Auswahlgruppe';
 import { fkEmpfehlungENGenormt, fdAusFk, fvk0NA, phiAusmitte } from '@/src/calc/mauerwerk';
 
 ChartJS.register(
@@ -158,6 +159,10 @@ export default function Mauerwerk() {
   
   // Verband
   const [bond, setBond] = useState(bonds[0].id);
+  // 3D-Ansicht per Tastatur drehbar (Schaltflächen bzw. Pfeiltasten, WCAG 2.1.1); Zurücksetzen lädt die Kamera neu
+  const [drehung, setDrehung] = useState(0);
+  const [ansicht, setAnsicht] = useState(0);
+  const drehe = (grad: number) => setDrehung(d => ((d + grad) % 360 + 360) % 360);
   const [stoneLength, setStoneLength] = useState(240); // mm
   const [stoneHeight, setStoneHeight] = useState(113); // mm
 
@@ -629,9 +634,28 @@ export default function Mauerwerk() {
           <div className="lg:col-span-8 bg-off-white p-5 rounded-xl border border-home-grau/30 flex flex-col h-[400px]">
              <h3 className="text-sm font-bold text-text-main uppercase tracking-wider mb-4"><MdText text={inhalt.texte.t3dVisualisierungVerband} /></h3>
              <div className="flex-1 relative w-full h-full bg-slate-100/50 rounded-lg overflow-hidden border border-home-grau/30">
+              {/* Textalternative der 3D-Ansicht (WCAG 1.1.1); die Werte stehen auch in den Eingaben links */}
+              <div role="img" className="absolute inset-0"
+                aria-label={`3D-Ansicht ${bonds.find(b => b.id === bond)?.name ?? ''}: Steinlänge ${formatDeZahl(stoneLength, 0)} mm, Steinhöhe ${formatDeZahl(stoneHeight, 0)} mm, Wanddicke ${formatDeZahl(thickness * 1000, 0)} mm, Überbindemaß ca. ${formatDeZahl(results.actualOverlap, 0)} mm${drehung ? `, um ${formatDeZahl(drehung, 0)}° gedreht` : ''}`}>
               <React.Suspense fallback={<div className="absolute inset-0 flex items-center justify-center text-sm text-text-main/60"><MdText text={inhalt.texte.t3dAnsichtWirdGeladen} /></div>}>
-                <MauerwerkVerband3D bond={bond} stoneLength={stoneLength} stoneHeight={stoneHeight} thickness={thickness} />
+                <MauerwerkVerband3D key={ansicht} bond={bond} stoneLength={stoneLength} stoneHeight={stoneHeight} thickness={thickness} drehung={drehung} />
               </React.Suspense>
+              </div>
+              <div role="group" aria-label="3D-Ansicht drehen" className="absolute bottom-2 right-2 flex gap-1"
+                onKeyDown={e => { if (e.key === 'ArrowLeft') { e.preventDefault(); drehe(-15); } else if (e.key === 'ArrowRight') { e.preventDefault(); drehe(15); } }}>
+                <button type="button" onClick={() => drehe(-15)} aria-label="Nach links drehen (15°)" title="Nach links drehen (Pfeil links)"
+                  className="w-8 h-8 inline-flex items-center justify-center rounded-lg bg-white/90 border border-home-grau/40 text-text-main hover:bg-white cursor-pointer">
+                  <RotateCcw size={15} aria-hidden="true" />
+                </button>
+                <button type="button" onClick={() => drehe(15)} aria-label="Nach rechts drehen (15°)" title="Nach rechts drehen (Pfeil rechts)"
+                  className="w-8 h-8 inline-flex items-center justify-center rounded-lg bg-white/90 border border-home-grau/40 text-text-main hover:bg-white cursor-pointer">
+                  <RotateCw size={15} aria-hidden="true" />
+                </button>
+                <button type="button" onClick={() => { setDrehung(0); setAnsicht(a => a + 1); }} aria-label="Ansicht zurücksetzen" title="Ansicht zurücksetzen"
+                  className="w-8 h-8 inline-flex items-center justify-center rounded-lg bg-white/90 border border-home-grau/40 text-text-main hover:bg-white cursor-pointer">
+                  <Undo2 size={15} aria-hidden="true" />
+                </button>
+              </div>
              </div>
             </div>
           </div>
@@ -688,7 +712,7 @@ export default function Mauerwerk() {
         <div className="animate-in fade-in duration-300 space-y-6">
           <div className="bg-off-white p-5 rounded-xl border border-home-grau/20 shadow-inner">
             <h3 className="text-xs font-bold text-slate-800 uppercase tracking-wider mb-3"><MdText text={inhalt.texte.wählenSieDenGewünschten} /></h3>
-            <div className="grid grid-cols-2 sm:grid-cols-5 gap-2">
+            <AuswahlGruppe label="Baustoff für den Steckbrief" className="grid grid-cols-2 sm:grid-cols-5 gap-2">
               {[
                 { id: 'mauerziegel', label: 'Mauerziegel' },
                 { id: 'kalksandstein', label: 'Kalksandstein' },
@@ -700,6 +724,8 @@ export default function Mauerwerk() {
                 return (
                   <button
                     key={item.id}
+                    type="button"
+                    {...alsOption(isActive)}
                     onClick={() => setSteckbriefMaterial(item.id as typeof steckbriefMaterial)}
                     className={`py-3 px-2 rounded-xl border text-xs font-bold transition-all text-center flex flex-col items-center justify-center gap-1 cursor-pointer min-h-[50px] ${
                       isActive
@@ -711,7 +737,7 @@ export default function Mauerwerk() {
                   </button>
                 );
               })}
-            </div>
+            </AuswahlGruppe>
           </div>
           <BaustoffProfil materialKey={steckbriefMaterial} />
         </div>

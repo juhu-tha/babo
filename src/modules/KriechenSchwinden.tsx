@@ -1,4 +1,5 @@
 import { formatDeZahl, formatDeWert } from '@/src/utils/numberFormat';
+import { ErgebnisAnsage } from '@/src/components/ui/ErgebnisAnsage';
 import React, { useState } from 'react';
 import {
   Chart as ChartJS,
@@ -148,6 +149,7 @@ export default function KriechenSchwinden() {
           </div>
 
           <div className="lg:col-span-8 flex flex-col gap-6">
+            <ErgebnisAnsage text={`Kriechzahl nach 10 000 Tagen ${formatDeZahl(creepData[creepData.length - 1], 2)}, Trocknungsschwinden ${formatDeZahl(shrinkageData[shrinkageData.length - 1], 0)} µm/m, autogenes Schwinden ${formatDeZahl(m.epsCaInf * 1e6, 0)} µm/m`} />
             <div className="grid grid-cols-2 md:grid-cols-4 gap-3 text-xs">
               <div className="bg-white p-3 rounded-xl border border-home-grau/30"><span className="text-text-main/60 block"><MdText text={inhalt.texte.t10000DT} /></span><strong className="font-mono text-shiraz text-base">{formatDeZahl(creepData[creepData.length - 1], 2)}</strong></div>
               <div className="bg-white p-3 rounded-xl border border-home-grau/30"><span className="text-text-main/60 block"><MdText text={inhalt.texte.cd10000D} /></span><strong className="font-mono text-base">{formatDeZahl(shrinkageData[shrinkageData.length - 1], 0)} µm/m</strong></div>
@@ -243,7 +245,7 @@ export default function KriechenSchwinden() {
                 {/* Kriechen */}
                 <div className="flex flex-col items-center bg-off-white rounded-lg border border-home-grau/30 p-4">
                   <div className="text-sm font-bold mb-2"><MdText text={inhalt.texte.kriechenUnterLast} /></div>
-                  <svg width="100%" height="100" viewBox="0 0 200 100">
+                  <svg width="100%" height="100" viewBox="0 0 200 100" role="img" aria-label="Schema Kriechen: Probekörper unter gleichbleibender Last verkürzt sich zwischen t = t₀ und t = ∞ zusätzlich um Δl">
                     {/* t=0 */}
                     <rect x="20" y="20" width="60" height="60" fill="#cbd5e1" stroke="#94a3b8" />
                     <path d="M 50 20 L 50 5" stroke="#ef4444" strokeWidth="2" markerEnd="url(#arrow-red)" />
@@ -267,7 +269,7 @@ export default function KriechenSchwinden() {
                 {/* Schwinden */}
                 <div className="flex flex-col items-center bg-off-white rounded-lg border border-home-grau/30 p-4">
                   <div className="text-sm font-bold mb-2"><MdText text={inhalt.texte.schwindenOhneLast} /></div>
-                  <svg width="100%" height="100" viewBox="0 0 200 100">
+                  <svg width="100%" height="100" viewBox="0 0 200 100" role="img" aria-label="Schema Schwinden: Probekörper ohne Last gibt Wasser ab und verkürzt sich von t = 0 (feucht) bis t = ∞ (trocken)">
                     {/* t=0 */}
                     <rect x="20" y="20" width="60" height="60" fill="#cbd5e1" stroke="#94a3b8" />
                     <text x="50" y="95" fontSize="10" fill="#64748b" textAnchor="middle">t = 0 (feucht)</text>
@@ -629,7 +631,8 @@ export default function KriechenSchwinden() {
 
               {/* Visual SVG Canvas */}
               <div className="relative w-full aspect-4/3 max-h-[380px] svg-buehne rounded-xl overflow-hidden border shadow-inner flex items-center justify-center">
-                <svg width="100%" height="100%" viewBox="0 0 540 380" className="select-none">
+                <svg width="100%" height="100%" viewBox="0 0 540 380" className="select-none" role="img"
+                  aria-label={`Belastete und unbelastete Stütze im Vergleich: Gesamtverkürzung der belasteten Stütze ${formatDeZahl(currentState.dL_tot, 2)} mm (Darstellung überhöht)`}>
                   <defs>
                     <linearGradient id="columnGrad" x1="0" y1="0" x2="1" y2="0">
                       <stop offset="0%" stopColor="#94a3b8" />

@@ -22,6 +22,7 @@ import inhalt from '@/content/emodul/EModul.json';
 import { emodul } from '@/src/calc/emodul';
 import { ALPHA_E } from '@/src/calc/betonkennwerte';
 import { MdText } from '@/src/components/inhalt/MdText';
+import { ErgebnisAnsage } from '@/src/components/ui/ErgebnisAnsage';
 
 ChartJS.register(
   CategoryScale,
@@ -57,6 +58,9 @@ export default function EModul() {
       hsPlusData: r.kurve.map(k => k.hsOben),
     };
   }, [fck, alphaE, eModulGestein, volGestein, eModulMatrix]);
+
+  // Statusmeldung nach jeder Eingabe (WCAG 4.1.3)
+  const ansage = `E-Modul des Betons ${formatDeZahl(results.ecm, 1)} GPa; Zweiphasenmodell zwischen ${formatDeZahl(results.eReuss, 1)} und ${formatDeZahl(results.eVoigt, 1)} GPa`;
 
   const chartData = {
     labels: results.chartLabels,
@@ -96,6 +100,7 @@ export default function EModul() {
 
   return (
     <div className="space-y-8">
+      <ErgebnisAnsage text={ansage} />
       <div className="bg-white p-6 rounded-2xl shadow-sm border border-home-grau/30 flex flex-col gap-6">
         <h2 className="text-xl font-bold text-text-main flex items-center gap-2">
           <Activity className="text-shiraz" /><MdText text={inhalt.texte.eModulMehrphasenmodelle} /></h2>
@@ -256,7 +261,7 @@ export default function EModul() {
               <div className="flex justify-between items-center h-40 bg-off-white rounded-lg border border-home-grau/30 p-4">
                 
                 {/* SVG Defs for Arrows */}
-                <svg width="0" height="0" className="absolute">
+                <svg width="0" height="0" className="absolute" aria-hidden="true">
                   <defs>
                     <marker id="arrow-red" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="4" markerHeight="4" orient="auto-start-reverse">
                       <path d="M 0 0 L 10 5 L 0 10 z" fill="#A3113E" />
@@ -271,7 +276,7 @@ export default function EModul() {
                 <div className="flex flex-col items-center w-1/3">
                   <div className="text-xs font-bold mb-2"><MdText text={inhalt.texte.voigtParallel} /></div>
                   <div className="text-[10px] text-text-main/70 mb-2">Dehnung <FormulaText text="\varepsilon" /> gleich</div>
-                  <svg width="60" height="70" viewBox="0 0 60 70" className="overflow-visible">
+                  <svg width="60" height="70" viewBox="0 0 60 70" className="overflow-visible" aria-hidden="true">
                     <rect x="10" y="15" width="20" height="40" fill="#cbd5e1" stroke="#94a3b8" />
                     <rect x="30" y="15" width="20" height="40" fill="#94a3b8" stroke="#64748b" />
                     <path d="M 30 15 L 30 2" stroke="#A3113E" strokeWidth="2" markerEnd="url(#arrow-red)" />
@@ -283,7 +288,7 @@ export default function EModul() {
                 <div className="flex flex-col items-center w-1/3 border-l border-r border-home-grau/30">
                   <div className="text-xs font-bold mb-2"><MdText text={inhalt.texte.reussReihe} /></div>
                   <div className="text-[10px] text-text-main/70 mb-2">Spannung <FormulaText text="\sigma" /> gleich</div>
-                  <svg width="60" height="70" viewBox="0 0 60 70" className="overflow-visible">
+                  <svg width="60" height="70" viewBox="0 0 60 70" className="overflow-visible" aria-hidden="true">
                     <rect x="10" y="15" width="40" height="20" fill="#cbd5e1" stroke="#94a3b8" />
                     <rect x="10" y="35" width="40" height="20" fill="#94a3b8" stroke="#64748b" />
                     <path d="M 30 15 L 30 2" stroke="#A3113E" strokeWidth="2" markerEnd="url(#arrow-red)" />
@@ -295,7 +300,7 @@ export default function EModul() {
                 <div className="flex flex-col items-center w-1/3">
                   <div className="text-xs font-bold mb-2"><MdText text={inhalt.texte.hsEinschluss} /></div>
                   <div className="text-[10px] text-text-main/70 mb-2"><MdText text={inhalt.texte.exaktereSchranke} /></div>
-                  <svg width="60" height="70" viewBox="0 0 60 70" className="overflow-visible">
+                  <svg width="60" height="70" viewBox="0 0 60 70" className="overflow-visible" aria-hidden="true">
                     <rect x="10" y="15" width="40" height="40" fill="#cbd5e1" stroke="#94a3b8" />
                     <circle cx="30" cy="35" r="12" fill="#94a3b8" stroke="#64748b" />
                     <path d="M 30 15 L 30 2" stroke="#A3113E" strokeWidth="2" markerEnd="url(#arrow-red)" />

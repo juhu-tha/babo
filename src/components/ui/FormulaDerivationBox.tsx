@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { ChevronDown, ChevronUp, Calculator, CheckCircle2 } from 'lucide-react';
 import { InlineMath, BlockMath } from 'react-katex';
 import { useTabContext } from '@/src/contexts/TabContext';
+import { ErgebnisAnsage } from './ErgebnisAnsage';
 
 export interface DerivationStep {
   titel: string;
@@ -38,6 +39,8 @@ export function FormulaDerivationBox({
 
   return (
     <div className="bg-white rounded-2xl border border-home-grau/30 shadow-xs overflow-hidden transition-all my-3">
+      {/* Ergebnis nach jeder Eingabe kurz ansagen (WCAG 4.1.3); ändert sich nur bei Rechnern mit Eingaben */}
+      {ergebnisHinweis && <ErgebnisAnsage text={`${title}: ${ergebnisHinweis}`} />}
       {/* Header mit Aufklapp-Trigger */}
       <button
         type="button"

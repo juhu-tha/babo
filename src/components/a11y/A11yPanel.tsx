@@ -13,11 +13,15 @@ export interface A11yPanelProps {
   screenWidth: Bildschirmbreite;
   changeScreenWidth: (mode: Bildschirmbreite) => void;
   resetSettings: () => void;
+  /** Behälter für die Fokusführung (useDialogFokus in AccessibilityToolbar.tsx) */
+  ref?: React.Ref<HTMLDivElement>;
 }
 
-export default function A11yPanel({ settings, updateSetting, screenWidth, changeScreenWidth, resetSettings }: A11yPanelProps) {
+export default function A11yPanel({ settings, updateSetting, screenWidth, changeScreenWidth, resetSettings, ref }: A11yPanelProps) {
   return (
-    <div 
+    <div
+      ref={ref}
+      id="a11y-dialog"
       role="dialog"
       aria-label="Barrierefreiheits-Einstellungen"
       className="absolute right-0 mt-2 w-84 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl shadow-xl p-4 z-50 animate-in fade-in zoom-in-95 duration-150 text-text-main dark:text-slate-100 text-xs"
@@ -28,7 +32,7 @@ export default function A11yPanel({ settings, updateSetting, screenWidth, change
             <ShieldCheck size={16} />
           </div>
           <div>
-            <h4 className="font-bold text-slate-900 dark:text-white text-xs">Barrierefreiheit (A11y)</h4>
+            <h2 className="font-bold text-slate-900 dark:text-white text-xs">Barrierefreiheit (A11y)</h2>
             <p className="text-[10px] text-slate-500 dark:text-slate-400">A11y = Accessibility • BITV 2.0 / WCAG 2.1</p>
           </div>
         </div>
@@ -66,6 +70,7 @@ export default function A11yPanel({ settings, updateSetting, screenWidth, change
                 onChange={(e) => updateSetting('fontSizeScale', Number(e.target.value) / 100)}
                 className="w-full accent-shiraz cursor-pointer h-1.5 bg-slate-200 dark:bg-slate-700 rounded-lg"
                 aria-label="Schriftgröße per Schieberegler einstellen"
+                aria-valuetext={`${formatDeWert(Math.round(settings.fontSizeScale * 100))} Prozent`}
               />
               <span className="text-[12px] font-bold text-slate-700 dark:text-slate-200">A+</span>
             </div>
@@ -81,6 +86,7 @@ export default function A11yPanel({ settings, updateSetting, screenWidth, change
             <button
               type="button"
               onClick={() => updateSetting('fontSizeScale', 0.75)}
+              aria-pressed={Math.abs(settings.fontSizeScale - 0.75) < 0.03}
               className={`py-1 rounded-lg border text-[10px] font-bold transition-all cursor-pointer ${
                 Math.abs(settings.fontSizeScale - 0.75) < 0.03
                   ? 'bg-shiraz text-white border-shiraz'
@@ -93,6 +99,7 @@ export default function A11yPanel({ settings, updateSetting, screenWidth, change
             <button
               type="button"
               onClick={() => updateSetting('fontSizeScale', 0.85)}
+              aria-pressed={Math.abs(settings.fontSizeScale - 0.85) < 0.03}
               className={`py-1 rounded-lg border text-[10px] font-bold transition-all cursor-pointer ${
                 Math.abs(settings.fontSizeScale - 0.85) < 0.03
                   ? 'bg-shiraz text-white border-shiraz'
@@ -105,6 +112,7 @@ export default function A11yPanel({ settings, updateSetting, screenWidth, change
             <button
               type="button"
               onClick={() => updateSetting('fontSizeScale', 1.0)}
+              aria-pressed={Math.abs(settings.fontSizeScale - 1.0) < 0.03}
               className={`py-1 rounded-lg border text-[10px] font-bold transition-all cursor-pointer ${
                 Math.abs(settings.fontSizeScale - 1.0) < 0.03
                   ? 'bg-shiraz text-white border-shiraz'
@@ -117,6 +125,7 @@ export default function A11yPanel({ settings, updateSetting, screenWidth, change
             <button
               type="button"
               onClick={() => updateSetting('fontSizeScale', 1.15)}
+              aria-pressed={Math.abs(settings.fontSizeScale - 1.15) < 0.03}
               className={`py-1 rounded-lg border text-[10px] font-bold transition-all cursor-pointer ${
                 Math.abs(settings.fontSizeScale - 1.15) < 0.03
                   ? 'bg-shiraz text-white border-shiraz'
@@ -129,6 +138,7 @@ export default function A11yPanel({ settings, updateSetting, screenWidth, change
             <button
               type="button"
               onClick={() => updateSetting('fontSizeScale', 1.30)}
+              aria-pressed={Math.abs(settings.fontSizeScale - 1.30) < 0.03}
               className={`py-1 rounded-lg border text-[10px] font-bold transition-all cursor-pointer ${
                 Math.abs(settings.fontSizeScale - 1.30) < 0.03
                   ? 'bg-shiraz text-white border-shiraz'
@@ -155,6 +165,7 @@ export default function A11yPanel({ settings, updateSetting, screenWidth, change
             <button
               type="button"
               onClick={() => changeScreenWidth('standard')}
+              aria-pressed={screenWidth === 'standard'}
               className={`py-1.5 px-2 rounded-lg border text-[10px] font-bold transition-all cursor-pointer flex flex-col items-center gap-0.5 ${
                 screenWidth === 'standard'
                   ? 'bg-shiraz text-white border-shiraz shadow-xs'
@@ -168,6 +179,7 @@ export default function A11yPanel({ settings, updateSetting, screenWidth, change
             <button
               type="button"
               onClick={() => changeScreenWidth('wide')}
+              aria-pressed={screenWidth === 'wide'}
               className={`py-1.5 px-2 rounded-lg border text-[10px] font-bold transition-all cursor-pointer flex flex-col items-center gap-0.5 ${
                 screenWidth === 'wide'
                   ? 'bg-shiraz text-white border-shiraz shadow-xs'
@@ -181,6 +193,7 @@ export default function A11yPanel({ settings, updateSetting, screenWidth, change
             <button
               type="button"
               onClick={() => changeScreenWidth('full')}
+              aria-pressed={screenWidth === 'full'}
               className={`py-1.5 px-2 rounded-lg border text-[10px] font-bold transition-all cursor-pointer flex flex-col items-center gap-0.5 ${
                 screenWidth === 'full'
                   ? 'bg-shiraz text-white border-shiraz shadow-xs'

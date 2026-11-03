@@ -28,6 +28,7 @@ import { META_CLUSTERS, GROUP_TO_CLUSTER } from './data/metaClusters';
 import { MODUL_KERN } from './registry/kern';
 import { MODULTEST_IN_APP } from './data/quizZuordnung';
 import { useAutoFormLabels } from './components/a11y/useAutoFormLabels';
+import { useDialogFokus } from './components/a11y/useDialogFokus';
 // Nur die Versionsnummer aus package.json (tree-shakebar); tests/versionData.test.ts sichert den Gleichstand
 // mit VERSION_HISTORY[0] – so bleibt die Änderungshistorie aus dem Einstiegs-Chunk (Phase 5, AP 5.4)
 import { version as PAKET_VERSION } from '../package.json';
@@ -132,12 +133,15 @@ function AppContent({ vorgerendert = false, vorrendern = false }: Omit<AppProps,
   const [mobilWerkzeugeOffen, setMobilWerkzeugeOffen] = useState(false);
   useAutoFormLabels('module-content', activeTab);
   useEffect(() => { setMobilWerkzeugeOffen(false); }, [activeTab]);
-  useEffect(() => {
-    if (!mobilWerkzeugeOffen) return;
-    const esc = (e: KeyboardEvent) => { if (e.key === 'Escape') setMobilWerkzeugeOffen(false); };
-    window.addEventListener('keydown', esc);
-    return () => window.removeEventListener('keydown', esc);
-  }, [mobilWerkzeugeOffen]);
+  // Mobiles Menü und Werkzeuge: Fokus hinein, Escape schließt, Fokus zurück zum Auslöser (WCAG 2.1.1, 2.4.3)
+  const menueKnopf = useRef<HTMLButtonElement>(null);
+  const seitenleiste = useRef<HTMLElement>(null);
+  const werkzeugKnopf = useRef<HTMLButtonElement>(null);
+  const werkzeugBox = useRef<HTMLDivElement>(null);
+  useDialogFokus(mobileMenuOpen, () => setMobileMenuOpen(false), menueKnopf, seitenleiste, { modal: true });
+  useDialogFokus(mobilWerkzeugeOffen, () => setMobilWerkzeugeOffen(false), werkzeugKnopf, werkzeugBox);
+  // PDF-Export: Fortschritt als Statusmeldung (WCAG 4.1.3)
+  const [exportStatus, setExportStatus] = useState('');
   // Schmale Ansicht: geschlossene Seitenleiste per inert aus Tastatur- und Screenreader-Reihenfolge nehmen (Phase 2, AP 2.3)
   const [istSchmal, setIstSchmal] = useState(() => typeof window !== 'undefined' && window.matchMedia('(max-width: 767px)').matches);
   useEffect(() => {
@@ -246,10 +250,18 @@ function AppContent({ vorgerendert = false, vorrendern = false }: Omit<AppProps,
   };
 
   const handleExport = async () => {
+    if (isExporting) return;
     setIsExporting(true);
-    const { exportToPDF } = await import('./lib/pdfExport');
-    await exportToPDF('module-content', `THA_Baustoffkunde_${activeTab}`);
-    setIsExporting(false);
+    setExportStatus(language === 'en' ? 'Creating PDF …' : 'PDF wird erstellt …');
+    try {
+      const { exportToPDF } = await import('./lib/pdfExport');
+      await exportToPDF('module-content', `THA_Baustoffkunde_${activeTab}`);
+      setExportStatus(language === 'en' ? 'PDF created.' : 'PDF erstellt.');
+    } catch {
+      setExportStatus(language === 'en' ? 'PDF could not be created.' : 'PDF konnte nicht erstellt werden.');
+    } finally {
+      setIsExporting(false);
+    }
   };
   // Besuchszähler (nur mit Server; im statischen Betrieb kein Aufruf, src/data/betriebsart.ts)
   React.useEffect(() => {
@@ -323,6 +335,8 @@ function AppContent({ vorgerendert = false, vorrendern = false }: Omit<AppProps,
       <div className="fixed inset-0 bg-black/60 z-40 md:hidden" onClick={() => setMobileMenuOpen(false)} />
     )}
     <aside
+      ref={seitenleiste}
+      id="seitenleiste"
       aria-label={language === 'en' ? 'Module navigation' : 'Modulnavigation'}
       inert={(istSchmal && !mobileMenuOpen) || (!istSchmal && sidebarCollapsed) ? true : undefined}
       className={"fixed md:sticky top-0 left-0 z-50 h-screen bg-white dark:bg-slate-900 border-r border-home-grau/30 dark:border-slate-800 flex flex-col flex-shrink-0 transition-all duration-300 ease-in-out overflow-hidden " + 
@@ -350,8 +364,8 @@ function AppContent({ vorgerendert = false, vorrendern = false }: Omit<AppProps,
             <button type="button" aria-label="Menü schließen" className="md:hidden text-home-grau dark:text-slate-400 p-1 hover:bg-home-grau/10 dark:hover:bg-slate-800 rounded" onClick={() => setMobileMenuOpen(false)}>
               <X size={20} />
             </button>
-            <button className="hidden md:block text-home-grau dark:text-slate-400 p-1 hover:bg-home-grau/10 dark:hover:bg-slate-800 rounded transition-colors" onClick={() => setSidebarCollapsed(true)} title="Sidebar ausblenden"> 
-              <X size={18} />
+            <button type="button" aria-label={language === 'en' ? 'Hide navigation' : 'Navigation ausblenden'} aria-controls="seitenleiste" aria-expanded={!sidebarCollapsed} className="hidden md:block text-home-grau dark:text-slate-400 p-1 hover:bg-home-grau/10 dark:hover:bg-slate-800 rounded transition-colors" onClick={() => setSidebarCollapsed(true)} title="Sidebar ausblenden">
+              <X size={18} aria-hidden="true" />
             </button>
           </div>
         </div>
@@ -379,7 +393,7 @@ function AppContent({ vorgerendert = false, vorrendern = false }: Omit<AppProps,
           )}
         </div>
       </div>
-      <nav className="flex-1 overflow-y-auto p-3 flex flex-col gap-1.5 custom-scrollbar pb-12">
+      <nav aria-label={language === 'en' ? 'Modules' : 'Module'} className="flex-1 overflow-y-auto p-3 flex flex-col gap-1.5 custom-scrollbar pb-12">
         <ModulNavigation
           searchQuery={searchQuery} openClusters={openClusters} setOpenClusters={setOpenClusters}
           openDropdown={openDropdown} setOpenDropdown={setOpenDropdown} favorites={favorites}
@@ -398,10 +412,13 @@ function AppContent({ vorgerendert = false, vorrendern = false }: Omit<AppProps,
            <div className="flex items-center justify-between h-14">
              <div className="flex items-center gap-3 md:hidden">
                <button
+                 ref={menueKnopf}
+                 type="button"
                  className="text-text-main dark:text-slate-100 p-2 -ml-2 rounded-lg hover:bg-home-grau/10 dark:hover:bg-slate-800 min-w-11 min-h-11 flex items-center justify-center"
                  onClick={() => setMobileMenuOpen(true)}
                  aria-label={language === 'en' ? 'Open menu' : 'Menü öffnen'}
                  aria-expanded={mobileMenuOpen}
+                 aria-controls="seitenleiste"
                >
                  <Menu size={24} aria-hidden="true" />
                </button>
@@ -425,6 +442,7 @@ function AppContent({ vorgerendert = false, vorrendern = false }: Omit<AppProps,
                 title={sidebarCollapsed ? "Sidebar einblenden" : "Sidebar ausblenden"}
                 aria-label={sidebarCollapsed ? (language === 'en' ? 'Show navigation' : 'Navigation einblenden') : (language === 'en' ? 'Hide navigation' : 'Navigation ausblenden')}
                 aria-expanded={!sidebarCollapsed}
+                aria-controls="seitenleiste"
               >
                 <Menu size={20} />
               </button>
@@ -511,6 +529,7 @@ function AppContent({ vorgerendert = false, vorrendern = false }: Omit<AppProps,
             {/* Mobil: Werkzeuge im „⋯“-Menü (Phase 2, AP 2.5) */}
             <div className="sm:hidden ml-auto relative">
               <button
+                ref={werkzeugKnopf}
                 type="button"
                 onClick={() => setMobilWerkzeugeOffen(o => !o)}
                 aria-expanded={mobilWerkzeugeOffen}
@@ -521,7 +540,7 @@ function AppContent({ vorgerendert = false, vorrendern = false }: Omit<AppProps,
                 <MoreHorizontal size={20} aria-hidden="true" />
               </button>
               {mobilWerkzeugeOffen && (
-                <div id="mobil-werkzeuge" className="absolute right-0 top-12 z-50 w-64 p-3 rounded-xl border border-home-grau/30 dark:border-slate-700 bg-white dark:bg-slate-900 shadow-lg flex flex-col gap-2">
+                <div ref={werkzeugBox} id="mobil-werkzeuge" className="absolute right-0 top-12 z-50 w-64 p-3 rounded-xl border border-home-grau/30 dark:border-slate-700 bg-white dark:bg-slate-900 shadow-lg flex flex-col gap-2">
                   <LanguageSwitcher />
                   <AccessibilityToolbar />
                   <button
@@ -537,8 +556,8 @@ function AppContent({ vorgerendert = false, vorrendern = false }: Omit<AppProps,
                   </button>
                   <button
                     onClick={() => { setMobilWerkzeugeOffen(false); handleExport(); }}
-                    disabled={isExporting}
-                    className="flex items-center gap-2 px-3 py-2.5 rounded-lg bg-off-white dark:bg-slate-800 text-text-main dark:text-white border border-home-grau/20 dark:border-slate-700 text-sm disabled:opacity-50"
+                    aria-disabled={isExporting || undefined}
+                    className="flex items-center gap-2 px-3 py-2.5 rounded-lg bg-off-white dark:bg-slate-800 text-text-main dark:text-white border border-home-grau/20 dark:border-slate-700 text-sm aria-disabled:opacity-50"
                   >
                     <Download size={16} aria-hidden="true" />
                     <span>{isExporting ? t('exporting') : t('exportPdf')}</span>
@@ -599,14 +618,15 @@ function AppContent({ vorgerendert = false, vorrendern = false }: Omit<AppProps,
                 <span className="text-xs font-medium leading-none select-none dark:hidden">{t('themeDark')}</span>
                 <span className="text-xs font-medium leading-none select-none hidden dark:inline">{t('themeLight')}</span>
               </button>
-              <button onClick={handleExport} disabled={isExporting} aria-label={t('exportPdf')} className="flex items-center gap-2 px-3 py-1.5 md:px-4 md:py-1.5 text-sm font-medium text-text-main dark:text-white bg-off-white dark:bg-slate-800 hover:bg-home-grau/20 dark:hover:bg-slate-750 border border-home-grau/20 dark:border-slate-700 rounded-lg transition-colors disabled:opacity-50 cursor-pointer">
-                <Download size={16} />
+              <button type="button" onClick={handleExport} aria-disabled={isExporting || undefined} aria-label={t('exportPdf')} className="flex items-center gap-2 px-3 py-1.5 md:px-4 md:py-1.5 text-sm font-medium text-text-main dark:text-white bg-off-white dark:bg-slate-800 hover:bg-home-grau/20 dark:hover:bg-slate-750 border border-home-grau/20 dark:border-slate-700 rounded-lg transition-colors aria-disabled:opacity-50 cursor-pointer">
+                <Download size={16} aria-hidden="true" />
                 <span className="hidden sm:inline">{isExporting ? t('exporting') : t('exportPdf')}</span>
               </button>
             </div>
           </div>
         </div>
       </header>
+      <p role="status" className="sr-only">{exportStatus}</p>
       <main className="flex-1 overflow-y-auto px-2 sm:px-4 md:px-6 lg:px-8 py-6 custom-scrollbar focus:outline-none" id="scroll-container" tabIndex={-1}>
         {/* Genau eine Hauptüberschrift je Seite: der Modulname (Phase 2, AP 2.2) */}
         <h1 className="sr-only">{(() => {

@@ -917,9 +917,10 @@ export const InteractiveQuizSystem: React.FC<InteractiveQuizSystemProps> = ({
                 <button
                   key={optIdx}
                   type="button"
-                  onClick={() => handleSelectOption(optIdx)}
-                  disabled={isRevealed}
-                  className={`w-full p-4 rounded-2xl border text-left text-xs sm:text-sm transition-all flex items-start gap-3.5 cursor-pointer ${style}`}
+                  onClick={() => { if (!isRevealed) handleSelectOption(optIdx); }}
+                  aria-pressed={isSelected}
+                  aria-disabled={isRevealed || undefined}
+                  className={`w-full p-4 rounded-2xl border text-left text-xs sm:text-sm transition-all flex items-start gap-3.5 ${isRevealed ? 'cursor-default' : 'cursor-pointer'} ${style}`}
                 >
                   <span className={`w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold shrink-0 mt-0.5 border ${
                     isRevealed && isCorrectOption
@@ -947,6 +948,15 @@ export const InteractiveQuizSystem: React.FC<InteractiveQuizSystemProps> = ({
               );
             })}
           </div>
+
+          {/* Kurze Ansage für Screenreader: Frage n von N, nach dem Antworten richtig/falsch (WCAG 4.1.3) */}
+          <p role="status" className="sr-only">
+            {feedbackMode === 'instant' && instantRevealed[currentQ.id]
+              ? (answers[currentQ.id] === currentQ.correctIdx
+                ? 'Antwort richtig.'
+                : `Antwort falsch. Richtig ist ${String.fromCharCode(65 + currentQ.correctIdx)}: ${currentQ.options[currentQ.correctIdx]}`.slice(0, 300))
+              : `Frage ${currentIndex + 1} von ${activeQuestions.length}`}
+          </p>
 
           {/* Instant Feedback Box (If enabled and answered) */}
           {feedbackMode === 'instant' && instantRevealed[currentQ.id] && (
@@ -1029,6 +1039,8 @@ export const InteractiveQuizSystem: React.FC<InteractiveQuizSystemProps> = ({
                     key={q.id}
                     type="button"
                     onClick={() => setCurrentIndex(idx)}
+                    aria-current={isCurrent ? 'step' : undefined}
+                    aria-label={`Frage ${idx + 1}${isAnswered ? ', beantwortet' : ''}${isMarked ? ', markiert' : ''}`}
                     className={`w-7 h-7 rounded-lg text-xs font-mono font-bold transition-all flex items-center justify-center cursor-pointer border ${
                       isCurrent
                         ? 'bg-shiraz text-white border-shiraz ring-2 ring-shiraz/20 scale-105'
@@ -1217,11 +1229,12 @@ export const InteractiveQuizSystem: React.FC<InteractiveQuizSystemProps> = ({
               </div>
 
               {detectedGaps.length > 0 && (
-                <div className="flex items-center gap-1 bg-off-white p-1 rounded-xl border border-home-grau/20 self-start sm:self-auto">
+                <AuswahlGruppe label="Wissenslücken nach Cluster filtern" className="flex items-center gap-1 bg-off-white p-1 rounded-xl border border-home-grau/20 self-start sm:self-auto">
                   {(['all', 'I', 'II', 'III', 'IV', 'V'] as const).map(f => (
                     <button
                       key={f}
                       type="button"
+                      {...alsOption(activeGapFilter === f)}
                       onClick={() => setActiveGapFilter(f)}
                       className={`px-2.5 py-1 rounded-lg text-xs font-bold transition-all cursor-pointer ${
                         activeGapFilter === f
@@ -1232,7 +1245,7 @@ export const InteractiveQuizSystem: React.FC<InteractiveQuizSystemProps> = ({
                       {f === 'all' ? 'Alle' : `Cluster ${f}`}
                     </button>
                   ))}
-                </div>
+                </AuswahlGruppe>
               )}
             </div>
 

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useId, useRef, useState } from 'react';
 import { useTabContext } from '@/src/contexts/TabContext';
 import { ShieldAlert, X, BookOpen, FileText, Calculator, Globe, ShieldCheck, ArrowUpRight, ChevronDown } from 'lucide-react';
 import { FormulaText } from './FormulaText';
@@ -8,6 +8,7 @@ import { resolveBibReference } from '@/src/data/bibliography';
 import { pruefvermerkFuer } from '@/src/data/pruefvermerke';
 import { inhaltsstandAus, istGeprueft, pruefvermerkText } from './pruefvermerkText';
 import { PruefverfahrenHinweis } from './PruefVermerk';
+import { useDialogFokus } from '@/src/components/a11y/useDialogFokus';
 
 interface ModuleFooterProps {
   /**
@@ -51,6 +52,11 @@ export function ModuleFooter({
   const vermerk = pruefvermerkFuer(moduleId ?? activeTab);
   const inhaltsstand = inhaltsstandAus(lastReviewed);
   const [showDisclaimerModal, setShowDisclaimerModal] = useState(false);
+  // Haftungshinweis als modaler Dialog: Fokus hinein und darin halten, Escape schließt, Fokus zurück (WCAG 2.1.2, 2.4.3)
+  const haftungKnopf = useRef<HTMLButtonElement>(null);
+  const haftungDialog = useRef<HTMLDivElement>(null);
+  const haftungTitel = useId();
+  useDialogFokus(showDisclaimerModal, () => setShowDisclaimerModal(false), haftungKnopf, haftungDialog, { modal: true });
   const [openRegelwerke, setOpenRegelwerke] = useState(false);
   const [openLiteratur, setOpenLiteratur] = useState(false);
   const [openFormeln, setOpenFormeln] = useState(false);
@@ -383,7 +389,9 @@ export function ModuleFooter({
             </span>
           </div>
           <button
+            ref={haftungKnopf}
             type="button"
+            aria-haspopup="dialog"
             onClick={() => setShowDisclaimerModal(true)}
             className="text-[11px] font-bold text-shiraz hover:underline whitespace-nowrap shrink-0 flex items-center gap-1 cursor-pointer"
           >
@@ -441,19 +449,20 @@ export function ModuleFooter({
 
       {/* Engineering Disclaimer Modal */}
       {showDisclaimerModal && (
-        <div className="fixed inset-0 z-50 bg-black/50 backdrop-blur-xs flex items-center justify-center p-4 animate-in fade-in duration-150">
-          <div className="bg-white rounded-2xl max-w-xl w-full p-6 shadow-2xl border border-home-grau/30 space-y-4 max-h-[90vh] overflow-y-auto">
+        <div className="fixed inset-0 z-50 bg-black/50 backdrop-blur-xs flex items-center justify-center p-4 animate-in fade-in duration-150" onClick={e => { if (e.target === e.currentTarget) setShowDisclaimerModal(false); }}>
+          <div ref={haftungDialog} role="dialog" aria-modal="true" aria-labelledby={haftungTitel} className="bg-white rounded-2xl max-w-xl w-full p-6 shadow-2xl border border-home-grau/30 space-y-4 max-h-[90vh] overflow-y-auto">
             <div className="flex items-center justify-between border-b border-home-grau/20 pb-3">
-              <div className="flex items-center gap-2 font-bold text-base text-text-main">
-                <ShieldAlert size={20} className="text-shiraz" />
-                Wichtiger Hinweis zur Haftung (Engineering Disclaimer)
-              </div>
+              <h2 id={haftungTitel} className="flex items-center gap-2 font-bold text-base text-text-main">
+                <ShieldAlert size={20} className="text-shiraz" aria-hidden="true" />
+                <span>Wichtiger Hinweis zur Haftung (<span lang="en">Engineering Disclaimer</span>)</span>
+              </h2>
               <button
                 type="button"
+                aria-label="Hinweis schließen"
                 onClick={() => setShowDisclaimerModal(false)}
                 className="p-1 text-slate-400 hover:text-text-main rounded-lg"
               >
-                <X size={18} />
+                <X size={18} aria-hidden="true" />
               </button>
             </div>
             <div className="p-4 bg-off-white rounded-xl border border-home-grau/15 text-xs text-text-main/80 leading-relaxed space-y-2">
