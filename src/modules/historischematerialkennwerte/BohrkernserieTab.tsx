@@ -132,7 +132,7 @@ export function BohrkernserieTab() {
 
       {/* 2 Statistik */}
       <section className="space-y-3">
-        <h4 className="text-base font-bold text-text-main flex items-center gap-2"><Sigma size={18} className="text-shiraz" aria-hidden="true" />{inhalt.texte.hStatistik}</h4>
+        <h4 className="text-base font-bold text-text-main flex items-center gap-2"><Sigma size={18} className="text-shiraz" aria-hidden="true" /><span><MdText text={inhalt.texte.hStatistik} /></span></h4>
         <div className="p-3 rounded-xl border border-home-grau/30 bg-white overflow-x-auto">
           <BlockMath math={'f_{\\mathrm{ck,is}} = \\min\\left(f_{\\mathrm{m(n),is}} - k_n \\cdot s;\\; f_{\\mathrm{is,lowest}} + M\\right) \\quad\\text{mit}\\quad s \\ge 0{,}08 \\cdot f_{\\mathrm{m(n),is}}'} />
         </div>
@@ -170,7 +170,7 @@ export function BohrkernserieTab() {
 
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
           <div className="lg:col-span-5 space-y-3 p-4 rounded-2xl border border-home-grau/30 bg-off-white">
-            <label className="block text-xs text-text-main font-semibold">{inhalt.texte.werteLabel}
+            <label className="block text-xs text-text-main font-semibold"><MdText text={inhalt.texte.werteLabel} />
               <textarea value={werteText} onChange={e => { setWerteText(e.target.value); eigene(); }} rows={3} className={`${feld} font-mono`} />
             </label>
             <div>
@@ -187,11 +187,11 @@ export function BohrkernserieTab() {
                 {BEZUEGE.map(b => <option key={b.id} value={b.id}>{b.label}</option>)}
               </select>
             </label>
-            <div className="grid grid-cols-3 gap-2">
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-2">
               <label className="block text-xs text-text-main font-semibold">{inhalt.texte.durchmesserLabel}
                 <input type="number" min={50} step={1} value={durchmesser} onChange={e => { setDurchmesser(Number(e.target.value)); eigene(); }} className={feld} />
               </label>
-              <label className="block text-xs text-text-main font-semibold">{inhalt.texte.groesstkornLabel}
+              <label className="block text-xs text-text-main font-semibold"><MdText text={inhalt.texte.groesstkornLabel} />
                 <input type="number" min={1} step={1} value={groesstkorn} onChange={e => { setGroesstkorn(Number(e.target.value)); eigene(); }} className={feld} />
               </label>
               <label className="block text-xs text-text-main font-semibold">{inhalt.texte.volumenLabel}
@@ -200,7 +200,7 @@ export function BohrkernserieTab() {
             </div>
             <label className="flex items-start gap-2 text-xs text-text-main">
               <input type="checkbox" checked={mindestStreuung} disabled={ansatz !== 'kerne'} onChange={e => { setMindestStreuung(e.target.checked); eigene(); }} className="mt-0.5 accent-shiraz" />
-              <span>{inhalt.texte.mindestStreuungLabel}</span>
+              <span><MdText text={inhalt.texte.mindestStreuungLabel} /></span>
             </label>
           </div>
 
@@ -212,27 +212,27 @@ export function BohrkernserieTab() {
             )}
             <div className="grid grid-cols-2 md:grid-cols-3 gap-3 text-center">
               <div className="p-3 rounded-xl border border-home-grau/30 bg-white">
-                <span className="block text-[11px] font-bold text-home-grau uppercase">{inhalt.texte.kerneAnzahl}</span>
+                <span className="block text-xs font-semibold text-home-grau"><MdText text={inhalt.texte.kerneAnzahl} /></span>
                 <span className="text-base font-bold text-text-main font-mono">{formatDeZahl(r.n, 0)} ({formatDeZahl(r.nMin, 0)})</span>
               </div>
               <div className="p-3 rounded-xl border border-home-grau/30 bg-white">
-                <span className="block text-[11px] font-bold text-home-grau uppercase">{inhalt.texte.mittelwert}</span>
+                <span className="block text-xs font-semibold text-home-grau"><MdText text={inhalt.texte.mittelwert} /></span>
                 <span className="text-base font-bold text-text-main font-mono">{formatDeZahl(r.mittel, 2)} N/mm²</span>
               </div>
               <div className="p-3 rounded-xl border border-home-grau/30 bg-white">
-                <span className="block text-[11px] font-bold text-home-grau uppercase">{inhalt.texte.streuung}</span>
+                <span className="block text-xs font-semibold text-home-grau"><MdText text={inhalt.texte.streuung} /></span>
                 <span className="text-base font-bold text-text-main font-mono">{formatDeZahl(ansatz === 'kerne' ? r.sEff : r.s, 2)} N/mm²</span>
               </div>
               <div className="p-3 rounded-xl border border-shiraz/30 bg-shiraz/10">
-                <span className="block text-[11px] font-bold text-shiraz uppercase">{inhalt.texte.fckis}</span>
+                <span className="block text-xs font-semibold text-shiraz"><MdText text={inhalt.texte.fckis} /></span>
                 <span className="text-lg font-black text-shiraz font-mono">{formatDeZahl(r.fckIs, 1)} N/mm²</span>
               </div>
               <div className="p-3 rounded-xl border border-shiraz/30 bg-shiraz/10">
-                <span className="block text-[11px] font-bold text-shiraz uppercase">{inhalt.texte.klasse}</span>
+                <span className="block text-xs font-semibold text-shiraz"><MdText text={inhalt.texte.klasse} /></span>
                 <span className="text-lg font-black text-shiraz">{klasseText}</span>
               </div>
               <div className="p-3 rounded-xl border border-home-grau/30 bg-white">
-                <span className="block text-[11px] font-bold text-home-grau uppercase">{inhalt.texte.verhaeltnis}</span>
+                <span className="block text-xs font-semibold text-home-grau"><MdText text={inhalt.texte.verhaeltnis} /></span>
                 <span className="text-base font-bold text-text-main font-mono">{formatDeZahl(r.verhaeltnis, 3)}</span>
               </div>
             </div>
@@ -240,7 +240,7 @@ export function BohrkernserieTab() {
               <ul className="text-xs text-text-main/90 space-y-1">
                 <li>{MASSGEBEND[r.massgebend] ?? r.massgebend}</li>
                 {ansatz === 'kerne' && mindestStreuung && <li>{inhalt.texte.ohneMindest} {formatDeZahl(r.fckIsOhneMindest, 1)} N/mm²</li>}
-                {r.naechsteKlasse && r.naechsteKlasse !== '–' && <li>{inhalt.texte.naechste} {formatDeZahl(r.naechsteGrenze, 2)} N/mm² ({r.naechsteKlasse})</li>}
+                {r.naechsteKlasse && r.naechsteKlasse !== '–' && <li><MdText text={inhalt.texte.naechste} /> {formatDeZahl(r.naechsteGrenze, 2)} N/mm² ({r.naechsteKlasse})</li>}
               </ul>
             )}
             {fehler.length > 0 && (
