@@ -8,7 +8,9 @@ import { Line } from 'react-chartjs-2';
 import '@/src/lib/chartSetup';
 import { BlockMath, InlineMath } from 'react-katex';
 import { designLognormal, charValue, fckFromInSitu, classFor, fkMasonry, fdMasonry } from '@/src/utils/bestandKern';
-import { fcdBeton, FCD_MODUL } from '@/src/data/kennwerte';
+import { fcdBeton, FCD_MODUL, GAMMA_C } from '@/src/data/kennwerte';
+import { EC3_NA_DE } from '@/src/calc/stahlbau';
+import { GAMMA_M_MW, ZETA_MW } from '@/src/calc/mauerwerk';
 import {
   Chart as ChartJS,
   CategoryScale,
@@ -121,7 +123,8 @@ export default function HistorischeMaterialkennwerte() {
 
     // 2. Teilsicherheitsbeiwerte nach Eurocode (Neubau):
     //    Baustahl γ_M0 = 1,0 (EC3), Beton γ_c = 1,5 (EC2), Mauerwerk γ_M = 1,5 (EC6/NA, Regelwert)
-    const gamma_M_ec = nachweisMaterial === 'stahl' ? 1.0 : 1.5;
+    // γ_M nach Eurocode aus den zentralen Konstanten (Umstellung 03.11.2026): Stahl γ_M0 (EC3/NA), Beton γ_C, Mauerwerk γ_M
+    const gamma_M_ec = nachweisMaterial === 'stahl' ? EC3_NA_DE.gammaM0 : nachweisMaterial === 'beton' ? GAMMA_C.staendig : GAMMA_M_MW;
     const f_d_ec = f_k / gamma_M_ec;
 
     // 3. Modifizierte Beiwerte nach DBV-Merkblatt – gilt nur für Beton und Betonstahl
@@ -270,7 +273,7 @@ export default function HistorischeMaterialkennwerte() {
     const fK = fkMasonry(fB, mortarStrength, 0.55);
 
     // Bemessungswert f_d = ζ · f_k / γ_M mit ζ = 0,85 und γ_M = 1,5 (DIN EN 1996-1-1/NA, Regelwert)
-    const fD = fdMasonry(fK, 1.5, 0.85);
+    const fD = fdMasonry(fK, GAMMA_M_MW, ZETA_MW);
 
     return {
       areaSqMm,
@@ -297,7 +300,7 @@ export default function HistorischeMaterialkennwerte() {
     const yieldRatio = yieldStrengthMpa / tensileStrengthMpa;
     
     // Design yield limit
-    const gammaM0 = 1.00;
+    const gammaM0 = EC3_NA_DE.gammaM0;
     const fYd = yieldStrengthMpa / gammaM0;
 
     let designation = inhalt.werte.s235jrSt372;
