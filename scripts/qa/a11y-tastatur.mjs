@@ -423,11 +423,12 @@ async function pruefeModul(page, basis, modus, id, befunde, details) {
   befunde.push(...fokusBefunde(stopps, ort), ...fallenBefund(stopps, ort));
 }
 
-/** Reflow: Elemente rechts außerhalb des Bildes, die nicht in einem waagerecht scrollbaren Bereich liegen */
+/** Reflow: Elemente rechts außerhalb des Bildes, die nicht in einem waagerecht scrollbaren oder abschneidenden Bereich liegen
+ *  (abgeschnittene Vorschauen wie die gekürzte Formel im Kopf des Rechenwegs verbreitern die Seite nicht) */
 async function ueberstand(page) {
   return page.evaluate(() => {
     const B = window.__bb; const w = document.documentElement.clientWidth; const raus = [];
-    const scrollbar = el => { for (let e = el.parentElement; e && e !== document.body; e = e.parentElement) { const o = getComputedStyle(e).overflowX; if ((o === 'auto' || o === 'scroll') && e.id !== 'scroll-container') return true; } return false; };
+    const scrollbar = el => { for (let e = el.parentElement; e && e !== document.body; e = e.parentElement) { const o = getComputedStyle(e).overflowX; if ((o === 'auto' || o === 'scroll' || o === 'hidden' || o === 'clip') && e.id !== 'scroll-container') return true; } return false; };
     for (const el of document.querySelectorAll('#scroll-container *')) {
       if (!B.sichtbar(el) || el.closest('.sr-only,[class*="print:"]')) continue;
       const r = el.getBoundingClientRect();

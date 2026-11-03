@@ -144,7 +144,7 @@ export function useAutoFormLabels(wurzelId: string, abhaengigkeit: unknown) {
         if (name) { t.setAttribute('aria-label', name); t.dataset.autoLabel = '1'; } else t.dataset.autoLabel = '0';
       });
       // Scrollbare Bereiche ohne fokussierbaren Inhalt per Tastatur erreichbar machen (WCAG 2.1.1)
-      wurzel.querySelectorAll<HTMLElement>('[class*="overflow-x-auto"], [class*="overflow-auto"], [class*="overflow-y-auto"], [class*="overflow-x-scroll"], .katex-display, .katex:not(.katex-display .katex), table').forEach(el => {
+      wurzel.querySelectorAll<HTMLElement>('[class*="overflow-x-auto"], [class*="overflow-auto"], [class*="overflow-y-auto"], [class*="overflow-x-scroll"], .katex-display, table').forEach(el => {
         if (el.hasAttribute('tabindex')) return;
         const scrollt = el.scrollWidth > el.clientWidth + 1 || el.scrollHeight > el.clientHeight + 1;
         if (!scrollt || el.querySelector('a[href], button, input, select, textarea, [tabindex]')) return;

@@ -1129,19 +1129,6 @@ html:not(.dark) :is(.text-slate-400, .text-gray-400, .text-slate-500, .text-gray
   #module-content .katex { font-size: 1em; }
   #module-content [class*="-mx-"] { margin-left: 0; margin-right: 0; }
 }
-/* Sehr schmale Ansicht (400 % Zoom, 320 px): lange Formeln im Fließtext scrollen für sich statt die Seite zu verbreitern
-   (WCAG 1.4.10; Prüfung 03.11.2026). Ab 481 px unverändert (Grundlinie der Formel bleibt im Text). */
-@media (max-width: 480px) {
-  #module-content .katex:not(.katex-display .katex) {
-    display: inline-block;
-    max-width: 100%;
-    overflow-x: auto;
-    overflow-y: hidden;
-    vertical-align: middle;
-    /* Überhang kursiver Glyphen auffangen: kurze Formeln sollen nicht um 1–2 px „scrollen“ (sonst unnötige Tabstopps) */
-    padding: 1px 0.2em 2px 0;
-  }
-}
 
 /* Mindestgröße für Bedienelemente auf Touch-Geräten: 24 × 24 px (WCAG 2.2, 2.5.8; AP 2.7) */
 @media (pointer: coarse), (max-width: 640px) {

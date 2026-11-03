@@ -14,7 +14,7 @@ node scripts/qa/a11y-tastatur.mjs --basis http://localhost:4526/ [--routen a,b] 
 
 | Lauf | vorher (main) | nachher (Branch) |
 |---|---:|---:|
-| `a11y-tastatur.mjs` (Stichprobe, alle Teile) | **114 Befunde** | **0 Befunde** |
+| `a11y-tastatur.mjs` (Stichprobe, alle Teile) | **114 Befunde** (davon 2 Fehlalarme, s. „Ohne Befund“) | **0 Befunde** |
 | `a11y-reiter.mjs` (axe, 15 Routen × desk/mob/desk-dunkel, 174 Prüfungen) | 0 Verstöße | 0 Verstöße |
 | `a11y-dialog.mjs`, `a11y-struktur.mjs`, `a11y-diagramme.mjs` | – | 0 (s. PR) |
 
@@ -42,10 +42,10 @@ Die 114 Befunde vorher zeigen, dass die axe-Läufe (0 Verstöße) diese Klasse v
 | T16 | 4.1.2 | Seitenleistenschalter (Desktop, „X“ in der Seitenleiste; Hinweis Gesamtgutachten #314) | nur `title` | `aria-label` „Navigation ausblenden“, `aria-expanded`, `aria-controls`; Kopfzeilenschalter und „Menü öffnen“ mit `aria-controls` |
 | T17 | 1.3.1 | Tabellen ohne Beschriftung (`bp_glaeser`, `korrosionsschutz_beschichtungen`, `bauphysik`) | kein `caption`/`aria-label` | Sicherheitsnetz in `useAutoFormLabels`: Name aus der Überschrift davor (nicht über eine andere Tabelle hinweg) |
 | T18 | 1.3.1 | A11y-Dialog | Überschrift `h4` direkt nach `h1` (Sprung) | `h2` (gleiche Optik) |
-| T19 | 1.4.10 | Formeln im Fließtext bei 320 px (`emodul`, `kriechen`) | lange Inline-Formeln ragten bis 54 px über den Rand | bis 480 px scrollen Inline-Formeln für sich (`index.css`), per Tastatur fokussierbar (Hook) |
 | T20 | 2.3.3 | Systemeinstellung „Bewegung reduzieren“ (alle 14 Seiten) | Übergänge der Seitenleiste (0,3 s), Einblenden der Module (0,5 s) und Fortschrittsbalken liefen weiter; wirkte nur der eigene Schalter | `@media (prefers-reduced-motion: reduce)` wie der Schalter: keine Animationen/Übergänge, kein sanftes Scrollen |
 | T21 | 1.4.1, 1.4.11 | Erzwungene Farben (Windows-Kontrastdesigns), alle Reiterleisten, Optionsgruppen, Schalter, aktuelles Modul | gewählter Reiter/gedrückte Option nicht von den anderen unterscheidbar (nur Hintergrundfarbe); Schalterknopf unsichtbar | `@media (forced-colors: active)`: Innenrahmen in `Highlight` und Unterstreichung; Schalter mit Rahmen und sichtbarem Knopf |
 | T22 | 1.4.11 | Fokusumriss auf farbigen Flächen (z. B. Ergebniskarte Bodenmechanik, grün/gelb) | Umriss Shiraz auf Farbe ≈ 1,9 : 1 (erst sichtbar, seit die Erläuterungen fokussierbar sind) | zweifarbiger Fokus im Modulinhalt: heller (dunkel: dunkler) Saum zwischen Element und Umriss, Umriss ≥ 7,5 : 1 zum Saum; Formularfelder ausgenommen (eigener Ring) |
+| T23 | 2.5.8 (WCAG 2.2) | Erläuterung (`InfoTooltip`) und Regler (`Slider`) | – (Erläuterung war kein Bedienelement) | neue Schaltfläche und Regler mit 24 × 24 px Zielfläche, Platzbedarf im Layout unverändert (negative Ränder), keine Überlappung (axe target-size 0) |
 
 ### Ohne Befund (in der Stichprobe)
 
@@ -56,7 +56,7 @@ Die 114 Befunde vorher zeigen, dass die axe-Läufe (0 Verstöße) diese Klasse v
 - **Reiter** (`ModuleTabs`, `ReiterLeiste`): Pfeiltasten, Pos1/Ende, „roving tabindex“, gültiges `aria-controls`.
 - **Überschriften**: genau ein `h1` je Seite, keine Sprünge im Inhalt; **Landmarken**: ein `main`, `banner`, Navigation.
 - **Formeln**: alle KaTeX-Ausgaben mit MathML; **Bilder**: keine `img` ohne `alt`; **Sprache**: `lang="de"`.
-- **Zoom 200 %** (720 px): kein waagerechtes Scrollen; **Textabstände** (1.4.12): kein zusätzlich abgeschnittener Text.
+- **Zoom 200 % und 400 %** (720/320 px): kein waagerechtes Scrollen der Seite. Der Vorher-Lauf meldete bei 320 px Formeln in `emodul`/`kriechen` über dem Rand; das waren gekürzte Formelvorschauen im Kopf des Rechenwegs (Behälter mit `overflow: hidden`), die die Seite nicht verbreitern – Prüfregel angepasst, keine Codeänderung nötig. **Textabstände** (1.4.12): kein zusätzlich abgeschnittener Text.
 - **Diagramme**: Datentabellen-Alternative per Tastatur (bestehende Prüfung `a11y-diagramme.mjs`).
 
 ## Grenzen und Empfehlungen
