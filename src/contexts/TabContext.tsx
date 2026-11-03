@@ -13,8 +13,8 @@ interface TabContextType {
   setActiveTab: (tab: TabId) => void;
   /** Adresse ohne Modul (unbekannte Modul-ID oder unbekannter Pfad): Hinweis „Seite nicht gefunden“ statt Startseite */
   nichtGefunden: string | null;
-  typischeBauschaedenSubTab?: 'feuchtigkeit' | 'risse' | 'korrosion' | 'unvertraeglichkeiten' | 'tief_ingenieurbau' | 'analysator';
-  setTypischeBauschaedenSubTab: (subTab: 'feuchtigkeit' | 'risse' | 'korrosion' | 'unvertraeglichkeiten' | 'tief_ingenieurbau' | 'analysator') => void;
+  typischeBauschaedenSubTab?: 'feuchtigkeit' | 'risse' | 'korrosion' | 'unvertraeglichkeiten' | 'tief_ingenieurbau' | 'kleb_dicht' | 'analysator';
+  setTypischeBauschaedenSubTab: (subTab: 'feuchtigkeit' | 'risse' | 'korrosion' | 'unvertraeglichkeiten' | 'tief_ingenieurbau' | 'kleb_dicht' | 'analysator') => void;
   theme: 'light' | 'dark';
   setTheme: (theme: 'light' | 'dark') => void;
   toggleTheme: () => void;
@@ -103,7 +103,7 @@ export function TabProvider({ children, startTab }: { children: ReactNode; /** n
   };
   const activeTab = activeTabState;
 
-  const [typischeBauschaedenSubTab, setTypischeBauschaedenSubTab] = useState<'feuchtigkeit' | 'risse' | 'korrosion' | 'unvertraeglichkeiten' | 'tief_ingenieurbau' | 'analysator'>('feuchtigkeit');
+  const [typischeBauschaedenSubTab, setTypischeBauschaedenSubTab] = useState<'feuchtigkeit' | 'risse' | 'korrosion' | 'unvertraeglichkeiten' | 'tief_ingenieurbau' | 'kleb_dicht' | 'analysator'>('feuchtigkeit');
 
   // Tooltip-Modus für komplexe Fachbegriffe (systemweit standardmäßig aktiv)
   const [glossaryTooltipMode, setGlossaryTooltipModeState] = useState<boolean>(() => {
