@@ -81,7 +81,7 @@ export default function ForschungTransfer() {
         <div className="space-y-8 text-sm text-text-main/80 leading-relaxed max-w-prose">
           <p><MdText text={inhalt.texte.dasBaustoffboardEntstehtAus} /></p>
 
-          <Abschnitt id="ft-lehrgebiet" icon={FlaskConical} titel="Lehrgebiet">
+          <Abschnitt id="ft-lehrgebiet" icon={FlaskConical} titel="Professur">
             <p><MdText text={inhalt.texte.werkstoffeUndStoffkreisläufeIm} /></p>
             <p><MdText text={inhalt.texte.schwerpunkteDesLehrgebiets} /></p>
             <p className="font-semibold text-text-main flex items-center gap-2">

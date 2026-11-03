@@ -16,6 +16,11 @@ export const KMOD: Readonly<Record<Nutzungsklasse, Readonly<Record<KLED, number>
 };
 /** γ_M für Holz und Holzwerkstoffe nach NA DE (auch Brettschichtholz) */
 export const GAMMA_M_HOLZ = 1.3;
+/**
+ * γ_M für außergewöhnliche Bemessungssituationen = 1,0 (DIN EN 1995-1-1/NA, NDP zu 2.4.1(1)P, Abs. (3); öffentliche
+ * Wiedergabe Fraunhofer IRB, Volltext rswb 06059000878; Ausgabe am Normtext prüfen – vorläufig, F-Freigabe).
+ */
+export const GAMMA_M_HOLZ_AUSSERGEWOEHNLICH = 1.0;
 
 import { EULER_BETA } from './stabilitaet';
 export { EULER_BETA };

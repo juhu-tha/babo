@@ -72,6 +72,7 @@ export const PRUEFVERMERKE: Record<string, Pruefvermerk> = {
   altholz_urban_mining: { status: 'geprueft', am: '2026-10-29' }, // Modulprüfung Tranche 12, freigegeben 29.10.2026 (docs/pruefung/module-tranche-12.md)
   analytik: { status: 'geprueft', am: '2026-10-29' }, // Modulprüfung Tranche 4, freigegeben 29.10.2026 (docs/pruefung/module-tranche-4.md)
   asphalt: { status: 'offen' },
+  ec_kennwerte: { status: 'offen' }, // neues Modul 02.11.2026, nicht geprüft
   ausbau: { status: 'geprueft', am: '2026-10-29' }, // Modulprüfung Tranche 6, freigegeben 29.10.2026 (docs/pruefung/module-tranche-6.md)
   bauchemie: { status: 'offen' },
   bauphysik: { status: 'offen' },

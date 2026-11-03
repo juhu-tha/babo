@@ -19,7 +19,7 @@
      ]
     ],
     "art": "formel",
-    "ms": 0.01
+    "ms": 0
    }
   },
   "src/calc/asphalt.ts": {
@@ -51,7 +51,7 @@
      ]
     ],
     "art": "kern",
-    "ms": 0
+    "ms": 0.01
    },
    "marshallKurve": {
     "args": [
@@ -84,7 +84,7 @@
      ]
     ],
     "art": "kern",
-    "ms": 0.01
+    "ms": 0.02
    },
    "asphaltRohdichte": {
     "args": [
@@ -178,7 +178,7 @@
      ]
     ],
     "art": "kern",
-    "ms": 0
+    "ms": 0.01
    },
    "zeitBisBewehrung": {
     "args": [
@@ -498,7 +498,7 @@
      ]
     ],
     "art": "formel",
-    "ms": 0.01
+    "ms": 0
    },
    "lehmWand": {
     "args": [
@@ -519,7 +519,7 @@
      ]
     ],
     "art": "formel",
-    "ms": 0.01
+    "ms": 0
    },
    "blechMasse": {
     "args": [
@@ -650,7 +650,7 @@
      ]
     ],
     "art": "formel",
-    "ms": 0.02
+    "ms": 0.01
    },
    "rueckprallLehrkurve": {
     "args": [
@@ -887,6 +887,19 @@
     "art": "kern",
     "ms": 0
    },
+   "klasseAusInsitu13791": {
+    "args": [
+     1,
+     "wuerfel"
+    ],
+    "pfade": [
+     [
+      0
+     ]
+    ],
+    "art": "formel",
+    "ms": 0.01
+   },
    "insituDruckfestigkeit13791": {
     "args": [
      {
@@ -916,7 +929,7 @@
      ]
     ],
     "art": "kern",
-    "ms": 0.55
+    "ms": 0.03
    },
    "impactEcho": {
     "args": [
@@ -1147,7 +1160,7 @@
      ]
     ],
     "art": "kern",
-    "ms": 0.05
+    "ms": 0.07
    }
   },
   "src/calc/biegelinie.ts": {
@@ -1343,7 +1356,7 @@
      ]
     ],
     "art": "kern",
-    "ms": 0.1
+    "ms": 0.16
    },
    "werkstoffVergleich": {
     "args": [
@@ -1379,7 +1392,7 @@
      ]
     ],
     "art": "formel",
-    "ms": 0.38
+    "ms": 0.51
    },
    "biegesteifigkeit": {
     "args": [
@@ -1511,7 +1524,7 @@
      ]
     ],
     "art": "kern",
-    "ms": 0.04
+    "ms": 0.05
    },
    "ausrollgrenze": {
     "args": [
@@ -1532,7 +1545,7 @@
      ]
     ],
     "art": "kern",
-    "ms": 0
+    "ms": 0.01
    },
    "bodengruppePlastizitaet": {
     "args": [
@@ -1618,7 +1631,7 @@
      ]
     ],
     "art": "kern",
-    "ms": 0.11
+    "ms": 0.16
    },
    "mohrCoulomb": {
     "args": [
@@ -1642,7 +1655,7 @@
      ]
     ],
     "art": "kern",
-    "ms": 0
+    "ms": 0.01
    },
    "erddruckRankine": {
     "args": [
@@ -1662,7 +1675,7 @@
      ]
     ],
     "art": "kern",
-    "ms": 0
+    "ms": 0.01
    },
    "konsolidierungsgrad": {
     "args": [
@@ -1699,7 +1712,7 @@
      ]
     ],
     "art": "kern",
-    "ms": 0.03
+    "ms": 0.05
    },
    "aLinie": {
     "args": [
@@ -1722,6 +1735,21 @@
      [
       0
      ],
+     [
+      1
+     ]
+    ],
+    "art": "formel",
+    "ms": 0
+   }
+  },
+  "src/calc/bohrkernserie13791.ts": {
+   "mindestanzahl13791": {
+    "args": [
+     "kerne",
+     100
+    ],
+    "pfade": [
      [
       1
      ]
@@ -1791,7 +1819,7 @@
      ]
     ],
     "art": "kern",
-    "ms": 0.03
+    "ms": 0.04
    }
   },
   "src/calc/cbam.ts": {
@@ -1834,7 +1862,7 @@
      ]
     ],
     "art": "kern",
-    "ms": 0.01
+    "ms": 0.02
    },
    "cbamJahrespfad": {
     "args": [
@@ -1874,7 +1902,7 @@
      ]
     ],
     "art": "formel",
-    "ms": 0.02
+    "ms": 0.01
    }
   },
   "src/calc/durchstanzen.ts": {
@@ -1976,7 +2004,98 @@
      ]
     ],
     "art": "kern",
+    "ms": 0.01
+   }
+  },
+  "src/calc/ecKennwerte.ts": {
+   "fraktilfaktorKnBekannt": {
+    "args": [
+     1
+    ],
+    "pfade": [
+     [
+      0
+     ]
+    ],
+    "art": "formel",
     "ms": 0.02
+   },
+   "charakteristischAusSerie": {
+    "args": [
+     {
+      "werte": [
+       0.5,
+       1,
+       1.5
+      ],
+      "verteilung": "normal",
+      "vxBekannt": 0.5,
+      "gammaM": 0.5,
+      "beiwert": 0.5
+     }
+    ],
+    "pfade": [
+     [
+      0,
+      "werte",
+      0
+     ],
+     [
+      0,
+      "werte",
+      1
+     ],
+     [
+      0,
+      "vxBekannt"
+     ],
+     [
+      0,
+      "gammaM"
+     ],
+     [
+      0,
+      "beiwert"
+     ]
+    ],
+    "art": "kern",
+    "ms": 0.03
+   },
+   "vorhaltemass": {
+    "args": [
+     1
+    ],
+    "pfade": [
+     [
+      0
+     ]
+    ],
+    "art": "formel",
+    "ms": 0
+   },
+   "sigmaAusVorhalt": {
+    "args": [
+     1
+    ],
+    "pfade": [
+     [
+      0
+     ]
+    ],
+    "art": "formel",
+    "ms": 0
+   },
+   "unterschreitung": {
+    "args": [
+     1
+    ],
+    "pfade": [
+     [
+      0
+     ]
+    ],
+    "art": "formel",
+    "ms": 0
    }
   },
   "src/calc/eigenspannungen.ts": {
@@ -2023,7 +2142,7 @@
      ]
     ],
     "art": "kern",
-    "ms": 0.08
+    "ms": 0.07
    }
   },
   "src/calc/eisenKohlenstoff.ts": {
@@ -2078,7 +2197,7 @@
      ]
     ],
     "art": "kern",
-    "ms": 0.01
+    "ms": 0
    },
    "cev": {
     "args": [
@@ -2210,7 +2329,7 @@
      ]
     ],
     "art": "formel",
-    "ms": 0.01
+    "ms": 0
    },
    "emodul": {
     "args": [
@@ -2245,7 +2364,7 @@
      ]
     ],
     "art": "kern",
-    "ms": 0.06
+    "ms": 0.05
    }
   },
   "src/calc/energieausweis.ts": {
@@ -2267,7 +2386,7 @@
      ]
     ],
     "art": "kern",
-    "ms": 0.02
+    "ms": 0.04
    }
   },
   "src/calc/erdbau.ts": {
@@ -2684,7 +2803,7 @@
      ]
     ],
     "art": "kern",
-    "ms": 0.01
+    "ms": 0
    }
   },
   "src/calc/frischbeton.ts": {
@@ -2749,7 +2868,7 @@
      ]
     ],
     "art": "kern",
-    "ms": 0.02
+    "ms": 0.01
    },
    "schubmodulPvb": {
     "args": [
@@ -3019,7 +3138,7 @@
      ]
     ],
     "art": "kern",
-    "ms": 1.05
+    "ms": 0.01
    },
    "bemesseQuerdruck": {
     "args": [
@@ -3054,7 +3173,7 @@
      ]
     ],
     "art": "kern",
-    "ms": 0.01
+    "ms": 0
    },
    "bemessungswert": {
     "args": [
@@ -3155,7 +3274,7 @@
      ]
     ],
     "art": "kern",
-    "ms": 0.04
+    "ms": 0.05
    },
    "kdefFuer": {
     "args": [
@@ -3199,7 +3318,7 @@
      ]
     ],
     "art": "formel",
-    "ms": 0.01
+    "ms": 0.02
    }
   },
   "src/calc/holzphysik.ts": {
@@ -3602,7 +3721,7 @@
      ]
     ],
     "art": "kern",
-    "ms": 1.98
+    "ms": 2.69
    },
    "reissrahmen": {
     "args": [
@@ -3653,7 +3772,7 @@
      ]
     ],
     "art": "kern",
-    "ms": 0.06
+    "ms": 0.07
    },
    "verdunstungsrate": {
     "args": [
@@ -3886,7 +4005,7 @@
      ]
     ],
     "art": "kern",
-    "ms": 0.13
+    "ms": 0.15
    },
    "eModulLaengs": {
     "args": [
@@ -4035,7 +4154,7 @@
      ]
     ],
     "art": "kern",
-    "ms": 0.06
+    "ms": 0.12
    },
    "karbonatisierungsFront": {
     "args": [
@@ -4075,7 +4194,7 @@
      ]
     ],
     "art": "kern",
-    "ms": 0
+    "ms": 0.02
    },
    "schnellUmrechnung": {
     "args": [
@@ -4099,7 +4218,7 @@
      ]
     ],
     "art": "kern",
-    "ms": 0.01
+    "ms": 0.02
    },
    "feuchteFaktor": {
     "args": [
@@ -4232,7 +4351,7 @@
      ]
     ],
     "art": "kern",
-    "ms": 0.01
+    "ms": 0.02
    },
    "zinkSchutzdauer": {
     "args": [
@@ -5575,7 +5694,7 @@
      ]
     ],
     "art": "kern",
-    "ms": 0.04
+    "ms": 0.01
    },
    "maxwellRelaxation": {
     "args": [
@@ -5675,7 +5794,7 @@
      ]
     ],
     "art": "formel",
-    "ms": 0
+    "ms": 0.01
    },
    "halbwertszeit": {
     "args": [
@@ -5759,7 +5878,7 @@
      ]
     ],
     "art": "formel",
-    "ms": 0.01
+    "ms": 0
    },
    "spaltzugfestigkeit": {
     "args": [
@@ -5823,7 +5942,7 @@
      ]
     ],
     "art": "formel",
-    "ms": 0.01
+    "ms": 0
    },
    "ringKugelZustand": {
     "args": [
@@ -5933,7 +6052,7 @@
      ]
     ],
     "art": "kern",
-    "ms": 0.07
+    "ms": 0.05
    },
    "auslagerung": {
     "args": [
@@ -6026,7 +6145,7 @@
      ]
     ],
     "art": "kern",
-    "ms": 0.27
+    "ms": 0.04
    },
    "druckpruefung": {
     "args": [
@@ -6121,7 +6240,7 @@
      ]
     ],
     "art": "kern",
-    "ms": 0.35
+    "ms": 0.05
    },
    "rundeAuf": {
     "args": [
@@ -6630,7 +6749,7 @@
      ]
     ],
     "art": "kern",
-    "ms": 0.08
+    "ms": 0.04
    },
    "einzelbaustoffA1A4": {
     "args": [
@@ -6775,10 +6894,30 @@
      ]
     ],
     "art": "kern",
-    "ms": 0.06
+    "ms": 0.04
    }
   },
   "src/calc/lcc.ts": {
+   "epsWdvsGwp": {
+    "args": [
+     1,
+     1,
+     1
+    ],
+    "pfade": [
+     [
+      0
+     ],
+     [
+      1
+     ],
+     [
+      2
+     ]
+    ],
+    "art": "formel",
+    "ms": 0
+   },
    "rentenbarwertfaktor": {
     "args": [
      1,
@@ -6939,7 +7078,7 @@
      ]
     ],
     "art": "formel",
-    "ms": 0.03
+    "ms": 0.01
    },
    "lccVergleich": {
     "args": [
@@ -7080,7 +7219,7 @@
      ]
     ],
     "art": "kern",
-    "ms": 0.04
+    "ms": 0.02
    },
    "steigerungsfaktor": {
     "args": [
@@ -7272,7 +7411,7 @@
    "deckungAusZ": {
     "args": [
      {
-      "typ": "konstant",
+      "typ": "normal",
       "m": 1,
       "s": 1
      },
@@ -7304,7 +7443,7 @@
       "mechanismus": "chlorid",
       "karbonatisierung": {
        "deckung": {
-        "typ": "konstant",
+        "typ": "normal",
         "m": 1,
         "s": 1
        },
@@ -7342,7 +7481,7 @@
       },
       "chlorid": {
        "deckung": {
-        "typ": "konstant",
+        "typ": "normal",
         "m": 1,
         "s": 1
        },
@@ -7735,7 +7874,7 @@
      ]
     ],
     "art": "kern",
-    "ms": 0.02
+    "ms": 0.01
    }
   },
   "src/calc/lehm.ts": {
@@ -7783,7 +7922,7 @@
     ],
     "pfade": [],
     "art": "kern",
-    "ms": 0.02
+    "ms": 0.01
    }
   },
   "src/calc/materialpass.ts": {
@@ -7824,7 +7963,7 @@
      ]
     ],
     "art": "formel",
-    "ms": 0.01
+    "ms": 0
    }
   },
   "src/calc/mauerwerk.ts": {
@@ -8058,7 +8197,7 @@
      ]
     ],
     "art": "kern",
-    "ms": 0.43
+    "ms": 0.09
    }
   },
   "src/calc/membran.ts": {
@@ -8145,7 +8284,7 @@
      ]
     ],
     "art": "kern",
-    "ms": 0.03
+    "ms": 0
    }
   },
   "src/calc/mischung.ts": {
@@ -8321,13 +8460,13 @@
      ]
     ],
     "art": "kern",
-    "ms": 0.27
+    "ms": 0.07
    },
    "walzStuetzstellen": {
     "args": [],
     "pfade": [],
     "art": "formel",
-    "ms": 0.01
+    "ms": 0
    },
    "walzKurve": {
     "args": [
@@ -8340,7 +8479,7 @@
      ]
     ],
     "art": "kern",
-    "ms": 0.03
+    "ms": 0.01
    },
    "regelDurchgang": {
     "args": [
@@ -8385,7 +8524,7 @@
      ]
     ],
     "art": "formel",
-    "ms": 0.03
+    "ms": 0.01
    },
    "lpFestigkeitsverlust": {
     "args": [
@@ -8453,7 +8592,7 @@
      ]
     ],
     "art": "kern",
-    "ms": 0.01
+    "ms": 0
    },
    "mauermoertelNormalfuge": {
     "args": [
@@ -8470,7 +8609,7 @@
      ]
     ],
     "art": "kern",
-    "ms": 0.01
+    "ms": 0
    },
    "duennbettmoertel": {
     "args": [
@@ -8629,7 +8768,7 @@
      ]
     ],
     "art": "kern",
-    "ms": 0.03
+    "ms": 0.04
    },
    "fuller": {
     "args": [
@@ -8681,7 +8820,7 @@
      ]
     ],
     "art": "kern",
-    "ms": 0.02
+    "ms": 0.01
    }
   },
   "src/calc/probenahme.ts": {
@@ -8767,7 +8906,7 @@
      ]
     ],
     "art": "kern",
-    "ms": 0
+    "ms": 0.01
    },
    "rueckprallKurven": {
     "args": [
@@ -8807,7 +8946,7 @@
      ]
     ],
     "art": "kern",
-    "ms": 0.01
+    "ms": 0
    },
    "impactEchoZfp": {
     "args": [
@@ -8823,7 +8962,7 @@
      ]
     ],
     "art": "kern",
-    "ms": 0.01
+    "ms": 0
    },
    "bewehrungsSignal": {
     "args": [
@@ -8899,7 +9038,7 @@
      ]
     ],
     "art": "kern",
-    "ms": 0
+    "ms": 0.01
    },
    "durchstrahlung": {
     "args": [
@@ -8948,7 +9087,7 @@
      ]
     ],
     "art": "kern",
-    "ms": 0.01
+    "ms": 0.02
    },
    "ringversuch": {
     "args": [
@@ -8988,7 +9127,7 @@
      ]
     ],
     "art": "kern",
-    "ms": 0.02
+    "ms": 0.01
    },
    "werkzeugToleranz": {
     "args": [
@@ -9139,7 +9278,7 @@
      ]
     ],
     "art": "kern",
-    "ms": 0.01
+    "ms": 0
    },
    "holzSchaetzung": {
     "args": [
@@ -9243,7 +9382,7 @@
      ]
     ],
     "art": "kern",
-    "ms": 0
+    "ms": 0.01
    }
   },
   "src/calc/querkraft.ts": {
@@ -9378,7 +9517,7 @@
      ]
     ],
     "art": "formel",
-    "ms": 0.01
+    "ms": 0
    }
   },
   "src/calc/rueckbauMassen.ts": {
@@ -9393,7 +9532,7 @@
      ]
     ],
     "art": "formel",
-    "ms": 0.01
+    "ms": 0.03
    },
    "massenkennwertSumme": {
     "args": [
@@ -9448,7 +9587,7 @@
      ]
     ],
     "art": "kern",
-    "ms": 0.01
+    "ms": 0.03
    },
    "wandSchalldaemmung": {
     "args": [
@@ -9478,7 +9617,7 @@
      ]
     ],
     "art": "kern",
-    "ms": 0.04
+    "ms": 0.05
    },
    "trittschall": {
     "args": [
@@ -9528,7 +9667,7 @@
      ]
     ],
     "art": "kern",
-    "ms": 0.15
+    "ms": 0.16
    },
    "rwMassiv": {
     "args": [
@@ -9661,7 +9800,7 @@
      ]
     ],
     "art": "formel",
-    "ms": 0.01
+    "ms": 0.02
    },
    "umrechnungsfaktor": {
     "args": [
@@ -9967,7 +10106,7 @@
      ]
     ],
     "art": "kern",
-    "ms": 0.01
+    "ms": 0.02
    }
   },
   "src/calc/sommerWaermeschutz.ts": {
@@ -10206,7 +10345,7 @@
      ]
     ],
     "art": "kern",
-    "ms": 0
+    "ms": 0.01
    },
    "dekompressionsKraft": {
     "args": [
@@ -10631,7 +10770,7 @@
      ]
     ],
     "art": "formel",
-    "ms": 0.01
+    "ms": 0
    },
    "plastischeKapazitaet": {
     "args": [
@@ -10791,7 +10930,7 @@
      ]
     ],
     "art": "kern",
-    "ms": 0.01
+    "ms": 0
    }
   },
   "src/calc/statistik.ts": {
@@ -10866,7 +11005,7 @@
      ]
     ],
     "art": "formel",
-    "ms": 0.01
+    "ms": 0
    },
    "grubbsKritisch": {
     "args": [
@@ -11018,7 +11157,7 @@
      ]
     ],
     "art": "formel",
-    "ms": 0.01
+    "ms": 0.02
    },
    "tPDF": {
     "args": [
@@ -11080,7 +11219,7 @@
      ]
     ],
     "art": "kern",
-    "ms": 0.67
+    "ms": 0.19
    },
    "zweistichprobenTTest": {
     "args": [
@@ -11120,7 +11259,7 @@
      ]
     ],
     "art": "kern",
-    "ms": 0.3
+    "ms": 0.13
    }
   },
   "src/calc/stuetze.ts": {
@@ -11314,7 +11453,7 @@
      ]
     ],
     "art": "kern",
-    "ms": 0.03
+    "ms": 0.01
    }
   },
   "src/calc/verkehrswegebau.ts": {
@@ -11572,7 +11711,7 @@
      ]
     ],
     "art": "kern",
-    "ms": 0.01
+    "ms": 0
    },
    "temperaturverlauf": {
     "args": [
@@ -11646,7 +11785,7 @@
      ]
     ],
     "art": "formel",
-    "ms": 0.02
+    "ms": 0
    },
    "temperaturBeiPsat": {
     "args": [
@@ -11811,7 +11950,7 @@
      ]
     ],
     "art": "kern",
-    "ms": 0.01
+    "ms": 0
    }
   },
   "src/calc/werkstoffmodelle.ts": {
@@ -11924,7 +12063,7 @@
      ]
     ],
     "art": "kern",
-    "ms": 0.1
+    "ms": 0.06
    },
    "walzEigenspannung": {
     "args": [
@@ -11974,7 +12113,7 @@
      ]
     ],
     "art": "kern",
-    "ms": 0.04
+    "ms": 0.03
    },
    "stahlSpannungBeiDehnung": {
     "args": [
@@ -12072,7 +12211,7 @@
      ]
     ],
     "art": "formel",
-    "ms": 0.07
+    "ms": 0.06
    },
    "betonSdParameter": {
     "args": [
@@ -12214,7 +12353,7 @@
      ]
     ],
     "art": "kern",
-    "ms": 0.03
+    "ms": 0.02
    },
    "betonstahlParameter": {
     "args": [
@@ -12289,7 +12428,7 @@
     ],
     "pfade": [],
     "art": "formel",
-    "ms": 0.27
+    "ms": 0.05
    },
    "emodulKunststoff": {
     "args": [
@@ -12315,7 +12454,7 @@
      ]
     ],
     "art": "kern",
-    "ms": 0.17
+    "ms": 0.04
    },
    "bilinearSpannung": {
     "args": [
@@ -12633,6 +12772,7 @@
       "uNew": 1,
       "A": 1,
       "bauteil": "fenster",
+      "fxBauteil": "fenster",
       "Gt": 1,
       "etaSys": 1,
       "price": 1,
@@ -12705,7 +12845,7 @@
      ]
     ],
     "art": "formel",
-    "ms": 0.16
+    "ms": 0.01
    },
    "designFromTests": {
     "args": [
@@ -12738,7 +12878,7 @@
      ]
     ],
     "art": "formel",
-    "ms": 0.01
+    "ms": 0
    },
    "uRetrofit": {
     "args": [
@@ -13142,7 +13282,7 @@
      ]
     ],
     "art": "formel",
-    "ms": 0.01
+    "ms": 0
    },
    "elasticLoss": {
     "args": [
@@ -13335,7 +13475,7 @@
      ]
     ],
     "art": "formel",
-    "ms": 8.28
+    "ms": 5.32
    }
   },
   "src/utils/schadensKern.ts": {
@@ -13763,11 +13903,17 @@
    "zustandsformISO14688",
    "zustandsgrenzen"
   ],
+  "src/calc/bohrkernserie13791.ts": [
+   "bohrkernserie13791"
+  ],
   "src/calc/carbonbeton.ts": [
    "carbonbetonBiegung"
   ],
   "src/calc/durchstanzen.ts": [
    "pruefeDurchstanzen"
+  ],
+  "src/calc/ecKennwerte.ts": [
+   "ecKennwerte"
   ],
   "src/calc/einheiten.ts": [
    "umrechnen",
@@ -13866,6 +14012,9 @@
   "src/calc/packungsdichte.ts": [
    "sieblinienOptimierung"
   ],
+  "src/calc/pfas.ts": [
+   "istKurzkettig"
+  ],
   "src/calc/plausibilitaet.ts": [
    "hatFehler",
    "bereich",
@@ -13933,6 +14082,7 @@
    "gefuegeklasse"
   ],
   "src/utils/bestandKern.ts": [
+   "fxBauteilVon",
    "classFor"
   ],
   "src/utils/rheologySim.ts": [

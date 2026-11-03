@@ -28,6 +28,7 @@ import { MdText } from '@/src/components/inhalt/MdText';
 import { ModuleTabs } from '@/src/components/ui/ModuleTabs';
 import { normalCDF, normalPDF, stichprobe, statistikAuswertung, type StatistikMaterial, type AusreisserMethode } from '@/src/calc/statistik';
 import { AuswahlGruppe, alsOption } from '../components/ui/Auswahlgruppe';
+import { EcKennwerteVerweis } from '@/src/components/ui/EcKennwerteVerweis';
 
 ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, BarElement, Title, Tooltip, Legend);
 
@@ -908,6 +909,8 @@ export default function Statistik() {
         />
 
         {/* SELBSTTEST (Stufe 4 des Lehrpfads) */}
+        <EcKennwerteVerweis />
+
         <ModulTest moduleId="statistik" />
 
         <CalculatorDisclaimerBanner className="my-2" />

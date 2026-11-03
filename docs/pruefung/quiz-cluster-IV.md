@@ -2,9 +2,9 @@
 
 Stand: 03.11.2026 · Grundlage: `src/data/quiz.json` (Felder `vorpruefung` und `verified`), `docs/quiz-pruefhinweise.md`, Lernziele aus `src/data/lernziele.ts`. Erzeugt mit `npx tsx scripts/pruefliste.ts`; gesetzte Kreuze übernimmt das Skript beim nächsten Lauf. quiz.json wurde für diese Liste nicht verändert.
 
-Cluster IV umfasst 314 Fragen aus 50 Modulen. Aufgeführt sind 106 auffällige Fragen (Vorprüfung „korrigiert“ oder „fraglich“, offener Prüfhinweis oder neu seit 26.10.2026 ohne Freigabe) und eine Stichprobe von 5 unauffälligen Fragen. Entscheidung je Frage ankreuzen; bei „ändern“ den Änderungswunsch in die Zeile darunter schreiben.
+Cluster IV umfasst 318 Fragen aus 50 Modulen. Aufgeführt sind 110 auffällige Fragen (Vorprüfung „korrigiert“ oder „fraglich“, offener Prüfhinweis oder neu seit 26.10.2026 ohne Freigabe) und eine Stichprobe von 5 unauffälligen Fragen. Entscheidung je Frage ankreuzen; bei „ändern“ den Änderungswunsch in die Zeile darunter schreiben.
 
-Auffällig im Einzelnen (Mehrfachnennung möglich): 87 korrigiert, 0 fraglich, 11 mit offenem Prüfhinweis, 12 neu seit 26.10.2026.
+Auffällig im Einzelnen (Mehrfachnennung möglich): 87 korrigiert, 4 fraglich, 11 mit offenem Prüfhinweis, 16 neu seit 26.10.2026.
 
 ## A. Auffällige Fragen
 
@@ -773,6 +773,38 @@ Auffällig im Einzelnen (Mehrfachnennung möglich): 87 korrigiert, 0 fraglich, 1
 - **Frage:** Für einen Prüfbereich ergibt die Auswertung nach DIN EN 13791:2020 f_ck,is = 26,5 N/mm². In welche Druckfestigkeitsklasse ist der Beton mit f_ck = f_ck,is/0,85 höchstens einzustufen?
 - **Richtige Antwort:** C30/37 (f_ck ≈ 31 N/mm²)
 - **Auffälligkeit:** neu seit 26.10.2026 (Z24), noch nicht freigegeben
+- [ ] ok
+- [ ] ändern: …
+
+### qt_hk13791_1 · Historische Kennwerte
+
+- **Frage:** Wie viele Bohrkerne mit Ø 100 mm sind nach DIN EN 13791:2020-02 je Prüfbereich mindestens nötig, um f_ck,is allein aus Kernen statistisch zu bestimmen?
+- **Richtige Antwort:** 8 Kerne
+- **Auffälligkeit:** Vorprüfung „fraglich“: Neu 02.11.2026 (Reiter Bohrkernserie): Werte nach Sekundärquellen (BRMCA 2020, TFB 2021, Sefrin et al. 2022) – vorläufig, Normprüfung ausstehend; fachliche Prüfung offen. · neu seit 26.10.2026 (Z24), noch nicht freigegeben
+- [ ] ok
+- [ ] ändern: …
+
+### qt_hk13791_2 · Historische Kennwerte
+
+- **Frage:** Zehn Kerne (h/d = 2) ergeben f_m(n),is = 30,0 N/mm², s = 3,0 N/mm² und als kleinsten Wert 26,0 N/mm². Wie groß ist f_ck,is?
+- **Richtige Antwort:** 24,2 N/mm²
+- **Auffälligkeit:** Vorprüfung „fraglich“: Neu 02.11.2026 (Reiter Bohrkernserie): Werte nach Sekundärquellen (BRMCA 2020, TFB 2021, Sefrin et al. 2022) – vorläufig, Normprüfung ausstehend; fachliche Prüfung offen. · neu seit 26.10.2026 (Z24), noch nicht freigegeben
+- [ ] ok
+- [ ] ändern: …
+
+### qt_hk13791_3 · Historische Kennwerte
+
+- **Frage:** Warum sinkt der Faktor k_n in DIN EN 13791 von 2,00 bei 8 Kernen auf 1,64 bei sehr vielen Kernen?
+- **Richtige Antwort:** Mittelwert und Streuung sind mit mehr Kernen genauer bekannt
+- **Auffälligkeit:** Vorprüfung „fraglich“: Neu 02.11.2026 (Reiter Bohrkernserie): Werte nach Sekundärquellen (BRMCA 2020, TFB 2021, Sefrin et al. 2022) – vorläufig, Normprüfung ausstehend; fachliche Prüfung offen. · neu seit 26.10.2026 (Z24), noch nicht freigegeben
+- [ ] ok
+- [ ] ändern: …
+
+### qt_hk13791_4 · Historische Kennwerte
+
+- **Frage:** Eine Bohrkernserie mit Kernen h/d = 2 ergibt f_ck,is = 22,0 N/mm². Welche Druckfestigkeitsklasse ist höchstens zuzuordnen?
+- **Richtige Antwort:** C25/30
+- **Auffälligkeit:** Vorprüfung „fraglich“: Neu 02.11.2026 (Reiter Bohrkernserie): Werte nach Sekundärquellen (BRMCA 2020, TFB 2021, Sefrin et al. 2022) – vorläufig, Normprüfung ausstehend; fachliche Prüfung offen. · neu seit 26.10.2026 (Z24), noch nicht freigegeben
 - [ ] ok
 - [ ] ändern: …
 

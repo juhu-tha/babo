@@ -7872,6 +7872,174 @@
     }
   },
   {
+    "id": "qt_hk13791_1",
+    "category": "bindemittel_beton",
+    "categoryLabel": "Bindemittel & Betontechnologie",
+    "moduleId": "historisch",
+    "moduleTitle": "Historische Kennwerte",
+    "topic": "Probenanzahl Bohrkerne",
+    "difficulty": "Basis",
+    "normRef": "DIN EN 13791:2020-02",
+    "question": "Wie viele Bohrkerne mit Ø 100 mm sind nach DIN EN 13791:2020-02 je Prüfbereich mindestens nötig, um f_ck,is allein aus Kernen statistisch zu bestimmen?",
+    "options": [
+      "3 Kerne",
+      "8 Kerne",
+      "6 Kerne",
+      "15 Kerne"
+    ],
+    "correctIdx": 1,
+    "explanation": "Für die statistische Auswertung nur mit Bohrkernen (Ø ≥ 75 mm) sind mindestens 8 Kerne nötig, bei 50 ≤ Ø < 75 mm 12 Kerne; empfohlen sind 2 Kerne Reserve für Ausreißer. 3 Kerne genügen nur für kleine Prüfbereiche (≤ 10 m³ bzw. mit indirekter Prüfung ≤ 30 m³). Angaben nach Sekundärquellen, vorläufig, Normprüfung ausstehend.",
+    "bloom": "Erinnern",
+    "niveau": "B",
+    "distraktorFeedback": [
+      "3 Kerne reichen nur in den Verfahren für kleine Prüfbereiche (bis 10 m³ bzw. 30 m³), nicht für die Statistik.",
+      "",
+      "6 Kerne liegen unter der Mindestanzahl; die Tabelle für k_n beginnt bei n = 8.",
+      "15 Kerne verlangte Ansatz A der Fassung 2008; die Ausgabe 2020 senkt die Grenze auf 8."
+    ],
+    "gapAnalysis": {
+      "topic": "Probenanzahl Bohrkerne",
+      "misconception": "Die Mindestanzahl der Ausgabe 2008 oder der kleinen Prüfbereiche wird auf die Statistik übertragen.",
+      "coreRule": "Statistik nur mit Kernen: n ≥ 8 (Ø ≥ 75 mm), n ≥ 12 (50 ≤ Ø < 75 mm); kleine Prüfbereiche ab 3 Kernen.",
+      "actionableAdvice": "Arbeiten Sie den Reiter „Bohrkernserie (DIN EN 13791)“ im Modul Historische Kennwerte noch einmal durch.",
+      "targetModuleTab": "historisch",
+      "targetModuleLabel": "Historische Kennwerte"
+    },
+    "quelle": "Reiter „Bohrkernserie (DIN EN 13791)“; BRMCA 2020; Sefrin et al. 2022",
+    "verified": false,
+    "vorpruefung": {
+      "am": "2026-11-02",
+      "ergebnis": "fraglich",
+      "hinweis": "Neu 02.11.2026 (Reiter Bohrkernserie): Werte nach Sekundärquellen (BRMCA 2020, TFB 2021, Sefrin et al. 2022) – vorläufig, Normprüfung ausstehend; fachliche Prüfung offen."
+    }
+  },
+  {
+    "id": "qt_hk13791_2",
+    "category": "bindemittel_beton",
+    "categoryLabel": "Bindemittel & Betontechnologie",
+    "moduleId": "historisch",
+    "moduleTitle": "Historische Kennwerte",
+    "topic": "Charakteristische In-situ-Festigkeit",
+    "difficulty": "Vertiefung",
+    "normRef": "DIN EN 13791:2020-02",
+    "question": "Zehn Kerne (h/d = 2) ergeben f_m(n),is = 30,0 N/mm², s = 3,0 N/mm² und als kleinsten Wert 26,0 N/mm². Wie groß ist f_ck,is?",
+    "options": [
+      "24,2 N/mm²",
+      "25,1 N/mm²",
+      "30,0 N/mm²",
+      "26,0 N/mm²"
+    ],
+    "correctIdx": 0,
+    "explanation": "Mit k_n = 1,92 für n = 10: 30,0 − 1,92 · 3,0 = 24,2 N/mm². Das Kleinstwertkriterium ergibt 26,0 + M = 26,0 + 4 = 30,0 N/mm². Maßgebend ist der kleinere Wert, 24,2 N/mm². Die Mindeststandardabweichung 0,08 · 30,0 = 2,4 N/mm² liegt unter s und greift nicht.",
+    "bloom": "Anwenden",
+    "niveau": "B",
+    "distraktorFeedback": [
+      "",
+      "25,1 N/mm² entsteht mit k = 1,64 (unendlich viele Kerne) statt k_n = 1,92 für n = 10.",
+      "30,0 N/mm² ist nur das Kleinstwertkriterium 26,0 + 4; maßgebend ist der kleinere der beiden Werte.",
+      "26,0 N/mm² ist der kleinste Einzelwert ohne Zuschlag M und ohne Streuungskriterium."
+    ],
+    "gapAnalysis": {
+      "topic": "Charakteristische In-situ-Festigkeit",
+      "misconception": "k_n wird mit dem Grenzwert 1,64 verwechselt oder nur ein Kriterium ausgewertet.",
+      "coreRule": "f_ck,is = min(f_m(n),is − k_n·s; f_is,lowest + M); k_n nach n, s ≥ 0,08·f_m(n),is.",
+      "actionableAdvice": "Arbeiten Sie den Reiter „Bohrkernserie (DIN EN 13791)“ im Modul Historische Kennwerte noch einmal durch.",
+      "targetModuleTab": "historisch",
+      "targetModuleLabel": "Historische Kennwerte"
+    },
+    "quelle": "Reiter „Bohrkernserie (DIN EN 13791)“; BRMCA 2020; TFB 2021",
+    "verified": false,
+    "vorpruefung": {
+      "am": "2026-11-02",
+      "ergebnis": "fraglich",
+      "hinweis": "Neu 02.11.2026 (Reiter Bohrkernserie): Werte nach Sekundärquellen (BRMCA 2020, TFB 2021, Sefrin et al. 2022) – vorläufig, Normprüfung ausstehend; fachliche Prüfung offen."
+    }
+  },
+  {
+    "id": "qt_hk13791_3",
+    "category": "bindemittel_beton",
+    "categoryLabel": "Bindemittel & Betontechnologie",
+    "moduleId": "historisch",
+    "moduleTitle": "Historische Kennwerte",
+    "topic": "Faktor k_n",
+    "difficulty": "Vertiefung",
+    "normRef": "DIN EN 13791:2020-02",
+    "question": "Warum sinkt der Faktor k_n in DIN EN 13791 von 2,00 bei 8 Kernen auf 1,64 bei sehr vielen Kernen?",
+    "options": [
+      "Mittelwert und Streuung sind mit mehr Kernen genauer bekannt",
+      "Mehr Bohrungen schwächen das Bauteil, das wird ausgeglichen",
+      "Bei vielen Kernen gilt ein 10-%-Quantil statt eines 5-%-Quantils",
+      "Große Prüfbereiche haben im Mittel eine höhere Festigkeit"
+    ],
+    "correctIdx": 0,
+    "explanation": "k_n ist der Faktor für das 5-%-Quantil bei unbekannter Streuung (Student-Verteilung wie in DIN EN 1990, Anhang D). Mit wachsendem n wird die Schätzung von Mittelwert und Standardabweichung sicherer, k_n nähert sich dem Wert 1,64 der Normalverteilung bei bekannter Streuung.",
+    "bloom": "Verstehen",
+    "niveau": "B",
+    "distraktorFeedback": [
+      "",
+      "Die Schwächung durch Bohrungen ist eine Frage der Tragfähigkeit, nicht des statistischen Faktors.",
+      "Das Quantil bleibt bei 5 %; nur die Unsicherheit der Schätzung nimmt ab.",
+      "Die Größe des Prüfbereichs ändert die Festigkeit nicht; k_n hängt nur von n ab."
+    ],
+    "gapAnalysis": {
+      "topic": "Faktor k_n",
+      "misconception": "k_n wird als fester Sicherheitszuschlag statt als Quantilfaktor einer Stichprobe verstanden.",
+      "coreRule": "k_n = 5-%-Quantilfaktor bei unbekannter Streuung; 2,00 (n = 8) … 1,64 (n → ∞).",
+      "actionableAdvice": "Arbeiten Sie den Reiter „Bohrkernserie (DIN EN 13791)“ im Modul Historische Kennwerte noch einmal durch.",
+      "targetModuleTab": "historisch",
+      "targetModuleLabel": "Historische Kennwerte"
+    },
+    "quelle": "Reiter „Bohrkernserie (DIN EN 13791)“; BRMCA 2020; DIN EN 1990 Anhang D",
+    "verified": false,
+    "vorpruefung": {
+      "am": "2026-11-02",
+      "ergebnis": "fraglich",
+      "hinweis": "Neu 02.11.2026 (Reiter Bohrkernserie): Werte nach Sekundärquellen (BRMCA 2020, TFB 2021, Sefrin et al. 2022) – vorläufig, Normprüfung ausstehend; fachliche Prüfung offen."
+    }
+  },
+  {
+    "id": "qt_hk13791_4",
+    "category": "bindemittel_beton",
+    "categoryLabel": "Bindemittel & Betontechnologie",
+    "moduleId": "historisch",
+    "moduleTitle": "Historische Kennwerte",
+    "topic": "Zuordnung Druckfestigkeitsklasse",
+    "difficulty": "Vertiefung",
+    "normRef": "DIN EN 13791:2020-02, DIN EN 206",
+    "question": "Eine Bohrkernserie mit Kernen h/d = 2 ergibt f_ck,is = 22,0 N/mm². Welche Druckfestigkeitsklasse ist höchstens zuzuordnen?",
+    "options": [
+      "C20/25",
+      "C25/30",
+      "C16/20",
+      "C30/37"
+    ],
+    "correctIdx": 1,
+    "explanation": "Eine Klasse gilt als erreicht, wenn f_ck,is ≥ 0,85 · f_ck ist. C25/30 verlangt 0,85 · 25 = 21,25 N/mm² – erfüllt; C30/37 verlangt 0,85 · 30 = 25,5 N/mm² – nicht erfüllt. Der Faktor 0,85 berücksichtigt den Unterschied zwischen Bauwerksbeton und getrennt hergestellten Probekörpern.",
+    "bloom": "Anwenden",
+    "niveau": "B",
+    "distraktorFeedback": [
+      "C20/25 folgt, wenn f_ck,is direkt mit f_ck verglichen wird; der Faktor 0,85 fehlt dann.",
+      "",
+      "C16/20 entsteht, wenn 0,85 doppelt angesetzt wird (0,85 · 22,0 = 18,7 N/mm²).",
+      "C30/37 verlangt 0,85 · 30 = 25,5 N/mm²; 22,0 N/mm² reichen nicht."
+    ],
+    "gapAnalysis": {
+      "topic": "Zuordnung Druckfestigkeitsklasse",
+      "misconception": "Der In-situ-Wert wird ohne den Faktor 0,85 mit f_ck verglichen oder 0,85 wird doppelt angesetzt.",
+      "coreRule": "Klasse erreicht bei f_ck,is ≥ 0,85·f_ck (Zylinderbezug) bzw. 0,85·f_ck,cube (Würfelbezug).",
+      "actionableAdvice": "Arbeiten Sie den Reiter „Bohrkernserie (DIN EN 13791)“ im Modul Historische Kennwerte noch einmal durch.",
+      "targetModuleTab": "historisch",
+      "targetModuleLabel": "Historische Kennwerte"
+    },
+    "quelle": "Reiter „Bohrkernserie (DIN EN 13791)“; TFB 2021; Prüfkern src/calc/bohrkernserie13791.ts",
+    "verified": false,
+    "vorpruefung": {
+      "am": "2026-11-02",
+      "ergebnis": "fraglich",
+      "hinweis": "Neu 02.11.2026 (Reiter Bohrkernserie): Werte nach Sekundärquellen (BRMCA 2020, TFB 2021, Sefrin et al. 2022) – vorläufig, Normprüfung ausstehend; fachliche Prüfung offen."
+    }
+  },
+  {
     "id": "q_hb_1",
     "category": "metalle_holz",
     "categoryLabel": "Metalle & Holzwerkstoffe",
@@ -54691,5 +54859,285 @@
     "verified": true,
     "reviewer": "freigegeben 28.10.2026 (Einzelfreigabe)",
     "reviewedAt": "2026-10-28"
+  },
+  {
+    "id": "qt_eckennwerte_1",
+    "category": "baustoffkunde",
+    "categoryLabel": "Werkstoffmechanik & Physik",
+    "moduleId": "ec_kennwerte",
+    "moduleTitle": "Kennwerte und Bemessungswerte nach Eurocode",
+    "topic": "Charakteristischer Wert",
+    "difficulty": "Basis",
+    "normRef": "DIN EN 1990, 1.5.4.1",
+    "question": "Was ist nach DIN EN 1990 der charakteristische Wert einer Baustofffestigkeit?",
+    "options": [
+      "5-%-Quantil der Grundgesamtheit",
+      "Mittelwert aller Prüfergebnisse",
+      "kleinster Wert der Prüfserie",
+      "95-%-Quantil der Grundgesamtheit"
+    ],
+    "correctIdx": 0,
+    "explanation": "Der charakteristische Wert einer Festigkeit ist das 5-%-Quantil: Nur 5 % der Grundgesamtheit unterschreiten ihn. Bei Steifigkeiten wird meist der Mittelwert verwendet.",
+    "bloom": "Erinnern",
+    "niveau": "B",
+    "distraktorFeedback": [
+      "",
+      "Der Mittelwert dient für Steifigkeiten und Verformungen, nicht als charakteristische Festigkeit.",
+      "Der kleinste Wert hängt vom Zufall und vom Umfang der Serie ab; er ist kein Quantil der Grundgesamtheit.",
+      "Das 95-%-Quantil ist ein oberer Wert (z. B. f_ctk;0,95), nicht der charakteristische Festigkeitswert."
+    ],
+    "gapAnalysis": {
+      "topic": "Charakteristischer Wert",
+      "misconception": "Der charakteristische Wert wird mit dem Mittelwert oder dem kleinsten Prüfwert gleichgesetzt.",
+      "coreRule": "X_k = 5-%-Quantil der Grundgesamtheit; X_d = η · X_k/γ_M.",
+      "actionableAdvice": "Wiederholen Sie im Modul Kennwerte und Bemessungswerte nach Eurocode den Reiter „Teilsicherheitskonzept“.",
+      "targetModuleTab": "ec_kennwerte",
+      "targetModuleLabel": "Kennwerte und Bemessungswerte nach Eurocode"
+    },
+    "verified": false,
+    "vorpruefung": {
+      "am": "2026-11-02",
+      "ergebnis": "ok"
+    }
+  },
+  {
+    "id": "qt_eckennwerte_2",
+    "category": "baustoffkunde",
+    "categoryLabel": "Werkstoffmechanik & Physik",
+    "moduleId": "ec_kennwerte",
+    "moduleTitle": "Kennwerte und Bemessungswerte nach Eurocode",
+    "topic": "Vorhaltemaß Beton",
+    "difficulty": "Vertiefung",
+    "normRef": "DIN EN 1992-1-1, Tab. 3.1",
+    "question": "DIN EN 1992-1-1 setzt f_cm = f_ck + 8 N/mm². Wie lässt sich der Abstand von 8 N/mm² statistisch deuten?",
+    "options": [
+      "1,645 · σ mit σ von etwa 5 N/mm²",
+      "Umrechnung vom Würfel zum Zylinder",
+      "Kriechverlust bis zum 28. Tag",
+      "Zuschlag aus (γ_C − 1) · f_ck"
+    ],
+    "correctIdx": 0,
+    "explanation": "Mittelwert und 5-%-Quantil liegen bei einer Normalverteilung 1,645 · σ auseinander; 8/1,645 = 4,9 N/mm² ist eine übliche Standardabweichung der Betondruckfestigkeit.",
+    "bloom": "Verstehen",
+    "niveau": "B",
+    "distraktorFeedback": [
+      "",
+      "Würfel und Zylinder unterscheiden sich je Klasse unterschiedlich (C30/37: 7 N/mm²), nicht um einen festen Abstand.",
+      "Kriechen ist eine Verformung unter Last und senkt die Festigkeit im Alter von 28 Tagen nicht.",
+      "(γ_C − 1) · f_ck wäre klassenabhängig (C30/37: 15 N/mm²); der Abstand ist aber für alle Klassen gleich."
+    ],
+    "gapAnalysis": {
+      "topic": "Vorhaltemaß Beton",
+      "misconception": "Der feste Abstand f_cm − f_ck wird als Sicherheits- oder Umrechnungsfaktor gedeutet.",
+      "coreRule": "f_cm − f_ck = 1,645 · σ; 8 N/mm² ↔ σ ≈ 4,9 N/mm².",
+      "actionableAdvice": "Wiederholen Sie im Modul Kennwerte und Bemessungswerte nach Eurocode den Reiter „Statistik & Konformität“.",
+      "targetModuleTab": "ec_kennwerte",
+      "targetModuleLabel": "Kennwerte und Bemessungswerte nach Eurocode"
+    },
+    "verified": false,
+    "vorpruefung": {
+      "am": "2026-11-02",
+      "ergebnis": "ok"
+    }
+  },
+  {
+    "id": "qt_eckennwerte_3",
+    "category": "baustoffkunde",
+    "categoryLabel": "Werkstoffmechanik & Physik",
+    "moduleId": "ec_kennwerte",
+    "moduleTitle": "Kennwerte und Bemessungswerte nach Eurocode",
+    "topic": "Bemessungswert Beton",
+    "difficulty": "Basis",
+    "normRef": "DIN EN 1992-1-1/NA, 3.1.6",
+    "question": "Welcher Bemessungswert der Druckfestigkeit f_cd gilt für C35/45 in der ständigen Bemessungssituation nach NA DE?",
+    "options": [
+      "f_cd = 19,8 N/mm²",
+      "f_cd = 23,3 N/mm²",
+      "f_cd = 25,5 N/mm²",
+      "f_cd = 22,9 N/mm²"
+    ],
+    "correctIdx": 0,
+    "explanation": "f_cd = α_cc · f_ck/γ_C = 0,85 · 35/1,5 = 19,8 N/mm². Maßgebend ist die Zylinderfestigkeit 35 N/mm²; α_cc = 0,85 nach NA DE.",
+    "bloom": "Anwenden",
+    "niveau": "B",
+    "distraktorFeedback": [
+      "",
+      "23,3 N/mm² = 35/1,5 ohne α_cc; nach NA DE ist α_cc = 0,85 anzusetzen.",
+      "25,5 N/mm² entsteht mit der Würfelfestigkeit 45 N/mm² statt f_ck = 35 N/mm².",
+      "22,9 N/mm² gilt mit γ_C = 1,3 nur für die außergewöhnliche Bemessungssituation."
+    ],
+    "gapAnalysis": {
+      "topic": "Bemessungswert Beton",
+      "misconception": "Würfelfestigkeit, α_cc = 1,0 oder γ_C der außergewöhnlichen Situation eingesetzt.",
+      "coreRule": "f_cd = 0,85 · f_ck/1,5 (ständig), γ_C = 1,3 außergewöhnlich.",
+      "actionableAdvice": "Wiederholen Sie im Modul Kennwerte und Bemessungswerte nach Eurocode den Reiter „Beispiele“.",
+      "targetModuleTab": "ec_kennwerte",
+      "targetModuleLabel": "Kennwerte und Bemessungswerte nach Eurocode"
+    },
+    "verified": false,
+    "vorpruefung": {
+      "am": "2026-11-02",
+      "ergebnis": "ok"
+    }
+  },
+  {
+    "id": "qt_eckennwerte_4",
+    "category": "baustoffkunde",
+    "categoryLabel": "Werkstoffmechanik & Physik",
+    "moduleId": "ec_kennwerte",
+    "moduleTitle": "Kennwerte und Bemessungswerte nach Eurocode",
+    "topic": "k_mod Holz",
+    "difficulty": "Vertiefung",
+    "normRef": "DIN EN 1995-1-1, Tab. 3.1, 2.4.1",
+    "question": "Brettschichtholz GL24h (f_m,k = 24 N/mm²) in Nutzungsklasse 2 unter kurzer Lasteinwirkung (k_mod = 0,9): Wie groß ist f_m,d?",
+    "options": [
+      "f_m,d = 16,6 N/mm²",
+      "f_m,d = 18,5 N/mm²",
+      "f_m,d = 14,8 N/mm²",
+      "f_m,d = 21,6 N/mm²"
+    ],
+    "correctIdx": 0,
+    "explanation": "f_m,d = k_mod · f_m,k/γ_M = 0,9 · 24/1,3 = 16,6 N/mm². γ_M = 1,3 nach NA DE gilt auch für Brettschichtholz.",
+    "bloom": "Anwenden",
+    "niveau": "B",
+    "distraktorFeedback": [
+      "",
+      "18,5 N/mm² = 24/1,3 ohne k_mod; die Lasteinwirkungsdauer muss eingehen.",
+      "14,8 N/mm² gilt mit k_mod = 0,8 für mittlere Lasteinwirkung, nicht für kurze.",
+      "21,6 N/mm² = 0,9 · 24 ohne Teilsicherheitsbeiwert γ_M."
+    ],
+    "gapAnalysis": {
+      "topic": "k_mod Holz",
+      "misconception": "k_mod oder γ_M wird vergessen oder die falsche Klasse der Lasteinwirkungsdauer gewählt.",
+      "coreRule": "X_d = k_mod · X_k/γ_M, γ_M = 1,3; k_mod nach NKL und KLED.",
+      "actionableAdvice": "Wiederholen Sie im Modul Kennwerte und Bemessungswerte nach Eurocode den Reiter „Stahl, Holz, Mauerwerk“.",
+      "targetModuleTab": "ec_kennwerte",
+      "targetModuleLabel": "Kennwerte und Bemessungswerte nach Eurocode"
+    },
+    "verified": false,
+    "vorpruefung": {
+      "am": "2026-11-02",
+      "ergebnis": "ok"
+    }
+  },
+  {
+    "id": "qt_eckennwerte_5",
+    "category": "baustoffkunde",
+    "categoryLabel": "Werkstoffmechanik & Physik",
+    "moduleId": "ec_kennwerte",
+    "moduleTitle": "Kennwerte und Bemessungswerte nach Eurocode",
+    "topic": "Fraktilfaktor k_n",
+    "difficulty": "Transfer",
+    "normRef": "DIN EN 1990, D7.2, Tab. D1",
+    "question": "Drei Zylinder ergeben m = 36,8 N/mm² und s = 2,37 N/mm²; V_x ist unbekannt. Welches 5-%-Quantil folgt nach DIN EN 1990, Anhang D (Normalverteilung)?",
+    "options": [
+      "X_k = 28,8 N/mm²",
+      "X_k = 32,9 N/mm²",
+      "X_k = 34,4 N/mm²",
+      "X_k = 31,2 N/mm²"
+    ],
+    "correctIdx": 0,
+    "explanation": "Für n = 3 und unbekanntes V_x ist k_n = 3,37: X_k = 36,8 − 3,37 · 2,37 = 28,8 N/mm². Der große Faktor gleicht aus, dass die Streuung aus drei Werten nur unsicher geschätzt ist.",
+    "bloom": "Analysieren",
+    "niveau": "B",
+    "distraktorFeedback": [
+      "",
+      "32,9 N/mm² entsteht mit 1,645; das gilt nur für eine bekannte Grundgesamtheit (n → ∞).",
+      "34,4 N/mm² = m − s; das entspricht etwa dem 16-%-Quantil, nicht dem 5-%-Quantil.",
+      "31,2 N/mm² entsteht mit k_n = 2,33 – das ist der Tabellenwert für n = 5, nicht für n = 3."
+    ],
+    "gapAnalysis": {
+      "topic": "Fraktilfaktor k_n",
+      "misconception": "Bei kleinen Stichproben wird mit 1,645 statt mit k_n gerechnet.",
+      "coreRule": "X_k = m − k_n · s; k_3 = 3,37 (V_x unbekannt), k_∞ = 1,64.",
+      "actionableAdvice": "Wiederholen Sie im Modul Kennwerte und Bemessungswerte nach Eurocode den Reiter „Statistik & Konformität“.",
+      "targetModuleTab": "ec_kennwerte",
+      "targetModuleLabel": "Kennwerte und Bemessungswerte nach Eurocode"
+    },
+    "verified": false,
+    "vorpruefung": {
+      "am": "2026-11-02",
+      "ergebnis": "ok"
+    }
+  },
+  {
+    "id": "qt_eckennwerte_6",
+    "category": "baustoffkunde",
+    "categoryLabel": "Werkstoffmechanik & Physik",
+    "moduleId": "ec_kennwerte",
+    "moduleTitle": "Kennwerte und Bemessungswerte nach Eurocode",
+    "topic": "Konformität stetige Herstellung",
+    "difficulty": "Transfer",
+    "normRef": "DIN EN 206, 8.2.1.3 mit DIN 1045-2",
+    "question": "Stetige Herstellung C30/37 (Zylinder, n = 15): f_cm = 34,2 N/mm², σ der Vorserie = 2,5 N/mm². Ist Kriterium 1 erfüllt?",
+    "options": [
+      "Nein, gefordert sind 34,4 N/mm²",
+      "Ja, gefordert sind 33,7 N/mm²",
+      "Ja, gefordert sind 34,0 N/mm²",
+      "Nein, gefordert sind 34,9 N/mm²"
+    ],
+    "correctIdx": 0,
+    "explanation": "Kriterium 1: f_cm ≥ f_ck + 1,48 · σ mit σ ≥ 3 N/mm². Mit σ = 3 N/mm² gilt 30 + 1,48 · 3 = 34,4 N/mm² > 34,2 N/mm² – nicht erfüllt.",
+    "bloom": "Bewerten",
+    "niveau": "B",
+    "distraktorFeedback": [
+      "",
+      "33,7 N/mm² entsteht mit σ = 2,5 N/mm²; nach DIN 1045-2 ist mindestens σ = 3 N/mm² anzusetzen.",
+      "f_ck + 4 gilt für den Herstellungsbeginn mit n = 3, nicht für die stetige Herstellung.",
+      "34,9 N/mm² entsteht mit 1,645 statt 1,48; der Faktor der Norm ist kleiner, weil ein Mittel aus 15 Werten geprüft wird."
+    ],
+    "gapAnalysis": {
+      "topic": "Konformität stetige Herstellung",
+      "misconception": "Mindeststreuung, Faktor 1,48 oder das Kriterium des Herstellungsbeginns werden verwechselt.",
+      "coreRule": "Stetig: f_cm ≥ f_ck + 1,48 · max(σ; 3), f_ci ≥ f_ck − 4; Beginn: f_cm ≥ f_ck + 4.",
+      "actionableAdvice": "Wiederholen Sie im Modul Kennwerte und Bemessungswerte nach Eurocode den Reiter „Statistik & Konformität“.",
+      "targetModuleTab": "ec_kennwerte",
+      "targetModuleLabel": "Kennwerte und Bemessungswerte nach Eurocode"
+    },
+    "verified": false,
+    "vorpruefung": {
+      "am": "2026-11-02",
+      "ergebnis": "ok"
+    }
+  },
+  {
+    "id": "qt_eckennwerte_7",
+    "category": "baustoffkunde",
+    "categoryLabel": "Werkstoffmechanik & Physik",
+    "moduleId": "ec_kennwerte",
+    "moduleTitle": "Kennwerte und Bemessungswerte nach Eurocode",
+    "topic": "Teilsicherheitsbeiwerte Baustahl",
+    "difficulty": "Basis",
+    "normRef": "DIN EN 1993-1-1/NA, 6.1",
+    "question": "Für welchen Nachweis gilt im Stahlbau nach NA DE der Teilsicherheitsbeiwert γ_M1 = 1,1?",
+    "options": [
+      "Stabilität, z. B. Biegeknicken",
+      "Fließen im Bruttoquerschnitt",
+      "Bruch im Nettoquerschnitt am Loch",
+      "Ermüdung bei häufigem Lastwechsel"
+    ],
+    "correctIdx": 0,
+    "explanation": "γ_M1 = 1,1 gilt für Stabilitätsnachweise (Biegeknicken, Biegedrillknicken). Querschnitte rechnen mit γ_M0 = 1,0, der Bruch im Nettoquerschnitt mit γ_M2 = 1,25.",
+    "bloom": "Erinnern",
+    "niveau": "B",
+    "distraktorFeedback": [
+      "",
+      "Fließen im Bruttoquerschnitt wird mit γ_M0 = 1,0 nachgewiesen.",
+      "Der Bruch im Nettoquerschnitt wird mit γ_M2 = 1,25 nachgewiesen.",
+      "Ermüdung regelt DIN EN 1993-1-9 mit eigenen Beiwerten γ_Mf."
+    ],
+    "gapAnalysis": {
+      "topic": "Teilsicherheitsbeiwerte Baustahl",
+      "misconception": "Die drei Beiwerte γ_M0, γ_M1 und γ_M2 werden verwechselt.",
+      "coreRule": "γ_M0 = 1,0 Querschnitt, γ_M1 = 1,1 Stabilität, γ_M2 = 1,25 Bruch/Verbindungen.",
+      "actionableAdvice": "Wiederholen Sie im Modul Kennwerte und Bemessungswerte nach Eurocode den Reiter „Teilsicherheitskonzept“.",
+      "targetModuleTab": "ec_kennwerte",
+      "targetModuleLabel": "Kennwerte und Bemessungswerte nach Eurocode"
+    },
+    "verified": false,
+    "vorpruefung": {
+      "am": "2026-11-02",
+      "ergebnis": "ok"
+    }
   }
 ]

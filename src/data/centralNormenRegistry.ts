@@ -19,6 +19,16 @@ export const CENTRAL_NORMEN_REGISTRY: Record<string, NormRecord> = {
   // -------------------------------------------------------------
   // BETON, ZEMENT, BINDEMITTEL & MÖRTEL
   // -------------------------------------------------------------
+  'DIN_EN_1990': {
+    id: 'DIN_EN_1990',
+    code: 'DIN EN 1990:2021-10 mit NA:2010-12 + NA/A1:2012-08 (eingeführt) / DIN EN 1990-1 (2. Generation, angekündigt)',
+    title: 'Eurocode: Grundlagen der Tragwerksplanung',
+    category: 'qualitaet',
+    ausgabeStand: '2021-10',
+    status: 'gueltig',
+    beschreibung: 'Teilsicherheitskonzept, Bemessungssituationen, Lastkombinationen und Anhang D (versuchsgestützte Bemessung, Fraktilfaktoren k_n). DIN EN 1990:2021-10 ist die berichtigte Neuausgabe von DIN EN 1990:2010-12; Nationaler Anhang DIN EN 1990/NA:2010-12 mit NA/A1:2012-08. Die 2. Generation (EN 1990-1:2023) ist als DIN EN 1990-1 angekündigt; Ausgabedatum der deutschen Fassung noch offen.',
+    relevanteModule: ['sicherheitskonzept', 'ec_kennwerte', 'statistik', 'normen_ausblick']
+  },
   'DIN_EN_206': {
     id: 'DIN_EN_206',
     code: 'DIN EN 206:2021-06 / DIN 1045-2:2023-08 (maßgebend) / DIN EN 206-1:2026-07 / DIN EN 206-2:2026-07 (Neuausgabe)',
@@ -182,7 +192,30 @@ export const CENTRAL_NORMEN_REGISTRY: Record<string, NormRecord> = {
     ausgabeStand: '2019-10',
     status: 'gueltig',
     beschreibung: 'Druckprüfung an Würfeln und Zylindern mit Belastungsrate (0,6 ± 0,2) MPa/s, Beurteilung der Bruchbilder.',
-    relevanteModule: ['labor_druckfestigkeit', 'festbeton', 'mechanische_pruefungen']
+    relevanteModule: ['labor_druckfestigkeit', 'festbeton', 'mechanische_pruefungen', 'historisch']
+  },
+  // Ergänzung 02.11.2026 (docs/pruefung/hist-kennwerte-13791-2026-11-02.md): Bauwerksdruckfestigkeit und Bohrkerne zentral
+  // geführt (vorher nur als Freitext in den Modulen). Ausgaben nach DIN Media (Produktseite A20:2022-04) und Modulbestand.
+  'DIN_EN_13791': {
+    id: 'DIN_EN_13791',
+    code: 'DIN EN 13791:2020-02 + A20:2022-04',
+    title: 'Bewertung der Druckfestigkeit von Beton in Bauwerken und in Bauwerksteilen',
+    category: 'beton',
+    ausgabeStand: '2020-02',
+    status: 'gueltig',
+    url: 'https://www.dinmedia.de/en/standard/din-en-13791-a20/351305107',
+    beschreibung: 'Deutsche Fassung EN 13791:2019 mit nationaler Änderung A20:2022-04. Charakteristische In-situ-Druckfestigkeit f_ck,is aus Bohrkernen (ab 8 Kernen statistisch mit k_n und Kleinstwertkriterium) oder aus indirekten Prüfungen mit Kernen, Zuordnung zu Druckfestigkeitsklassen über f_ck,is ≥ 0,85·f_ck. A20 regelt u. a. Auswertungen mit weniger als 8 Kernen (NA.8.1) und abweichende Kriterien zu Abschnitt 8.3.',
+    relevanteModule: ['historisch', 'bauwerksdiagnose', 'pruefverfahren_katalog', 'zfp', 'rechnung_bestand']
+  },
+  'DIN_EN_12504_1': {
+    id: 'DIN_EN_12504_1',
+    code: 'DIN EN 12504-1:2021-02',
+    title: 'Prüfung von Beton in Bauwerken - Teil 1: Bohrkernproben - Herstellung, Untersuchung und Prüfung der Druckfestigkeit',
+    category: 'beton',
+    ausgabeStand: '2021-02',
+    status: 'gueltig',
+    beschreibung: 'Entnahme, Beurteilung, Vorbereitung (Ablängen, Planschleifen) und Druckprüfung von Bohrkernen; Kerndurchmesser in Abhängigkeit vom Größtkorn.',
+    relevanteModule: ['historisch', 'bauwerksdiagnose', 'pruefverfahren_katalog']
   },
   // Folge Ausgabenprüfung 11/2026 (docs/pruefung/normen-fristen-folge-2026-11-02.md): Dauerhaftigkeitsprüfungen
   // der Reihe DIN EN 12390 und DIN 4226-101/-102 zentral geführt, damit die Fußzeilen nicht mehr fest verdrahtet sind.
