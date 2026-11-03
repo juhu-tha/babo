@@ -149,7 +149,7 @@ export default function KriechenSchwinden() {
           </div>
 
           <div className="lg:col-span-8 flex flex-col gap-6">
-            <ErgebnisAnsage text={`Kriechzahl nach 10 000 Tagen ${formatDeZahl(creepData[creepData.length - 1], 2)}, Trocknungsschwinden ${formatDeZahl(shrinkageData[shrinkageData.length - 1], 0)} µm/m, autogenes Schwinden ${formatDeZahl(m.epsCaInf * 1e6, 0)} µm/m`} />
+            <ErgebnisAnsage text={`Kriechzahl nach 10 000 Tagen ${formatDeZahl(creepData[creepData.length - 1], 2)}, Trocknungsschwinden ${formatDeZahl(shrinkageData[shrinkageData.length - 1], 0)} µm/m, autogenes Schwinden ${formatDeZahl(m.epsCaInf * 1e6, 0)} µm/m`} />
             <div className="grid grid-cols-2 md:grid-cols-4 gap-3 text-xs">
               <div className="bg-white p-3 rounded-xl border border-home-grau/30"><span className="text-text-main/60 block"><MdText text={inhalt.texte.t10000DT} /></span><strong className="font-mono text-shiraz text-base">{formatDeZahl(creepData[creepData.length - 1], 2)}</strong></div>
               <div className="bg-white p-3 rounded-xl border border-home-grau/30"><span className="text-text-main/60 block"><MdText text={inhalt.texte.cd10000D} /></span><strong className="font-mono text-base">{formatDeZahl(shrinkageData[shrinkageData.length - 1], 0)} µm/m</strong></div>

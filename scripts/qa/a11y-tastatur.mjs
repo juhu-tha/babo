@@ -86,7 +86,7 @@ window.__bb = (() => {
     const farbe = rgba(cs.outlineColor);
     const umgebung = hintergrund(el.parentElement || el);
     // zweifarbiger Fokus: Saum (box-shadow) zwischen Element und Umriss zählt als direkte Umgebung des Umrisses
-    const saum = (cs.boxShadow || '').match(/^(rgba?\([^)]*\))\s+0px 0px 0px (\d+)px/);
+    const saum = (cs.boxShadow || '').match(/^(rgba?\\([^)]*\\))\\s+0px 0px 0px (\\d+)px/);
     const kSaum = saum && parseFloat(saum[2]) >= parseFloat(cs.outlineOffset || '0') ? kontrast(farbe, rgba(saum[1])) : 0;
     const k = breite > 0 && farbe[3] > 0.5 ? Math.max(kontrast(farbe, umgebung), kSaum) : 0;
     const schatten = cs.boxShadow && cs.boxShadow !== 'none';
@@ -302,11 +302,13 @@ async function pruefeModul(page, basis, modus, id, befunde, details) {
   }
   // ---- Regler
   const regler = page.locator('main input[type="range"]:visible');
-  const nRegler = await regler.count();
+  // in einem Schritt lesen (Regler werden beim Neuzeichnen ersetzt; einzelne Locator-Aufrufe liefen dann ins Leere)
+  const reglerInfos = await page.evaluate(() => [...document.querySelectorAll('main input[type="range"]')].filter(e => window.__bb.sichtbar(e))
+    .map(e => ({ vt: e.getAttribute('aria-valuetext'), name: e.getAttribute('aria-label') || e.labels?.[0]?.textContent?.trim() || e.id, v: e.value })));
+  const nRegler = reglerInfos.length;
   const ohneText = [];
   for (let i = 0; i < nRegler; i++) {
-    const r = regler.nth(i);
-    const info = await r.evaluate(e => ({ vt: e.getAttribute('aria-valuetext'), name: e.getAttribute('aria-label') || e.labels?.[0]?.textContent?.trim() || e.id, v: e.value }));
+    const info = reglerInfos[i];
     // Klartext für Screenreader: vorhanden, deutsch formatiert (kein Dezimalpunkt) und – wenn die Beschriftung eine
     // Einheit nennt, z. B. „Dicke (cm)“ oder „in °C“ – mit dieser Einheit; dimensionslose Beiwerte bleiben reine Zahlen
     const einheit = (info.name ?? '').match(/\((mm|cm|m|kN|MPa|N\/mm²|°C|K|%|kg\/m³|W\/\(m·K\)|d|a)\)\s*$|\sin\s+(\S+)\s*$/);

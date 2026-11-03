@@ -12,6 +12,7 @@ import { META_CLUSTERS } from '../../data/metaClusters';
 import { ladeSuchbegriffe } from '../../registry/kern';
 import { tabGroups } from '../../routing/tabGroups';
 import { VolltextTreffer } from './VolltextTreffer';
+import { formatDeWert } from '@/src/utils/numberFormat';
 
 import type { TabId } from '@/src/contexts/TabContext';
 const GROUP_ICONS: Record<string, React.ComponentType<{ size?: number; className?: string }>> = {
@@ -68,8 +69,9 @@ function useSuchbegriffe(benoetigt: boolean): Record<string, string[]> {
 
 /** Text der Statusmeldung zur Suche; inhalt = null: Volltextsuche (noch) ohne Ergebnis. Exportiert für Tests. */
 export function suchStatusText(module: number, inhalt: number | null, sprache: string = 'de'): string {
-  if (sprache === 'en') return `${module} ${module === 1 ? 'module' : 'modules'} found${inhalt !== null ? `, ${inhalt} ${inhalt === 1 ? 'hit' : 'hits'} in content` : ''}`;
-  return `${module} ${module === 1 ? 'Modul' : 'Module'} gefunden${inhalt !== null ? `, ${inhalt} Treffer im Inhalt` : ''}`;
+  const z = formatDeWert;
+  if (sprache === 'en') return `${z(module)} ${module === 1 ? 'module' : 'modules'} found${inhalt !== null ? `, ${z(inhalt)} ${inhalt === 1 ? 'hit' : 'hits'} in content` : ''}`;
+  return `${z(module)} ${module === 1 ? 'Modul' : 'Module'} gefunden${inhalt !== null ? `, ${z(inhalt)} Treffer im Inhalt` : ''}`;
 }
 
 export interface ModulNavigationProps {

@@ -955,7 +955,7 @@ export const InteractiveQuizSystem: React.FC<InteractiveQuizSystemProps> = ({
               ? (answers[currentQ.id] === currentQ.correctIdx
                 ? 'Antwort richtig.'
                 : `Antwort falsch. Richtig ist ${String.fromCharCode(65 + currentQ.correctIdx)}: ${currentQ.options[currentQ.correctIdx]}`.slice(0, 300))
-              : `Frage ${currentIndex + 1} von ${activeQuestions.length}`}
+              : `Frage ${formatDeWert(currentIndex + 1)} von ${formatDeWert(activeQuestions.length)}`}
           </p>
 
           {/* Instant Feedback Box (If enabled and answered) */}
@@ -1040,7 +1040,7 @@ export const InteractiveQuizSystem: React.FC<InteractiveQuizSystemProps> = ({
                     type="button"
                     onClick={() => setCurrentIndex(idx)}
                     aria-current={isCurrent ? 'step' : undefined}
-                    aria-label={`Frage ${idx + 1}${isAnswered ? ', beantwortet' : ''}${isMarked ? ', markiert' : ''}`}
+                    aria-label={`Frage ${formatDeWert(idx + 1)}${isAnswered ? ', beantwortet' : ''}${isMarked ? ', markiert' : ''}`}
                     className={`w-7 h-7 rounded-lg text-xs font-mono font-bold transition-all flex items-center justify-center cursor-pointer border ${
                       isCurrent
                         ? 'bg-shiraz text-white border-shiraz ring-2 ring-shiraz/20 scale-105'

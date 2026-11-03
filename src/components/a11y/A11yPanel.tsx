@@ -2,6 +2,7 @@ import { formatDeWert } from '@/src/utils/numberFormat';
 import React from 'react';
 import { Type, Sparkles, RotateCcw, Maximize2, ShieldCheck, Contrast, Keyboard, Columns, LayoutGrid } from 'lucide-react';
 import type { A11ySettings, Bildschirmbreite } from './AccessibilityToolbar';
+import { AuswahlGruppe, alsOption } from '../ui/Auswahlgruppe';
 
 /**
  * Einstellungsdialog der Barrierefreiheit. Wird erst beim Öffnen nachgeladen (Einstiegsbudget, AP 6.4);
@@ -82,11 +83,11 @@ export default function A11yPanel({ settings, updateSetting, screenWidth, change
           </div>
 
           {/* Quick-Preset-Buttons inklusive Verkleinerung */}
-          <div className="grid grid-cols-5 gap-1">
+          <AuswahlGruppe label="Schriftgröße" className="grid grid-cols-5 gap-1">
             <button
               type="button"
               onClick={() => updateSetting('fontSizeScale', 0.75)}
-              aria-pressed={Math.abs(settings.fontSizeScale - 0.75) < 0.03}
+              {...alsOption(Math.abs(settings.fontSizeScale - 0.75) < 0.03)}
               className={`py-1 rounded-lg border text-[10px] font-bold transition-all cursor-pointer ${
                 Math.abs(settings.fontSizeScale - 0.75) < 0.03
                   ? 'bg-shiraz text-white border-shiraz'
@@ -99,7 +100,7 @@ export default function A11yPanel({ settings, updateSetting, screenWidth, change
             <button
               type="button"
               onClick={() => updateSetting('fontSizeScale', 0.85)}
-              aria-pressed={Math.abs(settings.fontSizeScale - 0.85) < 0.03}
+              {...alsOption(Math.abs(settings.fontSizeScale - 0.85) < 0.03)}
               className={`py-1 rounded-lg border text-[10px] font-bold transition-all cursor-pointer ${
                 Math.abs(settings.fontSizeScale - 0.85) < 0.03
                   ? 'bg-shiraz text-white border-shiraz'
@@ -112,7 +113,7 @@ export default function A11yPanel({ settings, updateSetting, screenWidth, change
             <button
               type="button"
               onClick={() => updateSetting('fontSizeScale', 1.0)}
-              aria-pressed={Math.abs(settings.fontSizeScale - 1.0) < 0.03}
+              {...alsOption(Math.abs(settings.fontSizeScale - 1.0) < 0.03)}
               className={`py-1 rounded-lg border text-[10px] font-bold transition-all cursor-pointer ${
                 Math.abs(settings.fontSizeScale - 1.0) < 0.03
                   ? 'bg-shiraz text-white border-shiraz'
@@ -125,7 +126,7 @@ export default function A11yPanel({ settings, updateSetting, screenWidth, change
             <button
               type="button"
               onClick={() => updateSetting('fontSizeScale', 1.15)}
-              aria-pressed={Math.abs(settings.fontSizeScale - 1.15) < 0.03}
+              {...alsOption(Math.abs(settings.fontSizeScale - 1.15) < 0.03)}
               className={`py-1 rounded-lg border text-[10px] font-bold transition-all cursor-pointer ${
                 Math.abs(settings.fontSizeScale - 1.15) < 0.03
                   ? 'bg-shiraz text-white border-shiraz'
@@ -138,7 +139,7 @@ export default function A11yPanel({ settings, updateSetting, screenWidth, change
             <button
               type="button"
               onClick={() => updateSetting('fontSizeScale', 1.30)}
-              aria-pressed={Math.abs(settings.fontSizeScale - 1.30) < 0.03}
+              {...alsOption(Math.abs(settings.fontSizeScale - 1.30) < 0.03)}
               className={`py-1 rounded-lg border text-[10px] font-bold transition-all cursor-pointer ${
                 Math.abs(settings.fontSizeScale - 1.30) < 0.03
                   ? 'bg-shiraz text-white border-shiraz'
@@ -148,7 +149,7 @@ export default function A11yPanel({ settings, updateSetting, screenWidth, change
             >
               130%
             </button>
-          </div>
+          </AuswahlGruppe>
         </div>
 
         {/* 2. Bildschirmbreite / Layout */}
@@ -161,11 +162,11 @@ export default function A11yPanel({ settings, updateSetting, screenWidth, change
               {screenWidth === 'standard' ? '1152 px (Standard)' : screenWidth === 'wide' ? '1536 px (Breit)' : '100% (Vollbild)'}
             </span>
           </div>
-          <div className="grid grid-cols-3 gap-1">
+          <AuswahlGruppe label="Bildschirmbreite" className="grid grid-cols-3 gap-1">
             <button
               type="button"
               onClick={() => changeScreenWidth('standard')}
-              aria-pressed={screenWidth === 'standard'}
+              {...alsOption(screenWidth === 'standard')}
               className={`py-1.5 px-2 rounded-lg border text-[10px] font-bold transition-all cursor-pointer flex flex-col items-center gap-0.5 ${
                 screenWidth === 'standard'
                   ? 'bg-shiraz text-white border-shiraz shadow-xs'
@@ -179,7 +180,7 @@ export default function A11yPanel({ settings, updateSetting, screenWidth, change
             <button
               type="button"
               onClick={() => changeScreenWidth('wide')}
-              aria-pressed={screenWidth === 'wide'}
+              {...alsOption(screenWidth === 'wide')}
               className={`py-1.5 px-2 rounded-lg border text-[10px] font-bold transition-all cursor-pointer flex flex-col items-center gap-0.5 ${
                 screenWidth === 'wide'
                   ? 'bg-shiraz text-white border-shiraz shadow-xs'
@@ -193,7 +194,7 @@ export default function A11yPanel({ settings, updateSetting, screenWidth, change
             <button
               type="button"
               onClick={() => changeScreenWidth('full')}
-              aria-pressed={screenWidth === 'full'}
+              {...alsOption(screenWidth === 'full')}
               className={`py-1.5 px-2 rounded-lg border text-[10px] font-bold transition-all cursor-pointer flex flex-col items-center gap-0.5 ${
                 screenWidth === 'full'
                   ? 'bg-shiraz text-white border-shiraz shadow-xs'
@@ -204,7 +205,7 @@ export default function A11yPanel({ settings, updateSetting, screenWidth, change
               <span className="flex items-center gap-1"><Maximize2 size={11} /> Vollbild</span>
               <span className="text-[9px] font-normal">100%</span>
             </button>
-          </div>
+          </AuswahlGruppe>
         </div>
 
         {/* 3. Starker Kontrast */}
