@@ -165,6 +165,7 @@ const HAND: { datei: string; name: string; args: unknown[]; fest?: string[]; wer
   { datei: 'src/calc/holzbau.ts', name: 'holzschraube', args: [{ rhok: 350, d: 8, lef: 80, alpha: 90, n: 4, nkl: 1, kled: 'mtl' }], fest: ['nkl'] },
   { datei: 'src/calc/keramik.ts', name: 'keramikKennwerte', args: [{ mt: 200, mn: 210, ma: 118, rhoRein: 2.65, formgebung: 'B' }] },
   { datei: 'src/calc/lebensdauer.ts', name: 'lebensdauerbemessung', args: [lebensdauerBasis()], werte: [NaN, 0, -1] },
+  { datei: 'src/calc/ecKennwerte.ts', name: 'ecKennwerte', args: [{ baustoff: 'mauerwerk', klasse: 'frei', situation: 'staendig', fk: 5, zeta: 0.85 }] },
   { datei: 'src/calc/mauerwerk.ts', name: 'bemesseWandVereinfacht', args: [{ lage: 'innen', h: 2.5, t: 240, a: 160, lf: 5, fk: 5, nEd: 200 }] },
   { datei: 'src/calc/packungsdichte.ts', name: 'sieblinienOptimierung', args: [{ zement: 12, zusatz: 5, sand: 33, kies1: 20, q: 0.3, kornform: 'rund', vFest: 750 }] },
   { datei: 'src/calc/querkraft.ts', name: 'bemesseQuerkraft', args: [{ b: 30, h: 50, d1: 5, fck: 30, bewehrung: 'Stahl', fyk: 500, ftk: 3000, gammaFRP: 1.3, asl: 6, vEd: 250, theta: 40 }] },
@@ -182,6 +183,8 @@ const HAND: { datei: string; name: string; args: unknown[]; fest?: string[]; wer
   { datei: 'src/calc/laborversuche.ts', name: 'moertelprismen', args: [[{ Ff: 2.9, Fc1: 79.2, Fc2: 81 }, { Ff: 3.1, Fc1: 80.1, Fc2: 78.5 }, { Ff: 3.0, Fc1: 82.3, Fc2: 79.6 }], 28] },
   { datei: 'src/calc/laborversuche.ts', name: 'druckMittel196', args: [[49.5, 50.6, 50.1, 40.6, 51.4, 49.8]] },
   { datei: 'src/utils/schadensKern.ts', name: 'fckIs13791', args: [[28, 30, 31, 27, 29, 33, 26, 30]], art: 'formel' },
+  // Ergänzung 02.11.2026 (Historische Kennwerte): Bohrkernserie nach DIN EN 13791 – Basis Lehrbeispiel 1 (10 Kerne, h/d = 2)
+  { datei: 'src/calc/bohrkernserie13791.ts', name: 'bohrkernserie13791', args: [{ werte: [16.4, 18.9, 20.3, 17.6, 21.8, 19.4, 15.9, 18.2, 20.9, 17.1], ansatz: 'kerne', bezug: 'zylinder', durchmesserMm: 100, groesstkornMm: 32, volumenM3: 120, mindestStreuung: true }] },
   { datei: 'src/calc/lcc.ts', name: 'epsWdvsGwp', args: [0.16, 150, 16], art: 'formel' },
 ];
 for (const h of HAND) {

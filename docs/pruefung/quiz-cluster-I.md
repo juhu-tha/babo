@@ -1,10 +1,10 @@
 # Prüfliste Quiz – Cluster I: Grundlagen & Labor
 
-Stand: 02.11.2026 · Grundlage: `src/data/quiz.json` (Felder `vorpruefung` und `verified`), `docs/quiz-pruefhinweise.md`, Lernziele aus `src/data/lernziele.ts`. Erzeugt mit `npx tsx scripts/pruefliste.ts`; gesetzte Kreuze übernimmt das Skript beim nächsten Lauf. quiz.json wurde für diese Liste nicht verändert.
+Stand: 03.11.2026 · Grundlage: `src/data/quiz.json` (Felder `vorpruefung` und `verified`), `docs/quiz-pruefhinweise.md`, Lernziele aus `src/data/lernziele.ts`. Erzeugt mit `npx tsx scripts/pruefliste.ts`; gesetzte Kreuze übernimmt das Skript beim nächsten Lauf. quiz.json wurde für diese Liste nicht verändert.
 
-Cluster I umfasst 260 Fragen aus 38 Modulen. Aufgeführt sind 80 auffällige Fragen (Vorprüfung „korrigiert“ oder „fraglich“, offener Prüfhinweis oder neu seit 26.10.2026 ohne Freigabe) und eine Stichprobe von 5 unauffälligen Fragen. Entscheidung je Frage ankreuzen; bei „ändern“ den Änderungswunsch in die Zeile darunter schreiben.
+Cluster I umfasst 267 Fragen aus 39 Modulen. Aufgeführt sind 87 auffällige Fragen (Vorprüfung „korrigiert“ oder „fraglich“, offener Prüfhinweis oder neu seit 26.10.2026 ohne Freigabe) und eine Stichprobe von 5 unauffälligen Fragen. Entscheidung je Frage ankreuzen; bei „ändern“ den Änderungswunsch in die Zeile darunter schreiben.
 
-Auffällig im Einzelnen (Mehrfachnennung möglich): 75 korrigiert, 0 fraglich, 8 mit offenem Prüfhinweis, 1 neu seit 26.10.2026.
+Auffällig im Einzelnen (Mehrfachnennung möglich): 75 korrigiert, 0 fraglich, 8 mit offenem Prüfhinweis, 8 neu seit 26.10.2026.
 
 ## A. Auffällige Fragen
 
@@ -630,6 +630,62 @@ Auffällig im Einzelnen (Mehrfachnennung möglich): 75 korrigiert, 0 fraglich, 8
 - **Richtige Antwort:** G ≈ 2,32 > 2,13; auffällig, vor dem Streichen technische Ursache prüfen
 - **Auffälligkeit:** Vorprüfung „korrigiert“: normRef ergänzt; Zweitprüfung 27.10.: G_krit nach ISO 5725-2 (2,13 statt 2,03) – korrigiert, Freigabe zurückgenommen · bereits freigegeben (verified)
 - [x] ok
+- [ ] ändern: …
+
+### qt_eckennwerte_1 · Kennwerte und Bemessungswerte nach Eurocode
+
+- **Frage:** Was ist nach DIN EN 1990 der charakteristische Wert einer Baustofffestigkeit?
+- **Richtige Antwort:** 5-%-Quantil der Grundgesamtheit
+- **Auffälligkeit:** neu seit 26.10.2026 (Z24), noch nicht freigegeben
+- [ ] ok
+- [ ] ändern: …
+
+### qt_eckennwerte_2 · Kennwerte und Bemessungswerte nach Eurocode
+
+- **Frage:** DIN EN 1992-1-1 setzt f_cm = f_ck + 8 N/mm². Wie lässt sich der Abstand von 8 N/mm² statistisch deuten?
+- **Richtige Antwort:** 1,645 · σ mit σ von etwa 5 N/mm²
+- **Auffälligkeit:** neu seit 26.10.2026 (Z24), noch nicht freigegeben
+- [ ] ok
+- [ ] ändern: …
+
+### qt_eckennwerte_3 · Kennwerte und Bemessungswerte nach Eurocode
+
+- **Frage:** Welcher Bemessungswert der Druckfestigkeit f_cd gilt für C35/45 in der ständigen Bemessungssituation nach NA DE?
+- **Richtige Antwort:** f_cd = 19,8 N/mm²
+- **Auffälligkeit:** neu seit 26.10.2026 (Z24), noch nicht freigegeben
+- [ ] ok
+- [ ] ändern: …
+
+### qt_eckennwerte_4 · Kennwerte und Bemessungswerte nach Eurocode
+
+- **Frage:** Brettschichtholz GL24h (f_m,k = 24 N/mm²) in Nutzungsklasse 2 unter kurzer Lasteinwirkung (k_mod = 0,9): Wie groß ist f_m,d?
+- **Richtige Antwort:** f_m,d = 16,6 N/mm²
+- **Auffälligkeit:** neu seit 26.10.2026 (Z24), noch nicht freigegeben
+- [ ] ok
+- [ ] ändern: …
+
+### qt_eckennwerte_5 · Kennwerte und Bemessungswerte nach Eurocode
+
+- **Frage:** Drei Zylinder ergeben m = 36,8 N/mm² und s = 2,37 N/mm²; V_x ist unbekannt. Welches 5-%-Quantil folgt nach DIN EN 1990, Anhang D (Normalverteilung)?
+- **Richtige Antwort:** X_k = 28,8 N/mm²
+- **Auffälligkeit:** neu seit 26.10.2026 (Z24), noch nicht freigegeben
+- [ ] ok
+- [ ] ändern: …
+
+### qt_eckennwerte_6 · Kennwerte und Bemessungswerte nach Eurocode
+
+- **Frage:** Stetige Herstellung C30/37 (Zylinder, n = 15): f_cm = 34,2 N/mm², σ der Vorserie = 2,5 N/mm². Ist Kriterium 1 erfüllt?
+- **Richtige Antwort:** Nein, gefordert sind 34,4 N/mm²
+- **Auffälligkeit:** neu seit 26.10.2026 (Z24), noch nicht freigegeben
+- [ ] ok
+- [ ] ändern: …
+
+### qt_eckennwerte_7 · Kennwerte und Bemessungswerte nach Eurocode
+
+- **Frage:** Für welchen Nachweis gilt im Stahlbau nach NA DE der Teilsicherheitsbeiwert γ_M1 = 1,1?
+- **Richtige Antwort:** Stabilität, z. B. Biegeknicken
+- **Auffälligkeit:** neu seit 26.10.2026 (Z24), noch nicht freigegeben
+- [ ] ok
 - [ ] ändern: …
 
 ### qz24_atterberg_3 · Bodenmechanik

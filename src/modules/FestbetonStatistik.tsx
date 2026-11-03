@@ -26,6 +26,7 @@ import { ModulTest } from '@/src/components/quiz/ModulTest';
 import inhalt from '@/content/festbetonstatistik/FestbetonStatistik.json';
 import { MdText } from '@/src/components/inhalt/MdText';
 import { festbetonStatistik } from '@/src/calc/festbetonStatistik';
+import { EcKennwerteVerweis } from '@/src/components/ui/EcKennwerteVerweis';
 
 ChartJS.register(
   CategoryScale,
@@ -436,6 +437,8 @@ export default function FestbetonStatistik() {
         <Querverweis ziel="normen_ausblick" titel={inhalt.werte.neueAusgabenErschienenDin} linkText={inhalt.werte.zumModulAusblickNeue}>
           <p><MdText text={inhalt.texte.maßgebendBleibenDinEn} /></p>
         </Querverweis>
+
+        <EcKennwerteVerweis />
 
         <ModulTest moduleId="festbeton_statistik" />
 

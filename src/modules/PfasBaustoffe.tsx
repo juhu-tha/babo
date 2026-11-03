@@ -34,7 +34,8 @@ const BEISPIEL: Partial<Record<PfasId, number>> = { PFBA: 12, PFPeA: 8, PFHxA: 1
 const startText = (): Record<PfasId, string> =>
   Object.fromEntries(PFAS20.map(s => [s.id, BEISPIEL[s.id] !== undefined ? formatDeZahl(BEISPIEL[s.id], 1) : ''])) as Record<PfasId, string>;
 
-const ANSATZ_TEXT: Readonly<Record<BgAnsatz, string>> = { null: '< BG = 0', halb: '< BG = BG/2', voll: '< BG = BG' };
+// Voreinstellung nach TrinkwV Anlage 2 Teil I (Werte unter der BG bleiben unberücksichtigt); BG/2 und BG als konservative Varianten
+const ANSATZ_TEXT: Readonly<Record<BgAnsatz, string>> = { null: '< BG = 0 (TrinkwV)', halb: '< BG = BG/2 (konservativ)', voll: '< BG = BG (ungünstigste Annahme)' };
 
 function SummenKachel({ titel, s, ab }: { titel: string; s: PfasSumme; ab: string }) {
   const farbe = !Number.isFinite(s.summe) ? 'bg-off-white border-home-grau/30' : s.ok ? 'bg-emerald-50 border-emerald-200 text-emerald-900' : 'bg-red-50 border-red-200 text-red-900';
@@ -52,7 +53,7 @@ export default function PfasBaustoffe() {
 
   const [text, setText] = useState<Record<PfasId, string>>(startText);
   const [bg, setBg] = useState(1);
-  const [ansatz, setAnsatz] = useState<BgAnsatz>('halb');
+  const [ansatz, setAnsatz] = useState<BgAnsatz>('null');
 
   const werte = useMemo(() => Object.fromEntries(PFAS20.map(s => {
     const t = text[s.id].trim();
@@ -274,6 +275,7 @@ export default function PfasBaustoffe() {
                       </button>
                     ))}
                   </AuswahlGruppe>
+                  <p className="text-[11px] text-text-main/70 mt-2 leading-relaxed"><MdText text={inhalt.werte.ansatzHinweisTrinkwv} /></p>
                 </div>
                 <div className={box}>
                   <div className="flex items-center justify-between mb-3">

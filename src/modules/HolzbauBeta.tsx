@@ -17,6 +17,7 @@ import HolzbauVerbindung from './holzbaubeta/HolzbauVerbindung';
 import HolzbauBauphysik from './holzbaubeta/HolzbauBauphysik';
 import inhalt from '@/content/holzbaubeta/HolzbauBeta.json';
 import { MdText } from '@/src/components/inhalt/MdText';
+import { EcKennwerteVerweis } from '@/src/components/ui/EcKennwerteVerweis';
 
 interface SubTabProps {
   activeSubTab: string;
@@ -236,6 +237,8 @@ export default function HolzbauBeta({ activeSubTab = 'info' }: SubTabProps) {
       <Querverweis ziel="normen_ausblick" titel={inhalt.werte.neueEurocodeGenerationErschienen} linkText={inhalt.werte.zumModulAusblickNeue}>
         <p><MdText text={inhalt.texte.maßgebendBleibenDieBauaufsichtlich} /></p>
       </Querverweis>
+
+      <EcKennwerteVerweis />
 
       <ModulTest moduleId="holzbau" />
 

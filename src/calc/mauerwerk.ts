@@ -40,6 +40,14 @@ import { formatDeZahl } from '../utils/numberFormat';
 export const ZETA_MW = 0.85;
 /** Teilsicherheitsbeiwert γ_M für Mauerwerk, ständige und vorübergehende Bemessungssituation (AMz 2016, Tab. 3) */
 export const GAMMA_M_MW = 1.5;
+/**
+ * γ_M für unbewehrtes Mauerwerk aus Steinen der Kategorie I, außergewöhnliche Bemessungssituation = 1,3
+ * (DIN EN 1996-1-1/NA, Tab. NA.1; öffentliche Wiedergabe mb AEC Software, mb-news 05/2013 „Grundlagen der Bemessung
+ * von Mauerwerksbauten nach Eurocode 6“, Tab. 1). Für kurzzeitige Beanspruchung nennt dieselbe Quelle ζ = 1,0.
+ */
+export const GAMMA_M_MW_AUSSERGEWOEHNLICH = 1.3;
+/** Dauerstandsbeiwert ζ = 1,0 bei kurzzeitiger Beanspruchung (mb-news 05/2013, ebd.) */
+export const ZETA_MW_KURZ = 1.0;
 /** Grenzschlankheit h_ef/t nach DIN EN 1996-1-1, 5.5.1.4 – „darf nicht größer als 27 sein“ (AMz 2016, S. 12; ebenso EN 1996-3, 4.2) */
 export const SCHLANKHEIT_MAX = 27;
 /** Größte Deckenstützweite im vereinfachten Verfahren [m] (AMz 2016, S. 8: l_f ≤ 6,0 m; KS-Tafeln bis 6,0 m) */

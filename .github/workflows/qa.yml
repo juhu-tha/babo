@@ -28,9 +28,11 @@ jobs:
         run: npm run -s check:quellen
       - name: Zahlformat
         run: npm run -s check:zahlen
+      # Build wie auf Vercel (Statik-Modus, docs/betrieb-vercel.md): ohne Server-Bundle; check-bundle verlangt
+      # server.cjs dann nicht. Vorher (npx vite build ohne Statik-Modus) brach der Lauf hier auf main ab.
       - name: Build
-        run: npx vite build
+        run: BB_STATISCH=1 npx vite build
       - name: Bundle-Budget
-        run: node scripts/qa/check-bundle.mjs
+        run: node scripts/qa/check-bundle.mjs --statisch
       - name: Verwaiste Dateien
         run: node scripts/qa/check-verwaist.mjs --strict

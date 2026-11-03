@@ -88,6 +88,16 @@ export const GAMMA_C = { staendig: 1.5, aussergewoehnlich: 1.3 } as const;
 /** α_cc = 0,85 nach DIN EN 1992-1-1/NA, NDP zu 3.1.6(1)P */
 export const ALPHA_CC = 0.85;
 
+/** Empfehlungswert α_cc = 1,0 der EN 1992-1-1:2004, 3.1.6(1)P (ohne Nationalen Anhang; nur Vergleich, nicht für Deutschland) */
+export const ALPHA_CC_EN_EMPFEHLUNG = 1.0;
+
+/**
+ * Teilsicherheitsbeiwerte γ_s für Betonstahl nach DIN EN 1992-1-1/NA, Tab. 2.1DE (ständig/vorübergehend 1,15;
+ * außergewöhnlich 1,0). Der Wert 1,15 ist zugleich EC2_NA_DE.gammaS (src/data/normParams.ts); tests/ecKennwerte.test.ts
+ * prüft die Gleichheit (Bestandsaufnahme 02.11.2026).
+ */
+export const GAMMA_S = { staendig: 1.15, aussergewoehnlich: 1.0 } as const;
+
 /**
  * Zusätzliche Abminderung für hochfesten Beton ab C55/67 – vorläufig, F-Freigabe:
  * f_cd = α_cc·f_ck/(γ_c·γ_c') mit γ_c' = 1/(1,1 − f_ck/500) ≥ 1, d. h. Faktor (1,1 − f_ck/500) ≤ 1 auf f_cd.
