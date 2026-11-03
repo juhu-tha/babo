@@ -1,7 +1,7 @@
 # Umsetzung Gesamtgutachten 03.11.2026 – Maßnahmen „ohne Prof. Huber umsetzbar“
 
 **Grundlage:** `docs/review/gesamt-2026-11-03.md` (PR #314), Abschnitt 5.1. Branch `umsetzung/gutachten-11-03` ab `origin/main` (#313) mit #314 eingemergt.
-**Nicht in diesem PR:** Version 4.5.0/Release, zweite Runde Rechtsquellen (eigener Auftrag), `aria-label` am Seitenleistenschalter (Branch `a11y/tastatur-sr-11-03`), Barrierefreiheitserklärung, ESLint. Prüfvermerke (`src/data/pruefvermerke.ts`) und `src/data/quiz.json` sind nicht geändert.
+**Nicht in diesem PR:** Version 4.5.0/Release, zweite Runde Rechtsquellen (eigener Auftrag), `aria-label` am Seitenleistenschalter (Branch `a11y/tastatur-sr-11-03`), Barrierefreiheitserklärung, ESLint. Prüfvermerke (`src/data/pruefvermerke.ts`) sind nicht geändert. In `src/data/quiz.json` ist nur der Abschnittsverweis der Lernhilfe von `qn_feuchteschutz_2` auf die neue Modulüberschrift nachgeführt („Feuchteschutz & Wasserdampf-Taupunkt“ → „Feuchteschutz & Tauwasser (Glaser-Verfahren)“, Ratsche `tests/umsetzungQuiztext_20261102.test.ts`); Frage, Antworten und Freigabe sind unverändert.
 
 ## Übersicht
 
@@ -71,4 +71,15 @@ Test `tests/sucheVarianten.test.ts` mit dem echten Index (`public/suchindex.json
 
 ## QA
 
-Siehe PR-Beschreibung (tsc, `npm test`, check:formeln, check:zahlen, check-design, check-verwaist --strict, check-any, Build mit `BB_STATISCH=1`, `check-bundle --statisch`, `a11y-reiter` auf den geänderten Routen).
+| Prüfung | Ergebnis |
+|---|---|
+| `tsc --noEmit` | rc 0 |
+| `npm test` | 192 Testdateien ok |
+| `check:formeln` / `check:zahlen` / `check-design` / `check-verwaist --strict` / `check-any` | 4502 Formeln, 0 fehlerhaft / 0 / 0 neu / 0 / 0 |
+| `fristen-abgleich` / `klassengrenzen-abgleich` | 140 von 140 / 15 von 15, 0 falsche Einstufungen |
+| `BB_STATISCH=1 npm run build`, `node scripts/seite404.mjs`, `check-bundle.mjs --statisch` | rc 0, Bundle-Budget eingehalten |
+| `modultitel.mjs` auf `dist` | 0 Label nicht im Titel, 264 Überschriften, 0 ohne Modulnamen (außer Ausnahmeliste) |
+| statische Vorschau (Port 4528): `/modul/glaser`, `/foo` | Status 404, Hinweis mit Vorschlag „Feuchteschutz“, Suche „w/z-Wert“ → Mischungsberechnung, Klick öffnet `/modul/feuchteschutz`, Zurück zeigt den Hinweis wieder; kein Konsolenfehler, kein seitliches Scrollen (Desktop, Mobil 390 px, dunkel) |
+| `a11y-reiter` (desk, mob, desk-dunkel) | 216 Reiterprüfungen auf 12 Routen (feuchteschutz, abfaelle, lca_regulatorik, dauerhaftigkeit, aufgaben_trainer, aufgaben_komplex, ki_ueberblick, boden_materialaufbereitung, rueckbau, schadstoffe, Startseite, unbekannte Adresse): 0 Verstöße |
+
+Beim Prüfen gefunden und behoben: Die erste Fassung von `seite404.mjs` ersetzte das Wort „<noscript>“ im HTML-Kommentar vor dem Ersatzinhalt; der Kommentar blieb offen und `#root` fehlte. Der Test prüft das jetzt. Hinweis: `scripts/qa/vercel-vorschau.mjs` hält komprimierte Antworten je Datei im Speicher – nach einem neuen Build die Vorschau neu starten.
