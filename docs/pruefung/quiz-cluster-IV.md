@@ -1,12 +1,20 @@
 # Prüfliste Quiz – Cluster IV: Bestand & Nachhaltigkeit
 
-Stand: 02.11.2026 · Grundlage: `src/data/quiz.json` (Felder `vorpruefung` und `verified`), `docs/quiz-pruefhinweise.md`, Lernziele aus `src/data/lernziele.ts`. Erzeugt mit `npx tsx scripts/pruefliste.ts`; gesetzte Kreuze übernimmt das Skript beim nächsten Lauf. quiz.json wurde für diese Liste nicht verändert.
+Stand: 03.11.2026 · Grundlage: `src/data/quiz.json` (Felder `vorpruefung` und `verified`), `docs/quiz-pruefhinweise.md`, Lernziele aus `src/data/lernziele.ts`. Erzeugt mit `npx tsx scripts/pruefliste.ts`; gesetzte Kreuze übernimmt das Skript beim nächsten Lauf. quiz.json wurde für diese Liste nicht verändert.
 
-Cluster IV umfasst 318 Fragen aus 50 Modulen. Aufgeführt sind 109 auffällige Fragen (Vorprüfung „korrigiert“ oder „fraglich“, offener Prüfhinweis oder neu seit 26.10.2026 ohne Freigabe) und eine Stichprobe von 5 unauffälligen Fragen. Entscheidung je Frage ankreuzen; bei „ändern“ den Änderungswunsch in die Zeile darunter schreiben.
+Cluster IV umfasst 350 Fragen aus 50 Modulen. Aufgeführt sind 142 auffällige Fragen (Vorprüfung „korrigiert“ oder „fraglich“, offener Prüfhinweis oder neu seit 26.10.2026 ohne Freigabe) und eine Stichprobe von 5 unauffälligen Fragen. Entscheidung je Frage ankreuzen; bei „ändern“ den Änderungswunsch in die Zeile darunter schreiben.
 
-Auffällig im Einzelnen (Mehrfachnennung möglich): 86 korrigiert, 4 fraglich, 11 mit offenem Prüfhinweis, 16 neu seit 26.10.2026.
+Auffällig im Einzelnen (Mehrfachnennung möglich): 87 korrigiert, 4 fraglich, 11 mit offenem Prüfhinweis, 48 neu seit 26.10.2026.
 
 ## A. Auffällige Fragen
+
+### q_ab_7 · Abfälle & Altlasten
+
+- **Frage:** Ein Abbruchunternehmen will asbesthaltige Platten mit unbelastetem Bauschutt mischen, um den Asbestgehalt des Gemischs unter einen Zuordnungswert zu drücken. Wie ist das zu bewerten?
+- **Richtige Antwort:** Unzulässig: Für gefährliche Abfälle gilt das Vermischungsverbot (§ 9a KrWG)
+- **Auffälligkeit:** Vorprüfung „korrigiert“: Rechtsquellen-Prüfung 03.11.: Normverweis „GefStoffV Anhang II“ → „GefStoffV § 11 Abs. 1“ (Asbestverbote seit der Novelle vom 05.12.2024 in § 11, Anhang II Nr. 1 weggefallen; Feld „quelle“ nannte es bereits richtig); Antwort unverändert – korrigiert
+- [ ] ok
+- [ ] ändern: …
 
 ### q_bst_1 · Altbauatlas
 
@@ -244,7 +252,7 @@ Auffällig im Einzelnen (Mehrfachnennung möglich): 86 korrigiert, 4 fraglich, 1
 
 - **Frage:** Wie ist der Rechtsstand des „Gebäudetyp E“ im Oktober 2026?
 - **Richtige Antwort:** Der Entwurf von 2024 ist erledigt; seit 10/2026 liegt ein neuer Entwurf zur Anhörung vor
-- **Auffälligkeit:** Vorprüfung „korrigiert“: Distraktoren angeglichen · Zweitprüfung 27.10.: Erklärung auf Referentenentwurf vom 26.10.2026 (Stellungnahmefrist 09.11.2026) präzisiert, unbelegte Prognose „Mitte 2027“ entfernt – korrigiert · bereits freigegeben (verified)
+- **Auffälligkeit:** Vorprüfung „korrigiert“: Rechtsquellen-Prüfung 03.11.: Rückmeldung zu Option 1 „§ 650o BGB war nur im Regierungsentwurf vorgesehen“ → Gebäudetyp-E-Regelung § 650o BGB-E nur im Entwurf; geltender § 650o BGB (abweichende Vereinbarungen beim Verbraucherbauvertrag) besteht seit 2018; Antwort unverändert – korrigiert
 - [ ] ok
 - [x] ändern: Erklärung präzisiert (Referentenentwurf BMJV 26.10.2026, Frist 09.11.2026; Prognose „Mitte 2027“ ohne Beleg entfernt), korrigiert
 
@@ -326,6 +334,262 @@ Auffällig im Einzelnen (Mehrfachnennung möglich): 86 korrigiert, 4 fraglich, 1
 - **Richtige Antwort:** Zusätzlich müssen die besonderen QNG-Anforderungen erfüllt und zertifiziert sein
 - **Auffälligkeit:** Vorprüfung „korrigiert“: Distraktoren angeglichen · bereits freigegeben (verified)
 - [x] ok
+- [ ] ändern: …
+
+### qlz_abfaelle_1 · Abfälle & Altlasten
+
+- **Frage:** Ein homogenes Haufwerk Betonbruch umfasst 250 m³, das Größtkorn beträgt 63 mm. Welchen Beprobungsumfang ergibt der Planer des Moduls nach LAGA PN 98?
+- **Richtige Antwort:** 28 Einzel-, 7 Misch-, 7 Laborproben; Einzelprobe mindestens 5 l
+- **Auffälligkeit:** neu seit 26.10.2026 (Z24), noch nicht freigegeben, ohne Vorprüfung
+- [ ] ok
+- [ ] ändern: …
+
+### qlz_altholz_urban_mining_1 · Altholz-NIR-Sortierung und Urban Mining
+
+- **Frage:** Eine Stadt will für ein Quartier der 1960er Jahre abschätzen, wie viel Bauholz künftig stofflich verwertbar wird. Welche Bewertung des Vorgehens ist richtig?
+- **Richtige Antwort:** Top-down liefert früh Mengen; erst Gebäudepässe oder Begehungen zeigen Qualität und Schadstoffe
+- **Auffälligkeit:** neu seit 26.10.2026 (Z24), noch nicht freigegeben, ohne Vorprüfung
+- [ ] ok
+- [ ] ändern: …
+
+### qlz_bauwerksunters_monitoring_1 · Tragwerksmonitoring (SHM)
+
+- **Frage:** Ein Riss in einer Stützwand soll über ein Jahr daraufhin überwacht werden, ob er sich bewegt. Welche Verfahrenswahl ist nach dem Modul am besten begründet?
+- **Richtige Antwort:** LVDT-Rissmonitoring mit Datenlogger, Temperatur mitmessen und saisonal deuten
+- **Auffälligkeit:** neu seit 26.10.2026 (Z24), noch nicht freigegeben, ohne Vorprüfung
+- [ ] ok
+- [ ] ändern: …
+
+### qlz_bestand_1 · Altbauatlas
+
+- **Frage:** Eine Außenwand (A = 100 m², F_x = 1,0) wird gedämmt, ΔU = 1,16 W/(m²K). Welche jährliche Einsparung (G_t20/15 = 3500 Kd/a) und welche CO₂-Minderung bei Erdgas (0,24 kg/kWh) ergibt der Rechner?
+- **Richtige Antwort:** rund 9744 kWh/a und rund 2,3 t CO₂/a
+- **Auffälligkeit:** neu seit 26.10.2026 (Z24), noch nicht freigegeben, ohne Vorprüfung
+- [ ] ok
+- [ ] ändern: …
+
+### qlz_bestand_2 · Altbauatlas
+
+- **Frage:** Für eine ungedämmte Altbau-Außenwand (U = 1,40 W/(m²K)) werden verglichen: (A) 12 cm WDVS außen, U_neu ≈ 0,24 W/(m²K); (B) 4 cm Innendämmung ohne Feuchtenachweis, U_neu ≈ 0,55 W/(m²K). Wie ist das zu beurteilen?
+- **Richtige Antwort:** Nur A ist konform; B verfehlt 0,24 W/(m²K) und erhöht das Tauwasserrisiko innen
+- **Auffälligkeit:** neu seit 26.10.2026 (Z24), noch nicht freigegeben, ohne Vorprüfung
+- [ ] ok
+- [ ] ändern: …
+
+### qlz_boden_materialaufbereitung_1 · Boden- & Materialaufbereitung
+
+- **Frage:** Ein Recyclingwerk möchte auf die Fremdüberwachung verzichten, weil seine tägliche werkseigene Kontrolle bereits Sieblinie und Eluat-Schnelltests umfasst. Wie ist das nach dem Modul zu bewerten?
+- **Richtige Antwort:** Nicht zulässig: erst unabhängige, unangekündigte Prüfungen belegen die Güte
+- **Auffälligkeit:** neu seit 26.10.2026 (Z24), noch nicht freigegeben, ohne Vorprüfung
+- [ ] ok
+- [ ] ändern: …
+
+### qlz_boden_materialaufbereitung_2 · Boden- & Materialaufbereitung
+
+- **Frage:** Welche Zuordnung von Verordnung und Regelungsinhalt entspricht dem Modul?
+- **Richtige Antwort:** EBV: Herstellung, Güteüberwachung und Einbau mineralischer Ersatzbaustoffe
+- **Auffälligkeit:** neu seit 26.10.2026 (Z24), noch nicht freigegeben, ohne Vorprüfung
+- [ ] ok
+- [ ] ändern: …
+
+### qlz_dauerhaftigkeit_1 · Dauerhaftigkeit & Korrosionsschutz
+
+- **Frage:** Welche Zuordnung von Maßnahme und Schutzprinzip entspricht dem Modul?
+- **Richtige Antwort:** Opferanode als aktiver Schutz, Feuerverzinkung als passive Barriere
+- **Auffälligkeit:** neu seit 26.10.2026 (Z24), noch nicht freigegeben, ohne Vorprüfung
+- [ ] ok
+- [ ] ändern: …
+
+### qlz_denkmalpflege_1 · Denkmalpflege
+
+- **Frage:** Ein historisches Ziegelmauerwerk mit Feuchteschäden soll einen neuen Putz erhalten. Welche Planung ist denkmalpflegerisch am besten begründet?
+- **Richtige Antwort:** Schadhafte Flächen ergänzen, intakten Altputz sichern, Kalkputz und Silikatfarbe
+- **Auffälligkeit:** neu seit 26.10.2026 (Z24), noch nicht freigegeben, ohne Vorprüfung
+- [ ] ok
+- [ ] ändern: …
+
+### qlz_historische_bauweisen_1 · Hist. Bauweisen
+
+- **Frage:** Ein Deckenbalken 14/20 cm liegt im Abstand 0,90 m, Spannweite 4,00 m, Eigenlast 1,5 kN/m², Nutzlast 2,0 kN/m² (charakteristisch). Welche Biegespannung σ_m = M/W ergibt sich als Einfeldträger?
+- **Richtige Antwort:** σ_m ≈ 6,75 N/mm²
+- **Auffälligkeit:** neu seit 26.10.2026 (Z24), noch nicht freigegeben, ohne Vorprüfung
+- [ ] ok
+- [ ] ändern: …
+
+### qlz_holzkorrosion_1 · Holzkorrosion
+
+- **Frage:** In einem Dachstuhl wird aktiver Befall durch Echten Hausschwamm festgestellt; das Myzel ist bereits ins Mauerwerk gewachsen. Welches Vorgehen begründet das Modul nach DIN 68800-4?
+- **Richtige Antwort:** Holz 1,00 m über den Befallsrand absägen, Mauerwerk mit „M“-Mittel sperren, Holz als A IV entsorgen
+- **Auffälligkeit:** neu seit 26.10.2026 (Z24), noch nicht freigegeben, ohne Vorprüfung
+- [ ] ok
+- [ ] ändern: …
+
+### qlz_korrosion_1 · Bewehrungskorrosion
+
+- **Frage:** Wie verläuft nach dem Modul die Schädigung durch Bewehrungskorrosion, und welche Besonderheit gilt beim chloridinduzierten Lochfraß?
+- **Richtige Antwort:** Depassivierung, Rost mit 2- bis 6-fachem Volumen, Risse, Abplatzung; Lochfraß oft ohne Vorwarnung
+- **Auffälligkeit:** neu seit 26.10.2026 (Z24), noch nicht freigegeben, ohne Vorprüfung
+- [ ] ok
+- [ ] ändern: …
+
+### qlz_korrosionsschutz_beschichtungen_1 · Korrosionsschutz durch Beschichtungen
+
+- **Frage:** Ein Stahlträger in Kategorie C4 soll mindestens 40 Jahre geschützt sein. Die Feuerverzinkung hat 85 µm, der Zinkabtrag beträgt 2,1 bis 4,2 µm/a. Genügt die Verzinkung allein?
+- **Richtige Antwort:** Nein: Ungünstig nur rund 20 Jahre; ein Duplex-System mit Beschichtung wählen
+- **Auffälligkeit:** neu seit 26.10.2026 (Z24), noch nicht freigegeben, ohne Vorprüfung
+- [ ] ok
+- [ ] ändern: …
+
+### qlz_korrosionsschutz_beschichtungen_2 · Korrosionsschutz durch Beschichtungen
+
+- **Frage:** Ein Stahlbauteil im Freien erhält EP-Zinkstaub, EP-Eisenglimmer und eine PUR-Deckbeschichtung. Warum wird oben PUR statt EP verwendet?
+- **Richtige Antwort:** PUR ist UV- und farbtonstabil und schützt die darunterliegenden EP-Schichten vor Abbau
+- **Auffälligkeit:** neu seit 26.10.2026 (Z24), noch nicht freigegeben, ohne Vorprüfung
+- [ ] ok
+- [ ] ändern: …
+
+### qlz_kreislauf_dpp_1 · Kreislaufwirtschaft & Ressourceneffizienz
+
+- **Frage:** In welcher Rangfolge stehen die R-Strategien im Modul, beginnend mit der höchsten Priorität?
+- **Richtige Antwort:** Refuse & Reduce → Reuse → Repair & Refurbish → Recycle → Recover & Dispose
+- **Auffälligkeit:** neu seit 26.10.2026 (Z24), noch nicht freigegeben, ohne Vorprüfung
+- [ ] ok
+- [ ] ändern: …
+
+### qlz_kreislauf_dpp_2 · Kreislaufwirtschaft & Ressourceneffizienz
+
+- **Frage:** Warum steht in der Erkundung nach DIN SPEC 91484 die Schadstoffanalyse vor dem Re-Use-Inventar?
+- **Richtige Antwort:** Weil nur schadstofffreie, trennbare Bauteile als Re-Use-tauglich gelten können
+- **Auffälligkeit:** neu seit 26.10.2026 (Z24), noch nicht freigegeben, ohne Vorprüfung
+- [ ] ok
+- [ ] ändern: …
+
+### qlz_lebenszyklus_kosten_1 · Lebenszyklus & Kosten
+
+- **Frage:** Ein Fensterflügel wird planmäßig nach 30 Jahren ausgetauscht. In welche Kostengruppe der Nutzungskosten nach DIN 18960 gehört dieser Austausch nach dem Modul?
+- **Richtige Antwort:** KG 400 Instandsetzungskosten (Soll-Zustand herstellen)
+- **Auffälligkeit:** neu seit 26.10.2026 (Z24), noch nicht freigegeben, ohne Vorprüfung
+- [ ] ok
+- [ ] ändern: …
+
+### qlz_material_schaeden_gross_1 · Große Materialschäden & Einstürze
+
+- **Frage:** Eine Halle aus den 1970er-Jahren hat Brettschichtholzbinder mit UF-Klebstoff; das Hallenklima ist feucht (Nutzungsklasse 2). Welche Folgerung aus dem Fall Bad Reichenhall ist nach dem Modul am besten begründet?
+- **Richtige Antwort:** UF eignet sich nur für NKL 1; Binder untersuchen und regelmäßig nach VDI 6200 prüfen
+- **Auffälligkeit:** neu seit 26.10.2026 (Z24), noch nicht freigegeben, ohne Vorprüfung
+- [ ] ok
+- [ ] ändern: …
+
+### qlz_metallkorrosion_1 · Metallkorrosion
+
+- **Frage:** In der Korrosionssimulation des Moduls wird die Umgebung von „Trocken“ über „Feucht“ bis „Salzwasser“ umgestellt. Welche Deutung von Rostbildung und Anodenabtrag passt zum Modul?
+- **Richtige Antwort:** Trocken kein Abtrag; mit Elektrolyt beginnt er, Chloride steigern die Leitfähigkeit
+- **Auffälligkeit:** neu seit 26.10.2026 (Z24), noch nicht freigegeben, ohne Vorprüfung
+- [ ] ok
+- [ ] ändern: …
+
+### qlz_modernisierung_1 · Modernisierung & GModG
+
+- **Frage:** Eine Wand mit U = 1,40 W/(m²K) soll U ≤ 0,24 W/(m²K) erreichen. Wie verhalten sich die erforderlichen Dicken von PUR (λ = 0,024 W/(mK)) und Holzfaser (λ = 0,045 W/(mK))?
+- **Richtige Antwort:** PUR rund 8,3 cm, Holzfaser rund 15,5 cm: Die Dicke wächst proportional mit λ
+- **Auffälligkeit:** neu seit 26.10.2026 (Z24), noch nicht freigegeben, ohne Vorprüfung
+- [ ] ok
+- [ ] ändern: …
+
+### qlz_nachhaltigkeit_daten_regeln_1 · Daten & Regeln
+
+- **Frage:** Welche Kennzahlen für Deutschland nennt das Modul?
+- **Richtige Antwort:** Rund 220–230 Mio. t Bauabfälle jährlich; Flächenziel unter 30 ha/Tag bis 2030
+- **Auffälligkeit:** neu seit 26.10.2026 (Z24), noch nicht freigegeben, ohne Vorprüfung
+- [ ] ok
+- [ ] ändern: …
+
+### qlz_nachhaltigkeit_daten_regeln_2 · Daten & Regeln
+
+- **Frage:** Welche Einordnung der Instrumente des deutschen Nachhaltigkeits-Baurechts nach Verbindlichkeit ist richtig (Stand 10/2026)?
+- **Richtige Antwort:** GModG, EBV und KrWG sind verbindlich; QNG ist ein freiwilliges Fördersiegel
+- **Auffälligkeit:** neu seit 26.10.2026 (Z24), noch nicht freigegeben, ohne Vorprüfung
+- [ ] ok
+- [ ] ändern: …
+
+### qlz_oekobilanz_lca_1 · Ökobilanzierung (LCA & EPD)
+
+- **Frage:** Rezeptur 1: 320 kg CEM I (0,665 kg CO₂-Äq./kg) und 1870 kg Gesteinskörnung (0,0035 kg CO₂-Äq./kg). Rezeptur 2: 300 kg CEM III/A (0,40 kg CO₂-Äq./kg). Welche Analyse ist richtig?
+- **Richtige Antwort:** Der Zement verursacht über 90 % des A1-GWP; CEM III/A senkt diesen Anteil um rund 44 %
+- **Auffälligkeit:** neu seit 26.10.2026 (Z24), noch nicht freigegeben, ohne Vorprüfung
+- [ ] ok
+- [ ] ändern: …
+
+### qlz_pfas_baustoffe_1 · PFAS in Baustoffen
+
+- **Frage:** Eine frühere Feuerwehrübungsfläche mit Betonplatten soll rückgebaut werden. Welches Vorgehen ist am besten begründet?
+- **Richtige Antwort:** Nutzung auswerten, AOF und TOP-Assay ergänzen, belastete Teile trennen und thermisch behandeln
+- **Auffälligkeit:** neu seit 26.10.2026 (Z24), noch nicht freigegeben, ohne Vorprüfung
+- [ ] ok
+- [ ] ändern: …
+
+### qlz_pruefverfahren_katalog_1 · Bauwerksdiagnose & ZfP
+
+- **Frage:** Für eine Umnutzung soll die Betondruckfestigkeit einer Decke belastbar bestimmt werden; Kernbohrungen sind nur an wenigen Stellen möglich. Welches Vorgehen ist nach dem Katalog am besten begründet?
+- **Richtige Antwort:** Rückprall im Raster zur Bereichsbildung, Festigkeit an Bohrkernen kalibrieren
+- **Auffälligkeit:** neu seit 26.10.2026 (Z24), noch nicht freigegeben, ohne Vorprüfung
+- [ ] ok
+- [ ] ändern: …
+
+### qlz_ressourcen_umwelt_1 · Ressourcen & Umwelt
+
+- **Frage:** Welche Aussage zum typischen GWP je kg Baustoff entspricht der Übersicht im Modul?
+- **Richtige Antwort:** Primäraluminium liegt mit rund 14–20 kg CO₂-Äq./kg weit über Portlandzement
+- **Auffälligkeit:** neu seit 26.10.2026 (Z24), noch nicht freigegeben, ohne Vorprüfung
+- [ ] ok
+- [ ] ändern: …
+
+### qlz_ressourceneffizienz_1 · Ressourceneffizienz
+
+- **Frage:** Welche Aufgabe hat das Ressourceneffizienz-Zentrum Bayern (REZ) nach dem Modul?
+- **Richtige Antwort:** Es berät KMU neutral und veröffentlicht Datenblätter zu Ersatzbaustoffen
+- **Auffälligkeit:** neu seit 26.10.2026 (Z24), noch nicht freigegeben, ohne Vorprüfung
+- [ ] ok
+- [ ] ändern: …
+
+### qlz_rueckbau_1 · Rückbau & Material
+
+- **Frage:** Ein Gebäude von 1978 mit asbesthaltigem Putz (0,1 %) wird ohne vorherige Entfrachtung maschinell abgebrochen. Welche Folge beschreibt das Modul?
+- **Richtige Antwort:** Der gesamte Ziegel- und Betonabbruch ist belastet und geht als Sondermüll
+- **Auffälligkeit:** neu seit 26.10.2026 (Z24), noch nicht freigegeben, ohne Vorprüfung
+- [ ] ok
+- [ ] ändern: …
+
+### qlz_schadstoffe_1 · Schadstoffe & Sanierung (TRGS 519)
+
+- **Frage:** Vor dem Umbau eines Bürogebäudes (Baujahr 1975) sollen Putze und Fliesenkleber auf Asbest geprüft und später der Bauschutt im Haufwerk für die Entsorgung beprobt werden. Welches Vorgehen ist nach dem Modul sachgerecht?
+- **Richtige Antwort:** PSF-Mischproben nach VDI 6202 Blatt 3 in der Planung, Haufwerk nach LAGA PN 98
+- **Auffälligkeit:** neu seit 26.10.2026 (Z24), noch nicht freigegeben, ohne Vorprüfung
+- [ ] ok
+- [ ] ändern: …
+
+### qlz_schutz_grundlagen_1 · Schutz- & Instands.-Grundlagen
+
+- **Frage:** Eine Parkhausstütze ist bis in Bewehrungstiefe chloridbelastet; ein großflächiger Betonabtrag würde aufwendige Abstützungen erfordern. Welches Instandsetzungsprinzip ist nach dem Modul am besten begründet?
+- **Richtige Antwort:** Prinzip 10 (CP): KKS, der chloridhaltige Beton darf im Bauteil verbleiben
+- **Auffälligkeit:** neu seit 26.10.2026 (Z24), noch nicht freigegeben, ohne Vorprüfung
+- [ ] ok
+- [ ] ändern: …
+
+### qlz_wta_1 · WTA-Merkblätter
+
+- **Frage:** Ein denkmalgeschütztes Ziegelmauerwerk hat Restfeuchte und Salze; die Fassade erhält Schlagregen. Welches Innendämmsystem ist am besten begründet?
+- **Richtige Antwort:** Calciumsilicat, kapillaraktiv und vollflächig verklebt, ohne Dampfsperre
+- **Auffälligkeit:** neu seit 26.10.2026 (Z24), noch nicht freigegeben, ohne Vorprüfung
+- [ ] ok
+- [ ] ändern: …
+
+### qlz_zfp_1 · Zerstörungsfreie Prüfung (ZfP)
+
+- **Frage:** An einer Tiefgaragendecke soll vor der Instandsetzungsplanung flächig festgestellt werden, wo die Bewehrung bereits aktiv korrodiert. Welche Verfahrenswahl ist nach dem Modul am besten begründet?
+- **Richtige Antwort:** Potentialfeldmessung als Farbkarte, Kontakt an freigelegter Bewehrung, Befunde öffnen
+- **Auffälligkeit:** neu seit 26.10.2026 (Z24), noch nicht freigegeben, ohne Vorprüfung
+- [ ] ok
 - [ ] ändern: …
 
 ### qn_altholz_urban_mining_1 · Altholz-NIR-Sortierung und Urban Mining
@@ -699,8 +963,8 @@ Auffällig im Einzelnen (Mehrfachnennung möglich): 86 korrigiert, 4 fraglich, 1
 ### qn_pfas_baustoffe_6 · PFAS in Baustoffen
 
 - **Frage:** Bei einer Probe liegen 10 der 20 PFAS unter der Bestimmungsgrenze von 2 ng/l, die übrigen 10 summieren sich auf 92 ng/l. Welche Aussage zur Summe PFAS-20 trifft zu?
-- **Richtige Antwort:** nicht eindeutig: Spanne 92 bis 112 ng/l
-- **Auffälligkeit:** Vorprüfung „korrigiert“: normRef ergänzt · bereits freigegeben (verified)
+- **Richtige Antwort:** eingehalten: Werte unter der BG zählen nicht (92 ng/l)
+- **Auffälligkeit:** Vorprüfung „korrigiert“: Rechtsquellen-Prüfung 03.11.: Antwort „nicht eindeutig: Spanne 92 bis 112 ng/l“ widersprach TrinkwV Anlage 2 Teil I (Werte unterhalb der Bestimmungsgrenze bleiben unberücksichtigt) – richtige Antwort jetzt „eingehalten, 92 ng/l“; Optionen, Erklärung, Rückmeldungen und Lückenanalyse angepasst – korrigiert
 - [x] ok
 - [ ] ändern: …
 

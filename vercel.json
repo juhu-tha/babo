@@ -1,7 +1,7 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
   "framework": "vite",
-  "buildCommand": "BB_STATISCH=1 npm run build && rm -f dist/server.cjs && cp dist/index.html dist/modul/admin.html && cp dist/index.html dist/404.html",
+  "buildCommand": "BB_STATISCH=1 npm run build && rm -f dist/server.cjs && cp dist/index.html dist/modul/admin.html && node scripts/seite404.mjs",
   "outputDirectory": "dist",
   "cleanUrls": true,
   "trailingSlash": false,
