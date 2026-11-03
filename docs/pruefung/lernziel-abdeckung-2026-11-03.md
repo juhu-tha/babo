@@ -24,16 +24,16 @@ Auftrag: Didaktische Konsistenz über alle Fachmodule prüfen. Je Modul werden f
 
    Ausnahmen sind je Eintrag begründet. Die Listen dürfen nur kürzer werden: Der Test meldet, wenn eine Ausnahme erledigt ist.
 
-Nicht bearbeitet wurden die Module aus laufenden PRs: `historisch` (Historische Kennwerte f_ck,is), das neue Eurocode-Kennwerte-Modul, `bauschaeden` und `bp_klebstoffe` (Kleb-/Dichtstoff-Reiter-Umzug). Fachliche Aussagen wurden nur mit Beleg im Modul oder Rechenkern geändert.
+Nicht bearbeitet wurden die Module aus laufenden PRs: `historisch` (Historische Kennwerte f_ck,is), `ec_kennwerte` (#316), `bauschaeden`, `schadensbilder` und `bp_klebstoffe` (Kleb-/Dichtstoff-Umzug, #317). #316 und #317 sind eingemergt; die Kennzahlen und die Matrix beziehen sich auf diesen Stand. Durch den Merge kommen 1 Modul und 3 Lernziele dazu. Die Fugen-Lernziele liegen jetzt bei `schadensbilder`, und die Zahlen 17,0 und 1,15 in der Kurzfassung von `ec_kennwerte` sind Laufzeitwerte aus zentralen Konstanten; sie stehen als gesichtet in `KURZ_ZAHLEN_GESICHTET`. Fachliche Aussagen wurden nur mit Beleg im Modul oder Rechenkern geändert.
 
 ## Kennzahlen
 
 | Prüfpunkt | Rohbefund Skript | nach Sichtung | nach Umsetzung |
 |---|---|---|---|
-| Module mit Lernzielen / Lernziele | 193 / 857 | | |
-| Lernziele ohne Quizfrage | 181 | 73 | **36** (alle begründet, 11 davon wegen fehlendem Selbsttest oder laufendem PR) |
+| Module mit Lernzielen / Lernziele | 193 / 857 | | 194 / 860 (nach #316) |
+| Lernziele ohne Quizfrage | 181 | 73 | **35** (alle begründet, 11 davon wegen fehlendem Selbsttest oder laufendem PR) |
 | Module ohne Frage auf höchster Lernzielstufe | 50 | 50 | **34** |
-| Lernziele mit Frage, aber keiner auf passender Stufe | 65 | 65 | **62** |
+| Lernziele mit Frage, aber keiner auf passender Stufe | 65 | 65 | **62** (63 nach #316) |
 | Lernziele ohne Inhaltsfundstelle | 4 | 0 (gesichtet, Inhalt vorhanden) | 0 |
 | „Das Wichtigste“ mit Zahl ohne Fundstelle | 7 | 3 (Bauwerksdiagnose-Familie) | 0 |
 | Ausprobieren: Bedienelement nicht im Modul | 2 | 1 | 0 |
@@ -41,7 +41,7 @@ Nicht bearbeitet wurden die Module aus laufenden PRs: `historisch` (Historische 
 | Module ohne Inhaltszuordnung | 2 | 0 | 0 |
 
 Bloom-Verteilung der Lernziele: Erinnern 39, Verstehen 219, Anwenden 347, Analysieren 127, Bewerten 124, Erschaffen 1.
-Quiz-Pool nach Umsetzung (1342 Fragen): Erinnern 213, Verstehen 359, Anwenden 509, Analysieren 124, Bewerten 118, ohne Bloom-Feld 19. Die 19 Fragen ohne Bloom-Feld sind ältere freigegebene Fragen; sie wurden nicht geändert.
+Quiz-Pool nach Umsetzung und Merge von #316 (1349 Fragen): Erinnern 215, Verstehen 360, Anwenden 511, Analysieren 125, Bewerten 119, ohne Bloom-Feld 19. Die 19 Fragen ohne Bloom-Feld sind ältere freigegebene Fragen; sie wurden nicht geändert.
 
 ## Behoben
 
@@ -77,14 +77,14 @@ Stufen: 18 × Bewerten, 5 × Analysieren, 8 × Anwenden, 6 × Verstehen, 1 × Er
 
 ## Offen
 
-### Lernziele ohne Quizfrage (36, begründet in `tests/lernzielAbdeckung.test.ts`)
+### Lernziele ohne Quizfrage (35, begründet in `tests/lernzielAbdeckung.test.ts`)
 
 | Gruppe | Lernziele | Grund / Vorschlag |
 |---|---|---|
 | Kein Selbsttest | `beton_a_z#1–4`, `bp_recht_normen#1–3` | Für die Routen gibt es keinen eigenen Selbsttest: Beton A–Z ist ein Nachschlagewerk; bei BpRechtliches bekommen nur zwei Unterreiter einen Selbsttest über `MODULTEST_IN_APP`. Vorschlag siehe „Entscheidungen“. |
-| Laufende PRs | `bauschaeden#1, #3, #4`, `historisch#4` | In dieser Runde nicht bearbeitet (Kleb-/Dichtstoff-Reiter-Umzug, Historische Kennwerte f_ck,is). Nach dem Merge nachziehen. |
+| Laufende PRs | `bauschaeden#1`, `schadensbilder#3, #4` (Fugen, mit #317 verschoben), `historisch#4` | In dieser Runde nicht bearbeitet (Kleb-/Dichtstoff-Umzug, Historische Kennwerte f_ck,is). Nach dem Merge Fragen nachtragen. |
 | Inhalt knapp | `bp_glaeser#5` | Das Modul behandelt Schall- und Sonnenschutzaufbauten nur in Stichworten. Vor einer Frage ist der Inhalt zu ergänzen oder das Lernziel auf den Inhalt einzugrenzen (fachliche Entscheidung). |
-| Nachtrag offen | `korrosionsschutz_beschichtungen#2`, `bauchemie#1`, `boden_materialaufbereitung#1`, `bp_betonfertigteile#3`, `bp_farben_lacke#1`, `dpp#2`, `ki_llmpraxis#2`, `ki_prompting#2`, `ki_system#1`, `kombinationen#2`, `kreislauf_dpp#1`, `kreislauf_dpp#2`, `materialmodelle#1`, `messen_pruefen#2`, `online_tools#5`, `ressourcen_umwelt#1`, `ressourceneffizienz#2`, `rueckbau#5`, `sonderbetone#2`, `sonderbetone#3`, `bp_beton#1`, `nachhaltigkeit_daten_regeln#1`, `schadensbilder#4`, `ki_ressourcen#1` | Überwiegend Ziele der Stufen Verstehen und Erinnern. Je eine Frage ist in einer Folgerunde nachzutragen. |
+| Nachtrag offen | `korrosionsschutz_beschichtungen#2`, `bauchemie#1`, `boden_materialaufbereitung#1`, `bp_betonfertigteile#3`, `bp_farben_lacke#1`, `dpp#2`, `ki_llmpraxis#2`, `ki_prompting#2`, `ki_system#1`, `kombinationen#2`, `kreislauf_dpp#1`, `kreislauf_dpp#2`, `materialmodelle#1`, `messen_pruefen#2`, `online_tools#5`, `ressourcen_umwelt#1`, `ressourceneffizienz#2`, `rueckbau#5`, `sonderbetone#2`, `sonderbetone#3`, `bp_beton#1`, `nachhaltigkeit_daten_regeln#1`, `ki_ressourcen#1` | Überwiegend Ziele der Stufen Verstehen und Erinnern. Je eine Frage ist in einer Folgerunde nachzutragen. |
 
 ### Module ohne Frage auf höchster Lernzielstufe (34)
 
@@ -96,7 +96,7 @@ Stufen: 18 × Bewerten, 5 × Analysieren, 8 × Anwenden, 6 × Verstehen, 1 × Er
 
 ### Weitere Hinweise
 
-- **Lernziele mit Frage nur auf niedrigerer Stufe:** 62 (Ratsche). Beispiel: `bp_farben_lacke#5` (Bewerten) wird nur von einer Anwenden-Frage geprüft. Die vollständige Liste liefert `node scripts/qa/lernziel-abdeckung.mjs --liste`.
+- **Lernziele mit Frage nur auf niedrigerer Stufe:** 63 (Ratsche; 62 vor dem Merge von #316, dazu `ec_kennwerte#5`). Beispiel: `bp_farben_lacke#5` (Bewerten) wird nur von einer Anwenden-Frage geprüft. Die vollständige Liste liefert `node scripts/qa/lernziel-abdeckung.mjs --liste`.
 - **Ausprobieren ohne Lernzielbezug:** `instandhaltung#2` (Chloridrechner). Das Modul hat bereits fünf Lernziele, keines nennt das Chlorideindringen.
 
 ## Entscheidungen
@@ -166,7 +166,7 @@ Legende:
 | ausbau | B | 1 Ve: 1 · 2 An: 2 · 3 Ve: 3 · 4 Be: 1 (Stufe) | ja | Be/Be | 6 | – | – |
 | bauchemie | B | 1 Ve: 0 ✗ · 2 Ve: 1 · 3 An: 2 · 4 Ana: 1 (Stufe) · 5 Be: 1 | ja | Be/Be | 6 | 5 Punkte | 3 |
 | bauphysik | B | 1 An: 3 · 2 An: 2 · 3 Ana: 1 (Stufe) | ja | Ana/An ✗ | 6 | 5 Punkte | 3 |
-| bauschaeden | B | 1 Ve: 0 ✗ · 2 An: 4 · 3 An: 0 ✗ · 4 Ana: 0 ✗ · 5 Be: 2 | ja | Be/Be | 6 | 5 Punkte | – |
+| bauschaeden | B | 1 Ve: 0 ✗ · 2 An: 4 · 3 Be: 2 | ja | Be/Be | 6 | 5 Punkte | – |
 | baustatik | B | 1 Ve: 1 · 2 An: 6 · 3 An: 2 · 4 Ana: 2 | ja | Ana/Ana | 6 | 5 Punkte | 3 |
 | baustoffkenngroessen | B | 1 Ve: 2 · 2 An: 2 · 3 An: 2 · 4 An: 1 · 5 Ana: 1 | ja | Ana/Ana | 6 | 5 Punkte | 3 |
 | baustoffkunde | B | 1 Er: 2 · 2 Er: 1 · 3 Ve: 2 · 4 Ve: 2 · 5 An: 1 | ja | An/An | 6 | – | – |
@@ -223,6 +223,7 @@ Legende:
 | dauerhaftigkeit | B | 1 Ve: 1 · 2 An: 2 · 3 An: 1 · 4 An: 3 · 5 Be: 1 | ja | Be/Be | 7 | 5 Punkte | – |
 | denkmalpflege | B/M | 1 Ve: 1 · 2 Er: 3 · 3 An: 1 · 4 An: 1 · 5 Be: 1 (Stufe) | ja | Be/An ✗ | 6 | – | – |
 | dpp | B/M | 1 Ve: 2 · 2 Ve: 0 ✗ · 3 Ve: 1 · 4 An: 2 · 5 An: 1 | ja | An/An | 6 | 5 Punkte | 3 |
+| ec_kennwerte | B | 1 Ve: 4 · 2 An: 3 · 3 An: 5 · 4 Ana: 3 · 5 Be: 1 (Stufe) | ja | Be/Be | 7 | 5 Punkte | 3 |
 | einheiten | B | 1 Er: 1 · 2 An: 6 · 3 An: 1 · 4 Ana: 1 | ja | Ana/Ana | 6 | 5 Punkte | 3 |
 | emodul | M | 1 An: 4 · 2 An: 3 · 3 Ve: 3 · 4 Ana: 1 (Stufe) | ja | Ana/Ana | 6 | 5 Punkte | 3 |
 | energieausweis | B | 1 Ve: 3 · 2 Er: 1 · 3 Ve: 1 · 4 An: 3 · 5 Ana: 5 | ja | Ana/Ana | 6 | 5 Punkte | 3 |
@@ -329,7 +330,7 @@ Legende:
 | ressourcen_umwelt | B | 1 Ve: 0 ✗ · 2 Ve: 1 · 3 An: 3 · 4 Be: 1 | ja | Be/Be | 6 | – | – |
 | ressourceneffizienz | B/M | 1 Er: 1 · 2 Ve: 0 ✗ · 3 An: 2 · 4 An: 4 · 5 Be: 1 | ja | Be/Be | 6 | 5 Punkte | 3 |
 | rueckbau | B | 1 Ve: 1 · 2 Ana: 1 · 3 An: 1 · 4 Be: 2 (Stufe) · 5 Ve: 0 ✗ | ja | Be/Be | 6 | 5 Punkte | – |
-| schadensbilder | B | 1 Ve: 3 · 2 An: 1 · 3 An: 1 · 4 Ana: 0 ✗ · 5 Be: 2 (Stufe) | ja | Be/An ✗ | 6 | 5 Punkte | – |
+| schadensbilder | B | 1 Ve: 3 · 2 An: 3 · 3 An: 0 ✗ · 4 Ana: 0 ✗ · 5 Be: 2 (Stufe) | ja | Be/An ✗ | 6 | 5 Punkte | – |
 | schadreaktionen_beton | B | 1 Ve: 1 · 2 An: 1 · 3 An: 2 · 4 Ana: 1 · 5 Be: 1 | ja | Be/Be | 6 | – | – |
 | schadstoffe | B/M | 1 Er: 1 · 2 Ve: 1 · 3 An: 2 · 4 Ana: 1 (Stufe) · 5 Be: 1 | ja | Be/Be | 7 | 5 Punkte | – |
 | schallschutz | B | 1 Ve: 2 · 2 An: 4 · 3 An: 5 · 4 Ana: 1 (Stufe) · 5 An: 4 | ja | Ana/Ana | 11 | 5 Punkte | 6 |
