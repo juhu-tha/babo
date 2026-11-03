@@ -402,7 +402,7 @@ function AppContent({ vorgerendert = false, vorrendern = false }: Omit<AppProps,
       </nav>
       <div className="p-4 border-t border-home-grau/20 dark:border-slate-800 text-xs text-home-grau dark:text-slate-400 text-center relative">
           <div className="flex items-center justify-center gap-1.5">
-            <span><strong>Disclaimer:</strong> {language === 'en' ? "Academic purposes only!" : "Nur akad. Lehrzwecke!"}</span>
+            <span><strong>{language === 'en' ? 'Note:' : 'Hinweis:'}</strong> {language === 'en' ? 'For teaching purposes only.' : 'Nur für Lehrzwecke.'}</span>
           </div>
        </div>
      </aside>
