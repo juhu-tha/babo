@@ -31,7 +31,7 @@
  */
 import { type Hinweis, istEndlich, hatFehler, muss, nurGueltig } from './plausibilitaet';
 import { formatDeZahl } from '../utils/numberFormat';
-import { fckZumAlter, dehnungsKennwerte, fcdBeton } from '../data/kennwerte';
+import { fckZumAlter, dehnungsKennwerte, fcdBeton, ALPHA_CC, GAMMA_C } from '../data/kennwerte';
 import {
   type Zementklasse, ZEMENT_DS, ZEMENT_ALPHA, beiwertKh, phiRH as phiRHBeiwert, betaFcm as betaFcmBeiwert,
   wirksamesBelastungsalter, betaT0 as betaT0Beiwert, betaH as betaHBeiwert, betaC as betaCBeiwert, epsCd0 as epsCd0Grundwert,
@@ -48,8 +48,11 @@ export const ALPHA_E: Readonly<Record<Gesteinskoernung, number>> = { quarzit: 1.
 /** Zementbeiwert s nach Gl. (3.2) */
 export const ZEMENT_S: Readonly<Record<Zementklasse, number>> = { S: 0.38, N: 0.25, R: 0.20 };
 
-/** Teilsicherheits- und Abminderungsbeiwerte nach DIN EN 1992-1-1/NA (DE) */
-export const EC2_BETON_NA = { alphaCc: 0.85, alphaCt: 0.85, gammaC: 1.5, nu: 0.2, rhoRelax: 0.8 } as const;
+/**
+ * Teilsicherheits- und Abminderungsbeiwerte nach DIN EN 1992-1-1/NA (DE); α_cc und γ_c aus den zentralen Konstanten
+ * (Bestandsaufnahme 02.11.2026, vorher als Literale 0,85/1,5 – Werte unverändert). α_ct = 0,85 nach NA, NDP zu 3.1.6(2)P.
+ */
+export const EC2_BETON_NA = { alphaCc: ALPHA_CC, alphaCt: 0.85, gammaC: GAMMA_C.staendig, nu: 0.2, rhoRelax: 0.8 } as const;
 
 export interface BetonkennwerteEingabe {
   /** charakteristische Zylinderdruckfestigkeit f_ck in N/mm² (Klassenwert aus Tab. 3.1) */

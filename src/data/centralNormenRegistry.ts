@@ -19,6 +19,16 @@ export const CENTRAL_NORMEN_REGISTRY: Record<string, NormRecord> = {
   // -------------------------------------------------------------
   // BETON, ZEMENT, BINDEMITTEL & MÖRTEL
   // -------------------------------------------------------------
+  'DIN_EN_1990': {
+    id: 'DIN_EN_1990',
+    code: 'DIN EN 1990:2021-10 mit NA:2010-12 + NA/A1:2012-08 (eingeführt) / DIN EN 1990-1 (2. Generation, angekündigt)',
+    title: 'Eurocode: Grundlagen der Tragwerksplanung',
+    category: 'qualitaet',
+    ausgabeStand: '2021-10',
+    status: 'gueltig',
+    beschreibung: 'Teilsicherheitskonzept, Bemessungssituationen, Lastkombinationen und Anhang D (versuchsgestützte Bemessung, Fraktilfaktoren k_n). DIN EN 1990:2021-10 ist die berichtigte Neuausgabe von DIN EN 1990:2010-12; Nationaler Anhang DIN EN 1990/NA:2010-12 mit NA/A1:2012-08. Die 2. Generation (EN 1990-1:2023) ist als DIN EN 1990-1 angekündigt; Ausgabedatum der deutschen Fassung noch offen.',
+    relevanteModule: ['sicherheitskonzept', 'ec_kennwerte', 'statistik', 'normen_ausblick']
+  },
   'DIN_EN_206': {
     id: 'DIN_EN_206',
     code: 'DIN EN 206:2021-06 / DIN 1045-2:2023-08 (maßgebend) / DIN EN 206-1:2026-07 / DIN EN 206-2:2026-07 (Neuausgabe)',

@@ -21,6 +21,7 @@ import Ausblick2025Tab from './betonkennwerte/Ausblick2025Tab';
 import TestTab from './betonkennwerte/TestTab';
 import inhalt from '@/content/betonkennwerte/Betonkennwerte.json';
 import { MdText } from '@/src/components/inhalt/MdText';
+import { EcKennwerteVerweis } from '@/src/components/ui/EcKennwerteVerweis';
 export { EC2_CONCRETE_CLASSES } from './betonkennwerte/daten';
 export type { ConcreteClassData } from './betonkennwerte/daten';
 
@@ -141,6 +142,8 @@ export default function Betonkennwerte() {
       {/* ===================================================================== */}
       {activeTab === 'test' && <TestTab QUIZ_ITEMS={QUIZ_ITEMS} quizAnswers={quizAnswers} setQuizAnswers={setQuizAnswers} />}
       </ModuleTabs>
+
+      <EcKennwerteVerweis />
 
       {/* 5. Standardisierter Modul-Footer (DIN-Normen OHNE LINKS gemäß System-Direktive) */}
       <ModuleFooter 

@@ -4,6 +4,7 @@ import { AlertTriangle, ClipboardList, FlaskConical, Sigma } from 'lucide-react'
 import { FormulaDerivationBox } from '@/src/components/ui/FormulaDerivationBox';
 import { AuswahlGruppe, alsOption } from '@/src/components/ui/Auswahlgruppe';
 import { MdText } from '@/src/components/inhalt/MdText';
+import { EcKennwerteVerweis } from '@/src/components/ui/EcKennwerteVerweis';
 import { formatDeTeX, formatDeZahl } from '@/src/utils/numberFormat';
 import {
   bohrkernserie13791, LEHRBEISPIELE_13791, KERNLAENGENFAKTOR_11, V_MIN_13791,
@@ -274,6 +275,9 @@ export function BohrkernserieTab() {
           <p key={b.id} className="text-sm text-text-main/90 leading-relaxed p-3 rounded-xl border border-home-grau/30 bg-off-white"><MdText text={b.text} /></p>
         ))}
       </section>
+
+      {/* Rückverweis: von f_ck,is zum Bemessungswert (Modul „Kennwerte und Bemessungswerte nach Eurocode“, #316) */}
+      <EcKennwerteVerweis />
 
       <section className="space-y-2">
         <h4 className="text-sm font-bold text-text-main">{inhalt.texte.hQuellen}</h4>

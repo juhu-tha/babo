@@ -128,12 +128,12 @@ const ohneZahl = (r: ReturnType<typeof lauf>) => !r.gueltig && Number.isNaN(r.fc
 
 // 8. Quizfragen des Reiters: nachgerechnet, nicht freigegeben
 {
-  const fr = (quiz as { id: string; verified: boolean; options: string[]; correctIdx: number }[]).filter(q => q.id.startsWith('q_hk_13791_'));
+  const fr = (quiz as { id: string; verified: boolean; options: string[]; correctIdx: number }[]).filter(q => q.id.startsWith('qt_hk13791_'));
   pruefe(fr.length === 4 && fr.every(q => q.verified === false), 'vier neue Quizfragen, verified: false');
-  const q2 = fr.find(q => q.id === 'q_hk_13791_2')!;
+  const q2 = fr.find(q => q.id === 'qt_hk13791_2')!;
   const r = insituDruckfestigkeit13791({ n: 10, mittel: 30, s: Math.max(3, 0.08 * 30), kleinster: 26, bezug: 'zylinder' });
   pruefe(q2.options[q2.correctIdx] === '24,2 N/mm²' && nahe(r.fckIs, 24.24), `Quiz 2: 24,2 N/mm² (${r.fckIs})`);
-  const q4 = fr.find(q => q.id === 'q_hk_13791_4')!;
+  const q4 = fr.find(q => q.id === 'qt_hk13791_4')!;
   pruefe(q4.options[q4.correctIdx] === klasseAusInsitu13791(22, 'zylinder').klasse, 'Quiz 4: Klasse aus dem Kern');
 }
 

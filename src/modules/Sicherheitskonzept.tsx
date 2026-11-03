@@ -11,6 +11,7 @@ import { MdText } from '@/src/components/inhalt/MdText';
 import { ModuleTabs } from '@/src/components/ui/ModuleTabs';
 import { EingabeHinweise } from '@/src/components/ui/EingabeHinweise';
 import { kombination610 } from '@/src/calc/sicherheitskonzept';
+import { EcKennwerteVerweis } from '@/src/components/ui/EcKennwerteVerweis';
 
 const REITER = [
   { id: 'eurocodes', label: inhalt.texte.dieEurocodesÜbersicht, icon: Shield },
@@ -332,6 +333,8 @@ export default function Sicherheitskonzept() {
       </div>
 
       {/* SELBSTTEST (Stufe 4 des Lehrpfads) */}
+      <EcKennwerteVerweis />
+
       <ModulTest moduleId="sicherheitskonzept" />
 
       {/* FOOTER */}
