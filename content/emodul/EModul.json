@@ -1,6 +1,6 @@
 {
   "texte": {
-    "eModulMehrphasenmodelle": " E-Modul & Mehrphasenmodelle",
+    "eModulMehrphasenmodelle": " E-Modul & Mikromechanik",
     "derElastizitätsmodulEModul": "Der Elastizitätsmodul (E-Modul) beschreibt die Steifigkeit eines Materials. Bei Verbundwerkstoffen wie Beton setzt sich der E-Modul aus den Eigenschaften der Einzelkomponenten (Gesteinskörnung und Zementstein) zusammen. Hier werden verschiedene theoretische Modelle zur Abschätzung des resultierenden E-Moduls vorgestellt.",
     "normativerEModulDin": "Normativer E-Modul (DIN EN 1992-1-1, 3.1.3)",
     "gesteinsartBeiwert": "Gesteinsart (Beiwert ",

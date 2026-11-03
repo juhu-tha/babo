@@ -46,7 +46,7 @@ export const AUSNAHMEN_UEBERSCHRIFT = {
   // Modulinfos: Überschrift „Bereich: …“, das Label „Modulinfos“ steht im Menü der Gruppe
   ...Object.fromEntries(['grundlagen_info', 'labor_info', 'baustoffe_info', 'bauprodukte_info', 'stahlbeton_info', 'holzbau_info', 'mechanik_info',
     'bauphysik_info', 'nachhaltigkeit_info', 'bestand_info', 'rueckbau_info', 'dauerhaftigkeit_info', 'schaeden_info', 'instandsetzung_info',
-    'digitales_info', 'praxiswissen_info', 'beton_info'].map(id => [id, 'Modulinfos: Bereichsüberschrift „Bereich: …“'])),
+    'digitales_info', 'praxiswissen_info'].map(id => [id, 'Modulinfos: Bereichsüberschrift „Bereich: …“'])),
   // Geteilte Komponenten: Bereichsüberschrift über den Reitern, der Reiter nennt das Modul
   ...Object.fromEntries(['bp_verkehr_rsto', 'bp_verkehr_asphalt', 'bp_verkehr_bitumen', 'bp_verkehr_pruefung', 'bp_verkehr_betondecken',
     'bp_verkehr_tiefbau', 'bp_verkehr_bahn', 'bp_verkehr_tunnel'].map(id => [id, 'Reiter von „Verkehr und Tiefbau“'])),
@@ -60,7 +60,13 @@ export const AUSNAHMEN_UEBERSCHRIFT = {
   ...Object.fromEntries(['vl_bauen_im_bestand', 'vl_nachhaltiges_bauen', 'vl_bauschaeden', 'vl_baustoffkunde', 'vl_instandhaltung']
     .map(id => [id, 'Reiter von „Vorlesungen & Lehrveranstaltungen (THA)“'])),
   ...Object.fromEntries(['spannbeton_grundlagen', 'spannbeton_kennwerte'].map(id => [id, 'Teile eines geteilten Moduls (src/registry/teilmodule.ts), gemeinsame Überschrift „Spannbeton …“'])),
+  weiter_tha: 'Übersichtsreiter von „Weiterführende Studienangebote (THA & ibi)“',
   start: 'Startseite: Begrüßung statt Modultitel',
+  // offen (03.11.2026): Modul ohne eigene Hauptüberschrift; erste h2 ist der erste Abschnitt bzw. wird zusammengesetzt
+  zfp: 'offen: erste h2 ist der erste Simulator („Rückprallhammer“), keine Modulüberschrift',
+  ausbau: 'offen: erste h2 ist der erste Abschnitt („Trockenbau“), keine Modulüberschrift',
+  nawaro: 'offen: Überschrift „NaWaRo | Biobasierte Baustoffe“ zusammengesetzt (Label „Biogene Baustoffe (NaWaRo)“)',
+  aufgaben_kennwerte: 'offen: Überschrift aus der Aufgabenkomponente zusammengesetzt („Übungsaufgaben: Labor, Prüftechnik & Kenngrößen“)',
 };
 
 /** Text einer HTML-Überschrift ohne Tags und Entities */
