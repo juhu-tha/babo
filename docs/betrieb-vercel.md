@@ -17,11 +17,12 @@ Entscheidung 02.11.2026 (Befunde B2, B3, B6, B7, B9 der Live-Prüfung: docs/prue
 `vercel.json` setzt den Build-Befehl (er hat Vorrang vor der Einstellung im Vercel-Projekt):
 
 ```
-BB_STATISCH=1 npm run build && rm -f dist/server.cjs && node scripts/seite404.mjs
+BB_STATISCH=1 npm run build && rm -f dist/server.cjs && cp dist/index.html dist/modul/admin.html && node scripts/seite404.mjs
 ```
 
 - `npm run build` bleibt unverändert (package.json wird nicht angefasst) und erzeugt wie bisher `dist/server.cjs` für `Dockerfile`. `scripts/qa/check-bundle.mjs` verlangt `server.cjs` im Statik-Modus nicht (`BB_STATISCH=1`, `--statisch` oder `dist/404.html` vorhanden) und läuft damit auch auf der Vercel-Ausgabe.
 - `rm -f dist/server.cjs`: Das Server-Bundle wird vor der Veröffentlichung entfernt (Befund 01.11.2026: `/server.cjs` war öffentlich abrufbar). Eine `.vercelignore` hilft hier nicht – sie wirkt nur auf die hochgeladenen Quelldateien, nicht auf die Build-Ausgabe.
+- `cp dist/index.html dist/modul/admin.html`: `/modul/admin` wird nicht vorgerendert; als Datei liefert `cleanUrls` die Adresse mit Status 200 aus. Eine Umschreibung (`rewrites` auf `/index.html`) greift mit `cleanUrls` nicht – live 03.11.2026: Status 404 und Konsolenfehler (docs/pruefung/vercel-live-2026-11-03.md).
 - `node scripts/seite404.mjs`: schreibt `dist/404.html` aus `dist/index.html` (Titel „Seite nicht gefunden“, `noindex`, Ersatzinhalt ohne JavaScript mit Links). Unbekannte Adressen bekommen damit die App mit Status 404; die App zeigt den Hinweis „Seite nicht gefunden“ mit ähnlichen Modulen und Suche (Gesamtgutachten 03.11.2026), die Adresse bleibt stehen. Die Inline-Skripte sind dieselben wie in `index.html` (CSP-Hashes unverändert).
 
 ## Statik-Modus
@@ -42,13 +43,13 @@ Neue `/api`-Aufrufe im Client meldet `tests/statikModus.test.ts`, bis sie hinter
 
 - `cleanUrls`: `/modul/<id>` liefert die vorgerenderte `dist/modul/<id>.html`; `/modul/<id>.html` und `/index.html` leiten auf die saubere Adresse um, `trailingSlash: false` entfernt einen Schrägstrich am Ende.
 - Aliase (`AKTIVE_ALIASE` in `src/registry/modules.ts`) und `/modul/start` → dauerhafte Weiterleitung (308) auf die kanonische Adresse.
-- `/modul/admin` (nicht vorgerendert) → `index.html`.
+- `/modul/admin` (nicht vorgerendert) → `dist/modul/admin.html` (Kopie von `index.html`, siehe Build).
 - Unbekannte Modul-IDs, abgeschaltete Seiten (Lernpfade) und alle übrigen Adressen → `404.html` mit Status 404. Groß geschriebene IDs (`/modul/Glas`) zeigen ebenfalls die App mit Status 404; sie stellt die Adresse auf die kanonische Schreibweise um.
 
 ## Header
 
 - Content-Security-Policy erzwungen (Begründung je Direktive in `scripts/vercelKonfig.ts`): `script-src` ohne `'unsafe-inline'`, die zwei Inline-Skripte per SHA-256; `frame-ancestors` erlaubt die Einbettung über baustoffboard.de. Kein `X-Frame-Options`, weil es diese Einbettung nicht zulassen könnte.
-- `X-Content-Type-Options: nosniff`, `Referrer-Policy` und `Permissions-Policy` wie `server.ts`, `Strict-Transport-Security`.
+- `X-Content-Type-Options: nosniff`, `Referrer-Policy` und `Permissions-Policy` wie `server.ts`. `Strict-Transport-Security` setzt Vercel selbst (unter `*.vercel.app` `max-age=63072000; includeSubDomains; preload`); ein eigener Wert in `vercel.json` würde ihn abschwächen und ist deshalb entfernt (03.11.2026).
 - `X-Robots-Tag: noindex` für alle Adressen unter `*.vercel.app` (Host-Bedingung `has`), solange baustoffboard.de die kanonische Adresse ist – `canonical` und Sitemap bleiben auf baustoffboard.de; außerdem für die abgeschalteten Seiten (Lernpfade, wie die Hinweisseite in `server.ts`).
 - `/assets/*` (Dateinamen mit Hash): `public, max-age=31536000, immutable`; `/fonts/*`: eine Woche; alles andere Vercel-Standard (immer neu prüfen).
 
@@ -60,7 +61,7 @@ Rückweg bei CSP-Problemen: in `vercel.json` den Schlüssel `Content-Security-Po
 - Lokale Prüfung wie auf Vercel:
 
 ```
-BB_STATISCH=1 npm run build && rm -f dist/server.cjs && node scripts/seite404.mjs
+BB_STATISCH=1 npm run build && rm -f dist/server.cjs && cp dist/index.html dist/modul/admin.html && node scripts/seite404.mjs
 PORT=4501 node scripts/qa/vercel-vorschau.mjs
 ```
 
