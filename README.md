@@ -49,7 +49,7 @@ Das Portal gliedert sich in folgende zentrale Themencluster:
 ## 👥 Urheberrecht & Kontext
 
 * **Institution:** Technische Hochschule Augsburg (THA)
-* **Fachgebiet:** Prof. Dr.-Ing. Jürgen Huber (Professur für Baustoffkunde, Bauwerkserhaltung, Nachhaltiges Bauen und Materialzyklen)
+* **Fachgebiet:** Prof. Dr.-Ing. Jürgen Huber (Professur für Werkstoffe und Stoffkreisläufe im Bauwesen)
 * **Zielgruppe:** Studierende des Bauingenieurwesens und der Architektur, Bauleiter, Tragwerksplaner sowie beratende und prüfende Ingenieure und Sachverständige.
 
 ---

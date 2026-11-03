@@ -20,6 +20,7 @@ import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
 import { useTabContext, TabId } from '@/src/contexts/TabContext';
 import LecturePollSession from '@/src/components/polls/LecturePollSession';
 import { SERVER_FUNKTIONEN } from '@/src/data/betriebsart';
+import RueckmeldungPerMail from '@/src/components/feedback/RueckmeldungPerMail';
 import inhalt from '@/content/vorlesungen/Vorlesungen.json';
 import { MdText } from '@/src/components/inhalt/MdText';
 import { ReiterLeiste, alsReiter, reiterPanel } from '../components/ui/Auswahlgruppe';
@@ -334,6 +335,8 @@ function LectureModuleView({
 
       {/* Live-Abstimmung (Kick-Off / 1. Vorlesungsstunde) – braucht /api/polls, im statischen Betrieb ausgeblendet */}
       {SERVER_FUNKTIONEN && <LecturePollSession lectureId={lectureId} lectureTitle={title} />}
+      {/* statt Live-Abstimmung im statischen Betrieb: Rückmeldung per E-Mail (src/data/rueckmeldung.ts) */}
+      {!SERVER_FUNKTIONEN && <RueckmeldungPerMail modultitel={title} className="px-1 print:hidden" />}
 
       {/* Materials & Download Placeholder Section */}
       <div className="bg-white p-6 rounded-2xl shadow-sm border border-home-grau/30">
