@@ -121,6 +121,12 @@ export const ERKUNDUNG_BEZUG_GESICHTET = {
   'mischungsberechnung#1': 3, 'rechnung_u_wert#2': 3, 'schallschutz#4': 5, 'stahl#6': 5, 'baustoffkenngroessen#1': 3,
 };
 
+/** Zahlen in „Das Wichtigste“, die das Modul zur Laufzeit aus zentralen Konstanten rechnet (gesichtet; 'modul#punkt' → Zahlen) */
+export const KURZ_ZAHLEN_GESICHTET = {
+  'ec_kennwerte#3': ['17,0'], // f_cd = 0,85 · 30/1,5 aus fcdBeton (src/calc/ecKennwerte.ts, Live-Rechenweg)
+  'ec_kennwerte#4': ['1,15'], // γ_S aus GAMMA_S (src/data/kennwerte.ts)
+};
+
 /** Bezeichner in „…“, die kein Bedienelement sind (Freitext-Eingaben u. Ä.) */
 export const BEZEICHNER_KEIN_ELEMENT = { 'px_bautagebuch#1': ['Deckenplatte betoniert'] };
 
@@ -293,7 +299,8 @@ export async function analysiere({ nurModul } = {}) {
       const t = text(p);
       const zahlen = [...t.matchAll(/(?<![\w,.])\d+(?:,\d+)?(?![\w])/g)].map(m => m[0]).filter(z => z.includes(',') || Number(z) >= 10);
       const formen = z => { const k = z.includes(',') ? z.replace(/0+$/, '').replace(/,$/, '') : z; return [z, z.replace(',', '.'), k, k.replace(',', '.')]; };
-      const ohneZahl = zahlen.filter(z => !formen(z).some(f => gesamt.includes(f) || quizGesamt.includes(f)));
+      const gesichtet = KURZ_ZAHLEN_GESICHTET[`${id}#${i + 1}`] ?? [];
+      const ohneZahl = zahlen.filter(z => !gesichtet.includes(z) && !formen(z).some(f => gesamt.includes(f) || quizGesamt.includes(f)));
       const fehlend = bg.filter(b => !enthaelt(gesamt, b.s) && !enthaelt(quizGesamt, b.s)).map(b => b.roh);
       return { nr: i + 1, text: p, zahlenOhneFundstelle: ohneZahl, begriffeFehlend: fehlend, anteil: bg.length ? 1 - fehlend.length / bg.length : 1 };
     });

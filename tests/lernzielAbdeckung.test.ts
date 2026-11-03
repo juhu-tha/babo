@@ -18,21 +18,21 @@ pruefe(bg.includes('Karbonatisierungstiefe') && bg.includes('c_min,dur') && !bg.
 const OFFEN = 'Frage noch nicht erstellt – Nachtrag offen (Bericht, Abschnitt „Offen“)';
 const OHNE_SELBSTTEST_AZ = 'Nachschlagewerk ohne eigenen Selbsttest (kein ModulTest, nicht in MODULTEST_IN_APP); Entscheidung offen';
 const OHNE_SELBSTTEST_NORMEN = 'Unterreiter von BpRechtliches ohne eigenen Selbsttest; Fragen zur Normenarbeit fehlen (Entscheidung offen)';
-const PR_DICHTSTOFF = 'laufender PR Kleb-/Dichtstoff-Reiter-Umzug – Modul in dieser Runde nicht bearbeitet';
+const PR_DICHTSTOFF = 'Fugen-Lernziele mit #317 (Kleb-/Dichtstoff-Umzug) nach schadensbilder verschoben, dort noch ohne Frage; in dieser Runde nicht bearbeitet';
 const PR_FCKIS = 'laufender PR Historische Kennwerte f_ck,is – Modul in dieser Runde nicht bearbeitet';
 
 /** Lernziele ohne Quizfrage ('modul#ziel' → Begründung). Ratsche: Einträge nur streichen, wenn eine Frage ergänzt ist. */
 const AUSNAHMEN_OHNE_QUIZ: Readonly<Record<string, string>> = {
   'beton_a_z#1': OHNE_SELBSTTEST_AZ, 'beton_a_z#2': OHNE_SELBSTTEST_AZ, 'beton_a_z#3': OHNE_SELBSTTEST_AZ, 'beton_a_z#4': OHNE_SELBSTTEST_AZ,
   'bp_recht_normen#1': OHNE_SELBSTTEST_NORMEN, 'bp_recht_normen#2': OHNE_SELBSTTEST_NORMEN, 'bp_recht_normen#3': OHNE_SELBSTTEST_NORMEN,
-  'bauschaeden#1': PR_DICHTSTOFF, 'bauschaeden#3': PR_DICHTSTOFF, 'bauschaeden#4': PR_DICHTSTOFF,
+  'bauschaeden#1': PR_DICHTSTOFF, 'schadensbilder#3': PR_DICHTSTOFF, 'schadensbilder#4': PR_DICHTSTOFF,
   'historisch#4': PR_FCKIS,
   'bp_glaeser#5': 'Schall- und Sonnenschutzaufbauten im Modul nur knapp behandelt; vor einer Frage Inhalt oder Lernziel präzisieren',
   'korrosionsschutz_beschichtungen#2': OFFEN, 'bauchemie#1': OFFEN, 'boden_materialaufbereitung#1': OFFEN, 'bp_betonfertigteile#3': OFFEN,
   'bp_farben_lacke#1': OFFEN, 'dpp#2': OFFEN, 'ki_llmpraxis#2': OFFEN, 'ki_prompting#2': OFFEN, 'ki_system#1': OFFEN, 'kombinationen#2': OFFEN,
   'kreislauf_dpp#1': OFFEN, 'kreislauf_dpp#2': OFFEN, 'materialmodelle#1': OFFEN, 'messen_pruefen#2': OFFEN, 'online_tools#5': OFFEN,
   'ressourcen_umwelt#1': OFFEN, 'ressourceneffizienz#2': OFFEN, 'rueckbau#5': OFFEN, 'sonderbetone#2': OFFEN, 'sonderbetone#3': OFFEN,
-  'bp_beton#1': OFFEN, 'nachhaltigkeit_daten_regeln#1': OFFEN, 'schadensbilder#4': OFFEN, 'ki_ressourcen#1': OFFEN,
+  'bp_beton#1': OFFEN, 'nachhaltigkeit_daten_regeln#1': OFFEN, 'ki_ressourcen#1': OFFEN,
 };
 
 const STUFE_OFFEN = 'Frage auf der höchsten Lernzielstufe noch nicht erstellt – Nachtrag offen';
@@ -52,8 +52,8 @@ const AUSNAHMEN_ERKUNDUNG: Readonly<Record<string, string>> = {
   'instandhaltung#2': 'Chloridrechner des Moduls ohne eigenes Lernziel (fünf Lernziele vergeben); Lernzielfassung offen',
 };
 
-/** Ratsche: Lernziele mit Frage, aber keiner auf passender Bloom-Stufe (Stand 03.11.2026) */
-const MAX_OHNE_PASSENDE_STUFE = 62;
+/** Ratsche: Lernziele mit Frage, aber keiner auf passender Stufe (Stand 03.11.2026; 63 nach Merge von #316, ec_kennwerte#5) */
+const MAX_OHNE_PASSENDE_STUFE = 63;
 
 const module = await analysiere();
 const L = luecken(module);
