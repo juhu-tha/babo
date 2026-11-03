@@ -126,3 +126,7 @@ Das Abgleichskript liest zusätzlich die Zahlwörter „ein(e/er)“ bis „sieb
 - ZIM 2025: https://www.ihk.de/blueprint/servlet/resource/blob/6361838/1d1d21e88d414f9cbf8289f93f3d506f/kerninhalte-zim-2025-data.pdf
 - § 650o BGB: https://www.buzer.de/650o_BGB.htm (Suchergebnis „Abweichende Vereinbarungen“)
 - Nicht abrufbar: gesetze.legal § 19 EBV (keine Freigabe), urteile-gesetze.de (robots.txt), economie.fgov.be (Bot-Prüfung).
+
+## 8. QA (nach Einmergen von #320)
+
+tsc ohne Fehler; `npm test` 193 von 193 grün (darunter `tests/rechtsquellen1103.test.ts`, `tests/fristenSchwellen.test.ts`; Ratsche in `tests/umsetzungQuiztext_20261102.test.ts` um die zurückgesetzte Frage `q_ndr_2` auf 217 angepasst); check:formeln 0 fehlerhaft; check:zahlen 0; check-design 0 neu; check-verwaist --strict 0; check-any 0; Build und check-bundle (Budget eingehalten); a11y-reiter auf `abfaelle`, `pfas_baustoffe`, `nachhaltigkeit_daten_regeln`, `lca_regulatorik`, `boden_materialaufbereitung` (desk, mob, desk-dunkel): 114 Reiterprüfungen, 0 Verstöße.
