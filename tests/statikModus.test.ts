@@ -56,14 +56,17 @@ pruefe(/&& cp dist\/index\.html dist\/404\.html$/.test(bau), 'vercel.json: 404.h
 pruefe(k.outputDirectory === 'dist' && k.framework === 'vite', 'vercel.json: Ausgabeordner dist, Vite');
 pruefe(!fs.existsSync('.vercelignore') || !/server/.test(lies('.vercelignore')), '.vercelignore wirkt nicht auf Build-Ausgaben – nicht als Schutz verwenden');
 
-// 4. Adressen: /modul/<id> über cleanUrls, Aliase als Weiterleitung, admin ohne Vorrendern über rewrite
+// 4. Adressen: /modul/<id> über cleanUrls, Aliase als Weiterleitung, admin ohne Vorrendern als Kopie von index.html
 pruefe(k.cleanUrls === true && k.trailingSlash === false, 'vercel.json: cleanUrls (/modul/<id> → modul/<id>.html), ohne Schrägstrich am Ende');
 const ids = new Set(AKTIVE_MODULE.map(m => m.id));
 const wl = weiterleitungen();
 pruefe(wl.length > 10 && wl[0].source === '/modul/start' && wl.slice(1).every(w => w.source.startsWith('/modul/') && !ids.has(w.source.slice(7))), 'Weiterleitungen nur für Aliase, nie für echte Modul-IDs');
 pruefe(wl.every(w => w.destination === '/' || ids.has(w.destination.slice(7))), 'Weiterleitungsziele sind aktive Module');
 const rewrites = (k.rewrites ?? []) as { source: string; destination: string }[];
-pruefe(rewrites.some(r => r.source === '/modul/admin' && r.destination === '/index.html'), 'rewrite /modul/admin → index.html (nicht vorgerendert)');
+// Live 03.11.2026: rewrite /modul/admin → /index.html greift mit cleanUrls nicht (Status 404, Konsolenfehler);
+// deshalb als Datei dist/modul/admin.html, die cleanUrls wie jede Modulseite mit 200 ausliefert
+pruefe(/&& cp dist\/index\.html dist\/modul\/admin\.html && /.test(bau), 'vercel.json: /modul/admin (nicht vorgerendert) als Kopie von index.html');
+pruefe(!rewrites.some(r => /\.html$/.test(r.destination)), 'kein rewrite auf *.html (wirkt mit cleanUrls nicht)');
 pruefe(!rewrites.some(r => r.source.startsWith('/api')), 'kein rewrite für /api (bleibt 404)');
 
 // 5. Sicherheits-Header
@@ -79,6 +82,9 @@ pruefe(alle.get('X-Content-Type-Options') === 'nosniff', 'X-Content-Type-Options
 pruefe(alle.get('Referrer-Policy') === 'strict-origin-when-cross-origin', 'Referrer-Policy wie server.ts');
 pruefe(/camera=\(\)/.test(alle.get('Permissions-Policy') ?? ''), 'Permissions-Policy wie server.ts');
 pruefe(!alle.has('X-Frame-Options'), 'kein X-Frame-Options (würde die Einbettung über baustoffboard.de verhindern)');
+// HSTS setzt Vercel selbst (live 03.11.2026: max-age=63072000; includeSubDomains; preload unter *.vercel.app);
+// ein eigener Wert hatte das auf ein Jahr ohne includeSubDomains abgeschwächt
+pruefe(!alle.has('Strict-Transport-Security'), 'kein eigenes Strict-Transport-Security (Vercel-Vorgabe ist strenger)');
 const cache = (q: string) => regeln.find(r => r.source === q)?.headers.find(h => h.key === 'Cache-Control')?.value ?? '';
 pruefe(/max-age=31536000, immutable/.test(cache('/assets/(.*)')), 'gehashte Assets: ein Jahr, immutable');
 // noindex: *.vercel.app (baustoffboard.de bleibt kanonisch) und abgeschaltete Seiten

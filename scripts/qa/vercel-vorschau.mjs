@@ -4,7 +4,7 @@
  * Liefert dist/ aus und wendet vercel.json an: redirects, Dateisystem mit cleanUrls/trailingSlash, rewrites,
  * 404.html, headers (Sicherheits-Header einschließlich CSP, Cache-Control). /api/* gibt es nicht (404).
  *
- *   BB_STATISCH=1 npm run build && rm -f dist/server.cjs && cp dist/index.html dist/404.html   (= buildCommand)
+ *   BB_STATISCH=1 npm run build && rm -f dist/server.cjs && cp dist/index.html dist/modul/admin.html && cp dist/index.html dist/404.html   (= buildCommand)
  *   PORT=4501 node scripts/qa/vercel-vorschau.mjs [dist]
  *
  * Kompression wie Vercel: Brotli (bzw. gzip) für Text-Typen, wenn der Browser es anbietet (Ladezeitmessung mit

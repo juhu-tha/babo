@@ -1,7 +1,7 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
   "framework": "vite",
-  "buildCommand": "BB_STATISCH=1 npm run build && rm -f dist/server.cjs && cp dist/index.html dist/404.html",
+  "buildCommand": "BB_STATISCH=1 npm run build && rm -f dist/server.cjs && cp dist/index.html dist/modul/admin.html && cp dist/index.html dist/404.html",
   "outputDirectory": "dist",
   "cleanUrls": true,
   "trailingSlash": false,
@@ -60,9 +60,6 @@
     { "source": "/modul/zementchemie", "destination": "/modul/bindemittel", "permanent": true },
     { "source": "/modul/zertifizierung", "destination": "/modul/zertifizierung_siegel", "permanent": true }
   ],
-  "rewrites": [
-    { "source": "/modul/admin", "destination": "/index.html" }
-  ],
   "headers": [
     {
       "source": "/(.*)",
@@ -70,8 +67,7 @@
         { "key": "Content-Security-Policy", "value": "default-src 'self'; script-src 'self' 'sha256-/CPyQnPnoUCXtDXQQ525XzBJAp8yrHfmjFhw7lNloPM=' 'sha256-u8LxfZxw5nT9oVMWImauZfL/q1xSMmNR5XtDG2W6gsk=' https://translate.google.com https://translate.googleapis.com https://translate-pa.googleapis.com; style-src 'self' 'unsafe-inline' https://translate.googleapis.com https://www.gstatic.com; img-src 'self' data: blob: https:; font-src 'self' data:; connect-src 'self' data: blob: https://translate.googleapis.com https://translate-pa.googleapis.com; media-src 'self' blob:; worker-src 'self' blob:; manifest-src 'self'; frame-src 'self' https://www.youtube-nocookie.com https://www.youtube.com; frame-ancestors 'self' https://baustoffboard.de https://www.baustoffboard.de; object-src 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests" },
         { "key": "X-Content-Type-Options", "value": "nosniff" },
         { "key": "Referrer-Policy", "value": "strict-origin-when-cross-origin" },
-        { "key": "Permissions-Policy", "value": "camera=(), microphone=(), geolocation=(), payment=()" },
-        { "key": "Strict-Transport-Security", "value": "max-age=31536000" }
+        { "key": "Permissions-Policy", "value": "camera=(), microphone=(), geolocation=(), payment=()" }
       ]
     },
     {
