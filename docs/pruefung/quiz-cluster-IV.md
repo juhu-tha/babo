@@ -1,12 +1,20 @@
 # Prüfliste Quiz – Cluster IV: Bestand & Nachhaltigkeit
 
-Stand: 02.11.2026 · Grundlage: `src/data/quiz.json` (Felder `vorpruefung` und `verified`), `docs/quiz-pruefhinweise.md`, Lernziele aus `src/data/lernziele.ts`. Erzeugt mit `npx tsx scripts/pruefliste.ts`; gesetzte Kreuze übernimmt das Skript beim nächsten Lauf. quiz.json wurde für diese Liste nicht verändert.
+Stand: 03.11.2026 · Grundlage: `src/data/quiz.json` (Felder `vorpruefung` und `verified`), `docs/quiz-pruefhinweise.md`, Lernziele aus `src/data/lernziele.ts`. Erzeugt mit `npx tsx scripts/pruefliste.ts`; gesetzte Kreuze übernimmt das Skript beim nächsten Lauf. quiz.json wurde für diese Liste nicht verändert.
 
-Cluster IV umfasst 336 Fragen aus 50 Modulen. Aufgeführt sind 127 auffällige Fragen (Vorprüfung „korrigiert“ oder „fraglich“, offener Prüfhinweis oder neu seit 26.10.2026 ohne Freigabe) und eine Stichprobe von 5 unauffälligen Fragen. Entscheidung je Frage ankreuzen; bei „ändern“ den Änderungswunsch in die Zeile darunter schreiben.
+Cluster IV umfasst 336 Fragen aus 50 Modulen. Aufgeführt sind 128 auffällige Fragen (Vorprüfung „korrigiert“ oder „fraglich“, offener Prüfhinweis oder neu seit 26.10.2026 ohne Freigabe) und eine Stichprobe von 5 unauffälligen Fragen. Entscheidung je Frage ankreuzen; bei „ändern“ den Änderungswunsch in die Zeile darunter schreiben.
 
-Auffällig im Einzelnen (Mehrfachnennung möglich): 86 korrigiert, 4 fraglich, 11 mit offenem Prüfhinweis, 34 neu seit 26.10.2026.
+Auffällig im Einzelnen (Mehrfachnennung möglich): 87 korrigiert, 4 fraglich, 11 mit offenem Prüfhinweis, 34 neu seit 26.10.2026.
 
 ## A. Auffällige Fragen
+
+### q_ab_7 · Abfälle & Altlasten
+
+- **Frage:** Ein Abbruchunternehmen will asbesthaltige Platten mit unbelastetem Bauschutt mischen, um den Asbestgehalt des Gemischs unter einen Zuordnungswert zu drücken. Wie ist das zu bewerten?
+- **Richtige Antwort:** Unzulässig: Für gefährliche Abfälle gilt das Vermischungsverbot (§ 9a KrWG)
+- **Auffälligkeit:** Vorprüfung „korrigiert“: Rechtsquellen-Prüfung 03.11.: Normverweis „GefStoffV Anhang II“ → „GefStoffV § 11 Abs. 1“ (Asbestverbote seit der Novelle vom 05.12.2024 in § 11, Anhang II Nr. 1 weggefallen; Feld „quelle“ nannte es bereits richtig); Antwort unverändert – korrigiert
+- [ ] ok
+- [ ] ändern: …
 
 ### q_bst_1 · Altbauatlas
 
@@ -244,7 +252,7 @@ Auffällig im Einzelnen (Mehrfachnennung möglich): 86 korrigiert, 4 fraglich, 1
 
 - **Frage:** Wie ist der Rechtsstand des „Gebäudetyp E“ im Oktober 2026?
 - **Richtige Antwort:** Der Entwurf von 2024 ist erledigt; seit 10/2026 liegt ein neuer Entwurf zur Anhörung vor
-- **Auffälligkeit:** Vorprüfung „korrigiert“: Distraktoren angeglichen · Zweitprüfung 27.10.: Erklärung auf Referentenentwurf vom 26.10.2026 (Stellungnahmefrist 09.11.2026) präzisiert, unbelegte Prognose „Mitte 2027“ entfernt – korrigiert · bereits freigegeben (verified)
+- **Auffälligkeit:** Vorprüfung „korrigiert“: Rechtsquellen-Prüfung 03.11.: Rückmeldung zu Option 1 „§ 650o BGB war nur im Regierungsentwurf vorgesehen“ → Gebäudetyp-E-Regelung § 650o BGB-E nur im Entwurf; geltender § 650o BGB (abweichende Vereinbarungen beim Verbraucherbauvertrag) besteht seit 2018; Antwort unverändert – korrigiert
 - [ ] ok
 - [x] ändern: Erklärung präzisiert (Referentenentwurf BMJV 26.10.2026, Frist 09.11.2026; Prognose „Mitte 2027“ ohne Beleg entfernt), korrigiert
 
@@ -843,8 +851,8 @@ Auffällig im Einzelnen (Mehrfachnennung möglich): 86 korrigiert, 4 fraglich, 1
 ### qn_pfas_baustoffe_6 · PFAS in Baustoffen
 
 - **Frage:** Bei einer Probe liegen 10 der 20 PFAS unter der Bestimmungsgrenze von 2 ng/l, die übrigen 10 summieren sich auf 92 ng/l. Welche Aussage zur Summe PFAS-20 trifft zu?
-- **Richtige Antwort:** nicht eindeutig: Spanne 92 bis 112 ng/l
-- **Auffälligkeit:** Vorprüfung „korrigiert“: normRef ergänzt · bereits freigegeben (verified)
+- **Richtige Antwort:** eingehalten: Werte unter der BG zählen nicht (92 ng/l)
+- **Auffälligkeit:** Vorprüfung „korrigiert“: Rechtsquellen-Prüfung 03.11.: Antwort „nicht eindeutig: Spanne 92 bis 112 ng/l“ widersprach TrinkwV Anlage 2 Teil I (Werte unterhalb der Bestimmungsgrenze bleiben unberücksichtigt) – richtige Antwort jetzt „eingehalten, 92 ng/l“; Optionen, Erklärung, Rückmeldungen und Lückenanalyse angepasst – korrigiert
 - [x] ok
 - [ ] ändern: …
 

@@ -5894,7 +5894,7 @@
     "bloom": "Erinnern",
     "niveau": "M",
     "distraktorFeedback": [
-      "§ 650o BGB war nur im Regierungsentwurf vorgesehen; dieser wurde vor dem Ende der 20. Wahlperiode nicht beschlossen.",
+      "Die Gebäudetyp-E-Regelung (§ 650o BGB-E) stand nur im Regierungsentwurf 2024; dieser wurde vor dem Ende der 20. Wahlperiode nicht beschlossen. Der geltende § 650o BGB betrifft abweichende Vereinbarungen beim Verbraucherbauvertrag.",
       "Die Bauproduktenverordnung regelt das Inverkehrbringen von Bauprodukten, nicht das zivilrechtliche Bauvertragsrecht.",
       "Der Gebäudetyp E ist ein zivilrechtliches Vorhaben im BGB, keine Verordnung zum Gebäudeenergierecht.",
       ""
@@ -5907,14 +5907,12 @@
       "targetModuleTab": "nachhaltigkeit_daten_regeln",
       "targetModuleLabel": "Daten & Regeln"
     },
-    "verified": true,
+    "verified": false,
     "vorpruefung": {
-      "am": "2026-10-27",
+      "am": "2026-11-03",
       "ergebnis": "korrigiert",
-      "hinweis": "Distraktoren angeglichen · Zweitprüfung 27.10.: Erklärung auf Referentenentwurf vom 26.10.2026 (Stellungnahmefrist 09.11.2026) präzisiert, unbelegte Prognose „Mitte 2027“ entfernt – korrigiert"
-    },
-    "reviewer": "freigegeben 28.10.2026 (Einzelfreigabe)",
-    "reviewedAt": "2026-10-28"
+      "hinweis": "Rechtsquellen-Prüfung 03.11.: Rückmeldung zu Option 1 „§ 650o BGB war nur im Regierungsentwurf vorgesehen“ → Gebäudetyp-E-Regelung § 650o BGB-E nur im Entwurf; geltender § 650o BGB (abweichende Vereinbarungen beim Verbraucherbauvertrag) besteht seit 2018; Antwort unverändert – korrigiert"
+    }
   },
   {
     "id": "q_ndr_3",
@@ -9112,7 +9110,7 @@
     "moduleTitle": "Abfälle & Altlasten",
     "topic": "Vermischungsverbot",
     "difficulty": "Transfer",
-    "normRef": "KrWG § 9a; GefStoffV Anhang II",
+    "normRef": "KrWG § 9a; GefStoffV § 11 Abs. 1",
     "question": "Ein Abbruchunternehmen will asbesthaltige Platten mit unbelastetem Bauschutt mischen, um den Asbestgehalt des Gemischs unter einen Zuordnungswert zu drücken. Wie ist das zu bewerten?",
     "options": [
       "Zulässig, wenn das Gemisch anschließend beprobt wird und den Wert einhält",
@@ -9139,12 +9137,11 @@
       "targetModuleLabel": "Abfälle & Altlasten"
     },
     "quelle": "KrWG § 9a; GefStoffV § 11 (bis 04.12.2024 Anhang II Nr. 1); AVV 17 06 05*",
-    "verified": true,
-    "reviewer": "freigegeben 28.10.2026 (Zweitprüfung)",
-    "reviewedAt": "2026-10-28",
+    "verified": false,
     "vorpruefung": {
-      "am": "2026-10-26",
-      "ergebnis": "ok"
+      "am": "2026-11-03",
+      "ergebnis": "korrigiert",
+      "hinweis": "Rechtsquellen-Prüfung 03.11.: Normverweis „GefStoffV Anhang II“ → „GefStoffV § 11 Abs. 1“ (Asbestverbote seit der Novelle vom 05.12.2024 in § 11, Anhang II Nr. 1 weggefallen; Feld „quelle“ nannte es bereits richtig); Antwort unverändert – korrigiert"
     }
   },
   {
@@ -9947,36 +9944,34 @@
     "normRef": "TrinkwV 2023, Anlage 2",
     "question": "Bei einer Probe liegen 10 der 20 PFAS unter der Bestimmungsgrenze von 2 ng/l, die übrigen 10 summieren sich auf 92 ng/l. Welche Aussage zur Summe PFAS-20 trifft zu?",
     "options": [
-      "eindeutig eingehalten, da 92 ng/l < 100 ng/l",
-      "eindeutig überschritten, da 92 + 20 = 112 ng/l",
-      "nicht bewertbar, da Werte unter der BG fehlen",
-      "nicht eindeutig: Spanne 92 bis 112 ng/l"
+      "eingehalten: Werte unter der BG zählen nicht (92 ng/l)",
+      "überschritten: mit < BG = BG ergeben sich 112 ng/l",
+      "nicht bewertbar, da die Werte unter der BG fehlen",
+      "nicht eindeutig: Spanne 92 bis 112 ng/l um den Grenzwert"
     ],
-    "correctIdx": 3,
-    "explanation": "Untere Schranke 92 ng/l (< BG = 0), obere Schranke 92 + 10 · 2 = 112 ng/l (< BG = BG). Der Grenzwert 100 ng/l liegt dazwischen – die Bewertung hängt vom Ansatz ab; eine empfindlichere Analytik schafft Klarheit.",
+    "correctIdx": 0,
+    "explanation": "Nach TrinkwV Anlage 2 Teil I bleiben Werte unterhalb der Bestimmungsgrenze bei der Summenbildung unberücksichtigt: Σ PFAS-20 = 92 ng/l < 100 ng/l, der Grenzwert ist eingehalten. Die obere Schranke 92 + 10 · 2 = 112 ng/l (< BG = BG) ist eine Vorsorge- bzw. Lehrbetrachtung des Rechners; sie zeigt, dass eine empfindlichere Analytik das Ergebnis absichern sollte.",
     "bloom": "Anwenden",
     "niveau": "M",
     "distraktorFeedback": [
-      "Das gilt nur, wenn alle Werte unter der BG null wären; sie können aber bis 2 ng/l betragen.",
-      "Der Ansatz „< BG = BG“ ist die ungünstigste Annahme, keine sichere Überschreitung.",
-      "Die Probe ist bewertbar; die Werte unter der BG ergeben eine Spanne.",
-      ""
+      "",
+      "Der Ansatz „< BG = BG“ ist die ungünstigste Annahme des Rechners; die TrinkwV zählt Werte unter der BG nicht mit.",
+      "Die Probe ist bewertbar; Werte unter der BG gehen nach TrinkwV nicht in die Summe ein.",
+      "Die Spanne beschreibt die analytische Unsicherheit (Lehrvariante); für die Bewertung nach TrinkwV zählen nur Werte ab der BG."
     ],
     "gapAnalysis": {
       "topic": "Rechner PFAS-Summen",
-      "misconception": "Werte unter der Bestimmungsgrenze seien gleich null.",
-      "coreRule": "Spanne: Σ mit < BG = 0 bis Σ mit < BG = BG; liegt der Grenzwert dazwischen, ist die Bewertung nicht eindeutig.",
+      "misconception": "Werte unter der Bestimmungsgrenze seien für die rechtliche Bewertung mit der BG anzusetzen.",
+      "coreRule": "TrinkwV: Summe nur aus Werten ab der BG (< BG bleibt unberücksichtigt); die Spanne bis < BG = BG ist eine Vorsorgebetrachtung.",
       "actionableAdvice": "Arbeiten Sie den Reiter „Rechner PFAS-Summen“ im Modul PFAS in Baustoffen noch einmal durch.",
       "targetModuleTab": "pfas_baustoffe",
       "targetModuleLabel": "PFAS in Baustoffen"
     },
-    "reviewer": "Zweitprüfung 27.10.2026; freigegeben 27.10.2026",
-    "reviewedAt": "2026-10-27",
-    "verified": true,
+    "verified": false,
     "vorpruefung": {
-      "am": "2026-10-27",
+      "am": "2026-11-03",
       "ergebnis": "korrigiert",
-      "hinweis": "normRef ergänzt"
+      "hinweis": "Rechtsquellen-Prüfung 03.11.: Antwort „nicht eindeutig: Spanne 92 bis 112 ng/l“ widersprach TrinkwV Anlage 2 Teil I (Werte unterhalb der Bestimmungsgrenze bleiben unberücksichtigt) – richtige Antwort jetzt „eingehalten, 92 ng/l“; Optionen, Erklärung, Rückmeldungen und Lückenanalyse angepasst – korrigiert"
     }
   },
   {

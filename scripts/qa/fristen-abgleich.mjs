@@ -32,7 +32,8 @@ export const AUSNAHMEN = [];
 
 const MONATE = 'Januar|Februar|März|April|Mai|Juni|Juli|August|September|Oktober|November|Dezember';
 const MONAT_NR = Object.fromEntries(MONATE.split('|').map((m, i) => [m, String(i + 1).padStart(2, '0')]));
-const ZAHLWORT = { acht: 8, neun: 9, zehn: 10, elf: 11, zwölf: 12 };
+// „eine“ (Woche), „vier“ (Wochen) usw. seit der zweiten Prüfrunde Rechtsquellen 03.11.2026
+const ZAHLWORT = { ein: 1, eine: 1, einer: 1, zwei: 2, drei: 3, vier: 4, fünf: 5, sechs: 6, sieben: 7, acht: 8, neun: 9, zehn: 10, elf: 11, zwölf: 12 };
 const ABK = 'Art|Abs|Nr|bzw|ca|vgl|z|B|u|a|S|Anh|Buchst|Urt|v|d|h|i|e|o|Äq|ABl|BGBl|GMBl|Drs|Bl|Kap|Tab|Ziff';
 export const BAUSTEINE = {
   D: String.raw`(?:\d{1,2}\.\s?\d{1,2}\.\s?\d{4}|\d{1,2}\.\s?(?:${MONATE})\s\d{4}|(?:${MONATE})\s\d{4})`,
