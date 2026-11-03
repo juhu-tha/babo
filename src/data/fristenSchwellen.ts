@@ -44,6 +44,8 @@ export interface FristSchwelle {
 }
 
 const STAND = '2026-11-02';
+/** Stand der zweiten Prüfrunde Rechtsquellen (docs/pruefung/rechtsquellen-2026-11-03.md) */
+const STAND2 = '2026-11-03';
 
 /** Anker der Vorschriften (gemeinsam genutzt) */
 const A = {
@@ -71,13 +73,14 @@ const IN_KRAFT = [
 export const FRISTEN_SCHWELLEN: readonly FristSchwelle[] = [
   // ---------------------------------------------------------------- Bauprodukteverordnung (EU) 2024/3110
   {
-    id: 'BAUPVO_INKRAFT', vorschrift: 'Verordnung (EU) 2024/3110 (BauPVO)', fundstelle: 'Art. 95 Abs. 1',
+    id: 'BAUPVO_INKRAFT', vorschrift: 'Verordnung (EU) 2024/3110 (BauPVO)', fundstelle: 'Art. 96 (Inkrafttreten und Geltungsbeginn)',
     bezeichnung: 'Inkrafttreten', wert: '2025-01-07', einheit: 'Datum',
-    quelle: 'https://www.dibt.de/en/service/faqs/transitional-rules-for-the-eta-route', stand: STAND,
+    quelle: 'https://www.dibt.de/en/service/faqs/transitional-rules-for-the-eta-route', stand: STAND2,
+    hinweis: 'Artikelzuordnung (Art. 94 Aufhebung, Art. 95 Übergang, Art. 96 Inkrafttreten und Geltung) nach https://eurlexa.com/act/en/32024R3110/present/info; vor dem 03.11.2026 hier als Art. 95 Abs. 1 geführt.',
     erkennung: { anker: A.baupvo, muster: IN_KRAFT, familie: 'inkraft' },
   },
   {
-    id: 'BAUPVO_GELTUNG', vorschrift: 'Verordnung (EU) 2024/3110 (BauPVO)', fundstelle: 'Art. 95 Abs. 2',
+    id: 'BAUPVO_GELTUNG', vorschrift: 'Verordnung (EU) 2024/3110 (BauPVO)', fundstelle: 'Art. 96 (Inkrafttreten und Geltungsbeginn; vor dem 03.11.2026 hier als Art. 95 Abs. 2 geführt)',
     bezeichnung: 'Geltungsbeginn (anwendbar ab)', wert: '2026-01-08', einheit: 'Datum',
     quelle: 'https://www.dibt.de/en/service/faqs/transitional-rules-for-the-eta-route', stand: STAND,
     hinweis: 'Für Produkte unter bereits zitierten harmonisierten Normen gilt übergangsweise VO (EU) Nr. 305/2011.',
@@ -90,13 +93,13 @@ export const FRISTEN_SCHWELLEN: readonly FristSchwelle[] = [
     },
   },
   {
-    id: 'BAUPVO_EAD_UEBERGANG', vorschrift: 'Verordnung (EU) 2024/3110 (BauPVO)', fundstelle: 'Übergangsbestimmungen (Art. 95)',
+    id: 'BAUPVO_EAD_UEBERGANG', vorschrift: 'Verordnung (EU) 2024/3110 (BauPVO)', fundstelle: 'Art. 95 Abs. 4 (Übergangsbestimmungen)',
     bezeichnung: 'nach VO (EU) Nr. 305/2011 zitierte EAD: Ausstellung von ETA bis', wert: '2031-01-09', einheit: 'Datum',
     quelle: 'https://www.dibt.de/en/service/faqs/transitional-rules-for-the-eta-route', stand: STAND,
     erkennung: { anker: String.raw`EAD|Bewertungsdokument`, muster: [String.raw`(?:EAD|Bewertungsdokumente?)\b{T}{0,40}?bis(?: zum)?\s*{D}`] },
   },
   {
-    id: 'BAUPVO_ETA_UEBERGANG', vorschrift: 'Verordnung (EU) 2024/3110 (BauPVO)', fundstelle: 'Übergangsbestimmungen (Art. 95)',
+    id: 'BAUPVO_ETA_UEBERGANG', vorschrift: 'Verordnung (EU) 2024/3110 (BauPVO)', fundstelle: 'Art. 95 (Übergangsbestimmungen)',
     bezeichnung: 'auf diese EAD gestützte ETA: Leistungserklärung und CE-Kennzeichnung bis', wert: '2036-01-09', einheit: 'Datum',
     quelle: 'https://www.dibt.de/en/service/faqs/transitional-rules-for-the-eta-route', stand: STAND,
     erkennung: { anker: String.raw`ETA|Technische[n]? Bewertung`, muster: [String.raw`\bETA\b{T}{0,40}?bis(?: zum)?\s*{D}`] },
@@ -392,5 +395,151 @@ export const FRISTEN_SCHWELLEN: readonly FristSchwelle[] = [
     bezeichnung: 'Datum des Referentenentwurfs (Stellungnahmen bis 09.11.2026)', wert: '2026-10-26', einheit: 'Datum',
     quelle: 'https://www.mtrlegal.com/gebaeudetyp-e-referentenentwurf-zum-basisstandard/', stand: STAND,
     erkennung: { anker: String.raw`${A.gebtyp}|BGB-Bauvertragsrecht|Basisstandard`, familie: 'refe', muster: [String.raw`Referentenentwurf\w*\s*vom\s*{D}`, String.raw`seit\s*{D}\s*in der Anhörung`] },
+  },
+
+  // ---------------------------------------------------------------- Zweite Prüfrunde Rechtsquellen 03.11.2026
+  {
+    id: 'BAUPVO_NB_2030', vorschrift: 'Verordnung (EU) 2024/3110 (BauPVO)', fundstelle: 'Art. 95 Abs. 2',
+    bezeichnung: 'Neubewertung und Neubenennung der notifizierten Stellen spätestens bis', wert: '2030-01-08', einheit: 'Datum',
+    quelle: 'https://mpgi.gov.hr/UserDocsImages/19641', stand: STAND2,
+    hinweis: 'Artikel nach https://eurlexa.com/act/en/32024R3110/present/info (Art. 95 Abs. 2: 08.01.2030).',
+    erkennung: { anker: String.raw`${A.baupvo}|Art\. 95`, muster: [String.raw`notifizierte Stellen{T}{0,40}?bis\s*{D}`] },
+  },
+  {
+    id: 'BAUPVO_305_2040', vorschrift: 'Verordnung (EU) 2024/3110 (BauPVO)', fundstelle: 'Art. 94 (Aufhebung der VO (EU) Nr. 305/2011)',
+    bezeichnung: 'Aufhebung der für alte harmonisierte Normen fortgeltenden Teile der VO (EU) Nr. 305/2011 spätestens mit Wirkung vom', wert: '2040-01-08', einheit: 'Datum',
+    quelle: 'https://mpgi.gov.hr/UserDocsImages/19641', stand: STAND2,
+    erkennung: { anker: String.raw`${A.baupvo}|305\/2011|Art\. 94`, muster: [String.raw`305\/2011\s*spätestens bis\s*{D}`, String.raw`gelten noch bis spätestens\s*{D}`] },
+  },
+  {
+    id: 'EBV_ANZEIGE_250', vorschrift: 'Ersatzbaustoffverordnung (EBV)', fundstelle: '§ 22 Abs. 1',
+    bezeichnung: 'Voranzeige für RC-3, BM-F3, BG-F3 u. a. ab einem Gesamtvolumen von mindestens', wert: 250, einheit: 'm³',
+    quelle: 'https://www.gesetze-im-internet.de/ersatzbaustoffv/__22.html', stand: STAND2,
+    hinweis: 'In Wasser- und Heilquellenschutzgebieten mengenunabhängig (§ 22 Abs. 2), außer für die in § 19 Abs. 6 Nr. 1 bis 5 genannten Stoffe.',
+    erkennung: {
+      anker: String.raw`§ 22|${A.ebv}|Voranzeige|anzeigepflichtig|Anzeigepflicht`,
+      muster: [
+        String.raw`(?:[Aa]b|≥|mindestens)\s*{Z}\s*m³{T}{0,60}?(?:Voranzeige|anzuzeigen|[Aa]nzeige|vier Wochen|4 Wochen|anzeigepflichtig)`,
+        String.raw`(?:Anzeigepflicht\w*|ANZEIGEPFLICHTIG|Voranzeige\w*)\s*(?:nach § 22 EBV\s*)?(?:\(Gesamtvolumen\s*|\(|bei Einbaumengen\s*)?(?:ab|≥)\s*{Z}\s*m³`,
+        String.raw`[Dd]ie\s*{Z}\s*m³\s*Bagatellgrenze`,
+      ],
+    },
+  },
+  {
+    id: 'EBV_VORANZEIGE_FRIST', vorschrift: 'Ersatzbaustoffverordnung (EBV)', fundstelle: '§ 22 Abs. 1 und 2',
+    bezeichnung: 'Voranzeige vor Beginn des Einbaus (Wochen)', wert: 4, einheit: 'Wochen',
+    quelle: 'https://www.gesetze-im-internet.de/ersatzbaustoffv/__22.html', stand: STAND2,
+    hinweis: 'Abschlussanzeige: Ermittlung der eingebauten Mengen innerhalb von zwei Wochen nach Abschluss, Übermittlung unverzüglich (§ 22 Abs. 4).',
+    erkennung: {
+      anker: String.raw`§ 22|${A.ebv}|Voranzeige`,
+      muster: [
+        String.raw`Voranzeige\w*\s*(?:mindestens\s*|spätestens\s*)?(?<w>\d+|ein(?:e|er)?|zwei|drei|vier|fünf|sechs|sieben|acht)\s+Wochen\s+vor`,
+        String.raw`(?:ab|≥)\s*250\s*m³\s*(?:Voranzeige\s*)?(?<w>\d+|ein(?:e|er)?|zwei|drei|vier|fünf|sechs|sieben|acht)\s+Wochen`,
+        String.raw`[Ss]pätestens\s+(?<w>\d+|ein(?:e|er)?|zwei|drei|vier|fünf|sechs|sieben|acht)\s+Wochen\s+vor\s+(?:Bau|Einbau)beginn`,
+      ],
+    },
+  },
+  {
+    id: 'EBV_SICHERHEITSABSTAND', vorschrift: 'Ersatzbaustoffverordnung (EBV)', fundstelle: '§ 19 Abs. 8',
+    bezeichnung: 'Sicherheitsabstand zusätzlich zur grundwasserfreien Sickerstrecke', wert: 0.5, einheit: 'm',
+    quelle: 'https://www.gesetze-im-internet.de/ersatzbaustoffv/__19.html', stand: STAND2,
+    erkennung: {
+      anker: String.raw`§ 19|${A.ebv}|Grundwasserdeckschicht|Sickerstrecke`,
+      muster: [String.raw`(?:zuzüglich|\+)\s*{Z}\s*m\s*Sicherheitsabstand`, String.raw`Sicherheitsabstand\s*{Z}\s*m\s*zusätzlich`],
+    },
+  },
+  {
+    id: 'EBV_SICKERSTRECKE_GUENSTIG', vorschrift: 'Ersatzbaustoffverordnung (EBV)', fundstelle: '§ 19 Abs. 8',
+    bezeichnung: 'günstige Grundwasserdeckschicht: grundwasserfreie Sickerstrecke mehr als', wert: 1, einheit: 'm',
+    quelle: 'https://www.gesetze-im-internet.de/ersatzbaustoffv/__19.html', stand: STAND2,
+    hinweis: 'Ungünstig: 0,1 bis 1 m (RC-1, BM-0* u. a.) bzw. 0,5 bis 1 m (übrige), jeweils zuzüglich 0,5 m Sicherheitsabstand.',
+    erkennung: {
+      anker: String.raw`§ 19|${A.ebv}|Grundwasserdeckschicht`,
+      muster: [String.raw`Sickerstrecke{T}{0,70}?(?:>|mehr als)\s*{Z}\s*m`, String.raw`günstig\w*\s*(?:bei\s*)?(?:>|mehr als)\s*{Z}\s*m`],
+    },
+  },
+  {
+    id: 'EBV_LIEFERSCHEIN_5J', vorschrift: 'Ersatzbaustoffverordnung (EBV)', fundstelle: '§ 25 Abs. 4 Satz 1',
+    bezeichnung: 'Aufbewahrung der Lieferscheinkopie durch den Inverkehrbringer (Jahre)', wert: 5, einheit: 'Jahre',
+    quelle: 'https://www.gesetze-im-internet.de/ersatzbaustoffv/__25.html', stand: STAND2,
+    hinweis: 'Der Grundstückseigentümer bewahrt Deckblatt und Lieferscheine auf, solange der Ersatzbaustoff eingebaut ist (§ 25 Abs. 4 Satz 2).',
+    erkennung: { anker: String.raw`§ 25|${A.ebv}|Inverkehrbringer`, muster: [String.raw`Lieferschein\w*\s*(?<w>\d+|ein(?:e|er)?|zwei|drei|vier|fünf|sechs|sieben|acht)\s+Jahre`] },
+  },
+  {
+    id: 'EBV_RC1_SULFAT', vorschrift: 'Ersatzbaustoffverordnung (EBV)', fundstelle: 'Anlage 1 Tabelle 1',
+    bezeichnung: 'Materialwert Sulfat im Eluat für RC-1', wert: 600, einheit: 'mg/l',
+    quelle: 'https://www.buzer.de/Anlage_1_ErsatzbaustoffV.htm', stand: STAND2,
+    erkennung: { anker: String.raw`${A.ebv}|Anlage 1`, muster: [String.raw`RC-1:?\s*≤\s*{Z}\s*mg\/l`] },
+  },
+  {
+    id: 'EBV_RC2_SULFAT', vorschrift: 'Ersatzbaustoffverordnung (EBV)', fundstelle: 'Anlage 1 Tabelle 1',
+    bezeichnung: 'Materialwert Sulfat im Eluat für RC-2', wert: 1000, einheit: 'mg/l',
+    quelle: 'https://www.buzer.de/Anlage_1_ErsatzbaustoffV.htm', stand: STAND2,
+    erkennung: { anker: String.raw`${A.ebv}|Anlage 1`, muster: [String.raw`RC-2:?\s*≤\s*{Z}\s*mg\/l`] },
+  },
+  {
+    id: 'EBV_RC3_SULFAT', vorschrift: 'Ersatzbaustoffverordnung (EBV)', fundstelle: 'Anlage 1 Tabelle 1',
+    bezeichnung: 'Materialwert Sulfat im Eluat für RC-3', wert: 3500, einheit: 'mg/l',
+    quelle: 'https://www.buzer.de/Anlage_1_ErsatzbaustoffV.htm', stand: STAND2,
+    erkennung: { anker: String.raw`${A.ebv}|Anlage 1`, muster: [String.raw`RC-3:?\s*≤\s*{Z}\s*mg\/l`] },
+  },
+  {
+    id: 'EBV_RC1_KUPFER', vorschrift: 'Ersatzbaustoffverordnung (EBV)', fundstelle: 'Anlage 1 Tabelle 1',
+    bezeichnung: 'Materialwert Kupfer im Eluat für RC-1', wert: 110, einheit: 'µg/l',
+    quelle: 'https://www.buzer.de/Anlage_1_ErsatzbaustoffV.htm', stand: STAND2,
+    hinweis: 'RC-2: 250 µg/l, RC-3: 500 µg/l.',
+    erkennung: { anker: String.raw`${A.ebv}|Anlage 1|RC-1`, muster: [String.raw`Kupfer\s*\(RC-1:?\s*≤\s*{Z}\s*µg\/l`, String.raw`Cu\s*≤\s*{Z}\s*µg\/l`] },
+  },
+  {
+    id: 'GEFSTOFFV_ASBEST_ANZEIGE', vorschrift: 'GefStoffV', fundstelle: '§ 11a Abs. 4',
+    bezeichnung: 'Anzeige von Tätigkeiten mit Asbest spätestens vor Beginn (Wochen)', wert: 1, einheit: 'Wochen',
+    quelle: 'https://www.gesetze-im-internet.de/gefstoffv_2010/__11a.html', stand: STAND2,
+    erkennung: { anker: String.raw`§ 11a|${A.gefstoffv}|Asbest|TRGS 519`, muster: [String.raw`(?:mindestens|spätestens)\s+(?<w>\d+|ein(?:e|er)?|zwei|drei|vier|fünf|sechs|sieben|acht)\s+Wochen?\s+vor`] },
+  },
+  {
+    id: 'GEFSTOFFV_ASBEST_ZULASSUNG', vorschrift: 'GefStoffV', fundstelle: '§ 11a Abs. 3',
+    bezeichnung: 'Zulassung für Tätigkeiten mit Asbest im Bereich hohen Risikos höchstens (Jahre)', wert: 6, einheit: 'Jahre',
+    quelle: 'https://www.gesetze-im-internet.de/gefstoffv_2010/__11a.html', stand: STAND2,
+    erkennung: { anker: String.raw`§ 11a|${A.gefstoffv}`, muster: [String.raw`Zulassung{T}{0,40}?(?:max\.|maximal|höchstens)\s*(?<w>\d+|ein(?:e|er)?|zwei|drei|vier|fünf|sechs|sieben|acht)\s+Jahre`] },
+  },
+  {
+    id: 'NACHWV_REGISTER_3J', vorschrift: 'Nachweisverordnung (NachwV)', fundstelle: '§ 25 Abs. 1',
+    bezeichnung: 'Aufbewahrung der Registerbelege ab Einstellung in das Register (Jahre)', wert: 3, einheit: 'Jahre',
+    quelle: 'https://www.gesetze-im-internet.de/nachwv_2007/BJNR229810006.html', stand: STAND2,
+    hinweis: 'Der Zulassungsbescheid einer Entsorgungsanlage kann längere Fristen festlegen.',
+    erkennung: { anker: String.raw`NachwV|Nachweisverordnung|Registerbelege|Registerpflicht|in das Register`, muster: [String.raw`(?:mindestens|Aufbewahrung von)\s+(?<w>\d+|ein(?:e|er)?|zwei|drei|vier|fünf|sechs|sieben|acht)\s+Jahre`] },
+  },
+  {
+    id: 'NACHWV_KLEINMENGE_2T', vorschrift: 'Nachweisverordnung (NachwV)', fundstelle: '§ 2 Abs. 2',
+    bezeichnung: 'Kleinmengen: keine Nachweispflicht für Erzeuger mit jährlich nicht mehr als (t gefährliche Abfälle)', wert: 2, einheit: 't',
+    quelle: 'https://www.gesetze-im-internet.de/nachwv_2007/BJNR229810006.html', stand: STAND2,
+    hinweis: 'Pflichten zu Übernahmescheinen (§§ 12, 16) bleiben unberührt.',
+    erkennung: { anker: String.raw`NachwV|Nachweisverordnung|Entsorgungsnachweis`, muster: [String.raw`Kleinmengen\s*(?:bis|unter|≤)\s*{Z}\s*t`] },
+  },
+  {
+    id: 'TRINKWV_BLEI_FRIST', vorschrift: 'Trinkwasserverordnung (TrinkwV 2023)', fundstelle: '§ 17 Abs. 1',
+    bezeichnung: 'Entfernung oder Stilllegung von Trinkwasserleitungen aus Blei bis zum Ablauf des', wert: '2026-01-12', einheit: 'Datum',
+    quelle: 'https://www.gesetze-im-internet.de/trinkwv_2023/__17.html', stand: STAND2,
+    hinweis: 'Fristverlängerung nach Abs. 2 (Kapazität) und Abs. 3 (höchstens bis 12.01.2036; bei Eigentümerwechsel ein Jahr nach Übergang).',
+    erkennung: { anker: String.raw`TrinkwV|Trinkwasserverordnung|Bleileitung|§ 17`, muster: [String.raw`Bleileitungen{T}{0,40}?bis\s*{D}`, String.raw`bis\s*{D}\s*zu entfernen`] },
+  },
+  {
+    id: 'TRINKWV_BLEI_2028', vorschrift: 'Trinkwasserverordnung (TrinkwV 2023)', fundstelle: 'Anlage 2 Teil II (Blei)',
+    bezeichnung: 'Absenkung des Grenzwerts für Blei von 10 auf 5 µg/l ab', wert: '2028-01-12', einheit: 'Datum',
+    quelle: 'https://www.gesetze-im-internet.de/trinkwv_2023/anlage_2.html', stand: STAND2,
+    erkennung: { anker: String.raw`TrinkwV|Trinkwasserverordnung|Blei`, muster: [String.raw`(?:[Aa]b|seit)\s*{D}\s*sinkt der Grenzwert`, String.raw`Grenzwert für Blei sinkt ab\s*{D}`] },
+  },
+  {
+    id: 'TRINKWV_PFAS20_AB', vorschrift: 'Trinkwasserverordnung (TrinkwV 2023)', fundstelle: 'Anlage 2 Teil I (Summe PFAS-20)',
+    bezeichnung: 'Grenzwert Summe PFAS-20 (0,1 µg/l) gilt ab', wert: '2026-01-12', einheit: 'Datum',
+    quelle: 'https://www.gesetze-im-internet.de/trinkwv_2023/anlage_2.html', stand: STAND2,
+    hinweis: 'Werte unterhalb der Bestimmungsgrenze bleiben bei der Summenbildung unberücksichtigt (Bemerkung zu PFAS-20 und PFAS-4).',
+    erkennung: { anker: String.raw`TrinkwV|PFAS-20`, muster: [String.raw`PFAS-20{T}{0,40}?ab\s*{D}`] },
+  },
+  {
+    id: 'TRINKWV_PFAS4_AB', vorschrift: 'Trinkwasserverordnung (TrinkwV 2023)', fundstelle: 'Anlage 2 Teil I (Summe PFAS-4)',
+    bezeichnung: 'Grenzwert Summe PFAS-4 (0,02 µg/l) gilt ab', wert: '2028-01-12', einheit: 'Datum',
+    quelle: 'https://www.gesetze-im-internet.de/trinkwv_2023/anlage_2.html', stand: STAND2,
+    erkennung: { anker: String.raw`TrinkwV|PFAS-4`, muster: [String.raw`PFAS-4\s*(?:\([^)]*\)\s*)?{T}{0,40}?ab\s*{D}`] },
   },
 ];

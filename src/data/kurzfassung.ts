@@ -378,7 +378,7 @@ export const KURZFASSUNG: Readonly<Record<string, readonly string[]>> = {
   boden_materialaufbereitung: [
     "Seit dem 1. August 2023 regeln Ersatzbaustoffverordnung, Bundes-Bodenschutzverordnung und Gewerbeabfallverordnung Herstellung, Güteüberwachung und Einbau mineralischer Ersatzbaustoffe sowie die Getrenntsammlung.",
     "Das Verfahren richtet sich nach Bodenmatrix und Leitkontaminante: Sandige Böden werden gewaschen, bindige immobilisiert oder thermisch desorbiert, organische Schadstoffe auch biologisch in Mieten abgebaut.",
-    "Asbesthaltige Böden und Bauschuttgemische dürfen nach TRGS 519 weder zerkleinert noch aufbereitet werden; sie sind staubdicht verpackt als gefährlicher Abfall zu deponieren.",
+    "Asbesthaltige Böden und Bauschuttgemische dürfen nach § 11 Abs. 1 GefStoffV weder zerkleinert noch aufbereitet werden (Schutzmaßnahmen nach TRGS 519); sie sind staubdicht verpackt als gefährlicher Abfall zu deponieren.",
     "Die Probenahme ist die häufigste Fehlerquelle der Deklaration: LAGA PN 98 legt Misch- und Einzelproben nach dem Haufwerksvolumen fest, bei 120 m³ etwa fünf Mischproben aus 20 Einzelproben.",
     "Bei leichtflüchtigen Schadstoffen werden keine Mischproben gebildet; Feststoffwerte beziehen sich auf die Trockenmasse, so werden 18 mg/kg Originalsubstanz bei 15 % Wassergehalt zu 20,7 mg/kg Trockenmasse.",
   ],

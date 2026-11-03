@@ -257,7 +257,7 @@
             "Einbau in DK-Sicherheitsdeponie mit sofortiger Überdeckung.",
             "Katastermäßige Erfassung der Einbaukoordinaten."
           ],
-          "rules": "DepV / TRGS 519: Jede Art von mechanischer Mischung oder Siebung asbesthaltiger Tonböden ist verboten, um Faserfreisetzung zu unterbinden."
+          "rules": "GefStoffV § 11 Abs. 1 / TRGS 519: Jede Art von mechanischer Mischung oder Siebung asbesthaltiger Tonböden ist verboten, um Faserfreisetzung zu unterbinden."
         },
         "gips_sulfat": {
           "method": "Immobilisierung & kontrollierter Monoeinbau",
