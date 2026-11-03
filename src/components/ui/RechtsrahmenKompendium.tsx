@@ -409,7 +409,7 @@ export const LEGAL_INSTRUMENTS: LegalInstrument[] = [
     keyDuties: [
       'Güteüberwachung durch werkseigene Produktionskontrolle (WPK) und Fremdüberwachung.',
       'Klassifizierung nach Schadstoff-Eluatwerten (Schwermetalle, Sulfat, PAK, MKW).',
-      'Kataster- und Anzeigepflicht nach § 22 EBV: Einbaumengen ab 250 m³ müssen bei den unteren Bodenschutzbehörden dokumentiert werden.',
+      'Anzeigepflicht nach § 22 EBV: Voranzeige vier Wochen vor Einbau für RC-3, BM-F3, BG-F3 ab mindestens 250 m³ sowie für bestimmte Schlacken und Aschen nach § 20 Abs. 1; in Wasser- und Heilquellenschutzgebieten mengenunabhängig (§ 22 Abs. 2); die zuständige Behörde führt ein Kataster.',
       'Sicherstellung des vorsorgenden Grundwasserschutzes in Wasserschutzgebieten.'
     ],
     impactOnMaterials: 'Schafft erstmals Rechtssicherheit beim Einbau von Recycling-Schotter, RC-Betonsplitt und aufbereitetem Bodenaushub. Beseitigt das Stigma des "Abfalls", sofern das Gütezeichen vorliegt.',
@@ -1252,7 +1252,7 @@ export const RechtsrahmenKompendium: React.FC = () => {
                 title: 'Inkrafttreten der Basispakete',
                 badgeColor: 'bg-emerald-100 text-emerald-800 border-emerald-300',
                 items: [
-                  'EBV (01.08.2023): Mineralische Ersatzbaustoffe bundesweit einheitlich klassifiziert; Katasterpflicht ab 250 m³.',
+                  'EBV (01.08.2023): Mineralische Ersatzbaustoffe bundesweit einheitlich klassifiziert; Anzeige- und Katasterpflicht für RC-3, BM-F3, BG-F3 ab 250 m³ und bestimmte Schlacken und Aschen (§ 22 EBV).',
                   'CBAM (01.10.2023): Start der Übergangsphase mit Quartalsberichten über Importemissionen für Zement und Stahl.',
                   'GEG (01.01.2024): 65-%-EE-Pflicht bei Neubauten in Neubaugebieten (mit dem GModG am 29.07.2026 entfallen).',
                   'EPBD IV (Mai 2024): Inkrafttreten der Richtlinie EU 2024/1275; 24 Monate Umsetzungsfrist.',

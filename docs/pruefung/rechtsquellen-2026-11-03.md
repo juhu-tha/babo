@@ -3,6 +3,7 @@
 **Stand:** 03.11.2026 (Branch `pruefung/rechtsquellen-11-03`, Basis origin/main d53de8e0)
 **Anlass:** Gesamtgutachten 03.11.2026 (PR #314, `docs/review/gesamt-2026-11-03.md`, Maßnahme 6 und „Gezielte zweite Runde nur für Rechtsquellen“) und Nachstichproben 5a–5c: Die verbliebenen Fehler liegen fast nur in Rechtszuordnungen, Fristen, Schwellen und Einstufungen aus Rechtsquellen.
 **Umfang:** alle 143 Module mit Prüfvermerk „geprüft“ (`src/data/pruefvermerke.ts`) – deren Inhaltsdateien (`content/`, Modul-TSX und `src/data`, Zuordnung wie `scripts/qa/kennwert-abgleich.mjs`), die gemeinsam genutzten Dateien und das in drei freigegebenen Modulen eingebundene `RechtsrahmenKompendium` – sowie die 886 Quizfragen dieser Module.
+**Basis:** nach PR #320 (`umsetzung/gutachten-11-03` eingemergt; dessen Änderungen „Materialklassen“, Abfallende im Kompendium und `src/data/klassengrenzen.ts` sind nicht doppelt bearbeitet).
 **Nicht geändert:** Prüfvermerke. Quizfragen nur, wo eine Aussage falsch war (dann `verified: false`, Vermerk, Prüflisten mit `scripts/pruefliste.ts` neu erzeugt).
 
 ## 1. Gewichtige Fehler (falsche Pflicht oder Einstufung mit Rechtsfolge)
@@ -26,6 +27,9 @@ Gewichtig im Sinne des Auftrags sind RQ-1 (falsche Einstufung eines Messergebnis
 | RQ-8 | `content/abfaelle/Checklisten.json` (Checkliste 1, Schritt 6 „eANV“) | NachwV | „Nachweisverordnung (NachwV) § 4“ | „NachwV §§ 3, 10, 17, 25“ (Entsorgungsnachweis, Begleitschein, elektronische Nachweisführung, Register); § 4 ist die Eingangsbestätigung | gesetze-im-internet.de, NachwV (Inhaltsübersicht, §§ 2, 25) |
 | RQ-9 | Quiz `q_ndr_2` (`nachhaltigkeit_daten_regeln`), Rückmeldung zu Option 1 | BGB § 650o | „§ 650o BGB war nur im Regierungsentwurf vorgesehen …“ | „Die Gebäudetyp-E-Regelung (§ 650o BGB-E) stand nur im Regierungsentwurf 2024 …; der geltende § 650o BGB betrifft abweichende Vereinbarungen beim Verbraucherbauvertrag.“ `verified: false`; Antwort unverändert | buzer.de / bgb.kommentar.de, § 650o BGB „Abweichende Vereinbarungen“ |
 | RQ-10 | `src/data/fristenSchwellen.ts` (Referenzliste, nicht angezeigt) | VO (EU) 2024/3110 Art. 94–96 | Inkrafttreten „Art. 95 Abs. 1“, Geltung „Art. 95 Abs. 2“, EAD-Übergang „Art. 95“ | Inkrafttreten und Geltung **Art. 96**; Art. 95 Abs. 2 = Neubewertung notifizierter Stellen bis 08.01.2030, Art. 95 Abs. 4 = EAD bis 09.01.2031; Art. 94 = Aufhebung der VO 305/2011 (Reste bis 08.01.2040). Die Angaben in `bp_recht_grundlagen` (Art. 94, Art. 95 Abs. 2/3/4/9) stimmten bereits | eurlexa.com, 32024R3110 (Datumsangaben je Artikel); Kroatisches Bauministerium, Fristenübersicht zur VO 2024/3110 |
+
+| RQ-11 | `RechtsrahmenKompendium.tsx` (EBV: Pflichten, Zeitstrahl 2023); `content/abfaelle/EbvMantelverordnung.json` (`die250MBagatellgrenze`, `größereWiedereinbaumaßnahmenAb250`); `content/abfaelle/Checklisten.json` (Checkliste 2, Schritt 6); `content/nachhaltigkeitdatenregeln/NachhaltigkeitDatenRegeln.json` (Hinweis aus PR #320) | EBV § 22 Abs. 1 und 2 i. V. m. § 20 Abs. 1 | „Einbaumengen ab 250 m³ müssen … dokumentiert werden“, „Katasterpflicht ab 250 m³“; „Wenn der Gesamteinbau **aller** mineralischen Ersatzbaustoffe … 250 m³ erreicht …, Meldepflicht“; „Liegt die geplante Einbaumenge über 250 m³?“ | Anzeige vier Wochen vorher für RC-3, BM-F3, BG-F3 ab **mindestens** 250 m³ und für die Schlacken und Aschen nach § 20 Abs. 1; übrige Klassen ohne mengenabhängige Anzeigepflicht; in Wasser-/Heilquellenschutzgebieten mengenunabhängig (§ 22 Abs. 2). Gewicht: mittel (Pflicht auf alle Ersatzbaustoffe ausgedehnt) | gesetze-im-internet.de, §§ 20, 22 ErsatzbaustoffV |
+| RQ-12 | `src/modules/Abfaelle.tsx` (EBV-Prüfer, Hinweis aus PR #320) | EBV § 20 Abs. 1, § 22 Abs. 1 | Zweige `hmva1`/`hmva2` nie erreichbar (die Auswahl führt HMVA-1 unter „BM-F2 / HMVA-1“, HMVA-2 unter „RC-3 / BM-F3 / HMVA-2“); dadurch für die Auswahl „BM-F2 / HMVA-1“ ab 250 m³ „keine mengenabhängige Anzeigepflicht“ | tote Zweige entfernt; für „BM-F2 / HMVA-1“ eigener Hinweis: BM-F2 ohne mengenabhängige Anzeige, HMVA-1 als Asche nach § 20 Abs. 1 Nr. 2 anzeigepflichtig (Mengenschwelle vorläufig, Normprüfung ausstehend). HMVA-Klassen fehlen nicht, sie sind in den Sammeloptionen enthalten (Aufteilung der Auswahl: siehe O-6) | gesetze-im-internet.de, § 20 ErsatzbaustoffV |
 
 Redaktionell mitbehoben: „Abs.“ statt „Nr.“ bei TRGS-519-Verweisen mit richtiger Nummer (Checkliste 6, Schritte 2, 3, 5).
 
@@ -55,7 +59,7 @@ Gezählt sind eindeutige Aussagen (Sätze) mit Rechtsbezug und prüfbarer Angabe
 
 | Rechtsgebiet | geprüfte Aussagen | davon gegen Primärquelle | Befunde | Aussagen mit Fehler | Quote | gewichtig |
 |---|---|---|---|---|---|---|
-| Abfall/Boden (KrWG, GewAbfV, EBV, BBodSchV, DepV, AVV, NachwV, AltholzV, LAGA) | 199 | ≈ 65 | 1 (RQ-8) | 1 | 0,5 % | 0 |
+| Abfall/Boden (KrWG, GewAbfV, EBV, BBodSchV, DepV, AVV, NachwV, AltholzV, LAGA) | 199 | ≈ 65 | 3 (RQ-8, RQ-11, RQ-12) | 8 | 4 % | 0 (RQ-11 mittel) |
 | Gefahrstoffe (GefStoffV, TRGS, REACH/POP, TrinkwV-PFAS) | 94 | ≈ 45 | 4 (RQ-1, -5, -6, -7) | 12 | 13 % | 1 (RQ-1) |
 | Bauordnung/Bauprodukte (MBO/BayBO, MVV TB, BauPVO, BGB/VOB/HOAI, BayDSchG) | 244 | ≈ 40 | 2 (RQ-9, RQ-10) | 1 angezeigte + 4 Referenzeinträge | 0,4 % (angezeigt) | 0 |
 | Energie/GEG (GModG, KSG, WPG, BEHG) | 153 | ≈ 10 | 1 (RQ-3) | 3 | 2 % | 1 |
@@ -63,11 +67,11 @@ Gezählt sind eindeutige Aussagen (Sätze) mit Rechtsbezug und prüfbarer Angabe
 | Arbeitsschutz (ArbSchG, BaustellV, DGUV, LärmVibrationsArbSchV) | 4 | 0 | 0 | 0 | 0 % | 0 |
 | Datenschutz/KI (DSGVO, KI-VO, UrhG, DDG/MStV) | 25 | 0 (KI-VO-Fristen über die zentrale Liste vom 02.11.) | 0 | 0 | 0 % | 0 |
 | übrige (EStG, ZPO, ProdHaftG, BayDiV, Fachkonventionen) | ≈ 175 | ≈ 15 | 0 | 0 | 0 % | 0 |
-| **gesamt** | **≈ 1016** | **≈ 200** | **10** | **23 (+ 4 Referenzeinträge)** | **2,3 %** | **4** |
+| **gesamt** | **≈ 1016** | **≈ 200** | **12** | **30 (+ 4 Referenzeinträge)** | **3,0 %** | **4** |
 
 - Die Fehler häufen sich dort, wo eine Vorschrift **umgebaut** wurde (GefStoffV-Novelle 12/2024: Anhang II Nr. 1 → § 11; KSG-Novelle 2024: Sektorziele; Klimagesetz-Änderung 2026) oder wo eine **Bemerkung der Vorschrift** das Ergebnis bestimmt (TrinkwV: Werte unter der BG). Reine Zahlen- und Fristangaben (EBV, NachwV, TrinkwV, BauPVO) stimmten durchweg.
 - Wie in NS5B: Eine bereits behobene Aussage (EPBD Art. 7, NS5C-NDR-1) stand gleichlautend in einem gemeinsam genutzten Baustein weiter. Gleichlautende Stellen sind bei jeder Korrektur app-weit mitzusuchen; das Kompendium gehört in künftige Stichproben.
-- Betroffene freigegebene Module: `pfas_baustoffe` (RQ-1), `nachhaltigkeit_daten_regeln`, `lca_regulatorik`/`oekobilanz_lca` (über das Kompendium, RQ-2 bis -4; `q_ndr_2` RQ-9), `abfaelle` (RQ-5, -7, -8), `boden_materialaufbereitung` (RQ-6), `rueckbau` (Aufgabe, RQ-7). Ein Anlass zur Rücknahme eines Prüfvermerks besteht nach den bisherigen Maßstäben nicht; RQ-1 sollte bei der Freigabe von `pfas_baustoffe` mitgesehen werden.
+- Betroffene freigegebene Module: `pfas_baustoffe` (RQ-1), `nachhaltigkeit_daten_regeln`, `lca_regulatorik`/`oekobilanz_lca` (über das Kompendium, RQ-2 bis -4; `q_ndr_2` RQ-9), `abfaelle` (RQ-5, -7, -8, -11, -12), `boden_materialaufbereitung` (RQ-6), `rueckbau` (Aufgabe, RQ-7). Ein Anlass zur Rücknahme eines Prüfvermerks besteht nach den bisherigen Maßstäben nicht; RQ-1 sollte bei der Freigabe von `pfas_baustoffe` mitgesehen werden.
 
 ## 5. Zentrale Liste und Abgleich
 
@@ -92,7 +96,7 @@ Gezählt sind eindeutige Aussagen (Sätze) mit Rechtsbezug und prüfbarer Angabe
 | `TRINKWV_BLEI_2028` | TrinkwV Anlage 2 Teil II | 12.01.2028 | 2 |
 | `TRINKWV_PFAS20_AB`, `TRINKWV_PFAS4_AB` | TrinkwV Anlage 2 Teil I | 12.01.2026 / 12.01.2028 | 1 / 1 |
 
-Das Abgleichskript liest zusätzlich die Zahlwörter „ein(e/er)“ bis „sieben“ („vier Wochen“, „eine Woche“, „fünf Jahre“). Regressionstest: `tests/rechtsquellen1103.test.ts` (Korrekturen RQ-1 bis RQ-10, neue Sollwerte, Erkennung falscher Fristen).
+Das Abgleichskript liest zusätzlich die Zahlwörter „ein(e/er)“ bis „sieben“ („vier Wochen“, „eine Woche“, „fünf Jahre“). Regressionstest: `tests/rechtsquellen1103.test.ts` (Korrekturen RQ-1 bis RQ-12, neue Sollwerte, Erkennung falscher Fristen).
 
 ## 6. Offen
 
@@ -104,9 +108,11 @@ Das Abgleichskript liest zusätzlich die Zahlwörter „ein(e/er)“ bis „sieb
 | O-4 | Quiz `q_ms_sc_6` (Modul `schaeden_checklisten`, nicht freigegeben): Feld `quelle` nennt „GefStoffV Anhang II“ für Asbest. | Bei Freigabe des Moduls auf § 11 GefStoffV umstellen. |
 | O-5 | `src/components/ui/BaustoffProfil.tsx`: „Schadstoffklasse wie Z0–Z5“; LAGA M 20 kennt Z 0 bis Z 2 (darüber Deponieklassen). Landesregelungen mit Z 3–Z 5 waren nicht zu belegen. | vorläufig, Normprüfung ausstehend – mit der zentralen Liste der Klassengrenzen (Gutachten 03.11., Maßnahme 6) klären. |
 
+| O-6 | EBV-Prüfer (`abfaelle`): Sammeloptionen „BM-F2 / HMVA-1“ und „RC-3 / BM-F3 / HMVA-2“ bündeln Klassen mit unterschiedlichen Anzeigeregeln (HMVA-1 laut § 20 Abs. 1 Nr. 2 in der Gruppe ab 50 m³). | Entscheidung: HMVA-1/HMVA-2 als eigene Auswahl mit eigener Mengenschwelle führen (UI-Änderung, a11y-Prüfung nötig). |
+
 ## 7. Quellen (abgerufen 03.11.2026, nur aus Suchergebnissen)
 
-- EBV § 19: https://www.gesetze-im-internet.de/ersatzbaustoffv/__19.html · § 22: https://www.gesetze-im-internet.de/ersatzbaustoffv/__22.html · § 25: https://www.gesetze-im-internet.de/ersatzbaustoffv/__25.html · Anlage 1: https://www.buzer.de/Anlage_1_ErsatzbaustoffV.htm
+- EBV § 19: https://www.gesetze-im-internet.de/ersatzbaustoffv/__19.html · § 20: https://www.gesetze-im-internet.de/ersatzbaustoffv/__20.html · § 22: https://www.gesetze-im-internet.de/ersatzbaustoffv/__22.html · § 25: https://www.gesetze-im-internet.de/ersatzbaustoffv/__25.html · Anlage 1: https://www.buzer.de/Anlage_1_ErsatzbaustoffV.htm
 - GefStoffV § 11: https://www.gesetze-im-internet.de/gefstoffv_2010/__11.html · § 11a: https://www.gesetze-im-internet.de/gefstoffv_2010/__11a.html · Inhaltsübersicht (Anhang II Nr. 1 weggefallen): https://vorschriften.bgn-branchenwissen.de/daten/gv/gefstoffv/inhalt.htm · Synopse § 24: https://www.buzer.de/gesetz/9492/al0-208531.htm
 - TRGS 519, Inhaltsverzeichnis: https://vorschriften.bgn-branchenwissen.de/daten/tr/trgs519/inhalt.htm
 - TrinkwV § 17: https://www.gesetze-im-internet.de/trinkwv_2023/__17.html · Anlage 2: https://www.gesetze-im-internet.de/trinkwv_2023/anlage_2.html

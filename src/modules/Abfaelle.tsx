@@ -219,8 +219,11 @@ export default function Abfaelle() {
     let anzeige = inhalt.werte.keineAnzeigepflichtNach22;
 
     if (ebvVolumen === 'ab_250') {
-      if (ebvMaterial === 'rc3' || ebvMaterial === 'bm_f3' || ebvMaterial === 'hmva2' || ebvMaterial === 'hmva1') {
+      // Auswahl „rc3“ = RC-3 / BM-F3 / HMVA-2 (alle nach § 22 Abs. 1 anzeigepflichtig); „bm_f2“ = BM-F2 / HMVA-1 (§ 20 Abs. 1 Nr. 2)
+      if (ebvMaterial === 'rc3' || ebvMaterial === 'bm_f3') {
         anzeige = inhalt.werte.anzeigepflichtigNach22Ebv;
+      } else if (ebvMaterial === 'bm_f2') {
+        anzeige = inhalt.werte.bmF2Hmva1Anzeige;
       } else {
         anzeige = inhalt.werte.keineMengenabhängigeAnzeigepflichtNach;
       }
@@ -302,7 +305,7 @@ export default function Abfaelle() {
           conditions.push(inhalt.werte.derEinbauMussMit);
           conditions.push(inhalt.werte.grundwasserdeckschichtUndEinbauweiseNach);
         }
-      } else if (ebvMaterial === 'bm_f2' || ebvMaterial === 'hmva1') {
+      } else if (ebvMaterial === 'bm_f2') {
         if (ebvEinbauweise === 'offen') {
           status = 'forbidden';
           message = inhalt.werte.verbotenDieErhöhteSulfat;
@@ -312,7 +315,7 @@ export default function Abfaelle() {
           conditions.push(inhalt.werte.einbaufähigAlsTragschichtUnter);
           conditions.push(inhalt.werte.derHerstellerMussEin);
         }
-      } else if (ebvMaterial === 'rc3' || ebvMaterial === 'bm_f3' || ebvMaterial === 'hmva2') {
+      } else if (ebvMaterial === 'rc3' || ebvMaterial === 'bm_f3') {
         if (ebvEinbauweise === 'offen') {
           status = 'forbidden';
           message = inhalt.werte.strengstensVerboten2;

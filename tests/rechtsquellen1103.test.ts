@@ -52,6 +52,14 @@ gilt(/§ 650o BGB-E/.test(n2.distraktorFeedback[0]) && /geltende § 650o BGB/.te
 const fs = (id: string) => FRISTEN_SCHWELLEN.find(e => e.id === id)!;
 gilt(/^Art\. 96/.test(fs('BAUPVO_INKRAFT').fundstelle) && /^Art\. 96/.test(fs('BAUPVO_GELTUNG').fundstelle) && fs('BAUPVO_EAD_UEBERGANG').fundstelle.startsWith('Art. 95 Abs. 4'), 'RQ-10 BauPVO-Artikel');
 
+// RQ-11 § 22 EBV: Anzeige ab 250 m³ nur für bestimmte Materialklassen (Hinweis aus PR #320)
+gilt(!/Einbaumengen ab 250 m³ müssen bei den unteren Bodenschutzbehörden/.test(rk) && !/Katasterpflicht ab 250 m³\.'/.test(rk), 'RQ-11 Rechtsrahmen § 22 EBV');
+const ebvM = lies('content/abfaelle/EbvMantelverordnung.json');
+gilt(!/Gesamteinbau aller mineralischen Ersatzbaustoffe/.test(ebvM) && /§ 20 Abs\. 1 EBV/.test(ebvM), 'RQ-11 250-m³-Schwelle nicht für alle MEB');
+gilt(!/Liegt die geplante Einbaumenge über 250 m³/.test(refs), 'RQ-11 Checkliste Voranzeige');
+const abfTsx = lies('src/modules/Abfaelle.tsx');
+gilt(!/'hmva[12]'/.test(abfTsx) && /bmF2Hmva1Anzeige/.test(abfTsx), 'RQ-12 keine toten HMVA-Zweige; HMVA-1-Hinweis in der Auswahl BM-F2/HMVA-1');
+
 // Neue Einträge der zentralen Liste: Werte und Erkennung
 const w = (id: string) => fs(id).wert;
 gilt(w('EBV_ANZEIGE_250') === 250 && w('EBV_VORANZEIGE_FRIST') === 4 && w('EBV_SICHERHEITSABSTAND') === 0.5 && w('EBV_LIEFERSCHEIN_5J') === 5
