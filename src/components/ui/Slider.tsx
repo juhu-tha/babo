@@ -60,7 +60,8 @@ export function Slider({ label, value, unit, info, className, id: propId, valueT
         aria-label={typeof label === 'string' ? label : undefined}
         type="range"
         value={value}
-        className="w-full"
+        // Zielfläche 24 px hoch (WCAG 2.2, 2.5.8 – neben der Erläuterung), Platzbedarf wie bisher (negativer Rand)
+        className="w-full h-6 -mt-1 -mb-4"
         {...props}
       />
       <div className="flex justify-between text-xs text-home-grau mt-1">

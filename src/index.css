@@ -1138,6 +1138,8 @@ html:not(.dark) :is(.text-slate-400, .text-gray-400, .text-slate-500, .text-gray
     overflow-x: auto;
     overflow-y: hidden;
     vertical-align: middle;
+    /* Überhang kursiver Glyphen auffangen: kurze Formeln sollen nicht um 1–2 px „scrollen“ (sonst unnötige Tabstopps) */
+    padding: 1px 0.2em 2px 0;
   }
 }
 

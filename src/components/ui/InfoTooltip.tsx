@@ -21,7 +21,7 @@ export function InfoTooltip({ text }: InfoTooltipProps) {
         aria-describedby={id}
         onKeyDown={e => { if (e.key === 'Escape' && !weg) { e.stopPropagation(); setWeg(true); } }}
         onBlur={() => setWeg(false)}
-        className="inline-flex items-center justify-center rounded cursor-help"
+        className="inline-flex items-center justify-center rounded cursor-help w-6 h-6 -mx-0.5 -my-0.5"
       >
         <Info size={14} aria-hidden="true" className="text-text-main/40 hover:text-shiraz transition-colors" />
       </button>
