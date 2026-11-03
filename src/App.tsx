@@ -51,6 +51,8 @@ const ModulTest = React.lazy(() => import('./components/quiz/ModulTest').then(m 
 const StudentPollVoteView = React.lazy(() => import('./components/polls/StudentPollVoteView'));
 const Kurzfragebogen = React.lazy(() => import('./components/feedback/Kurzfragebogen'));
 const LicenseNotice = React.lazy(() => import('./components/ui/LicenseNotice'));
+// Hinweis bei unbekannter Adresse (Gesamtgutachten 03.11.2026): nur bei Bedarf geladen
+const SeiteNichtGefunden = React.lazy(() => import('./components/navigation/SeiteNichtGefunden'));
 const MetadataAuditModal = React.lazy(() => import('./components/seo/MetadataAuditModal').then(m => ({ default: m.MetadataAuditModal })));
 
 
@@ -84,7 +86,7 @@ const BREITEN_SCHALTER: ReadonlyArray<{ breite: Bildschirmbreite; sichtbar: stri
 ];
 
 function AppContent({ vorgerendert = false, vorrendern = false }: Omit<AppProps, 'startTab'>) {
-  const { activeTab, setActiveTab, theme, toggleTheme } = useTabContext();
+  const { activeTab, setActiveTab, theme, toggleTheme, nichtGefunden } = useTabContext();
   const ersterTab = useRef(activeTab);
   const ohneEinblenden = vorgerendert && activeTab === ersterTab.current;
   const { language, t, getTabLabel, getGroupName, getClusterName } = useLanguage();
@@ -277,6 +279,20 @@ function AppContent({ vorgerendert = false, vorrendern = false }: Omit<AppProps,
         break;
       }
     }
+    // Unbekannte Adresse: eigener Titel, nicht indexieren (Status 404 kommt vom Server bzw. von Vercel)
+    let robots = document.querySelector('meta[name="robots"][data-bb-404]');
+    if (nichtGefunden !== null) {
+      document.title = 'Seite nicht gefunden – BaustoffBoard THA';
+      if (!robots) {
+        robots = document.createElement('meta');
+        robots.setAttribute('name', 'robots');
+        robots.setAttribute('content', 'noindex');
+        robots.setAttribute('data-bb-404', '');
+        document.head.appendChild(robots);
+      }
+      return;
+    }
+    robots?.remove();
     if (tabLabel) {
       document.title = `BaustoffBoard THA - ${tabLabel}`;
     } else {
@@ -290,7 +306,7 @@ function AppContent({ vorgerendert = false, vorrendern = false }: Omit<AppProps,
     if (ogDesc) ogDesc.setAttribute('content', descriptionText);
     const ogUrl = document.querySelector('meta[property="og:url"]');
     if (ogUrl && typeof window !== 'undefined') ogUrl.setAttribute('content', `${window.location.origin}${modulPfad(activeTab)}`);
-  }, [activeTab, TAB_DESCRIPTIONS]);
+  }, [activeTab, TAB_DESCRIPTIONS, nichtGefunden]);
 
   if (activePollParam) {
     return (
@@ -612,6 +628,7 @@ function AppContent({ vorgerendert = false, vorrendern = false }: Omit<AppProps,
         <h1 className="sr-only">{(() => {
           const m = MODUL_KERN.get(activeTab);
           const label = m ? getTabLabel(m.id, m.titel ?? m.label) : 'BaustoffBoard';
+          if (nichtGefunden !== null) return 'Seite nicht gefunden – BaustoffBoard';
           return activeTab === 'start' ? 'BaustoffBoard – Lern- und Wissensplattform der TH Augsburg' : `${label} – BaustoffBoard`;
         })()}</h1>
         {/* Breite per Klasse an <html> (src/utils/seitenbreite.ts), nicht nach screenWidth – s. Breitenschalter */}
@@ -651,6 +668,8 @@ function AppContent({ vorgerendert = false, vorrendern = false }: Omit<AppProps,
             {activeTab !== 'start' && <React.Suspense fallback={null}><ModulKopf activeTab={activeTab} setActiveTab={setActiveTab} /></React.Suspense>}
             <React.Suspense fallback={null}><ModulInhalt activeTab={activeTab} /></React.Suspense>
           </>
+        ) : nichtGefunden !== null ? (
+          <React.Suspense fallback={<div className="min-h-[100svh]" />}><SeiteNichtGefunden adresse={nichtGefunden} /></React.Suspense>
         ) : (
 <React.Suspense fallback={<div className="flex justify-center items-start pt-32 min-h-[100svh]"><div className="animate-spin rounded-full h-12 w-12 border-b-2 border-shiraz"></div></div>}>
           {/* Startseite hat keinen Modulkopf – Daten dort nicht laden */}
