@@ -160,8 +160,10 @@ export default function EbvMantelverordnung({ ebvEinbauweise, ebvGrundwasser, eb
                   <option value="rc1">Recycling-Baustoff RC-1 / Gleisschotter GS-1 (sehr gut aufbereitet)</option>
                   <option value="bm_f1">Bodenmaterial BM-F1 / Baggergut BG-F1 (leicht belasteter Erdaushub)</option>
                   <option value="rc2">Recycling-Baustoff RC-2 / Gleisschotter GS-2 (mittlere Eluatbelastung)</option>
-                  <option value="bm_f2">Bodenmaterial BM-F2 / Hausmüllverbrennungsasche HMVA-1</option>
-                  <option value="rc3">Recycling-Baustoff RC-3 / Bodenmaterial BM-F3 / HMVA-2</option>
+                  <option value="bm_f2">Bodenmaterial BM-F2 / Baggergut BG-F2</option>
+                  <option value="hmva1">Hausmüllverbrennungsasche HMVA-1 (Mindestmenge 50 m³)</option>
+                  <option value="rc3">Recycling-Baustoff RC-3 / Bodenmaterial BM-F3 / Baggergut BG-F3</option>
+                  <option value="hmva2">Hausmüllverbrennungsasche HMVA-2 (Mindestmenge 250 m³)</option>
                 </select>
               </div>
 

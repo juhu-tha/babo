@@ -19,6 +19,7 @@ export interface ModulLernziele {
 
 export const LERNZIELE: Readonly<Record<string, ModulLernziele>> = {
   biokohlebeton: {"niveau": "B/M", "minuten": 75, "vorwissen": ["bindemittel", "oekobilanz_lca"], "ziele": [{"stufe": "Verstehen", "text": "erläutern, wie Pflanzenkohle durch Pyrolyse entsteht und warum Kohlenstoffgehalt, H/C-Verhältnis und Permanenz ihre Speicherwirkung bestimmen."}, {"stufe": "Anwenden", "text": "die CO₂-Bilanz je m³ Beton aus Dosierung, Kohlenstoffgehalt mit dem Faktor 44/12, Permanenzfaktor und Herstellungsemission berechnen."}, {"stufe": "Analysieren", "text": "die Wirkung einer Pflanzenkohle-Zugabe mit der Wirkung einer Zementreduktion vergleichen und den Einfluss der Annahmen auf das Ergebnis aufzeigen."}, {"stufe": "Bewerten", "text": "Folgen von Pflanzenkohle für Wasseranspruch, Festigkeit, Karbonatisierung und Farbton beurteilen und erforderliche Prüfungen benennen."}]},
+  ec_kennwerte: {"niveau": "B", "minuten": 90, "vorwissen": ["sicherheitskonzept", "statistik", "materialkennwerte"], "ziele": [{"stufe": "Verstehen", "text": "die Kette Mittelwert – charakteristischer Wert (5-%-Quantil) – Bemessungswert erklären und den Ort der Sicherheit im Teilsicherheitskonzept nach DIN EN 1990 benennen."}, {"stufe": "Anwenden", "text": "aus einer Prüfserie mit dem Fraktilfaktor k_n nach DIN EN 1990, Tab. D1, den charakteristischen Wert für Normal- und Lognormalverteilung berechnen."}, {"stufe": "Anwenden", "text": "f_cm, f_ctm, E_cm, f_cd, f_yd, f_y/γ_M0, f_m,d und f_d für gegebene Klassen mit den Teilsicherheitsbeiwerten des NA DE berechnen."}, {"stufe": "Analysieren", "text": "begründen, warum f_cm = f_ck + 8 N/mm² gilt und wann Mittelwerte bzw. charakteristische Werte in Nachweisen anzusetzen sind."}, {"stufe": "Bewerten", "text": "Konformitätskriterien nach DIN EN 206 und den Einfluss von α_cc, k_mod und der Bemessungssituation auf den Bemessungswert beurteilen."}]},
   normen_ausblick: {"niveau": "B/M", "minuten": 45, "vorwissen": ["regularien", "dauerhaftigkeit", "sicherheitskonzept"], "ziele": [{"stufe": "Verstehen", "text": "die Gründe für die neue Normengeneration (Mandat M/515, Anwendbarkeit, leistungsbezogene Dauerhaftigkeit) erläutern."}, {"stufe": "Verstehen", "text": "Aufbau und wesentliche Änderungen von DIN EN 206-1 und DIN EN 206-2:2026-07 gegenüber DIN EN 206:2021-06 beschreiben."}, {"stufe": "Anwenden", "text": "aus einer XRC-Klassenzahl die Größenordnung der Karbonatisierungstiefe nach 50 Jahren abschätzen und mit der Betondeckung vergleichen."}, {"stufe": "Analysieren", "text": "für eine Norm unterscheiden, ob sie nur erschienen oder über die MVV TB bauaufsichtlich eingeführt ist, und die maßgebende Ausgabe benennen."}, {"stufe": "Bewerten", "text": "Aussagen zum Einführungstermin der Eurocodes der 2. Generation nach ihrer Quelle als festgelegt, erwartet oder offen einordnen."}]},
   labor_potentialmessung: {"niveau": "B/M", "minuten": 120, "vorwissen": ["korrosion", "labor_sicherheit"], "ziele": [{"stufe": "Verstehen", "text": "die Passivierung von Stahl in alkalischer Lösung und die Depassivierung durch Chloridionen am Potentialverlauf erläutern."}, {"stufe": "Anwenden", "text": "das Ruhepotential mit einem hochohmigen Voltmeter gegen eine Bezugselektrode messen und protokollieren."}, {"stufe": "Anwenden", "text": "Potentiale zwischen Ag/AgCl, Kalomel, SHE und CSE umrechnen und das Cl⁻/OH⁻-Verhältnis berechnen."}, {"stufe": "Bewerten", "text": "die Potentialbereiche der ASTM C876 als Richtwerte einordnen und ihre Übertragbarkeit auf den Lösungsversuch beurteilen."}]},
   labor_auslagerung: {"niveau": "B/M", "minuten": 90, "vorwissen": ["korrosion", "metallkorrosion"], "ziele": [{"stufe": "Anwenden", "text": "einen Auslagerungsversuch mit Parallel- und Blindproben vorbereiten, durchführen und protokollieren."}, {"stufe": "Anwenden", "text": "aus Massenverlust, Oberfläche, Dichte und Dauer die Massenverlustrate und die Abtragsrate in µm/a berechnen."}, {"stufe": "Analysieren", "text": "den Einfluss von Blindwert, Versuchsdauer und Lochfraß auf das Ergebnis untersuchen."}, {"stufe": "Bewerten", "text": "die Aussagekraft gravimetrischer Korrosionsraten für verschiedene Medien vergleichend beurteilen."}]},
@@ -104,7 +105,7 @@ export const LERNZIELE: Readonly<Record<string, ModulLernziele>> = {
     ziele: [
       { stufe: "Verstehen", text: "die Reindichte, Rohdichte und Schüttdichte voneinander abgrenzen und den Zusammenhang mit Porosität und Hohlraumgehalt erläutern." },
       { stufe: "Anwenden", text: "aus Massen- und Volumenangaben Dichten, Porosität und Wasseraufnahme eines Baustoffs berechnen." },
-      { stufe: "Anwenden", text: "den Wasseraufnahmekoeffizienten, den s_d-Wert und den Wärmeeindringkoeffizienten eines Baustoffs aus gegebenen Kennwerten ermitteln." },
+      { stufe: "Anwenden", text: "den Wasseraufnahmekoeffizienten, den s_d-Wert, den U-Wert einer einschichtigen Wand und den Wärmeeindringkoeffizienten eines Baustoffs aus gegebenen Kennwerten ermitteln." },
       { stufe: "Anwenden", text: "die Normalspannung, elastische Dehnung, Verkürzung und Ausnutzungsgrad einer zentrisch gedrückten Säule berechnen." },
       { stufe: "Analysieren", text: "elastische Dehnung, Kriechen, Schwinden und Relaxation im zeitlichen Verlauf unterscheiden und ihren Einfluss auf die Gesamtverformung vergleichen." },
     ],
@@ -797,7 +798,7 @@ export const LERNZIELE: Readonly<Record<string, ModulLernziele>> = {
   instandhaltung: {
     niveau: "B/M", minuten: 180, vorwissen: ["korrosion", "schutz_grundlagen", "dauerhaftigkeit"],
     ziele: [
-      { stufe: "Verstehen", text: "die Instandsetzungsprinzipien nach DIN EN 1504 und die Anwendungsbereiche von TR Instandhaltung und DIN EN 1504 erläutern." },
+      { stufe: "Verstehen", text: "die Instandsetzungsprinzipien nach DIN EN 1504 und die Anwendungsbereiche von TR Instandhaltung und DIN EN 1504 erläutern und mit dem Chloridrechner abschätzen, wann die Bewehrung depassiviert wird." },
       { stufe: "Verstehen", text: "die Oberflächenschutzsysteme OS 1 bis OS 11 nach Aufbau, Rissüberbrückung und Befahrbarkeit unterscheiden." },
       { stufe: "Anwenden", text: "mit dem System-Finder ein geeignetes Oberflächenschutzsystem und einen Instandsetzungsmörtel (CC, PCC, SPCC, PC) für ein Bauteil auswählen." },
       { stufe: "Anwenden", text: "das Füllgut und das Injektionsziel für eine Rissinjektion aus Rissbreite, Rissaktivität und Feuchtezustand ermitteln." },
@@ -1498,10 +1499,10 @@ export const LERNZIELE: Readonly<Record<string, ModulLernziele>> = {
   beton_a_z: {
     niveau: "B", minuten: 45, vorwissen: ["bindemittel", "frischbeton", "festbeton"],
     ziele: [
-      { stufe: "Erinnern", text: "die Ausbreitmaßklassen F1 bis F6 mit typischen Einsatzbereichen sowie Kontrollpunkte für Lieferschein, Einbau und Nachbehandlung benennen." },
-      { stufe: "Verstehen", text: "den Einfluss des w/z-Werts auf Kapillarporen, Gefügedichtheit und Dauerhaftigkeit erläutern und die Dichtheitsgrenze bei etwa 0,50 begründen." },
-      { stufe: "Anwenden", text: "eine Betonrezeptur über die Stoffraumgleichung auf 1000 dm³ prüfen und den äquivalenten Wasserzementwert mit dem k-Wert für Flugasche berechnen." },
-      { stufe: "Anwenden", text: "das Nennmaß der Betondeckung c_nom = c_min + Δc_dev für eine Expositionsklasse XC oder XD ermitteln." },
+      { stufe: "Erinnern", text: "im Lexikon die Ausbreitmaßklassen F1 bis F6 mit typischen Einsatzbereichen sowie die Kontrollpunkte für Lieferschein, Einbau und Nachbehandlung nachschlagen und benennen." },
+      { stufe: "Verstehen", text: "anhand der Lexikoneinträge den Einfluss des w/z-Werts auf Kapillarporen, Gefügedichtheit und Dauerhaftigkeit nachvollziehen und die Dichtheitsgrenze bei etwa 0,50 erläutern." },
+      { stufe: "Verstehen", text: "die Stoffraumgleichung auf 1000 dm³ und den äquivalenten Wasserzementwert mit dem k-Wert für Flugasche im Lexikon nachschlagen und dem Rechenweg einer Betonrezeptur zuordnen." },
+      { stufe: "Anwenden", text: "das Nennmaß der Betondeckung c_nom = c_min + Δc_dev für eine Expositionsklasse XC oder XD mit den Werten des Lexikons ermitteln." },
     ],
   },
   qualitaetssicherung: {
@@ -1561,7 +1562,7 @@ export const LERNZIELE: Readonly<Record<string, ModulLernziele>> = {
       { stufe: "Anwenden", text: "aus Bohrkernen, Mauersteinprüfungen und Zugversuchen an Stahlproben Kennwerte nach DIN EN 13791, Eurocode 6 und DIN EN ISO 6892-1 ermitteln." },
       { stufe: "Anwenden", text: "den lognormalen Bemessungswert einer Bestandsfestigkeit aus Mittelwert, Variationskoeffizient, α_R und β berechnen." },
       { stufe: "Analysieren", text: "die konventionelle Neubaubemessung, modifizierte Teilsicherheitsbeiwerte nach DBV-Merkblatt und die versuchsgestützte Bemessung nach EN 1990-2:2026 vergleichen." },
-      { stufe: "Bewerten", text: "beurteilen, wann Stichprobenumfang und Streuung eine Tragreserve im Bestand belegen und warum aus einem einzelnen Kern keine Festigkeitsklasse folgt." },
+      { stufe: "Bewerten", text: "Kernanzahl und Streuung einer Bohrkernserie nach DIN EN 13791 beurteilen, f_ck,is über k_n und Kleinstwertkriterium einer Klasse zuordnen und begründen, warum ein einzelner Kern keine Klasse belegt." },
     ],
   },
   abfaelle: {
@@ -1589,18 +1590,16 @@ export const LERNZIELE: Readonly<Record<string, ModulLernziele>> = {
     ziele: [
       { stufe: "Verstehen", text: "den Baumangel als Abweichung der Ist- von der Soll-Beschaffenheit nach § 633 BGB vom Bauschaden als Folge abgrenzen und Gewährleistung von Garantie unterscheiden." },
       { stufe: "Anwenden", text: "das Ende der Verjährungsfrist von Mängelansprüchen nach BGB und VOB/B ab Abnahme einschließlich der Wirkung einer schriftlichen Mängelrüge berechnen." },
-      { stufe: "Anwenden", text: "die Mindestbreite einer elastischen Fassadenfuge aus thermischer Längenänderung und zulässiger Gesamtverformung des Dichtstoffs berechnen." },
-      { stufe: "Analysieren", text: "Fugenschäden wie Flankenabriss, Kohäsionsbruch, Blasenbildung und Randzonenverschmutzung auf Planungs- oder Verarbeitungsfehler zurückführen." },
       { stufe: "Bewerten", text: "für eine Störung im Bauablauf die passende Anzeige nach VOB/B (Bedenken, Behinderung, Mängelrüge, Nachtrag) auswählen und Form und Adressat begründen." },
     ],
   },
   schadensbilder: {
     niveau: "B", minuten: 75, vorwissen: ["bauschaeden", "bauphysik"],
     ziele: [
-      { stufe: "Verstehen", text: "Schadensbilder aus Feuchte und Schimmel, Rissen, Korrosion, stofflichen Unverträglichkeiten sowie Tief- und Ingenieurbau ihren Ursachen zuordnen." },
-      { stufe: "Anwenden", text: "die rechnerische Rissbreite w_k einer Stahlbetonwand nach DIN EN 1992-1-1 berechnen und mit dem Grenzwert der Expositionsklasse vergleichen." },
-      { stufe: "Anwenden", text: "mit der linear-elastischen Bruchmechanik die Spannungsintensität eines Randrisses und die kritische Risslänge bei sprödem Versagen berechnen." },
-      { stufe: "Analysieren", text: "an einem Schadensszenario juristischen Status, verantwortlichen Bauakteur, zuständige Versicherung und Sanierungsmethode herausarbeiten." },
+      { stufe: "Verstehen", text: "Schadensbilder aus Feuchte und Schimmel, Rissen, Korrosion, stofflichen Unverträglichkeiten, Tief- und Ingenieurbau sowie Kleb- und Dichtstoffen ihren Ursachen zuordnen." },
+      { stufe: "Anwenden", text: "die rechnerische Rissbreite w_k nach DIN EN 1992-1-1 und mit der linear-elastischen Bruchmechanik die kritische Risslänge eines Randrisses berechnen." },
+      { stufe: "Anwenden", text: "die Mindestbreite einer elastischen Fassadenfuge aus thermischer Längenänderung und zulässiger Gesamtverformung des Dichtstoffs berechnen." },
+      { stufe: "Analysieren", text: "Fugenschäden wie Flankenabriss, Kohäsionsbruch, Blasenbildung und Randzonenverschmutzung sowie Schadensszenarien auf Planungs- oder Verarbeitungsfehler zurückführen." },
       { stufe: "Bewerten", text: "für Risse und Feuchteschäden geeignete Diagnose- und Instandsetzungsverfahren wie Potenzialfeldmessung, Ultraschall oder Rissinjektion auswählen." },
     ],
   },

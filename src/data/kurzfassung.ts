@@ -35,7 +35,7 @@ const BAUWERKSDIAGNOSE: readonly string[] = [
   "Die Bauwerksuntersuchung läuft in Phasen: Studium der Bestandsunterlagen, handnahe Sichtprüfung mit Rissaufnahme und Klopfprüfung, zerstörungsfreie Prüfung sowie Probenahme mit Laboranalyse.",
   "Bewehrungsortung, Rückprallhammer und Potentialfeldmessung scannen das Tragwerk zerstörungsfrei; Bohrkerne und Bohrmehlproben kalibrieren diese Verfahren und liefern Festigkeiten und Chloridprofile.",
   "Die Zeit bis zur Depassivierung folgt aus t_krit = (c/k)²; im Beispiel ergeben 25 mm Deckung und k = 2,5 mm/√a rund 100 Jahre, bei 36 Jahren Bauwerksalter also etwa 64 Jahre Reserve.",
-  "Die charakteristische In-situ-Druckfestigkeit nach DIN EN 13791 ist der kleinere Wert aus f_m,is − 1,48 · s und kleinstem Einzelwert plus 4; im Beispiel mit 8 Bohrkernen ergeben sich 27,3 N/mm².",
+  "Die charakteristische In-situ-Druckfestigkeit nach DIN EN 13791:2020-02 ist der kleinere Wert aus f_m,is − k_n · s (k_n = 2,00 bei 8 Kernen) und kleinstem Einzelwert plus M; im Beispiel mit 8 Bohrkernen ergeben sich 26,0 N/mm².",
   "Rückprallwerte sind nur über eine Kalibrierung an Bohrkernen in Festigkeiten umzurechnen; die Bohrwiderstandsmessung an Holz ist nicht genormt und verlangt fundierte Holzartenkenntnis bei der Auswertung.",
 ];
 
@@ -187,7 +187,7 @@ export const KURZFASSUNG: Readonly<Record<string, readonly string[]>> = {
     "Typischer Fehler: Schon 0,1 % Asbest im Putz kann bei unerkundetem Abbruch den gesamten Ziegel- und Betonbruch zu gefährlichem Abfall für die Deponie DK III machen.",
   ],
   schadensbilder: [
-    "Das Modul gliedert typische Bauschäden in Feuchte und Schimmel, Risse, Korrosion und Betonschäden, stoffliche Unverträglichkeiten sowie Schäden im Tief- und Ingenieurbau.",
+    "Neben Feuchte, Rissen, Korrosion, Unverträglichkeit und Tiefbau behandelt das Modul Kleb- und Dichtstoffschäden: typisch ist die Dreiflankenhaftung ohne Hinterfüllung, die Mindestfugenbreite folgt aus ΔL/ZGV (4,8 mm bei 25 % → rund 20 mm).",
     "Gegen Schimmel an Wärmebrücken verlangt DIN 4108-2 f_Rsi ≥ 0,70, also θ_si ≥ 12,6 °C; Tauwasser im Bauteil wird nach Glaser gemäß DIN 4108-3 auf höchstens 1,0 kg/m² begrenzt.",
     "Risse unter 0,1 mm gelten meist als unkritisch, ab 0,3 mm ist die Ursache statisch-konstruktiv zu prüfen; entscheidend ist, ob der Riss ruht oder sich bewegt.",
     "Nach DIN EN 1504-5 verbindet EP ruhende Risse kraftschlüssig, PUR dichtet wasserführende oder bewegte Risse, Zementsuspension füllt Risse über 0,8 mm und Hohlräume.",
@@ -222,7 +222,7 @@ export const KURZFASSUNG: Readonly<Record<string, readonly string[]>> = {
     "Mängelansprüche verjähren ab Abnahme nach BGB in 5 Jahren, nach VOB/B in 4 Jahren; eine schriftliche Mängelrüge setzt nach § 13 Abs. 5 VOB/B eine neue Frist von 2 Jahren in Gang.",
     "Geschuldet sind mangels abweichender Vereinbarung die anerkannten Regeln der Technik zum Zeitpunkt der Abnahme; eine eingehaltene, aber veraltete DIN-Norm schützt nicht vor Haftung.",
     "Schriftliche Anzeigen sichern Rechte: Bedenkenanmeldung (§ 4 Abs. 3 VOB/B), Behinderungsanzeige (§ 6 Abs. 1), Mängelrüge (§ 13) und Nachtragsanzeige (§ 2), stets auch direkt an den Bauherrn.",
-    "Typischer Fugenfehler ist die Dreiflankenhaftung ohne Hinterfüllung; die Mindestfugenbreite folgt aus ΔL/ZGV, im Beispiel ergeben 4,8 mm bei 25 % zulässiger Gesamtverformung rund 20 mm.",
+    "Mit der Abnahme kehrt sich die Beweislast um: Danach muss der Bauherr nachweisen, dass der Mangel schon bei Abnahme angelegt war; Gerichte ziehen nach § 404 Abs. 3 ZPO vorrangig öffentlich bestellte Sachverständige heran.",
   ],
   baustoffkenngroessen: [
     "Baustoffkenngrößen beschreiben physikalische, mechanische, hygrische, thermische und zeitabhängige Eigenschaften und sind Grundlage jeder statischen und bauphysikalischen Bemessung.",
@@ -282,6 +282,13 @@ export const KURZFASSUNG: Readonly<Record<string, readonly string[]>> = {
     "Nach der seit 8. Januar 2026 geltenden BauPVO (EU) 2024/3110 setzt die CE-Kennzeichnung eine Leistungserklärung voraus; über die Verwendung im Bauwerk entscheidet das nationale Bauordnungsrecht.",
     "DIN-Normen sind kein Gesetz, gelten aber widerlegbar als anerkannte Regeln der Technik; verbindlich werden sie als Technische Baubestimmung über die MVV TB oder durch Vertrag.",
     "Ohne Technische Baubestimmung braucht ein Produkt eine abZ bzw. aBG des DIBt, ein abP oder eine objektbezogene ZiE bzw. vBG; Mängelansprüche verjähren nach BGB in 5, nach VOB/B in 4 Jahren.",
+  ],
+  ec_kennwerte: [
+    "Ein Baustoffkennwert durchläuft drei Stufen: Mittelwert aus Prüfungen, charakteristischer Wert X_k als 5-%-Quantil und Bemessungswert X_d = η · X_k/γ_M.",
+    "Aus n Prüfwerten gilt X_k = m − k_n · s mit k_n nach DIN EN 1990, Tab. D1 (k_3 = 3,37 bei unbekannter Streuung, k_∞ = 1,64); die Lognormalverteilung ist zulässig.",
+    "Beton: f_cm = f_ck + 8 N/mm² entspricht 1,645 · σ mit σ ≈ 4,9 N/mm²; f_cd = 0,85 · f_ck/1,5, für C30/37 also 17,0 N/mm².",
+    "Teilsicherheitsbeiwerte nach NA DE: Beton 1,5/1,3, Betonstahl 1,15/1,0, Baustahl γ_M0 = 1,0, γ_M1 = 1,1, γ_M2 = 1,25, Holz 1,3 mit k_mod, Mauerwerk 1,5/1,3 mit ζ = 0,85.",
+    "Die Konformität neuer Betonlieferungen prüft DIN EN 206 mit f_cm ≥ f_ck + 4 (n = 3) bzw. f_ck + 1,48 · σ (n ≥ 15) und f_ci ≥ f_ck − 4.",
   ],
   lebensdauerbemessung: [
     "Lebensdauerbemessung nach dem Leistungsprinzip weist nach, dass der Grenzzustand Depassivierung während der Nutzungsdauer nur mit kleiner Wahrscheinlichkeit erreicht wird.",
@@ -378,7 +385,7 @@ export const KURZFASSUNG: Readonly<Record<string, readonly string[]>> = {
   boden_materialaufbereitung: [
     "Seit dem 1. August 2023 regeln Ersatzbaustoffverordnung, Bundes-Bodenschutzverordnung und Gewerbeabfallverordnung Herstellung, Güteüberwachung und Einbau mineralischer Ersatzbaustoffe sowie die Getrenntsammlung.",
     "Das Verfahren richtet sich nach Bodenmatrix und Leitkontaminante: Sandige Böden werden gewaschen, bindige immobilisiert oder thermisch desorbiert, organische Schadstoffe auch biologisch in Mieten abgebaut.",
-    "Asbesthaltige Böden und Bauschuttgemische dürfen nach TRGS 519 weder zerkleinert noch aufbereitet werden; sie sind staubdicht verpackt als gefährlicher Abfall zu deponieren.",
+    "Asbesthaltige Böden und Bauschuttgemische dürfen nach § 11 Abs. 1 GefStoffV weder zerkleinert noch aufbereitet werden (Schutzmaßnahmen nach TRGS 519); sie sind staubdicht verpackt als gefährlicher Abfall zu deponieren.",
     "Die Probenahme ist die häufigste Fehlerquelle der Deklaration: LAGA PN 98 legt Misch- und Einzelproben nach dem Haufwerksvolumen fest, bei 120 m³ etwa fünf Mischproben aus 20 Einzelproben.",
     "Bei leichtflüchtigen Schadstoffen werden keine Mischproben gebildet; Feststoffwerte beziehen sich auf die Trockenmasse, so werden 18 mg/kg Originalsubstanz bei 15 % Wassergehalt zu 20,7 mg/kg Trockenmasse.",
   ],

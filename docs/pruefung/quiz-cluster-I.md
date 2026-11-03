@@ -1,10 +1,10 @@
 # Prüfliste Quiz – Cluster I: Grundlagen & Labor
 
-Stand: 02.11.2026 · Grundlage: `src/data/quiz.json` (Felder `vorpruefung` und `verified`), `docs/quiz-pruefhinweise.md`, Lernziele aus `src/data/lernziele.ts`. Erzeugt mit `npx tsx scripts/pruefliste.ts`; gesetzte Kreuze übernimmt das Skript beim nächsten Lauf. quiz.json wurde für diese Liste nicht verändert.
+Stand: 03.11.2026 · Grundlage: `src/data/quiz.json` (Felder `vorpruefung` und `verified`), `docs/quiz-pruefhinweise.md`, Lernziele aus `src/data/lernziele.ts`. Erzeugt mit `npx tsx scripts/pruefliste.ts`; gesetzte Kreuze übernimmt das Skript beim nächsten Lauf. quiz.json wurde für diese Liste nicht verändert.
 
-Cluster I umfasst 260 Fragen aus 38 Modulen. Aufgeführt sind 80 auffällige Fragen (Vorprüfung „korrigiert“ oder „fraglich“, offener Prüfhinweis oder neu seit 26.10.2026 ohne Freigabe) und eine Stichprobe von 5 unauffälligen Fragen. Entscheidung je Frage ankreuzen; bei „ändern“ den Änderungswunsch in die Zeile darunter schreiben.
+Cluster I umfasst 285 Fragen aus 39 Modulen. Aufgeführt sind 105 auffällige Fragen (Vorprüfung „korrigiert“ oder „fraglich“, offener Prüfhinweis oder neu seit 26.10.2026 ohne Freigabe) und eine Stichprobe von 5 unauffälligen Fragen. Entscheidung je Frage ankreuzen; bei „ändern“ den Änderungswunsch in die Zeile darunter schreiben.
 
-Auffällig im Einzelnen (Mehrfachnennung möglich): 75 korrigiert, 0 fraglich, 8 mit offenem Prüfhinweis, 1 neu seit 26.10.2026.
+Auffällig im Einzelnen (Mehrfachnennung möglich): 75 korrigiert, 0 fraglich, 8 mit offenem Prüfhinweis, 26 neu seit 26.10.2026.
 
 ## A. Auffällige Fragen
 
@@ -237,6 +237,150 @@ Auffällig im Einzelnen (Mehrfachnennung möglich): 75 korrigiert, 0 fraglich, 8
 - **Frage:** Beton: λ = 2,0 W/(m·K), ρ = 2400 kg/m³, c = 1000 J/(kg·K). Wie groß ist die Temperaturleitfähigkeit a?
 - **Richtige Antwort:** 8,3 · 10⁻⁷ m²/s
 - **Auffälligkeit:** Vorprüfung „korrigiert“: Zweitprüfung 28.10. (Runde 3): Distraktor „1,2 · 10⁻³ m²/s“ passte zu keinem Rechenweg; durch 8,3 · 10⁻⁴ m²/s (λ/ρ ohne c) ersetzt, Rückmeldung entsprechend präzisiert – korrigiert · Zweitprüfung 29.10.: Zahlformat: 2400 ohne Tausendertrennung (vierstellig) – korrigiert
+- [ ] ok
+- [ ] ändern: …
+
+### qlz_analytik_1 · Analytik & Diagnostik
+
+- **Frage:** An einem Kläranlagenbauwerk mit Treiberscheinungen soll ein Sulfatangriff nachgewiesen werden. Welches Verfahren ist am besten begründet?
+- **Richtige Antwort:** XRD, weil sie Ettringit oder Thaumasit als kristalline Phasen eindeutig erkennt
+- **Auffälligkeit:** neu seit 26.10.2026 (Z24), noch nicht freigegeben, ohne Vorprüfung
+- [ ] ok
+- [ ] ändern: …
+
+### qlz_bauchemie_1 · Bauchemie
+
+- **Frage:** Worauf beruht nach dem Modul die Festigkeit des erhärteten Zementsteins?
+- **Richtige Antwort:** Auf Oberflächen- und Bindungskräften zwischen den CSH-Schichten mit großer innerer Oberfläche
+- **Auffälligkeit:** neu seit 26.10.2026 (Z24), noch nicht freigegeben, ohne Vorprüfung
+- [ ] ok
+- [ ] ändern: …
+
+### qlz_bauphysik_1 · Bauphysik (Wärme & Akustik)
+
+- **Frage:** Zwei Dachaufbauten haben denselben U-Wert; einer ist mit Mineralwolle, der andere mit Holzfaserplatten gedämmt. Wie unterscheiden sie sich im sommerlichen Wärmeschutz?
+- **Richtige Antwort:** Holzfaser: größere Phasenverschiebung, kleineres TAV durch höhere Speicherung
+- **Auffälligkeit:** neu seit 26.10.2026 (Z24), noch nicht freigegeben, ohne Vorprüfung
+- [ ] ok
+- [ ] ändern: …
+
+### qlz_brandschutz_1 · Brandschutz
+
+- **Frage:** Welche Brandraumtemperatur ergibt die Einheitstemperaturzeitkurve θ_g = 20 + 345 · lg(8t + 1) nach t = 120 Minuten?
+- **Richtige Antwort:** rund 1049 °C
+- **Auffälligkeit:** neu seit 26.10.2026 (Z24), noch nicht freigegeben, ohne Vorprüfung
+- [ ] ok
+- [ ] ändern: …
+
+### qlz_brandschutz_2 · Brandschutz
+
+- **Frage:** Ein BSH-Balken 160/360 mm wird dreiseitig beflammt (β_n = 0,7 mm/min, d₀ = 7 mm). Welche Beurteilung des Widerstandsmoments ist richtig?
+- **Richtige Antwort:** Nach 30 min rund 45 % Verlust, nach 60 min rund 71 %; eigener Brandnachweis
+- **Auffälligkeit:** neu seit 26.10.2026 (Z24), noch nicht freigegeben, ohne Vorprüfung
+- [ ] ok
+- [ ] ändern: …
+
+### qlz_labor_1 · Virtuelle Versuche
+
+- **Frage:** Bei der Haftzugprüfung einer Reprofilierung (Stempel Ø 50 mm) reißt ein Stempel bei 1,10 N/mm² in der Klebefuge (Bruchbild Y), die übrigen um 1,7 N/mm² im Altbeton. Wie ist das zu werten?
+- **Richtige Antwort:** Der Einzelwert ist ungültig; die Prüfung mit neu geklebtem Stempel wiederholen
+- **Auffälligkeit:** neu seit 26.10.2026 (Z24), noch nicht freigegeben, ohne Vorprüfung
+- [ ] ok
+- [ ] ändern: …
+
+### qlz_labor_druckfestigkeit_1 · Handout Druckfestigkeit an Würfeln
+
+- **Frage:** Ein Würfel zeigt nach der Druckprüfung einen senkrechten Zugriss und Abplatzungen nur an einer Seitenfläche; die übrigen Seiten sind kaum beschädigt. Wie ist das nach dem Handout einzuordnen?
+- **Richtige Antwort:** Unregelmäßig: im Bericht vermerken; Maße oder Lasteinleitung prüfen
+- **Auffälligkeit:** neu seit 26.10.2026 (Z24), noch nicht freigegeben, ohne Vorprüfung
+- [ ] ok
+- [ ] ändern: …
+
+### qlz_labor_moertelprismen_1 · Handout Mörtelprismen (DIN EN 196-1)
+
+- **Frage:** Wie folgt R_f = 1,5 · F_f · l/b³ aus der Biegespannung des Prismas (Einzellast F_f in Feldmitte, Stützweite l, quadratischer Querschnitt b × b)?
+- **Richtige Antwort:** M = F_f·l/4 und W = b³/6, also σ = M/W = 6·F_f·l/(4·b³)
+- **Auffälligkeit:** neu seit 26.10.2026 (Z24), noch nicht freigegeben, ohne Vorprüfung
+- [ ] ok
+- [ ] ändern: …
+
+### qlz_materialkennwerte_1 · Kennwerte & Materialdatenbank
+
+- **Frage:** Im Netzdiagramm werden Normalbeton, Baustahl und Nadelholz verglichen. Welche Aussage arbeitet einen für die Baustoffwahl entscheidenden Unterschied richtig heraus?
+- **Richtige Antwort:** Beton hat hohe Druck-, aber geringe Zugfestigkeit; Zugzonen brauchen Bewehrung
+- **Auffälligkeit:** neu seit 26.10.2026 (Z24), noch nicht freigegeben, ohne Vorprüfung
+- [ ] ok
+- [ ] ändern: …
+
+### qlz_materialmodelle_1 · Materialmodelle
+
+- **Frage:** Ein Werkstoff zeigt eine gekrümmte Spannungs-Dehnungs-Linie und kehrt nach Entlastung vollständig in den Ausgangszustand zurück. Welches Modell beschreibt das?
+- **Richtige Antwort:** Nichtlinear-elastisch, gekrümmt und dennoch voll reversibel
+- **Auffälligkeit:** neu seit 26.10.2026 (Z24), noch nicht freigegeben, ohne Vorprüfung
+- [ ] ok
+- [ ] ändern: …
+
+### qlz_mechanische_kenngroessen_1 · Mechanische Kenngrößen
+
+- **Frage:** Ein Biegeträger soll bei möglichst geringem Eigengewicht möglichst steif sein (Kennzahl E/ρ). Welche Wahl stützt die Werkstoffmatrix des Moduls?
+- **Richtige Antwort:** CFK-Lamelle, da E/ρ rund 103 beträgt, etwa das Vierfache von Stahl und Holz
+- **Auffälligkeit:** neu seit 26.10.2026 (Z24), noch nicht freigegeben, ohne Vorprüfung
+- [ ] ok
+- [ ] ändern: …
+
+### qlz_mechanische_pruefungen_1 · Mechanische Prüfungen
+
+- **Frage:** Ein Asphalt zeigt im Marshall-Versuch einen niedrigen Quotienten S/F. Welche Folgerung ist im Sinne des Moduls richtig?
+- **Richtige Antwort:** Das Mischgut ist eher plastisch; über Spurrinnen entscheidet der Spurbildungsversuch
+- **Auffälligkeit:** neu seit 26.10.2026 (Z24), noch nicht freigegeben, ohne Vorprüfung
+- [ ] ok
+- [ ] ändern: …
+
+### qlz_messen_pruefen_1 · Messen & Prüfen
+
+- **Frage:** Im Labor soll der Durchmesser eines Bohrkerns von etwa 100 mm auf Zehntelmillimeter genau bestimmt werden. Welches Messmittel ist geeignet?
+- **Richtige Antwort:** Messschieber mit 0,05 mm (Nonius) bzw. 0,01 mm Auflösung (digital)
+- **Auffälligkeit:** neu seit 26.10.2026 (Z24), noch nicht freigegeben, ohne Vorprüfung
+- [ ] ok
+- [ ] ändern: …
+
+### qlz_normen_ausblick_1 · Ausblick: neue Normengeneration (Beton und Eurocodes)
+
+- **Frage:** Ein Planungsbüro sammelt Aussagen zur Einführung der Eurocodes der 2. Generation. Welche Einordnung nach der Quelle entspricht dem Modul (Stand November 2026)?
+- **Richtige Antwort:** CEN-Zurückziehung bis 30.03.2028: festgelegt; Einführung 2027 laut RWTH: erwartet; MVV TB 2026/1: offen
+- **Auffälligkeit:** neu seit 26.10.2026 (Z24), noch nicht freigegeben, ohne Vorprüfung
+- [ ] ok
+- [ ] ändern: …
+
+### qlz_probenahme_1 · Probenahme & Erkundung
+
+- **Frage:** An einer Parkdeckstütze soll die Chloridbelastung bis in Bewehrungstiefe beurteilt werden. Welches Beprobungsvorgehen begründet das Modul?
+- **Richtige Antwort:** Bohrmehl in Tiefenstufen an mindestens 3, besser 5 Stellen je Stützenabschnitt entnehmen
+- **Auffälligkeit:** neu seit 26.10.2026 (Z24), noch nicht freigegeben, ohne Vorprüfung
+- [ ] ok
+- [ ] ändern: …
+
+### qlz_regularien_1 · Baurecht & Normenwesen
+
+- **Frage:** Ein Bauvertrag mit wirksam vereinbarter VOB/B; Abnahme am 01.03.2022. Am 01.02.2026 rügt der Auftraggeber einen Mangel schriftlich. Wie ist die Lage einzuordnen?
+- **Richtige Antwort:** Die Rüge löst für diesen Mangel eine neue Frist von zwei Jahren ab Zugang aus
+- **Auffälligkeit:** neu seit 26.10.2026 (Z24), noch nicht freigegeben, ohne Vorprüfung
+- [ ] ok
+- [ ] ändern: …
+
+### qlz_sicherheitskonzept_1 · Eurocode – Sicherheitskonzept
+
+- **Frage:** Im Lehrbeispiel des Moduls ergibt sich für eine Innenstütze 35 × 35 cm aus C30/37 der Ausnutzungsgrad η = N_Ed/N_Rd = 1530/2083 = 0,73. Wie ist dieses Ergebnis zu beurteilen?
+- **Richtige Antwort:** Nur als Größenordnung: Bewehrung, Mindestausmitte und Knicken fehlen noch
+- **Auffälligkeit:** neu seit 26.10.2026 (Z24), noch nicht freigegeben, ohne Vorprüfung
+- [ ] ok
+- [ ] ändern: …
+
+### qlz_waermeeigenschaften_1 · Wärmeeigenschaften & Feuchte
+
+- **Frage:** Für die Dachsanierung stehen PUR (λ = 0,024 W/(mK)) und Holzfaser (λ = 0,040 W/(mK), c ≈ 2100 J/(kg·K)) zur Wahl; das Dachgeschoss überhitzt im Sommer. Welche Bewertung ist am besten begründet?
+- **Richtige Antwort:** Holzfaser: dicker für gleichen U-Wert, aber im Sommer deutlich träger
+- **Auffälligkeit:** neu seit 26.10.2026 (Z24), noch nicht freigegeben, ohne Vorprüfung
 - [ ] ok
 - [ ] ändern: …
 
@@ -630,6 +774,62 @@ Auffällig im Einzelnen (Mehrfachnennung möglich): 75 korrigiert, 0 fraglich, 8
 - **Richtige Antwort:** G ≈ 2,32 > 2,13; auffällig, vor dem Streichen technische Ursache prüfen
 - **Auffälligkeit:** Vorprüfung „korrigiert“: normRef ergänzt; Zweitprüfung 27.10.: G_krit nach ISO 5725-2 (2,13 statt 2,03) – korrigiert, Freigabe zurückgenommen · bereits freigegeben (verified)
 - [x] ok
+- [ ] ändern: …
+
+### qt_eckennwerte_1 · Kennwerte und Bemessungswerte nach Eurocode
+
+- **Frage:** Was ist nach DIN EN 1990 der charakteristische Wert einer Baustofffestigkeit?
+- **Richtige Antwort:** 5-%-Quantil der Grundgesamtheit
+- **Auffälligkeit:** neu seit 26.10.2026 (Z24), noch nicht freigegeben
+- [ ] ok
+- [ ] ändern: …
+
+### qt_eckennwerte_2 · Kennwerte und Bemessungswerte nach Eurocode
+
+- **Frage:** DIN EN 1992-1-1 setzt f_cm = f_ck + 8 N/mm². Wie lässt sich der Abstand von 8 N/mm² statistisch deuten?
+- **Richtige Antwort:** 1,645 · σ mit σ von etwa 5 N/mm²
+- **Auffälligkeit:** neu seit 26.10.2026 (Z24), noch nicht freigegeben
+- [ ] ok
+- [ ] ändern: …
+
+### qt_eckennwerte_3 · Kennwerte und Bemessungswerte nach Eurocode
+
+- **Frage:** Welcher Bemessungswert der Druckfestigkeit f_cd gilt für C35/45 in der ständigen Bemessungssituation nach NA DE?
+- **Richtige Antwort:** f_cd = 19,8 N/mm²
+- **Auffälligkeit:** neu seit 26.10.2026 (Z24), noch nicht freigegeben
+- [ ] ok
+- [ ] ändern: …
+
+### qt_eckennwerte_4 · Kennwerte und Bemessungswerte nach Eurocode
+
+- **Frage:** Brettschichtholz GL24h (f_m,k = 24 N/mm²) in Nutzungsklasse 2 unter kurzer Lasteinwirkung (k_mod = 0,9): Wie groß ist f_m,d?
+- **Richtige Antwort:** f_m,d = 16,6 N/mm²
+- **Auffälligkeit:** neu seit 26.10.2026 (Z24), noch nicht freigegeben
+- [ ] ok
+- [ ] ändern: …
+
+### qt_eckennwerte_5 · Kennwerte und Bemessungswerte nach Eurocode
+
+- **Frage:** Drei Zylinder ergeben m = 36,8 N/mm² und s = 2,37 N/mm²; V_x ist unbekannt. Welches 5-%-Quantil folgt nach DIN EN 1990, Anhang D (Normalverteilung)?
+- **Richtige Antwort:** X_k = 28,8 N/mm²
+- **Auffälligkeit:** neu seit 26.10.2026 (Z24), noch nicht freigegeben
+- [ ] ok
+- [ ] ändern: …
+
+### qt_eckennwerte_6 · Kennwerte und Bemessungswerte nach Eurocode
+
+- **Frage:** Stetige Herstellung C30/37 (Zylinder, n = 15): f_cm = 34,2 N/mm², σ der Vorserie = 2,5 N/mm². Ist Kriterium 1 erfüllt?
+- **Richtige Antwort:** Nein, gefordert sind 34,4 N/mm²
+- **Auffälligkeit:** neu seit 26.10.2026 (Z24), noch nicht freigegeben
+- [ ] ok
+- [ ] ändern: …
+
+### qt_eckennwerte_7 · Kennwerte und Bemessungswerte nach Eurocode
+
+- **Frage:** Für welchen Nachweis gilt im Stahlbau nach NA DE der Teilsicherheitsbeiwert γ_M1 = 1,1?
+- **Richtige Antwort:** Stabilität, z. B. Biegeknicken
+- **Auffälligkeit:** neu seit 26.10.2026 (Z24), noch nicht freigegeben
+- [ ] ok
 - [ ] ändern: …
 
 ### qz24_atterberg_3 · Bodenmechanik

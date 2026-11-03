@@ -60,7 +60,7 @@ const startRoot = '<div id="root"><div data-schale inert><p>Start</p></div></div
 const vorlage = `<!doctype html><html><head>${KOPF_ANKER}<script>boot()</script><title>Alt</title><meta name="description" content="alt" /><link rel="canonical" href="https://baustoffboard.de/" />`
   + '<meta property="og:url" content="https://baustoffboard.de/" /><meta property="og:title" content="Alt" /><meta property="og:description" content="alt" />'
   + `<meta name="twitter:url" content="https://baustoffboard.de/" /><meta name="twitter:title" content="Alt" /><meta name="twitter:description" content="alt" /></head><body>${startRoot}<script src="/a.js"></script></body></html>`;
-const seite = baueSeite(vorlage, startRoot, { id: 'glas', label: 'Glas & Co', meta: 'Bauglas "ESG"' }, '<div>X $& $1</div>');
+const seite = baueSeite(vorlage, startRoot, { id: 'glas', label: 'Glas', titel: 'Glas & Co', meta: 'Bauglas "ESG"' }, '<div>X $& $1</div>');
 pruefe(seite.includes(`${KOPF_ANKER}\n    <meta name="bb-vorgerendert" content="glas" /><script>boot()</script>`), 'Kennung nicht vor dem Boot-Skript');
 pruefe(seite.includes('<div id="root"><div data-schale inert><div>X $& $1</div></div></div>') && !seite.includes('<p>Start</p>'), 'Schale nicht (wörtlich) eingesetzt');
 pruefe(seite.includes('<title>BaustoffBoard THA - Glas &amp; Co</title>') && seite.includes('<link rel="canonical" href="https://baustoffboard.de/modul/glas"'), 'Titel/kanonische Adresse');
