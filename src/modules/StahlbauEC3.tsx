@@ -18,6 +18,7 @@ import {
 } from '@/src/calc/stahlbau';
 import inhalt from '@/content/stahlbauec3/StahlbauEC3.json';
 import { MdText } from '@/src/components/inhalt/MdText';
+import { EcKennwerteVerweis } from '@/src/components/ui/EcKennwerteVerweis';
 
 ChartJS.register(LinearScale, PointElement, LineElement, Tooltip, Legend);
 
@@ -445,6 +446,8 @@ export default function StahlbauEC3() {
       <Querverweis ziel="normen_ausblick" titel={inhalt.werte.neueEurocodeGenerationErschienen} linkText={inhalt.werte.zumModulAusblickNeue}>
         <p><MdText text={inhalt.texte.maßgebendBleibenDieBauaufsichtlich} /></p>
       </Querverweis>
+
+      <EcKennwerteVerweis />
 
       <ModulTest moduleId="stahlbau_ec3" />
 

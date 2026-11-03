@@ -25,6 +25,7 @@ import inhalt from '@/content/mauerwerk/Mauerwerk.json';
 import { MdText } from '@/src/components/inhalt/MdText';
 import { ModuleTabs, type ModulTab } from '@/src/components/ui/ModuleTabs';
 import { fkEmpfehlungENGenormt, fdAusFk, fvk0NA, phiAusmitte } from '@/src/calc/mauerwerk';
+import { EcKennwerteVerweis } from '@/src/components/ui/EcKennwerteVerweis';
 
 ChartJS.register(
   CategoryScale,
@@ -729,6 +730,8 @@ export default function Mauerwerk() {
         schritte={inhalt.daten["Mauerwerk.schritte"]}
         ergebnisHinweis={inhalt.werte.nRd400Kn}
       />
+
+      <EcKennwerteVerweis />
 
       <ModulTest moduleId="mauerwerk" />
 
