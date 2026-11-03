@@ -26,6 +26,7 @@ import Rissbreite from './Rissbreite';
 import StahlbetonNullBisHundert from './stahlbeton/StahlbetonNullBisHundert';
 import inhalt from '@/content/stahlbetonbemessung/Stahlbetonbemessung.json';
 import { MdText } from '@/src/components/inhalt/MdText';
+import { EcKennwerteVerweis } from '@/src/components/ui/EcKennwerteVerweis';
 
 export type BemessungSubTab = 
   | 'null_bis_hundert'
@@ -239,6 +240,8 @@ export default function Stahlbetonbemessung({ initialTab }: { initialTab?: Bemes
         )}
       </div>
       </GruppierteModuleTabs>
+
+      <EcKennwerteVerweis />
 
       <ModulTest moduleId="stahlbeton" />
 

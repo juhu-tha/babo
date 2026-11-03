@@ -11,14 +11,11 @@ import {
   Search,
   FileText,
   AlertTriangle,
-  Lightbulb,
   Copy,
   Check,
   RotateCcw,
   FileSignature,
-  Paperclip,
-  CheckCircle2,
-  XCircle
+  ArrowRight
 } from 'lucide-react';
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
 import { FormulaDerivationBox } from '@/src/components/ui/FormulaDerivationBox';
@@ -26,10 +23,12 @@ import { ModulTest } from '@/src/components/quiz/ModulTest';
 import inhalt from '@/content/bauschaeden/Bauschaeden.json';
 import { MdText } from '@/src/components/inhalt/MdText';
 import { ModuleTabs } from '@/src/components/ui/ModuleTabs';
+import { useTabContext } from '@/src/contexts/TabContext';
 
-type SchadTab = 'recht' | 'schriftverkehr' | 'normen' | 'gutachter' | 'haftung' | 'kleb_dicht';
+type SchadTab = 'recht' | 'schriftverkehr' | 'normen' | 'gutachter' | 'haftung';
 
 export default function Bauschaeden() {
+  const { setActiveTab, setTypischeBauschaedenSubTab } = useTabContext();
   const [activeSubTab, setActiveSubTab] = useState<SchadTab>('recht');
 
   // Schriftverkehr-States
@@ -225,7 +224,6 @@ ${senderName}`;
     { id: 'normen', label: inhalt.werte.normenTechnikstufen, icon: BookOpen, desc: inhalt.werte.anerkannteRegelnVsStand },
     { id: 'gutachter', label: 'Sachverständigenwesen', icon: Search, desc: inhalt.werte.gutachtertypenQualifikationsstufenUndRec },
     { id: 'haftung', label: inhalt.werte.rollenHaftungAmBau, icon: Users, desc: inhalt.werte.rechtePflichtenDerAkteure },
-    { id: 'kleb_dicht', label: inhalt.werte.klebDichtstoffSchäden, icon: Paperclip, desc: inhalt.werte.anwendungstippsFehlerquellenAlterungsmec },
   ] as const;
 
   return (
@@ -346,6 +344,22 @@ ${senderName}`;
                     </div>
                   </div>
                 </div>
+              </div>
+
+              {/* Verweis: Kleb- und Dichtstoffschäden stehen im Schadensatlas (Umbau 02.11.2026) */}
+              <div className="bg-off-white border border-home-grau/30 p-4 rounded-xl flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+                <div className="text-sm text-text-main/80 leading-relaxed">
+                  <strong className="block font-bold text-text-main"><MdText text={inhalt.texte.verweisKlebDichtTitel} /></strong>
+                  <MdText text={inhalt.texte.verweisKlebDichtText} />
+                </div>
+                <button
+                  type="button"
+                  onClick={() => { setTypischeBauschaedenSubTab('kleb_dicht'); setActiveTab('schadensbilder'); }}
+                  className="px-4 py-2 bg-shiraz text-white rounded-xl text-xs font-bold hover:bg-shiraz/90 transition-all flex items-center gap-1.5 shadow-sm whitespace-nowrap self-start sm:self-auto cursor-pointer"
+                >
+                  <span>{inhalt.werte.verweisKlebDichtKnopf}</span>
+                  <ArrowRight size={14} aria-hidden="true" />
+                </button>
               </div>
             </div>
           )}
@@ -772,233 +786,6 @@ ${senderName}`;
             </div>
           )}
 
-          {/* Tab 6: Kleb- & Dichtstoff-Schäden */}
-          {activeSubTab === 'kleb_dicht' && (
-            <div className="space-y-6 animate-in fade-in duration-300">
-              
-              {/* Header Box mit Praxis-Relevanz */}
-              <div className="bg-slate-50 border border-home-grau/30 p-5 rounded-xl">
-                <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-home-grau/30 pb-3 mb-4">
-                  <h3 className="font-bold text-base text-slate-900 flex items-center gap-2">
-                    <Paperclip className="text-shiraz shrink-0" size={20} /><MdText text={inhalt.texte.klebUndDichtstoffePraxisleitfaden} /></h3>
-                  <span className="text-xs font-semibold px-2.5 py-1 rounded bg-shiraz/10 text-shiraz border border-shiraz/20 self-start sm:self-auto"><MdText text={inhalt.texte.din18540DinEn} /></span>
-                </div>
-                <p className="text-sm text-slate-800 leading-relaxed"><MdText text={inhalt.texte.fugendichtstoffeUndBauklebstoffeGehören} /></p>
-              </div>
-
-              {/* Sektion 1: Anwendungstipps für die Baustellenpraxis */}
-              <div className="bg-slate-50 border border-home-grau/30 p-5 rounded-xl space-y-4">
-                <h3 className="font-bold text-base text-slate-900 flex items-center gap-2 border-b border-home-grau/30 pb-2">
-                  <Lightbulb className="text-shiraz shrink-0" size={18} /><MdText text={inhalt.texte.t1AnwendungstippsFürEine} /></h3>
-                
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 text-xs">
-                  <div className="bg-white p-3.5 rounded-lg border border-home-grau/30 flex flex-col justify-between shadow-xs">
-                    <div>
-                      <div className="flex items-center gap-1.5 font-bold text-shiraz border-b border-shiraz/10 pb-1.5 mb-2">
-                        <CheckCircle2 size={15} /><MdText text={inhalt.texte.t1Untergrundprüfung} /></div>
-                      <p className="text-slate-700 leading-relaxed"><MdText text={inhalt.texte.trockenTragfähigTrennmittelfreiBeton} /></p>
-                    </div>
-                    <div className="mt-2 text-[11px] text-slate-500 bg-off-white p-1.5 rounded border border-home-grau/20"><MdText text={inhalt.texte.tippAbreißtestGitterschnittVorab} /></div>
-                  </div>
-
-                  <div className="bg-white p-3.5 rounded-lg border border-home-grau/30 flex flex-col justify-between shadow-xs">
-                    <div>
-                      <div className="flex items-center gap-1.5 font-bold text-shiraz border-b border-shiraz/10 pb-1.5 mb-2">
-                        <CheckCircle2 size={15} /><MdText text={inhalt.texte.t2PrimerHaftbrücken} /></div>
-                      <p className="text-slate-700 leading-relaxed"><MdText text={inhalt.texte.systemgerechteVoranstrichePoröseMinerali} /></p>
-                    </div>
-                    <div className="mt-2 text-[11px] text-slate-500 bg-off-white p-1.5 rounded border border-home-grau/20"><MdText text={inhalt.texte.ablüftezeiten530Min} /></div>
-                  </div>
-
-                  <div className="bg-white p-3.5 rounded-lg border border-home-grau/30 flex flex-col justify-between shadow-xs">
-                    <div>
-                      <div className="flex items-center gap-1.5 font-bold text-shiraz border-b border-shiraz/10 pb-1.5 mb-2">
-                        <CheckCircle2 size={15} /><MdText text={inhalt.texte.t3Fugendimensionierung} /></div>
-                      <p className="text-slate-700 leading-relaxed"><MdText text={inhalt.texte.geometrieZuordnungFugenbreiteDichtstoffd} /><span className="font-semibold"><MdText text={inhalt.texte.b10MmB} /></span>, <span className="font-semibold"><MdText text={inhalt.texte.b10MmB2} /></span><MdText text={inhalt.texte.zB20Mm} /></p>
-                    </div>
-                    <div className="mt-2 text-[11px] text-slate-500 bg-off-white p-1.5 rounded border border-home-grau/20"><MdText text={inhalt.texte.verhindertUnzulässigeDehnungsspitzen} /></div>
-                  </div>
-
-                  <div className="bg-white p-3.5 rounded-lg border border-home-grau/30 flex flex-col justify-between shadow-xs">
-                    <div>
-                      <div className="flex items-center gap-1.5 font-bold text-shiraz border-b border-shiraz/10 pb-1.5 mb-2">
-                        <CheckCircle2 size={15} /><MdText text={inhalt.texte.t4HinterfüllungGlätten} /></div>
-                      <p className="text-slate-700 leading-relaxed"><MdText text={inhalt.texte.zweiflankenhaftungSichernGeschlossenzell} /></p>
-                    </div>
-                    <div className="mt-2 text-[11px] text-slate-500 bg-off-white p-1.5 rounded border border-home-grau/20"><MdText text={inhalt.texte.keineScharfenWerkzeugeZum} /></div>
-                  </div>
-                </div>
-              </div>
-
-              {/* Sektion 2: Häufige Fehlerquellen */}
-              <div className="bg-slate-50 border border-home-grau/30 p-5 rounded-xl space-y-4">
-                <h3 className="font-bold text-base text-slate-900 flex items-center gap-2 border-b border-home-grau/30 pb-2">
-                  <AlertTriangle className="text-shiraz shrink-0" size={18} /><MdText text={inhalt.texte.t2HäufigeFehlerquellenIn} /></h3>
-
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-4 text-xs">
-                  <div className="bg-white p-4 rounded-lg border border-rose-200/80 shadow-xs flex flex-col justify-between">
-                    <div>
-                      <div className="flex items-center gap-1.5 font-bold text-rose-800 border-b border-rose-100 pb-1.5 mb-2">
-                        <XCircle size={16} /><MdText text={inhalt.texte.dreiflankenhaftungKlassischerKardinalfeh} /></div>
-                      <p className="text-slate-700 leading-relaxed"><MdText text={inhalt.texte.wirdDieFugeOhne} /></p>
-                    </div>
-                    <div className="mt-3 p-2 bg-rose-50 rounded border border-rose-200 text-[11px] text-rose-900 font-semibold"><MdText text={inhalt.texte.präventionPeRundschnurOder} /></div>
-                  </div>
-
-                  <div className="bg-white p-4 rounded-lg border border-rose-200/80 shadow-xs flex flex-col justify-between">
-                    <div>
-                      <div className="flex items-center gap-1.5 font-bold text-rose-800 border-b border-rose-100 pb-1.5 mb-2">
-                        <XCircle size={16} /><MdText text={inhalt.texte.taupunktunterschreitungFeuchtefilm} /></div>
-                      <p className="text-slate-700 leading-relaxed"><MdText text={inhalt.texte.applikationBeiHoherLuftfeuchte} /></p>
-                    </div>
-                    <div className="mt-3 p-2 bg-rose-50 rounded border border-rose-200 text-[11px] text-rose-900 font-semibold"><MdText text={inhalt.texte.präventionOberflächentemperaturMind3} /></div>
-                  </div>
-
-                  <div className="bg-white p-4 rounded-lg border border-rose-200/80 shadow-xs flex flex-col justify-between">
-                    <div>
-                      <div className="flex items-center gap-1.5 font-bold text-rose-800 border-b border-rose-100 pb-1.5 mb-2">
-                        <XCircle size={16} /><MdText text={inhalt.texte.falschePolymerwahlRandzonenverschmutzung} /></div>
-                      <p className="text-slate-700 leading-relaxed"><MdText text={inhalt.texte.verwendungVonStandardEssig} /></p>
-                    </div>
-                    <div className="mt-3 p-2 bg-rose-50 rounded border border-rose-200 text-[11px] text-rose-900 font-semibold"><MdText text={inhalt.texte.präventionNurWeichmacherfreieNatursteins} /></div>
-                  </div>
-
-                  <div className="bg-white p-4 rounded-lg border border-rose-200/80 shadow-xs flex flex-col justify-between">
-                    <div>
-                      <div className="flex items-center gap-1.5 font-bold text-rose-800 border-b border-rose-100 pb-1.5 mb-2">
-                        <XCircle size={16} /><MdText text={inhalt.texte.überschreitungDerOffenenZeit} /></div>
-                      <p className="text-slate-700 leading-relaxed"><MdText text={inhalt.texte.wirdDieDichtstofffugeNach} /></p>
-                    </div>
-                    <div className="mt-3 p-2 bg-rose-50 rounded border border-rose-200 text-[11px] text-rose-900 font-semibold"><MdText text={inhalt.texte.präventionNurMeterweiseVorgehen} /></div>
-                  </div>
-
-                  <div className="bg-white p-4 rounded-lg border border-rose-200/80 shadow-xs flex flex-col justify-between">
-                    <div>
-                      <div className="flex items-center gap-1.5 font-bold text-rose-800 border-b border-rose-100 pb-1.5 mb-2">
-                        <XCircle size={16} /><MdText text={inhalt.texte.hausmittelAlsGlättmittelSpülmittel} /></div>
-                      <p className="text-slate-700 leading-relaxed"><MdText text={inhalt.texte.verwendungHandelsüblicherGeschirrspülmit} /></p>
-                    </div>
-                    <div className="mt-3 p-2 bg-rose-50 rounded border border-rose-200 text-[11px] text-rose-900 font-semibold"><MdText text={inhalt.texte.präventionAusschließlichAbgestimmteSyste} /></div>
-                  </div>
-
-                  <div className="bg-white p-4 rounded-lg border border-rose-200/80 shadow-xs flex flex-col justify-between">
-                    <div>
-                      <div className="flex items-center gap-1.5 font-bold text-rose-800 border-b border-rose-100 pb-1.5 mb-2">
-                        <XCircle size={16} /><MdText text={inhalt.texte.unzureichendeFugenbreiteÜberdehnung} /></div>
-                      <p className="text-slate-700 leading-relaxed"><MdText text={inhalt.texte.fugenbreiteZuSchmalBemessen} /></p>
-                    </div>
-                    <div className="mt-3 p-2 bg-rose-50 rounded border border-rose-200 text-[11px] text-rose-900 font-semibold"><MdText text={inhalt.texte.präventionThermischeLängenänderungRechne} /></div>
-                  </div>
-                </div>
-              </div>
-
-              {/* Sektion 3: Alterungsmechanismen von Polymeren */}
-              <div className="bg-slate-50 border border-home-grau/30 p-5 rounded-xl space-y-4">
-                <h3 className="font-bold text-base text-slate-900 flex items-center gap-2 border-b border-home-grau/30 pb-2">
-                  <Clock className="text-shiraz shrink-0" size={18} /><MdText text={inhalt.texte.t3AlterungsmechanismenChemischPhysikalisc} /></h3>
-                <p className="text-xs text-slate-700 leading-relaxed"><MdText text={inhalt.texte.polymernetzwerkeVonDichtUnd} /></p>
-
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 text-xs">
-                  <div className="bg-white p-3.5 rounded-lg border border-home-grau/30 space-y-1.5">
-                    <span className="font-bold text-shiraz block text-xs"><MdText text={inhalt.texte.photooxidationUvStrahlung} /></span>
-                    <p className="text-slate-700 leading-relaxed"><MdText text={inhalt.texte.kurzwelligeUvPhotonenSpalten} /></p>
-                    <span className="text-[11px] text-slate-500 block"><MdText text={inhalt.texte.silikoneSiOBindung} /></span>
-                  </div>
-
-                  <div className="bg-white p-3.5 rounded-lg border border-home-grau/30 space-y-1.5">
-                    <span className="font-bold text-shiraz block text-xs"><MdText text={inhalt.texte.hydrolytischerAbbauFeuchte} /></span>
-                    <p className="text-slate-700 leading-relaxed"><MdText text={inhalt.texte.permanenteWassereinwirkungSpaltetHydroly} /></p>
-                    <span className="text-[11px] text-slate-500 block"><MdText text={inhalt.texte.kritischBeiStehendemWasser} /></span>
-                  </div>
-
-                  <div className="bg-white p-3.5 rounded-lg border border-home-grau/30 space-y-1.5">
-                    <span className="font-bold text-shiraz block text-xs"><MdText text={inhalt.texte.weichmacherMigrationVerflüchtigung} /></span>
-                    <p className="text-slate-700 leading-relaxed"><MdText text={inhalt.texte.niedermolekulareWeichmacherDiffundierenB} /></p>
-                    <span className="text-[11px] text-slate-500 block"><MdText text={inhalt.texte.folgeMassiverVolumenschwundErhöhung} /></span>
-                  </div>
-
-                  <div className="bg-white p-3.5 rounded-lg border border-home-grau/30 space-y-1.5">
-                    <span className="font-bold text-shiraz block text-xs"><MdText text={inhalt.texte.mikrobiellerBefallSchimmelbildung} /></span>
-                    <p className="text-slate-700 leading-relaxed"><MdText text={inhalt.texte.inFeuchträumenNutzenPilzsporen} /></p>
-                    <span className="text-[11px] text-slate-500 block"><MdText text={inhalt.texte.fungizideZusätzeWerdenMit} /></span>
-                  </div>
-                </div>
-              </div>
-
-              {/* Sektion 4: Typische Schadensbilder & Diagnostik */}
-              <div className="bg-slate-50 border border-home-grau/30 p-5 rounded-xl space-y-4">
-                <h3 className="font-bold text-base text-slate-900 flex items-center gap-2 border-b border-home-grau/30 pb-2">
-                  <FileWarning className="text-shiraz shrink-0" size={18} /><MdText text={inhalt.texte.t4TypischeSchadensbilderIm} /></h3>
-
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs">
-                  {/* Schadensbild 1 */}
-                  <div className="bg-white p-4 rounded-lg border border-home-grau/30 flex flex-col justify-between shadow-xs">
-                    <div className="space-y-2">
-                      <div className="flex items-center justify-between border-b border-home-grau/20 pb-2">
-                        <span className="font-bold text-slate-900 text-sm"><MdText text={inhalt.texte.flankenabrissAdhäsionsbruch} /></span>
-                        <span className="text-[10px] uppercase font-bold px-2 py-0.5 rounded bg-rose-100 text-rose-800"><MdText text={inhalt.texte.häufigstesSchadensbild} /></span>
-                      </div>
-                      <p className="text-slate-700 leading-relaxed"><MdText text={inhalt.texte.erscheinungsbildDerDichtstoffstrangLöst} /></p>
-                      <p className="text-slate-700 leading-relaxed"><MdText text={inhalt.texte.hauptursachenFehlenderOderUngeeigneter} /></p>
-                    </div>
-                    <div className="mt-3 p-2 bg-off-white rounded border border-home-grau/30 text-[11px] text-slate-800"><MdText text={inhalt.texte.sanierungKomplettHerausschneidenFlanken} /></div>
-                  </div>
-
-                  {/* Schadensbild 2 */}
-                  <div className="bg-white p-4 rounded-lg border border-home-grau/30 flex flex-col justify-between shadow-xs">
-                    <div className="space-y-2">
-                      <div className="flex items-center justify-between border-b border-home-grau/20 pb-2">
-                        <span className="font-bold text-slate-900 text-sm"><MdText text={inhalt.texte.kohäsionsbruchMittenrissMaterialriss} /></span>
-                        <span className="text-[10px] uppercase font-bold px-2 py-0.5 rounded bg-amber-100 text-amber-800">
-                          häufig
-                        </span>
-                      </div>
-                      <p className="text-slate-700 leading-relaxed"><MdText text={inhalt.texte.erscheinungsbildLängsrissMittigIm} /></p>
-                      <p className="text-slate-700 leading-relaxed"><MdText text={inhalt.texte.hauptursachenFugeZuSchmal} /></p>
-                    </div>
-                    <div className="mt-3 p-2 bg-off-white rounded border border-home-grau/30 text-[11px] text-slate-800"><MdText text={inhalt.texte.sanierungRechnerischeFugenbreitePrüfen} /></div>
-                  </div>
-
-                  {/* Schadensbild 3 */}
-                  <div className="bg-white p-4 rounded-lg border border-home-grau/30 flex flex-col justify-between shadow-xs">
-                    <div className="space-y-2">
-                      <div className="flex items-center justify-between border-b border-home-grau/20 pb-2">
-                        <span className="font-bold text-slate-900 text-sm"><MdText text={inhalt.texte.blasenbildungAufschäumen} /></span>
-                        <span className="text-[10px] uppercase font-bold px-2 py-0.5 rounded bg-blue-100 text-blue-800"><MdText text={inhalt.texte.polyurethan2k} /></span>
-                      </div>
-                      <p className="text-slate-700 leading-relaxed"><MdText text={inhalt.texte.erscheinungsbildSichtbarePorenBlasen} /></p>
-                      <p className="text-slate-700 leading-relaxed"><MdText text={inhalt.texte.hauptursachenFeuchtigkeitImMineralischen} /><span className="font-mono"><MdText text={inhalt.texte.rNcoHO} /></span><MdText text={inhalt.texte.starkeSonneneinstrahlungBeiFrischer} /></p>
-                    </div>
-                    <div className="mt-3 p-2 bg-off-white rounded border border-home-grau/30 text-[11px] text-slate-800"><MdText text={inhalt.texte.sanierungAufgeschäumtesMaterialVollständ} /></div>
-                  </div>
-
-                  {/* Schadensbild 4 */}
-                  <div className="bg-white p-4 rounded-lg border border-home-grau/30 flex flex-col justify-between shadow-xs">
-                    <div className="space-y-2">
-                      <div className="flex items-center justify-between border-b border-home-grau/20 pb-2">
-                        <span className="font-bold text-slate-900 text-sm"><MdText text={inhalt.texte.randzonenverschmutzungVerfärbung} /></span>
-                        <span className="text-[10px] uppercase font-bold px-2 py-0.5 rounded bg-stone-200 text-stone-800"><MdText text={inhalt.texte.natursteinFassade} /></span>
-                      </div>
-                      <p className="text-slate-700 leading-relaxed"><MdText text={inhalt.texte.erscheinungsbildDunkleFeuchtWirkende} /></p>
-                      <p className="text-slate-700 leading-relaxed"><MdText text={inhalt.texte.hauptursachenNichtWeichmacherfreieSiliko} /></p>
-                    </div>
-                    <div className="mt-3 p-2 bg-off-white rounded border border-home-grau/30 text-[11px] text-slate-800"><MdText text={inhalt.texte.sanierungMeistIrreparabelChemische} /></div>
-                  </div>
-                </div>
-
-                {/* Wartungsfugen-Rechtshinweis */}
-                <div className="bg-rose-50/40 border border-shiraz/25 p-4 rounded-xl flex gap-3 text-xs text-slate-800 leading-relaxed mt-2">
-                  <AlertTriangle className="text-shiraz shrink-0 mt-0.5" size={18} />
-                  <div>
-                    <strong className="font-bold text-slate-900 block mb-1"><MdText text={inhalt.texte.juristischerHinweisNachDin} /></strong>
-                    <p className="text-slate-700 leading-relaxed"><MdText text={inhalt.texte.häufigDeklarierenVerarbeiterSilikonfugen} /></p>
-                  </div>
-                </div>
-              </div>
-
-            </div>
-          )}
-
         </div>
         </ModuleTabs>
       </div>
@@ -1011,13 +798,6 @@ ${senderName}`;
         ergebnisHinweis={inhalt.werte.dieFristenGeltenSoweit}
         normQuelle={inhalt.werte.bgb634a204Vob}
       />
-      <FormulaDerivationBox
-        title={inhalt.werte.beispiel2MindestbreiteEiner}
-        zielGleichung="b_{erf} = \frac{L \cdot \alpha_T \cdot \Delta T}{ZGV}"
-        schritte={inhalt.daten["Bauschaeden.schritte_2"]}
-        ergebnisHinweis={inhalt.werte.zuSchmaleFugenÜberdehnen}
-        normQuelle={inhalt.werte.din18540DinEn}
-      />
 
       {/* SELBSTTEST (Stufe 4 des Lehrpfads) */}
       <ModulTest moduleId="bauschaeden" />
@@ -1028,8 +808,6 @@ ${senderName}`;
         wikipedia={[
           { title: "Baumangel", url: "https://de.wikipedia.org/wiki/Baumangel" },
           { title: inhalt.werte.anerkannteRegelnDerTechnik, url: "https://de.wikipedia.org/wiki/Anerkannte_Regeln_der_Technik" },
-          { title: "Dichtstoff", url: "https://de.wikipedia.org/wiki/Dichtstoff" },
-          { title: "Klebstoff", url: "https://de.wikipedia.org/wiki/Klebstoff" },
           { title: "Rissbreite" }
         ]} 
         literatur={inhalt.daten["Bauschaeden.literatur"]} 

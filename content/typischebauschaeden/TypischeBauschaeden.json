@@ -173,7 +173,83 @@
     "zuständigeBauVersicherungsdeckung": "🛡️ Zuständige Bau-Versicherungsdeckung",
     "technischeSanierungsmethode": "🛠️ Technische Sanierungsmethode",
     "keinSchadenSzenarioAusgewählt": "Kein Schaden-Szenario ausgewählt",
-    "wählenSieLinksEines": "Wählen Sie links eines der realitätsnahen Schadensbilder oder materialchemischen Verträglichkeitskonflikte aus, um den bauchemischen Teufelskreis aufzudecken."
+    "wählenSieLinksEines": "Wählen Sie links eines der realitätsnahen Schadensbilder oder materialchemischen Verträglichkeitskonflikte aus, um den bauchemischen Teufelskreis aufzudecken.",
+    "klebUndDichtstoffePraxisleitfaden": "Kleb- und Dichtstoffe: Praxisleitfaden & Bauschadensprävention",
+    "din18540DinEn": "DIN 18540 • DIN EN 15651 • IVD-Merkblätter",
+    "fugendichtstoffeUndBauklebstoffeGehören": "Fugendichtstoffe und Bauklebstoffe gehören zu den am höchsten beanspruchten Baustoffen der Gebäudehülle und des Innenausbaus. Sie müssen gleichzeitig permanente thermische Bauwerksbewegungen aufnehmen, chemisch an unterschiedlichen Substraten haften und Witterungs-, UV- sowie Feuchtigkeitseinflüssen trotzen. **Ein großer Teil der Fugen- und Klebeschäden entsteht nicht durch Materialversagen, sondern durch Planungs- und Verarbeitungsfehler!**",
+    "t1AnwendungstippsFürEine": "1. Anwendungstipps für eine mangelfreie Ausführung (Best Practice)",
+    "t1Untergrundprüfung": " 1. Untergrundprüfung",
+    "trockenTragfähigTrennmittelfreiBeton": "**Trocken, tragfähig, trennmittelfrei:** Beton und mineralische Untergründe müssen saugfähig und frei von Schalöl, Zementschlämme oder Staub sein. Feuchtigkeitsgrenzen strikt beachten (z.B. < 4 CM-% bei Beton für Reaktionsharze).",
+    "tippAbreißtestGitterschnittVorab": "Tipp: Abreißtest / Gitterschnitt vorab anlegen",
+    "t2PrimerHaftbrücken": " 2. Primer & Haftbrücken",
+    "systemgerechteVoranstrichePoröseMinerali": "**Systemgerechte Voranstriche:** Poröse mineralische Flanken verlangen filmbildende Tiefengrundierungen/Primer; dichte Metalle und Kunststoffe benötigen silanhaltige Haftvermittler oder Reiniger (Cleaner) zum Entfetten.",
+    "ablüftezeiten530Min": "Ablüftezeiten (5–30 min) zwingend einhalten!",
+    "t3Fugendimensionierung": " 3. Fugendimensionierung",
+    "geometrieZuordnungFugenbreiteDichtstoffd": "**Geometrie:** Zuordnung Fugenbreite ↔ Dichtstoffdicke nach Tabelle DIN 18540 (Außenwandfugen, Mindestbreite 10 mm). Faustregel (IVD): ",
+    "b10MmB": "b ≤ 10 mm: b : t ≈ 1 : 1",
+    "b10MmB2": "b > 10 mm: b : t ≈ 2 : 1",
+    "zB20Mm": " (z. B. 20 mm Breite → 10 mm Tiefe).",
+    "verhindertUnzulässigeDehnungsspitzen": "Verhindert unzulässige Dehnungsspitzen",
+    "t4HinterfüllungGlätten": " 4. Hinterfüllung & Glätten",
+    "zweiflankenhaftungSichernGeschlossenzell": "**Zweiflankenhaftung sichern:** Geschlossenzellige PE-Rundschnüre (ca. 25% überdimensioniert) stauchungsfrei einbringen. Abglätten nur mit neutralem, herstellergeprüftem Glättmittel ohne Spülmittelzusätze!",
+    "keineScharfenWerkzeugeZum": "Keine scharfen Werkzeuge zum Eindrücken nutzen",
+    "t2HäufigeFehlerquellenIn": "2. Häufige Fehlerquellen in Planung und Ausführung",
+    "dreiflankenhaftungKlassischerKardinalfeh": " Dreiflankenhaftung (Klassischer Kardinalfehler)",
+    "wirdDieFugeOhne": "Wird die Fuge ohne Hinterfüllung bis auf den Fugenboden ausgespritzt, haftet die Masse an **drei Seiten** (beide Flanken + Boden). Bei temperaturbedingter Bauteilöffnung kann sich der Dichtstoff nicht elastisch einschnüren – es entstehen extrem hohe multiaxiale Spannungsspitzen, die unweigerlich zu Flankenabriss oder Mitteltrennung führen.",
+    "präventionPeRundschnurOder": "Prävention: PE-Rundschnur oder PE-Antihaftfolie am Grund!",
+    "taupunktunterschreitungFeuchtefilm": " Taupunktunterschreitung & Feuchtefilm",
+    "applikationBeiHoherLuftfeuchte": "Applikation bei hoher Luftfeuchte oder auf noch feuchtem Untergrund (Morgentau, nach Regen). Der mikroskopisch feine Wasserfilm verhindert die molekulare Benetzung des Substrats vollständig. Die Masse härtet scheinbar normal aus, löst sich aber beim ersten Zugversuch wie ein Abziehkaugummi rückstandslos ab.",
+    "präventionOberflächentemperaturMind3": "Prävention: Oberflächentemperatur mind. 3 °C über Taupunkt!",
+    "falschePolymerwahlRandzonenverschmutzung": " Falsche Polymerwahl & Randzonenverschmutzung",
+    "verwendungVonStandardEssig": "Verwendung von Standard-Essig-Silikonen (acetatvernetzend) auf saugenden Natursteinen (Granit, Marmor). Die austretende Essigsäure und ungebundenes Weichmacheröl wandern kapillar in den Stein und erzeugen unumkehrbare dunkle \"Ölränder\" (Randzonenverschmutzung / Weichmacherwanderung).",
+    "präventionNurWeichmacherfreieNatursteins": "Prävention: Nur weichmacherfreie Natursteinsilikone (neutralvernetzend)!",
+    "überschreitungDerOffenenZeit": " Überschreitung der offenen Zeit / Hautbildung",
+    "wirdDieDichtstofffugeNach": "Wird die Dichtstofffuge nach dem Einbringen zu spät geglättet oder ein Klebstoff erst nach Beginn der Hautbildungszeit (Skinning) gefügt, kann der Klebstoff die Gegenfläche nicht mehr molekular benetzen. Es verbleibt eine lose Scheinverbindung mit extrem mangelhafter Haftfestigkeit.",
+    "präventionNurMeterweiseVorgehen": "Prävention: Nur meterweise vorgehen; Glätten < 10 min!",
+    "hausmittelAlsGlättmittelSpülmittel": " Hausmittel als Glättmittel (Spülmittel-Effekt)",
+    "verwendungHandelsüblicherGeschirrspülmit": "Verwendung handelsüblicher Geschirrspülmittel als Abglättwasser. Die enthaltenen Tenside und Fette waschen Dichtstoffbestandteile an der Oberfläche aus, hinterlassen Schlieren auf den Flanken, verhindern ein Nachbessern und fördern massiv Schimmelbildung und Verfärbungen.",
+    "präventionAusschließlichAbgestimmteSyste": "Prävention: Ausschließlich abgestimmte Systemglättmittel nutzen!",
+    "unzureichendeFugenbreiteÜberdehnung": " Unzureichende Fugenbreite (Überdehnung)",
+    "fugenbreiteZuSchmalBemessen": "Fugenbreite zu schmal bemessen (z.B. nur 4–5 mm an Fassadenfertigteilen). Bei jahreszeitlichen Temperaturwechseln (ΔT ≈ 60 K) dehnen sich Betonplatten um mehrere Millimeter aus. Die zulässige Gesamtverformung (ZGV) von meist 20–25 % wird drastisch überschritten (> 50 % Dehnbeanspruchung).",
+    "präventionThermischeLängenänderungRechne": "Prävention: Thermische Längenänderung rechnerisch dimensionieren!",
+    "t3AlterungsmechanismenChemischPhysikalisc": "3. Alterungsmechanismen & chemisch-physikalische Zersetzung",
+    "polymernetzwerkeVonDichtUnd": "Polymernetzwerke von Dicht- und Klebstoffen unterliegen im Lebenszyklus irreversiblen Alterungsprozessen. Diese führen zu Versprödung, Elastizitätsverlust, Volumenverlust oder Gefügeerweichung:",
+    "photooxidationUvStrahlung": "☀️ Photooxidation (UV-Strahlung)",
+    "kurzwelligeUvPhotonenSpalten": "Kurzwellige UV-Photonen spalten kovalente Bindungen der Polymerhauptkette (z.B. C-C- oder C-N-Bindungen bei PU). Radikalreaktionen führen zu Kettenabbrüchen, Kreidung der Oberfläche und Mikrorissbildung.",
+    "silikoneSiOBindung": "Silikone (Si-O-Bindung) sind extrem UV-stabil; Polyurethane mäßig; Acrylate bedingt.",
+    "hydrolytischerAbbauFeuchte": "💧 Hydrolytischer Abbau (Feuchte)",
+    "permanenteWassereinwirkungSpaltetHydroly": "Permanente Wassereinwirkung spaltet hydrolyseempfindliche Ester- oder Urethangruppen im Polymerrückgrat. Führt zum Verlust von Vernetzungspunkten, Nachlassen der Kohäsion und Erweichen der Masse.",
+    "kritischBeiStehendemWasser": "Kritisch bei stehendem Wasser in Boden- und Flachdachfugen ohne Gefälle.",
+    "weichmacherMigrationVerflüchtigung": "🌡️ Weichmacher-Migration & Verflüchtigung",
+    "niedermolekulareWeichmacherDiffundierenB": "Niedermolekulare Weichmacher diffundieren bei sommerlichen Temperaturen an die Oberfläche und verdampfen oder wandern in poröse Nachbarbaustoffe ab.",
+    "folgeMassiverVolumenschwundErhöhung": "Folge: Massiver Volumenschwund, Erhöhung des E-Moduls (Versprödung) und Rissbildung.",
+    "mikrobiellerBefallSchimmelbildung": "🦠 Mikrobieller Befall (Schimmelbildung)",
+    "inFeuchträumenNutzenPilzsporen": "In Feuchträumen nutzen Pilzsporen Seifenreste, Hautschuppen und verbrauchte Fungizide als Nährboden. Das Myzel wächst in die Poren ein und zersetzt Weichmacherbestandteile bio-chemisch.",
+    "fungizideZusätzeWerdenMit": "Fungizide Zusätze werden mit der Zeit ausgewaschen; Silikonfugen in Nassbereichen sind daher Wartungsfugen.",
+    "t4TypischeSchadensbilderIm": "4. Typische Schadensbilder im Gutachterfokus (Ursachen & Sanierung)",
+    "flankenabrissAdhäsionsbruch": "Flankenabriss (Adhäsionsbruch)",
+    "häufigstesSchadensbild": "häufigstes Schadensbild",
+    "erscheinungsbildDerDichtstoffstrangLöst": "**Erscheinungsbild:** Der Dichtstoffstrang löst sich bandförmig von einer oder beiden Fugenflanken ab, bleibt in sich aber elastisch und unbeschädigt.",
+    "hauptursachenFehlenderOderUngeeigneter": "**Hauptursachen:** Fehlender oder ungeeigneter Primer, staubiger oder feuchter Untergrund bei Einbau, Tauwasserbeschlag, unzureichender Anpressdruck beim Glätten, Dreiflankenhaftung.",
+    "sanierungKomplettHerausschneidenFlanken": "**Sanierung:** Komplett herausschneiden, Flanken mechanisch anschleifen/fräsen, neuer Primer, PE-Rundschnur, normgerecht neu verfugen.",
+    "kohäsionsbruchMittenrissMaterialriss": "Kohäsionsbruch (Mittenriss / Materialriss)",
+    "erscheinungsbildLängsrissMittigIm": "**Erscheinungsbild:** Längsriss mittig im Dichtstoffquerschnitt. Die Haftung an beiden Fugenflanken ist intakt, das Dichtstoffgefüge selbst ist gerissen.",
+    "hauptursachenFugeZuSchmal": "**Hauptursachen:** Fuge zu schmal dimensioniert (Überdehnung über ZGV), Dichtstoff zu dünn aufgetragen (Sollbruchstelle) oder Dichtstoff durch UV/Alterung vollkommen versprödet.",
+    "sanierungRechnerischeFugenbreitePrüfen": "**Sanierung:** Rechnerische Fugenbreite prüfen; ggf. Fuge aufweiten (Ausschneiden und Aufweiten), hochdehnfähigen Dichtstoff (Klasse 25LM) einbringen.",
+    "blasenbildungAufschäumen": "Blasenbildung & Aufschäumen",
+    "polyurethan2k": "Polyurethan / 2K",
+    "erscheinungsbildSichtbarePorenBlasen": "**Erscheinungsbild:** Sichtbare Poren, Blasen oder Schwammstruktur im Dichtstoffkern oder an der Oberfläche nach der Aushärtung.",
+    "hauptursachenFeuchtigkeitImMineralischen": "**Hauptursachen:** Feuchtigkeit im mineralischen Porengefüge reagiert mit Isocyanat-Gruppen (Polyurethan) unter CO₂-Gasbildung (",
+    "rNcoHO": "R-NCO + H₂O → R-NH₂ + CO₂ ↑",
+    "starkeSonneneinstrahlungBeiFrischer": "). Starke Sonneneinstrahlung bei frischer Fuge treibt Luft aus Poren.",
+    "sanierungAufgeschäumtesMaterialVollständ": "**Sanierung:** Aufgeschäumtes Material vollständig entfernen, Untergrund intensiv trocknen, feuchtigkeitstolerante MS-Polymere oder Epoxid-Absperrprimer einsetzen.",
+    "randzonenverschmutzungVerfärbung": "Randzonenverschmutzung & Verfärbung",
+    "natursteinFassade": "Naturstein / Fassade",
+    "erscheinungsbildDunkleFeuchtWirkende": "**Erscheinungsbild:** Dunkle, feucht wirkende Ränder beidseitig der Fuge auf Granit-, Sandstein- oder Marmorplatten, die sich nicht abwaschen lassen.",
+    "hauptursachenNichtWeichmacherfreieSiliko": "**Hauptursachen:** Nicht weichmacherfreie Silikone; Weichmacher und freie Silikonöle diffundieren in das Kapillarsystem des Natursteins und binden Schmutzpartikel unumkehrbar.",
+    "sanierungMeistIrreparabelChemische": "**Sanierung:** Meist irreparabel! Chemische Kompressenpasten können Weichmacher teilweise rücksaugen; oft ist nur Plattenaustausch wirksam.",
+    "juristischerHinweisNachDin": "Juristischer Hinweis nach DIN 52460 & VOB/B: Der Mythos der „Wartungsfuge“",
+    "häufigDeklarierenVerarbeiterSilikonfugen": "Häufig deklarieren Verarbeiter Silikonfugen pauschal als „Wartungsfugen“, um jegliche Gewährleistung nach VOB/B oder BGB abzuwehren.<br>**Rechtliche Realität:** Ob eine Fuge Wartungsfuge ist, richtet sich nach Vertrag und Beanspruchung; eine Wartungsfuge entbindet nicht von der Haftung für Ausführungsmängel, und der Unternehmer muss über den Wartungsbedarf aufklären. Nach DIN 52460 ist eine Wartungsfuge nur eine solche, die starken chemischen, thermischen oder mechanischen Belastungen ausgesetzt ist und deren Dichtstoff planmäßig vor Ablauf der bauüblichen Verjährungsfrist erneuert werden muss (z.B. in gewerblichen Großküchen, Schwimmbädern, Kläranlagen). **Im normalen Wohnungsbau (z.B. Bad-Eckfuge) schützt die Bezeichnung „Wartungsfuge“ den Handwerker NICHT vor der 5-jährigen Gewährleistungspflicht für mangelhafte Ausführung!**"
   },
   "werte": {
     "feuchtigkeitSchimmel": "Feuchtigkeit & Schimmel",
@@ -193,7 +269,12 @@
     "beispiel2KritischeRisslänge": "Beispiel 2: Kritische Risslänge bei sprödem Versagen",
     "beiTiefenTemperaturenSinkt": "Bei tiefen Temperaturen sinkt K_Ic vieler Stähle stark – dann reichen schon Risse von wenigen Millimetern (vgl. Silver Bridge 1967).",
     "irwin1957Iso12135": "Irwin (1957); ISO 12135",
-    "oktober2026Ap11": "Oktober 2026 (DIN 1076:2026-01, Rissbreiten, Bruchmechanik und Quellen geprüft)"
+    "oktober2026Ap11": "Oktober 2026 (DIN 1076:2026-01, Rissbreiten, Bruchmechanik und Quellen geprüft)",
+    "zuSchmaleFugenÜberdehnen": "Zu schmale Fugen überdehnen den Dichtstoff und reißen ab – ein häufiger Bauschaden an Fassaden. Fugentiefe und Hinterfüllung nach DIN 18540 festlegen.",
+    "din18540DinEn": "DIN 18540; DIN EN 15651-1",
+    "beispiel3MindestbreiteEiner": "Beispiel 3: Mindestbreite einer elastischen Fassadenfuge",
+    "klebDichtstoffSchäden": "Kleb- & Dichtstoff-Schäden",
+    "anwendungstippsFehlerquellenAlterungsmec": "Anwendungstipps, Fehlerquellen, Alterungsmechanismen & typische Schadensbilder"
   },
   "daten": {
     "TypischeBauschaeden.scenarios": [
@@ -324,6 +405,10 @@
       {
         "title": "BASt - Bundesanstalt für Straßenwesen (Brückenprüfung)",
         "url": "https://www.bast.de/"
+      },
+      {
+        "title": "IVD - Industrieverband Dichtstoffe e.V. (Merkblätter)",
+        "url": "https://www.ivd-ev.de"
       }
     ],
     "TypischeBauschaeden.literatur": [
@@ -331,7 +416,9 @@
       "Oswald, R.; Abel, R.: Hinzunehmende Unregelmäßigkeiten bei Gebäuden. Springer Vieweg",
       "Neroth, G.; Vollenschaar, D. (Hrsg.): Wendehorst Baustoffkunde. 27. Aufl., Wiesbaden: Vieweg+Teubner 2011",
       "Raupach, M.; Orlowsky, J.: Erhaltung von Betonbauwerken. Wiesbaden: Vieweg+Teubner (aktuelle Auflage)",
-      "Aachener Bausachverständigentage (Tagungsbände, AIBau). Wiesbaden: Springer Vieweg (jährlich)"
+      "Aachener Bausachverständigentage (Tagungsbände, AIBau). Wiesbaden: Springer Vieweg (jährlich)",
+      "IVD-Merkblatt Nr. 1: Abdichtung von Bodenfugen mit elastischen Dichtstoffen",
+      "IVD-Merkblatt Nr. 3: Konstruktive Ausführung und Abdichtung von Fugen im Sanitärbereich"
     ],
     "TypischeBauschaeden.regelwerke": [
       {
@@ -350,6 +437,15 @@
       {
         "title": "WTA-Merkblatt 4-6: Nachträgliches Abdichten erdberührter Bauteile",
         "url": "https://www.wta-gmbh.de/"
+      },
+      {
+        "title": "DIN 18540 (Abdichten von Außenwandfugen im Hochbau mit elastischen Dichtstoffen)"
+      },
+      {
+        "title": "DIN EN 15651 (Fugendichtstoffe für nicht tragende Anwendungen in Gebäuden)"
+      },
+      {
+        "title": "DIN 52460 (Fugen- und Glasabdichtung - Begriffe)"
       }
     ],
     "TypischeBauschaeden.formeln": [
@@ -372,6 +468,28 @@
         "formel": "\\Delta V_{\\text{ASR}} \\propto c_{(\\text{Na}^+, \\text{K}^+)} \\cdot c_{(\\text{reaktive Kieselsäure})} \\implies \\sigma_{\\text{Spren}} > f_{\\text{ctm}}",
         "erklaerung": "Alkali-Kieselsäure-Reaktion (AKR / Betonkrebs): Quellfähiges Alkali-Kieselsäure-Gel erzeugt Sprengdrücke oberhalb der Betonzugfestigkeit, was zur Netzrissbildung und Ausblühungen führt.",
         "quelle": "DAfStb Alkali-Richtlinie"
+      },
+      {
+        "formel": "b_{\\text{erf}} = \\frac{\\Delta L}{\\text{ZGV}} = \\frac{L \\cdot \\alpha_T \\cdot \\Delta T}{\\text{ZGV}}",
+        "erklaerung": "Erforderliche Mindestfugenbreite elastischer Fugen: Ermittelt aus thermischer Längenänderung Delta L der angrenzenden Bauteile und der zulässigen Gesamtverformung (ZGV des Dichtstoffs nach Klasse, z. B. 25 % für 25LM/25HM nach DIN EN ISO 11600 bzw. DIN EN 15651-1) zuzüglich Herstell- und Montagetoleranzen.",
+        "quelle": "DIN 18540 / DIN EN 15651-1"
+      }
+    ],
+    "TypischeBauschaeden.schritte_3": [
+      {
+        "titel": "Längenänderung",
+        "erklaerung": "Betonfertigteil L = 6,0 m, α_T = 10 · 10⁻⁶ 1/K, Temperaturspanne der Bauteiloberfläche ΔT = 80 K:",
+        "formel": "\\Delta L = 6000 \\cdot 10 \\cdot 10^{-6} \\cdot 80 = 4{,}8\\,\\text{mm}"
+      },
+      {
+        "titel": "Dichtstoffklasse",
+        "erklaerung": "Zulässige Gesamtverformung eines Dichtstoffs der Klasse 25LM:",
+        "formel": "ZGV = 25\\,\\%"
+      },
+      {
+        "titel": "Fugenbreite",
+        "erklaerung": "Erforderliche Breite:",
+        "formel": "b_{erf} = \\frac{4{,}8}{0{,}25} = 19{,}2\\,\\text{mm} \\Rightarrow 20\\,\\text{mm}"
       }
     ]
   }
