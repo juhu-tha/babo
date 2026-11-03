@@ -2,9 +2,9 @@
 
 Stand: 03.11.2026 · Grundlage: `src/data/quiz.json` (Felder `vorpruefung` und `verified`), `docs/quiz-pruefhinweise.md`, Lernziele aus `src/data/lernziele.ts`. Erzeugt mit `npx tsx scripts/pruefliste.ts`; gesetzte Kreuze übernimmt das Skript beim nächsten Lauf. quiz.json wurde für diese Liste nicht verändert.
 
-Cluster I umfasst 274 Fragen aus 39 Modulen. Aufgeführt sind 94 auffällige Fragen (Vorprüfung „korrigiert“ oder „fraglich“, offener Prüfhinweis oder neu seit 26.10.2026 ohne Freigabe) und eine Stichprobe von 5 unauffälligen Fragen. Entscheidung je Frage ankreuzen; bei „ändern“ den Änderungswunsch in die Zeile darunter schreiben.
+Cluster I umfasst 285 Fragen aus 39 Modulen. Aufgeführt sind 105 auffällige Fragen (Vorprüfung „korrigiert“ oder „fraglich“, offener Prüfhinweis oder neu seit 26.10.2026 ohne Freigabe) und eine Stichprobe von 5 unauffälligen Fragen. Entscheidung je Frage ankreuzen; bei „ändern“ den Änderungswunsch in die Zeile darunter schreiben.
 
-Auffällig im Einzelnen (Mehrfachnennung möglich): 75 korrigiert, 0 fraglich, 8 mit offenem Prüfhinweis, 15 neu seit 26.10.2026.
+Auffällig im Einzelnen (Mehrfachnennung möglich): 75 korrigiert, 0 fraglich, 8 mit offenem Prüfhinweis, 26 neu seit 26.10.2026.
 
 ## A. Auffällige Fragen
 
@@ -240,10 +240,50 @@ Auffällig im Einzelnen (Mehrfachnennung möglich): 75 korrigiert, 0 fraglich, 8
 - [ ] ok
 - [ ] ändern: …
 
+### qlz_analytik_1 · Analytik & Diagnostik
+
+- **Frage:** An einem Kläranlagenbauwerk mit Treiberscheinungen soll ein Sulfatangriff nachgewiesen werden. Welches Verfahren ist am besten begründet?
+- **Richtige Antwort:** XRD, weil sie Ettringit oder Thaumasit als kristalline Phasen eindeutig erkennt
+- **Auffälligkeit:** neu seit 26.10.2026 (Z24), noch nicht freigegeben, ohne Vorprüfung
+- [ ] ok
+- [ ] ändern: …
+
+### qlz_bauchemie_1 · Bauchemie
+
+- **Frage:** Worauf beruht nach dem Modul die Festigkeit des erhärteten Zementsteins?
+- **Richtige Antwort:** Auf Oberflächen- und Bindungskräften zwischen den CSH-Schichten mit großer innerer Oberfläche
+- **Auffälligkeit:** neu seit 26.10.2026 (Z24), noch nicht freigegeben, ohne Vorprüfung
+- [ ] ok
+- [ ] ändern: …
+
+### qlz_bauphysik_1 · Bauphysik (Wärme & Akustik)
+
+- **Frage:** Zwei Dachaufbauten haben denselben U-Wert; einer ist mit Mineralwolle, der andere mit Holzfaserplatten gedämmt. Wie unterscheiden sie sich im sommerlichen Wärmeschutz?
+- **Richtige Antwort:** Holzfaser: größere Phasenverschiebung, kleineres TAV durch höhere Speicherung
+- **Auffälligkeit:** neu seit 26.10.2026 (Z24), noch nicht freigegeben, ohne Vorprüfung
+- [ ] ok
+- [ ] ändern: …
+
 ### qlz_brandschutz_1 · Brandschutz
 
 - **Frage:** Welche Brandraumtemperatur ergibt die Einheitstemperaturzeitkurve θ_g = 20 + 345 · lg(8t + 1) nach t = 120 Minuten?
 - **Richtige Antwort:** rund 1049 °C
+- **Auffälligkeit:** neu seit 26.10.2026 (Z24), noch nicht freigegeben, ohne Vorprüfung
+- [ ] ok
+- [ ] ändern: …
+
+### qlz_brandschutz_2 · Brandschutz
+
+- **Frage:** Ein BSH-Balken 160/360 mm wird dreiseitig beflammt (β_n = 0,7 mm/min, d₀ = 7 mm). Welche Beurteilung des Widerstandsmoments ist richtig?
+- **Richtige Antwort:** Nach 30 min rund 45 % Verlust, nach 60 min rund 71 %; eigener Brandnachweis
+- **Auffälligkeit:** neu seit 26.10.2026 (Z24), noch nicht freigegeben, ohne Vorprüfung
+- [ ] ok
+- [ ] ändern: …
+
+### qlz_labor_1 · Virtuelle Versuche
+
+- **Frage:** Bei der Haftzugprüfung einer Reprofilierung (Stempel Ø 50 mm) reißt ein Stempel bei 1,10 N/mm² in der Klebefuge (Bruchbild Y), die übrigen um 1,7 N/mm² im Altbeton. Wie ist das zu werten?
+- **Richtige Antwort:** Der Einzelwert ist ungültig; die Prüfung mit neu geklebtem Stempel wiederholen
 - **Auffälligkeit:** neu seit 26.10.2026 (Z24), noch nicht freigegeben, ohne Vorprüfung
 - [ ] ok
 - [ ] ändern: …
@@ -264,10 +304,42 @@ Auffällig im Einzelnen (Mehrfachnennung möglich): 75 korrigiert, 0 fraglich, 8
 - [ ] ok
 - [ ] ändern: …
 
+### qlz_materialkennwerte_1 · Kennwerte & Materialdatenbank
+
+- **Frage:** Im Netzdiagramm werden Normalbeton, Baustahl und Nadelholz verglichen. Welche Aussage arbeitet einen für die Baustoffwahl entscheidenden Unterschied richtig heraus?
+- **Richtige Antwort:** Beton hat hohe Druck-, aber geringe Zugfestigkeit; Zugzonen brauchen Bewehrung
+- **Auffälligkeit:** neu seit 26.10.2026 (Z24), noch nicht freigegeben, ohne Vorprüfung
+- [ ] ok
+- [ ] ändern: …
+
+### qlz_materialmodelle_1 · Materialmodelle
+
+- **Frage:** Ein Werkstoff zeigt eine gekrümmte Spannungs-Dehnungs-Linie und kehrt nach Entlastung vollständig in den Ausgangszustand zurück. Welches Modell beschreibt das?
+- **Richtige Antwort:** Nichtlinear-elastisch, gekrümmt und dennoch voll reversibel
+- **Auffälligkeit:** neu seit 26.10.2026 (Z24), noch nicht freigegeben, ohne Vorprüfung
+- [ ] ok
+- [ ] ändern: …
+
 ### qlz_mechanische_kenngroessen_1 · Mechanische Kenngrößen
 
 - **Frage:** Ein Biegeträger soll bei möglichst geringem Eigengewicht möglichst steif sein (Kennzahl E/ρ). Welche Wahl stützt die Werkstoffmatrix des Moduls?
 - **Richtige Antwort:** CFK-Lamelle, da E/ρ rund 103 beträgt, etwa das Vierfache von Stahl und Holz
+- **Auffälligkeit:** neu seit 26.10.2026 (Z24), noch nicht freigegeben, ohne Vorprüfung
+- [ ] ok
+- [ ] ändern: …
+
+### qlz_mechanische_pruefungen_1 · Mechanische Prüfungen
+
+- **Frage:** Ein Asphalt zeigt im Marshall-Versuch einen niedrigen Quotienten S/F. Welche Folgerung ist im Sinne des Moduls richtig?
+- **Richtige Antwort:** Das Mischgut ist eher plastisch; über Spurrinnen entscheidet der Spurbildungsversuch
+- **Auffälligkeit:** neu seit 26.10.2026 (Z24), noch nicht freigegeben, ohne Vorprüfung
+- [ ] ok
+- [ ] ändern: …
+
+### qlz_messen_pruefen_1 · Messen & Prüfen
+
+- **Frage:** Im Labor soll der Durchmesser eines Bohrkerns von etwa 100 mm auf Zehntelmillimeter genau bestimmt werden. Welches Messmittel ist geeignet?
+- **Richtige Antwort:** Messschieber mit 0,05 mm (Nonius) bzw. 0,01 mm Auflösung (digital)
 - **Auffälligkeit:** neu seit 26.10.2026 (Z24), noch nicht freigegeben, ohne Vorprüfung
 - [ ] ok
 - [ ] ändern: …
@@ -288,10 +360,26 @@ Auffällig im Einzelnen (Mehrfachnennung möglich): 75 korrigiert, 0 fraglich, 8
 - [ ] ok
 - [ ] ändern: …
 
+### qlz_regularien_1 · Baurecht & Normenwesen
+
+- **Frage:** Ein Bauvertrag mit wirksam vereinbarter VOB/B; Abnahme am 01.03.2022. Am 01.02.2026 rügt der Auftraggeber einen Mangel schriftlich. Wie ist die Lage einzuordnen?
+- **Richtige Antwort:** Die Rüge löst für diesen Mangel eine neue Frist von zwei Jahren ab Zugang aus
+- **Auffälligkeit:** neu seit 26.10.2026 (Z24), noch nicht freigegeben, ohne Vorprüfung
+- [ ] ok
+- [ ] ändern: …
+
 ### qlz_sicherheitskonzept_1 · Eurocode – Sicherheitskonzept
 
 - **Frage:** Im Lehrbeispiel des Moduls ergibt sich für eine Innenstütze 35 × 35 cm aus C30/37 der Ausnutzungsgrad η = N_Ed/N_Rd = 1530/2083 = 0,73. Wie ist dieses Ergebnis zu beurteilen?
 - **Richtige Antwort:** Nur als Größenordnung: Bewehrung, Mindestausmitte und Knicken fehlen noch
+- **Auffälligkeit:** neu seit 26.10.2026 (Z24), noch nicht freigegeben, ohne Vorprüfung
+- [ ] ok
+- [ ] ändern: …
+
+### qlz_waermeeigenschaften_1 · Wärmeeigenschaften & Feuchte
+
+- **Frage:** Für die Dachsanierung stehen PUR (λ = 0,024 W/(mK)) und Holzfaser (λ = 0,040 W/(mK), c ≈ 2100 J/(kg·K)) zur Wahl; das Dachgeschoss überhitzt im Sommer. Welche Bewertung ist am besten begründet?
+- **Richtige Antwort:** Holzfaser: dicker für gleichen U-Wert, aber im Sommer deutlich träger
 - **Auffälligkeit:** neu seit 26.10.2026 (Z24), noch nicht freigegeben, ohne Vorprüfung
 - [ ] ok
 - [ ] ändern: …

@@ -101,6 +101,8 @@ Stufen: 18 × Bewerten, 5 × Analysieren, 8 × Anwenden, 6 × Verstehen, 1 × Er
 
 ## Entscheidungen
 
+Umgesetzt in der Folgerunde 03.11. (siehe dort).
+
 1. **Selbsttest für Beton A–Z und den Unterreiter Normenarbeit?** Vorschlag:
    - `bp_recht_avcp` und `bp_recht_normen` in `MODULTEST_IN_APP` aufnehmen, mit je mindestens 5 Fragen. Die Ratsche „Module mit < 5 Fragen“ in `tests/quiz.test.ts` erlaubt nur zwei solche Module. Für `bp_recht_avcp` zählen heute Fragen des Nachbarreiters (`q_bre_2`, `q_bre_4`, `qn_bp_recht_konformitaet_6`).
    - Beton A–Z als Nachschlagewerk ohne Selbsttest belassen und seine Lernziele auf das Nachschlagen umformulieren, etwa „im Lexikon … nachschlagen und … zuordnen“. Die Ausnahmen bleiben dann dauerhaft.
@@ -149,6 +151,142 @@ Stufen: 18 × Bewerten, 5 × Analysieren, 8 × Anwenden, 6 × Verstehen, 1 × Er
 | qlz_dauerhaftigkeit_1 | dauerhaftigkeit#1 | Verstehen | Prinzipien der Dauerhaftigkeit | DIN 68800, DIN EN ISO 12944-2 |
 | qlz_gesteine_1 | gesteine#2 | Verstehen | Porosität und Frostwiderstand | DIN EN 1097-6 |
 
+## Folgerunde 03.11.
+
+Umgesetzt wurden die Empfehlungen aus den Abschnitten „Offen“ und „Entscheidungen“. Grundlage ist die Grundregel vom 02.11.2026: Eigene Empfehlungen werden umgesetzt, wenn sie eindeutig und umkehrbar sind.
+
+Vorher wurden #320 (mit #314–#319) und #322 eingemergt. Nicht bearbeitet wurden `historisch`, `ec_kennwerte`, `bauschaeden`, `schadensbilder` und `bp_klebstoffe`. Prüfvermerke und Quizfreigaben sind unverändert.
+
+### Umgesetzt (Empfehlung)
+
+- **Selbsttest Bauprodukte-Recht:** `bp_recht_avcp` und `bp_recht_normen` stehen in `MODULTEST_IN_APP` (`src/data/quizZuordnung.ts`). Jede Route hat 5 neue Fragen, beide Selbsttests erscheinen im Build.
+  - `bp_recht_avcp`: AVCP-Systeme 1+ bis 4 und 3+, WPK und Fremdüberwachung
+  - `bp_recht_normen`: Wiener Vereinbarung, Übernahmepflicht, Weg zur Norm, Verbindlichkeit
+- **Beton A–Z** bleibt ein Nachschlagewerk ohne Selbsttest.
+  - Die Lernziele sind auf das Nachschlagen gefasst.
+  - Lernziel 3 ist von Anwenden auf Verstehen gesetzt.
+  - Lernziel 4 bleibt Anwenden, weil `tests/lernziele.test.ts` je Modul ein Ziel ab Anwenden verlangt.
+  - Die vier Ausnahmen in der Ratsche sind jetzt dauerhaft begründet.
+- **Chloridrechner Stahlbetoninstandhaltung:** Lernziel 1 ist ergänzt um „… und mit dem Chloridrechner abschätzen, wann die Bewehrung depassiviert wird“. Damit hat der Ausprobieren-Auftrag einen Lernzielbezug, und `AUSNAHMEN_ERKUNDUNG` ist leer.
+- **Lernziele ohne Frage:** Alle 23 offenen Lernziele haben jetzt eine Frage auf passender Stufe.
+- **`bp_glaeser#5`:** Das Modul belegt die nötigen Kennwerte bereits:
+  - g-Wert: Wärmeschutz 0,50–0,62, Sonnenschutz 0,22–0,38
+  - R_w: Standard 32–34 dB, Akustik-VSG 42–48 dB
+  - Sonnenschutzschicht auf Pos. 2
+  - Uf je Rahmenwerkstoff
+
+  Neuer Inhalt war deshalb nicht nötig. Das Lernziel bleibt unverändert und hat jetzt eine Bewerten-Frage.
+- **Höchste Lernzielstufe:** Alle 31 bearbeitbaren Module haben eine Frage auf der höchsten Stufe (Bewerten bzw. Analysieren). `mischungsberechnung` bleibt die begründete Ausnahme, weil die Stufe Erschaffen im Auswahlformat nicht prüfbar ist.
+
+### Neue Fragen der Folgerunde (65, zur Freigabe)
+
+Alle 65 Fragen haben `verified: false` und alle Pflichtfelder: Bloom-Stufe, Niveau, Rückmeldung je Option, Lernhilfe und normRef. Die Optionslängen halten die Ratschen aus `tests/quiz.test.ts` ein: Die richtige Antwort ist nie die längste, die Spannweite liegt bei höchstens 1,2, und es gibt keine Absolutwörter. Jede Frage steht mit ihrem Lernziel in `ZUORDNUNG_MANUELL`.
+
+Stufen: 21 × Bewerten, 15 × Analysieren, 6 × Anwenden, 16 × Verstehen, 7 × Erinnern.
+
+**Gegen die Kerne geprüft** (`tests/quizRechenfragen.test.ts`):
+- `qlz_kombinationen_1`: `schichtaufbau`, alle Optionen aus dem Kern
+- `qlz_stahl_1`: `cev`
+- `qlz_brandschutz_2`: `abbrandQuerschnitt`
+- `qlz_membranen_etfe_1`: `radiusAusStich`, `membranKraft`
+
+**Von Hand nachgerechnet** (Modulformeln und -tabellen):
+- `qlz_sonderbetone_3`: Lehrannahmen des RC-Rechners und Δw = a_RC · m_g · WA₂₄; die Rechnung steht in der Komponente, nicht in einem Kern
+- `qlz_oekobilanz_lca_1`: Arbeitsblatt Transportbeton
+- `qlz_materialdatenbanken_1`: funktionale Einheit
+- `qlz_holz_1`: k_def nach Tab. 3.2
+
+| Frage | Lernziel | Bloom | Thema | normRef |
+|---|---|---|---|---|
+| qlz_bp_recht_avcp_1 | bp_recht_avcp#1 | Erinnern | System 3+ der neuen BauPVO | BauPVO (EU) 2024/3110 Anhang IX |
+| qlz_bp_recht_avcp_2 | bp_recht_avcp#1 | Erinnern | Systeme und typische Produkte | VO (EU) Nr. 305/2011 Anhang V |
+| qlz_bp_recht_avcp_3 | bp_recht_avcp#2 | Verstehen | WPK und Fremdüberwachung | VO (EU) Nr. 305/2011 Anhang V |
+| qlz_bp_recht_avcp_4 | bp_recht_avcp#3 | Analysieren | Aufgabenumfang System 1+ und 1 | VO (EU) Nr. 305/2011 Anhang V Nr. 1.1 |
+| qlz_bp_recht_avcp_5 | bp_recht_avcp#3 | Analysieren | Aufgabenumfang System 3 | VO (EU) Nr. 305/2011 Anhang V |
+| qlz_bp_recht_normen_1 | bp_recht_normen#1 | Erinnern | Wiener Vereinbarung | Wiener Vereinbarung ISO/CEN |
+| qlz_bp_recht_normen_2 | bp_recht_normen#1 | Erinnern | Übernahmepflicht von EN-Normen | DIN 820-1, DIN EN 45020 |
+| qlz_bp_recht_normen_3 | bp_recht_normen#2 | Verstehen | Weg zur Norm | DIN 820-1 |
+| qlz_bp_recht_normen_4 | bp_recht_normen#2 | Verstehen | Stellungnahmeverfahren | DIN 820-1 |
+| qlz_bp_recht_normen_5 | bp_recht_normen#3 | Analysieren | Verbindlichkeit von DIN-Normen | § 85a MBO, MVV TB, VOB/C |
+| qlz_korrosionsschutz_beschichtungen_2 | korrosionsschutz_beschichtungen#2 | Verstehen | Schichtfolge und Bindemittel | DIN EN ISO 12944-5 |
+| qlz_bauchemie_1 | bauchemie#1 | Verstehen | Bindungsarten und CSH-Phasen | DIN EN 197-1 |
+| qlz_boden_materialaufbereitung_2 | boden_materialaufbereitung#1 | Verstehen | EBV, BBodSchV und GewAbfV | EBV, BBodSchV, GewAbfV |
+| qlz_bp_betonfertigteile_1 | bp_betonfertigteile#3 | Verstehen | Konstruktionsklassen Hoch- und Tiefbau | DIN EN 13369, DIN 1045-4 |
+| qlz_bp_farben_lacke_1 | bp_farben_lacke#1 | Verstehen | Bestandteile eines Beschichtungsstoffs | DIN 18363 |
+| qlz_dpp_1 | dpp#2 | Verstehen | Datenfelder und Akteure | ESPR (EU) 2024/1781, BauPVO (EU) 2024/3110 |
+| qlz_ki_llmpraxis_1 | ki_llmpraxis#2 | Anwenden | Systemprompt für Ingenieuraufgaben | DIN EN 1992-1-1, DIN EN 206 |
+| qlz_ki_prompting_1 | ki_prompting#2 | Anwenden | Prompt-Generator gezielt anpassen | DIN EN 206, DIN 1045-2 |
+| qlz_ki_system_1 | ki_system#1 | Verstehen | KI-Verfahren nach Datenart | EU AI Act (VO (EU) 2024/1689) |
+| qlz_kombinationen_1 | kombinationen#2 | Anwenden | U-Wert und s_d eines Wandaufbaus | DIN EN ISO 6946, DIN 4108-3 |
+| qlz_kreislauf_dpp_1 | kreislauf_dpp#1 | Erinnern | Rangfolge der R-Strategien | KrWG § 6 (Abfallhierarchie) |
+| qlz_kreislauf_dpp_2 | kreislauf_dpp#2 | Verstehen | Rückbau- und Re-Use-Erkundung | DIN SPEC 91484 |
+| qlz_materialmodelle_1 | materialmodelle#1 | Verstehen | Elastisches und plastisches Verhalten | DIN EN 1992-1-1, DIN EN 1993-1-1 |
+| qlz_messen_pruefen_1 | messen_pruefen#2 | Anwenden | Messmittel nach Auflösung wählen | DIN 18202, DIN EN 12390-1 |
+| qlz_online_tools_1 | online_tools#5 | Anwenden | IFC-Snippet anpassen | DIN EN ISO 16739-1 (IFC) |
+| qlz_ressourcen_umwelt_1 | ressourcen_umwelt#1 | Verstehen | GWP wesentlicher Baustoffe | DIN EN 15804 |
+| qlz_ressourceneffizienz_1 | ressourceneffizienz#2 | Verstehen | Aufgaben des REZ Bayern | Umweltpakt Bayern |
+| qlz_rueckbau_1 | rueckbau#5 | Verstehen | Rückbaufehler und Konsequenzen | GewAbfV § 8 |
+| qlz_sonderbetone_2 | sonderbetone#2 | Analysieren | Beispielrezepturen vergleichen | DIN 1045-2, DAfStb-Richtlinie Massige Bauteile |
+| qlz_sonderbetone_3 | sonderbetone#3 | Anwenden | Einfluss des RC-Anteils | DIN 1045-2:2023-08 Anhang E |
+| qlz_bp_beton_1 | bp_beton#1 | Verstehen | Transport- und Baustellenbeton | DIN 1045-2, DIN 1045-3 |
+| qlz_nachhaltigkeit_daten_regeln_1 | nachhaltigkeit_daten_regeln#1 | Erinnern | Kennzahlen Bauabfälle und Fläche | Deutsche Nachhaltigkeitsstrategie, KrWG |
+| qlz_ki_ressourcen_1 | ki_ressourcen#1 | Erinnern | KI-Plattformen und Verzeichnisse | EU AI Act (VO (EU) 2024/1689) |
+| qlz_membranen_etfe_1 | membranen_etfe#4 | Bewerten | ETFE-Kissen beurteilen | CEN/TS 19102:2023 |
+| qlz_altholz_urban_mining_1 | altholz_urban_mining#4 | Bewerten | Materialkataster im Quartier | KrWG § 6, AltholzV |
+| qlz_pfas_baustoffe_1 | pfas_baustoffe#4 | Bewerten | PFAS beim Rückbau planen | DIN EN ISO 18127, BMUV-Leitfaden PFAS 2022 |
+| qlz_stahlbeton_2 | stahlbeton_bemessung#4 | Analysieren | Maßgebender Nachweis | DIN EN 1992-1-1/NA, 6.4 und 7.3 |
+| qlz_bauphysik_1 | bauphysik#3 | Analysieren | Phasenverschiebung und Speichermasse | DIN 4108-2 |
+| qlz_betonpraxis_1 | betonpraxis#4 | Bewerten | WU-Mindestdicken | DAfStb-Richtlinie WU (2017-12) |
+| qlz_bp_farben_lacke_2 | bp_farben_lacke#5 | Bewerten | OS-System für Parkdecks | TR Instandhaltung, DIN EN 1504-2 |
+| qlz_bp_innovationen_1 | bp_innovationen#5 | Bewerten | Reife und Markthürden | ISO 16290:2013, VOB/A § 7 |
+| qlz_denkmalpflege_1 | denkmalpflege#5 | Bewerten | Maßnahmen am Baudenkmal beurteilen | Charta von Venedig 1964, BayDSchG, DIN EN 459-1 |
+| qlz_holz_1 | holz#5 | Analysieren | Kriechen nach Nutzungsklasse | DIN EN 1995-1-1, Tab. 3.2 |
+| qlz_hydratation_folgen_1 | hydratation_folgen#5 | Bewerten | Rissrisiko massiger Bauteile | DAfStb-Richtlinie Massige Bauteile, DIN EN 1992-1-1/NA 7.3.2 |
+| qlz_innenausbau_1 | innenausbau#5 | Bewerten | Verbundabdichtung nach DIN 18534 | DIN 18534-1:2025-10 |
+| qlz_kalk_1 | kalk#4 | Bewerten | Kalkputz beurteilen | DIN EN 459-1, DIN EN 998-1 |
+| qlz_kombinationen_2 | kombinationen#5 | Bewerten | Faserverbund für eine Bauaufgabe | DAfStb-Richtlinie Verstärken mit Klebebewehrung |
+| qlz_materialitaet_architektur_1 | materialitaet_architektur#4 | Bewerten | Fassadenwerkstoff wählen | DBV/VDZ-Merkblatt Sichtbeton |
+| qlz_labor_1 | labor#4 | Bewerten | Haftzugprüfung beurteilen | DIN EN 1542 |
+| qlz_mechanische_pruefungen_1 | mechanische_pruefungen#4 | Analysieren | Spezialprüfungen zuordnen | DIN EN ISO 148-1, DIN EN 12697-34, DIN EN 12697-22 |
+| qlz_oekobilanz_lca_1 | oekobilanz_lca#5 | Analysieren | Zementanteil am GWP | DIN EN 15804+A2 |
+| qlz_stahl_1 | stahl#5 | Bewerten | Schweißeignung über CEV | DIN EN 10025-2 |
+| qlz_materialkennwerte_1 | materialkennwerte#4 | Analysieren | Netzdiagramm auswerten | DIN EN 1992-1-1, DIN EN 338, DIN EN 1993-1-1 |
+| qlz_regularien_1 | regularien#5 | Analysieren | Verjährung BGB und VOB/B | § 634a BGB, § 13 Abs. 4 und 5 VOB/B |
+| qlz_analytik_1 | analytik#5 | Bewerten | Analyseverfahren auswählen | DIN EN 14629, DIN EN 196-2 |
+| qlz_daemmstoffe_1 | daemmstoffe#4 | Bewerten | Dämmstoff nach Einbausituation | DIN 4108-10, DIN EN 13164, DIN EN 13162 |
+| qlz_bp_stahlbauprofile_1 | bp_stahlbauprofile#4 | Analysieren | Trägheitsmomente IPE und HEB | DIN EN 1993-1-1 |
+| qlz_waermeeigenschaften_1 | waermeeigenschaften#5 | Bewerten | Dämmstoffe winterlich und sommerlich | DIN 4108-2, DIN EN ISO 6946 |
+| qlz_brandschutz_2 | brandschutz#5 | Bewerten | Restquerschnitt Holzbalken | DIN EN 1995-1-2 |
+| qlz_nachhaltigkeit_daten_regeln_2 | nachhaltigkeit_daten_regeln#5 | Bewerten | Instrumente nach Verbindlichkeit | GModG, QNG, EBV, KrWG |
+| qlz_wta_1 | wta#5 | Bewerten | Innendämmsystem nach WTA 6-5 | WTA-Merkblatt 6-5 |
+| qlz_materialdatenbanken_1 | materialdatenbanken#4 | Analysieren | Funktionale Einheit bei Dämmstoffen | DIN EN 15804+A2, DIN EN 15978 |
+| qlz_bp_recht_grundlagen_1 | bp_recht_grundlagen#4 | Analysieren | Folgen des EuGH-Urteils C-100/13 | EuGH C-100/13, MVV TB, § 85a MBO |
+| qlz_holzbau_werkstoffe_1 | holzbau_werkstoffe#4 | Analysieren | Holzdecken nach Schallschutz vergleichen | DIN 4109-33, dataholz.eu |
+| qlz_bp_glaeser_1 | bp_glaeser#5 | Bewerten | Fenster für Wärme-, Sonnen- und Schallschutz | DIN EN ISO 10077-1, DIN 4109-1, DIN EN 410 |
+
+### Kennzahlen nach der Folgerunde
+
+| Prüfpunkt | vorher (nach Merge #320) | nachher |
+|---|---|---|
+| Lernziele ohne Quizfrage | 35 | **8** (alle begründet) |
+| Module ohne Frage auf höchster Lernzielstufe | 34 | **3** |
+| Lernziele mit Frage, aber keiner auf passender Stufe | 64 | **36** (Ratsche gesenkt) |
+| Ausprobieren ohne Lernzielbezug | 1 | **0** |
+
+Die 8 Lernziele ohne Quizfrage: Beton A–Z (4), `historisch#4` und die Fugen-Lernziele `bauschaeden#1`, `schadensbilder#3` und `schadensbilder#4`.
+
+Die 3 Module ohne Frage auf der höchsten Stufe: `mischungsberechnung` (begründet), `historisch` und `schadensbilder` (beide nicht bearbeitet).
+
+### Weitere Änderungen
+
+- **Ratsche:** `tests/lernzielAbdeckung.test.ts` ist auf die Restausnahmen verkürzt.
+- **Zähler:** `NEU_SEIT_26_10` in `tests/pruefliste.test.ts` steht auf 158 (93 + 65).
+- **Prüflisten:** neu erzeugt.
+- **Suchindex:** Neu erzeugt sind nur die Einträge geänderter Seiten, alle übrigen sind unverändert. Geändert sind `bp_recht_avcp`, `bp_recht_normen`, `beton_a_z` und `instandhaltung` sowie aus #322 `lca_regulatorik`, `boden_materialaufbereitung` und `pfas_baustoffe`.
+- **Matrix:** unten auf den neuen Stand gebracht.
+
+Offen bleiben die Nachträge für `historisch` und die Fugen-Lernziele, weil diese Module von der Bearbeitung ausgenommen waren.
+
 ## Matrix je Modul
 
 Legende:
@@ -160,12 +298,12 @@ Legende:
 | Modul | Niv. | Lernziele (Stufe: Fragen) | Inhalt | höchste Stufe Ziel/Quiz | Fragen | Das Wichtigste | Ausprobieren |
 |---|---|---|---|---|---|---|---|
 | abfaelle | B/M | 1 Ve: 2 · 2 An: 2 · 3 Ana: 1 · 4 An: 2 · 5 An: 1 | ja | Ana/Be | 8 | 5 Punkte | – |
-| altholz_urban_mining | B/M | 1 An: 3 · 2 Ve: 4 · 3 An: 2 · 4 Be: 1 (Stufe) | ja | Be/Ana ✗ | 7 | 5 Punkte | 3 |
-| analytik | B/M | 1 Ve: 3 · 2 An: 1 · 3 An: 1 · 4 Ana: 2 (Stufe) · 5 Be: 1 (Stufe) | ja | Be/An ✗ | 6 | – | 2 |
+| altholz_urban_mining | B/M | 1 An: 3 · 2 Ve: 4 · 3 An: 2 · 4 Be: 2 | ja | Be/Be | 8 | 5 Punkte | 3 |
+| analytik | B/M | 1 Ve: 4 · 2 An: 1 · 3 An: 1 · 4 Ana: 2 (Stufe) · 5 Be: 2 | ja | Be/Be | 7 | – | 2 |
 | asphalt | B | 1 Ve: 1 · 2 An: 3 · 3 Ana: 1 · 4 Ve: 1 · 5 Be: 2 | ja | Be/Be | 7 | – | 3 |
 | ausbau | B | 1 Ve: 1 · 2 An: 2 · 3 Ve: 3 · 4 Be: 1 (Stufe) | ja | Be/Be | 6 | – | – |
-| bauchemie | B | 1 Ve: 0 ✗ · 2 Ve: 1 · 3 An: 2 · 4 Ana: 1 (Stufe) · 5 Be: 1 | ja | Be/Be | 6 | 5 Punkte | 3 |
-| bauphysik | B | 1 An: 3 · 2 An: 2 · 3 Ana: 1 (Stufe) | ja | Ana/An ✗ | 6 | 5 Punkte | 3 |
+| bauchemie | B | 1 Ve: 1 · 2 Ve: 1 · 3 An: 2 · 4 Ana: 1 (Stufe) · 5 Be: 1 | ja | Be/Be | 7 | 5 Punkte | 3 |
+| bauphysik | B | 1 An: 3 · 2 An: 2 · 3 Ana: 2 | ja | Ana/Ana | 7 | 5 Punkte | 3 |
 | bauschaeden | B | 1 Ve: 0 ✗ · 2 An: 4 · 3 Be: 2 | ja | Be/Be | 6 | 5 Punkte | – |
 | baustatik | B | 1 Ve: 1 · 2 An: 6 · 3 An: 2 · 4 Ana: 2 | ja | Ana/Ana | 6 | 5 Punkte | 3 |
 | baustoffkenngroessen | B | 1 Ve: 2 · 2 An: 2 · 3 An: 2 · 4 An: 1 · 5 Ana: 1 | ja | Ana/Ana | 6 | 5 Punkte | 3 |
@@ -174,26 +312,26 @@ Legende:
 | bauwerkserfassung | B/M | 1 Ve: 1 · 2 Ana: 1 · 3 Ve: 1 · 4 An: 2 | ja | Ana/Ana | 6 | – | 2 |
 | bauwerksunters_monitoring | B/M | 1 Ve: 3 · 2 Ana: 1 · 3 An: 1 · 4 Be: 3 · 5 Be: 1 | ja | Be/Be | 7 | 5 Punkte | 3 |
 | bestand | B | 1 Ve: 1 · 2 An: 4 · 3 An: 1 · 4 Ana: 2 (Stufe) · 5 Be: 1 | ja | Be/Be | 8 | – | – |
-| beton_a_z | B | 1 Er: 0 ✗ · 2 Ve: 0 ✗ · 3 An: 0 ✗ · 4 An: 0 ✗ | ja | An/– | 0 | – | – |
+| beton_a_z | B | 1 Er: 0 ✗ · 2 Ve: 0 ✗ · 3 Ve: 0 ✗ · 4 An: 0 ✗ | ja | An/– | 0 | – | – |
 | betonkennwerte | B/M | 1 An: 2 · 2 An: 1 · 3 Ve: 1 · 4 An: 1 · 5 Ana: 1 | ja | Ana/Ana | 6 | 5 Punkte | 3 |
-| betonpraxis | B | 1 An: 1 · 2 An: 1 · 3 An: 2 · 4 Be: 2 (Stufe) | ja | Be/An ✗ | 6 | 5 Punkte | – |
+| betonpraxis | B | 1 An: 1 · 2 An: 1 · 3 An: 2 · 4 Be: 3 | ja | Be/Be | 7 | 5 Punkte | – |
 | bim_baustoffe | B/M | 1 Ve: 1 · 2 Ve: 2 · 3 An: 2 · 4 An: 1 · 5 Ana: 2 | ja | Ana/Ana | 6 | – | – |
 | bindemittel | B | 1 Ve: 4 · 2 An: 1 · 3 Ve: 1 · 4 Ana: 2 · 5 Be: 1 | ja | Be/Be | 7 | – | – |
 | biokohlebeton | B/M | 1 Ve: 3 · 2 An: 4 · 3 Ana: 2 · 4 Be: 4 | ja | Be/Be | 7 | 5 Punkte | 3 |
-| boden_materialaufbereitung | B/M | 1 Ve: 0 ✗ · 2 An: 3 · 3 An: 2 · 4 Ana: 1 · 5 Be: 1 | ja | Be/Be | 7 | 5 Punkte | 3 |
+| boden_materialaufbereitung | B/M | 1 Ve: 1 · 2 An: 3 · 3 An: 2 · 4 Ana: 1 · 5 Be: 2 | ja | Be/Be | 8 | 5 Punkte | 3 |
 | bodenmechanik | B | 1 An: 7 · 2 An: 1 · 3 An: 1 · 4 Ve: 2 · 5 An: 5 | ja | An/Be | 11 | 5 Punkte | 6 |
 | bp_abdichtung | B | 1 Ve: 2 · 2 An: 2 · 3 An: 1 · 4 Ana: 1 · 5 Be: 2 | ja | Be/Be | 6 | 5 Punkte | – |
 | bp_befestigung | B/M | 1 Ve: 3 · 2 Ve: 1 · 3 An: 2 · 4 Ana: 1 · 5 Be: 1 | ja | Be/Be | 6 | – | – |
-| bp_beton | B | 1 Ve: 0 ✗ · 2 Ve: 3 · 3 Ana: 2 (Stufe) · 4 An: 1 | ja | Ana/Ana | 6 | – | – |
-| bp_betonfertigteile | B | 1 Ve: 2 · 2 An: 2 · 3 Ve: 0 ✗ · 4 Be: 1 (Stufe) | ja | Be/Be | 6 | – | – |
+| bp_beton | B | 1 Ve: 1 · 2 Ve: 3 · 3 Ana: 2 (Stufe) · 4 An: 1 | ja | Ana/Ana | 7 | – | – |
+| bp_betonfertigteile | B | 1 Ve: 2 · 2 An: 2 · 3 Ve: 1 · 4 Be: 1 (Stufe) | ja | Be/Be | 7 | – | – |
 | bp_betonwaren | B | 1 Ve: 1 · 2 An: 2 · 3 Ve: 1 · 4 Ana: 2 | ja | Ana/Ana | 6 | – | – |
 | bp_betonzusatzmittel | B | 1 Er: 5 · 2 Ve: 1 · 3 An: 2 · 4 Be: 1 | ja | Be/Be | 6 | – | – |
 | bp_dach_fassade | B | 1 Ve: 1 · 2 Ve: 2 · 3 An: 3 · 4 Ana: 1 | ja | Ana/Ana | 6 | – | – |
 | bp_daemmung | B | 1 Ve: 3 · 2 An: 1 · 3 An: 1 · 4 Be: 2 | ja | Be/Be | 6 | – | – |
-| bp_farben_lacke | B | 1 Ve: 0 ✗ · 2 Ve: 1 · 3 An: 2 · 4 Ana: 3 · 5 Be: 1 (Stufe) | ja | Be/Ana ✗ | 6 | 5 Punkte | – |
-| bp_glaeser | B | 1 Ve: 4 · 2 Ve: 1 (Stufe) · 3 An: 2 · 4 An: 2 · 5 Be: 0 ✗ | ja | Be/Be | 6 | 5 Punkte | 3 |
+| bp_farben_lacke | B | 1 Ve: 1 · 2 Ve: 1 · 3 An: 2 · 4 Ana: 3 · 5 Be: 2 | ja | Be/Be | 8 | 5 Punkte | – |
+| bp_glaeser | B | 1 Ve: 4 · 2 Ve: 2 · 3 An: 3 · 4 An: 2 · 5 Be: 1 | ja | Be/Be | 7 | 5 Punkte | 3 |
 | bp_holzprodukte | B | 1 Ve: 1 · 2 Ve: 1 · 3 An: 3 · 4 An: 1 · 5 Ana: 2 | ja | Ana/Ana | 6 | – | 2 |
-| bp_innovationen | B/M | 1 Ve: 1 · 2 An: 2 · 3 Ve: 2 · 4 An: 1 · 5 Be: 1 (Stufe) | ja | Be/An ✗ | 6 | – | – |
+| bp_innovationen | B/M | 1 Ve: 1 · 2 An: 2 · 3 Ve: 2 · 4 An: 1 · 5 Be: 2 | ja | Be/Be | 7 | – | – |
 | bp_klebstoffe | B | 1 Ve: 2 · 2 Ve: 1 · 3 An: 1 · 4 An: 1 | ja | An/An | 6 | – | – |
 | bp_kunststoffe | B | 1 Ve: 2 · 2 An: 1 · 3 An: 1 · 4 Ana: 2 | ja | Ana/Ana | 6 | – | – |
 | bp_lehmbauprodukte | B | 1 Er: 3 · 2 Ve: 1 · 3 An: 3 · 4 Ana: 2 | ja | Ana/Ana | 6 | – | – |
@@ -201,11 +339,11 @@ Legende:
 | bp_metallisch | B | 1 Ve: 4 · 2 An: 1 · 3 An: 1 · 4 Be: 1 (Stufe) | ja | Be/Be | 6 | – | – |
 | bp_mineralisch | B | 1 Ve: 1 · 2 Ve: 3 · 3 An: 1 · 4 Ana: 1 | ja | Ana/Ana | 6 | – | – |
 | bp_putz_estrich | B | 1 Ve: 1 · 2 Ve: 2 · 3 Ana: 3 · 4 An: 1 | ja | Ana/Ana | 6 | – | – |
-| bp_recht_avcp | B/M | 1 Er: 2 · 2 Ve: 1 · 3 Ana: 1 | ja | Ana/– | 0 | – | – |
-| bp_recht_grundlagen | B/M | 1 Ve: 7 · 2 An: 6 · 3 An: 4 · 4 Ana: 1 (Stufe) | ja | Ana/An ✗ | 12 | – | – |
+| bp_recht_avcp | B/M | 1 Er: 4 · 2 Ve: 3 · 3 Ana: 6 | ja | Ana/Ana | 5 | – | – |
+| bp_recht_grundlagen | B/M | 1 Ve: 8 · 2 An: 6 · 3 An: 5 · 4 Ana: 2 | ja | Ana/Ana | 13 | – | – |
 | bp_recht_konformitaet | B/M | 1 Ve: 1 · 2 Er: 4 · 3 An: 3 · 4 Ana: 2 | ja | Ana/Ana | 6 | – | – |
-| bp_recht_normen | B/M | 1 Er: 0 ✗ · 2 Ve: 0 ✗ · 3 Ana: 0 ✗ | ja | Ana/– | 0 | – | – |
-| bp_stahlbauprofile | B | 1 Ve: 4 · 2 An: 2 · 3 An: 1 · 4 Ana: 2 | ja | Ana/An ✗ | 6 | – | – |
+| bp_recht_normen | B/M | 1 Er: 2 · 2 Ve: 2 · 3 Ana: 1 | ja | Ana/Ana | 5 | – | – |
+| bp_stahlbauprofile | B | 1 Ve: 4 · 2 An: 2 · 3 An: 1 · 4 Ana: 3 | ja | Ana/Ana | 7 | – | – |
 | bp_trockenbau | B | 1 Er: 2 · 2 Ve: 1 · 3 Ve: 1 · 4 An: 2 · 5 Ana: 2 | ja | Ana/Ana | 6 | – | – |
 | bp_verkehr_asphalt | B | 1 Ve: 5 · 2 Ve: 2 · 3 An: 1 · 4 Ana: 1 | ja | Ana/Ana | 6 | 5 Punkte | – |
 | bp_verkehr_bahn | B | 1 Ve: 2 · 2 Ve: 5 · 3 An: 3 · 4 Be: 2 | ja | Be/Be | 6 | 5 Punkte | – |
@@ -215,14 +353,14 @@ Legende:
 | bp_verkehr_rsto | B | 1 Er: 3 · 2 Ve: 2 · 3 An: 1 · 4 An: 2 | ja | An/An | 12 | 5 Punkte | 3 |
 | bp_verkehr_tiefbau | B | 1 Er: 1 · 2 Ve: 1 · 3 An: 2 · 4 Ana: 1 | ja | Ana/Ana | 6 | 5 Punkte | 2 |
 | bp_verkehr_tunnel | B/M | 1 Ve: 1 · 2 Ve: 1 · 3 An: 4 · 4 Be: 1 | ja | Be/Be | 6 | 5 Punkte | – |
-| brandschutz | B | 1 An: 4 · 2 Ve: 4 · 3 An: 1 · 4 An: 3 · 5 Be: 4 (Stufe) | ja | Be/An ✗ | 7 | – | – |
+| brandschutz | B | 1 An: 4 · 2 Ve: 4 · 3 An: 1 · 4 An: 3 · 5 Be: 5 | ja | Be/Be | 8 | – | – |
 | bruchmechanik | M | 1 Ve: 1 · 2 An: 2 · 3 Be: 3 · 4 Ve: 2 | ja | Be/Be | 6 | – | – |
 | carbonbeton | B/M | 1 Ve: 4 · 2 An: 3 · 3 Ana: 4 | ja | Ana/Ana | 6 | – | – |
-| daemmstoffe | B | 1 Ve: 4 · 2 An: 6 · 3 Ana: 4 (Stufe) · 4 Be: 3 (Stufe) | ja | Be/An ✗ | 6 | – | – |
+| daemmstoffe | B | 1 Ve: 4 · 2 An: 6 · 3 Ana: 4 (Stufe) · 4 Be: 4 | ja | Be/Be | 7 | – | – |
 | daemmung_vergleich | B | 1 Ve: 4 · 2 Ana: 1 · 3 Be: 4 | ja | Be/Be | 6 | – | – |
 | dauerhaftigkeit | B | 1 Ve: 1 · 2 An: 2 · 3 An: 1 · 4 An: 3 · 5 Be: 1 | ja | Be/Be | 7 | 5 Punkte | – |
-| denkmalpflege | B/M | 1 Ve: 1 · 2 Er: 3 · 3 An: 1 · 4 An: 1 · 5 Be: 1 (Stufe) | ja | Be/An ✗ | 6 | – | – |
-| dpp | B/M | 1 Ve: 2 · 2 Ve: 0 ✗ · 3 Ve: 1 · 4 An: 2 · 5 An: 1 | ja | An/An | 6 | 5 Punkte | 3 |
+| denkmalpflege | B/M | 1 Ve: 1 · 2 Er: 3 · 3 An: 1 · 4 An: 1 · 5 Be: 2 | ja | Be/Be | 7 | – | – |
+| dpp | B/M | 1 Ve: 2 · 2 Ve: 1 · 3 Ve: 1 · 4 An: 2 · 5 An: 1 | ja | An/An | 7 | 5 Punkte | 3 |
 | ec_kennwerte | B | 1 Ve: 4 · 2 An: 3 · 3 An: 5 · 4 Ana: 3 · 5 Be: 1 (Stufe) | ja | Be/Be | 7 | 5 Punkte | 3 |
 | einheiten | B | 1 Er: 1 · 2 An: 6 · 3 An: 1 · 4 Ana: 1 | ja | Ana/Ana | 6 | 5 Punkte | 3 |
 | emodul | M | 1 An: 4 · 2 An: 3 · 3 Ve: 3 · 4 Ana: 1 (Stufe) | ja | Ana/Ana | 6 | 5 Punkte | 3 |
@@ -240,39 +378,39 @@ Legende:
 | glas | B | 1 Ve: 1 · 2 Ve: 1 · 3 Ana: 2 · 4 An: 3 · 5 An: 2 | ja | Ana/Ana | 6 | – | 3 |
 | grundlagen | B | 1 Er: 3 · 2 Ve: 3 · 3 An: 1 · 4 An: 1 | ja | An/An | 6 | – | – |
 | herstellung_einbau | B | 1 Ve: 2 · 2 An: 3 · 3 An: 1 · 4 Ana: 1 | ja | Ana/Ana | 6 | – | – |
-| historisch | B/M | 1 An: 3 · 2 An: 2 (Stufe) · 3 An: 1 · 4 Ana: 0 ✗ · 5 Be: 2 | ja | Be/Ana ✗ | 6 | – | – |
+| historisch | B/M | 1 An: 4 · 2 An: 3 (Stufe) · 3 An: 1 · 4 Ana: 0 ✗ · 5 Be: 5 (Stufe) | ja | Be/Ana ✗ | 10 | – | – |
 | historische_bauprodukte | B | 1 Er: 1 · 2 Ve: 1 · 3 Ana: 1 · 4 Be: 2 | ja | Be/Be | 6 | 5 Punkte | – |
 | historische_bauweisen | B | 1 Ve: 1 · 2 An: 3 · 3 An: 2 · 4 An: 1 · 5 Ana: 1 | ja | Ana/Ana | 7 | – | – |
-| holz | B | 1 Ve: 3 · 2 An: 1 · 3 An: 2 · 4 An: 1 · 5 Ana: 1 (Stufe) | ja | Ana/An ✗ | 6 | – | 3 |
+| holz | B | 1 Ve: 3 · 2 An: 1 · 3 An: 3 · 4 An: 1 · 5 Ana: 2 | ja | Ana/Ana | 7 | – | 3 |
 | holzbau_bauphysik | B/M | 1 Ve: 1 · 2 An: 3 · 3 An: 2 · 4 Ana: 1 | ja | Ana/Ana | 6 | 5 Punkte | 3 |
 | holzbau_bemessung | B | 1 Ve: 2 · 2 An: 1 · 3 An: 1 · 4 An: 1 | ja | An/An | 6 | 5 Punkte | 3 |
 | holzbau_konstruktion | B | 1 Ve: 3 · 2 Ana: 2 · 3 An: 1 | ja | Ana/Be | 6 | – | – |
 | holzbau_verbindung | B/M | 1 Ve: 2 · 2 An: 3 · 3 An: 1 · 4 Ana: 1 | ja | Ana/Ana | 6 | 5 Punkte | 3 |
-| holzbau_werkstoffe | B | 1 Ve: 4 · 2 Ve: 2 · 3 An: 1 · 4 Ana: 1 (Stufe) | ja | Ana/An ✗ | 6 | – | – |
+| holzbau_werkstoffe | B | 1 Ve: 4 · 2 Ve: 2 · 3 An: 1 · 4 Ana: 2 | ja | Ana/Ana | 7 | – | – |
 | holzkorrosion | B | 1 Ve: 1 · 2 Er: 1 · 3 An: 1 · 4 An: 2 · 5 Be: 1 | ja | Be/Be | 7 | – | – |
 | holzwerkstoffe | B | 1 Ve: 4 · 2 An: 1 · 3 Be: 1 (Stufe) | ja | Be/Be | 6 | – | – |
-| hydratation_folgen | B/M | 1 An: 3 · 2 An: 5 · 3 Ve: 10 · 4 An: 5 · 5 Be: 4 (Stufe) | ja | Be/An ✗ | 18 | 5 Punkte | 3 |
-| innenausbau | B | 1 Ana: 1 · 2 An: 2 · 3 Er: 1 · 4 An: 2 · 5 Be: 1 (Stufe) | ja | Be/An ✗ | 6 | – | – |
+| hydratation_folgen | B/M | 1 An: 3 · 2 An: 5 · 3 Ve: 10 · 4 An: 5 · 5 Be: 5 | ja | Be/Be | 19 | 5 Punkte | 3 |
+| innenausbau | B | 1 Ana: 2 · 2 An: 3 · 3 Er: 1 · 4 An: 2 · 5 Be: 2 | ja | Be/Be | 7 | – | – |
 | innovative_werkstoffe | M | 1 Ve: 1 · 2 An: 3 · 3 Ana: 1 · 4 Ana: 1 · 5 Be: 1 | ja | Be/Be | 6 | – | – |
 | instandhaltung | B/M | 1 Ve: 4 · 2 Ve: 2 · 3 An: 2 · 4 An: 1 · 5 An: 1 | ja | An/An | 6 | 5 Punkte | 3 (1 ohne Bezug) |
 | instandsetzung_materialien | B | 1 Ve: 2 · 2 An: 2 · 3 An: 1 · 4 Be: 1 | ja | Be/Be | 6 | – | – |
-| kalk | B | 1 Ve: 3 · 2 Ve: 3 · 3 An: 2 · 4 Be: 1 (Stufe) | ja | Be/An ✗ | 6 | – | – |
+| kalk | B | 1 Ve: 3 · 2 Ve: 4 · 3 An: 2 · 4 Be: 2 | ja | Be/Be | 7 | – | – |
 | keramik_ziegel | B | 1 Ve: 1 · 2 Ve: 1 · 3 An: 6 · 4 An: 1 · 5 Be: 2 | ja | Be/Be | 9 | 5 Punkte | 3 |
-| ki_llmpraxis | M | 1 Ve: 1 · 2 An: 0 ✗ · 3 Ana: 1 · 4 An: 3 · 5 Be: 1 | ja | Be/Be | 6 | 5 Punkte | – |
+| ki_llmpraxis | M | 1 Ve: 1 · 2 An: 1 · 3 Ana: 1 · 4 An: 3 · 5 Be: 1 | ja | Be/Be | 7 | 5 Punkte | – |
 | ki_lokal | B/M | 1 Ana: 2 · 2 An: 1 · 3 An: 4 · 4 An: 1 · 5 Be: 2 | ja | Be/Be | 6 | 5 Punkte | – |
-| ki_prompting | B/M | 1 Ve: 2 · 2 An: 0 ✗ · 3 An: 1 · 4 An: 1 · 5 Be: 2 | ja | Be/Be | 6 | 5 Punkte | 3 |
+| ki_prompting | B/M | 1 Ve: 2 · 2 An: 1 · 3 An: 1 · 4 An: 1 · 5 Be: 2 | ja | Be/Be | 7 | 5 Punkte | 3 |
 | ki_recht_ethik | B/M | 1 Ana: 1 (Stufe) · 2 Ve: 1 · 3 Ve: 3 · 4 An: 1 · 5 Be: 1 | ja | Be/Be | 7 | 5 Punkte | – |
-| ki_ressourcen | B/M | 1 Er: 0 ✗ · 2 An: 2 · 3 An: 3 · 4 Be: 1 | ja | Be/Be | 6 | – | – |
-| ki_system | B/M | 1 Ve: 0 ✗ · 2 Ve: 1 · 3 An: 2 · 4 An: 2 · 5 Be: 1 | ja | Be/Be | 6 | 5 Punkte | – |
+| ki_ressourcen | B/M | 1 Er: 1 · 2 An: 2 · 3 An: 3 · 4 Be: 1 | ja | Be/Be | 7 | – | – |
+| ki_system | B/M | 1 Ve: 1 · 2 Ve: 1 · 3 An: 2 · 4 An: 2 · 5 Be: 1 | ja | Be/Be | 7 | 5 Punkte | – |
 | ki_thesen | B/M | 1 Ve: 1 · 2 An: 2 · 3 An: 1 · 4 Be: 1 · 5 An: 1 | ja | Be/Be | 6 | 5 Punkte | – |
 | ki_uebungen | M | 1 An: 1 · 2 An: 1 · 3 Ana: 3 · 4 Be: 3 · 5 Be: 1 | ja | Be/Be | 6 | – | – |
 | knicken | B | 1 Ve: 1 · 2 An: 2 · 3 An: 5 · 4 Ana: 4 | ja | Ana/Ana | 6 | 5 Punkte | 3 |
-| kombinationen | B/M | 1 Ve: 2 · 2 An: 0 ✗ · 3 Ana: 1 (Stufe) · 4 An: 3 · 5 Be: 1 (Stufe) | ja | Be/An ✗ | 6 | 5 Punkte | 3 |
+| kombinationen | B/M | 1 Ve: 2 · 2 An: 1 · 3 Ana: 2 · 4 An: 3 · 5 Be: 2 | ja | Be/Be | 8 | 5 Punkte | 3 |
 | korrosion | B | 1 Ve: 1 · 2 Ve: 1 · 3 An: 2 · 4 An: 3 · 5 An: 2 | ja | An/An | 7 | – | 3 |
-| korrosionsschutz_beschichtungen | B | 1 An: 6 · 2 Ve: 0 ✗ · 3 An: 3 · 4 Be: 2 · 5 Ana: 2 | ja | Be/Be | 9 | 5 Punkte | 3 |
-| kreislauf_dpp | B/M | 1 Er: 0 ✗ · 2 Ve: 0 ✗ · 3 An: 3 · 4 Ana: 1 · 5 Be: 2 | ja | Be/Be | 6 | – | – |
+| korrosionsschutz_beschichtungen | B | 1 An: 6 · 2 Ve: 1 · 3 An: 3 · 4 Be: 2 · 5 Ana: 2 | ja | Be/Be | 10 | 5 Punkte | 3 |
+| kreislauf_dpp | B/M | 1 Er: 1 · 2 Ve: 1 · 3 An: 3 · 4 Ana: 3 · 5 Be: 2 | ja | Be/Be | 8 | – | – |
 | kunststoffe | B | 1 Ve: 2 · 2 Ana: 2 · 3 An: 2 · 4 Er: 1 · 5 Be: 1 | ja | Be/Be | 7 | – | 3 |
-| labor | B | 1 An: 1 · 2 An: 2 · 3 An: 1 · 4 Be: 1 (Stufe) · 5 An: 1 (Stufe) | ja | Be/An ✗ | 6 | 5 Punkte | 3 |
+| labor | B | 1 An: 1 · 2 An: 3 · 3 An: 1 · 4 Be: 2 · 5 An: 1 (Stufe) | ja | Be/Be | 7 | 5 Punkte | 3 |
 | labor_auslagerung | B/M | 1 An: 1 · 2 An: 2 · 3 Ana: 1 (Stufe) · 4 Be: 2 | ja | Be/Be | 6 | 5 Punkte | 3 |
 | labor_druckfestigkeit | B | 1 An: 2 · 2 An: 4 · 3 Ana: 1 · 4 Be: 1 | ja | Be/Be | 7 | 5 Punkte | 3 |
 | labor_frischbeton | B | 1 An: 1 · 2 An: 2 · 3 Ana: 2 | ja | Ana/Be | 6 | 5 Punkte | 3 |
@@ -286,28 +424,28 @@ Legende:
 | lebenszyklus_kosten | B/M | 1 Ve: 1 · 2 An: 3 · 3 Ana: 2 · 4 Be: 1 | ja | Be/Be | 7 | 5 Punkte | 3 |
 | lehm | B | 1 Ve: 1 · 2 Ana: 1 · 3 An: 2 · 4 Be: 2 | ja | Be/Be | 6 | 5 Punkte | 2 |
 | material_schaeden_gross | B/M | 1 Er: 3 · 2 Ve: 3 · 3 An: 1 · 4 Ana: 1 (Stufe) · 5 Be: 1 | ja | Be/Be | 7 | 5 Punkte | – |
-| materialdatenbanken | B/M | 1 Er: 1 · 2 Ve: 2 · 3 An: 2 · 4 Ana: 2 | ja | Ana/An ✗ | 6 | – | – |
-| materialitaet_architektur | B | 1 Ve: 1 · 2 Ve: 2 · 3 Ana: 2 (Stufe) · 4 Be: 1 (Stufe) | ja | Be/An ✗ | 6 | – | – |
-| materialkennwerte | B | 1 Ve: 2 · 2 An: 1 · 3 An: 2 · 4 Ana: 1 (Stufe) | ja | Ana/An ✗ | 6 | – | – |
-| materialmodelle | B/M | 1 Ve: 0 ✗ · 2 An: 2 · 3 An: 4 · 4 Ana: 1 · 5 Be: 1 | ja | Be/Be | 6 | – | 3 |
+| materialdatenbanken | B/M | 1 Er: 1 · 2 Ve: 2 · 3 An: 2 · 4 Ana: 3 | ja | Ana/Ana | 7 | – | – |
+| materialitaet_architektur | B | 1 Ve: 1 · 2 Ve: 2 · 3 Ana: 3 · 4 Be: 2 | ja | Be/Be | 7 | – | – |
+| materialkennwerte | B | 1 Ve: 2 · 2 An: 1 · 3 An: 2 · 4 Ana: 2 | ja | Ana/Ana | 7 | – | – |
+| materialmodelle | B/M | 1 Ve: 1 · 2 An: 3 · 3 An: 4 · 4 Ana: 1 · 5 Be: 1 | ja | Be/Be | 7 | – | 3 |
 | materialoptimierung | B/M | 1 Ve: 1 · 2 Ve: 2 · 3 An: 2 · 4 Ana: 1 · 5 Be: 1 | ja | Be/Be | 6 | 5 Punkte | 3 |
 | materialpaesse | B/M | 1 Ve: 2 · 2 An: 2 · 3 An: 2 · 4 Ana: 2 · 5 Be: 2 | ja | Be/Be | 6 | – | – |
 | mauerwerk | B | 1 Ve: 1 · 2 An: 1 · 3 An: 1 · 4 Ana: 1 · 5 An: 1 | ja | Ana/Ana | 6 | – | – |
 | mechanische_kenngroessen | B | 1 Ve: 1 · 2 An: 3 · 3 An: 1 · 4 Ana: 3 · 5 Be: 1 | ja | Be/Be | 7 | 5 Punkte | 3 |
-| mechanische_pruefungen | B | 1 Ve: 2 · 2 An: 2 · 3 An: 3 · 4 Ana: 2 | ja | Ana/An ✗ | 6 | – | 3 |
-| membranen_etfe | B | 1 Ve: 1 · 2 Ve: 2 · 3 An: 2 · 4 Be: 1 | ja | Be/Ana ✗ | 8 | 5 Punkte | 3 |
-| messen_pruefen | B/M | 1 Ve: 2 · 2 An: 0 ✗ · 3 An: 1 · 4 Be: 3 | ja | Be/Be | 6 | – | 3 |
+| mechanische_pruefungen | B | 1 Ve: 2 · 2 An: 2 · 3 An: 3 · 4 Ana: 3 | ja | Ana/Ana | 7 | – | 3 |
+| membranen_etfe | B | 1 Ve: 1 · 2 Ve: 2 · 3 An: 2 · 4 Be: 2 | ja | Be/Be | 9 | 5 Punkte | 3 |
+| messen_pruefen | B/M | 1 Ve: 2 · 2 An: 1 · 3 An: 1 · 4 Be: 3 | ja | Be/Be | 7 | – | 3 |
 | metalle | B | 1 Ve: 5 · 2 Ve: 2 · 3 An: 1 · 4 Be: 2 | ja | Be/Be | 6 | – | – |
 | metallkorrosion | B | 1 Ve: 1 · 2 Ve: 1 · 3 An: 2 · 4 Ana: 1 · 5 Be: 2 | ja | Be/Be | 7 | – | – |
 | mischungsberechnung | B | 1 An: 1 · 2 An: 1 · 3 An: 1 · 4 Ana: 1 · 5 Es: 1 (Stufe) | ja | Es/Ana ✗ | 6 | 5 Punkte | 3 |
 | modernisierung | B | 1 Er: 2 · 2 An: 3 · 3 An: 1 · 4 Ana: 1 · 5 Be: 1 | ja | Be/Be | 7 | 5 Punkte | 3 |
 | nachbehandlung | B | 1 Ve: 3 · 2 An: 3 · 3 An: 2 · 4 Be: 1 | ja | Be/Be | 6 | – | – |
-| nachhaltigkeit_daten_regeln | B/M | 1 Er: 0 ✗ · 2 Ve: 4 · 3 An: 5 · 4 Ana: 4 · 5 Be: 3 | ja | Be/Ana ✗ | 8 | 5 Punkte | – |
+| nachhaltigkeit_daten_regeln | B/M | 1 Er: 1 · 2 Ve: 4 · 3 An: 5 · 4 Ana: 4 · 5 Be: 4 | ja | Be/Be | 10 | 5 Punkte | – |
 | nawaro | B | 1 Ve: 3 · 2 An: 2 · 3 Ana: 1 (Stufe) · 4 Be: 1 | ja | Be/Be | 6 | – | – |
 | normen_ausblick | B/M | 1 Ve: 1 · 2 Ve: 2 · 3 An: 3 · 4 Ana: 3 · 5 Be: 2 | ja | Be/Be | 8 | – | – |
-| oekobilanz_lca | B/M | 1 Ve: 3 · 2 Ve: 1 · 3 An: 2 · 4 An: 2 · 5 Ana: 1 | ja | Ana/An ✗ | 7 | 5 Punkte | 3 |
-| online_tools | B/M | 1 Ve: 1 · 2 An: 3 · 3 An: 3 · 4 Ana: 2 · 5 An: 0 ✗ | ja | Ana/Ana | 6 | 5 Punkte | 2 |
-| pfas_baustoffe | B/M | 1 Er: 1 · 2 Ve: 3 · 3 An: 4 · 4 Be: 1 (Stufe) | ja | Be/An ✗ | 7 | 5 Punkte | 3 |
+| oekobilanz_lca | B/M | 1 Ve: 4 · 2 Ve: 2 · 3 An: 3 · 4 An: 2 · 5 Ana: 2 | ja | Ana/Ana | 8 | 5 Punkte | 3 |
+| online_tools | B/M | 1 Ve: 1 · 2 An: 3 · 3 An: 3 · 4 Ana: 2 · 5 An: 1 | ja | Ana/Ana | 7 | 5 Punkte | 2 |
+| pfas_baustoffe | B/M | 1 Er: 1 · 2 Ve: 3 · 3 An: 4 · 4 Be: 2 | ja | Be/Be | 8 | 5 Punkte | 3 |
 | probenahme | B/M | 1 Ve: 2 · 2 An: 2 · 3 An: 1 · 4 An: 1 · 5 Be: 1 | ja | Be/Be | 7 | – | 2 |
 | pruefverfahren_katalog | B/M | 1 Ve: 2 · 2 An: 1 · 3 Be: 1 | ja | Be/Be | 7 | 5 Punkte | 3 |
 | putzemoertel | B | 1 Ve: 1 · 2 Ve: 1 · 3 An: 1 · 4 An: 1 · 5 Be: 1 | ja | Be/Be | 7 | – | – |
@@ -326,10 +464,10 @@ Legende:
 | rechnung_schallschutz | B | 1 Ve: 1 · 2 An: 3 · 3 An: 5 · 4 Be: 1 | ja | Be/Be | 6 | 5 Punkte | 3 |
 | rechnung_stahlbeton | B | 1 An: 1 · 2 An: 4 · 3 Be: 1 · 4 An: 1 | ja | Be/Be | 6 | 5 Punkte | 3 |
 | rechnung_u_wert | B | 1 Er: 5 · 2 An: 1 · 3 Ana: 1 · 4 Be: 2 | ja | Be/Be | 6 | 5 Punkte | 3 |
-| regularien | B | 1 Er: 2 · 2 Ve: 1 · 3 Ve: 1 · 4 An: 1 · 5 Ana: 2 (Stufe) | ja | Ana/Ve ✗ | 6 | 5 Punkte | – |
-| ressourcen_umwelt | B | 1 Ve: 0 ✗ · 2 Ve: 1 · 3 An: 3 · 4 Be: 1 | ja | Be/Be | 6 | – | – |
-| ressourceneffizienz | B/M | 1 Er: 1 · 2 Ve: 0 ✗ · 3 An: 2 · 4 An: 4 · 5 Be: 1 | ja | Be/Be | 6 | 5 Punkte | 3 |
-| rueckbau | B | 1 Ve: 1 · 2 Ana: 1 · 3 An: 1 · 4 Be: 2 (Stufe) · 5 Ve: 0 ✗ | ja | Be/Be | 6 | 5 Punkte | – |
+| regularien | B | 1 Er: 2 · 2 Ve: 1 · 3 Ve: 1 · 4 An: 1 · 5 Ana: 3 | ja | Ana/Ana | 7 | 5 Punkte | – |
+| ressourcen_umwelt | B | 1 Ve: 1 · 2 Ve: 1 · 3 An: 4 · 4 Be: 1 | ja | Be/Be | 7 | – | – |
+| ressourceneffizienz | B/M | 1 Er: 1 · 2 Ve: 1 · 3 An: 3 · 4 An: 4 · 5 Be: 1 | ja | Be/Be | 7 | 5 Punkte | 3 |
+| rueckbau | B | 1 Ve: 2 · 2 Ana: 1 · 3 An: 1 · 4 Be: 2 (Stufe) · 5 Ve: 1 | ja | Be/Be | 7 | 5 Punkte | – |
 | schadensbilder | B | 1 Ve: 3 · 2 An: 3 · 3 An: 0 ✗ · 4 Ana: 0 ✗ · 5 Be: 2 (Stufe) | ja | Be/An ✗ | 6 | 5 Punkte | – |
 | schadreaktionen_beton | B | 1 Ve: 1 · 2 An: 1 · 3 An: 2 · 4 Ana: 1 · 5 Be: 1 | ja | Be/Be | 6 | – | – |
 | schadstoffe | B/M | 1 Er: 1 · 2 Ve: 1 · 3 An: 2 · 4 Ana: 1 (Stufe) · 5 Be: 1 | ja | Be/Be | 7 | 5 Punkte | – |
@@ -339,17 +477,17 @@ Legende:
 | sicherheitskonzept | B | 1 Er: 1 · 2 Ve: 3 · 3 An: 1 · 4 Ana: 4 · 5 Be: 1 | ja | Be/Be | 7 | – | 2 |
 | sichtbeton | B | 1 Er: 1 · 2 Ve: 4 · 3 An: 1 · 4 Ana: 1 | ja | Ana/Ana | 6 | – | – |
 | sommerlicher_waermeschutz | B | 1 Ve: 4 · 2 An: 5 · 3 An: 2 · 4 Ana: 2 · 5 Be: 3 | ja | Be/Be | 8 | 5 Punkte | 3 |
-| sonderbetone | B/M | 1 Ve: 2 · 2 Ana: 0 ✗ · 3 An: 0 ✗ · 4 Be: 1 | ja | Be/Be | 7 | 5 Punkte | – |
+| sonderbetone | B/M | 1 Ve: 2 · 2 Ana: 1 · 3 An: 1 · 4 Be: 1 | ja | Be/Be | 9 | 5 Punkte | – |
 | sonstiges | B/M | 1 Ve: 2 · 2 An: 2 · 3 Ve: 1 · 4 Be: 1 | ja | Be/Be | 6 | – | – |
 | spannbeton_grundlagen | M | 1 Ve: 1 · 2 Ana: 2 · 3 Be: 2 | ja | Be/Be | 6 | 5 Punkte | 2 |
 | spannbeton_kennwerte | M | 1 Ve: 2 · 2 An: 1 · 3 An: 3 | ja | An/An | 6 | 5 Punkte | 3 |
-| stahl | B | 1 Ve: 2 · 2 Er: 3 · 3 An: 1 · 4 Ana: 3 · 5 Be: 7 (Stufe) | ja | Be/Ana ✗ | 11 | 5 Punkte | 6 |
+| stahl | B | 1 Ve: 2 · 2 Er: 4 · 3 An: 1 · 4 Ana: 3 · 5 Be: 8 | ja | Be/Be | 12 | 5 Punkte | 6 |
 | stahlbau_ec3 | B | 1 Ve: 5 · 2 An: 5 · 3 An: 2 · 4 Ana: 3 | ja | Ana/Be | 8 | 5 Punkte | 3 |
-| stahlbeton_bemessung | B | 1 Ve: 4 · 2 An: 1 · 3 An: 1 · 4 Ana: 1 (Stufe) | ja | Ana/An ✗ | 10 | 5 Punkte | 3 |
+| stahlbeton_bemessung | B | 1 Ve: 4 · 2 An: 1 · 3 An: 1 · 4 Ana: 2 | ja | Ana/Ana | 11 | 5 Punkte | 3 |
 | statistik | B | 1 An: 2 · 2 An: 2 · 3 An: 5 · 4 Ana: 1 · 5 Be: 1 (Stufe) | ja | Be/Be | 11 | 5 Punkte | 6 |
 | vdi6200 | B/M | 1 Er: 4 · 2 Ve: 3 · 3 An: 2 · 4 Ana: 2 · 5 Be: 1 | ja | Be/Be | 6 | 5 Punkte | 3 |
-| waermeeigenschaften | B | 1 Ve: 2 · 2 An: 1 · 3 An: 2 · 4 An: 1 · 5 Be: 1 (Stufe) | ja | Be/An ✗ | 6 | – | 2 |
+| waermeeigenschaften | B | 1 Ve: 2 · 2 An: 1 · 3 An: 2 · 4 An: 1 · 5 Be: 2 | ja | Be/Be | 7 | – | 2 |
 | weitere_organik | B | 1 Ve: 3 · 2 Ve: 1 · 3 Ana: 1 · 4 An: 2 · 5 Be: 1 | ja | Be/Be | 6 | – | – |
-| wta | B/M | 1 Ve: 2 · 2 Ve: 3 · 3 An: 4 · 4 Ana: 4 · 5 Be: 3 (Stufe) | ja | Be/An ✗ | 6 | – | 3 |
+| wta | B/M | 1 Ve: 2 · 2 Ve: 3 · 3 An: 4 · 4 Ana: 4 · 5 Be: 4 | ja | Be/Be | 7 | – | 3 |
 | wu-bauwerke | B/M | 1 Er: 1 · 2 An: 1 · 3 Ana: 1 (Stufe) · 4 Be: 1 · 5 Ana: 2 | ja | Be/Be | 7 | 5 Punkte | 3 |
 | zfp | B/M | 1 Ve: 1 (Stufe) · 2 An: 2 · 3 Be: 1 | ja | Be/Be | 7 | 5 Punkte | 3 |

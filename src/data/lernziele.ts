@@ -798,7 +798,7 @@ export const LERNZIELE: Readonly<Record<string, ModulLernziele>> = {
   instandhaltung: {
     niveau: "B/M", minuten: 180, vorwissen: ["korrosion", "schutz_grundlagen", "dauerhaftigkeit"],
     ziele: [
-      { stufe: "Verstehen", text: "die Instandsetzungsprinzipien nach DIN EN 1504 und die Anwendungsbereiche von TR Instandhaltung und DIN EN 1504 erläutern." },
+      { stufe: "Verstehen", text: "die Instandsetzungsprinzipien nach DIN EN 1504 und die Anwendungsbereiche von TR Instandhaltung und DIN EN 1504 erläutern und mit dem Chloridrechner abschätzen, wann die Bewehrung depassiviert wird." },
       { stufe: "Verstehen", text: "die Oberflächenschutzsysteme OS 1 bis OS 11 nach Aufbau, Rissüberbrückung und Befahrbarkeit unterscheiden." },
       { stufe: "Anwenden", text: "mit dem System-Finder ein geeignetes Oberflächenschutzsystem und einen Instandsetzungsmörtel (CC, PCC, SPCC, PC) für ein Bauteil auswählen." },
       { stufe: "Anwenden", text: "das Füllgut und das Injektionsziel für eine Rissinjektion aus Rissbreite, Rissaktivität und Feuchtezustand ermitteln." },
@@ -1499,10 +1499,10 @@ export const LERNZIELE: Readonly<Record<string, ModulLernziele>> = {
   beton_a_z: {
     niveau: "B", minuten: 45, vorwissen: ["bindemittel", "frischbeton", "festbeton"],
     ziele: [
-      { stufe: "Erinnern", text: "die Ausbreitmaßklassen F1 bis F6 mit typischen Einsatzbereichen sowie Kontrollpunkte für Lieferschein, Einbau und Nachbehandlung benennen." },
-      { stufe: "Verstehen", text: "den Einfluss des w/z-Werts auf Kapillarporen, Gefügedichtheit und Dauerhaftigkeit erläutern und die Dichtheitsgrenze bei etwa 0,50 begründen." },
-      { stufe: "Anwenden", text: "eine Betonrezeptur über die Stoffraumgleichung auf 1000 dm³ prüfen und den äquivalenten Wasserzementwert mit dem k-Wert für Flugasche berechnen." },
-      { stufe: "Anwenden", text: "das Nennmaß der Betondeckung c_nom = c_min + Δc_dev für eine Expositionsklasse XC oder XD ermitteln." },
+      { stufe: "Erinnern", text: "im Lexikon die Ausbreitmaßklassen F1 bis F6 mit typischen Einsatzbereichen sowie die Kontrollpunkte für Lieferschein, Einbau und Nachbehandlung nachschlagen und benennen." },
+      { stufe: "Verstehen", text: "anhand der Lexikoneinträge den Einfluss des w/z-Werts auf Kapillarporen, Gefügedichtheit und Dauerhaftigkeit nachvollziehen und die Dichtheitsgrenze bei etwa 0,50 erläutern." },
+      { stufe: "Verstehen", text: "die Stoffraumgleichung auf 1000 dm³ und den äquivalenten Wasserzementwert mit dem k-Wert für Flugasche im Lexikon nachschlagen und dem Rechenweg einer Betonrezeptur zuordnen." },
+      { stufe: "Anwenden", text: "das Nennmaß der Betondeckung c_nom = c_min + Δc_dev für eine Expositionsklasse XC oder XD mit den Werten des Lexikons ermitteln." },
     ],
   },
   qualitaetssicherung: {

@@ -2,9 +2,9 @@
 
 Stand: 03.11.2026 · Grundlage: `src/data/quiz.json` (Felder `vorpruefung` und `verified`), `docs/quiz-pruefhinweise.md`, Lernziele aus `src/data/lernziele.ts`. Erzeugt mit `npx tsx scripts/pruefliste.ts`; gesetzte Kreuze übernimmt das Skript beim nächsten Lauf. quiz.json wurde für diese Liste nicht verändert.
 
-Cluster IV umfasst 336 Fragen aus 50 Modulen. Aufgeführt sind 128 auffällige Fragen (Vorprüfung „korrigiert“ oder „fraglich“, offener Prüfhinweis oder neu seit 26.10.2026 ohne Freigabe) und eine Stichprobe von 5 unauffälligen Fragen. Entscheidung je Frage ankreuzen; bei „ändern“ den Änderungswunsch in die Zeile darunter schreiben.
+Cluster IV umfasst 350 Fragen aus 50 Modulen. Aufgeführt sind 142 auffällige Fragen (Vorprüfung „korrigiert“ oder „fraglich“, offener Prüfhinweis oder neu seit 26.10.2026 ohne Freigabe) und eine Stichprobe von 5 unauffälligen Fragen. Entscheidung je Frage ankreuzen; bei „ändern“ den Änderungswunsch in die Zeile darunter schreiben.
 
-Auffällig im Einzelnen (Mehrfachnennung möglich): 87 korrigiert, 4 fraglich, 11 mit offenem Prüfhinweis, 34 neu seit 26.10.2026.
+Auffällig im Einzelnen (Mehrfachnennung möglich): 87 korrigiert, 4 fraglich, 11 mit offenem Prüfhinweis, 48 neu seit 26.10.2026.
 
 ## A. Auffällige Fragen
 
@@ -344,6 +344,14 @@ Auffällig im Einzelnen (Mehrfachnennung möglich): 87 korrigiert, 4 fraglich, 1
 - [ ] ok
 - [ ] ändern: …
 
+### qlz_altholz_urban_mining_1 · Altholz-NIR-Sortierung und Urban Mining
+
+- **Frage:** Eine Stadt will für ein Quartier der 1960er Jahre abschätzen, wie viel Bauholz künftig stofflich verwertbar wird. Welche Bewertung des Vorgehens ist richtig?
+- **Richtige Antwort:** Top-down liefert früh Mengen; erst Gebäudepässe oder Begehungen zeigen Qualität und Schadstoffe
+- **Auffälligkeit:** neu seit 26.10.2026 (Z24), noch nicht freigegeben, ohne Vorprüfung
+- [ ] ok
+- [ ] ändern: …
+
 ### qlz_bauwerksunters_monitoring_1 · Tragwerksmonitoring (SHM)
 
 - **Frage:** Ein Riss in einer Stützwand soll über ein Jahr daraufhin überwacht werden, ob er sich bewegt. Welche Verfahrenswahl ist nach dem Modul am besten begründet?
@@ -376,10 +384,26 @@ Auffällig im Einzelnen (Mehrfachnennung möglich): 87 korrigiert, 4 fraglich, 1
 - [ ] ok
 - [ ] ändern: …
 
+### qlz_boden_materialaufbereitung_2 · Boden- & Materialaufbereitung
+
+- **Frage:** Welche Zuordnung von Verordnung und Regelungsinhalt entspricht dem Modul?
+- **Richtige Antwort:** EBV: Herstellung, Güteüberwachung und Einbau mineralischer Ersatzbaustoffe
+- **Auffälligkeit:** neu seit 26.10.2026 (Z24), noch nicht freigegeben, ohne Vorprüfung
+- [ ] ok
+- [ ] ändern: …
+
 ### qlz_dauerhaftigkeit_1 · Dauerhaftigkeit & Korrosionsschutz
 
 - **Frage:** Welche Zuordnung von Maßnahme und Schutzprinzip entspricht dem Modul?
 - **Richtige Antwort:** Opferanode als aktiver Schutz, Feuerverzinkung als passive Barriere
+- **Auffälligkeit:** neu seit 26.10.2026 (Z24), noch nicht freigegeben, ohne Vorprüfung
+- [ ] ok
+- [ ] ändern: …
+
+### qlz_denkmalpflege_1 · Denkmalpflege
+
+- **Frage:** Ein historisches Ziegelmauerwerk mit Feuchteschäden soll einen neuen Putz erhalten. Welche Planung ist denkmalpflegerisch am besten begründet?
+- **Richtige Antwort:** Schadhafte Flächen ergänzen, intakten Altputz sichern, Kalkputz und Silikatfarbe
 - **Auffälligkeit:** neu seit 26.10.2026 (Z24), noch nicht freigegeben, ohne Vorprüfung
 - [ ] ok
 - [ ] ändern: …
@@ -416,6 +440,30 @@ Auffällig im Einzelnen (Mehrfachnennung möglich): 87 korrigiert, 4 fraglich, 1
 - [ ] ok
 - [ ] ändern: …
 
+### qlz_korrosionsschutz_beschichtungen_2 · Korrosionsschutz durch Beschichtungen
+
+- **Frage:** Ein Stahlbauteil im Freien erhält EP-Zinkstaub, EP-Eisenglimmer und eine PUR-Deckbeschichtung. Warum wird oben PUR statt EP verwendet?
+- **Richtige Antwort:** PUR ist UV- und farbtonstabil und schützt die darunterliegenden EP-Schichten vor Abbau
+- **Auffälligkeit:** neu seit 26.10.2026 (Z24), noch nicht freigegeben, ohne Vorprüfung
+- [ ] ok
+- [ ] ändern: …
+
+### qlz_kreislauf_dpp_1 · Kreislaufwirtschaft & Ressourceneffizienz
+
+- **Frage:** In welcher Rangfolge stehen die R-Strategien im Modul, beginnend mit der höchsten Priorität?
+- **Richtige Antwort:** Refuse & Reduce → Reuse → Repair & Refurbish → Recycle → Recover & Dispose
+- **Auffälligkeit:** neu seit 26.10.2026 (Z24), noch nicht freigegeben, ohne Vorprüfung
+- [ ] ok
+- [ ] ändern: …
+
+### qlz_kreislauf_dpp_2 · Kreislaufwirtschaft & Ressourceneffizienz
+
+- **Frage:** Warum steht in der Erkundung nach DIN SPEC 91484 die Schadstoffanalyse vor dem Re-Use-Inventar?
+- **Richtige Antwort:** Weil nur schadstofffreie, trennbare Bauteile als Re-Use-tauglich gelten können
+- **Auffälligkeit:** neu seit 26.10.2026 (Z24), noch nicht freigegeben, ohne Vorprüfung
+- [ ] ok
+- [ ] ändern: …
+
 ### qlz_lebenszyklus_kosten_1 · Lebenszyklus & Kosten
 
 - **Frage:** Ein Fensterflügel wird planmäßig nach 30 Jahren ausgetauscht. In welche Kostengruppe der Nutzungskosten nach DIN 18960 gehört dieser Austausch nach dem Modul?
@@ -448,10 +496,66 @@ Auffällig im Einzelnen (Mehrfachnennung möglich): 87 korrigiert, 4 fraglich, 1
 - [ ] ok
 - [ ] ändern: …
 
+### qlz_nachhaltigkeit_daten_regeln_1 · Daten & Regeln
+
+- **Frage:** Welche Kennzahlen für Deutschland nennt das Modul?
+- **Richtige Antwort:** Rund 220–230 Mio. t Bauabfälle jährlich; Flächenziel unter 30 ha/Tag bis 2030
+- **Auffälligkeit:** neu seit 26.10.2026 (Z24), noch nicht freigegeben, ohne Vorprüfung
+- [ ] ok
+- [ ] ändern: …
+
+### qlz_nachhaltigkeit_daten_regeln_2 · Daten & Regeln
+
+- **Frage:** Welche Einordnung der Instrumente des deutschen Nachhaltigkeits-Baurechts nach Verbindlichkeit ist richtig (Stand 10/2026)?
+- **Richtige Antwort:** GModG, EBV und KrWG sind verbindlich; QNG ist ein freiwilliges Fördersiegel
+- **Auffälligkeit:** neu seit 26.10.2026 (Z24), noch nicht freigegeben, ohne Vorprüfung
+- [ ] ok
+- [ ] ändern: …
+
+### qlz_oekobilanz_lca_1 · Ökobilanzierung (LCA & EPD)
+
+- **Frage:** Rezeptur 1: 320 kg CEM I (0,665 kg CO₂-Äq./kg) und 1870 kg Gesteinskörnung (0,0035 kg CO₂-Äq./kg). Rezeptur 2: 300 kg CEM III/A (0,40 kg CO₂-Äq./kg). Welche Analyse ist richtig?
+- **Richtige Antwort:** Der Zement verursacht über 90 % des A1-GWP; CEM III/A senkt diesen Anteil um rund 44 %
+- **Auffälligkeit:** neu seit 26.10.2026 (Z24), noch nicht freigegeben, ohne Vorprüfung
+- [ ] ok
+- [ ] ändern: …
+
+### qlz_pfas_baustoffe_1 · PFAS in Baustoffen
+
+- **Frage:** Eine frühere Feuerwehrübungsfläche mit Betonplatten soll rückgebaut werden. Welches Vorgehen ist am besten begründet?
+- **Richtige Antwort:** Nutzung auswerten, AOF und TOP-Assay ergänzen, belastete Teile trennen und thermisch behandeln
+- **Auffälligkeit:** neu seit 26.10.2026 (Z24), noch nicht freigegeben, ohne Vorprüfung
+- [ ] ok
+- [ ] ändern: …
+
 ### qlz_pruefverfahren_katalog_1 · Bauwerksdiagnose & ZfP
 
 - **Frage:** Für eine Umnutzung soll die Betondruckfestigkeit einer Decke belastbar bestimmt werden; Kernbohrungen sind nur an wenigen Stellen möglich. Welches Vorgehen ist nach dem Katalog am besten begründet?
 - **Richtige Antwort:** Rückprall im Raster zur Bereichsbildung, Festigkeit an Bohrkernen kalibrieren
+- **Auffälligkeit:** neu seit 26.10.2026 (Z24), noch nicht freigegeben, ohne Vorprüfung
+- [ ] ok
+- [ ] ändern: …
+
+### qlz_ressourcen_umwelt_1 · Ressourcen & Umwelt
+
+- **Frage:** Welche Aussage zum typischen GWP je kg Baustoff entspricht der Übersicht im Modul?
+- **Richtige Antwort:** Primäraluminium liegt mit rund 14–20 kg CO₂-Äq./kg weit über Portlandzement
+- **Auffälligkeit:** neu seit 26.10.2026 (Z24), noch nicht freigegeben, ohne Vorprüfung
+- [ ] ok
+- [ ] ändern: …
+
+### qlz_ressourceneffizienz_1 · Ressourceneffizienz
+
+- **Frage:** Welche Aufgabe hat das Ressourceneffizienz-Zentrum Bayern (REZ) nach dem Modul?
+- **Richtige Antwort:** Es berät KMU neutral und veröffentlicht Datenblätter zu Ersatzbaustoffen
+- **Auffälligkeit:** neu seit 26.10.2026 (Z24), noch nicht freigegeben, ohne Vorprüfung
+- [ ] ok
+- [ ] ändern: …
+
+### qlz_rueckbau_1 · Rückbau & Material
+
+- **Frage:** Ein Gebäude von 1978 mit asbesthaltigem Putz (0,1 %) wird ohne vorherige Entfrachtung maschinell abgebrochen. Welche Folge beschreibt das Modul?
+- **Richtige Antwort:** Der gesamte Ziegel- und Betonabbruch ist belastet und geht als Sondermüll
 - **Auffälligkeit:** neu seit 26.10.2026 (Z24), noch nicht freigegeben, ohne Vorprüfung
 - [ ] ok
 - [ ] ändern: …
@@ -468,6 +572,14 @@ Auffällig im Einzelnen (Mehrfachnennung möglich): 87 korrigiert, 4 fraglich, 1
 
 - **Frage:** Eine Parkhausstütze ist bis in Bewehrungstiefe chloridbelastet; ein großflächiger Betonabtrag würde aufwendige Abstützungen erfordern. Welches Instandsetzungsprinzip ist nach dem Modul am besten begründet?
 - **Richtige Antwort:** Prinzip 10 (CP): KKS, der chloridhaltige Beton darf im Bauteil verbleiben
+- **Auffälligkeit:** neu seit 26.10.2026 (Z24), noch nicht freigegeben, ohne Vorprüfung
+- [ ] ok
+- [ ] ändern: …
+
+### qlz_wta_1 · WTA-Merkblätter
+
+- **Frage:** Ein denkmalgeschütztes Ziegelmauerwerk hat Restfeuchte und Salze; die Fassade erhält Schlagregen. Welches Innendämmsystem ist am besten begründet?
+- **Richtige Antwort:** Calciumsilicat, kapillaraktiv und vollflächig verklebt, ohne Dampfsperre
 - **Auffälligkeit:** neu seit 26.10.2026 (Z24), noch nicht freigegeben, ohne Vorprüfung
 - [ ] ok
 - [ ] ändern: …

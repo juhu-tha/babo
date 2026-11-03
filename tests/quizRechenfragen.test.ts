@@ -36,6 +36,9 @@ import { huellwerte } from '../src/calc/expositionsklassen';
 import { NORMATIVE_EXPOSURE_CLASSES } from '../src/modules/expositionsklassen/daten';
 import { hauptspannungen, vonMises } from '../src/calc/spannungszustand';
 import { gefuegeAnteile, cev } from '../src/calc/eisenKohlenstoff';
+// Folgerunde Lernziel-Abdeckung 03.11.2026
+import { schichtaufbau } from '../src/calc/kombinationen';
+import { radiusAusStich, membranKraft } from '../src/calc/membran';
 import { bilinearVerfestigung, binghamScherrate, maxwellSpannung, abminderungStahlBrand } from '../src/calc/werkstoffmodelle';
 import { carbonbetonBiegung } from '../src/calc/carbonbeton';
 import { einfeldQ, kragF } from '../src/calc/biegelinie';
@@ -500,6 +503,25 @@ const zm = (x: number, n: number) => (x < 0 ? `−${z(-x, n)}` : z(x, n)); // Mi
   PRUEFUNGEN.push({ id: 'qlz_abfaelle_1', richtig: `${p.einzelproben} Einzel-, ${p.mischproben} Misch-, ${p.laborproben} Laborproben; Einzelprobe mindestens 5 l` });
   const h = huellwerte(NORMATIVE_EXPOSURE_CLASSES, ['XC4', 'XD1', 'XF1'], 32, 15)!;
   PRUEFUNGEN.push({ id: 'qlz_expositionsklassen_1', richtig: `(w/z)_eq ≤ ${z(h.minWzEq!, 2)}, z ≥ ${h.maxCement} kg/m³, mindestens ${h.highestClass}` });
+}
+
+// ------------------------------------------------------------------------------------------------
+// Folgerunde Lernziel-Abdeckung 03.11.2026: Rechenwerte neuer Fragen (qlz_*) gegen die Kerne
+// ------------------------------------------------------------------------------------------------
+{
+  const w = schichtaufbau([{ dicke: 15, lambda: 0.70, mu: 10 }, { dicke: 240, lambda: 0.28, mu: 10 }, { dicke: 160, lambda: 0.035, mu: 40 }]);
+  const ohneD = schichtaufbau([{ dicke: 15, lambda: 0.70, mu: 10 }, { dicke: 240, lambda: 0.28, mu: 10 }]);
+  PRUEFUNGEN.push({ id: 'qlz_kombinationen_1', richtig: `U ≈ ${z(w.u, 2)} W/(m²K); s_d ≈ ${z(w.sdGesamt, 2)} m`,
+    optionen: [`U ≈ ${z(w.u, 2)} W/(m²K); s_d ≈ ${z(w.sdGesamt, 2)} m`, `U ≈ ${z(w.rT, 2)} W/(m²K); s_d ≈ ${z(w.sdGesamt, 2)} m`,
+      `U ≈ ${z(ohneD.u, 2)} W/(m²K); s_d ≈ ${z(ohneD.sdGesamt, 2)} m`, `U ≈ ${z(1 / (w.rT - 0.17), 3)} W/(m²K); s_d ≈ ${z(w.sdGesamt, 2)} m`],
+    erklaerung: [`R_T = 0,13 + 0,021 + 0,857 + 4,571 + 0,04 = ${z(w.rT, 2)}`] });
+  PRUEFUNGEN.push({ id: 'qlz_stahl_1', richtig: `CEV ≈ ${z(cev({ C: 0.20, Mn: 1.50, Cr: 0.10, Ni: 0.30 }), 2)} – über 0,45 für S355J2; Lieferung prüfen, sonst Vorwärmen nötig` });
+  const b30 = abbrandQuerschnitt('bsh', 30, 160, 360, 3), b60 = abbrandQuerschnitt('bsh', 60, 160, 360, 3);
+  PRUEFUNGEN.push({ id: 'qlz_brandschutz_2', richtig: `Nach 30 min rund ${z(b30.stiffnessLossPercent, 0)} % Verlust, nach 60 min rund ${z(b60.stiffnessLossPercent, 0)} %; eigener Brandnachweis`,
+    erklaerung: [`${b30.b_fi} × ${b30.h_fi} mm`, `${b60.b_fi} × ${b60.h_fi} mm`] });
+  const n15 = membranKraft('zylinder', 400, radiusAusStich(3, 0.15)) / 1000, n30 = membranKraft('zylinder', 400, radiusAusStich(3, 0.30)) / 1000;
+  PRUEFUNGEN.push({ id: 'qlz_membranen_etfe_1', richtig: 'Stich auf 0,30 m vergrößern und eine dritte Lage ergänzen',
+    erklaerung: [`n ≈ ${z(n15, 2)} kN/m`, `n ≈ ${z(n30, 2)} kN/m`, `r = ${z(radiusAusStich(3, 0.30), 2)} m`] });
 }
 
 // ------------------------------------------------------------------------------------------------

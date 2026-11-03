@@ -2,9 +2,9 @@
 
 Stand: 03.11.2026 · Grundlage: `src/data/quiz.json` (Felder `vorpruefung` und `verified`), `docs/quiz-pruefhinweise.md`, Lernziele aus `src/data/lernziele.ts`. Erzeugt mit `npx tsx scripts/pruefliste.ts`; gesetzte Kreuze übernimmt das Skript beim nächsten Lauf. quiz.json wurde für diese Liste nicht verändert.
 
-Cluster V umfasst 134 Fragen aus 22 Modulen. Aufgeführt sind 35 auffällige Fragen (Vorprüfung „korrigiert“ oder „fraglich“, offener Prüfhinweis oder neu seit 26.10.2026 ohne Freigabe) und eine Stichprobe von 5 unauffälligen Fragen. Entscheidung je Frage ankreuzen; bei „ändern“ den Änderungswunsch in die Zeile darunter schreiben.
+Cluster V umfasst 141 Fragen aus 22 Modulen. Aufgeführt sind 42 auffällige Fragen (Vorprüfung „korrigiert“ oder „fraglich“, offener Prüfhinweis oder neu seit 26.10.2026 ohne Freigabe) und eine Stichprobe von 5 unauffälligen Fragen. Entscheidung je Frage ankreuzen; bei „ändern“ den Änderungswunsch in die Zeile darunter schreiben.
 
-Auffällig im Einzelnen (Mehrfachnennung möglich): 33 korrigiert, 0 fraglich, 0 mit offenem Prüfhinweis, 2 neu seit 26.10.2026.
+Auffällig im Einzelnen (Mehrfachnennung möglich): 33 korrigiert, 0 fraglich, 0 mit offenem Prüfhinweis, 9 neu seit 26.10.2026.
 
 ## A. Auffällige Fragen
 
@@ -168,10 +168,66 @@ Auffällig im Einzelnen (Mehrfachnennung möglich): 33 korrigiert, 0 fraglich, 0
 - [ ] ok
 - [x] ändern: Rückmeldung zu f_ck + 8 (Mittelwertbeziehung DIN EN 1992-1-1, kein Vorhaltemaß), korrigiert
 
+### qlz_dpp_1 · Digitaler Produktpass (DPP)
+
+- **Frage:** Ein Rückbauunternehmen will Bauteile sortenrein demontieren. Welches Datenfeld des DPP ist für diese Lebenszyklusphase gedacht?
+- **Richtige Antwort:** Rückbau: Leitfäden zu Demontage, Trennbarkeit und Entsorgung
+- **Auffälligkeit:** neu seit 26.10.2026 (Z24), noch nicht freigegeben, ohne Vorprüfung
+- [ ] ok
+- [ ] ändern: …
+
+### qlz_ki_llmpraxis_1 · KI: LLM-Praxis
+
+- **Frage:** Sie hinterlegen für ein lokales Sprachmodell einen festen Systemprompt für Bemessungsfragen. Welche Fassung erfüllt die Anforderungen des Moduls am besten?
+- **Richtige Antwort:** „Fachberater Tragwerksplanung: DIN EN 1992, SI-Einheiten, keine erfundenen Normenabsätze.“
+- **Auffälligkeit:** neu seit 26.10.2026 (Z24), noch nicht freigegeben, ohne Vorprüfung
+- [ ] ok
+- [ ] ändern: …
+
+### qlz_ki_prompting_1 · KI: Prompting-Praxis
+
+- **Frage:** Mit dem Prompt-Generator soll eine Rezeptur mit RC-Beton auf Normkonformität geprüft und das Ergebnis schnell auf der Baustelle abgehakt werden. Welche Einstellung passt?
+- **Richtige Antwort:** Ziel Regelwerksprüfung, Format Checkliste, Tonalität pragmatisch
+- **Auffälligkeit:** neu seit 26.10.2026 (Z24), noch nicht freigegeben, ohne Vorprüfung
+- [ ] ok
+- [ ] ändern: …
+
 ### qlz_ki_recht_ethik_1 · KI: Fehler, Recht & Ethik
 
 - **Frage:** Ein Büro will für viele Rezepturvarianten Reasoning-Anfragen an ein Cloud-Modell stellen, um Klinkeranteil und Betonvolumen zu senken. Wie bewertet das Modul Energiebedarf, Nutzen und Ergebnisse?
 - **Richtige Antwort:** Gezielt eingesetzt überwiegt die Einsparung; Ergebnisse gegen DIN EN und NA prüfen
+- **Auffälligkeit:** neu seit 26.10.2026 (Z24), noch nicht freigegeben, ohne Vorprüfung
+- [ ] ok
+- [ ] ändern: …
+
+### qlz_ki_ressourcen_1 · KI: Unabhängige KI-Seiten
+
+- **Frage:** Wo finden Sie nach dem Modul quelloffene Bildklassifizierungsmodelle, um Betonschäden per Smartphone-Foto lokal zu klassifizieren?
+- **Richtige Antwort:** Bei Hugging Face, der Plattform für Modelle, Datensätze und Demos
+- **Auffälligkeit:** neu seit 26.10.2026 (Z24), noch nicht freigegeben, ohne Vorprüfung
+- [ ] ok
+- [ ] ändern: …
+
+### qlz_ki_system_1 · KI: Systemarchitektur
+
+- **Frage:** Welche Zuordnung von KI-Verfahren und typischer Aufgabe entspricht der Systemarchitektur im Modul?
+- **Richtige Antwort:** Klassisches ML: aus Tabellen mit Laborreihen die Druckfestigkeit vorhersagen
+- **Auffälligkeit:** neu seit 26.10.2026 (Z24), noch nicht freigegeben, ohne Vorprüfung
+- [ ] ok
+- [ ] ändern: …
+
+### qlz_materialdatenbanken_1 · Materialdatenbanken
+
+- **Frage:** EPS: 3,25 kg CO₂e/kg, ρ = 20 kg/m³; Mineralwolle: 1,20 kg CO₂e/kg, ρ = 30 kg/m³. Beide mit λ = 0,035 W/(mK) für R = 4,0 m²K/W. Welche Analyse ist richtig?
+- **Richtige Antwort:** Je kg ist EPS 2,7-mal ungünstiger, je m² bei gleichem R nur 1,8-mal (9,10 zu 5,04 kg)
+- **Auffälligkeit:** neu seit 26.10.2026 (Z24), noch nicht freigegeben, ohne Vorprüfung
+- [ ] ok
+- [ ] ändern: …
+
+### qlz_online_tools_1 · Online-Tools & Rechner
+
+- **Frage:** Das IfcOpenShell-Snippet des Moduls summiert die Nettovolumen von IfcWall und IfcSlab. Wie erfassen Sie zusätzlich Betonstützen?
+- **Richtige Antwort:** model.by_type("IfcColumn") durchlaufen und NetVolume aus Qto_ColumnBaseQuantities addieren
 - **Auffälligkeit:** neu seit 26.10.2026 (Z24), noch nicht freigegeben, ohne Vorprüfung
 - [ ] ok
 - [ ] ändern: …

@@ -2,9 +2,9 @@
 
 Stand: 03.11.2026 · Grundlage: `src/data/quiz.json` (Felder `vorpruefung` und `verified`), `docs/quiz-pruefhinweise.md`, Lernziele aus `src/data/lernziele.ts`. Erzeugt mit `npx tsx scripts/pruefliste.ts`; gesetzte Kreuze übernimmt das Skript beim nächsten Lauf. quiz.json wurde für diese Liste nicht verändert.
 
-Cluster II umfasst 350 Fragen aus 56 Modulen. Aufgeführt sind 121 auffällige Fragen (Vorprüfung „korrigiert“ oder „fraglich“, offener Prüfhinweis oder neu seit 26.10.2026 ohne Freigabe) und eine Stichprobe von 5 unauffälligen Fragen. Entscheidung je Frage ankreuzen; bei „ändern“ den Änderungswunsch in die Zeile darunter schreiben.
+Cluster II umfasst 376 Fragen aus 58 Modulen. Aufgeführt sind 147 auffällige Fragen (Vorprüfung „korrigiert“ oder „fraglich“, offener Prüfhinweis oder neu seit 26.10.2026 ohne Freigabe) und eine Stichprobe von 5 unauffälligen Fragen. Entscheidung je Frage ankreuzen; bei „ändern“ den Änderungswunsch in die Zeile darunter schreiben.
 
-Auffällig im Einzelnen (Mehrfachnennung möglich): 110 korrigiert, 0 fraglich, 16 mit offenem Prüfhinweis, 6 neu seit 26.10.2026.
+Auffällig im Einzelnen (Mehrfachnennung möglich): 110 korrigiert, 0 fraglich, 16 mit offenem Prüfhinweis, 32 neu seit 26.10.2026.
 
 ## A. Auffällige Fragen
 
@@ -488,10 +488,178 @@ Auffällig im Einzelnen (Mehrfachnennung möglich): 110 korrigiert, 0 fraglich, 
 - [ ] ok
 - [ ] ändern: …
 
+### qlz_bp_beton_1 · Beton (Bauprodukt)
+
+- **Frage:** Worin unterscheidet sich Transportbeton nach dem Modul vom Baustellenbeton?
+- **Richtige Antwort:** Er entsteht im Werk mit WPK und Fremdüberwachung, Ü-Zeichen auf dem Lieferschein
+- **Auffälligkeit:** neu seit 26.10.2026 (Z24), noch nicht freigegeben, ohne Vorprüfung
+- [ ] ok
+- [ ] ändern: …
+
+### qlz_bp_betonfertigteile_1 · Betonfertigteile
+
+- **Frage:** Welches Fertigteil ordnet das Modul den Tiefbau- und Schwerlastfertigteilen zu?
+- **Richtige Antwort:** Tunnel-Tübbinge als Kreissegmente mit eingelegten Dichtungsprofilen
+- **Auffälligkeit:** neu seit 26.10.2026 (Z24), noch nicht freigegeben, ohne Vorprüfung
+- [ ] ok
+- [ ] ändern: …
+
+### qlz_bp_farben_lacke_1 · Farben & Lacke
+
+- **Frage:** Welcher Bestandteil eines Beschichtungsstoffs ist an der endgültigen Schutzwirkung des Films nicht direkt beteiligt?
+- **Richtige Antwort:** Das Löse- oder Verdünnungsmittel, das nach dem Auftrag verdunstet
+- **Auffälligkeit:** neu seit 26.10.2026 (Z24), noch nicht freigegeben, ohne Vorprüfung
+- [ ] ok
+- [ ] ändern: …
+
+### qlz_bp_farben_lacke_2 · Farben & Lacke
+
+- **Frage:** Das frei bewitterte Oberdeck eines Parkhauses hat Risse mit thermisch bedingten Bewegungen. Welches Oberflächenschutzsystem ist am besten begründet?
+- **Richtige Antwort:** OS 11a, hochelastisch mit dynamischer Rissüberbrückung für Freidecks
+- **Auffälligkeit:** neu seit 26.10.2026 (Z24), noch nicht freigegeben, ohne Vorprüfung
+- [ ] ok
+- [ ] ändern: …
+
+### qlz_bp_glaeser_1 · Gläser & Fenster (DIN 18008)
+
+- **Frage:** Ein Büro mit großer Südverglasung liegt an einer Hauptverkehrsstraße; gefordert sind guter Wärmeschutz, wenig Überhitzung und hohe Schalldämmung. Welcher Fensteraufbau ist am besten begründet?
+- **Richtige Antwort:** 3-fach-Glas mit Sonnenschutzschicht (g ≈ 0,3), Akustik-VSG, warmer Kante, Mehrkammerrahmen
+- **Auffälligkeit:** neu seit 26.10.2026 (Z24), noch nicht freigegeben, ohne Vorprüfung
+- [ ] ok
+- [ ] ändern: …
+
+### qlz_bp_innovationen_1 · Innovationen & F&E
+
+- **Frage:** Ein Start-up hat einen Myzel-Dämmstoff mit überzeugenden Laborwerten (TRL 4). Welche Einschätzung des Weges zum Markt ist am besten begründet?
+- **Richtige Antwort:** Kritisch ist der Schritt zu TRL 7/8 mit Bauteil-, Brand- und Zulassungsprüfungen
+- **Auffälligkeit:** neu seit 26.10.2026 (Z24), noch nicht freigegeben, ohne Vorprüfung
+- [ ] ok
+- [ ] ändern: …
+
+### qlz_bp_recht_avcp_1 · Bauprodukte: AVCP-Systeme
+
+- **Frage:** Wofür führt die neue Bauproduktenverordnung (EU) 2024/3110 das zusätzliche AVCP-System 3+ ein?
+- **Richtige Antwort:** Für Umweltmerkmale wie das GWP in der Leistungserklärung
+- **Auffälligkeit:** neu seit 26.10.2026 (Z24), noch nicht freigegeben, ohne Vorprüfung
+- [ ] ok
+- [ ] ändern: …
+
+### qlz_bp_recht_avcp_2 · Bauprodukte: AVCP-Systeme
+
+- **Frage:** Welche Zuordnung von AVCP-System und typischem Bauprodukt entspricht der Übersicht im Modul?
+- **Richtige Antwort:** System 1+: Normalzement nach DIN EN 197-1, Einpressmörtel
+- **Auffälligkeit:** neu seit 26.10.2026 (Z24), noch nicht freigegeben, ohne Vorprüfung
+- [ ] ok
+- [ ] ändern: …
+
+### qlz_bp_recht_avcp_3 · Bauprodukte: AVCP-Systeme
+
+- **Frage:** Ein Mauersteinwerk stellt fest, dass die Kornqualität der Rohstoffe nachlässt. Wer muss nach dem Modul zuerst reagieren?
+- **Richtige Antwort:** Der Hersteller über seine WPK, der das Inverkehrbringen stoppen muss
+- **Auffälligkeit:** neu seit 26.10.2026 (Z24), noch nicht freigegeben, ohne Vorprüfung
+- [ ] ok
+- [ ] ändern: …
+
+### qlz_bp_recht_avcp_4 · Bauprodukte: AVCP-Systeme
+
+- **Frage:** Worin unterscheidet sich die Aufgabe der notifizierten Stelle bei einem Zement (System 1+) von der bei einem Feuerschutzabschluss (System 1)?
+- **Richtige Antwort:** Bei 1+ entnimmt sie zusätzlich Stichproben vor dem Inverkehrbringen
+- **Auffälligkeit:** neu seit 26.10.2026 (Z24), noch nicht freigegeben, ohne Vorprüfung
+- [ ] ok
+- [ ] ändern: …
+
+### qlz_bp_recht_avcp_5 · Bauprodukte: AVCP-Systeme
+
+- **Frage:** Ein Wärmedämmstoff fällt unter System 3. Welche Aufgaben übernimmt hier ein Dritter, und welche bleiben beim Hersteller?
+- **Richtige Antwort:** Dritter: Typprüfung im Labor; Hersteller: allein die eigene WPK
+- **Auffälligkeit:** neu seit 26.10.2026 (Z24), noch nicht freigegeben, ohne Vorprüfung
+- [ ] ok
+- [ ] ändern: …
+
+### qlz_bp_recht_grundlagen_1 · BauPVO & CE-Kennzeichnung
+
+- **Frage:** Ein CE-gekennzeichneter Dämmstoff nach hEN soll in einer Brandwand-nahen Fassade eingesetzt werden. Was folgt aus dem EuGH-Urteil C-100/13 für den Nachweis?
+- **Richtige Antwort:** Der Planer weist mit den DoP-Werten die Anforderung nach MVV TB nach
+- **Auffälligkeit:** neu seit 26.10.2026 (Z24), noch nicht freigegeben, ohne Vorprüfung
+- [ ] ok
+- [ ] ändern: …
+
+### qlz_bp_recht_normen_1 · Bauprodukte: Normenarbeit im Bauwesen
+
+- **Frage:** Was regelt die Wiener Vereinbarung?
+- **Richtige Antwort:** Die Zusammenarbeit von ISO und CEN gegen doppelte Normungsarbeit
+- **Auffälligkeit:** neu seit 26.10.2026 (Z24), noch nicht freigegeben, ohne Vorprüfung
+- [ ] ok
+- [ ] ändern: …
+
+### qlz_bp_recht_normen_2 · Bauprodukte: Normenarbeit im Bauwesen
+
+- **Frage:** Welche Pflicht ergibt sich für das DIN, wenn CEN eine neue EN-Norm veröffentlicht?
+- **Richtige Antwort:** Unverändert als DIN EN übernehmen und widersprechende DIN-Normen zurückziehen
+- **Auffälligkeit:** neu seit 26.10.2026 (Z24), noch nicht freigegeben, ohne Vorprüfung
+- [ ] ok
+- [ ] ändern: …
+
+### qlz_bp_recht_normen_3 · Bauprodukte: Normenarbeit im Bauwesen
+
+- **Frage:** In welcher Reihenfolge entsteht eine Norm nach dem Modul?
+- **Richtige Antwort:** Projektvorschlag → Arbeitsentwurf → Entwurf, Stellungnahmen → Schlichtung → Weißdruck
+- **Auffälligkeit:** neu seit 26.10.2026 (Z24), noch nicht freigegeben, ohne Vorprüfung
+- [ ] ok
+- [ ] ändern: …
+
+### qlz_bp_recht_normen_4 · Bauprodukte: Normenarbeit im Bauwesen
+
+- **Frage:** Ein Ingenieurbüro hält einen veröffentlichten DIN-Entwurf (Gelbdruck) für fachlich falsch. Was kann es tun?
+- **Richtige Antwort:** Online Einspruch einlegen; der Ausschuss behandelt ihn in der Schlichtung
+- **Auffälligkeit:** neu seit 26.10.2026 (Z24), noch nicht freigegeben, ohne Vorprüfung
+- [ ] ok
+- [ ] ändern: …
+
+### qlz_bp_recht_normen_5 · Bauprodukte: Normenarbeit im Bauwesen
+
+- **Frage:** In welchem Fall ist eine DIN-Norm für ein Bauvorhaben verbindlich und nicht nur Vermutung der anerkannten Regeln der Technik?
+- **Richtige Antwort:** Wenn sie im Vertrag vereinbart oder als Technische Baubestimmung eingeführt ist
+- **Auffälligkeit:** neu seit 26.10.2026 (Z24), noch nicht freigegeben, ohne Vorprüfung
+- [ ] ok
+- [ ] ändern: …
+
+### qlz_bp_stahlbauprofile_1 · Stahlbauprofile
+
+- **Frage:** Warum wird für eine Stütze eher ein HEB-Profil gewählt, für einen Deckenträger mit gehaltenem Druckgurt eher ein IPE-Profil?
+- **Richtige Antwort:** Das HEB hat durch breite Flansche ein deutlich größeres I_z gegen Knicken
+- **Auffälligkeit:** neu seit 26.10.2026 (Z24), noch nicht freigegeben, ohne Vorprüfung
+- [ ] ok
+- [ ] ändern: …
+
+### qlz_daemmstoffe_1 · Dämmstoffe
+
+- **Frage:** Welche Zuordnung von Einbausituation und Dämmstoff ist am besten begründet?
+- **Richtige Antwort:** Brandriegel im EPS-WDVS: Mineralwolle, da nichtbrennbar und brandhemmend
+- **Auffälligkeit:** neu seit 26.10.2026 (Z24), noch nicht freigegeben, ohne Vorprüfung
+- [ ] ok
+- [ ] ändern: …
+
 ### qlz_gesteine_1 · Gesteine
 
 - **Frage:** Warum ist ein hochporöser Sandstein nach dem Modul meist weniger frostbeständig als ein dichter Granit?
 - **Richtige Antwort:** Hohe offene Porosität bedeutet hohe Wasseraufnahme; gefrierendes Wasser sprengt das Gefüge
+- **Auffälligkeit:** neu seit 26.10.2026 (Z24), noch nicht freigegeben, ohne Vorprüfung
+- [ ] ok
+- [ ] ändern: …
+
+### qlz_holz_1 · Holz
+
+- **Frage:** Ein Vollholzbalken unter ständiger Last hat eine elastische Anfangsdurchbiegung von 10 mm. Wie ändert sich die Enddurchbiegung, wenn er statt in Nutzungsklasse 1 in Nutzungsklasse 3 eingebaut wird?
+- **Richtige Antwort:** Von 16 mm auf 30 mm, weil k_def von 0,6 auf 2,0 ansteigt
+- **Auffälligkeit:** neu seit 26.10.2026 (Z24), noch nicht freigegeben, ohne Vorprüfung
+- [ ] ok
+- [ ] ändern: …
+
+### qlz_kalk_1 · Baukalk (DIN EN 459)
+
+- **Frage:** Für einen feuchten Kellerraum mit sulfatbelastetem Mauerwerk wird ein reiner Luftkalkputz vorgeschlagen, verarbeitet ohne Schutzbrille. Wie ist das zu beurteilen?
+- **Richtige Antwort:** Kritisch: Luftkalk härtet nur an der Luft, ist säureempfindlich, ätzt die Augen
 - **Auffälligkeit:** neu seit 26.10.2026 (Z24), noch nicht freigegeben, ohne Vorprüfung
 - [ ] ok
 - [ ] ändern: …
@@ -512,6 +680,22 @@ Auffällig im Einzelnen (Mehrfachnennung möglich): 110 korrigiert, 0 fraglich, 
 - [ ] ok
 - [ ] ändern: …
 
+### qlz_kombinationen_1 · Werkstoff-Kombinationen
+
+- **Frage:** Eine Außenwand besteht von innen nach außen aus 15 mm Innenputz (λ = 0,70 W/(mK), μ = 10), 240 mm Hochlochziegel (λ = 0,28 W/(mK), μ = 10) und 160 mm EPS (λ = 0,035 W/(mK), μ = 40). Wie groß sind U-Wert und s_d-Summe mit R_si = 0,13 und R_se = 0,04 m²K/W?
+- **Richtige Antwort:** U ≈ 0,18 W/(m²K); s_d ≈ 8,95 m
+- **Auffälligkeit:** neu seit 26.10.2026 (Z24), noch nicht freigegeben, ohne Vorprüfung
+- [ ] ok
+- [ ] ändern: …
+
+### qlz_kombinationen_2 · Werkstoff-Kombinationen
+
+- **Frage:** Eine Stahlbetondecke in einer Tiefgarage soll mit aufgeklebten CFK-Lamellen biegeverstärkt werden. Welche Beurteilung ist am besten begründet?
+- **Richtige Antwort:** Geeignet; dazu zwingend Brandschutz, da das Epoxidharz ab etwa 60 °C erweicht
+- **Auffälligkeit:** neu seit 26.10.2026 (Z24), noch nicht freigegeben, ohne Vorprüfung
+- [ ] ok
+- [ ] ändern: …
+
 ### qlz_kunststoffe_1 · Kunststoffe
 
 - **Frage:** Welche Zuordnung von Baukunststoff und typischem Einsatzbereich trifft nach dem Modul zu?
@@ -520,10 +704,34 @@ Auffällig im Einzelnen (Mehrfachnennung möglich): 110 korrigiert, 0 fraglich, 
 - [ ] ok
 - [ ] ändern: …
 
+### qlz_materialitaet_architektur_1 · Materialität & Architektur
+
+- **Frage:** Für ein Museum am Stadtrand wird eine Fassade gesucht, die würdevoll altert und kaum Pflege braucht. Welche Begründung ist stimmig?
+- **Richtige Antwort:** Cortenstahl, weil die stabile Rostpatina schützt und ohne Anstrich auskommt
+- **Auffälligkeit:** neu seit 26.10.2026 (Z24), noch nicht freigegeben, ohne Vorprüfung
+- [ ] ok
+- [ ] ändern: …
+
+### qlz_membranen_etfe_1 · Membranen und ETFE-Folien
+
+- **Frage:** Ein zweilagiges ETFE-Kissen (L = 3,0 m, Stich f = 0,15 m, Zylinder, p = 400 Pa) überschreitet den Lehrwert der Membrankraft, und der U-Wert soll sinken. Welche Änderung ist am besten begründet?
+- **Richtige Antwort:** Stich auf 0,30 m vergrößern und eine dritte Lage ergänzen
+- **Auffälligkeit:** neu seit 26.10.2026 (Z24), noch nicht freigegeben, ohne Vorprüfung
+- [ ] ok
+- [ ] ändern: …
+
 ### qlz_putzemoertel_1 · Putze & Mörtel
 
 - **Frage:** Eine 24 cm dicke Wand aus NF-Steinen soll auf 20 m² gemauert werden. Der Rechner setzt 30 l/m² Grundbedarf (11,5 cm), den Wanddickenfaktor 2,1 und 1,55 kg Trockenmörtel je Liter an. Welches Ergebnis liefert er (25-kg-Säcke)?
 - **Richtige Antwort:** 1260 l → 1953 kg → 79 Säcke
+- **Auffälligkeit:** neu seit 26.10.2026 (Z24), noch nicht freigegeben, ohne Vorprüfung
+- [ ] ok
+- [ ] ändern: …
+
+### qlz_stahl_1 · Stahl
+
+- **Frage:** Ein Blech (20 mm) soll als S355J2 geschweißt werden. Die Schmelzanalyse ergibt C = 0,20 %, Mn = 1,50 %, Cr = 0,10 %, Ni = 0,30 %. Wie ist das zu beurteilen?
+- **Richtige Antwort:** CEV ≈ 0,49 – über 0,45 für S355J2; Lieferung prüfen, sonst Vorwärmen nötig
 - **Auffälligkeit:** neu seit 26.10.2026 (Z24), noch nicht freigegeben, ohne Vorprüfung
 - [ ] ok
 - [ ] ändern: …
