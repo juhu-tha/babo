@@ -124,7 +124,7 @@ export default function HistorischeMaterialkennwerte() {
     // 2. Teilsicherheitsbeiwerte nach Eurocode (Neubau):
     //    Baustahl γ_M0 = 1,0 (EC3), Beton γ_c = 1,5 (EC2), Mauerwerk γ_M = 1,5 (EC6/NA, Regelwert)
     // γ_M nach Eurocode aus den zentralen Konstanten (Umstellung 03.11.2026): Stahl γ_M0 (EC3/NA), Beton γ_C, Mauerwerk γ_M
-    const gamma_M_ec = nachweisMaterial === 'stahl' ? EC3_NA_DE.gammaM0 : nachweisMaterial === 'beton' ? GAMMA_C.staendig : GAMMA_M_MW;
+    const gamma_M_ec: number = nachweisMaterial === 'stahl' ? EC3_NA_DE.gammaM0 : nachweisMaterial === 'beton' ? GAMMA_C.staendig : GAMMA_M_MW;
     const f_d_ec = f_k / gamma_M_ec;
 
     // 3. Modifizierte Beiwerte nach DBV-Merkblatt – gilt nur für Beton und Betonstahl
