@@ -57,6 +57,8 @@ t.test('404.html: Titel, noindex, Ersatzinhalt, keine neuen Inline-Skripte', () 
   const s = erzeuge404(quelle);
   sicher(s.includes(`<title>${TITEL_404}</title>`) && s.includes('<meta name="robots" content="noindex" />') && !s.includes('index, follow'), 'Titel und noindex');
   sicher(/<noscript>[\s\S]*<h1>Seite nicht gefunden<\/h1>[\s\S]*href="\/modul\/modulstruktur"[\s\S]*<\/noscript>/.test(s), 'Ersatzinhalt ohne JavaScript');
+  sicher((s.match(/id="root"/g) ?? []).length === 1 && s.indexOf('-->', s.indexOf('Fallback-Inhalt')) < s.indexOf('<noscript>\n      <main>'), 'Kommentar vor <noscript> bleibt geschlossen, #root bleibt erhalten');
+  sicher(!/<!--(?:(?!-->)[\s\S])*id="root"/.test(s), '#root nicht in einem Kommentar');
   const inline = (x: string) => (x.match(/<script(?![^>]*\bsrc=)[^>]*>[\s\S]*?<\/script>/g) ?? []).join('\n');
   sicher(inline(s) === inline(quelle), 'Inline-Skripte unverändert (CSP-Hashes)');
   const k = JSON.parse(fs.readFileSync('vercel.json', 'utf8'));

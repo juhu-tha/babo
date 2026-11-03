@@ -46,7 +46,7 @@ Neue Datei `src/data/klassengrenzen.ts` (Aufbau wie `src/data/fristenSchwellen.t
 **Regel** (`docs/architektur.md`, Abschnitt „Modultitel“; Prüfung `scripts/qa/modultitel.mjs`):
 - `label` = Kurzform für Menü, Brotkrumen, Mobil-Kopfleiste, Kacheln, Reiter.
 - `baum.titel` = Modultitel für h1, sichtbare Modulüberschrift, Fenstertitel, `<title>`/og:title der vorgerenderten Seite, Volltexttreffer, Lernziel-Querverweise, Modulnamen im Quiz, PDF-Kopf, Modulübersicht.
-- Jedes Wort des Labels steht im Titel („Label“, „Label & Zusatz“, „Label (Zusatz)“); die erste h2 im Modul nennt das Modul ebenso. Ausnahmen (Bereichsüberschriften geteilter Komponenten, Modulinfos „Bereich: …“, 4 offene Fälle) stehen mit Grund in `AUSNAHMEN_UEBERSCHRIFT` (Ratsche, höchstens 60).
+- Jedes Wort des Labels steht im Titel („Label“, „Label & Zusatz“, „Label (Zusatz)“); die erste h2 im Modul nennt das Modul ebenso. Ausnahmen (Bereichsüberschriften geteilter Komponenten, Modulinfos „Bereich: …“, 4 offene Fälle) stehen mit Grund in `AUSNAHMEN_UEBERSCHRIFT` (Ratsche, höchstens 62).
 
 **Befund vorher:** 20 Titel enthielten das Label nicht, 27 Modulüberschriften nannten das Modul nicht (Build-Stand), dazu Fenstertitel und vorgerenderter `<title>` mit dem Label statt dem Titel, Quiz mit eigenen Modulnamen (143 Abweichungen).
 

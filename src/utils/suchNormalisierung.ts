@@ -48,7 +48,7 @@ export interface Synonym {
  * Umlautschreibung, Bindestrich, Leer-, Schräg- und Unterstrich.
  */
 export const SYNONYME: readonly Synonym[] = [
-  { formen: ['Wasserzementwert', 'w/z-Wert', 'w/z', 'wz-Wert', 'Wasser-Zement-Wert', 'Wasserzementverhältnis'], ziele: ['mischungsberechnung', 'expositionsklassen', 'festbeton'] },
+  { formen: ['Wasserzementwert', 'w/z-Wert', 'w/z', 'wz-Wert', 'Wasserzementverhältnis'], ziele: ['mischungsberechnung', 'expositionsklassen', 'festbeton'] },
   { formen: ['Wasserbindemittelwert', 'w/b-Wert', 'w/b', '(w/z)eq', 'äquivalenter Wasserzementwert'], ziele: ['mischungsberechnung', 'expositionsklassen'] },
   { formen: ['fck', 'f_ck', 'f ck', 'charakteristische Druckfestigkeit', 'Zylinderdruckfestigkeit'], ziele: ['betonkennwerte', 'festbeton', 'stahlbeton_bemessung'] },
   { formen: ['fcm', 'f_cm', 'mittlere Druckfestigkeit'], ziele: ['betonkennwerte', 'festbeton_statistik'] },

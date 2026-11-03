@@ -40,7 +40,11 @@ export function erzeuge404(html) {
   s = ersetze(s, /<meta name="robots" content="[^"]*"\s*\/?>/, '<meta name="robots" content="noindex" />', 'meta robots');
   s = s.replace(/(<meta property="og:title" content=")[^"]*(")/, `$1${TITEL_404}$2`);
   s = s.replace(/(<meta name="twitter:title" content=")[^"]*(")/, `$1${TITEL_404}$2`);
-  s = ersetze(s, /<noscript>[\s\S]*?<\/noscript>/, NOSCRIPT_404, '<noscript>');
+  // Ersatzinhalt: das <noscript>-Element vor </noscript> (nicht das Wort „<noscript>“ im HTML-Kommentar davor)
+  const ende = s.indexOf('</noscript>');
+  const anfang = ende < 0 ? -1 : s.lastIndexOf('<noscript>', ende);
+  if (anfang < 0) throw new Error('404.html: <noscript> nicht gefunden');
+  s = s.slice(0, anfang) + NOSCRIPT_404 + s.slice(ende + '</noscript>'.length);
   return s;
 }
 

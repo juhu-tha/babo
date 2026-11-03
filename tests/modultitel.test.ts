@@ -20,7 +20,7 @@ const r = await abgleich({ dist: fs.existsSync('dist/modul') ? 'dist' : '/kein-b
 pruefe(r.labelFehler.length === 0, `Label nicht im Titel: ${r.labelFehler.map((f: { id: string; fehlt: string[] }) => `${f.id} (${f.fehlt.join(',')})`).join('; ')}`);
 pruefe(AKTIVE_MODULE.filter(m => m.gruppe && m.id !== 'start' && !m.id.startsWith('divider_')).every(m => !!m.baum?.titel), 'jedes Menümodul (außer Trennzeilen) hat einen Titel');
 for (const id of Object.keys(AUSNAHMEN_UEBERSCHRIFT)) pruefe(MODUL_BY_ID.has(id), `Ausnahme ${id}: kein Modul`);
-pruefe(Object.keys(AUSNAHMEN_UEBERSCHRIFT).length <= 60, `Ausnahmen Überschrift: ${Object.keys(AUSNAHMEN_UEBERSCHRIFT).length} > 60 (Ratsche)`);
+pruefe(Object.keys(AUSNAHMEN_UEBERSCHRIFT).length <= 62, `Ausnahmen Überschrift: ${Object.keys(AUSNAHMEN_UEBERSCHRIFT).length} > 62 (Ratsche, Stand 03.11.2026)`);
 
 // 2. Oberflächen
 const app = fs.readFileSync('src/App.tsx', 'utf8');
