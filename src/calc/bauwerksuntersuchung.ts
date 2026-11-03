@@ -297,6 +297,19 @@ export function bohrkern(durchmesserMm: number, laengeMm: number, kraftKn: numbe
  * (hier nicht abgebildet). Eine Mindeststandardabweichung ist nicht angesetzt (am Normtext prüfen; vorläufig, F-Freigabe).
  * Umsetzung 29.10.2026 (T15-BS-5) für die Beispielrechnung „Bauen im Bestand“.
  */
+/**
+ * Zuordnung zur Druckfestigkeitsklasse über das Verhältnis f_ck,is/f_ck ≥ 0,85 (DIN EN 13791:2020-02, Einleitung und Tab. 1;
+ * Würfel- bzw. Zylinderwert je nach Bezugskörper). Liefert die höchste Klasse mit 0,85·f_ck(Klasse) ≤ f_ck,is; null = unter C8/10.
+ * Ausgelagert am 02.11.2026 für die Bohrkernserie (src/calc/bohrkernserie13791.ts), Verhalten unverändert.
+ */
+export function klasseAusInsitu13791(fckIs: number, bezug: 'wuerfel' | 'zylinder'): { klasse: string | null; fck: number; fckCube: number } {
+  let klasse: string | null = null; let fck = 0; let fckCube = 0;
+  if (!Number.isFinite(fckIs)) return { klasse, fck: NaN, fckCube: NaN };
+  for (const [zyl, wue] of C_CLASSES) {
+    if (0.85 * (bezug === 'wuerfel' ? wue : zyl) <= fckIs + 1e-9) { klasse = `C${zyl}/${wue}`; fck = zyl; fckCube = wue; }
+  }
+  return { klasse, fck, fckCube };
+}
 export interface InsituEingabe { n: number; mittel: number; s: number; kleinster: number; bezug: 'wuerfel' | 'zylinder' }
 export interface InsituErgebnis extends Ergebnis {
   kn: number; M: number; ausStreuung: number; ausKleinstwert: number; fckIs: number;
@@ -313,10 +326,7 @@ export function insituDruckfestigkeit13791(e: InsituEingabe): InsituErgebnis {
   const ausStreuung = e.mittel - kn * e.s;
   const ausKleinstwert = e.kleinster + M;
   const fckIs = Math.min(ausStreuung, ausKleinstwert);
-  let klasse: string | null = null; let fck = 0; let fckCube = 0;
-  for (const [zyl, wue] of C_CLASSES) {
-    if (0.85 * (e.bezug === 'wuerfel' ? wue : zyl) <= fckIs + 1e-9) { klasse = `C${zyl}/${wue}`; fck = zyl; fckCube = wue; }
-  }
+  const { klasse, fck, fckCube } = klasseAusInsitu13791(fckIs, e.bezug);
   return nurGueltig({ kn, M, ausStreuung, ausKleinstwert, fckIs, klasse, fck, fckCube, ...abschluss(h) }, ['klasse']);
 }
 

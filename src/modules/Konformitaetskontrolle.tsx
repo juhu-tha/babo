@@ -16,6 +16,7 @@ import {
 } from 'lucide-react';
 import inhalt from '@/content/konformitaetskontrolle/Konformitaetskontrolle.json';
 import { MdText } from '@/src/components/inhalt/MdText';
+import { SIGMA_MIN_KONFORMITAET } from '@/src/calc/festbetonStatistik';
 import { AuswahlGruppe, alsOption } from '../components/ui/Auswahlgruppe';
 
 interface ConcreteClass {
@@ -178,7 +179,7 @@ export default function Konformitaetskontrolle() {
         n: 0,
         mean: 0,
         stdDev: 0,
-        stdDevUsed: 3.0,
+        stdDevUsed: SIGMA_MIN_KONFORMITAET,
         requiredMean: 0,
         requiredMin: fck - 4.0,
         minVal: 0,
@@ -197,7 +198,8 @@ export default function Konformitaetskontrolle() {
       const variance = testValues.reduce((sum, v) => sum + Math.pow(v - mean, 2), 0) / (n - 1);
       stdDev = Math.sqrt(variance);
     }
-    const stdDevUsed = Math.max(stdDev, 3.0);
+    // Mindeststandardabweichung 3 N/mm² nach DIN 1045-2 aus der zentralen Konstante (Bestandsaufnahme 02.11.2026)
+    const stdDevUsed = Math.max(stdDev, SIGMA_MIN_KONFORMITAET);
 
     let requiredMean = fck + 4.0;
     const requiredMin = fck - 4.0;

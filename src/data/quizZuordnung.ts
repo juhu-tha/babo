@@ -52,7 +52,7 @@ export function quizCluster(moduleId: string): { id: ClusterNummer; name: string
  * tests/quiz.test.ts prüft, dass jede Frage in genau einem Selbsttest erscheint.
  */
 export const MODULTEST_IN_APP: ReadonlySet<string> = new Set([
-  'beton_info', 'betonkennwerte', 'bp_recht_grundlagen', 'bp_recht_konformitaet',
+  'beton_info', 'betonkennwerte', 'bp_recht_avcp', 'bp_recht_grundlagen', 'bp_recht_konformitaet', 'bp_recht_normen',
   'bp_verkehr_asphalt', 'bp_verkehr_bahn', 'bp_verkehr_betondecken', 'bp_verkehr_bitumen', 'bp_verkehr_pruefung',
   'bp_verkehr_rsto', 'bp_verkehr_tiefbau', 'bp_verkehr_tunnel',
   'holzbau_bauphysik', 'holzbau_bemessung', 'holzbau_konstruktion', 'holzbau_verbindung', 'holzbau_werkstoffe',

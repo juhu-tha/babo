@@ -5,6 +5,7 @@
  * Den vollständigen Pool synchron gibt es nur für Tests und Skripte in src/data/quizData.ts.
  */
 import { quizCluster, quizGruppe, quizRoute, type ClusterNummer } from './quizZuordnung';
+import { MODUL_KERN } from '../registry/kern';
 
 export type QuizCategory = 
   | 'baustoffkunde'
@@ -97,6 +98,11 @@ export function mitZuordnung(q: RohFrage): QuizQuestion {
   const route = quizRoute(q.moduleId);
   // Sprungziel der Wissenslücken-Analyse auf eine echte Route normalisieren (sonst tote Links)
   const ziel = q.gapAnalysis ? (quizRoute(q.gapAnalysis.targetModuleTab || q.moduleId) ?? route) : undefined;
-  const gapAnalysis = q.gapAnalysis && ziel ? { ...q.gapAnalysis, targetModuleTab: ziel } : q.gapAnalysis;
-  return { ...q, gapAnalysis, clusterId: c?.id ?? (q.clusterId as ClusterNummer) ?? 'I', clusterName: c?.name ?? q.clusterName ?? '', gruppe: quizGruppe(q.moduleId), route };
+  // Modulnamen wie in der App (Regel Modultitel 03.11.2026): Titel aus der Registry, wenn die Frage bzw. das Sprungziel
+  // ein Modul ist; Quiz-eigene Themengruppen (moduleId ohne Modul) behalten ihren Namen. quiz.json bleibt unverändert.
+  const titelVon = (id: string | undefined) => (id ? MODUL_KERN.get(id)?.titel ?? MODUL_KERN.get(id)?.label : undefined);
+  const gapAnalysis = q.gapAnalysis && ziel
+    ? { ...q.gapAnalysis, targetModuleTab: ziel, targetModuleLabel: titelVon(ziel) ?? q.gapAnalysis.targetModuleLabel }
+    : q.gapAnalysis;
+  return { ...q, moduleTitle: titelVon(q.moduleId) ?? q.moduleTitle, gapAnalysis, clusterId: c?.id ?? (q.clusterId as ClusterNummer) ?? 'I', clusterName: c?.name ?? q.clusterName ?? '', gruppe: quizGruppe(q.moduleId), route };
 }
