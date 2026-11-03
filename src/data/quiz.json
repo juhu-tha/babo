@@ -2271,7 +2271,7 @@
       "topic": "Karbonatisierung und Betondeckung",
       "misconception": "Das Wurzel-t-Gesetz wird linear statt quadratisch umgestellt.",
       "coreRule": "d_k = K·√t ⇒ t = (d/K)²: doppelte Deckung = vierfache Zeit.",
-      "actionableAdvice": "Arbeiten Sie den Abschnitt „Karbonatisierung und Betondeckung“ im Modul Bauchemie noch einmal durch.",
+      "actionableAdvice": "Arbeiten Sie das Thema „Karbonatisierung und Betondeckung“ im Modul Bauchemie noch einmal durch.",
       "targetModuleTab": "bauchemie",
       "targetModuleLabel": "Bauchemie"
     },
@@ -2313,7 +2313,7 @@
       "topic": "Wirkung von Fließmitteln",
       "misconception": "Verflüssigung wird mit „mehr Wasser“ gleichgesetzt.",
       "coreRule": "PCE = sterisch, Sulfonate = elektrostatisch; beide senken den Wasseranspruch bei gleicher Konsistenz.",
-      "actionableAdvice": "Arbeiten Sie den Abschnitt „Wirkung von Fließmitteln“ im Modul Bauchemie noch einmal durch.",
+      "actionableAdvice": "Arbeiten Sie das Thema „Wirkung von Fließmitteln“ im Modul Bauchemie noch einmal durch.",
       "targetModuleTab": "bauchemie",
       "targetModuleLabel": "Bauchemie"
     },
@@ -45390,7 +45390,7 @@
       "topic": "Prinzipien nach DIN EN 1504",
       "misconception": "Aufbau und Gegenstand der Normenreihe DIN EN 1504 sind unklar.",
       "coreRule": "DIN EN 1504-9: Prinzipien 1–6 Beton, 7–11 Bewehrungskorrosion; Produktteile 2 bis 7.",
-      "actionableAdvice": "Arbeiten Sie den Abschnitt „Instandsetzungsprinzipien nach DIN EN 1504“ im Modul Stahlbetoninstandhaltung noch einmal durch.",
+      "actionableAdvice": "Arbeiten Sie das Thema „Instandsetzungsprinzipien nach DIN EN 1504“ im Modul Stahlbetoninstandhaltung noch einmal durch.",
       "targetModuleTab": "instandhaltung",
       "targetModuleLabel": "Stahlbetoninstandhaltung"
     },

@@ -56,6 +56,10 @@ Quiz-Pool nach Umsetzung (1342 Fragen): Erinnern 213, Verstehen 359, Anwenden 50
   - Scheinfugenabstand 6,0 m statt 5,0 m bei 26 cm Dicke: Begrenzung auf 5,0 m, Rissgefahr
 - **Spannbeton Teil 1:** Der Auftrag nannte den Leitfaden „Von 0 bis 100“, im Modul heißt er „Von 0 auf 100“. Das ist berichtigt, ebenso in `src/data/rechnerGrenzen.ts`.
 
+### Lernhilfen nach erweiterter Modulzuordnung
+
+Seit `bauchemie` und `instandhaltung` dem Modultext zugeordnet sind, meldet der Quiz-Text-Abgleich (Art A) drei Lernhilfen. Sie verweisen auf einen „Abschnitt“, dessen Name im Modul nicht als Überschrift vorkommt: `q_bch_1`, `q_bch_2`, `qn_instandhaltung_4`. Wie am 02.11.2026 wurde dort „den Abschnitt „…““ durch „das Thema „…““ ersetzt. Die Wortänderung hebt keine Freigabe auf (`tests/umsetzungQuiztext_20261102.test.ts`).
+
 ### Lernziel präzisiert
 
 - **Baustoffkenngrößen, Ziel 3:** Der Ausprobieren-Auftrag und der Reiter „Thermisch“ behandeln den U-Wert einer einschichtigen Wand, das Lernziel nannte ihn nicht. Neu: „… den s_d-Wert, den U-Wert einer einschichtigen Wand und den Wärmeeindringkoeffizienten …“.
