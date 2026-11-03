@@ -283,6 +283,13 @@ export const KURZFASSUNG: Readonly<Record<string, readonly string[]>> = {
     "DIN-Normen sind kein Gesetz, gelten aber widerlegbar als anerkannte Regeln der Technik; verbindlich werden sie als Technische Baubestimmung über die MVV TB oder durch Vertrag.",
     "Ohne Technische Baubestimmung braucht ein Produkt eine abZ bzw. aBG des DIBt, ein abP oder eine objektbezogene ZiE bzw. vBG; Mängelansprüche verjähren nach BGB in 5, nach VOB/B in 4 Jahren.",
   ],
+  ec_kennwerte: [
+    "Ein Baustoffkennwert durchläuft drei Stufen: Mittelwert aus Prüfungen, charakteristischer Wert X_k als 5-%-Quantil und Bemessungswert X_d = η · X_k/γ_M.",
+    "Aus n Prüfwerten gilt X_k = m − k_n · s mit k_n nach DIN EN 1990, Tab. D1 (k_3 = 3,37 bei unbekannter Streuung, k_∞ = 1,64); die Lognormalverteilung ist zulässig.",
+    "Beton: f_cm = f_ck + 8 N/mm² entspricht 1,645 · σ mit σ ≈ 4,9 N/mm²; f_cd = 0,85 · f_ck/1,5, für C30/37 also 17,0 N/mm².",
+    "Teilsicherheitsbeiwerte nach NA DE: Beton 1,5/1,3, Betonstahl 1,15/1,0, Baustahl γ_M0 = 1,0, γ_M1 = 1,1, γ_M2 = 1,25, Holz 1,3 mit k_mod, Mauerwerk 1,5/1,3 mit ζ = 0,85.",
+    "Die Konformität neuer Betonlieferungen prüft DIN EN 206 mit f_cm ≥ f_ck + 4 (n = 3) bzw. f_ck + 1,48 · σ (n ≥ 15) und f_ci ≥ f_ck − 4.",
+  ],
   lebensdauerbemessung: [
     "Lebensdauerbemessung nach dem Leistungsprinzip weist nach, dass der Grenzzustand Depassivierung während der Nutzungsdauer nur mit kleiner Wahrscheinlichkeit erreicht wird.",
     "fib Bulletin 34 empfiehlt dafür den Zuverlässigkeitsindex β₀ = 1,3, also eine Versagenswahrscheinlichkeit von etwa 10 %; den Deckungstabellen der EN 1992-1-1:2023 liegt β = 1,5 zugrunde.",

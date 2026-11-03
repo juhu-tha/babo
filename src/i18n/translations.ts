@@ -372,6 +372,7 @@ export const TAB_EN: Record<string, string> = {
   "pfas_baustoffe": "PFAS in Building Materials",
   "schnellkarbonatisierung": "Accelerated Carbonation",
   "lebensdauerbemessung": "Service Life Design",
+  "ec_kennwerte": "Characteristic and Design Values",
   "korrosionsschutz_beschichtungen": "Corrosion Protection (Coatings)",
   "ki_uebungen": "Hands-on Exercises (Master)",
   "ki_baustoffe": "AI in Civil Engineering",
