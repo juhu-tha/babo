@@ -25,6 +25,7 @@ gilt(/unberücksichtigt/.test(lies('src/data/rechnerGrenzen.ts')) && /nur die un
 // RQ-2 Klimagesetz Art. 2 Abs. 1: negative Emissionen nach 2050 nur angestrebt; KSG-Sektormengen seit 2024 nicht sektorscharf
 const rk = lies('src/components/ui/RechtsrahmenKompendium.tsx');
 gilt(!/Rechtliche Pflicht zur Erreichung von Netto-Negativ/.test(rk) && /strebt die EU negative Emissionen an/.test(rk), 'RQ-2 Klimagesetz 2050');
+gilt(!/Empfehlung: -90 % THG/.test(rk) && /05\.03\.2026/.test(rk), 'RQ-2 Klimaziel 2040 verabschiedet');
 gilt(!/dürfen max\. 67/.test(rk) && !/Sektor Gebäude muss bis 2030/.test(rk) && /sektorübergreifend/.test(rk), 'RQ-3 KSG Gebäudesektor');
 // RQ-4 EPBD Art. 7: Eigentum öffentlicher Einrichtungen, kein „ausnahmslos“
 gilt(!/ausnahmslos/i.test(rk) && !/Alle neuen öffentlichen Gebäude müssen/.test(rk) && /im Eigentum öffentlicher Einrichtungen/.test(rk), 'RQ-4 EPBD Art. 7 im Rechtsrahmen');

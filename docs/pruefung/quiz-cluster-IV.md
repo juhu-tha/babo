@@ -707,7 +707,7 @@ Auffällig im Einzelnen (Mehrfachnennung möglich): 87 korrigiert, 0 fraglich, 1
 ### qn_pfas_baustoffe_6 · PFAS in Baustoffen
 
 - **Frage:** Bei einer Probe liegen 10 der 20 PFAS unter der Bestimmungsgrenze von 2 ng/l, die übrigen 10 summieren sich auf 92 ng/l. Welche Aussage zur Summe PFAS-20 trifft zu?
-- **Richtige Antwort:** Nach TrinkwV eingehalten: Werte unter der BG bleiben unberücksichtigt, 92 ng/l < 100 ng/l
+- **Richtige Antwort:** eingehalten: Werte unter der BG zählen nicht (92 ng/l)
 - **Auffälligkeit:** Vorprüfung „korrigiert“: Rechtsquellen-Prüfung 03.11.: Antwort „nicht eindeutig: Spanne 92 bis 112 ng/l“ widersprach TrinkwV Anlage 2 Teil I (Werte unterhalb der Bestimmungsgrenze bleiben unberücksichtigt) – richtige Antwort jetzt „eingehalten, 92 ng/l“; Optionen, Erklärung, Rückmeldungen und Lückenanalyse angepasst – korrigiert
 - [x] ok
 - [ ] ändern: …

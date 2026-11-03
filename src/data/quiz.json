@@ -9488,10 +9488,10 @@
     "normRef": "TrinkwV 2023, Anlage 2",
     "question": "Bei einer Probe liegen 10 der 20 PFAS unter der Bestimmungsgrenze von 2 ng/l, die übrigen 10 summieren sich auf 92 ng/l. Welche Aussage zur Summe PFAS-20 trifft zu?",
     "options": [
-      "Nach TrinkwV eingehalten: Werte unter der BG bleiben unberücksichtigt, 92 ng/l < 100 ng/l",
-      "eindeutig überschritten, da 92 + 20 = 112 ng/l",
-      "nicht bewertbar, da Werte unter der BG fehlen",
-      "rechtlich nicht entscheidbar, da die Spanne 92 bis 112 ng/l den Grenzwert einschließt"
+      "eingehalten: Werte unter der BG zählen nicht (92 ng/l)",
+      "überschritten: mit < BG = BG ergeben sich 112 ng/l",
+      "nicht bewertbar, da die Werte unter der BG fehlen",
+      "nicht eindeutig: Spanne 92 bis 112 ng/l um den Grenzwert"
     ],
     "correctIdx": 0,
     "explanation": "Nach TrinkwV Anlage 2 Teil I bleiben Werte unterhalb der Bestimmungsgrenze bei der Summenbildung unberücksichtigt: Σ PFAS-20 = 92 ng/l < 100 ng/l, der Grenzwert ist eingehalten. Die obere Schranke 92 + 10 · 2 = 112 ng/l (< BG = BG) ist eine Vorsorge- bzw. Lehrbetrachtung des Rechners; sie zeigt, dass eine empfindlichere Analytik das Ergebnis absichern sollte.",

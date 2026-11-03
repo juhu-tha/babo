@@ -90,12 +90,13 @@ export const LEGAL_INSTRUMENTS: LegalInstrument[] = [
       'Verbindliche Einhaltung des Unions-Treibhausgasbudgets für 2030–2050.',
       'Sektorübergreifende Überprüfung der nationalen Energie- und Klimapläne (NECPs).',
       'Für den Gebäudesektor nennt die Renovierungswelle (COM(2020) 662) als Zielmarke −60 % THG bis 2030 gegenüber 2015.',
-      'Festlegung eines wissenschaftlich fundierten Zwischenziels für 2040 (Empfehlung: -90 % THG).'
+      'Zwischenziel 2040: −90 % Netto-THG gegenüber 1990 (Änderung des Klimagesetzes, vom Rat am 05.03.2026 verabschiedet; ab 2036 bis zu 5 % internationale Gutschriften anrechenbar).'
     ],
     impactOnMaterials: 'Macht CO₂ zu einem knappen und teuren Wirtschaftsgut. Zwingt Baustoffhersteller zu radikalen Dekarbonisierungsfahrplänen bei der Klinker-, Stahl- und Ziegelherstellung.',
     milestones: [
       { year: '2021', text: 'Inkrafttreten der VO (EU) 2021/1119 mit 2030-Ziel von -55 %.' },
       { year: '2024', text: 'Vorschlag für das EU-Klimaziel 2040 (-90 % Netto-THG).' },
+      { year: '2026', text: 'Änderung des Klimagesetzes verabschiedet (Rat 05.03.2026): verbindliches Ziel −90 % bis 2040.' },
       { year: '2030', text: 'Strikte Überprüfung des 55-%-Zwischenziels.' },
       { year: '2050', text: 'Klimaneutralität der Union spätestens 2050 (Art. 2 Abs. 1); danach strebt die EU negative Emissionen an – eine Pflicht dazu enthält die Verordnung nicht.' }
     ],
