@@ -38,6 +38,7 @@ import { LIZENZ_AKTIV } from './data/lizenz';
 import { lazySofort, vorladenFuer } from './routing/sofortLaden';
 import { modulPfad } from './routing/pfad';
 import { SERVER_FUNKTIONEN } from './data/betriebsart';
+import RueckmeldungPerMail from './components/feedback/RueckmeldungPerMail';
 
 import type { TabId } from '@/src/contexts/TabContext';
 // Nur bei Bedarf geladen (Bundle-Budget, Phase 5 AP 5.4): Modulkopf mit Lernziel-/Erkundungsdaten,
@@ -51,6 +52,8 @@ const ModulTest = React.lazy(() => import('./components/quiz/ModulTest').then(m 
 const StudentPollVoteView = React.lazy(() => import('./components/polls/StudentPollVoteView'));
 const Kurzfragebogen = React.lazy(() => import('./components/feedback/Kurzfragebogen'));
 const LicenseNotice = React.lazy(() => import('./components/ui/LicenseNotice'));
+// Hinweis bei unbekannter Adresse (Gesamtgutachten 03.11.2026): nur bei Bedarf geladen
+const SeiteNichtGefunden = React.lazy(() => import('./components/navigation/SeiteNichtGefunden'));
 const MetadataAuditModal = React.lazy(() => import('./components/seo/MetadataAuditModal').then(m => ({ default: m.MetadataAuditModal })));
 
 
@@ -84,7 +87,7 @@ const BREITEN_SCHALTER: ReadonlyArray<{ breite: Bildschirmbreite; sichtbar: stri
 ];
 
 function AppContent({ vorgerendert = false, vorrendern = false }: Omit<AppProps, 'startTab'>) {
-  const { activeTab, setActiveTab, theme, toggleTheme } = useTabContext();
+  const { activeTab, setActiveTab, theme, toggleTheme, nichtGefunden } = useTabContext();
   const ersterTab = useRef(activeTab);
   const ohneEinblenden = vorgerendert && activeTab === ersterTab.current;
   const { language, t, getTabLabel, getGroupName, getClusterName } = useLanguage();
@@ -269,14 +272,27 @@ function AppContent({ vorgerendert = false, vorrendern = false }: Omit<AppProps,
     metaDescription.setAttribute('content', descriptionText);
 
     // Dynamic document title update for better user context and crawler indexing
+    // Fenstertitel mit dem Modultitel (baum.titel, sonst Menübeschriftung) wie die vorgerenderte Seite
+    // (Regel Modultitel 03.11.2026, docs/architektur.md)
     let tabLabel = "";
-    for (const group of tabGroups) {
-      const found = group.tabs.find((t) => t.id === activeTab);
-      if (found) {
-        tabLabel = found.label;
-        break;
-      }
+    if (tabGroups.some(g => g.tabs.some(t => t.id === activeTab))) {
+      const m = MODUL_KERN.get(activeTab);
+      tabLabel = m?.titel ?? m?.label ?? '';
     }
+    // Unbekannte Adresse: eigener Titel, nicht indexieren (Status 404 kommt vom Server bzw. von Vercel)
+    let robots = document.querySelector('meta[name="robots"][data-bb-404]');
+    if (nichtGefunden !== null) {
+      document.title = 'Seite nicht gefunden – BaustoffBoard THA';
+      if (!robots) {
+        robots = document.createElement('meta');
+        robots.setAttribute('name', 'robots');
+        robots.setAttribute('content', 'noindex');
+        robots.setAttribute('data-bb-404', '');
+        document.head.appendChild(robots);
+      }
+      return;
+    }
+    robots?.remove();
     if (tabLabel) {
       document.title = `BaustoffBoard THA - ${tabLabel}`;
     } else {
@@ -290,7 +306,7 @@ function AppContent({ vorgerendert = false, vorrendern = false }: Omit<AppProps,
     if (ogDesc) ogDesc.setAttribute('content', descriptionText);
     const ogUrl = document.querySelector('meta[property="og:url"]');
     if (ogUrl && typeof window !== 'undefined') ogUrl.setAttribute('content', `${window.location.origin}${modulPfad(activeTab)}`);
-  }, [activeTab, TAB_DESCRIPTIONS]);
+  }, [activeTab, TAB_DESCRIPTIONS, nichtGefunden]);
 
   if (activePollParam) {
     return (
@@ -388,7 +404,7 @@ function AppContent({ vorgerendert = false, vorrendern = false }: Omit<AppProps,
       </nav>
       <div className="p-4 border-t border-home-grau/20 dark:border-slate-800 text-xs text-home-grau dark:text-slate-400 text-center relative">
           <div className="flex items-center justify-center gap-1.5">
-            <span><strong>Disclaimer:</strong> {language === 'en' ? "Academic purposes only!" : "Nur akad. Lehrzwecke!"}</span>
+            <span><strong>{language === 'en' ? 'Note:' : 'Hinweis:'}</strong> {language === 'en' ? 'For teaching purposes only.' : 'Nur für Lehrzwecke.'}</span>
           </div>
        </div>
      </aside>
@@ -612,6 +628,7 @@ function AppContent({ vorgerendert = false, vorrendern = false }: Omit<AppProps,
         <h1 className="sr-only">{(() => {
           const m = MODUL_KERN.get(activeTab);
           const label = m ? getTabLabel(m.id, m.titel ?? m.label) : 'BaustoffBoard';
+          if (nichtGefunden !== null) return 'Seite nicht gefunden – BaustoffBoard';
           return activeTab === 'start' ? 'BaustoffBoard – Lern- und Wissensplattform der TH Augsburg' : `${label} – BaustoffBoard`;
         })()}</h1>
         {/* Breite per Klasse an <html> (src/utils/seitenbreite.ts), nicht nach screenWidth – s. Breitenschalter */}
@@ -637,8 +654,8 @@ function AppContent({ vorgerendert = false, vorrendern = false }: Omit<AppProps,
                 <div>
                   <p className="text-2xl font-bold text-text-main">{t('testProtocol')}</p>
                   <p className="text-sm text-text-main/80 mt-1">Modul: {(() => {
-                    const tabObj = tabGroups.flatMap(g => g.tabs).find(t => t.id === activeTab);
-                    return tabObj ? getTabLabel(tabObj.id, tabObj.label) : activeTab;
+                    const m = MODUL_KERN.get(activeTab);
+                    return m ? getTabLabel(m.id, m.titel ?? m.label) : activeTab;
                   })()}</p>
                   <p className="text-sm text-text-main/80">{t('date')}: {new Date().toLocaleDateString(language === 'en' ? "en-US" : "de-DE")}</p>
                 </div>
@@ -651,6 +668,8 @@ function AppContent({ vorgerendert = false, vorrendern = false }: Omit<AppProps,
             {activeTab !== 'start' && <React.Suspense fallback={null}><ModulKopf activeTab={activeTab} setActiveTab={setActiveTab} /></React.Suspense>}
             <React.Suspense fallback={null}><ModulInhalt activeTab={activeTab} /></React.Suspense>
           </>
+        ) : nichtGefunden !== null ? (
+          <React.Suspense fallback={<div className="min-h-[100svh]" />}><SeiteNichtGefunden adresse={nichtGefunden} /></React.Suspense>
         ) : (
 <React.Suspense fallback={<div className="flex justify-center items-start pt-32 min-h-[100svh]"><div className="animate-spin rounded-full h-12 w-12 border-b-2 border-shiraz"></div></div>}>
           {/* Startseite hat keinen Modulkopf – Daten dort nicht laden */}
@@ -666,6 +685,11 @@ function AppContent({ vorgerendert = false, vorrendern = false }: Omit<AppProps,
           {/* Global Footer */}
           <footer className="mt-12 pt-6 pb-8 border-t border-home-grau/20 text-xs text-text-main/70 text-center px-2">
             <span>BaustoffBoard · Prof. Dr.-Ing. Jürgen Huber · TH Augsburg · {AKTUELLE_VERSION}</span>
+            {/* Statischer Betrieb: Rückmeldung per E-Mail statt Kurzfragebogen (src/data/rueckmeldung.ts), nicht auf der Startseite */}
+            {!SERVER_FUNKTIONEN && activeTab !== 'start' && (() => {
+              const m = MODUL_KERN.get(activeTab);
+              return m ? <RueckmeldungPerMail modultitel={getTabLabel(m.id, m.titel ?? m.label)} className="mt-2 justify-center print:hidden" /> : null;
+            })()}
             {/* Lizenzhinweis (AP 6.8): erst nach THA-Freigabe, Schalter in src/data/lizenz.ts */}
             {LIZENZ_AKTIV && <React.Suspense fallback={null}><LicenseNotice /></React.Suspense>}
           </footer>

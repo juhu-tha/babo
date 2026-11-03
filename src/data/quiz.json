@@ -8090,6 +8090,174 @@
     }
   },
   {
+    "id": "qt_hk13791_1",
+    "category": "bindemittel_beton",
+    "categoryLabel": "Bindemittel & Betontechnologie",
+    "moduleId": "historisch",
+    "moduleTitle": "Historische Kennwerte",
+    "topic": "Probenanzahl Bohrkerne",
+    "difficulty": "Basis",
+    "normRef": "DIN EN 13791:2020-02",
+    "question": "Wie viele Bohrkerne mit Ø 100 mm sind nach DIN EN 13791:2020-02 je Prüfbereich mindestens nötig, um f_ck,is allein aus Kernen statistisch zu bestimmen?",
+    "options": [
+      "3 Kerne",
+      "8 Kerne",
+      "6 Kerne",
+      "15 Kerne"
+    ],
+    "correctIdx": 1,
+    "explanation": "Für die statistische Auswertung nur mit Bohrkernen (Ø ≥ 75 mm) sind mindestens 8 Kerne nötig, bei 50 ≤ Ø < 75 mm 12 Kerne; empfohlen sind 2 Kerne Reserve für Ausreißer. 3 Kerne genügen nur für kleine Prüfbereiche (≤ 10 m³ bzw. mit indirekter Prüfung ≤ 30 m³). Angaben nach Sekundärquellen, vorläufig, Normprüfung ausstehend.",
+    "bloom": "Erinnern",
+    "niveau": "B",
+    "distraktorFeedback": [
+      "3 Kerne reichen nur in den Verfahren für kleine Prüfbereiche (bis 10 m³ bzw. 30 m³), nicht für die Statistik.",
+      "",
+      "6 Kerne liegen unter der Mindestanzahl; die Tabelle für k_n beginnt bei n = 8.",
+      "15 Kerne verlangte Ansatz A der Fassung 2008; die Ausgabe 2020 senkt die Grenze auf 8."
+    ],
+    "gapAnalysis": {
+      "topic": "Probenanzahl Bohrkerne",
+      "misconception": "Die Mindestanzahl der Ausgabe 2008 oder der kleinen Prüfbereiche wird auf die Statistik übertragen.",
+      "coreRule": "Statistik nur mit Kernen: n ≥ 8 (Ø ≥ 75 mm), n ≥ 12 (50 ≤ Ø < 75 mm); kleine Prüfbereiche ab 3 Kernen.",
+      "actionableAdvice": "Arbeiten Sie den Reiter „Bohrkernserie (DIN EN 13791)“ im Modul Historische Kennwerte noch einmal durch.",
+      "targetModuleTab": "historisch",
+      "targetModuleLabel": "Historische Kennwerte"
+    },
+    "quelle": "Reiter „Bohrkernserie (DIN EN 13791)“; BRMCA 2020; Sefrin et al. 2022",
+    "verified": false,
+    "vorpruefung": {
+      "am": "2026-11-02",
+      "ergebnis": "fraglich",
+      "hinweis": "Neu 02.11.2026 (Reiter Bohrkernserie): Werte nach Sekundärquellen (BRMCA 2020, TFB 2021, Sefrin et al. 2022) – vorläufig, Normprüfung ausstehend; fachliche Prüfung offen."
+    }
+  },
+  {
+    "id": "qt_hk13791_2",
+    "category": "bindemittel_beton",
+    "categoryLabel": "Bindemittel & Betontechnologie",
+    "moduleId": "historisch",
+    "moduleTitle": "Historische Kennwerte",
+    "topic": "Charakteristische In-situ-Festigkeit",
+    "difficulty": "Vertiefung",
+    "normRef": "DIN EN 13791:2020-02",
+    "question": "Zehn Kerne (h/d = 2) ergeben f_m(n),is = 30,0 N/mm², s = 3,0 N/mm² und als kleinsten Wert 26,0 N/mm². Wie groß ist f_ck,is?",
+    "options": [
+      "24,2 N/mm²",
+      "25,1 N/mm²",
+      "30,0 N/mm²",
+      "26,0 N/mm²"
+    ],
+    "correctIdx": 0,
+    "explanation": "Mit k_n = 1,92 für n = 10: 30,0 − 1,92 · 3,0 = 24,2 N/mm². Das Kleinstwertkriterium ergibt 26,0 + M = 26,0 + 4 = 30,0 N/mm². Maßgebend ist der kleinere Wert, 24,2 N/mm². Die Mindeststandardabweichung 0,08 · 30,0 = 2,4 N/mm² liegt unter s und greift nicht.",
+    "bloom": "Anwenden",
+    "niveau": "B",
+    "distraktorFeedback": [
+      "",
+      "25,1 N/mm² entsteht mit k = 1,64 (unendlich viele Kerne) statt k_n = 1,92 für n = 10.",
+      "30,0 N/mm² ist nur das Kleinstwertkriterium 26,0 + 4; maßgebend ist der kleinere der beiden Werte.",
+      "26,0 N/mm² ist der kleinste Einzelwert ohne Zuschlag M und ohne Streuungskriterium."
+    ],
+    "gapAnalysis": {
+      "topic": "Charakteristische In-situ-Festigkeit",
+      "misconception": "k_n wird mit dem Grenzwert 1,64 verwechselt oder nur ein Kriterium ausgewertet.",
+      "coreRule": "f_ck,is = min(f_m(n),is − k_n·s; f_is,lowest + M); k_n nach n, s ≥ 0,08·f_m(n),is.",
+      "actionableAdvice": "Arbeiten Sie den Reiter „Bohrkernserie (DIN EN 13791)“ im Modul Historische Kennwerte noch einmal durch.",
+      "targetModuleTab": "historisch",
+      "targetModuleLabel": "Historische Kennwerte"
+    },
+    "quelle": "Reiter „Bohrkernserie (DIN EN 13791)“; BRMCA 2020; TFB 2021",
+    "verified": false,
+    "vorpruefung": {
+      "am": "2026-11-02",
+      "ergebnis": "fraglich",
+      "hinweis": "Neu 02.11.2026 (Reiter Bohrkernserie): Werte nach Sekundärquellen (BRMCA 2020, TFB 2021, Sefrin et al. 2022) – vorläufig, Normprüfung ausstehend; fachliche Prüfung offen."
+    }
+  },
+  {
+    "id": "qt_hk13791_3",
+    "category": "bindemittel_beton",
+    "categoryLabel": "Bindemittel & Betontechnologie",
+    "moduleId": "historisch",
+    "moduleTitle": "Historische Kennwerte",
+    "topic": "Faktor k_n",
+    "difficulty": "Vertiefung",
+    "normRef": "DIN EN 13791:2020-02",
+    "question": "Warum sinkt der Faktor k_n in DIN EN 13791 von 2,00 bei 8 Kernen auf 1,64 bei sehr vielen Kernen?",
+    "options": [
+      "Mittelwert und Streuung sind mit mehr Kernen genauer bekannt",
+      "Mehr Bohrungen schwächen das Bauteil, das wird ausgeglichen",
+      "Bei vielen Kernen gilt ein 10-%-Quantil statt eines 5-%-Quantils",
+      "Große Prüfbereiche haben im Mittel eine höhere Festigkeit"
+    ],
+    "correctIdx": 0,
+    "explanation": "k_n ist der Faktor für das 5-%-Quantil bei unbekannter Streuung (Student-Verteilung wie in DIN EN 1990, Anhang D). Mit wachsendem n wird die Schätzung von Mittelwert und Standardabweichung sicherer, k_n nähert sich dem Wert 1,64 der Normalverteilung bei bekannter Streuung.",
+    "bloom": "Verstehen",
+    "niveau": "B",
+    "distraktorFeedback": [
+      "",
+      "Die Schwächung durch Bohrungen ist eine Frage der Tragfähigkeit, nicht des statistischen Faktors.",
+      "Das Quantil bleibt bei 5 %; nur die Unsicherheit der Schätzung nimmt ab.",
+      "Die Größe des Prüfbereichs ändert die Festigkeit nicht; k_n hängt nur von n ab."
+    ],
+    "gapAnalysis": {
+      "topic": "Faktor k_n",
+      "misconception": "k_n wird als fester Sicherheitszuschlag statt als Quantilfaktor einer Stichprobe verstanden.",
+      "coreRule": "k_n = 5-%-Quantilfaktor bei unbekannter Streuung; 2,00 (n = 8) … 1,64 (n → ∞).",
+      "actionableAdvice": "Arbeiten Sie den Reiter „Bohrkernserie (DIN EN 13791)“ im Modul Historische Kennwerte noch einmal durch.",
+      "targetModuleTab": "historisch",
+      "targetModuleLabel": "Historische Kennwerte"
+    },
+    "quelle": "Reiter „Bohrkernserie (DIN EN 13791)“; BRMCA 2020; DIN EN 1990 Anhang D",
+    "verified": false,
+    "vorpruefung": {
+      "am": "2026-11-02",
+      "ergebnis": "fraglich",
+      "hinweis": "Neu 02.11.2026 (Reiter Bohrkernserie): Werte nach Sekundärquellen (BRMCA 2020, TFB 2021, Sefrin et al. 2022) – vorläufig, Normprüfung ausstehend; fachliche Prüfung offen."
+    }
+  },
+  {
+    "id": "qt_hk13791_4",
+    "category": "bindemittel_beton",
+    "categoryLabel": "Bindemittel & Betontechnologie",
+    "moduleId": "historisch",
+    "moduleTitle": "Historische Kennwerte",
+    "topic": "Zuordnung Druckfestigkeitsklasse",
+    "difficulty": "Vertiefung",
+    "normRef": "DIN EN 13791:2020-02, DIN EN 206",
+    "question": "Eine Bohrkernserie mit Kernen h/d = 2 ergibt f_ck,is = 22,0 N/mm². Welche Druckfestigkeitsklasse ist höchstens zuzuordnen?",
+    "options": [
+      "C20/25",
+      "C25/30",
+      "C16/20",
+      "C30/37"
+    ],
+    "correctIdx": 1,
+    "explanation": "Eine Klasse gilt als erreicht, wenn f_ck,is ≥ 0,85 · f_ck ist. C25/30 verlangt 0,85 · 25 = 21,25 N/mm² – erfüllt; C30/37 verlangt 0,85 · 30 = 25,5 N/mm² – nicht erfüllt. Der Faktor 0,85 berücksichtigt den Unterschied zwischen Bauwerksbeton und getrennt hergestellten Probekörpern.",
+    "bloom": "Anwenden",
+    "niveau": "B",
+    "distraktorFeedback": [
+      "C20/25 folgt, wenn f_ck,is direkt mit f_ck verglichen wird; der Faktor 0,85 fehlt dann.",
+      "",
+      "C16/20 entsteht, wenn 0,85 doppelt angesetzt wird (0,85 · 22,0 = 18,7 N/mm²).",
+      "C30/37 verlangt 0,85 · 30 = 25,5 N/mm²; 22,0 N/mm² reichen nicht."
+    ],
+    "gapAnalysis": {
+      "topic": "Zuordnung Druckfestigkeitsklasse",
+      "misconception": "Der In-situ-Wert wird ohne den Faktor 0,85 mit f_ck verglichen oder 0,85 wird doppelt angesetzt.",
+      "coreRule": "Klasse erreicht bei f_ck,is ≥ 0,85·f_ck (Zylinderbezug) bzw. 0,85·f_ck,cube (Würfelbezug).",
+      "actionableAdvice": "Arbeiten Sie den Reiter „Bohrkernserie (DIN EN 13791)“ im Modul Historische Kennwerte noch einmal durch.",
+      "targetModuleTab": "historisch",
+      "targetModuleLabel": "Historische Kennwerte"
+    },
+    "quelle": "Reiter „Bohrkernserie (DIN EN 13791)“; TFB 2021; Prüfkern src/calc/bohrkernserie13791.ts",
+    "verified": false,
+    "vorpruefung": {
+      "am": "2026-11-02",
+      "ergebnis": "fraglich",
+      "hinweis": "Neu 02.11.2026 (Reiter Bohrkernserie): Werte nach Sekundärquellen (BRMCA 2020, TFB 2021, Sefrin et al. 2022) – vorläufig, Normprüfung ausstehend; fachliche Prüfung offen."
+    }
+  },
+  {
     "id": "q_hb_1",
     "category": "metalle_holz",
     "categoryLabel": "Metalle & Holzwerkstoffe",
@@ -29751,7 +29919,7 @@
       "topic": "Relative Oberflächenfeuchte",
       "misconception": "Die relative Feuchte an kalten Oberflächen wird mit der Raumluftfeuchte gleichgesetzt.",
       "coreRule": "φ_si = p/p_sat(θ_si); Schimmelkriterium nach DIN 4108-2: φ_si ≤ 80 %.",
-      "actionableAdvice": "Arbeiten Sie den Abschnitt „Feuchteschutz & Wasserdampf-Taupunkt“ im Modul Feuchteschutz & Tauwasser noch einmal durch.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Feuchteschutz & Tauwasser (Glaser-Verfahren)“ im Modul Feuchteschutz & Tauwasser noch einmal durch.",
       "targetModuleTab": "feuchteschutz",
       "targetModuleLabel": "Feuchteschutz & Tauwasser"
     },

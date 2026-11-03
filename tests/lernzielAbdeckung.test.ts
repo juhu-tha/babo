@@ -52,8 +52,9 @@ const AUSNAHMEN_ERKUNDUNG: Readonly<Record<string, string>> = {
   'instandhaltung#2': 'Chloridrechner des Moduls ohne eigenes Lernziel (fünf Lernziele vergeben); Lernzielfassung offen',
 };
 
-/** Ratsche: Lernziele mit Frage, aber keiner auf passender Stufe (Stand 03.11.2026; 63 nach Merge von #316, ec_kennwerte#5) */
-const MAX_OHNE_PASSENDE_STUFE = 63;
+/** Ratsche: Lernziele mit Frage, aber keiner auf passender Stufe (Stand 03.11.2026; 63 nach Merge von #316, ec_kennwerte#5;
+ *  64 nach Merge von #320: historisch#5 aus #318 – Lernziel „Bewerten“, Fragen bis „Anwenden“; Modul hier nicht bearbeitet) */
+const MAX_OHNE_PASSENDE_STUFE = 64;
 
 const module = await analysiere();
 const L = luecken(module);

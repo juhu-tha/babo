@@ -12,6 +12,8 @@ import { META_CLUSTERS } from '../../data/metaClusters';
 import { ladeSuchbegriffe } from '../../registry/kern';
 import { tabGroups } from '../../routing/tabGroups';
 import { VolltextTreffer } from './VolltextTreffer';
+import { modulPasst } from '../../utils/suchNormalisierung';
+import { MODUL_KERN } from '../../registry/kern';
 
 import type { TabId } from '@/src/contexts/TabContext';
 const GROUP_ICONS: Record<string, React.ComponentType<{ size?: number; className?: string }>> = {
@@ -85,6 +87,10 @@ export function ModulNavigation({
   const { activeTab, setActiveTab } = useTabContext();
   const { language, t, getTabLabel, getGroupName, getClusterName } = useLanguage();
   const TAB_KEYWORDS = useSuchbegriffe(searchQuery !== '');
+  // Menüsuche mit Schreibvarianten und Synonymen (src/utils/suchNormalisierung.ts, Gesamtgutachten 03.11.2026):
+  // Menübeschriftung, Übersetzung, Modultitel und Suchbegriffe
+  const passt = (id: string, label: string) =>
+    modulPasst(searchQuery, id, [label, getTabLabel(id, label), MODUL_KERN.get(id)?.titel, ...(TAB_KEYWORDS[id] ?? [])]);
   return (
     <>
     {/* Schnellzugriff: Dashboard / Start & Allgemein */}
@@ -98,12 +104,7 @@ export function ModulNavigation({
 
       const matchingAllgemeinTabs = allgemeinGroup.tabs.filter((t) => {
         if (!searchQuery) return true;
-        const query = searchQuery.toLowerCase();
-        const translatedLabel = getTabLabel(t.id, t.label);
-        const labelIncludes = (t.label && t.label.toLowerCase().includes(query)) || translatedLabel.toLowerCase().includes(query);
-        const keywords = TAB_KEYWORDS[t.id] || [];
-        const keywordsInclude = keywords.some(k => k.includes(query));
-        return labelIncludes || keywordsInclude;
+        return passt(t.id, t.label);
       });
 
       // In search mode, only render if matching items exist
@@ -235,19 +236,8 @@ export function ModulNavigation({
       // Filter groups and tabs if search is active
       const matchingGroups = clusterGroups.filter(group => {
         if (!searchQuery) return true;
-        const query = searchQuery.toLowerCase();
-        const groupNameTranslated = getGroupName(group.name);
-        const clusterNameMatches = cluster.name.toLowerCase().includes(query) || translatedClusterName.toLowerCase().includes(query);
-        return clusterNameMatches ||
-               group.name.toLowerCase().includes(query) || 
-               groupNameTranslated.toLowerCase().includes(query) ||
-               group.tabs.some((t) => {
-                 const translatedLabel = getTabLabel(t.id, t.label);
-                 const labelIncludes = (t.label && t.label.toLowerCase().includes(query)) || translatedLabel.toLowerCase().includes(query);
-                 const keywords = TAB_KEYWORDS[t.id] || [];
-                 const keywordsInclude = keywords.some(k => k.includes(query));
-                 return labelIncludes || keywordsInclude;
-               });
+        return modulPasst(searchQuery, '', [cluster.name, translatedClusterName, group.name, getGroupName(group.name)]) ||
+               group.tabs.some((t) => passt(t.id, t.label));
       });
 
       if (matchingGroups.length === 0) return null;
@@ -297,12 +287,7 @@ export function ModulNavigation({
                 <div className="flex flex-col gap-0.5 my-0.5">
                   {matchingGroups.flatMap((g) => g.tabs).filter((tab) => {
                     if (!searchQuery) return true;
-                    const query = searchQuery.toLowerCase();
-                    const translatedLabel = getTabLabel(tab.id, tab.label);
-                    const labelIncludes = (tab.label && tab.label.toLowerCase().includes(query)) || translatedLabel.toLowerCase().includes(query);
-                    const keywords = TAB_KEYWORDS[tab.id] || [];
-                    const keywordsInclude = keywords.some(k => k.includes(query));
-                    return labelIncludes || keywordsInclude;
+                    return passt(tab.id, tab.label);
                   }).map((tab) => {
                     const Icon = tab.icon;
                     const isActive = activeTab === tab.id;
@@ -357,12 +342,7 @@ export function ModulNavigation({
                       <div className="flex flex-col gap-0.5 border-l-2 border-home-grau/30 dark:border-slate-700 ml-2.5 pl-2 my-0.5">
                         {group.tabs.filter((tab) => {
                           if (!searchQuery) return true;
-                          const query = searchQuery.toLowerCase();
-                          const translatedLabel = getTabLabel(tab.id, tab.label);
-                          const labelIncludes = (tab.label && tab.label.toLowerCase().includes(query)) || translatedLabel.toLowerCase().includes(query);
-                          const keywords = TAB_KEYWORDS[tab.id] || [];
-                          const keywordsInclude = keywords.some(k => k.includes(query));
-                          return labelIncludes || keywordsInclude;
+                          return passt(tab.id, tab.label);
                         }).map((tab) => {
                           if (tab.id.startsWith("divider")) {
                             const dividerText = getTabLabel(tab.id, tab.label.replace(/-/g, "").trim());

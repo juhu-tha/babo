@@ -11,6 +11,7 @@
  * Reiner Rechenkern – geprüft in tests/pfas.test.ts.
  */
 import { type Hinweis, istEndlich, muss, hatFehler, nurGueltig } from './plausibilitaet';
+import { pfasIstKurzkettig } from '../data/klassengrenzen';
 
 /** Die 20 PFAS der Summe „PFAS-20“ (TrinkwV Anlage 2 Teil I, entspricht Richtlinie (EU) 2020/2184) */
 export const PFAS20 = [
@@ -94,7 +95,8 @@ const LEER = (hinweise: Hinweis[]): PfasErgebnis => nurGueltig(({ pfas20: LEERE_
  * vorher wurden die Sulfonsäuren bis C7 als kurzkettig gezählt.
  */
 export function istKurzkettig(s: { c: number; gruppe: string }): boolean {
-  return s.gruppe === 'Sulfonsäure' ? s.c <= 5 : s.c <= 7;
+  // Grenze zentral in src/data/klassengrenzen.ts (PFAS_KETTENLAENGE, Gesamtgutachten 03.11.2026)
+  return pfasIstKurzkettig(s);
 }
 
 /** Ersatzwert für „< BG“ */

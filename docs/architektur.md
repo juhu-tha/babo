@@ -144,6 +144,17 @@ Ausnahmen (bleiben dunkel, Liste mit Begründung in `scripts/qa/check-design.mjs
 
 Ratsche: `node scripts/qa/check-design.mjs [--liste]` und `tests/designDunkleBoxen.test.ts` (Grenze 0) melden jeden neuen dunklen Hintergrund ohne `dark:`-Variante außerhalb der Ausnahmeliste.
 
+## Modultitel
+
+**Regel (Gesamtgutachten 03.11.2026):** Jedes Modul hat genau zwei Namen aus der Registry (`src/registry/modules.ts`):
+
+| Name | Feld | Wo |
+|---|---|---|
+| Kurzform | `label` | Menü, Brotkrumen, Mobil-Kopfleiste, Startseiten-Kacheln, Teilmodul-Reiter (dort steht der Gruppen- bzw. Bereichskontext daneben) |
+| Modultitel | `baum.titel` | Hauptüberschrift (h1), sichtbare Modulüberschrift, Fenstertitel und `<title>`/og:title der vorgerenderten Seite, Volltexttreffer, Lernziel-Querverweise, Modulnamen im Quiz (aus der Registry, `src/data/quizModell.ts`), PDF-Kopf, Modulübersicht |
+
+Der Titel ist das Label oder das Label mit Zusatz („Feuchteschutz & Tauwasser (Glaser-Verfahren)“, „Klausurtraining Rückbau & Schadstoffe“): Jedes Wort des Labels (ohne Klammerzusatz) steht im Titel. Die sichtbare Modulüberschrift (erste h2 im Modulinhalt) nennt das Modul ebenso; ausgenommen sind Bereichsüberschriften geteilter Komponenten (mehrere Module als Reiter einer Seite) und die „Bereich: …“-Überschriften der Modulinfos (`AUSNAHMEN_UEBERSCHRIFT` in `scripts/qa/modultitel.mjs`, darf nur schrumpfen). Prüfung: `node scripts/qa/modultitel.mjs` (nach dem Build auch die Überschriften) und `tests/modultitel.test.ts`.
+
 ## QA-Skripte
 
 | Befehl | Prüfung |
@@ -156,6 +167,8 @@ Ratsche: `node scripts/qa/check-design.mjs [--liste]` und `tests/designDunkleBox
 | `npm run build` + `node scripts/qa/check-bundle.mjs` | Build und Bundle-Budget |
 | `node scripts/qa/inhalt-anteil.mjs` | Anteil der Fachtexte in `content/` (AP 5.3) |
 | `node scripts/qa/check-verwaist.mjs [--strict]` | Dateien unter `src/`, die von `src/main.tsx` aus nicht erreichbar sind |
+| `node scripts/qa/klassengrenzen-abgleich.mjs [--alle]` | Klassengrenzen PFAS/LAGA M 20/EBV in Fachtexten und Quiz gegen `src/data/klassengrenzen.ts` (Ratsche `tests/klassengrenzen.test.ts`) |
+| `node scripts/qa/modultitel.mjs [--dist dist]` | Regel Modultitel (Abschnitt Modultitel) |
 | `node scripts/qa/check-design.mjs [--liste]` | Designgrundsatz „keine schwarzen Boxen“: neue dunkle Hintergründe im Hellmodus außerhalb der Ausnahmeliste (Abschnitt Design) |
 | `scripts/qa/a11y.mjs`, `layout-mobil.mjs` | Barrierefreiheit / Mobil-Layout (Playwright, eigener Workflow `a11y.yml`; in PRs Desktop auf allen Routen, Mobil auf Stichprobe + betroffenen Routen aus `a11y-routen.mjs`) |
 | `node scripts/qa/a11y-diagramme.mjs [--basis URL] [--routen a,b]` | Diagramm-Textalternativen (Z8) auf 3 Diagrammrouten hell/dunkel/mobil: `role="img"` + `aria-label` je Leinwand, alle Datentabellen geöffnet (caption, `th scope`), axe auf die Diagrammhüllen, Druckansicht (Job `a11y` in `a11y.yml`) |

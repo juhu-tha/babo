@@ -35,7 +35,7 @@ const BAUWERKSDIAGNOSE: readonly string[] = [
   "Die Bauwerksuntersuchung läuft in Phasen: Studium der Bestandsunterlagen, handnahe Sichtprüfung mit Rissaufnahme und Klopfprüfung, zerstörungsfreie Prüfung sowie Probenahme mit Laboranalyse.",
   "Bewehrungsortung, Rückprallhammer und Potentialfeldmessung scannen das Tragwerk zerstörungsfrei; Bohrkerne und Bohrmehlproben kalibrieren diese Verfahren und liefern Festigkeiten und Chloridprofile.",
   "Die Zeit bis zur Depassivierung folgt aus t_krit = (c/k)²; im Beispiel ergeben 25 mm Deckung und k = 2,5 mm/√a rund 100 Jahre, bei 36 Jahren Bauwerksalter also etwa 64 Jahre Reserve.",
-  "Die charakteristische In-situ-Druckfestigkeit nach DIN EN 13791 ist der kleinere Wert aus f_m,is − k_n · s und kleinstem Einzelwert plus M; im Beispiel mit 8 Bohrkernen (k_n = 2,00, M = 4) ergeben sich 26,0 N/mm².",
+  "Die charakteristische In-situ-Druckfestigkeit nach DIN EN 13791:2020-02 ist der kleinere Wert aus f_m,is − k_n · s (k_n = 2,00 bei 8 Kernen) und kleinstem Einzelwert plus M; im Beispiel mit 8 Bohrkernen ergeben sich 26,0 N/mm².",
   "Rückprallwerte sind nur über eine Kalibrierung an Bohrkernen in Festigkeiten umzurechnen; die Bohrwiderstandsmessung an Holz ist nicht genormt und verlangt fundierte Holzartenkenntnis bei der Auswertung.",
 ];
 

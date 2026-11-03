@@ -40,9 +40,9 @@ for (const l of listen) {
 pruefe(summe === fragen.length, `Prüflisten decken ${summe} von ${fragen.length} Fragen ab`);
 
 // 3. Neue Fragen seit 26.10. (Z24, #190/#191: 30; Teilmodul-Aufstockung qt_* vom 29.10.: 14; Modul ec_kennwerte qt_eckennwerte_* vom 02.11.: 7;
-//    Lernziel-Abdeckung qlz_* vom 03.11.: 38): alle erfasst und, solange nicht freigegeben, aufgeführt
+//    Historische Kennwerte qt_hk13791_* vom 02.11.: 4; Lernziel-Abdeckung qlz_* vom 03.11.: 38): alle erfasst und, solange nicht freigegeben, aufgeführt
 const neu = fragen.filter(q => NEU_SEIT_26_10.test(q.id));
-pruefe(neu.length === 89, `NEU_SEIT_26_10 trifft ${neu.length} statt 89 Fragen`);
+pruefe(neu.length === 93, `NEU_SEIT_26_10 trifft ${neu.length} statt 93 Fragen`);
 const alle = listen.map(l => l.inhalt).join('\n');
 for (const q of neu) if (q.verified !== true) pruefe(alle.includes(`### ${q.id} · `), `neue Frage ${q.id} fehlt in den Prüflisten`);
 
