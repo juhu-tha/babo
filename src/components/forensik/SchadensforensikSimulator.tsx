@@ -361,7 +361,7 @@ export function SchadensforensikSimulator() {
           </span>
           <h2 className="text-xl font-bold text-text-main flex items-center gap-2">
             <Search className="text-shiraz" size={22} />
-            Bauschadens-Forensik &amp; Diagnostik-Simulator
+            Bauforensik &amp; Fallstudien: Diagnostik-Simulator
           </h2>
           <p className="text-xs text-text-main/70 mt-1">
             Schlüpfen Sie in die Rolle des Bausachverständigen: Untersuchen Sie Schäden, verwalten Sie Ihr Untersuchungsbudget und wählen Sie die normkonforme Sanierung.

@@ -17,12 +17,12 @@ Entscheidung 02.11.2026 (Befunde B2, B3, B6, B7, B9 der Live-Prüfung: docs/prue
 `vercel.json` setzt den Build-Befehl (er hat Vorrang vor der Einstellung im Vercel-Projekt):
 
 ```
-BB_STATISCH=1 npm run build && rm -f dist/server.cjs && cp dist/index.html dist/404.html
+BB_STATISCH=1 npm run build && rm -f dist/server.cjs && node scripts/seite404.mjs
 ```
 
 - `npm run build` bleibt unverändert (package.json wird nicht angefasst) und erzeugt wie bisher `dist/server.cjs` für `Dockerfile`. `scripts/qa/check-bundle.mjs` verlangt `server.cjs` im Statik-Modus nicht (`BB_STATISCH=1`, `--statisch` oder `dist/404.html` vorhanden) und läuft damit auch auf der Vercel-Ausgabe.
 - `rm -f dist/server.cjs`: Das Server-Bundle wird vor der Veröffentlichung entfernt (Befund 01.11.2026: `/server.cjs` war öffentlich abrufbar). Eine `.vercelignore` hilft hier nicht – sie wirkt nur auf die hochgeladenen Quelldateien, nicht auf die Build-Ausgabe.
-- `cp dist/index.html dist/404.html`: Unbekannte Adressen bekommen die App mit Status 404 (die App zeigt dann die Startseite) – wie im Server für unbekannte Modul-IDs.
+- `node scripts/seite404.mjs`: schreibt `dist/404.html` aus `dist/index.html` (Titel „Seite nicht gefunden“, `noindex`, Ersatzinhalt ohne JavaScript mit Links). Unbekannte Adressen bekommen damit die App mit Status 404; die App zeigt den Hinweis „Seite nicht gefunden“ mit ähnlichen Modulen und Suche (Gesamtgutachten 03.11.2026), die Adresse bleibt stehen. Die Inline-Skripte sind dieselben wie in `index.html` (CSP-Hashes unverändert).
 
 ## Statik-Modus
 
@@ -60,7 +60,7 @@ Rückweg bei CSP-Problemen: in `vercel.json` den Schlüssel `Content-Security-Po
 - Lokale Prüfung wie auf Vercel:
 
 ```
-BB_STATISCH=1 npm run build && rm -f dist/server.cjs && cp dist/index.html dist/404.html
+BB_STATISCH=1 npm run build && rm -f dist/server.cjs && node scripts/seite404.mjs
 PORT=4501 node scripts/qa/vercel-vorschau.mjs
 ```
 

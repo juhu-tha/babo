@@ -29098,7 +29098,7 @@
       "topic": "Relative Oberflächenfeuchte",
       "misconception": "Die relative Feuchte an kalten Oberflächen wird mit der Raumluftfeuchte gleichgesetzt.",
       "coreRule": "φ_si = p/p_sat(θ_si); Schimmelkriterium nach DIN 4108-2: φ_si ≤ 80 %.",
-      "actionableAdvice": "Arbeiten Sie den Abschnitt „Feuchteschutz & Wasserdampf-Taupunkt“ im Modul Feuchteschutz & Tauwasser noch einmal durch.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Feuchteschutz & Tauwasser (Glaser-Verfahren)“ im Modul Feuchteschutz & Tauwasser noch einmal durch.",
       "targetModuleTab": "feuchteschutz",
       "targetModuleLabel": "Feuchteschutz & Tauwasser"
     },
