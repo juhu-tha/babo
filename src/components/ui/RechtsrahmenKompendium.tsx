@@ -403,7 +403,7 @@ export const LEGAL_INSTRUMENTS: LegalInstrument[] = [
     legalType: 'Bundesverordnung',
     audiences: ['baustoffe', 'planer'],
     primaryTarget: 'Tiefbauunternehmen, Recyclingbetriebe, Straßenbau, Bodenschutzbehörden',
-    leadQuote: 'Rechtlich belastbares Ende der Abfalleigenschaft und bundesweit einheitliche Einbauklassen für RC-Baustoffe.',
+    leadQuote: 'Bundesweit einheitliche Materialklassen und Einbauweisen für mineralische Ersatzbaustoffe; das Ende der Abfalleigenschaft regelt die EBV nicht.',
     coreSummary: 'Die EBV harmonisiert das deutsche Verwertungsrecht für mineralische Sekundärbaustoffe und löste die fragmentierten LAGA-Regelungen der Bundesländer ab. Sie definiert einheitliche Materialwerte und Einbauweisen für güteüberwachte Recycling-Baustoffe (RC-1 bis RC-3), Bodenmaterial (BM-0 bis BM-F3), Schlacken und Bauschutt im Erd- und Tiefbau.',
     keyDuties: [
       'Güteüberwachung durch werkseigene Produktionskontrolle (WPK) und Fremdüberwachung.',

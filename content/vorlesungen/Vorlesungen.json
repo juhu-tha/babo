@@ -53,7 +53,7 @@
       "ects": 5,
       "semester": "Wintersemester",
       "pruefung": "Schriftliche Klausur (90 min)",
-      "dozent": "Professur für Bauwerkserhaltung & Tragwerksdiagnose"
+      "dozent": "Professur für Werkstoffe und Stoffkreisläufe im Bauwesen"
     },
     "Vorlesungen.units": [
       {
@@ -132,7 +132,7 @@
       "ects": 5,
       "semester": "Wintersemester",
       "pruefung": "Projektarbeit mit Präsentation & Kolloquium",
-      "dozent": "Professur für Nachhaltiges Bauen & Bauphysik"
+      "dozent": "Professur für Werkstoffe und Stoffkreisläufe im Bauwesen"
     },
     "Vorlesungen.units_2": [
       {
@@ -211,7 +211,7 @@
       "ects": 5,
       "semester": "Wintersemester",
       "pruefung": "Klausur (90 min) & Schadensgutachten-Hausarbeit",
-      "dozent": "Professur für Bauschäden, Bauwerkserhaltung & Baustoffprüfung"
+      "dozent": "Professur für Werkstoffe und Stoffkreisläufe im Bauwesen"
     },
     "Vorlesungen.units_3": [
       {
@@ -290,7 +290,7 @@
       "ects": 6,
       "semester": "Wintersemester",
       "pruefung": "Klausur (120 min) & Laborpraktikum mit Protokollabnahme",
-      "dozent": "Professur für Baustoffkunde & Bauchemie"
+      "dozent": "Professur für Werkstoffe und Stoffkreisläufe im Bauwesen"
     },
     "Vorlesungen.units_4": [
       {
@@ -369,7 +369,7 @@
       "ects": 5,
       "semester": "Wintersemester",
       "pruefung": "Klausur (90 min) & Instandsetzungskonzept-Übungsnachweis",
-      "dozent": "Professur für Bautenschutz, Instandhaltung & Betoninstandsetzung"
+      "dozent": "Professur für Werkstoffe und Stoffkreisläufe im Bauwesen"
     },
     "Vorlesungen.units_5": [
       {

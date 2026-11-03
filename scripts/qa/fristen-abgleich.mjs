@@ -97,8 +97,11 @@ export function bereite(eintraege) {
 
 /**
  * Einen Text prüfen. Ergebnis: Treffer { id, wert (gefunden), soll, ok, auszug, pos }.
+ * optionen.nachherFaktor: Gewicht der Entfernung eines Ankers hinter der Angabe (Standard 1; der Klassengrenzen-Abgleich
+ * zieht mit 4 den Parameter vor der Angabe vor, z. B. „Kupfer (RC-1: ≤ 110 µg/l, RC-2: ≤ 250 µg/l), Chrom …“).
  */
-export function pruefeText(textRoh, eintraege) {
+export function pruefeText(textRoh, eintraege, optionen = {}) {
+  const nachher = optionen.nachherFaktor ?? 1;
   const text = normalisiere(textRoh);
   const kandidaten = [];
   for (const e of eintraege) {
@@ -110,7 +113,7 @@ export function pruefeText(textRoh, eintraege) {
         let dist = Infinity;
         for (const [as, ae] of anker) {
           if (ae <= m.index && m.index - ae <= 220) dist = Math.min(dist, m.index - ae);
-          else if (as >= m.index && as - (m.index + m[0].length) <= 200) dist = Math.min(dist, Math.max(0, as - m.index));
+          else if (as >= m.index && as - (m.index + m[0].length) <= 200) dist = Math.min(dist, Math.max(0, as - m.index) * nachher);
         }
         if (dist === Infinity) continue;
         const wert = leseWert(m.groups.w);

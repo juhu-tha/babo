@@ -1,6 +1,6 @@
 {
   "texte": {
-    "feuchteschutzWasserdampfTaupunkt": "Feuchteschutz & Wasserdampf-Taupunkt",
+    "feuchteschutzWasserdampfTaupunkt": "Feuchteschutz & Tauwasser (Glaser-Verfahren)",
     "berechnungsverfahrenNachDin4108": "Berechnungsverfahren nach DIN 4108-3 & Sättigungsdampfdruck nach der Magnus-Formel",
     "feuchtigkeitImBauwerkFührt": "Feuchtigkeit im Bauwerk führt zu Bauschäden und gesundheitsschädlichem Schimmel. Mit diesem Berechnungs- und Demonstrationstool lassen sich die Luftfeuchte, der **Taupunkt (Kondensation)** sowie der Diffusionswiderstand geschichteter Konstruktionen nach dem **Periodenbilanzverfahren (Glaser-Verfahren)** analysieren.",
     "raumklimaBauteiloberfläche": " Raumklima & Bauteiloberfläche",
