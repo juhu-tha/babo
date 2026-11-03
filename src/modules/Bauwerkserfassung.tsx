@@ -525,7 +525,7 @@ export default function Bauwerkserfassung() {
         lastReviewed={inhalt.werte.oktober2026Ap8} 
         wikipedia={[
           { title: "Laserscanning", url: "https://de.wikipedia.org/wiki/Laserscanning" },
-          { title: "Fotogrammetrie", url: "https://de.wikipedia.org/wiki/Fotogrammetrie" },
+          { title: "Fotogrammetrie", url: "https://de.wikipedia.org/wiki/Photogrammetrie" },
           { title: inhalt.werte.eurocode5Holzbau, url: "https://de.wikipedia.org/wiki/Eurocode_5" }
         ]}
         literatur={inhalt.daten["Bauwerkserfassung.literatur"]}

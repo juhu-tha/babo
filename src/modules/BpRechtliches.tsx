@@ -785,10 +785,10 @@ export default function BpRechtliches({ isEmbedded = false, activeSubTab: active
       {!isEmbedded && activeSubTab !== 'normenarbeit' && (
         <ModuleFooter 
           wikipedia={[
-            { title: "Bauproduktenverordnung", url: "https://de.wikipedia.org/wiki/Bauproduktenverordnung" },
+            { title: "Bauproduktenverordnung", url: "https://de.wikipedia.org/wiki/Verordnung_(EU)_Nr._305/2011" },
             { title: "CE-Kennzeichnung", url: "https://de.wikipedia.org/wiki/CE-Kennzeichnung" },
             { title: inhalt.werte.akkreditierungRecht },
-            { title: inhalt.werte.europäischeTechnischeBewertungEta, url: "https://de.wikipedia.org/wiki/Europ%C3%A4ische_Technische_Bewertung" }
+            { title: inhalt.werte.europäischeTechnischeBewertungEta, url: "https://de.wikipedia.org/wiki/Europ%C3%A4ische_Technische_Zulassung" }
           ]} 
           literatur={inhalt.daten["BpRechtliches.literatur_2"]} 
           regelwerke={inhalt.daten["BpRechtliches.regelwerke_2"]} 

@@ -360,7 +360,7 @@ export default function BestandChecklisten() {
         lastReviewed={inhalt.werte.oktober2026Ap8} 
         wikipedia={[
           { title: inhalt.werte.bauenImBestand, url: 'https://de.wikipedia.org/wiki/Bauen_im_Bestand' },
-          { title: 'Bauaufnahme', url: 'https://de.wikipedia.org/wiki/Bauaufnahme' },
+          { title: 'Bauaufnahme', url: 'https://de.wikipedia.org/wiki/Bauaufma%C3%9F' },
           { title: inhalt.werte.zerstörungsfreiePrüfungImBauwesen, url: 'https://de.wikipedia.org/wiki/Zerst%C3%B6rungsfreie_Pr%C3%BCfung_im_Bauwesen' }
         ]}
         regelwerke={inhalt.daten["BestandChecklisten.regelwerke"]}

@@ -198,7 +198,7 @@ export default function Produktsiegel() {
                 <ShieldCheck size={24} />
               </div>
               <div>
-                <a href="https://www.natureplus.org/" target="_blank" rel="noopener noreferrer" className="hover:underline text-purple-600">
+                <a href="https://natureplus.org/" target="_blank" rel="noopener noreferrer" className="hover:underline text-purple-600">
                   <h4 className="font-bold text-base mb-1">natureplus <span className="text-xs font-mono text-slate-400 font-normal ml-1">(Typ I)</span></h4>
                 </a>
                 <p className="text-xs text-slate-500"><MdText text={inhalt.texte.internationalesQualitätszeichenFürNachha} /></p>

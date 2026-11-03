@@ -319,7 +319,7 @@ export default function Erdbau() {
       <ModuleFooter
         wikipedia={[
           { title: 'Erdbau', url: 'https://de.wikipedia.org/wiki/Erdbau' },
-          { title: 'Bodenklasse', url: 'https://de.wikipedia.org/wiki/Bodenklasse' },
+          { title: 'Bodenklasse', url: 'https://de.wikipedia.org/wiki/Boden-_und_Felsklasse' },
           { title: 'Proctorversuch', url: 'https://de.wikipedia.org/wiki/Proctorversuch' }
         ]}
         literatur={inhalt.daten["Erdbau.literatur"]}

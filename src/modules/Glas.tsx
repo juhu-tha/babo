@@ -321,7 +321,7 @@ export default function Glas() {
       <ModuleFooter 
         wikipedia={[
         { title: 'Glas', url: 'https://de.wikipedia.org/wiki/Glas' },
-        { title: 'Verbundsicherheitsglas', url: 'https://de.wikipedia.org/wiki/Verbundsicherheitsglas' }
+        { title: 'Verbundsicherheitsglas', url: 'https://de.wikipedia.org/wiki/Verbund-Sicherheitsglas' }
       ]}
         literatur={inhalt.daten["Glas.literatur"]}
         regelwerke={inhalt.daten["Glas.regelwerke"]}

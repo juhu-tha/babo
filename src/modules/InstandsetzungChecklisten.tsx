@@ -697,7 +697,7 @@ export default function InstandsetzungChecklisten() {
         weblinks={inhalt.daten["InstandsetzungChecklisten.weblinks"]}
         wikipedia={[
           { title: "Betoninstandsetzung", url: "https://de.wikipedia.org/wiki/Betoninstandsetzung" },
-          { title: "Bauüberwachung", url: "https://de.wikipedia.org/wiki/Bau%C3%BCberwachung" },
+          { title: "Bauüberwachung", url: "https://de.wikipedia.org/wiki/Objekt%C3%BCberwachung" },
           { title: "Instandhaltung", url: "https://de.wikipedia.org/wiki/Instandhaltung" }
         ]}
         literatur={inhalt.daten["InstandsetzungChecklisten.literatur"]}

@@ -811,7 +811,7 @@ export default function HistorischeBauweisen() {
           { title: "Fachwerkhaus", url: "https://de.wikipedia.org/wiki/Fachwerkhaus" },
           { title: "Holzbalkendecke", url: "https://de.wikipedia.org/wiki/Holzbalkendecke" },
           { title: "Kappendecke", url: "https://de.wikipedia.org/wiki/Kappendecke" },
-          { title: "Dachwerk", url: "https://de.wikipedia.org/wiki/Dachwerk" }
+          { title: "Dachwerk", url: "https://de.wikipedia.org/wiki/Dachkonstruktion" }
         ]}
         literatur={inhalt.daten["HistorischeBauweisen.literatur"]}
         regelwerke={inhalt.daten["HistorischeBauweisen.regelwerke"]}

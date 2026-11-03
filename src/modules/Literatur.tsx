@@ -342,7 +342,7 @@ const LITERATURE_DATABASE: LiteratureEntry[] = [
     category: 'journale',
     categoryLabel: inhalt.werte.fachzeitschriftenJournale2,
     badge: 'Fachjournal',
-    url: 'https://www.nbau.org/',
+    url: 'https://nbau.org/',
     description: inhalt.werte.zukunftsweisendeFachzeitschriftFürDen,
     coreTopics: ['Zirkularität', 'ESG-Reporting', 'Sekundärrohstoffe', 'Taxonomie', 'Klimaneutralität']
   },

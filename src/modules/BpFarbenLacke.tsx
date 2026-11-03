@@ -661,7 +661,7 @@ export default function BpFarbenLacke() {
           { title: 'Farbe', url: 'https://de.wikipedia.org/wiki/Farbe' },
           { title: 'Lack', url: 'https://de.wikipedia.org/wiki/Lack' },
           { title: inhalt.werte.flüchtigeOrganischeVerbindungenVoc, url: 'https://de.wikipedia.org/wiki/Fl%C3%BCchtige_organische_Verbindungen' },
-          { title: 'Silikatfarbe', url: 'https://de.wikipedia.org/wiki/Silikatfarbe' }
+          { title: 'Silikatfarbe', url: 'https://de.wikipedia.org/wiki/Mineralfarbe' }
         ]}
         literatur={inhalt.daten["BpFarbenLacke.literatur"]}
         regelwerke={inhalt.daten["BpFarbenLacke.regelwerke"]}

@@ -194,7 +194,7 @@ export default function BpVerkehrswegebau({ initialTab }: BpVerkehrswegebauProps
 
       <ModuleFooter 
         wikipedia={[
-          { title: 'Straßenbau', url: 'https://de.wikipedia.org/wiki/Stra%C3%9Fenbau' },
+          { title: 'Straßenbau', url: 'https://de.wikipedia.org/wiki/Stra%C3%9Fen-_und_Wegebau' },
           { title: 'Asphalt', url: 'https://de.wikipedia.org/wiki/Asphalt' },
           { title: 'Bitumen', url: 'https://de.wikipedia.org/wiki/Bitumen' },
           { title: 'Betondecke', url: 'https://de.wikipedia.org/wiki/Betondecke' }

@@ -58,7 +58,7 @@ export interface Drittkomponente {
 export const LIZENZ_LINKS = {
   'OFL-1.1': 'https://openfontlicense.org',
   MIT: 'https://opensource.org/license/mit',
-  ISC: 'https://opensource.org/license/isc-license-txt',
+  ISC: 'https://opensource.org/license/isc',
   'Apache-2.0': 'https://www.apache.org/licenses/LICENSE-2.0',
   'BSD-2-Clause': 'https://opensource.org/license/bsd-2-clause',
 } as const;

@@ -900,7 +900,7 @@ export default function Schadstoffe() {
           { title: 'Schadstoff', url: 'https://de.wikipedia.org/wiki/Schadstoff' },
           { title: 'Asbest', url: 'https://de.wikipedia.org/wiki/Asbest' },
           { title: inhalt.werte.polychlorierteBiphenyle, url: 'https://de.wikipedia.org/wiki/Polychlorierte_Biphenyle' },
-          { title: inhalt.werte.polyzyklischeAromatischeKohlenwasserstof, url: 'https://de.wikipedia.org/wiki/Polyzyklische_aromatische_Kohlenwasserstoffe' }
+          { title: inhalt.werte.polyzyklischeAromatischeKohlenwasserstof, url: 'https://de.wikipedia.org/wiki/Polycyclische_aromatische_Kohlenwasserstoffe' }
         ]}
         literatur={inhalt.daten["Schadstoffe.literatur"]}
         regelwerke={inhalt.daten["Schadstoffe.regelwerke"]}

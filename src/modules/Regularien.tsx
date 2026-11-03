@@ -857,7 +857,7 @@ export default function Regularien() {
         wikipedia={[
           { title: inhalt.werte.baurechtDeutschland, url: 'https://de.wikipedia.org/wiki/Baurecht_(Deutschland)' },
           { title: 'Bauordnungsrecht', url: 'https://de.wikipedia.org/wiki/Bauordnungsrecht' },
-          { title: 'Bauproduktenverordnung', url: 'https://de.wikipedia.org/wiki/Bauproduktenverordnung' }
+          { title: 'Bauproduktenverordnung', url: 'https://de.wikipedia.org/wiki/Verordnung_(EU)_Nr._305/2011' }
         ]}
         regelwerke={inhalt.daten["Regularien.regelwerke"]}
         literatur={inhalt.daten["Regularien.literatur"]}

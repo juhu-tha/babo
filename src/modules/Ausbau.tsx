@@ -233,7 +233,7 @@ export default function Ausbau() {
         wikipedia={[
           { title: 'Trockenbau', url: 'https://de.wikipedia.org/wiki/Trockenbau' },
           { title: 'Estrich', url: 'https://de.wikipedia.org/wiki/Estrich' },
-          { title: 'Fliese', url: 'https://de.wikipedia.org/wiki/Fliese' },
+          { title: 'Fliese', url: 'https://de.wikipedia.org/wiki/Keramikfliese' },
           { title: 'Bauschäumen', url: 'https://de.wikipedia.org/wiki/Montageschaum' }
         ]}
         literatur={inhalt.daten["Ausbau.literatur"]}

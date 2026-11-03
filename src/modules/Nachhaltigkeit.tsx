@@ -492,7 +492,7 @@ export default function Nachhaltigkeit({ bereiche = ALLE_BEREICHE }: { bereiche?
           { title: 'Bauprodukte-Verordnung' },
           { title: inhalt.werte.europeanGreenDeal, url: 'https://de.wikipedia.org/wiki/European_Green_Deal' },
           { title: inhalt.werte.europäischerEmissionshandel, url: 'https://de.wikipedia.org/wiki/EU-Emissionshandel' },
-          { title: 'CO2-Grenzausgleichssystem', url: 'https://de.wikipedia.org/wiki/CO2-Grenzausgleichssystem' },
+          { title: 'CO2-Grenzausgleichssystem', url: 'https://de.wikipedia.org/wiki/Europ%C3%A4isches_CO2-Grenzausgleichssystem' },
           { title: 'Ersatzbaustoffverordnung', url: 'https://de.wikipedia.org/wiki/Ersatzbaustoffverordnung' },
           { title: 'Lehmbau', url: 'https://de.wikipedia.org/wiki/Lehmbau' }
         ]}

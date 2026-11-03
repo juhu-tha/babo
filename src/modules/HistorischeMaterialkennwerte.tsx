@@ -406,7 +406,7 @@ export default function HistorischeMaterialkennwerte() {
       <ModuleFooter
         lastReviewed={inhalt.werte.oktober2026Ap8} 
         wikipedia={[
-          { title: 'Baustoffprüfung', url: 'https://de.wikipedia.org/wiki/Baustoffpr%C3%BCfung' },
+          { title: 'Baustoffprüfung', url: 'https://de.wikipedia.org/wiki/Baustoffkunde' },
           { title: 'Bohrkern', url: 'https://de.wikipedia.org/wiki/Bohrkern' },
           { title: 'Eurocode 2', url: 'https://de.wikipedia.org/wiki/Eurocode_2' },
           { title: 'Mauerwerk', url: 'https://de.wikipedia.org/wiki/Mauerwerk' }

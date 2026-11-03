@@ -114,8 +114,8 @@ export default function OekobilanzLCA({ teil = 'grundlagen' }: { teil?: LcaTeil 
       <ModuleFooter
         lastReviewed={inhaltJson.werte.oktober2026Ap7} 
         wikipedia={[
-          { title: 'Ökobilanz', url: 'https://de.wikipedia.org/wiki/%C3%96kobilanz' },
-          { title: 'Treibhauspotenzial', url: 'https://de.wikipedia.org/wiki/Treibhauspotenzial' },
+          { title: 'Ökobilanz', url: 'https://de.wikipedia.org/wiki/Lebenszyklusanalyse' },
+          { title: 'Treibhauspotenzial', url: 'https://de.wikipedia.org/wiki/Treibhauspotential' },
           { title: inhaltJson.werte.graueEnergie, url: 'https://de.wikipedia.org/wiki/Graue_Energie' },
           { title: inhaltJson.werte.umweltproduktdeklarationEpd, url: 'https://de.wikipedia.org/wiki/Environmental_Product_Declaration' }
         ]}

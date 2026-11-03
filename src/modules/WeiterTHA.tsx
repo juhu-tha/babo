@@ -250,7 +250,7 @@ export default function WeiterTHA() {
           <p className="text-sm md:text-base text-text-main/70 leading-relaxed font-light"><MdText text={inhalt.texte.bereitenSieSichAuf} /></p>
           <div className="flex flex-wrap gap-2.5 mt-2">
             <a 
-              href="https://www.tha.de/TTZ-Aichach.html" 
+              href="https://www.tha.de/forschung/technologietransfer/technologietransferzentren/ttz-aichach/" 
               target="_blank" 
               rel="noopener noreferrer"
               className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-slate-50 hover:bg-slate-100 border border-home-grau/20 rounded-xl text-xs font-semibold text-text-main transition-all shadow-xs"

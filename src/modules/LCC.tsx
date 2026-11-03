@@ -826,9 +826,9 @@ export default function LCC() {
 
       <ModuleFooter
         wikipedia={[
-          { title: 'Lebenszykluskostenrechnung', url: 'https://de.wikipedia.org/wiki/Lebenszykluskostenrechnung' },
+          { title: 'Lebenszykluskostenrechnung', url: 'https://de.wikipedia.org/wiki/Life_Cycle_Costing' },
           { title: 'Barwert', url: 'https://de.wikipedia.org/wiki/Barwert' },
-          { title: 'Kapitalwertmethode', url: 'https://de.wikipedia.org/wiki/Kapitalwertmethode' }
+          { title: 'Kapitalwertmethode', url: 'https://de.wikipedia.org/wiki/Kapitalwert' }
         ]}
         regelwerke={inhalt.daten["LCC.regelwerke"]}
         literatur={inhalt.daten["LCC.literatur"]}

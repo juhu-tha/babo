@@ -391,7 +391,7 @@ export default function Lebensdauern() {
       {/* ModuleFooter following GEMINI_md */}
       <ModuleFooter
         wikipedia={[
-          { title: inhalt.werte.lebensdauerTechnik, url: 'https://de.wikipedia.org/wiki/Lebensdauer_(Technik)' },
+          { title: inhalt.werte.lebensdauerTechnik, url: 'https://de.wikipedia.org/wiki/Haltbarkeit_(Technik)' },
           { title: 'Obsoleszenz', url: 'https://de.wikipedia.org/wiki/Obsoleszenz' },
           { title: 'Instandhaltung', url: 'https://de.wikipedia.org/wiki/Instandhaltung' }
         ]}

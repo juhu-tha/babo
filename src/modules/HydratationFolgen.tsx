@@ -101,8 +101,8 @@ export default function HydratationFolgen() {
         ]}
         wikipedia={[
           { title: 'Zementstein', url: 'https://de.wikipedia.org/wiki/Zementstein' },
-          { title: 'Zwangspannung', url: 'https://de.wikipedia.org/wiki/Zwangspannung' },
-          { title: 'Hydratationswärme', url: 'https://de.wikipedia.org/wiki/Hydratationsw%C3%A4rme' },
+          { title: 'Zwangspannung', url: 'https://de.wikipedia.org/wiki/Zw%C3%A4ngung' },
+          { title: 'Hydratationswärme', url: 'https://de.wikipedia.org/wiki/Hydrationsenergie' },
           { title: 'Schwinden', url: 'https://de.wikipedia.org/wiki/Schwinden_(Beton)' },
           { title: 'Kriechen', url: 'https://de.wikipedia.org/wiki/Kriechen' }
         ]}

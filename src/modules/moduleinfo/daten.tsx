@@ -231,7 +231,7 @@ export const MODULES_DATA: Record<string, GroupData> = {
     appProfessionals: inhalt.werte.nachschlagewerkFürTragwerksplanungUnd,
     wikipedia: [
       { title: 'Baustoff', url: 'https://de.wikipedia.org/wiki/Baustoff' },
-      { title: 'Werkstoffkunde', url: 'https://de.wikipedia.org/wiki/Werkstoffwissenschaft' }
+      { title: 'Werkstoffkunde', url: 'https://de.wikipedia.org/wiki/Materialwissenschaft_und_Werkstofftechnik' }
     ],
     literatur: inhalt.daten["MODULES_DATA.baustoffe.literatur"],
     regelwerke: inhalt.daten["MODULES_DATA.baustoffe.regelwerke"],
@@ -266,7 +266,7 @@ export const MODULES_DATA: Record<string, GroupData> = {
     appStudents: inhalt.werte.einführungInDasBauproduktenrecht,
     appProfessionals: inhalt.werte.überblickFürPlanendeHerstellende,
     wikipedia: [
-      { title: 'Bauproduktenverordnung', url: 'https://de.wikipedia.org/wiki/Bauproduktenverordnung' },
+      { title: 'Bauproduktenverordnung', url: 'https://de.wikipedia.org/wiki/Verordnung_(EU)_Nr._305/2011' },
       { title: 'Musterbauordnung', url: 'https://de.wikipedia.org/wiki/Musterbauordnung' }
     ],
     literatur: inhalt.daten["MODULES_DATA.bauprodukte.literatur"],
@@ -441,7 +441,7 @@ export const MODULES_DATA: Record<string, GroupData> = {
     appProfessionals: inhalt.werte.überblickFürAuditorenUnd,
     wikipedia: [
       { title: inhalt.werte.nachhaltigesBauen, url: 'https://de.wikipedia.org/wiki/Nachhaltiges_Bauen' },
-      { title: 'Ökobilanz', url: 'https://de.wikipedia.org/wiki/%C3%96kobilanz' }
+      { title: 'Ökobilanz', url: 'https://de.wikipedia.org/wiki/Lebenszyklusanalyse' }
     ],
     literatur: inhalt.daten["MODULES_DATA.nachhaltigkeit.literatur"],
     regelwerke: inhalt.daten["MODULES_DATA.nachhaltigkeit.regelwerke"],
@@ -584,7 +584,7 @@ export const MODULES_DATA: Record<string, GroupData> = {
     appProfessionals: inhalt.werte.digitalerLeitfadenFürBausachverständige,
     wikipedia: [
       { title: 'Bauschaden', url: 'https://de.wikipedia.org/wiki/Bauschaden' },
-      { title: inhalt.werte.baustatischePrüfung, url: 'https://de.wikipedia.org/wiki/Pr%C3%BCfingenieur_f%C3%BCr_Baustatik' }
+      { title: inhalt.werte.baustatischePrüfung, url: 'https://de.wikipedia.org/wiki/Pr%C3%BCfingenieur_f%C3%BCr_Bautechnik' }
     ],
     literatur: inhalt.daten["MODULES_DATA.schaeden.literatur"],
     regelwerke: inhalt.daten["MODULES_DATA.schaeden.regelwerke"],

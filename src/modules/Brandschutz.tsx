@@ -352,7 +352,7 @@ export default function Brandschutz() {
         lastReviewed={inhalt.werte.oktober2026Ap6}
         wikipedia={[
         { title: 'Brandschutz', url: 'https://de.wikipedia.org/wiki/Brandschutz' },
-        { title: 'Baustoffklasse', url: 'https://de.wikipedia.org/wiki/Baustoffklasse' }
+        { title: 'Baustoffklasse', url: 'https://de.wikipedia.org/wiki/Brandverhalten' }
       ]}
         literatur={inhalt.daten["Brandschutz.literatur"]}
         regelwerke={inhalt.daten["Brandschutz.regelwerke"]}

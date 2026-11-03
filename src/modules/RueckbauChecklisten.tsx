@@ -413,7 +413,7 @@ export default function RueckbauChecklisten() {
       <ModuleFooter
         lastReviewed={inhalt.werte.oktober2026Ap9} 
         wikipedia={[
-          { title: inhalt.werte.abbruchBauwesen, url: 'https://de.wikipedia.org/wiki/Abbruch_(Bauwesen)' },
+          { title: inhalt.werte.abbruchBauwesen, url: 'https://de.wikipedia.org/wiki/Abriss_(Bauwesen)' },
           { title: 'Asbestsanierung', url: 'https://de.wikipedia.org/wiki/Asbestsanierung' },
           { title: 'Ersatzbaustoffverordnung', url: 'https://de.wikipedia.org/wiki/Ersatzbaustoffverordnung' },
           { title: 'Kreislaufwirtschaftsgesetz', url: 'https://de.wikipedia.org/wiki/Kreislaufwirtschaftsgesetz' }

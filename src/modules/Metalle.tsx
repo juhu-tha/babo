@@ -290,7 +290,7 @@ export default function Metalle() {
 
       <ModuleFooter 
         wikipedia={[
-          { title: 'Metall', url: 'https://de.wikipedia.org/wiki/Metall' },
+          { title: 'Metall', url: 'https://de.wikipedia.org/wiki/Metalle' },
           { title: 'Korrosion', url: 'https://de.wikipedia.org/wiki/Korrosion' },
           { title: 'Passivierung', url: 'https://de.wikipedia.org/wiki/Passivierung' },
           { title: 'Bimetallkorrosion', url: 'https://de.wikipedia.org/wiki/Bimetallkorrosion' }

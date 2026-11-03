@@ -407,7 +407,7 @@ export default function Beispielrechnungen({ forceTab }: BeispielrechnungenProps
           { title: 'Schallschutz', url: 'https://de.wikipedia.org/wiki/Schallschutz' },
           { title: 'Brandschutz', url: 'https://de.wikipedia.org/wiki/Brandschutz' },
           { title: inhalt.werte.karbonatisierungBeton },
-          { title: inhalt.werte.treibhauspotentialGwp, url: 'https://de.wikipedia.org/wiki/Treibhauspotenzial' }
+          { title: inhalt.werte.treibhauspotentialGwp, url: 'https://de.wikipedia.org/wiki/Treibhauspotential' }
         ]}
         literatur={inhalt.daten["Beispielrechnungen.literatur"]}
         regelwerke={inhalt.daten["Beispielrechnungen.regelwerke"]}

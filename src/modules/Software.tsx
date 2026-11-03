@@ -55,7 +55,7 @@ export default function Software() {
               <span className="text-sm text-text-main/70"><MdText text={inhalt.texte.sehrEinfachesUndIntuitives} /></span>
             </li>
             <li>
-              <a href="https://www.z88.de/" target="_blank" rel="noopener noreferrer" className="text-shiraz hover:underline font-bold block">Z88Aurora</a>
+              <a href="https://z88.de/" target="_blank" rel="noopener noreferrer" className="text-shiraz hover:underline font-bold block">Z88Aurora</a>
               <span className="text-sm text-text-main/70"><MdText text={inhalt.texte.kostenlosesFemProgrammDer} /></span>
             </li>
             <li>
@@ -162,7 +162,7 @@ export default function Software() {
         wikipedia={[
           { title: 'Bausoftware', url: 'https://de.wikipedia.org/wiki/Bausoftware' },
           { title: 'Finite-Elemente-Methode', url: 'https://de.wikipedia.org/wiki/Finite-Elemente-Methode' },
-          { title: inhalt.werte.computerAidedDesign, url: 'https://de.wikipedia.org/wiki/Computer-aided_design' }
+          { title: inhalt.werte.computerAidedDesign, url: 'https://de.wikipedia.org/wiki/CAD' }
         ]}
         literatur={inhalt.daten["Software.literatur"]}
         regelwerke={inhalt.daten["Software.regelwerke"]}

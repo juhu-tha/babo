@@ -658,7 +658,7 @@ export default function Baustoffkunde() {
       {/* 3. CORE VALUE MODULE FOOTER */}
       <ModuleFooter 
         wikipedia={[
-          { title: 'Werkstoffkunde', url: 'https://de.wikipedia.org/wiki/Werkstoffkunde' },
+          { title: 'Werkstoffkunde', url: 'https://de.wikipedia.org/wiki/Materialwissenschaft_und_Werkstofftechnik' },
           { title: 'Baustoff', url: 'https://de.wikipedia.org/wiki/Baustoff' },
           { title: inhalt.werte.opusCaementicium, url: 'https://de.wikipedia.org/wiki/Opus_caementicium' },
           { title: 'Portlandzement', url: 'https://de.wikipedia.org/wiki/Portlandzement' }

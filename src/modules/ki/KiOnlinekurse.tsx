@@ -119,7 +119,7 @@ const COURSES: OnlineCourse[] = [
     category: 'rag_nlp',
     categoryLabel: inhalt.werte.ragVektordatenbanken,
     badgeColor: 'bg-amber-50 text-amber-800 border-amber-200',
-    url: 'https://docs.langchain.com/oss/python/langchain/rag',
+    url: 'https://docs.langchain.com/oss/python/deepagents/rag',
     duration: inhalt.werte.tutorialReiheCa2,
     level: 'Praxis & Projekt',
     summary: inhalt.werte.schrittFürSchrittAnleitung,

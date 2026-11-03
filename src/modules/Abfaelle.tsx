@@ -640,7 +640,7 @@ export default function Abfaelle() {
             : activeTab === 'altlasten'
             ? [{ title: 'Altlast', url: 'https://de.wikipedia.org/wiki/Altlast' }]
             : activeTab === 'rueckbau'
-            ? [{ title: 'Rückbau', url: 'https://de.wikipedia.org/wiki/Rückbau' }]
+            ? [{ title: 'Rückbau', url: 'https://de.wikipedia.org/wiki/Abriss_(Bauwesen)' }]
             : activeTab === 'eanv'
             ? [{ title: inhalt.werte.elektronischesAbfallnachweisverfahren, url: 'https://de.wikipedia.org/wiki/Elektronisches_Abfallnachweisverfahren' }]
             : activeTab === 'pn98'

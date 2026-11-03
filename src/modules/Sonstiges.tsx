@@ -268,7 +268,7 @@ export default function Sonstiges() {
         { title: 'Aerogel', url: 'https://de.wikipedia.org/wiki/Aerogel' },
         { title: inhalt.werte.opusCaementiciumRömischerBeton, url: 'https://de.wikipedia.org/wiki/Opus_caementicium' },
         { title: 'Photokatalyse', url: 'https://de.wikipedia.org/wiki/Photokatalyse' },
-        { title: 'Vakuumisolationspaneel', url: 'https://de.wikipedia.org/wiki/Vakuumisolationspaneel' }
+        { title: 'Vakuumisolationspaneel', url: 'https://de.wikipedia.org/wiki/Vakuumd%C3%A4mmplatte' }
       ]}
         literatur={inhalt.daten["Sonstiges.literatur"]}
         regelwerke={inhalt.daten["Sonstiges.regelwerke"]}

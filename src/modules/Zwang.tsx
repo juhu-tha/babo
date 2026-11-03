@@ -230,7 +230,7 @@ export function ZwangCalculator() {
     
       <ModuleFooter 
         wikipedia={[
-          { title: 'Zwangspannung', url: 'https://de.wikipedia.org/wiki/Zwangspannung' },
+          { title: 'Zwangspannung', url: 'https://de.wikipedia.org/wiki/Zw%C3%A4ngung' },
           { title: 'Eigenspannung', url: 'https://de.wikipedia.org/wiki/Eigenspannung' },
           { title: 'Rissbildung' }
         ]}

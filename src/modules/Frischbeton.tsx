@@ -642,7 +642,7 @@ export default function Frischbeton() {
         wikipedia={[
           { title: 'Frischbeton', url: 'https://de.wikipedia.org/wiki/Frischbeton' },
           { title: inhalt.werte.konsistenzBeton, url: 'https://de.wikipedia.org/wiki/Konsistenz_(Beton)' },
-          { title: 'Ausbreitmaß', url: 'https://de.wikipedia.org/wiki/Ausbreitma%C3%9F' },
+          { title: 'Ausbreitmaß', url: 'https://de.wikipedia.org/wiki/Ausbreitversuch' },
           { title: 'Bingham-Fluid', url: 'https://de.wikipedia.org/wiki/Bingham-Fluid' },
           { title: 'Luftporenbildner', url: 'https://de.wikipedia.org/wiki/Luftporenbildner' },
           { title: inhalt.werte.richmannscheMischungsregel, url: 'https://de.wikipedia.org/wiki/Richmannsche_Mischungsregel' },

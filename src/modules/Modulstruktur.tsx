@@ -743,7 +743,7 @@ export default function Modulstruktur() {
         wikipedia={[
           { title: inhalt.werte.curriculumPädagogik, url: 'https://de.wikipedia.org/wiki/Curriculum_(P%C3%A4dagogik)' },
           { title: 'Bauingenieurwesen', url: 'https://de.wikipedia.org/wiki/Bauingenieurwesen' },
-          { title: inhalt.werte.blendedLearning, url: 'https://de.wikipedia.org/wiki/Blended_Learning' }
+          { title: inhalt.werte.blendedLearning, url: 'https://de.wikipedia.org/wiki/Integriertes_Lernen' }
         ]}
         literatur={inhalt.daten["Modulstruktur.literatur"]}
         regelwerke={inhalt.daten["Modulstruktur.regelwerke"]}

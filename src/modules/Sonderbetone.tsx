@@ -204,7 +204,7 @@ export default function Sonderbetone() {
           { title: 'Walzbeton', url: 'https://de.wikipedia.org/wiki/Walzbeton' },
           { title: 'Betonpumpe', url: 'https://de.wikipedia.org/wiki/Betonpumpe' },
           { title: 'Hagen-Poiseuille-Gesetz', url: 'https://de.wikipedia.org/wiki/Gesetz_von_Hagen-Poiseuille' },
-          { title: 'Bohrpfahl', url: 'https://de.wikipedia.org/wiki/Bohrpfahl' },
+          { title: 'Bohrpfahl', url: 'https://de.wikipedia.org/wiki/Pfahlgr%C3%BCndung' },
           { title: 'Spezialtiefbau', url: 'https://de.wikipedia.org/wiki/Spezialtiefbau' }
         ]}
         regelwerke={inhalt.daten["Sonderbetone.regelwerke"]}

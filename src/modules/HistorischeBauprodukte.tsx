@@ -864,7 +864,7 @@ export default function HistorischeBauprodukte() {
           { title: 'Bimsbeton', url: 'https://de.wikipedia.org/wiki/Bims' },
           { title: 'Porenbeton', url: 'https://de.wikipedia.org/wiki/Porenbeton' },
           { title: 'Kalksandstein', url: 'https://de.wikipedia.org/wiki/Kalksandstein' },
-          { title: 'Gipsfaserplatte', url: 'https://de.wikipedia.org/wiki/Gipsfaserplatte' },
+          { title: 'Gipsfaserplatte', url: 'https://de.wikipedia.org/wiki/Gipsfaser-Platte' },
           { title: 'Brettsperrholz', url: 'https://de.wikipedia.org/wiki/Brettsperrholz' },
           { title: 'Faserzement', url: 'https://de.wikipedia.org/wiki/Faserzement' },
           { title: 'Thomas-Verfahren', url: 'https://de.wikipedia.org/wiki/Thomas-Verfahren' },

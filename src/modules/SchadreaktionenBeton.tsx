@@ -927,7 +927,7 @@ export default function SchadreaktionenBeton() {
       <ModuleFooter
         lastReviewed={inhalt.werte.oktober2026Ap10} 
         wikipedia={[
-          { title: 'Alkalitreiben', url: 'https://de.wikipedia.org/wiki/Alkalitreiben' },
+          { title: 'Alkalitreiben', url: 'https://de.wikipedia.org/wiki/Alkali-Kiesels%C3%A4ure-Reaktion' },
           { title: 'Frost-Tau-Wechsel', url: 'https://de.wikipedia.org/wiki/Frost-Tau-Wechsel' },
           { title: 'Sulfattreiben', url: 'https://de.wikipedia.org/wiki/Sulfattreiben' }
         ]}

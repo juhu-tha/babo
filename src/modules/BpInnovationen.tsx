@@ -692,7 +692,7 @@ export default function BpInnovationen() {
           { title: 'Carbonbeton', url: 'https://de.wikipedia.org/wiki/Carbonbeton' },
           { title: 'Geopolymer', url: 'https://de.wikipedia.org/wiki/Geopolymer' },
           { title: inhalt.werte.deutschesInstitutFürBautechnik, url: 'https://de.wikipedia.org/wiki/Deutsches_Institut_f%C3%BCr_Bautechnik' },
-          { title: 'Bauprodukteverordnung', url: 'https://de.wikipedia.org/wiki/Bauprodukteverordnung' }
+          { title: 'Bauprodukteverordnung', url: 'https://de.wikipedia.org/wiki/Verordnung_(EU)_Nr._305/2011' }
         ]}
         literatur={inhalt.daten["BpInnovationen.literatur"]}
         regelwerke={inhalt.daten["BpInnovationen.regelwerke"]}

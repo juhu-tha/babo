@@ -728,7 +728,7 @@ export default function BpBetonfertigteile() {
         wikipedia={[
           { title: 'Betonfertigteil', url: 'https://de.wikipedia.org/wiki/Betonfertigteil' },
           { title: 'Spannbeton', url: 'https://de.wikipedia.org/wiki/Spannbeton' },
-          { title: 'Filigrandecke', url: 'https://de.wikipedia.org/wiki/Filigrandecke' }
+          { title: 'Filigrandecke', url: 'https://de.wikipedia.org/wiki/Elementdecke' }
         ]}
         literatur={inhalt.daten["BpBetonfertigteile.literatur"]}
         regelwerke={inhalt.daten["BpBetonfertigteile.regelwerke"]}

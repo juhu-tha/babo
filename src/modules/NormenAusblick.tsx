@@ -378,7 +378,7 @@ export default function NormenAusblick() {
           { title: inhalt.werte.irbKurzberichtEaseOf, url: 'https://www.irbnet.de/daten/rswb/erg_dokument/25109000014_Kurzbericht.pdf' },
           { title: inhalt.werte.bauforumstahlEurocodesAufCen, url: 'https://bauforumstahl.de/wp-content/uploads/2026/03/pressemitteilung-bauforumstahl-Eurocodes-auf-CEN-Ebene-veroeffentlicht.pdf' },
           { title: inhalt.werte.energiforskPetersonErcBetongdagen, url: 'https://energiforsk.se/media/34279/2-markus_peterson_betongdagen-2025.pdf' },
-          { title: inhalt.werte.fachkommissionBautechnikSchreibenZur, url: 'https://bauen-wohnen.sachsen.de/download/Schreiben_FKBT_zur_bauaufsichtlichen_Einfuehrung_des_Eurocodes.pdf' },
+          { title: inhalt.werte.fachkommissionBautechnikSchreibenZur, url: 'https://www.bauen-wohnen.sachsen.de/download/Schreiben_FKBT_zur_bauaufsichtlichen_Einfuehrung_des_Eurocodes.pdf' },
         ]}
         formeln={inhalt.daten["NormenAusblick.formeln"]}
       />

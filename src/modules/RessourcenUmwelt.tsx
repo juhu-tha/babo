@@ -65,7 +65,7 @@ export default function RessourcenUmwelt() {
         wikipedia={[
           { title: inhalt.werte.nachwachsenderRohstoff, url: 'https://de.wikipedia.org/wiki/Nachwachsender_Rohstoff' },
           { title: inhalt.werte.graueEnergie, url: 'https://de.wikipedia.org/wiki/Graue_Energie' },
-          { title: 'Ökobilanz', url: 'https://de.wikipedia.org/wiki/%C3%96kobilanz' }
+          { title: 'Ökobilanz', url: 'https://de.wikipedia.org/wiki/Lebenszyklusanalyse' }
         ]}
         literatur={inhalt.daten["RessourcenUmwelt.literatur"]}
         regelwerke={inhalt.daten["RessourcenUmwelt.regelwerke"]}

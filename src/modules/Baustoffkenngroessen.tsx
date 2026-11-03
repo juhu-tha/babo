@@ -338,9 +338,9 @@ export default function Baustoffkenngroessen() {
 
       <ModuleFooter 
         wikipedia={[
-          { title: 'Werkstoffeigenschaft', url: 'https://de.wikipedia.org/wiki/Werkstoffeigenschaft' },
+          { title: 'Werkstoffeigenschaft', url: 'https://de.wikipedia.org/wiki/Stoffeigenschaft' },
           { title: 'Wärmeeindringkoeffizient', url: 'https://de.wikipedia.org/wiki/W%C3%A4rmeeindringkoeffizient' },
-          { title: 'Wasserdampfdiffusionswiderstandszahl', url: 'https://de.wikipedia.org/wiki/Wasserdampfdiffusionswiderstandszahl' }
+          { title: 'Wasserdampfdiffusionswiderstandszahl', url: 'https://de.wikipedia.org/wiki/Wasserdampfdiffusionswiderstand' }
         ]}
         literatur={inhalt.daten["Baustoffkenngroessen.literatur"]}
         regelwerke={inhalt.daten["Baustoffkenngroessen.regelwerke"]}

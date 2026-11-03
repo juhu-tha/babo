@@ -541,7 +541,7 @@ export default function Kunststoffe() {
           { title: 'Thermoplaste', url: 'https://de.wikipedia.org/wiki/Thermoplaste' },
           { title: 'Duroplaste', url: 'https://de.wikipedia.org/wiki/Duroplaste' },
           { title: 'Elastomere', url: 'https://de.wikipedia.org/wiki/Elastomere' },
-          { title: inhalt.werte.ethylenTetrafluorethylenEtfe, url: 'https://de.wikipedia.org/wiki/Ethylen-Tetrafluorethylen' }
+          { title: inhalt.werte.ethylenTetrafluorethylenEtfe, url: 'https://de.wikipedia.org/wiki/Ethylen-Tetrafluorethylen-Copolymer' }
         ]}
         regelwerke={inhalt.daten["Kunststoffe.regelwerke"]}
         literatur={inhalt.daten["Kunststoffe.literatur"]}

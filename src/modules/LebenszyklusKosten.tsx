@@ -66,7 +66,7 @@ export default function LebenszyklusKosten() {
       <ModuleFooter 
         lastReviewed={inhalt.werte.oktober2026Ap7} 
         wikipedia={[
-          { title: 'Lebenszykluskostenrechnung', url: 'https://de.wikipedia.org/wiki/Lebenszykluskostenrechnung' },
+          { title: 'Lebenszykluskostenrechnung', url: 'https://de.wikipedia.org/wiki/Life_Cycle_Costing' },
           { title: 'Barwert', url: 'https://de.wikipedia.org/wiki/Barwert' },
           { title: 'Baupreisindex', url: 'https://de.wikipedia.org/wiki/Baupreisindex' }
         ]}

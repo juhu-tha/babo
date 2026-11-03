@@ -180,7 +180,7 @@ export default function Potentialmessung() {
       <ModuleFooter
         lastReviewed={inhaltJson.werte.oktober2026Ap6}
         wikipedia={[
-          { title: 'Bezugselektrode', url: 'https://de.wikipedia.org/wiki/Bezugselektrode' },
+          { title: 'Bezugselektrode', url: 'https://de.wikipedia.org/wiki/Referenzelektrode' },
           { title: 'Passivierung', url: 'https://de.wikipedia.org/wiki/Passivierung' },
         ]}
         literatur={inhaltJson.daten["Potentialmessung.literatur"]}

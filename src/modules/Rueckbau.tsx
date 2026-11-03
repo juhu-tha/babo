@@ -524,7 +524,7 @@ export default function Rueckbau() {
       <ModuleFooter
         lastReviewed={inhalt.werte.oktober2026Ap9}
         wikipedia={[
-          { title: inhalt.werte.rückbauBauwesen, url: 'https://de.wikipedia.org/wiki/R%C3%BCckbau' },
+          { title: inhalt.werte.rückbauBauwesen, url: 'https://de.wikipedia.org/wiki/Abriss_(Bauwesen)' },
           { title: 'Ersatzbaustoffverordnung', url: 'https://de.wikipedia.org/wiki/Ersatzbaustoffverordnung' },
           { title: 'Asbestsanierung', url: 'https://de.wikipedia.org/wiki/Asbestsanierung' }
         ]}

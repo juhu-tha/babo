@@ -246,7 +246,7 @@ export default function Stahlbetonbemessung({ initialTab }: { initialTab?: Bemes
         wikipedia={[
           { title: 'Stahlbeton', url: 'https://de.wikipedia.org/wiki/Stahlbeton' },
           { title: 'Eurocode 2', url: 'https://de.wikipedia.org/wiki/Eurocode_2' },
-          { title: 'Betonstahl', url: 'https://de.wikipedia.org/wiki/Betonstahl' },
+          { title: 'Betonstahl', url: 'https://de.wikipedia.org/wiki/Bewehrungsstahl' },
           { title: 'Durchstanzen', url: 'https://de.wikipedia.org/wiki/Durchstanzen' }
         ]}
         regelwerke={inhalt.daten["Stahlbetonbemessung.regelwerke"]}

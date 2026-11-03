@@ -434,7 +434,7 @@ export default function MembranenETFE() {
       <ModuleFooter
         lastReviewed={inhalt.werte.oktober2026NeuErstellt}
         wikipedia={[
-          { title: 'Ethylen-Tetrafluorethylen', url: 'https://de.wikipedia.org/wiki/Ethylen-Tetrafluorethylen' },
+          { title: 'Ethylen-Tetrafluorethylen', url: 'https://de.wikipedia.org/wiki/Ethylen-Tetrafluorethylen-Copolymer' },
           { title: inhalt.werte.allianzArena, url: 'https://de.wikipedia.org/wiki/Allianz_Arena' },
           { title: inhalt.werte.edenProject, url: 'https://de.wikipedia.org/wiki/Eden_Project' },
         ]}

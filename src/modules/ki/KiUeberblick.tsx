@@ -156,7 +156,7 @@ export default function KiUeberblick() {
           { title: inhalt.werte.maschinellesLernen, url: 'https://de.wikipedia.org/wiki/Maschinelles_Lernen' },
           { title: inhalt.werte.deepLearning, url: 'https://de.wikipedia.org/wiki/Deep_Learning' },
           { title: inhalt.werte.retrievalAugmentedGeneration, url: 'https://en.wikipedia.org/wiki/Retrieval-augmented_generation' },
-          { title: inhalt.werte.largeLanguageModel, url: 'https://de.wikipedia.org/wiki/Gro%C3%9Fes_Sprachmodell' }
+          { title: inhalt.werte.largeLanguageModel, url: 'https://de.wikipedia.org/wiki/Large_Language_Model' }
         ]}
         literatur={inhalt.daten["KiUeberblick.literatur"]}
         regelwerke={inhalt.daten["KiUeberblick.regelwerke"]}

@@ -460,7 +460,7 @@ export default function BpLehmbauprodukte() {
       <ModuleFooter 
         wikipedia={[
           { title: 'Lehmbau', url: 'https://de.wikipedia.org/wiki/Lehmbau' },
-          { title: 'Lehmstein', url: 'https://de.wikipedia.org/wiki/Lehmstein' }
+          { title: 'Lehmstein', url: 'https://de.wikipedia.org/wiki/Lehmziegel' }
         ]}
         weblinks={[
           { title: inhalt.werte.dachverbandLehmEV, url: 'https://www.dachverband-lehm.de/' }

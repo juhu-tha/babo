@@ -168,7 +168,7 @@ const SYSTEMS = [
     ],
     description: inhalt.werte.birnBauInstitutFür,
     example: inhalt.werte.fürDenBauEines,
-    link: 'https://www.bau-irn.com/'
+    link: 'https://bau-irn.com/'
   }
 ];
 

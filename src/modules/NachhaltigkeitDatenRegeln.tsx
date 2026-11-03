@@ -696,7 +696,7 @@ export default function NachhaltigkeitDatenRegeln() {
         lastReviewed={inhalt.werte.oktober2026Ap7}
         wikipedia={[
           { title: inhalt.werte.zieleFürNachhaltigeEntwicklung, url: 'https://de.wikipedia.org/wiki/Ziele_f%C3%BCr_nachhaltige_Entwicklung' },
-          { title: 'EU-Taxonomie', url: 'https://de.wikipedia.org/wiki/EU-Taxonomie' },
+          { title: 'EU-Taxonomie', url: 'https://de.wikipedia.org/wiki/Verordnung_(EU)_2020/852_(Taxonomieverordnung)' },
           inhalt.daten["NachhaltigkeitDatenRegeln.wikipedia.2"],
           { title: inhalt.werte.umweltproduktdeklarationEpd },
           { title: inhalt.werte.ersatzbaustoffverordnungEbv, url: 'https://de.wikipedia.org/wiki/Ersatzbaustoffverordnung' }

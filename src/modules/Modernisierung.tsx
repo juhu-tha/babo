@@ -872,7 +872,7 @@ export default function Modernisierung() {
       <ModuleFooter
         lastReviewed={inhalt.werte.oktober2026Ap8} 
         wikipedia={[
-          { title: "Gebäudeenergiegesetz", url: "https://de.wikipedia.org/wiki/Geb%C3%A4udeenergiegesetz" },
+          { title: "Gebäudeenergiegesetz", url: "https://de.wikipedia.org/wiki/Geb%C3%A4udemodernisierungsgesetz" },
           { title: "Wärmedurchgangskoeffizient", url: "https://de.wikipedia.org/wiki/W%C3%A4rmedurchgangskoeffizient" },
           { title: "Wärmedämmung", url: "https://de.wikipedia.org/wiki/W%C3%A4rmed%C3%A4mmung" },
           { title: "Wärmepumpe", url: "https://de.wikipedia.org/wiki/W%C3%A4rmepumpe" }

@@ -1045,7 +1045,7 @@ export default function Kombinationen({ initialTab = 'ueberblick' }: Kombination
           { title: 'Verbundwerkstoff', url: 'https://de.wikipedia.org/wiki/Verbundwerkstoff' },
           { title: 'Faserverbundwerkstoff', url: 'https://de.wikipedia.org/wiki/Faserverbundwerkstoff' },
           { title: 'Wärmedämmverbundsystem', url: 'https://de.wikipedia.org/wiki/W%C3%A4rmed%C3%A4mmverbundsystem' },
-          { title: inhalt.werte.hinterlüfteteFassade, url: 'https://de.wikipedia.org/wiki/Hinterl%C3%BCftete_Fassade' },
+          { title: inhalt.werte.hinterlüfteteFassade, url: 'https://de.wikipedia.org/wiki/Vorgeh%C3%A4ngte_hinterl%C3%BCftete_Fassade' },
           { title: 'Korrosionsschutz', url: 'https://de.wikipedia.org/wiki/Korrosionsschutz' },
           { title: 'Stahlbeton', url: 'https://de.wikipedia.org/wiki/Stahlbeton' }
         ]}

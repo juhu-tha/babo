@@ -412,7 +412,7 @@ export default function Praxiswissen() {
         wikipedia={[
           { title: inhalt.werte.leistungsbildHoai, url: 'https://de.wikipedia.org/wiki/Honorarordnung_f%C3%BCr_Architekten_und_Ingenieure#Leistungsbild' },
           { title: inhalt.werte.vobBVergabeUnd, url: 'https://de.wikipedia.org/wiki/Vergabe-_und_Vertragsordnung_f%C3%BCr_Bauleistungen' },
-          { title: 'EU-Bauproduktenverordnung', url: 'https://de.wikipedia.org/wiki/Bauproduktenverordnung' },
+          { title: 'EU-Bauproduktenverordnung', url: 'https://de.wikipedia.org/wiki/Verordnung_(EU)_Nr._305/2011' },
           { title: 'Betonieren', url: 'https://de.wikipedia.org/wiki/Betonieren' }
         ]}
         literatur={inhalt.daten["Praxiswissen.literatur"]}

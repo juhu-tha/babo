@@ -165,7 +165,7 @@ export const DAMAGE_CASES: DamageCaseStudy[] = [
         title: inhalt.werte.standsicherheitVonBauwerkenRegelmäßige,
         institutionOrAuthor: inhalt.werte.vereinDeutscherIngenieureVdi,
         details: inhalt.werte.empfehlungZurPeriodischenÜberprüfung,
-        url: 'https://www.vdi.de/richtlinien/details/vdi-6200-standsicherheit-von-bauwerken-regelmaessige-ueberpruefung'
+        url: 'https://www.vdi.de/mitgliedschaft/vdi-richtlinien/details/vdi-6200-standsicherheit-von-bauwerken-regelmaessige-ueberpruefung'
       }
     ]
   },

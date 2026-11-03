@@ -866,7 +866,7 @@ export default function Energieausweis() {
         lastReviewed={inhalt.werte.oktober2026Ap6}
 wikipedia={[
           { title: 'Energieausweis', url: 'https://de.wikipedia.org/wiki/Energieausweis' },
-          { title: 'Gebäudeenergiegesetz', url: 'https://de.wikipedia.org/wiki/Geb%C3%A4udeenergiegesetz' },
+          { title: 'Gebäudeenergiegesetz', url: 'https://de.wikipedia.org/wiki/Geb%C3%A4udemodernisierungsgesetz' },
           { title: 'DIN V 18599', url: 'https://de.wikipedia.org/wiki/DIN_V_18599' }
         ]}
         literatur={inhalt.daten["Energieausweis.literatur"]}

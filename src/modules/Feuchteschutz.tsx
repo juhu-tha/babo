@@ -852,7 +852,7 @@ export default function Feuchteschutz() {
       <ModuleFooter
         lastReviewed={inhalt.werte.oktober2026Ap6}
         wikipedia={[
-          { title: 'Feuchteschutz', url: 'https://de.wikipedia.org/wiki/Feuchteschutz' },
+          { title: 'Feuchteschutz', url: 'https://de.wikipedia.org/wiki/Bauwerksabdichtung' },
           { title: 'Wasserdampfdiffusionswiderstand', url: 'https://de.wikipedia.org/wiki/Wasserdampfdiffusionswiderstand' },
           { title: 'Glaser-Verfahren', url: 'https://de.wikipedia.org/wiki/Glaser-Verfahren' }
         ]}

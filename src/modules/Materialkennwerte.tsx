@@ -379,7 +379,7 @@ export default function Materialkennwerte() {
       {/* FOOTER */}
       <ModuleFooter 
         wikipedia={[
-          { title: 'Materialkennwerte', url: 'https://de.wikipedia.org/wiki/Werkstoffeigenschaft' },
+          { title: 'Materialkennwerte', url: 'https://de.wikipedia.org/wiki/Stoffeigenschaft' },
           { title: 'Elastizitätsmodul', url: 'https://de.wikipedia.org/wiki/Elastizit%C3%A4tsmodul' },
           { title: 'Wärmeleitfähigkeit', url: 'https://de.wikipedia.org/wiki/W%C3%A4rmeleitf%C3%A4higkeit' }
         ]}

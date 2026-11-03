@@ -575,7 +575,7 @@ ${normGuidelines[genNorm]}
       <ModuleFooter
         wikipedia={[
           { title: inhalt.werte.modelContextProtocolMcp, url: 'https://modelcontextprotocol.io' },
-          { title: inhalt.werte.largeLanguageModel, url: 'https://de.wikipedia.org/wiki/Gro%C3%9Fes_Sprachmodell' },
+          { title: inhalt.werte.largeLanguageModel, url: 'https://de.wikipedia.org/wiki/Large_Language_Model' },
           { title: 'Markdown', url: 'https://de.wikipedia.org/wiki/Markdown' }
         ]}
         literatur={inhalt.daten["LlmPraxis.literatur"]}

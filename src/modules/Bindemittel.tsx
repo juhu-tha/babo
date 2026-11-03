@@ -790,7 +790,7 @@ export default function Bindemittel() {
         wikipedia={[
           { title: 'Zement', url: 'https://de.wikipedia.org/wiki/Zement' },
           { title: inhalt.werte.bindemittelBaustoff, url: 'https://de.wikipedia.org/wiki/Bindemittel' },
-          { title: 'Betonzusatzstoff', url: 'https://de.wikipedia.org/wiki/Betonzusatzstoff' },
+          { title: 'Betonzusatzstoff', url: 'https://de.wikipedia.org/wiki/Betonzusatzstoffe' },
           { title: 'Alkali-Kieselsäure-Reaktion', url: 'https://de.wikipedia.org/wiki/Alkali-Kiesels%C3%A4ure-Reaktion' }
         ]}
         literatur={inhalt.daten["Bindemittel.literatur"]}

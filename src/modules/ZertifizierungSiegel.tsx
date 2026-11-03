@@ -65,7 +65,7 @@ export default function ZertifizierungSiegel() {
         wikipedia={[
           { title: inhalt.werte.deutscheGesellschaftFürNachhaltiges, url: 'https://de.wikipedia.org/wiki/Deutsche_Gesellschaft_f%C3%BCr_Nachhaltiges_Bauen' },
           { title: inhalt.werte.bewertungssystemNachhaltigesBauenFür, url: 'https://de.wikipedia.org/wiki/Bewertungssystem_Nachhaltiges_Bauen_f%C3%BCr_Bundesgeb%C3%A4ude' },
-          { title: 'Umweltsiegel', url: 'https://de.wikipedia.org/wiki/Umweltsiegel' }
+          { title: 'Umweltsiegel', url: 'https://de.wikipedia.org/wiki/Umweltzeichen' }
         ]}
         literatur={inhalt.daten["ZertifizierungSiegel.literatur"]}
         regelwerke={inhalt.daten["ZertifizierungSiegel.regelwerke"]}
