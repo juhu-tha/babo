@@ -20,7 +20,12 @@ gilt(p6.correctIdx === 0 && /eingehalten/.test(p6.options[0]) && /unberücksicht
 gilt(p6.verified === false && !p6.reviewer && p6.vorpruefung?.ergebnis === 'korrigiert', 'RQ-1 Quiz zurückgesetzt mit Vermerk');
 gilt(/unberücksichtigt/.test(pfas.werte.derGrenzwertLiegtInnerhalb) && /untere Schranke/.test(pfas.werte.derGrenzwertLiegtInnerhalb), 'RQ-1 Modulhinweis Spanne');
 gilt(/unberücksichtigt/.test(pfas.werte.trinkwv2023Anlage2), 'RQ-1 Normquelle des Rechners');
-gilt(/unberücksichtigt/.test(lies('src/data/rechnerGrenzen.ts')) && /nur die untere Schranke/.test(lies('src/data/erkundung.ts')), 'RQ-1 Rechnergrenzen und Erkundung');
+gilt(/unberücksichtigt/.test(lies('src/data/rechnerGrenzen.ts')) && /Rechtlich zählt die untere Schranke/.test(lies('src/data/erkundung.ts')), 'RQ-1 Rechnergrenzen und Erkundung');
+
+// O-1 Voreinstellung des PFAS-Rechners nach TrinkwV
+const pfTsx = lies('src/modules/PfasBaustoffe.tsx');
+gilt(/useState<BgAnsatz>\('null'\)/.test(pfTsx) && /BG\/2 \(konservativ\)/.test(pfTsx) && /ansatzHinweisTrinkwv/.test(pfTsx), 'O-1 PFAS-Rechner: Voreinstellung < BG = 0');
+gilt(/von 77 \(TrinkwV\)/.test(lies('src/data/erkundung.ts')) && /Voreinstellung ist der Ansatz 0/.test(lies('src/data/rechnerGrenzen.ts')), 'O-1 Erkundung und Rechnergrenzen');
 
 // RQ-2 Klimagesetz Art. 2 Abs. 1: negative Emissionen nach 2050 nur angestrebt; KSG-Sektormengen seit 2024 nicht sektorscharf
 const rk = lies('src/components/ui/RechtsrahmenKompendium.tsx');
@@ -58,7 +63,9 @@ const ebvM = lies('content/abfaelle/EbvMantelverordnung.json');
 gilt(!/Gesamteinbau aller mineralischen Ersatzbaustoffe/.test(ebvM) && /§ 20 Abs\. 1 EBV/.test(ebvM), 'RQ-11 250-m³-Schwelle nicht für alle MEB');
 gilt(!/Liegt die geplante Einbaumenge über 250 m³/.test(refs), 'RQ-11 Checkliste Voranzeige');
 const abfTsx = lies('src/modules/Abfaelle.tsx');
-gilt(!/'hmva[12]'/.test(abfTsx) && /bmF2Hmva1Anzeige/.test(abfTsx), 'RQ-12 keine toten HMVA-Zweige; HMVA-1-Hinweis in der Auswahl BM-F2/HMVA-1');
+const ebvTsx = lies('src/modules/abfaelle/EbvMantelverordnung.tsx');
+gilt(/value="hmva1"/.test(ebvTsx) && /value="hmva2"/.test(ebvTsx) && !/BM-F2 \/ Hausmüllverbrennungsasche/.test(ebvTsx), 'RQ-12/O-6 HMVA-1 und HMVA-2 als eigene Auswahl');
+gilt(/ebvMaterial === 'hmva2' && ebvVolumen !== 'ab_250'/.test(abfTsx) && /hmva1Mindestmenge/.test(abfTsx), 'O-6 Mindesteinbaumengen § 20 Abs. 1');
 
 // Neue Einträge der zentralen Liste: Werte und Erkennung
 const w = (id: string) => fs(id).wert;

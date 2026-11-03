@@ -219,11 +219,9 @@ export default function Abfaelle() {
     let anzeige = inhalt.werte.keineAnzeigepflichtNach22;
 
     if (ebvVolumen === 'ab_250') {
-      // Auswahl „rc3“ = RC-3 / BM-F3 / HMVA-2 (alle nach § 22 Abs. 1 anzeigepflichtig); „bm_f2“ = BM-F2 / HMVA-1 (§ 20 Abs. 1 Nr. 2)
-      if (ebvMaterial === 'rc3' || ebvMaterial === 'bm_f3') {
+      // § 22 Abs. 1: Schlacken und Aschen nach § 20 Abs. 1 (u. a. HMVA-1, HMVA-2) sowie RC-3, BM-F3, BG-F3 ab 250 m³ Gesamtvolumen
+      if (ebvMaterial === 'rc3' || ebvMaterial === 'bm_f3' || ebvMaterial === 'hmva1' || ebvMaterial === 'hmva2') {
         anzeige = inhalt.werte.anzeigepflichtigNach22Ebv;
-      } else if (ebvMaterial === 'bm_f2') {
-        anzeige = inhalt.werte.bmF2Hmva1Anzeige;
       } else {
         anzeige = inhalt.werte.keineMengenabhängigeAnzeigepflichtNach;
       }
@@ -305,7 +303,7 @@ export default function Abfaelle() {
           conditions.push(inhalt.werte.derEinbauMussMit);
           conditions.push(inhalt.werte.grundwasserdeckschichtUndEinbauweiseNach);
         }
-      } else if (ebvMaterial === 'bm_f2') {
+      } else if (ebvMaterial === 'bm_f2' || ebvMaterial === 'hmva1') {
         if (ebvEinbauweise === 'offen') {
           status = 'forbidden';
           message = inhalt.werte.verbotenDieErhöhteSulfat;
@@ -315,7 +313,7 @@ export default function Abfaelle() {
           conditions.push(inhalt.werte.einbaufähigAlsTragschichtUnter);
           conditions.push(inhalt.werte.derHerstellerMussEin);
         }
-      } else if (ebvMaterial === 'rc3' || ebvMaterial === 'bm_f3') {
+      } else if (ebvMaterial === 'rc3' || ebvMaterial === 'bm_f3' || ebvMaterial === 'hmva2') {
         if (ebvEinbauweise === 'offen') {
           status = 'forbidden';
           message = inhalt.werte.strengstensVerboten2;
@@ -329,6 +327,13 @@ export default function Abfaelle() {
         }
       }
     }
+
+    // § 20 Abs. 1 EBV: Mindesteinbaumengen für Hausmüllverbrennungsasche (HMVA-2 250 m³, HMVA-1 50 m³)
+    if (ebvMaterial === 'hmva2' && ebvVolumen !== 'ab_250') {
+      status = 'forbidden';
+      message = inhalt.werte.hmva2Mindestmenge;
+    }
+    if (ebvMaterial === 'hmva1') conditions.push(inhalt.werte.hmva1Mindestmenge);
 
     return { status, message, conditions, anzeige };
   };

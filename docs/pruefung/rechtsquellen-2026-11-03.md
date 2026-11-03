@@ -130,3 +130,12 @@ Das Abgleichskript liest zusätzlich die Zahlwörter „ein(e/er)“ bis „sieb
 ## 8. QA (nach Einmergen von #320)
 
 tsc ohne Fehler; `npm test` 193 von 193 grün (darunter `tests/rechtsquellen1103.test.ts`, `tests/fristenSchwellen.test.ts`; Ratsche in `tests/umsetzungQuiztext_20261102.test.ts` um die zurückgesetzte Frage `q_ndr_2` auf 217 angepasst); check:formeln 0 fehlerhaft; check:zahlen 0; check-design 0 neu; check-verwaist --strict 0; check-any 0; Build und check-bundle (Budget eingehalten); a11y-reiter auf `abfaelle`, `pfas_baustoffe`, `nachhaltigkeit_daten_regeln`, `lca_regulatorik`, `boden_materialaufbereitung` (desk, mob, desk-dunkel): 114 Reiterprüfungen, 0 Verstöße.
+
+## 9. Umsetzung 03.11.2026 (Empfehlungen O-1 und O-6)
+
+| Nr. | Ergebnis | Quelle | Dateien |
+|---|---|---|---|
+| O-1 | PFAS-Rechner: Voreinstellung jetzt „< BG = 0 (TrinkwV)“; „< BG = BG/2 (konservativ)“ und „< BG = BG (ungünstigste Annahme)“ bleiben wählbar, Hinweis unter der Auswahl. Erkundungsaufträge mit den Werten des Ansatzes 0 (Beispielprobe: Σ PFAS-20 77 ng/l, BG/2 82,5, BG 88; BG 15 ng/l: 77 ng/l, BG/2 159,5; ohne PFOS: PFAS-4 17 ng/l, PFAS-20 66 ng/l), nachgerechnet mit `pfasSummenbewertung`. Rechnergrenzen nachgezogen. Kerntests mit explizitem Ansatz BG/2 unverändert. | TrinkwV Anlage 2 Teil I (wie RQ-1) | `src/modules/PfasBaustoffe.tsx`, `content/pfasbaustoffe/PfasBaustoffe.json`, `src/data/erkundung.ts`, `src/data/rechnerGrenzen.ts` |
+| O-6 | EBV-Prüfer: Sammeloptionen aufgeteilt in „BM-F2 / BG-F2“, „HMVA-1 (Mindestmenge 50 m³)“, „RC-3 / BM-F3 / BG-F3“, „HMVA-2 (Mindestmenge 250 m³)“. Anzeigepflicht für HMVA-1 und HMVA-2 ab 250 m³ Gesamtvolumen (§ 22 Abs. 1 Satz 1: Ersatzbaustoffe nach § 20 Abs. 1, „mindestens 250 Kubikmeter“). Mindesteinbaumengen nach § 20 Abs. 1: HMVA-2 unter 250 m³ unzulässig, HMVA-1 mit Hinweis auf 50 m³ (Auswahl kennt nur „unter/ab 250 m³“); Ausnahme Instandsetzung § 20 Abs. 2. Einbauweisen wie bisher (HMVA-1 wie BM-F2, HMVA-2 wie RC-3/BM-F3). Keine Quizfrage betrifft HMVA. | gesetze-im-internet.de, §§ 20, 22 ErsatzbaustoffV | `src/modules/Abfaelle.tsx`, `src/modules/abfaelle/EbvMantelverordnung.tsx`, `content/abfaelle/Abfaelle.json` |
+
+Test: `tests/rechtsquellen1103.test.ts` (O-1, O-6).
