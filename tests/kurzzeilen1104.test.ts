@@ -93,6 +93,15 @@ export const AUSNAHMEN: Record<string, string> = {
   px_bautagebuch: 'Bautagebuch: Formular zum Ausfüllen und Drucken, kein Rechenergebnis',
 };
 const MAX_AUSNAHMEN = 3;
+/** Zusätzlich wie Rechner geprüft: im Befund vom 04.11. genannt (Regler, Lehrnäherung ohne Rechenkern) */
+const ZUSATZ_RECHNER = ['sonderbetone'];
+/**
+ * Offen (Folgeauftrag, Ratsche): Module ohne Rechenkern und nicht typ 'calculator', deren Baum Regler oder Zahlenfelder
+ * enthält, aber keine Ansagequelle. Liste darf nur kürzer werden; ein Modul mit neuer Kurzzeile hier streichen.
+ */
+const REGLER_OFFEN = ['analytik', 'bp_klebstoffe', 'bindemittel', 'innovative_werkstoffe', 'innenausbau', 'bruchmechanik', 'brandschutz',
+  'zertifizierung_siegel', 'kreislauf_dpp', 'bestand', 'schadstoffe', 'holzkorrosion', 'metallkorrosion', 'weitere_organik', 'bim_baustoffe',
+  'materialdatenbanken', 'ki_ueberblick', 'ki_system', 'ki_llmpraxis', 'ki_thesen', 'ki_recht_ethik', 'ki_lokal', 'ki_ressourcen', 'ki_onlinekurse', 'ki_baustoffe'];
 
 function aufloesen(von: string, spec: string): string | null {
   let p: string;
@@ -119,6 +128,8 @@ function baum(datei: string, gesehen = new Set<string>()): Set<string> {
 const QUELLE = /<ErgebnisAnsage\b|\bkurzzeile=\{|ergebnisHinweis=\{[^\n]*`[^`\n]*\$\{/;
 
 const ohneQuelle: string[] = [];
+const reglerOffen = new Set<string>();
+const neuOhne: string[] = [];
 const genutzt = new Set<string>();
 let rechnerAnzahl = 0;
 for (const { id, typ } of module) {
@@ -133,7 +144,13 @@ for (const { id, typ } of module) {
   const dateien = new Set<string>();
   for (const s of starts.filter(x => fs.existsSync(x))) baum(s, dateien);
   const mitKern = [...dateien].some(d => d.startsWith('src/calc/'));
-  if (typ !== 'calculator' && !mitKern) continue;
+  const quellenTexte = () => [...dateien].filter(d => !d.startsWith('src/calc/')).map(d => fs.readFileSync(d, 'utf8'));
+  if (typ !== 'calculator' && !mitKern && !ZUSATZ_RECHNER.includes(id)) {
+    const regler = quellenTexte().some(t => /type="range"|<Slider\b|type="number"/.test(t));
+    const hatQ = quellenTexte().some(t => QUELLE.test(t));
+    if (regler && !hatQ) { if (REGLER_OFFEN.includes(id)) reglerOffen.add(id); else neuOhne.push(id); }
+    continue;
+  }
   rechnerAnzahl++;
   if (!starts.length) { gilt(id in AUSNAHMEN, `${id}: Rechner ohne zuordenbare Komponente`); if (id in AUSNAHMEN) genutzt.add(id); continue; }
   const hat = [...dateien].some(d => !d.startsWith('src/calc/') && QUELLE.test(fs.readFileSync(d, 'utf8')));
@@ -145,6 +162,9 @@ gilt(ohneQuelle.length === 0, `Rechner ohne Ansagequelle (Kurzzeile ergänzen od
 const ungenutzt = Object.keys(AUSNAHMEN).filter(id => !genutzt.has(id));
 gilt(ungenutzt.length === 0, `Ausnahmen ohne Bedarf (streichen): ${ungenutzt.join(', ')}`);
 gilt(Object.keys(AUSNAHMEN).length <= MAX_AUSNAHMEN, `Ausnahmen ${Object.keys(AUSNAHMEN).length} > ${MAX_AUSNAHMEN}`);
+gilt(neuOhne.length === 0, `Module mit Reglern ohne Ansagequelle (neu, Kurzzeile ergänzen): ${neuOhne.join(', ')}`);
+const erledigt = REGLER_OFFEN.filter(id => !reglerOffen.has(id));
+gilt(erledigt.length === 0, `REGLER_OFFEN: erledigt bzw. ohne Bedarf, streichen: ${erledigt.join(', ')}`);
 gilt(rechnerAnzahl >= 120, `nur ${rechnerAnzahl} Rechner erkannt – Zuordnung ModulInhalt/Registry prüfen`);
 
 // Kurzzeilen nicht aus rohen Zahlen: keine toFixed/toString/toExponential in Ansagetexten (Punkt statt Komma, „NaN“)
@@ -167,6 +187,6 @@ for (const d of ['src/modules/StahlbauEC3.tsx', 'src/modules/SommerlicherWaermes
   gilt(!/rounded-xl border[^\n]*role="status"/.test(s) && /kurzzeile=\{/.test(s), `${d}: Nachweiskasten noch role="status" statt Kurzzeile`);
 }
 
-console.log(`  ${rechnerAnzahl} Rechner geprüft, ${Object.keys(AUSNAHMEN).length} begründete Ausnahmen`);
+console.log(`  ${rechnerAnzahl} Rechner geprüft, ${Object.keys(AUSNAHMEN).length} begründete Ausnahmen, ${reglerOffen.size} Module mit Reglern offen`);
 if (fehler.length) { fehler.forEach(f => console.error('FAIL: ' + f)); process.exit(1); }
 console.log('OK: Kurzzeilen 04.11.2026');
