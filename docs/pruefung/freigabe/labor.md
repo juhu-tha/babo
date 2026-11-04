@@ -2,7 +2,7 @@
 
 Stand 04.11.2026 · Gruppe „Labor & Auswertung“ · Typ `calculator` · Prüfvermerk „offen“ (Prüfung ausstehend).
 
-**Empfehlung: freigabereif nach Klärung von #253-HZ und #255-RuK** – Tranche 4 ohne Fehler, T4-PN-2 gekennzeichnet und nach der Regel vom 02.11.2026 erledigt; offen sind zwei Normpunkte, die in der App nicht gekennzeichnet sind (Ringnut-Tiefe beim Haftzug, Start und Aufheizrate beim Ring-und-Kugel-Versuch).
+**Empfehlung: freigabereif** – Tranche 4 ohne Fehler; die Normpunkte T4-PN-2, #253-HZ und #255-RuK sind in der App gekennzeichnet und gelten nach der Regel vom 02.11.2026 als erledigt.
 
 Dieses Paket bereitet die Freigabe vor. Es setzt keinen Prüfvermerk; die Freigabe trägt die prüfende Person in `src/data/pruefvermerke.ts` ein.
 
@@ -34,6 +34,7 @@ Komponente `src/modules/Labor.tsx`; Inhalt `content/bitumenversuche/BitumenVersu
 | T4-PN-2 | Schmidt-Hammer nutzt die Verwerfungsregel des Messsatzes (6 Einheiten, 20 %) → im Freigabeabschnitt 29.10. als Grund genannt, im Prüfbogen nur `probenahme` zugeordnet | offen (Normtext) | T4 (`module-tranche-4.md`), Freigabe 29.10. |
 | Befund 04.11. | Ausgabenzuordnung der Verwerfungsregel widersprüchlich: Kern-Hinweis und Simulator nennen „6 Einheiten nach DIN EN 12504-2:2012; nach Sekundärquellen nennt die Ausgabe 2021-10 25 % des Medians“ (`src/calc/bauwerksuntersuchung.ts:129`); Kernkopf, `Probenahme.json` und `pruefverfahrenData.json` schreiben die 6-Einheiten-Regel der Ausgabe 2021-10 zu | offen (klärt sich mit T4-PN-2 am Normtext) | `bearbeitungsvermerke-2026-11-02.md`, Nr. 34/35 und „Offen“ |
 | Befund 04.11. | Bildunterschrift der Rückprallskala nannte noch die alte Regel („rot: > 25 % vom Median“), markiert werden seit #254 die Werte mit mehr als 6 Einheiten Abstand → „rot: mehr als 6 Einheiten vom Median“ | erledigt (dieser PR) | `tests/freigabepakete_20261104.test.ts` |
+| Befund 04.11. | #253-HZ und #255-RuK waren in der App nicht gekennzeichnet → Hinweis „vorläufig, Normprüfung ausstehend“ im Haftzug-Simulator und in der Formelerläuterung Ring und Kugel | erledigt (dieser PR) | `tests/freigabepakete_20261104.test.ts` |
 
 ## Offene Normpunkte
 
@@ -42,8 +43,8 @@ Diese Punkte sind im Modul als „vorläufig, Normprüfung ausstehend“ gekennz
 | Kennung | Norm, Fundstelle | Zu prüfen | Wert in der App |
 |---|---|---|---|
 | T4-PN-2 | DIN EN 12504-2:2021-10, Auswertung (Verwerfen der Messreihe) | Schwelle für das Verwerfen des Messsatzes: 6 Einheiten (Ausgabe 2012) oder 25 % des Medians (Ausgabe 2021-10 laut Sekundärquellen)? | Seit #254 (29.10.): Median aller Einzelwerte, kein Streichen; weichen mehr als 20 % der Einzelwerte um mehr als 6 Einheiten vom Median ab, wird der ganze Messsatz verworfen – Kern `src/calc/bauwerksuntersuchung.ts:109` (`rueckprallMesssatz`), Simulator `src/components/labor/SchmidtHammerSimulator.tsx:109`, Meldung „vorläufig, Normprüfung ausstehend“ `src/calc/bauwerksuntersuchung.ts:129`; Text `content/probenahme/Probenahme.json:79`. Die frühere 25-%-Regel (Prüfbogen-Stand 28.10.) ist entfernt. |
-| #253-HZ | DIN EN 1542, Prüfstelle vorbereiten | Tiefe der Ringnut (Kernbohrung): ab Kontaktfuge in den Untergrund oder ab Oberfläche? | Haftzug-Simulator zeichnet die Ringnut mit der Kernbohrtiefe unterhalb der Kontaktfuge (`src/components/labor/HaftzugPruefung.tsx:402`); **in der App nicht gekennzeichnet → offen** |
-| #255-RuK | DIN EN 1427:2015, Durchführung | Starttemperatur des Wasserbads 5 °C und Aufheizrate 5 K/min | `RUK_STARTTEMPERATUR` = 5 °C, `RUK_AUFHEIZRATE` = 5 K/min (`src/calc/laborVersuch.ts:97`), belegt über Gerätedatenblatt und IS 1205; **in der App nicht gekennzeichnet → offen** |
+| #253-HZ | DIN EN 1542, Prüfstelle vorbereiten | Tiefe der Ringnut (Kernbohrung): ab Kontaktfuge in den Untergrund oder ab Oberfläche? | Haftzug-Simulator zeichnet die Ringnut mit der Kernbohrtiefe unterhalb der Kontaktfuge; seit 04.11.2026 gekennzeichnet („… ab der Kontaktfuge in den Untergrund (DIN EN 1542; vorläufig, Normprüfung ausstehend)“, `src/components/labor/HaftzugPruefung.tsx:513`) → nicht blockierend |
+| #255-RuK | DIN EN 1427:2015, Durchführung | Starttemperatur des Wasserbads 5 °C und Aufheizrate 5 K/min | `RUK_STARTTEMPERATUR` = 5 °C, `RUK_AUFHEIZRATE` = 5 K/min (`src/calc/laborVersuch.ts:97`), belegt über Gerätedatenblatt und IS 1205; seit 04.11.2026 in der Formelerläuterung gekennzeichnet (`content/bitumenversuche/BitumenVersuche.json:53`) → nicht blockierend |
 
 ## Quizfragen
 
@@ -60,10 +61,10 @@ DIN EN 12390-3/-6/-13, DIN EN 12504-2:2021-10, DIN EN 1992-1-1 Tab. 3.1; Herstel
 3. Spaltzug C30/37, Zylinder 150/300 mm: F = f_ct,sp·π·d·l/2 = 3,22·π·150·300/2000 = 227,6 kN.
 4. Biegezug: Hebelarm L/6 (4-Punkt) bzw. L/4 (3-Punkt) im Moment M = F·L/6 bzw. F·L/4.
 5. Schmidt-Hammer: Verwerfungskriterium „> 20 % der Einzelwerte mehr als 6 Einheiten vom Median“ (`src/calc/bauwerksuntersuchung.ts:109`) gegen DIN EN 12504-2:2021-10 prüfen – Sekundärquellen nennen für 2021-10 „25 % des Medians“.
-6. Normpunkte #253-HZ (Ringnut-Tiefe, DIN EN 1542) und #255-RuK (Start 5 °C, 5 K/min, DIN EN 1427): am Normtext bestätigen oder in der App als „vorläufig, Normprüfung ausstehend“ kennzeichnen – dann gelten sie nach der Regel vom 02.11. als erledigt.
+6. Kennzeichnung der Normpunkte #253-HZ (Haftzug, Hinweis unter „Kernbohrtiefe“) und #255-RuK (Formelerläuterung Ring und Kugel in der Fußzeile) im Modul ansehen.
 
 ## Empfehlung
 
-**freigabereif nach Klärung von #253-HZ und #255-RuK.** Tranche 4 fand in der Stichprobe keinen Fehler. Die Verwerfungsregel des Rückprall-Messsatzes (T4-PN-2) ist im Kern und im Simulator als vorläufig gekennzeichnet und gilt nach der Regel vom 02.11.2026 als erledigt; die Ausgabenzuordnung der Regel ist im Code widersprüchlich (siehe Befund 04.11.) und wird mit dem Normtextabgleich bereinigt. Offen sind #253-HZ und #255-RuK: Beide sind in der App nicht als „vorläufig, Normprüfung ausstehend“ gekennzeichnet und fallen deshalb nicht unter die Regel. Klärung entweder am Normtext oder durch Kennzeichnung in der App (kleine Änderung, danach freigabereif).
+**freigabereif.** Tranche 4 fand in der Stichprobe keinen Fehler. Die Verwerfungsregel des Rückprall-Messsatzes (T4-PN-2) ist im Kern und im Simulator als vorläufig gekennzeichnet; die Ausgabenzuordnung der Regel ist im Code widersprüchlich (siehe Befund 04.11.) und wird mit dem Normtextabgleich bereinigt. #253-HZ und #255-RuK sind seit 04.11.2026 in der App als „vorläufig, Normprüfung ausstehend“ gekennzeichnet. Alle drei gelten nach der Regel vom 02.11.2026 als erledigt.
 
-T4-PN-2 gilt nach der Regel vom 02.11.2026 als erledigt; #253-HZ und #255-RuK sind nicht gekennzeichnet und bleiben offen.
+Bisher „freigabereif nach Klärung von T4-PN-2“, nach dem Abgleich mit dem Prüfbogen „nach Klärung von #253-HZ und #255-RuK“ (nicht gekennzeichnet). Beide sind seit 04.11.2026 in der App gekennzeichnet; die Normpunkte bleiben im Prüfbogen Normtext offen, nach der Normprüfung wird der Wert angepasst.

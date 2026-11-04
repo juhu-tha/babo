@@ -508,6 +508,10 @@ export default function HaftzugPruefung({ onNavigateToProtocols }: { onNavigateT
                   <span className="font-mono font-bold text-sm text-text-main">{formatDeWert(drillDepthMm)} mm</span>
                 </div>
               </div>
+              {/* #253-HZ: Bezug der Ringnut-Tiefe nicht am Normtext geprüft (Freigabepaket labor, 04.11.2026) */}
+              <p className="mt-1.5 text-[11px] leading-snug text-text-main/70">
+                Kernbohrtiefe der Ringnut gemessen ab der Kontaktfuge in den Untergrund (DIN EN 1542; vorläufig, Normprüfung ausstehend).
+              </p>
             </div>
 
             {/* Normative Requirements Box */}

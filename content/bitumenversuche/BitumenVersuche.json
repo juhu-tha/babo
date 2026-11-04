@@ -50,7 +50,7 @@
       },
       {
         "formel": "T_{\\text{R\\&K}} = T \\quad \\text{bei} \\quad \\Delta h = 25{,}0\\,\\text{mm}",
-        "erklaerung": "Erweichungspunkt Ring und Kugel nach DIN EN 1427: Badtemperatur (Wasserbad ab 5 °C, Aufheizrate 5 K/min), bei der die Stahlkugel mit dem erweichten Bitumen aus dem Ring 25,0 mm bis zur Bodenplatte durchgesunken ist.",
+        "erklaerung": "Erweichungspunkt Ring und Kugel nach DIN EN 1427: Badtemperatur (Wasserbad ab 5 °C, Aufheizrate 5 K/min; Starttemperatur und Aufheizrate vorläufig, Normprüfung ausstehend), bei der die Stahlkugel mit dem erweichten Bitumen aus dem Ring 25,0 mm bis zur Bodenplatte durchgesunken ist.",
         "quelle": "DIN EN 1427"
       },
       {

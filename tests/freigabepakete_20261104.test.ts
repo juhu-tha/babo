@@ -8,6 +8,9 @@ import { sammleFFreigabe, fachgebietVon, FACHGEBIET_SONST } from '../scripts/aud
 import { pruefvermerkFuer } from '../src/data/pruefvermerke';
 import { pruefvermerkText } from '../src/components/ui/pruefvermerkText';
 
+import bitumen from '../content/bitumenversuche/BitumenVersuche.json';
+
+const txtBitumen = () => JSON.stringify(bitumen);
 const fehler: string[] = [];
 const gilt = (ok: boolean, fall: string) => { if (!ok) fehler.push(fall); };
 console.log('--- Test: Freigabepakete 04.11.2026 ---');
@@ -65,6 +68,14 @@ const schmidt = readFileSync('src/components/labor/SchmidtHammerSimulator.tsx', 
 gilt(schmidt.includes('rot: mehr als 6 Einheiten vom Median') && !schmidt.includes('&gt; 25 % vom Median'), 'Schmidt-Hammer: Bildunterschrift der Rückprallskala');
 const labor = readFileSync(`${ordner}/labor.md`, 'utf8');
 gilt(labor.includes('#253-HZ') && labor.includes('#255-RuK') && !labor.includes('outliers.length > 0.2'), 'Paket labor: Normpunkte #253-HZ/#255-RuK, aktueller Stand T4-PN-2');
+// 6. Entscheidung 04.11.2026 (Nachtrag): #253-HZ und #255-RuK in der App gekennzeichnet → labor freigabereif;
+//    holzkorrosion und bp_betonwaren bleiben „nach Klärung“ (begründeter Verdacht auf falschen Wert)
+gilt(readFileSync('src/components/labor/HaftzugPruefung.tsx', 'utf8').includes('ab der Kontaktfuge in den Untergrund (DIN EN 1542; vorläufig, Normprüfung ausstehend)'), '#253-HZ: Kennzeichnung im Haftzug-Simulator');
+gilt(txtBitumen().includes('Starttemperatur und Aufheizrate vorläufig, Normprüfung ausstehend'), '#255-RuK: Kennzeichnung in der Formelerläuterung');
+gilt(/\*\*freigabereif\.\*\*/.test(labor), 'Paket labor: freigabereif');
+for (const k of ['holzkorrosion', 'bp_betonwaren'])
+  gilt(/\*\*freigabereif nach Klärung [^*]+\.\*\*/.test(readFileSync(`${ordner}/${k}.md`, 'utf8')), `Paket ${k}: bleibt „nach Klärung“`);
+gilt(readme.includes('kein reines Bestätigungsdefizit'), 'README: Begründung holzkorrosion/bp_betonwaren');
 
 if (fehler.length) { for (const f of fehler) console.error(`FAIL: ${f}`); process.exit(1); }
 console.log(`OK: Freigabepakete (${pakete.length}) und Korrekturen 04.11.2026`);
