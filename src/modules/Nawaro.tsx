@@ -183,7 +183,7 @@ export default function Nawaro() {
                   <div className="border border-home-grau/20 p-4 rounded-xl bg-emerald-50/30 flex gap-3">
                     <CheckCircle2 className="text-emerald-600 flex-shrink-0" size={20} />
                     <div>
-                      <h4 className="font-bold text-sm text-text-main mb-1"><MdText text={inhalt.texte.coSpeicherEffektCarbon} /></h4>
+                      <h3 className="font-bold text-sm text-text-main mb-1"><MdText text={inhalt.texte.coSpeicherEffektCarbon} /></h3>
                       <p className="text-xs text-text-main/70"><MdText text={inhalt.texte.pflanzenEntziehenDerLuft} /></p>
                     </div>
                   </div>
@@ -191,7 +191,7 @@ export default function Nawaro() {
                   <div className="border border-home-grau/20 p-4 rounded-xl bg-emerald-50/30 flex gap-3">
                     <CheckCircle2 className="text-emerald-600 flex-shrink-0" size={20} />
                     <div>
-                      <h4 className="font-bold text-sm text-text-main mb-1"><MdText text={inhalt.texte.ressourceneffizienzZirkularität} /></h4>
+                      <h3 className="font-bold text-sm text-text-main mb-1"><MdText text={inhalt.texte.ressourceneffizienzZirkularität} /></h3>
                       <p className="text-xs text-text-main/70"><MdText text={inhalt.texte.wiederverwendungReUseUnd} /></p>
                     </div>
                   </div>
@@ -206,7 +206,7 @@ export default function Nawaro() {
                 
                 {/* Embedded SVG scheme */}
                 <div className="flex justify-center bg-off-white rounded-xl border border-home-grau/30 p-2">
-                  <svg width="100%" height="150" viewBox="0 0 240 150">
+                  <svg width="100%" height="150" viewBox="0 0 240 150" role="img" aria-label={inhalt.texte.nawaroSchemaKohlenstoff}>
                     <g transform="translate(40, 100)">
                       <rect x="-3" y="0" width="6" height="30" fill="#A3113E" />
                       <path d="M 0 -45 L 20 0 L -20 0 Z" fill="#475569" />

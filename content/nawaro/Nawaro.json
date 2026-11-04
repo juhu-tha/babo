@@ -85,7 +85,8 @@
     "t11500NMm": "11 500 N/mm²",
     "klinkerentsäuerungEmittiertCo": "Klinkerentsäuerung emittiert CO₂",
     "biogenerKohlenstoffspeicherCa0": "Biogener Kohlenstoffspeicher (ca. −0,7 t CO₂-Äq./m³ nach DIN EN 16449)",
-    "nawaroModulZusatz": "(NaWaRo)"
+    "nawaroModulZusatz": "(NaWaRo)",
+    "nawaroSchemaKohlenstoff": "Schema Kohlenstoff-Dynamik: Die Pflanze bindet beim Wachstum CO₂; als Baustoff genutzt, bleibt der Kohlenstoff im Gebäude gespeichert (C-Speicher)."
   },
   "werte": {
     "hoheWärmespeicherfähigkeitC300": "Hohe Wärmespeicherfähigkeit (ρ·c > 300 kJ/(m³K)) – günstig für die Phasenverschiebung.",

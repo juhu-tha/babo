@@ -8,6 +8,7 @@ import inhalt from '@/content/zfp/AkustischTab.json';
 import { MdText } from '@/src/components/inhalt/MdText';
 import { EingabeHinweise } from '@/src/components/ui/EingabeHinweise';
 import type { Hinweis } from '@/src/calc/plausibilitaet';
+import { ErgebnisAnsage } from '@/src/components/ui/ErgebnisAnsage';
 
 export interface AkustischTabProps {
   frequency: number;
@@ -48,6 +49,7 @@ export default function AkustischTab({ frequency, impactEchoResults, renderEmbed
         <div className="mt-4 p-4 bg-shiraz text-white rounded-xl shadow-md relative overflow-hidden">
           <div className="text-sm opacity-90 mb-1"><FormulaText text={inhalt.werte.dynElastizitätsmodulEDyn} /></div>
           <div className="text-3xl font-bold">{formatDeZahl(ultrasonicResults.eDyn, 1)} GPa</div>
+          <ErgebnisAnsage text={`Ultraschall: dynamischer E-Modul ${formatDeZahl(ultrasonicResults.eDyn, 1)} GPa`} />
           <div className="text-xs opacity-75 mt-2">
             <FormulaText text={`\\text{Grobe Festigkeitsabschätzung: } \\approx ${formatDeTeX(ultrasonicResults.fcEst, 1)} \\text{ N/mm}^2`} />
           </div>
@@ -95,6 +97,7 @@ export default function AkustischTab({ frequency, impactEchoResults, renderEmbed
         <div className="mt-4 p-4 bg-shiraz text-white rounded-xl shadow-md relative overflow-hidden">
           <div className="text-sm opacity-90 mb-1"><MdText text={inhalt.texte.berechneteTiefeBauteildickeFehlstelle} /></div>
           <div className="text-3xl font-bold">{formatDeZahl(impactEchoResults.depth, 0)} mm</div>
+          <ErgebnisAnsage text={`Impact-Echo: Bauteildicke ${formatDeZahl(impactEchoResults.depth, 0)} mm`} />
           <div className="text-[11px] opacity-80 mt-1"><MdText text={inhalt.texte.dVP2} /></div>
           
           {/* Impact-Echo Animation */}

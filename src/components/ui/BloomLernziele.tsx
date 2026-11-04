@@ -18,6 +18,9 @@ export interface BloomLernzieleProps {
   timeMinutes?: number;
   ects?: number;
   goals?: BloomGoalItem[];
+  /** Element des Kartentitels: 'h4' (Standard) oder 'p', wenn die Karte vor der ersten Bereichsüberschrift steht
+   *  (sonst Überschriftensprung h1 → h4; Kleinpunkte 04.11.2026) */
+  titelElement?: 'h4' | 'p';
 }
 
 const DEFAULT_GOALS: Record<string, BloomGoalItem[]> = {
@@ -68,8 +71,10 @@ export const BloomLernziele: React.FC<BloomLernzieleProps> = ({
   moduleTitle,
   studyLevel = 'Bachelor Basis (1.-2. Semester)',
   ects,
-  goals
+  goals,
+  titelElement = 'h4',
 }) => {
+  const Titel = titelElement;
   const [isOpen, setIsOpen] = useState(false);
   const [isCompleted, setIsCompleted] = useState(false);
 
@@ -105,9 +110,9 @@ export const BloomLernziele: React.FC<BloomLernzieleProps> = ({
                 {studyLevel}
               </span>
             </div>
-            <h4 className="text-sm font-bold text-text-main flex items-center gap-2">
+            <Titel className="text-sm font-bold text-text-main flex items-center gap-2">
               Lernziele: {moduleTitle}
-            </h4>
+            </Titel>
           </div>
         </div>
 
