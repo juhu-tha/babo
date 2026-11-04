@@ -6,6 +6,7 @@ import { FormulaText } from '@/src/components/ui/FormulaText';
 import { Thermometer, Radiation } from 'lucide-react';
 import inhalt from '@/content/zfp/ThermischTab.json';
 import { MdText } from '@/src/components/inhalt/MdText';
+import { ErgebnisAnsage } from '@/src/components/ui/ErgebnisAnsage';
 
 export interface ThermischTabProps {
   radiationEnergy: number;
@@ -88,6 +89,7 @@ export default function ThermischTab({ radiationEnergy, radiographyResults, rend
         <div className={`mt-4 p-4 text-white rounded-xl shadow-md transition-colors duration-500 ${radiographyResults.color} relative overflow-hidden`}>
           <div className="text-sm mb-1"><MdText text={inhalt.texte.transmissionBildqualität} /></div>
           <div className="text-3xl font-bold">{formatDeZahl(radiographyResults.transmission, 2)} %</div>
+          <ErgebnisAnsage text={`Durchstrahlung: Transmission ${formatDeZahl(radiographyResults.transmission, 2)} %`} />
           <div className="text-xs mt-2">
             Qualität: {radiographyResults.quality}
           </div>

@@ -40,7 +40,6 @@ export const AUSNAHMEN = {
   'src/modules/Materialpaesse.tsx|bg-slate-900/65': [1, D],
   // (d) Tooltips
   'src/components/ui/InfoTooltip.tsx|bg-text-main': [1, T],
-  'src/components/ui/Slider.tsx|bg-text-main': [1, T],
   'src/modules/mischungsberechnung/MischungEingaben.tsx|bg-gray-900': [1, T],
   'src/modules/stahlbetoninstandhaltung/hilfen.tsx|bg-text-main': [2, T],
   'src/modules/bpverkehrswegebau/RstoRechnerTab.tsx|bg-black/95': [1, T],

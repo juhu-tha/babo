@@ -1,5 +1,6 @@
 {
   "texte": {
+    "zfpModultitel": "Bauwerksdiagnose – ZfP-Simulatoren & DGZfP",
     "praxisGerätepoolFachDatenblätter": "Praxis-Gerätepool & Fach-Datenblätter",
     "wählenSieEinPrüfgerät": "Wählen Sie ein Prüfgerät aus, um detaillierte normative und bautechnische Spezifikationen einzusehen.",
     "relevanteNormRegelwerk": "Relevante Norm / Regelwerk",
@@ -9,7 +10,8 @@
     "akustischUsIe": " Akustisch (US, IE)",
     "thermischStrahlung": " Thermisch & Strahlung",
     "holzFeuchte": " Holz & Feuchte",
-    "dgzfpRichtlinien": " DGZfP & Richtlinien"
+    "dgzfpRichtlinien": " DGZfP & Richtlinien",
+    "zfpModulEinleitung": "Lehrsimulatoren der zerstörungsfreien Prüfverfahren nach Verfahrensgruppen, dazu Geräteübersicht und DGZfP-Ausbildung. Teil 3 der Bauwerksdiagnose."
   },
   "werte": {
     "gering10": "Gering (< 10%)",

@@ -13,6 +13,7 @@ import type { PruefWinkel } from '@/src/calc/pruefverfahren';
 import { MdText } from '@/src/components/inhalt/MdText';
 import { EingabeHinweise } from '@/src/components/ui/EingabeHinweise';
 import type { Hinweis } from '@/src/calc/plausibilitaet';
+import { ErgebnisAnsage } from '@/src/components/ui/ErgebnisAnsage';
 
 export interface MechanischTabProps {
   angle: PruefWinkel;
@@ -85,6 +86,7 @@ export default function MechanischTab({ angle, chartData, karstenAbsorbed, karst
             <div className="mt-4 p-4 bg-shiraz text-white rounded-xl shadow-md relative overflow-hidden">
               <div className="text-sm mb-1"><MdText text={inhalt.texte.geschätzteDruckfestigkeit} /></div>
               <div className="text-3xl font-bold">{formatDeZahl(reboundResults.fc, 1)} N/mm²</div>
+              <ErgebnisAnsage text={`Rückprallhammer: geschätzte Druckfestigkeit ${formatDeZahl(reboundResults.fc, 1)} N/mm², korrigierter Rückprallwert ${formatDeZahl(reboundResults.rCorr, 1)}`} />
               <div className="text-xs opacity-75 mt-2"><MdText text={inhalt.texte.korrigiertesR} />{formatDeZahl(reboundResults.rCorr, 1)}
               </div>
               {/* Animation */}

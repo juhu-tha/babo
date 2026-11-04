@@ -12,6 +12,9 @@ import { META_CLUSTERS } from '../../data/metaClusters';
 import { ladeSuchbegriffe } from '../../registry/kern';
 import { tabGroups } from '../../routing/tabGroups';
 import { VolltextTreffer } from './VolltextTreffer';
+import { formatDeWert } from '@/src/utils/numberFormat';
+import { modulPasst } from '../../utils/suchNormalisierung';
+import { MODUL_KERN } from '../../registry/kern';
 
 import type { TabId } from '@/src/contexts/TabContext';
 const GROUP_ICONS: Record<string, React.ComponentType<{ size?: number; className?: string }>> = {
@@ -66,6 +69,13 @@ function useSuchbegriffe(benoetigt: boolean): Record<string, string[]> {
   return werte ?? {};
 }
 
+/** Text der Statusmeldung zur Suche; inhalt = null: Volltextsuche (noch) ohne Ergebnis. Exportiert für Tests. */
+export function suchStatusText(module: number, inhalt: number | null, sprache: string = 'de'): string {
+  const z = formatDeWert;
+  if (sprache === 'en') return `${z(module)} ${module === 1 ? 'module' : 'modules'} found${inhalt !== null ? `, ${z(inhalt)} ${inhalt === 1 ? 'hit' : 'hits'} in content` : ''}`;
+  return `${z(module)} ${module === 1 ? 'Modul' : 'Module'} gefunden${inhalt !== null ? `, ${z(inhalt)} Treffer im Inhalt` : ''}`;
+}
+
 export interface ModulNavigationProps {
   searchQuery: string;
   openClusters: Record<string, boolean>;
@@ -85,8 +95,33 @@ export function ModulNavigation({
   const { activeTab, setActiveTab } = useTabContext();
   const { language, t, getTabLabel, getGroupName, getClusterName } = useLanguage();
   const TAB_KEYWORDS = useSuchbegriffe(searchQuery !== '');
+  // Menüsuche mit Schreibvarianten und Synonymen (src/utils/suchNormalisierung.ts, Gesamtgutachten 03.11.2026):
+  // Menübeschriftung, Übersetzung, Modultitel und Suchbegriffe
+  const passt = (id: string, label: string) =>
+    modulPasst(searchQuery, id, [label, getTabLabel(id, label), MODUL_KERN.get(id)?.titel, ...(TAB_KEYWORDS[id] ?? [])]);
+  // Trefferzahl der Suche als Statusmeldung (WCAG 4.1.3): Module der Navigation und Treffer im Inhalt, verzögert
+  // angesagt, damit nicht jeder Tastendruck eine Meldung auslöst
+  const [inhaltTreffer, setInhaltTreffer] = React.useState<number | null>(null);
+  const modulTreffer = React.useMemo(() => {
+    if (!searchQuery) return 0;
+    const ids = new Set<string>();
+    for (const g of tabGroups) for (const tab of g.tabs) {
+      if (tab.id.startsWith('divider')) continue;
+      if (passt(tab.id, tab.label)) ids.add(tab.id);
+    }
+    return ids.size;
+    // passt hängt nur von searchQuery, TAB_KEYWORDS und getTabLabel ab
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [searchQuery, TAB_KEYWORDS, getTabLabel]);
+  const [suchStatus, setSuchStatus] = React.useState('');
+  React.useEffect(() => {
+    if (!searchQuery.trim()) { setSuchStatus(''); return; }
+    const zeit = window.setTimeout(() => setSuchStatus(suchStatusText(modulTreffer, searchQuery.trim().length >= 3 ? inhaltTreffer : null, language)), 700);
+    return () => window.clearTimeout(zeit);
+  }, [searchQuery, modulTreffer, inhaltTreffer, language]);
   return (
     <>
+    <p role="status" className="sr-only">{suchStatus}</p>
     {/* Schnellzugriff: Dashboard / Start & Allgemein */}
     {(() => {
       const allgemeinGroup = tabGroups[0]; // Allgemein
@@ -98,12 +133,7 @@ export function ModulNavigation({
 
       const matchingAllgemeinTabs = allgemeinGroup.tabs.filter((t) => {
         if (!searchQuery) return true;
-        const query = searchQuery.toLowerCase();
-        const translatedLabel = getTabLabel(t.id, t.label);
-        const labelIncludes = (t.label && t.label.toLowerCase().includes(query)) || translatedLabel.toLowerCase().includes(query);
-        const keywords = TAB_KEYWORDS[t.id] || [];
-        const keywordsInclude = keywords.some(k => k.includes(query));
-        return labelIncludes || keywordsInclude;
+        return passt(t.id, t.label);
       });
 
       // In search mode, only render if matching items exist
@@ -123,6 +153,7 @@ export function ModulNavigation({
                 setOpenClusters(nextState);
                 setOpenDropdown('CLOSED_ALLGEMEIN');
               }}
+              aria-current={activeTab === 'start' ? 'page' : undefined}
               className={"flex-1 flex items-center gap-2.5 px-3 py-2 text-sm font-semibold rounded-xl transition-all cursor-pointer " + 
                 (activeTab === 'start' 
                   ? "bg-slate-100 dark:bg-slate-800 border border-shiraz dark:border-rose-500 text-shiraz dark:text-rose-400 font-bold shadow-xs" 
@@ -172,7 +203,8 @@ export function ModulNavigation({
                   return (
                     <div key={tab.id} className="group/item flex items-center gap-1">
                       <button 
-                        onClick={() => { setActiveTab(tab.id as TabId); setMobileMenuOpen(false); }} 
+                        onClick={() => { setActiveTab(tab.id as TabId); setMobileMenuOpen(false); }}
+                        aria-current={isActive ? 'page' : undefined}
                         className={"flex-1 flex items-center gap-2 px-2 py-1.5 text-xs font-medium rounded-lg transition-colors " + 
                           (isActive ? "bg-shiraz text-white shadow-xs font-semibold" : "text-text-main/80 dark:text-slate-300 hover:bg-home-grau/10 dark:hover:bg-slate-800 hover:text-text-main dark:hover:text-white")}
                       >
@@ -235,19 +267,8 @@ export function ModulNavigation({
       // Filter groups and tabs if search is active
       const matchingGroups = clusterGroups.filter(group => {
         if (!searchQuery) return true;
-        const query = searchQuery.toLowerCase();
-        const groupNameTranslated = getGroupName(group.name);
-        const clusterNameMatches = cluster.name.toLowerCase().includes(query) || translatedClusterName.toLowerCase().includes(query);
-        return clusterNameMatches ||
-               group.name.toLowerCase().includes(query) || 
-               groupNameTranslated.toLowerCase().includes(query) ||
-               group.tabs.some((t) => {
-                 const translatedLabel = getTabLabel(t.id, t.label);
-                 const labelIncludes = (t.label && t.label.toLowerCase().includes(query)) || translatedLabel.toLowerCase().includes(query);
-                 const keywords = TAB_KEYWORDS[t.id] || [];
-                 const keywordsInclude = keywords.some(k => k.includes(query));
-                 return labelIncludes || keywordsInclude;
-               });
+        return modulPasst(searchQuery, '', [cluster.name, translatedClusterName, group.name, getGroupName(group.name)]) ||
+               group.tabs.some((t) => passt(t.id, t.label));
       });
 
       if (matchingGroups.length === 0) return null;
@@ -297,12 +318,7 @@ export function ModulNavigation({
                 <div className="flex flex-col gap-0.5 my-0.5">
                   {matchingGroups.flatMap((g) => g.tabs).filter((tab) => {
                     if (!searchQuery) return true;
-                    const query = searchQuery.toLowerCase();
-                    const translatedLabel = getTabLabel(tab.id, tab.label);
-                    const labelIncludes = (tab.label && tab.label.toLowerCase().includes(query)) || translatedLabel.toLowerCase().includes(query);
-                    const keywords = TAB_KEYWORDS[tab.id] || [];
-                    const keywordsInclude = keywords.some(k => k.includes(query));
-                    return labelIncludes || keywordsInclude;
+                    return passt(tab.id, tab.label);
                   }).map((tab) => {
                     const Icon = tab.icon;
                     const isActive = activeTab === tab.id;
@@ -312,7 +328,8 @@ export function ModulNavigation({
                     return (
                       <div key={tab.id} className="group/item flex items-center gap-1">
                         <button 
-                          onClick={() => { setActiveTab(tab.id as TabId); setMobileMenuOpen(false); }} 
+                          onClick={() => { setActiveTab(tab.id as TabId); setMobileMenuOpen(false); }}
+                          aria-current={isActive ? 'page' : undefined}
                           className={"flex-1 flex items-center gap-2 px-2 py-1.5 text-xs font-medium rounded-lg transition-colors " + 
                             (isActive ? "bg-shiraz text-white shadow-xs font-semibold" : "text-text-main/80 dark:text-slate-300 hover:bg-home-grau/10 dark:hover:bg-slate-800 hover:text-text-main dark:hover:text-white")}
                         >
@@ -357,12 +374,7 @@ export function ModulNavigation({
                       <div className="flex flex-col gap-0.5 border-l-2 border-home-grau/30 dark:border-slate-700 ml-2.5 pl-2 my-0.5">
                         {group.tabs.filter((tab) => {
                           if (!searchQuery) return true;
-                          const query = searchQuery.toLowerCase();
-                          const translatedLabel = getTabLabel(tab.id, tab.label);
-                          const labelIncludes = (tab.label && tab.label.toLowerCase().includes(query)) || translatedLabel.toLowerCase().includes(query);
-                          const keywords = TAB_KEYWORDS[tab.id] || [];
-                          const keywordsInclude = keywords.some(k => k.includes(query));
-                          return labelIncludes || keywordsInclude;
+                          return passt(tab.id, tab.label);
                         }).map((tab) => {
                           if (tab.id.startsWith("divider")) {
                             const dividerText = getTabLabel(tab.id, tab.label.replace(/-/g, "").trim());
@@ -380,7 +392,8 @@ export function ModulNavigation({
                           return (
                             <div key={tab.id} className="group/item flex items-center gap-1">
                               <button 
-                                onClick={() => { setActiveTab(tab.id as TabId); setMobileMenuOpen(false); }} 
+                                onClick={() => { setActiveTab(tab.id as TabId); setMobileMenuOpen(false); }}
+                                aria-current={isActive ? 'page' : undefined}
                                 className={"flex-1 flex items-center gap-2 px-2 py-1.5 text-xs font-medium rounded-lg transition-colors " + 
                                   (isActive ? "bg-shiraz text-white shadow-xs font-semibold" : "text-text-main/80 dark:text-slate-300 hover:bg-home-grau/10 dark:hover:bg-slate-800 hover:text-text-main dark:hover:text-white")}
                               >
@@ -408,7 +421,7 @@ export function ModulNavigation({
         </div>
       );
     })}
-    <VolltextTreffer anfrage={searchQuery} oeffne={(id) => { setActiveTab(id); setMobileMenuOpen(false); }} />
+    <VolltextTreffer anfrage={searchQuery} oeffne={(id) => { setActiveTab(id); setMobileMenuOpen(false); }} onAnzahl={setInhaltTreffer} />
     </>
   );
 }

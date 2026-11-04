@@ -1,6 +1,7 @@
 import { formatDeZahl, formatDeWert } from '@/src/utils/numberFormat';
 import React, { useState, useMemo } from 'react';
 import type { MetaCluster } from '@/src/data/metaClusters';
+import { MODUL_KERN } from '@/src/registry/kern';
 import { 
   Search, 
   X, 
@@ -63,7 +64,7 @@ export const MetadataAuditModal: React.FC<MetadataAuditModalProps> = ({
         // Skip visual divider items
         if (tab.id.startsWith('divider_')) return;
 
-        const title = `BaustoffBoard THA - ${tab.label}`;
+        const title = `BaustoffBoard THA - ${MODUL_KERN.get(tab.id)?.titel ?? tab.label}`;
         const desc = tabDescriptions[tab.id];
         const hasCustom = !!desc;
         const len = desc ? desc.length : 0;
