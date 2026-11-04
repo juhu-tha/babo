@@ -11,7 +11,8 @@ import React, { useEffect, useId, useSyncExternalStore } from 'react';
  * Bündelung (Kleinpunkte 04.11.2026): Alle Ansagen einer Seite (Modul bzw. Reiter) laufen über ein gemeinsames
  * Bündel. Ändert eine Eingabe mehrere Rechenweg-Boxen zugleich, gibt es nach der Ruhezeit EINE Meldung: das erste
  * geänderte Ergebnis (in Seitenreihenfolge) und die Zahl der weiteren („… und 2 weitere Ergebnisse aktualisiert“).
- * Gesprochen wird nur aus einer Live-Region (der ersten eingehängten Ansage); die übrigen bleiben leer.
+ * Gesprochen wird nur aus einer Live-Region – der des ersten geänderten Ergebnisses (sichtbar, weil es sich gerade
+ * geändert hat); alle übrigen Regionen bleiben leer.
  */
 export const ANSAGE_MAX = 300;
 /** Ruhezeit in ms bis zur Ansage */
@@ -49,13 +50,16 @@ export function erzeugeAnsageBuendel(ruhe = ANSAGE_RUHE, planer: Planer = {
   const offen = new Map<string, string>();                     // seit der letzten Ansage geändert
   const hoerer = new Set<() => void>();
   let angesagt = '';
+  let sprecher: string | undefined;                            // Region, die die letzte Meldung trägt
   let zeit: number | undefined;
   const melden = () => hoerer.forEach(h => h());
   const sprich = () => {
     zeit = undefined;
-    const texte = reihe.filter(id => offen.has(id)).map(id => offen.get(id)!);
+    const ids = reihe.filter(id => offen.has(id));
+    const texte = ids.map(id => offen.get(id)!);
     offen.clear();
     if (!texte.length) return;
+    sprecher = ids[0];
     angesagt = buendelText(texte);
     melden();
   };
@@ -66,11 +70,11 @@ export function erzeugeAnsageBuendel(ruhe = ANSAGE_RUHE, planer: Planer = {
       melden();
     },
     abmelden(id: string) {
-      const warSprecher = reihe[0] === id;
+      const warSprecher = sprecher === id;
       const i = reihe.indexOf(id);
       if (i >= 0) reihe.splice(i, 1);
       erster.delete(id); aktiv.delete(id); offen.delete(id);
-      if (warSprecher) angesagt = '';                          // neue Sprecher-Region startet leer
+      if (warSprecher) { angesagt = ''; sprecher = undefined; }
       melden();
     },
     melde(id: string, text: string) {
@@ -83,7 +87,7 @@ export function erzeugeAnsageBuendel(ruhe = ANSAGE_RUHE, planer: Planer = {
       if (zeit !== undefined) planer.clearTimeout(zeit);
       zeit = planer.setTimeout(sprich, ruhe);
     },
-    sprecher: () => reihe[0],
+    sprecher: () => sprecher,
     angesagt: () => angesagt,
     abonniere(h: () => void) { hoerer.add(h); return () => { hoerer.delete(h); }; },
   };

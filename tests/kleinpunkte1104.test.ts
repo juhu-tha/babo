@@ -60,7 +60,7 @@ const b = erzeugeAnsageBuendel(700, planer);
 b.anmelden('a', 'Knicklast: 10 kN'); b.anmelden('b', 'Spannung: 5 N/mm²'); b.anmelden('c', 'Ausnutzung: 50 %');
 b.melde('a', 'Knicklast: 10 kN'); b.melde('b', 'Spannung: 5 N/mm²'); b.melde('c', 'Ausnutzung: 50 %');
 ablaufen();
-gilt(b.angesagt() === '' && b.sprecher() === 'a', 'Seitenaufbau: keine Ansage, erste Region spricht');
+gilt(b.angesagt() === '' && b.sprecher() === undefined, 'Seitenaufbau: keine Ansage');
 // eine Eingabe ändert alle drei Boxen, dazu Zwischenwerte beim Ziehen → eine einzige Meldung
 b.melde('a', 'Knicklast: 11 kN'); b.melde('b', 'Spannung: 6 N/mm²'); b.melde('c', 'Ausnutzung: 55 %');
 b.melde('a', 'Knicklast: 12 kN'); b.melde('b', 'Spannung: 7 N/mm²'); b.melde('c', 'Ausnutzung: 60 %');
@@ -68,11 +68,13 @@ gilt(zeitgeber.length === 1, `Entprellung: ${zeitgeber.length} Zeitgeber statt 1
 let meldungen = 0;
 const ab = b.abonniere(() => { meldungen++; });
 ablaufen();
-gilt(meldungen === 1 && b.angesagt() === 'Knicklast: 12 kN – und 2 weitere Ergebnisse aktualisiert', `Bündel: „${b.angesagt()}“ (${meldungen} Meldungen)`);
+gilt(meldungen === 1 && b.sprecher() === 'a' && b.angesagt() === 'Knicklast: 12 kN – und 2 weitere Ergebnisse aktualisiert', `Bündel: „${b.angesagt()}“ (${meldungen} Meldungen)`);
 b.melde('c', 'Ausnutzung: 65 %'); ablaufen();
-gilt(b.angesagt() === 'Ausnutzung: 65 %', `nur eine Box geändert: „${b.angesagt()}“`);
+gilt(b.angesagt() === 'Ausnutzung: 65 %' && b.sprecher() === 'c', `nur eine Box geändert: „${b.angesagt()}“ aus ${b.sprecher()}`);
 b.abmelden('a');
-gilt(b.sprecher() === 'b' && b.angesagt() === '', 'Sprecher abgemeldet: nächste Region übernimmt leer');
+gilt(b.sprecher() === 'c' && b.angesagt() === 'Ausnutzung: 65 %', 'andere Region abgemeldet: Meldung bleibt');
+b.abmelden('c');
+gilt(b.sprecher() === undefined && b.angesagt() === '', 'Sprecher abgemeldet: Meldung geleert');
 ab();
 gilt(buendelText(['x'.repeat(400), 'y']).length === ANSAGE_MAX && buendelText(['x'.repeat(400), 'y']).endsWith('weiteres Ergebnis aktualisiert'), 'Bündeltext gekürzt, Zusatz bleibt');
 const komp = fs.readFileSync('src/components/ui/ErgebnisAnsage.tsx', 'utf8');
