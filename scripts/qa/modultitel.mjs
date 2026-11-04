@@ -62,11 +62,6 @@ export const AUSNAHMEN_UEBERSCHRIFT = {
   ...Object.fromEntries(['spannbeton_grundlagen', 'spannbeton_kennwerte'].map(id => [id, 'Teile eines geteilten Moduls (src/registry/teilmodule.ts), gemeinsame Überschrift „Spannbeton …“'])),
   weiter_tha: 'Übersichtsreiter von „Weiterführende Studienangebote (THA & ibi)“',
   start: 'Startseite: Begrüßung statt Modultitel',
-  // offen (03.11.2026): Modul ohne eigene Hauptüberschrift; erste h2 ist der erste Abschnitt bzw. wird zusammengesetzt
-  zfp: 'offen: erste h2 ist der erste Simulator („Rückprallhammer“), keine Modulüberschrift',
-  ausbau: 'offen: erste h2 ist der erste Abschnitt („Trockenbau“), keine Modulüberschrift',
-  nawaro: 'offen: Überschrift „NaWaRo | Biobasierte Baustoffe“ zusammengesetzt (Label „Biogene Baustoffe (NaWaRo)“)',
-  aufgaben_kennwerte: 'offen: Überschrift aus der Aufgabenkomponente zusammengesetzt („Übungsaufgaben: Labor, Prüftechnik & Kenngrößen“)',
 };
 
 /** Text einer HTML-Überschrift ohne Tags und Entities */

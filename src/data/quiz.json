@@ -1146,7 +1146,7 @@
     "category": "baurecht_normung",
     "categoryLabel": "Baurecht & Normenwesen",
     "moduleId": "bp_recht_grundlagen",
-    "moduleTitle": "BauPVO & CE-Kennzeichnung",
+    "moduleTitle": "CE vs. Ü & MVV TB",
     "topic": "Ü-Zeichen",
     "difficulty": "Basis",
     "normRef": "MBO §§ 21, 22; MVV TB",
@@ -1171,16 +1171,16 @@
       "topic": "Ü-Zeichen",
       "misconception": "Das Ü-Zeichen wird als Zusatz- oder Gütezeichen zu CE verstanden.",
       "coreRule": "Ü-Zeichen = nationaler Übereinstimmungsnachweis für nicht harmonisierte Bauprodukte.",
-      "actionableAdvice": "Arbeiten Sie den Abschnitt „CE vs. Ü-Zeichen & MVV TB“ im Modul BauPVO & CE-Kennzeichnung noch einmal durch.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „CE vs. Ü-Zeichen & MVV TB“ im Modul CE vs. Ü & MVV TB noch einmal durch.",
       "targetModuleTab": "bp_recht_grundlagen",
-      "targetModuleLabel": "BauPVO & CE-Kennzeichnung"
+      "targetModuleLabel": "CE vs. Ü & MVV TB"
     },
     "quelle": "Musterbauordnung §§ 21, 22; MVV TB; EuGH C-100/13",
     "verified": true,
     "vorpruefung": {
       "am": "2026-10-27",
       "ergebnis": "korrigiert",
-      "hinweis": "Distraktoren angeglichen"
+      "hinweis": "Distraktoren angeglichen. Modulname angeglichen 04.11."
     },
     "reviewer": "Zweitprüfung 27.10.2026; freigegeben 27.10.2026",
     "reviewedAt": "2026-10-27"
@@ -1190,7 +1190,7 @@
     "category": "baurecht_normung",
     "categoryLabel": "Baurecht & Normenwesen",
     "moduleId": "bp_recht_grundlagen",
-    "moduleTitle": "BauPVO & CE-Kennzeichnung",
+    "moduleTitle": "CE vs. Ü & MVV TB",
     "topic": "Zustimmung im Einzelfall",
     "difficulty": "Vertiefung",
     "normRef": "MBO § 20 (Landesrecht, z. B. Art. 20 BayBO)",
@@ -1215,9 +1215,9 @@
       "topic": "Zustimmung im Einzelfall",
       "misconception": "Baugenehmigung und Verwendbarkeitsnachweis werden gleichgesetzt.",
       "coreRule": "Ungeregeltes Produkt im Einzelfall → ZiE; ungeregelte Bauart im Einzelfall → vBG.",
-      "actionableAdvice": "Arbeiten Sie den Abschnitt „Nationaler Sektor & Brauchbarkeit“ im Modul BauPVO & CE-Kennzeichnung noch einmal durch.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Nationaler Sektor & Brauchbarkeit“ im Modul CE vs. Ü & MVV TB noch einmal durch.",
       "targetModuleTab": "bp_recht_grundlagen",
-      "targetModuleLabel": "BauPVO & CE-Kennzeichnung"
+      "targetModuleLabel": "CE vs. Ü & MVV TB"
     },
     "quelle": "Musterbauordnung § 20 und § 16a; Art. 20 BayBO",
     "verified": true,
@@ -1225,7 +1225,8 @@
     "reviewedAt": "2026-10-28",
     "vorpruefung": {
       "am": "2026-10-26",
-      "ergebnis": "ok"
+      "ergebnis": "ok",
+      "hinweis": "Modulname angeglichen 04.11."
     }
   },
   {
@@ -1233,7 +1234,7 @@
     "category": "baurecht_normung",
     "categoryLabel": "Baurecht & Normenwesen",
     "moduleId": "bp_recht_grundlagen",
-    "moduleTitle": "BauPVO & CE-Kennzeichnung",
+    "moduleTitle": "CE vs. Ü & MVV TB",
     "topic": "Neue BauPVO (EU) 2024/3110",
     "difficulty": "Vertiefung",
     "normRef": "VO (EU) 2024/3110, Art. 94, 95",
@@ -1258,9 +1259,9 @@
       "topic": "Neue BauPVO (EU) 2024/3110",
       "misconception": "Inkrafttreten, Anwendbarkeit und Übergangsfristen der neuen BauPVO werden verwechselt.",
       "coreRule": "BauPVO 2024/3110: in Kraft 07.01.2025, anwendbar 08.01.2026, alte hEN gelten bis zur Ablösung.",
-      "actionableAdvice": "Arbeiten Sie den Abschnitt „BauPVO 2024/3110 & digitaler Produktpass“ im Modul BauPVO & CE-Kennzeichnung noch einmal durch.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „BauPVO 2024/3110 & digitaler Produktpass“ im Modul CE vs. Ü & MVV TB noch einmal durch.",
       "targetModuleTab": "bp_recht_grundlagen",
-      "targetModuleLabel": "BauPVO & CE-Kennzeichnung"
+      "targetModuleLabel": "CE vs. Ü & MVV TB"
     },
     "quelle": "Verordnung (EU) 2024/3110, Art. 94 und 95; IHK Bodensee-Oberschwaben (2026)",
     "verified": true,
@@ -1268,7 +1269,8 @@
     "reviewedAt": "2026-10-28",
     "vorpruefung": {
       "am": "2026-10-26",
-      "ergebnis": "ok"
+      "ergebnis": "ok",
+      "hinweis": "Modulname angeglichen 04.11."
     }
   },
   {
@@ -1276,7 +1278,7 @@
     "category": "baurecht_normung",
     "categoryLabel": "Baurecht & Normenwesen",
     "moduleId": "bp_recht_grundlagen",
-    "moduleTitle": "BauPVO & CE-Kennzeichnung",
+    "moduleTitle": "CE vs. Ü & MVV TB",
     "topic": "Nationale Bauprodukte",
     "difficulty": "Basis",
     "normRef": "MVV TB",
@@ -1301,9 +1303,9 @@
       "topic": "Nationale Bauprodukte",
       "misconception": "Alle Baustahlprodukte seien europäisch geregelt.",
       "coreRule": "Kein hEN → nationaler Verwendbarkeits-/Übereinstimmungsnachweis (Ü-Zeichen).",
-      "actionableAdvice": "Arbeiten Sie das Thema „Nationale Bauprodukte“ im Modul BauPVO & CE-Kennzeichnung noch einmal durch.",
+      "actionableAdvice": "Arbeiten Sie das Thema „Nationale Bauprodukte“ im Modul CE vs. Ü & MVV TB noch einmal durch.",
       "targetModuleTab": "bp_recht_grundlagen",
-      "targetModuleLabel": "BauPVO & CE-Kennzeichnung"
+      "targetModuleLabel": "CE vs. Ü & MVV TB"
     },
     "quelle": "MVV TB, Teil C/D; DIN 488-1:2009-08",
     "verified": true,
@@ -1311,7 +1313,8 @@
     "reviewedAt": "2026-10-28",
     "vorpruefung": {
       "am": "2026-10-26",
-      "ergebnis": "ok"
+      "ergebnis": "ok",
+      "hinweis": "Modulname angeglichen 04.11."
     }
   },
   {
@@ -1319,7 +1322,7 @@
     "category": "baurecht_normung",
     "categoryLabel": "Baurecht & Normenwesen",
     "moduleId": "bp_recht_grundlagen",
-    "moduleTitle": "BauPVO & CE-Kennzeichnung",
+    "moduleTitle": "CE vs. Ü & MVV TB",
     "topic": "Bauwerksbezug nach EuGH",
     "difficulty": "Vertiefung",
     "normRef": "MVV TB",
@@ -1344,9 +1347,9 @@
       "topic": "Bauwerksbezug nach EuGH",
       "misconception": "CE bedeute automatisch Eignung für jedes Bauwerk.",
       "coreRule": "CE + DoP liefern Leistungswerte; Abgleich mit Bauwerksanforderungen der MVV TB durch den Planer.",
-      "actionableAdvice": "Arbeiten Sie das Thema „Bauwerksbezug nach EuGH“ im Modul BauPVO & CE-Kennzeichnung noch einmal durch.",
+      "actionableAdvice": "Arbeiten Sie das Thema „Bauwerksbezug nach EuGH“ im Modul CE vs. Ü & MVV TB noch einmal durch.",
       "targetModuleTab": "bp_recht_grundlagen",
-      "targetModuleLabel": "BauPVO & CE-Kennzeichnung"
+      "targetModuleLabel": "CE vs. Ü & MVV TB"
     },
     "quelle": "EuGH C-100/13 (16.10.2014); MVV TB; Musterbauordnung § 16b",
     "verified": true,
@@ -1354,7 +1357,8 @@
     "reviewedAt": "2026-10-28",
     "vorpruefung": {
       "am": "2026-10-26",
-      "ergebnis": "ok"
+      "ergebnis": "ok",
+      "hinweis": "Modulname angeglichen 04.11."
     }
   },
   {
@@ -7802,7 +7806,7 @@
     "category": "dauerhaftigkeit_schaeden",
     "categoryLabel": "Dauerhaftigkeit & Schäden",
     "moduleId": "bauwerksdiagnose",
-    "moduleTitle": "Bauwerksdiagnose & ZfP",
+    "moduleTitle": "Bauwerksdiagnose – Ablauf, Probenahme & Bewertung",
     "topic": "Karbonatisierungsprognose",
     "difficulty": "Basis",
     "normRef": "DIN EN 14630:2007-01",
@@ -7827,7 +7831,7 @@
       "topic": "Karbonatisierungsprognose",
       "misconception": "Die Karbonatisierung schreitet linear mit der Zeit fort.",
       "coreRule": "x = k · √t; Prognose nur bei gleichbleibenden Feuchtebedingungen belastbar.",
-      "actionableAdvice": "Arbeiten Sie das Thema „Karbonatisierungsprognose“ im Modul Bauwerksdiagnose & ZfP noch einmal durch.",
+      "actionableAdvice": "Arbeiten Sie das Thema „Karbonatisierungsprognose“ im Modul Bauwerksdiagnose – Ablauf, Probenahme & Bewertung noch einmal durch.",
       "targetModuleTab": "bauwerksdiagnose",
       "targetModuleLabel": "Bauwerksdiagnose"
     },
@@ -7837,7 +7841,7 @@
     "vorpruefung": {
       "am": "2026-10-25",
       "ergebnis": "ok",
-      "hinweis": "Zweitprüfung 27.10.: Frage und Optionen auf Bauteilalter umformuliert (Bezugszeitpunkt eindeutig) – korrigiert"
+      "hinweis": "Zweitprüfung 27.10.: Frage und Optionen auf Bauteilalter umformuliert (Bezugszeitpunkt eindeutig) – korrigiert. Modulname angeglichen 04.11."
     }
   },
   {
@@ -7845,7 +7849,7 @@
     "category": "bindemittel_beton",
     "categoryLabel": "Bindemittel & Betontechnologie",
     "moduleId": "pruefverfahren_katalog",
-    "moduleTitle": "Bauwerksdiagnose & ZfP",
+    "moduleTitle": "Bauwerksdiagnose – Prüfverfahren-Katalog",
     "topic": "Rückprallhammer",
     "difficulty": "Vertiefung",
     "normRef": "DIN EN 12504-2:2021-10; DIN EN 13791",
@@ -7870,7 +7874,7 @@
       "topic": "Rückprallhammer",
       "misconception": "Die Herstellerkurve liefert direkt die charakteristische Festigkeit.",
       "coreRule": "Indirekte Prüfverfahren immer an Bohrkernen kalibrieren.",
-      "actionableAdvice": "Arbeiten Sie den Abschnitt „Rückprallhammer“ im Modul Bauwerksdiagnose & ZfP noch einmal durch.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Rückprallhammer“ im Modul Bauwerksdiagnose – Prüfverfahren-Katalog noch einmal durch.",
       "targetModuleTab": "pruefverfahren_katalog",
       "targetModuleLabel": "Prüfverfahren-Katalog"
     },
@@ -7879,7 +7883,8 @@
     "reviewedAt": "2026-10-28",
     "vorpruefung": {
       "am": "2026-10-25",
-      "ergebnis": "ok"
+      "ergebnis": "ok",
+      "hinweis": "Modulname angeglichen 04.11."
     }
   },
   {
@@ -23044,7 +23049,7 @@
     "category": "baustoffkunde",
     "categoryLabel": "Werkstoffmechanik & Physik",
     "moduleId": "sonstiges",
-    "moduleTitle": "Sonstige Baustoffe",
+    "moduleTitle": "Sonstige & Innovationen",
     "topic": "Vakuumisolationspaneele",
     "difficulty": "Basis",
     "normRef": "DIN EN 17140",
@@ -23069,16 +23074,17 @@
       "topic": "Vakuumisolationspaneele",
       "misconception": "VIP lassen sich wie normale Dämmplatten zuschneiden.",
       "coreRule": "VIP nie schneiden oder durchdringen – Planung im Raster.",
-      "actionableAdvice": "Arbeiten Sie den Abschnitt „Vakuumisolationspaneele“ im Modul Sonstige Baustoffe noch einmal durch.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Vakuumisolationspaneele“ im Modul Sonstige & Innovationen noch einmal durch.",
       "targetModuleTab": "sonstiges",
-      "targetModuleLabel": "Sonstige Baustoffe"
+      "targetModuleLabel": "Sonstige & Innovationen"
     },
     "verified": true,
     "reviewer": "freigegeben 28.10.2026 (Zweitprüfung)",
     "reviewedAt": "2026-10-28",
     "vorpruefung": {
       "am": "2026-10-25",
-      "ergebnis": "ok"
+      "ergebnis": "ok",
+      "hinweis": "Modulname angeglichen 04.11."
     }
   },
   {
@@ -23086,7 +23092,7 @@
     "category": "baustoffkunde",
     "categoryLabel": "Werkstoffmechanik & Physik",
     "moduleId": "sonstiges",
-    "moduleTitle": "Sonstige Baustoffe",
+    "moduleTitle": "Sonstige & Innovationen",
     "topic": "Phasenwechselmaterialien",
     "difficulty": "Vertiefung",
     "normRef": "",
@@ -23111,16 +23117,17 @@
       "topic": "Phasenwechselmaterialien",
       "misconception": "Wärmespeicherung hängt nur von c und ρ ab.",
       "coreRule": "Q = m·(c·ΔT + Δh_m).",
-      "actionableAdvice": "Arbeiten Sie den Abschnitt „Phasenwechselmaterialien“ im Modul Sonstige Baustoffe noch einmal durch.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Phasenwechselmaterialien“ im Modul Sonstige & Innovationen noch einmal durch.",
       "targetModuleTab": "sonstiges",
-      "targetModuleLabel": "Sonstige Baustoffe"
+      "targetModuleLabel": "Sonstige & Innovationen"
     },
     "verified": true,
     "reviewer": "freigegeben 28.10.2026 (Zweitprüfung)",
     "reviewedAt": "2026-10-28",
     "vorpruefung": {
       "am": "2026-10-25",
-      "ergebnis": "ok"
+      "ergebnis": "ok",
+      "hinweis": "Modulname angeglichen 04.11."
     }
   },
   {
@@ -25714,7 +25721,7 @@
     "category": "baustoffkunde",
     "categoryLabel": "Werkstoffmechanik & Physik",
     "moduleId": "bp_mineralisch",
-    "moduleTitle": "Mineralische Bauprodukte",
+    "moduleTitle": "Mineralische Werkstoffe im Hochbau",
     "topic": "Verbundsicherheitsglas",
     "difficulty": "Vertiefung",
     "normRef": "DIN 18008",
@@ -25739,16 +25746,17 @@
       "topic": "Verbundsicherheitsglas",
       "misconception": "VSG wird mit ESG verwechselt.",
       "coreRule": "VSG = Scheiben + Zwischenschicht, Splitterbindung.",
-      "actionableAdvice": "Arbeiten Sie den Abschnitt „Verbundsicherheitsglas“ im Modul Mineralische Bauprodukte noch einmal durch.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Verbundsicherheitsglas“ im Modul Mineralische Werkstoffe im Hochbau noch einmal durch.",
       "targetModuleTab": "bp_mineralisch",
-      "targetModuleLabel": "Mineralische Bauprodukte"
+      "targetModuleLabel": "Mineralische Werkstoffe im Hochbau"
     },
     "verified": true,
     "reviewer": "freigegeben 28.10.2026 (Zweitprüfung)",
     "reviewedAt": "2026-10-28",
     "vorpruefung": {
       "am": "2026-10-25",
-      "ergebnis": "ok"
+      "ergebnis": "ok",
+      "hinweis": "Modulname angeglichen 04.11."
     }
   },
   {
@@ -25756,7 +25764,7 @@
     "category": "baustoffkunde",
     "categoryLabel": "Werkstoffmechanik & Physik",
     "moduleId": "bp_mineralisch",
-    "moduleTitle": "Mineralische Bauprodukte",
+    "moduleTitle": "Mineralische Werkstoffe im Hochbau",
     "topic": "Fliesen",
     "difficulty": "Vertiefung",
     "normRef": "DIN EN 14411",
@@ -25781,16 +25789,17 @@
       "topic": "Fliesen",
       "misconception": "Die Glasur wird als Frostschutz angesehen.",
       "coreRule": "Frostbeständigkeit hängt an der Wasseraufnahme.",
-      "actionableAdvice": "Arbeiten Sie den Abschnitt „Fliesen“ im Modul Mineralische Bauprodukte noch einmal durch.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Fliesen“ im Modul Mineralische Werkstoffe im Hochbau noch einmal durch.",
       "targetModuleTab": "bp_mineralisch",
-      "targetModuleLabel": "Mineralische Bauprodukte"
+      "targetModuleLabel": "Mineralische Werkstoffe im Hochbau"
     },
     "verified": true,
     "reviewer": "freigegeben 28.10.2026 (Zweitprüfung)",
     "reviewedAt": "2026-10-28",
     "vorpruefung": {
       "am": "2026-10-25",
-      "ergebnis": "ok"
+      "ergebnis": "ok",
+      "hinweis": "Modulname angeglichen 04.11."
     }
   },
   {
@@ -25968,7 +25977,7 @@
     "category": "metalle_holz",
     "categoryLabel": "Metalle & Holzwerkstoffe",
     "moduleId": "bp_metallisch",
-    "moduleTitle": "Metallische Bauprodukte",
+    "moduleTitle": "Metallische Werkstoffe & Bleche",
     "topic": "Wärmedehnung",
     "difficulty": "Vertiefung",
     "normRef": "DIN EN 988",
@@ -25993,15 +26002,15 @@
       "topic": "Wärmedehnung",
       "misconception": "Die Dehnung von Zink wird unterschätzt.",
       "coreRule": "ΔL = α · L · ΔT.",
-      "actionableAdvice": "Arbeiten Sie den Abschnitt „Wärmedehnung“ im Modul Metallische Bauprodukte noch einmal durch.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Wärmedehnung“ im Modul Metallische Werkstoffe & Bleche noch einmal durch.",
       "targetModuleTab": "bp_metallisch",
-      "targetModuleLabel": "Metallische Bauprodukte"
+      "targetModuleLabel": "Metallische Werkstoffe & Bleche"
     },
     "verified": true,
     "vorpruefung": {
       "am": "2026-10-27",
       "ergebnis": "korrigiert",
-      "hinweis": "normRef ergänzt"
+      "hinweis": "normRef ergänzt. Modulname angeglichen 04.11."
     },
     "reviewer": "Zweitprüfung 27.10.2026; freigegeben 27.10.2026",
     "reviewedAt": "2026-10-27"
@@ -26011,7 +26020,7 @@
     "category": "dauerhaftigkeit_schaeden",
     "categoryLabel": "Dauerhaftigkeit & Schäden",
     "moduleId": "bp_metallisch",
-    "moduleTitle": "Metallische Bauprodukte",
+    "moduleTitle": "Metallische Werkstoffe & Bleche",
     "topic": "Kontaktkorrosion",
     "difficulty": "Vertiefung",
     "normRef": "",
@@ -26036,15 +26045,15 @@
       "topic": "Kontaktkorrosion",
       "misconception": "Kontaktkorrosion wird nur bei direktem Kontakt erwartet.",
       "coreRule": "Wasser von unedel zu edel führen, nicht umgekehrt.",
-      "actionableAdvice": "Arbeiten Sie den Abschnitt „Kontaktkorrosion“ im Modul Metallische Bauprodukte noch einmal durch.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Kontaktkorrosion“ im Modul Metallische Werkstoffe & Bleche noch einmal durch.",
       "targetModuleTab": "bp_metallisch",
-      "targetModuleLabel": "Metallische Bauprodukte"
+      "targetModuleLabel": "Metallische Werkstoffe & Bleche"
     },
     "verified": true,
     "vorpruefung": {
       "am": "2026-10-27",
       "ergebnis": "korrigiert",
-      "hinweis": "Distraktoren angeglichen"
+      "hinweis": "Distraktoren angeglichen. Modulname angeglichen 04.11."
     },
     "reviewer": "Zweitprüfung 27.10.2026; freigegeben 27.10.2026",
     "reviewedAt": "2026-10-27"
@@ -44201,7 +44210,7 @@
     "category": "bindemittel_beton",
     "categoryLabel": "Bindemittel & Betontechnologie",
     "moduleId": "bauwerksdiagnose",
-    "moduleTitle": "Bauwerksdiagnose & ZfP",
+    "moduleTitle": "Bauwerksdiagnose – Ablauf, Probenahme & Bewertung",
     "topic": "Charakteristische In-situ-Festigkeit",
     "difficulty": "Vertiefung",
     "normRef": "DIN EN 13791",
@@ -44226,7 +44235,7 @@
       "topic": "Charakteristische In-situ-Festigkeit",
       "misconception": "Mittelwert und charakteristischer Wert werden verwechselt oder das Minimum nicht gebildet.",
       "coreRule": "f_ck,is = min(f_m,is − k_n · s; f_is,lowest + M); Einstufung über f_ck,is/0,85.",
-      "actionableAdvice": "Arbeiten Sie den Abschnitt „Beispiel 2: Charakteristische In-situ-Druckfestigkeit“ im Modul Bauwerksdiagnose & ZfP noch einmal durch.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Beispiel 2: Charakteristische In-situ-Druckfestigkeit“ im Modul Bauwerksdiagnose – Ablauf, Probenahme & Bewertung noch einmal durch.",
       "targetModuleTab": "bauwerksdiagnose",
       "targetModuleLabel": "Bauwerksdiagnose"
     },
@@ -44236,7 +44245,7 @@
     "vorpruefung": {
       "am": "2026-10-25",
       "ergebnis": "ok",
-      "hinweis": "Modulprüfung Tranche 12 (28.10.): k_n = 1,48 (Fassung 2008, ab 15 Kernen) durch k_n = 2,00 für n = 8 nach DIN EN 13791:2020 ersetzt – korrigiert"
+      "hinweis": "Modulprüfung Tranche 12 (28.10.): k_n = 1,48 (Fassung 2008, ab 15 Kernen) durch k_n = 2,00 für n = 8 nach DIN EN 13791:2020 ersetzt – korrigiert. Modulname angeglichen 04.11."
     }
   },
   {
@@ -44244,7 +44253,7 @@
     "category": "bindemittel_beton",
     "categoryLabel": "Bindemittel & Betontechnologie",
     "moduleId": "bauwerksdiagnose",
-    "moduleTitle": "Bauwerksdiagnose & ZfP",
+    "moduleTitle": "Bauwerksdiagnose – Ablauf, Probenahme & Bewertung",
     "topic": "Kalibrierung der ZfP",
     "difficulty": "Basis",
     "normRef": "DIN EN 13791",
@@ -44269,7 +44278,7 @@
       "topic": "Kalibrierung der ZfP",
       "misconception": "Die Rolle der zerstörenden Prüfung innerhalb der Diagnosephasen ist unklar.",
       "coreRule": "Recherche → visuelle Erfassung → ZfP → zerstörende Laborprüfung zur Kalibrierung.",
-      "actionableAdvice": "Arbeiten Sie den Abschnitt „Phasen der Tragwerksdiagnose“ im Modul Bauwerksdiagnose & ZfP noch einmal durch.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Phasen der Tragwerksdiagnose“ im Modul Bauwerksdiagnose – Ablauf, Probenahme & Bewertung noch einmal durch.",
       "targetModuleTab": "bauwerksdiagnose",
       "targetModuleLabel": "Bauwerksdiagnose"
     },
@@ -44279,7 +44288,7 @@
     "vorpruefung": {
       "am": "2026-10-27",
       "ergebnis": "korrigiert",
-      "hinweis": "normRef ergänzt"
+      "hinweis": "normRef ergänzt. Modulname angeglichen 04.11."
     }
   },
   {
@@ -44287,7 +44296,7 @@
     "category": "dauerhaftigkeit_schaeden",
     "categoryLabel": "Dauerhaftigkeit & Schäden",
     "moduleId": "bauwerksdiagnose",
-    "moduleTitle": "Bauwerksdiagnose & ZfP",
+    "moduleTitle": "Bauwerksdiagnose – Ablauf, Probenahme & Bewertung",
     "topic": "Befundinterpretation Spritzwasser",
     "difficulty": "Transfer",
     "normRef": "DIN EN 14629",
@@ -44312,7 +44321,7 @@
       "topic": "Befundinterpretation Spritzwasser",
       "misconception": "Karbonatisierung wird als einziger Depassivierungsmechanismus betrachtet.",
       "coreRule": "Bei Tausalz/Spritzwasser: Chloridprofil in Tiefenstufen bestimmen; √t-Gesetz gilt nur für Karbonatisierung.",
-      "actionableAdvice": "Arbeiten Sie den Abschnitt „Beispiel 1: Restnutzungsdauer bis zur Depassivierung“ im Modul Bauwerksdiagnose & ZfP noch einmal durch.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Beispiel 1: Restnutzungsdauer bis zur Depassivierung“ im Modul Bauwerksdiagnose – Ablauf, Probenahme & Bewertung noch einmal durch.",
       "targetModuleTab": "bauwerksdiagnose",
       "targetModuleLabel": "Bauwerksdiagnose"
     },
@@ -44322,7 +44331,7 @@
     "vorpruefung": {
       "am": "2026-10-27",
       "ergebnis": "korrigiert",
-      "hinweis": "normRef ergänzt"
+      "hinweis": "normRef ergänzt. Modulname angeglichen 04.11."
     }
   },
   {
@@ -58846,6 +58855,228 @@
       "targetModuleTab": "bp_recht_normen",
       "targetModuleLabel": "Normenarbeit im Bauwesen"
     },
+    "verified": false
+  },
+  {
+    "id": "qlz_bauschaeden_1",
+    "category": "baurecht_normung",
+    "categoryLabel": "Baurecht & Normenwesen",
+    "moduleId": "bauschaeden",
+    "moduleTitle": "Recht & Grundlagen (VOB/BGB)",
+    "topic": "Mangel und Schaden",
+    "difficulty": "Basis",
+    "normRef": "BGB § 633",
+    "question": "Bei der Abnahme zeigt sich, dass die vertraglich vereinbarte Abdichtung unter der Bodenplatte fehlt. Der Keller ist bisher trocken. Wie ist das einzuordnen?",
+    "options": [
+      "Kein Mangel, solange kein Schaden auftritt und der Keller trocken bleibt",
+      "Ein Mangel ohne Schaden; Beseitigung kann schon jetzt verlangt werden",
+      "Ein Garantiefall, den der Hersteller der Abdichtung freiwillig regelt",
+      "Ein Bauschaden, weil die Abweichung später sicher zu Feuchte führt"
+    ],
+    "correctIdx": 1,
+    "explanation": "Ein Mangel liegt vor, wenn die Ist- von der vertraglichen Soll-Beschaffenheit abweicht (§ 633 BGB) – hier fehlt die vereinbarte Abdichtung. Der Bauschaden ist erst die Folge (nasser Keller, Schimmel). Nicht jeder Mangel führt sofort zu einem sichtbaren Schaden; der Mängelbeseitigungsanspruch besteht trotzdem, um Folgeschäden abzuwenden. Die Gewährleistung ist der gesetzliche Anspruch gegen den Auftragnehmer; eine Garantie ist eine freiwillige Zusatzzusage, meist des Herstellers.",
+    "bloom": "Verstehen",
+    "niveau": "B",
+    "distraktorFeedback": [
+      "Für den Mangel genügt die Abweichung von der vereinbarten Beschaffenheit; ein Schaden muss nicht eingetreten sein.",
+      "",
+      "Die Garantie ist eine freiwillige Zusatzzusage; die Ansprüche aus dem fehlenden Bauteil sind Gewährleistung gegen den Auftragnehmer.",
+      "Der Bauschaden ist die eingetretene Folge eines Mangels; solange der Keller trocken ist, liegt nur der Mangel vor."
+    ],
+    "gapAnalysis": {
+      "topic": "Mangel und Schaden",
+      "misconception": "Ein Mangel wird erst angenommen, wenn ein sichtbarer Schaden vorliegt.",
+      "coreRule": "Mangel = Abweichung Ist von Soll (§ 633 BGB, Ursache); Schaden = Folge. Gewährleistung ist gesetzlich, Garantie freiwillig.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Mangel vs. Schaden“ im Modul Recht & Grundlagen (VOB/BGB) noch einmal durch.",
+      "targetModuleTab": "bauschaeden",
+      "targetModuleLabel": "Recht & Grundlagen (VOB/BGB)"
+    },
+    "quelle": "Modul Recht & Grundlagen, Abschnitte „Mangel vs. Schaden“ und „Gewährleistung vs. Garantie“; BGB § 633",
+    "verified": false
+  },
+  {
+    "id": "qlz_schadensbilder_1",
+    "category": "dauerhaftigkeit_schaeden",
+    "categoryLabel": "Dauerhaftigkeit & Schäden",
+    "moduleId": "schadensbilder",
+    "moduleTitle": "Typische Bauschäden (Schadensatlas)",
+    "topic": "Mindestfugenbreite",
+    "difficulty": "Vertiefung",
+    "normRef": "DIN 18540, DIN EN 15651-1",
+    "question": "Zwischen Betonfertigteilen mit L = 4,0 m (α_T = 10 · 10⁻⁶ 1/K, Temperaturspanne ΔT = 80 K) wird ein Dichtstoff der Klasse 25LM (ZGV = 25 %) eingebaut. Welche Fugenbreite ist rechnerisch mindestens erforderlich (ohne Toleranzen)?",
+    "options": [
+      "rund 3,2 mm",
+      "rund 12,8 mm",
+      "rund 0,8 mm",
+      "rund 25,6 mm"
+    ],
+    "correctIdx": 1,
+    "explanation": "ΔL = L · α_T · ΔT = 4000 mm · 10 · 10⁻⁶ 1/K · 80 K = 3,2 mm. Der Dichtstoff darf um die zulässige Gesamtverformung ZGV = 25 % der Fugenbreite verformt werden: b_erf = ΔL / ZGV = 3,2 / 0,25 = 12,8 mm. Hinzu kommen Herstell- und Montagetoleranzen; die Mindestbreite von Außenwandfugen nach DIN 18540 (10 mm) ist eingehalten.",
+    "bloom": "Anwenden",
+    "niveau": "B",
+    "distraktorFeedback": [
+      "3,2 mm ist nur die Längenänderung ΔL; die Fuge muss so breit sein, dass ΔL höchstens 25 % ihrer Breite ausmacht.",
+      "",
+      "ΔL · ZGV verkleinert die Breite; richtig ist die Division b_erf = ΔL / ZGV.",
+      "25,6 mm ergäbe sich mit ZGV = 12,5 %; für die Klasse 25LM ist ZGV = 25 % anzusetzen."
+    ],
+    "gapAnalysis": {
+      "topic": "Mindestfugenbreite",
+      "misconception": "Die Fugenbreite wird mit der Längenänderung gleichgesetzt oder ΔL mit der ZGV multipliziert.",
+      "coreRule": "b_erf = ΔL / ZGV = L · α_T · ΔT / ZGV, zuzüglich Toleranzen.",
+      "actionableAdvice": "Rechnen Sie im Modul das Beispiel zur Mindestfugenbreite (Fertigteil L = 6,0 m) nach.",
+      "targetModuleTab": "schadensbilder",
+      "targetModuleLabel": "Typische Bauschäden (Schadensatlas)"
+    },
+    "quelle": "Modul Typische Bauschäden, Formel b_erf und Rechenweg Mindestfugenbreite; DIN 18540; DIN EN 15651-1",
+    "verified": false
+  },
+  {
+    "id": "qlz_schadensbilder_2",
+    "category": "dauerhaftigkeit_schaeden",
+    "categoryLabel": "Dauerhaftigkeit & Schäden",
+    "moduleId": "schadensbilder",
+    "moduleTitle": "Typische Bauschäden (Schadensatlas)",
+    "topic": "Fugenschäden",
+    "difficulty": "Vertiefung",
+    "normRef": "DIN 18540, DIN EN 15651-1",
+    "question": "An Fassadenfugen zwischen 6 m langen Fertigteilen ist der Dichtstoff nach dem ersten Winter mittig längs gerissen. Beide Flanken haften, eine Rundschnur ist eingebaut, die Fugen sind 5 mm breit. Worauf ist der Schaden am ehesten zurückzuführen?",
+    "options": [
+      "Auf einen Verarbeitungsfehler: Primer fehlte auf staubigem Untergrund",
+      "Auf einen Planungsfehler: Fuge zu schmal, über die ZGV gedehnt",
+      "Auf Dreiflankenhaftung, weil die Masse am Fugenboden mit anhaftet",
+      "Auf Feuchte im Untergrund, die mit dem Isocyanat zu CO₂ reagierte"
+    ],
+    "correctIdx": 1,
+    "explanation": "Ein Längsriss mittig im Dichtstoff bei intakter Flankenhaftung ist ein Kohäsionsbruch. Hauptursache ist eine zu schmal bemessene Fuge: Die thermische Längenänderung der Fertigteile (bei 6 m und ΔT = 80 K rund 4,8 mm) überdehnt eine 5 mm breite Fuge weit über die ZGV von 20–25 %. Fehlender Primer führt zum Flankenabriss, Dreiflankenhaftung ist durch die Rundschnur ausgeschlossen, Feuchte bei PUR erzeugt Blasen.",
+    "bloom": "Analysieren",
+    "niveau": "B",
+    "distraktorFeedback": [
+      "Fehlender Primer löst den Dichtstoff von der Flanke (Flankenabriss); hier haften beide Flanken.",
+      "",
+      "Die eingebaute Rundschnur verhindert die Haftung am Fugenboden; Dreiflankenhaftung liegt nicht vor.",
+      "Die Reaktion von Feuchte mit Isocyanat erzeugt Blasen und Poren, keinen Längsriss."
+    ],
+    "gapAnalysis": {
+      "topic": "Fugenschäden",
+      "misconception": "Jeder Riss im Dichtstoff wird auf Haftungsprobleme bei der Verarbeitung zurückgeführt.",
+      "coreRule": "Schadensbild lesen: Flankenabriss → Haftung/Verarbeitung; Kohäsionsbruch → Überdehnung (Planung); Blasen → Feuchte bei PUR; Randzone → Weichmacher.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Kohäsionsbruch (Mittenriss / Materialriss)“ im Modul Typische Bauschäden (Schadensatlas) noch einmal durch.",
+      "targetModuleTab": "schadensbilder",
+      "targetModuleLabel": "Typische Bauschäden (Schadensatlas)"
+    },
+    "quelle": "Modul Typische Bauschäden, Kleb- und Dichtstoffe: Schadensbilder Flankenabriss, Kohäsionsbruch, Blasenbildung, Dreiflankenhaftung",
+    "verified": false
+  },
+  {
+    "id": "qlz_schadensbilder_3",
+    "category": "dauerhaftigkeit_schaeden",
+    "categoryLabel": "Dauerhaftigkeit & Schäden",
+    "moduleId": "schadensbilder",
+    "moduleTitle": "Typische Bauschäden (Schadensatlas)",
+    "topic": "Rissinjektion",
+    "difficulty": "Transfer",
+    "normRef": "DIN EN 1504-5, TR Instandhaltung",
+    "question": "Durch einen Trennriss in einer Tiefgaragenwand dringt Wasser ein; die Rissbreite ändert sich mit der Temperatur. Welche Instandsetzung ist nach dem Modul am besten begründet?",
+    "options": [
+      "Kraftschlüssig mit EP injizieren, damit der Riss tragfähig und dicht ist",
+      "Abdichtend und begrenzt dehnfähig mit PUR oder Acrylatgel injizieren",
+      "Mit Zementsuspension verpressen, weil sie feine Risse dehnfähig füllt",
+      "Die Wand nur hydrophobieren, weil das drückendes Wasser zurückhält"
+    ],
+    "correctIdx": 1,
+    "explanation": "Wasserführende Risse, deren Breite sich noch ändert, werden begrenzt dehnfähig verbunden bzw. abgedichtet – mit PUR oder Acrylatgel (DIN EN 1504-5, TR Instandhaltung). Kraftschlüssiges Verbinden mit EP ist für ruhende Risse gedacht; ein weiter arbeitender Riss reißt daneben neu auf. Zementleim/-suspension eignet sich für breitere Risse, nicht für feine bewegte. Eine Hydrophobierung schließt keinen Riss gegen drückendes Wasser.",
+    "bloom": "Bewerten",
+    "niveau": "B",
+    "distraktorFeedback": [
+      "EP verbindet ruhende Risse kraftschlüssig; bewegt sich der Riss weiter, reißt das Bauteil daneben erneut.",
+      "",
+      "Zementleim und -suspension sind spröde und für breitere Risse gedacht; feine bewegte Risse füllen sie nicht dehnfähig.",
+      "Eine Hydrophobierung mindert die kapillare Wasseraufnahme, schließt aber keinen wasserführenden Trennriss."
+    ],
+    "gapAnalysis": {
+      "topic": "Rissinjektion",
+      "misconception": "Jeder Riss wird kraftschlüssig mit Epoxidharz verpresst.",
+      "coreRule": "Ruhend → EP kraftschlüssig; wasserführend/bewegt → PUR oder Acrylatgel begrenzt dehnfähig; breit → ZL/ZS.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „1. Rissinjektion & Rissverpressung (DIN EN 1504-5)“ im Modul Typische Bauschäden (Schadensatlas) noch einmal durch.",
+      "targetModuleTab": "schadensbilder",
+      "targetModuleLabel": "Typische Bauschäden (Schadensatlas)"
+    },
+    "quelle": "Modul Typische Bauschäden, Sanierungsmethodik bei Rissen; DIN EN 1504-5; TR Instandhaltung",
+    "verified": false
+  },
+  {
+    "id": "qlz_historisch_1",
+    "category": "baustoffkunde",
+    "categoryLabel": "Werkstoffmechanik & Physik",
+    "moduleId": "historisch",
+    "moduleTitle": "Historische Materialkennwerte",
+    "topic": "Nachweiswege im Bestand",
+    "difficulty": "Transfer",
+    "normRef": "DIN EN 1990 Anhang C; EN 1990-2:2026; DBV-Merkblatt Modifizierte Teilsicherheitsbeiwerte (2013)",
+    "question": "Für einen gemauerten Pfeiler liegen zehn Steinprüfungen mit V_f = 25 % vor. Welche Gegenüberstellung der drei Nachweiswege des Moduls trifft zu?",
+    "options": [
+      "Das DBV-Merkblatt ergibt hier das kleinste γ_M, da es alle Baustoffe gleich behandelt",
+      "Neubau-γ_M lässt die Messung ungenutzt, DBV gilt nicht, EN 1990-2 nutzt f_m und V_f",
+      "EN 1990-2 ergibt bei V_f = 25 % in jedem Fall eine Reserve, da gemessen wurde",
+      "Alle drei Wege ergeben denselben Bemessungswert, da überall β = 3,8 gilt"
+    ],
+    "correctIdx": 1,
+    "explanation": "Mit den Neubau-Teilsicherheitsbeiwerten bleiben die Messergebnisse ungenutzt. Das DBV-Merkblatt „Modifizierte Teilsicherheitsbeiwerte“ gilt nur für Beton und Betonstahl, für Mauerwerk also nicht. Der versuchsgestützte Weg nach EN 1990-2:2026 (Grundgleichung DIN EN 1990 Anhang C) rechnet den lognormalen Bemessungswert aus f_m, V_f, α_R und β. Ob eine Reserve entsteht, hängt von Stichprobenumfang, Streuung und Modellunsicherheit ab – bei 25 % Streuung ist sie nicht sicher.",
+    "bloom": "Analysieren",
+    "niveau": "M",
+    "distraktorFeedback": [
+      "Das DBV-Merkblatt gilt nur für Beton und Betonstahl; für Mauerwerk ist es nicht anwendbar.",
+      "",
+      "Eine große Streuung senkt den lognormalen Bemessungswert; eine Reserve hängt von Stichprobe, Streuung und Modellunsicherheit ab.",
+      "Die Wege unterscheiden sich gerade darin, ob und wie Mittelwert und Streuung der Messung eingehen."
+    ],
+    "gapAnalysis": {
+      "topic": "Nachweiswege im Bestand",
+      "misconception": "Gemessene Kennwerte führen auf jedem Nachweisweg automatisch zu einer Tragreserve.",
+      "coreRule": "Neubau: γ_M fest; DBV: γ_M,mod nur Beton/Betonstahl; EN 1990-2: f_d aus f_m, V_f, α_R, β (lognormal).",
+      "actionableAdvice": "Vergleichen Sie im Reiter „Statische Nachweise im Bestand (DBV & EN 1990-2:2026)“ die drei Nachweiswege des Rechners für Mauerwerk.",
+      "targetModuleTab": "historisch",
+      "targetModuleLabel": "Historische Materialkennwerte"
+    },
+    "quelle": "Modul Historische Kennwerte, „Statische Nachweise im Bestand (DBV & EN 1990-2:2026)“ und Rechnervergleich",
+    "verified": false
+  },
+  {
+    "id": "qlz_historisch_2",
+    "category": "bindemittel_beton",
+    "categoryLabel": "Bindemittel & Betontechnologie",
+    "moduleId": "historisch",
+    "moduleTitle": "Historische Materialkennwerte",
+    "topic": "Bohrkernserie und Klassenzuordnung",
+    "difficulty": "Transfer",
+    "normRef": "DIN EN 13791:2020-02 (Werte nach Sekundärquellen – vorläufig, Normprüfung ausstehend)",
+    "question": "Ein Gutachten belegt für eine Bestandsdecke C25/30 mit einem einzigen Bohrkern (h/d = 2) von 30 N/mm², weil 30 > 0,85 · 25 N/mm². Wie ist das nach dem Modul zu bewerten?",
+    "options": [
+      "Tragfähig, da 30 N/mm² über 0,85 · 25 = 21,3 N/mm² liegt",
+      "Nicht tragfähig: f_ck,is braucht eine Serie mit Mindestzahl",
+      "Tragfähig, sofern der Kern aus der Stelle höchster Last stammt",
+      "Nicht tragfähig, weil Kerne h/d = 2 nicht zulässig sind"
+    ],
+    "correctIdx": 1,
+    "explanation": "f_ck,is folgt aus einer Kernserie eines Prüfbereichs: bei Ansatz A aus mindestens 8 Kernen als kleinerer Wert von Streuungskriterium (Mittelwert − k_n · s) und Kleinstwertkriterium; bei weniger Kernen gelten eigene Ansätze mit mindestens 3 Kernen. Ein einzelner Kern liefert weder Streuung noch Kleinstwert und belegt daher keine Klasse. Kerne h/d = 2 sind der Zylinderbezug; Bohrstellen sind gerade nicht in hoch beanspruchten Bereichen zu wählen. Die Zahlenwerte stammen aus Sekundärquellen (vorläufig, Normprüfung ausstehend).",
+    "bloom": "Bewerten",
+    "niveau": "M",
+    "distraktorFeedback": [
+      "Der Vergleich mit 0,85 · f_ck setzt ein f_ck,is aus einer Serie voraus; ein Einzelwert ist kein charakteristischer Wert.",
+      "",
+      "Bohrstellen werden statisch verträglich außerhalb hoch beanspruchter Bereiche gewählt; ein Kern bleibt ein Einzelwert.",
+      "Kerne h/d = 2 sind nach dem Modul gerade der Zylinderbezug der Ausgabe 2020."
+    ],
+    "gapAnalysis": {
+      "topic": "Bohrkernserie und Klassenzuordnung",
+      "misconception": "Ein einzelner Kernwert wird wie die charakteristische In-situ-Festigkeit verwendet.",
+      "coreRule": "f_ck,is aus einer Serie (Mindestanzahl, k_n, Kleinstwert); Klasse erreicht bei f_ck,is ≥ 0,85 · f_ck.",
+      "actionableAdvice": "Arbeiten Sie den Reiter „Bohrkernserie (DIN EN 13791)“ im Modul Historische Kennwerte noch einmal durch.",
+      "targetModuleTab": "historisch",
+      "targetModuleLabel": "Historische Materialkennwerte"
+    },
+    "quelle": "Reiter „Bohrkernserie (DIN EN 13791)“ (Statistik, Mindestanzahl, Zuordnung); Prüfkern src/calc/bohrkernserie13791.ts",
     "verified": false
   }
 ]

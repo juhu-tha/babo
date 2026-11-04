@@ -16,28 +16,22 @@ const bg = begriffe('die Karbonatisierungstiefe mit dem Wurzel-t-Gesetz berechne
 pruefe(bg.includes('Karbonatisierungstiefe') && bg.includes('c_min,dur') && !bg.includes('berechnen'), `Begriffe erkannt (${bg.join(', ')})`);
 
 const OHNE_SELBSTTEST_AZ = 'Nachschlagewerk ohne eigenen Selbsttest (kein ModulTest, nicht in MODULTEST_IN_APP); Lernziele auf das Nachschlagen gefasst (Folgerunde 03.11.2026)';
-const PR_DICHTSTOFF = 'Fugen-Lernziele mit #317 (Kleb-/Dichtstoff-Umzug) nach schadensbilder verschoben, dort noch ohne Frage; Modul in dieser Runde nicht bearbeitet';
-const PR_FCKIS = 'Historische Kennwerte f_ck,is (#318) – Modul in dieser Runde nicht bearbeitet';
 
-/** Lernziele ohne Quizfrage ('modul#ziel' → Begründung). Ratsche: Einträge nur streichen, wenn eine Frage ergänzt ist. */
+/** Lernziele ohne Quizfrage ('modul#ziel' → Begründung; Kleinpunkte 04.11.2026: nur noch Beton A–Z). Ratsche: Einträge nur streichen, wenn eine Frage ergänzt ist. */
 const AUSNAHMEN_OHNE_QUIZ: Readonly<Record<string, string>> = {
   'beton_a_z#1': OHNE_SELBSTTEST_AZ, 'beton_a_z#2': OHNE_SELBSTTEST_AZ, 'beton_a_z#3': OHNE_SELBSTTEST_AZ, 'beton_a_z#4': OHNE_SELBSTTEST_AZ,
-  'bauschaeden#1': PR_DICHTSTOFF, 'schadensbilder#3': PR_DICHTSTOFF, 'schadensbilder#4': PR_DICHTSTOFF,
-  'historisch#4': PR_FCKIS,
 };
 
 /** Module, deren Fragen die höchste Lernzielstufe nicht erreichen (Modul → Begründung). Ratsche wie oben. */
 const AUSNAHMEN_HOECHSTE_STUFE: Readonly<Record<string, string>> = {
   mischungsberechnung: 'höchste Stufe „Erschaffen“ (Mischungsentwurf) ist im Auswahlformat nicht prüfbar; Entwurf im Rechner (begründete Ausnahme)',
-  historisch: PR_FCKIS,
-  schadensbilder: PR_DICHTSTOFF,
 };
 
 /** Ausprobieren-Aufträge ohne Lernzielbezug ('modul#auftrag' → Begründung) */
 const AUSNAHMEN_ERKUNDUNG: Readonly<Record<string, string>> = {};
 
-/** Ratsche: Lernziele mit Frage, aber keiner auf passender Stufe (Stand 03.11.2026, Folgerunde: 36; vorher 64 nach Merge von #320) */
-const MAX_OHNE_PASSENDE_STUFE = 36;
+/** Ratsche: Lernziele mit Frage, aber keiner auf passender Stufe (Stand 04.11.2026: 34; 03.11. Folgerunde 36, vorher 64 nach Merge von #320) */
+const MAX_OHNE_PASSENDE_STUFE = 34;
 
 const module = await analysiere();
 const L = luecken(module);

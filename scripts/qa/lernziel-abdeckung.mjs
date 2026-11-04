@@ -31,7 +31,7 @@ export const BLOOM = ['Erinnern', 'Verstehen', 'Anwenden', 'Analysieren', 'Bewer
 export const rang = s => BLOOM.indexOf(s);
 
 /**
- * Gesichtete Zuordnung Frage → Lernziel (Index ab 0), wo der Stichwortabgleich nicht trifft, die Frage das Ziel
+ * Gesichtete Zuordnung Frage → Lernziel (Nr. ab 1), wo der Stichwortabgleich nicht trifft, die Frage das Ziel
  * aber fachlich prüft (Sichtung 03.11.2026, docs/pruefung/lernziel-abdeckung-2026-11-03.md).
  */
 export const ZUORDNUNG_MANUELL = {
@@ -135,6 +135,10 @@ export const ZUORDNUNG_MANUELL = {
   qlz_wta_1: ['wta#5'], qlz_materialdatenbanken_1: ['materialdatenbanken#4'],
   qlz_bp_recht_grundlagen_1: ['bp_recht_grundlagen#4'], qlz_holzbau_werkstoffe_1: ['holzbau_werkstoffe#4'],
   qlz_bp_glaeser_1: ['bp_glaeser#5'],
+  // Kleinpunkte 04.11.2026 (docs/pruefung/kleinpunkte-2026-11-04.md): Restlernziele und höchste Stufe
+  qlz_bauschaeden_1: ['bauschaeden#1'],
+  qlz_schadensbilder_1: ['schadensbilder#3'], qlz_schadensbilder_2: ['schadensbilder#4'], qlz_schadensbilder_3: ['schadensbilder#5'],
+  qlz_historisch_1: ['historisch#4'], qlz_historisch_2: ['historisch#5'],
 };
 
 /** Gesichtete Inhaltsfundstellen, wo der Stichwortabgleich unter 50 % bleibt (Ziel → Fundstelle) */

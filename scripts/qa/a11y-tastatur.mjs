@@ -336,6 +336,9 @@ async function pruefeModul(page, basis, modus, id, befunde, details) {
     const live = await page.evaluate(() => { const s = [...new Set(window.__live)]; window.__liveObs?.disconnect(); return s.filter(e => window.__bb.sichtbar(e) || e.classList.contains('sr-only')).map(e => ({ n: (e.textContent || '').trim().replace(/\s+/g, ' ').length, t: (e.textContent || '').trim().replace(/\s+/g, ' ').slice(0, 90) })); });
     if (!live.length) befunde.push(`4.1.3 ${ort}: Ergebnis nach Reglereingabe nicht als Statusmeldung angesagt`);
     for (const l of live) if (l.n > 300) befunde.push(`4.1.3 ${ort}: Live-Region zu geschwätzig (${l.n} Zeichen: „${l.t}…“)`);
+    // Ergebnisansagen gebündelt (Kleinpunkte 04.11.2026): eine Eingabe → höchstens eine Ergebnis-Region mit Text
+    const ergebnisRegionen = await page.evaluate(() => [...document.querySelectorAll('[data-ergebnis-ansage]')].filter(e => (e.textContent || '').trim()).length);
+    if (ergebnisRegionen > 1) befunde.push(`4.1.3 ${ort}: ${ergebnisRegionen} Ergebnisansagen nach einer Eingabe (Mehrfachansage)`);
     if (details) console.log(`  ${ort} Live: ${JSON.stringify(live).slice(0, 200)}`);
   }
   // ---- 3D-Ansicht (Mauerwerk, Reiter „Mauerwerksverband“)

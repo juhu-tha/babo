@@ -192,11 +192,11 @@ Auffällig im Einzelnen (Mehrfachnennung möglich): 110 korrigiert, 0 fraglich, 
 - [x] ok
 - [ ] ändern: …
 
-### q_bpr_1 · BauPVO & CE-Kennzeichnung
+### q_bpr_1 · CE vs. Ü & MVV TB
 
 - **Frage:** Wann trägt ein Bauprodukt in Deutschland ein Ü-Zeichen?
 - **Richtige Antwort:** Wenn es nicht harmonisiert ist und nach nationalen Regeln (abZ, abP) verwendet wird
-- **Auffälligkeit:** Vorprüfung „korrigiert“: Distraktoren angeglichen · bereits freigegeben (verified)
+- **Auffälligkeit:** Vorprüfung „korrigiert“: Distraktoren angeglichen. Modulname angeglichen 04.11. · bereits freigegeben (verified)
 - [x] ok
 - [ ] ändern: …
 
@@ -216,19 +216,19 @@ Auffällig im Einzelnen (Mehrfachnennung möglich): 110 korrigiert, 0 fraglich, 
 - [x] ok
 - [ ] ändern: …
 
-### q_bpt_1 · Metallische Bauprodukte
+### q_bpt_1 · Metallische Werkstoffe & Bleche
 
 - **Frage:** Ein 10 m langes Titanzinkblech (α ≈ 0,022 mm/(m·K)) erfährt ΔT = 100 K. Wie groß ist die Längenänderung?
 - **Richtige Antwort:** 22 mm
-- **Auffälligkeit:** Vorprüfung „korrigiert“: normRef ergänzt · bereits freigegeben (verified)
+- **Auffälligkeit:** Vorprüfung „korrigiert“: normRef ergänzt. Modulname angeglichen 04.11. · bereits freigegeben (verified)
 - [x] ok
 - [ ] ändern: …
 
-### q_bpt_2 · Metallische Bauprodukte
+### q_bpt_2 · Metallische Werkstoffe & Bleche
 
 - **Frage:** Warum darf Regenwasser nicht von Kupferflächen auf verzinkte Bauteile fließen (Fließregel)?
 - **Richtige Antwort:** Kupferionen fördern die Korrosion des Zinks
-- **Auffälligkeit:** Vorprüfung „korrigiert“: Distraktoren angeglichen · bereits freigegeben (verified)
+- **Auffälligkeit:** Vorprüfung „korrigiert“: Distraktoren angeglichen. Modulname angeglichen 04.11. · bereits freigegeben (verified)
 - [x] ok
 - [ ] ändern: …
 

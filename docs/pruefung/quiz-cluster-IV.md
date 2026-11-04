@@ -2,9 +2,9 @@
 
 Stand: 03.11.2026 · Grundlage: `src/data/quiz.json` (Felder `vorpruefung` und `verified`), `docs/quiz-pruefhinweise.md`, Lernziele aus `src/data/lernziele.ts`. Erzeugt mit `npx tsx scripts/pruefliste.ts`; gesetzte Kreuze übernimmt das Skript beim nächsten Lauf. quiz.json wurde für diese Liste nicht verändert.
 
-Cluster IV umfasst 350 Fragen aus 50 Modulen. Aufgeführt sind 142 auffällige Fragen (Vorprüfung „korrigiert“ oder „fraglich“, offener Prüfhinweis oder neu seit 26.10.2026 ohne Freigabe) und eine Stichprobe von 5 unauffälligen Fragen. Entscheidung je Frage ankreuzen; bei „ändern“ den Änderungswunsch in die Zeile darunter schreiben.
+Cluster IV umfasst 356 Fragen aus 50 Modulen. Aufgeführt sind 148 auffällige Fragen (Vorprüfung „korrigiert“ oder „fraglich“, offener Prüfhinweis oder neu seit 26.10.2026 ohne Freigabe) und eine Stichprobe von 5 unauffälligen Fragen. Entscheidung je Frage ankreuzen; bei „ändern“ den Änderungswunsch in die Zeile darunter schreiben.
 
-Auffällig im Einzelnen (Mehrfachnennung möglich): 87 korrigiert, 4 fraglich, 11 mit offenem Prüfhinweis, 48 neu seit 26.10.2026.
+Auffällig im Einzelnen (Mehrfachnennung möglich): 87 korrigiert, 4 fraglich, 11 mit offenem Prüfhinweis, 54 neu seit 26.10.2026.
 
 ## A. Auffällige Fragen
 
@@ -56,7 +56,7 @@ Auffällig im Einzelnen (Mehrfachnennung möglich): 87 korrigiert, 4 fraglich, 1
 - [x] ok
 - [ ] ändern: …
 
-### q_bwu_1 · Bauwerksdiagnose & ZfP
+### q_bwu_1 · Bauwerksdiagnose – Ablauf, Probenahme & Bewertung
 
 - **Frage:** Ein 36 Jahre altes Bauteil hat eine Karbonatisierungstiefe von 15 mm. Bei welchem Bauteilalter erreicht die Front nach dem √t-Gesetz eine Betondeckung von 25 mm?
 - **Richtige Antwort:** bei einem Alter von ca. 100 Jahren
@@ -352,6 +352,14 @@ Auffällig im Einzelnen (Mehrfachnennung möglich): 87 korrigiert, 4 fraglich, 1
 - [ ] ok
 - [ ] ändern: …
 
+### qlz_bauschaeden_1 · Recht & Grundlagen (VOB/BGB)
+
+- **Frage:** Bei der Abnahme zeigt sich, dass die vertraglich vereinbarte Abdichtung unter der Bodenplatte fehlt. Der Keller ist bisher trocken. Wie ist das einzuordnen?
+- **Richtige Antwort:** Ein Mangel ohne Schaden; Beseitigung kann schon jetzt verlangt werden
+- **Auffälligkeit:** neu seit 26.10.2026 (Z24), noch nicht freigegeben, ohne Vorprüfung
+- [ ] ok
+- [ ] ändern: …
+
 ### qlz_bauwerksunters_monitoring_1 · Tragwerksmonitoring (SHM)
 
 - **Frage:** Ein Riss in einer Stützwand soll über ein Jahr daraufhin überwacht werden, ob er sich bewegt. Welche Verfahrenswahl ist nach dem Modul am besten begründet?
@@ -404,6 +412,22 @@ Auffällig im Einzelnen (Mehrfachnennung möglich): 87 korrigiert, 4 fraglich, 1
 
 - **Frage:** Ein historisches Ziegelmauerwerk mit Feuchteschäden soll einen neuen Putz erhalten. Welche Planung ist denkmalpflegerisch am besten begründet?
 - **Richtige Antwort:** Schadhafte Flächen ergänzen, intakten Altputz sichern, Kalkputz und Silikatfarbe
+- **Auffälligkeit:** neu seit 26.10.2026 (Z24), noch nicht freigegeben, ohne Vorprüfung
+- [ ] ok
+- [ ] ändern: …
+
+### qlz_historisch_1 · Historische Materialkennwerte
+
+- **Frage:** Für einen gemauerten Pfeiler liegen zehn Steinprüfungen mit V_f = 25 % vor. Welche Gegenüberstellung der drei Nachweiswege des Moduls trifft zu?
+- **Richtige Antwort:** Neubau-γ_M lässt die Messung ungenutzt, DBV gilt nicht, EN 1990-2 nutzt f_m und V_f
+- **Auffälligkeit:** neu seit 26.10.2026 (Z24), noch nicht freigegeben, ohne Vorprüfung
+- [ ] ok
+- [ ] ändern: …
+
+### qlz_historisch_2 · Historische Materialkennwerte
+
+- **Frage:** Ein Gutachten belegt für eine Bestandsdecke C25/30 mit einem einzigen Bohrkern (h/d = 2) von 30 N/mm², weil 30 > 0,85 · 25 N/mm². Wie ist das nach dem Modul zu bewerten?
+- **Richtige Antwort:** Nicht tragfähig: f_ck,is braucht eine Serie mit Mindestzahl
 - **Auffälligkeit:** neu seit 26.10.2026 (Z24), noch nicht freigegeben, ohne Vorprüfung
 - [ ] ok
 - [ ] ändern: …
@@ -560,6 +584,30 @@ Auffällig im Einzelnen (Mehrfachnennung möglich): 87 korrigiert, 4 fraglich, 1
 - [ ] ok
 - [ ] ändern: …
 
+### qlz_schadensbilder_1 · Typische Bauschäden (Schadensatlas)
+
+- **Frage:** Zwischen Betonfertigteilen mit L = 4,0 m (α_T = 10 · 10⁻⁶ 1/K, Temperaturspanne ΔT = 80 K) wird ein Dichtstoff der Klasse 25LM (ZGV = 25 %) eingebaut. Welche Fugenbreite ist rechnerisch mindestens erforderlich (ohne Toleranzen)?
+- **Richtige Antwort:** rund 12,8 mm
+- **Auffälligkeit:** neu seit 26.10.2026 (Z24), noch nicht freigegeben, ohne Vorprüfung
+- [ ] ok
+- [ ] ändern: …
+
+### qlz_schadensbilder_2 · Typische Bauschäden (Schadensatlas)
+
+- **Frage:** An Fassadenfugen zwischen 6 m langen Fertigteilen ist der Dichtstoff nach dem ersten Winter mittig längs gerissen. Beide Flanken haften, eine Rundschnur ist eingebaut, die Fugen sind 5 mm breit. Worauf ist der Schaden am ehesten zurückzuführen?
+- **Richtige Antwort:** Auf einen Planungsfehler: Fuge zu schmal, über die ZGV gedehnt
+- **Auffälligkeit:** neu seit 26.10.2026 (Z24), noch nicht freigegeben, ohne Vorprüfung
+- [ ] ok
+- [ ] ändern: …
+
+### qlz_schadensbilder_3 · Typische Bauschäden (Schadensatlas)
+
+- **Frage:** Durch einen Trennriss in einer Tiefgaragenwand dringt Wasser ein; die Rissbreite ändert sich mit der Temperatur. Welche Instandsetzung ist nach dem Modul am besten begründet?
+- **Richtige Antwort:** Abdichtend und begrenzt dehnfähig mit PUR oder Acrylatgel injizieren
+- **Auffälligkeit:** neu seit 26.10.2026 (Z24), noch nicht freigegeben, ohne Vorprüfung
+- [ ] ok
+- [ ] ändern: …
+
 ### qlz_schadstoffe_1 · Schadstoffe & Sanierung (TRGS 519)
 
 - **Frage:** Vor dem Umbau eines Bürogebäudes (Baujahr 1975) sollen Putze und Fliesenkleber auf Asbest geprüft und später der Bauschutt im Haufwerk für die Entsorgung beprobt werden. Welches Vorgehen ist nach dem Modul sachgerecht?
@@ -632,19 +680,19 @@ Auffällig im Einzelnen (Mehrfachnennung möglich): 87 korrigiert, 4 fraglich, 1
 - [x] ok
 - [ ] ändern: …
 
-### qn_bauwerksuntersuchung_2 · Bauwerksdiagnose & ZfP
+### qn_bauwerksuntersuchung_2 · Bauwerksdiagnose – Ablauf, Probenahme & Bewertung
 
 - **Frage:** Warum werden nach der Vor-Ort-Messdiagnostik (ZfP) punktuell Bohrkerne entnommen?
 - **Richtige Antwort:** Um die ZfP-Ergebnisse zu kalibrieren und die reale Druckfestigkeit im Labor zu ermitteln
-- **Auffälligkeit:** Vorprüfung „korrigiert“: normRef ergänzt · bereits freigegeben (verified)
+- **Auffälligkeit:** Vorprüfung „korrigiert“: normRef ergänzt. Modulname angeglichen 04.11. · bereits freigegeben (verified)
 - [x] ok
 - [ ] ändern: …
 
-### qn_bauwerksuntersuchung_3 · Bauwerksdiagnose & ZfP
+### qn_bauwerksuntersuchung_3 · Bauwerksdiagnose – Ablauf, Probenahme & Bewertung
 
 - **Frage:** An einer Brückenkappe in der Spritzwasserzone ist die Karbonatisierungstiefe gering und die Betondeckung ausreichend. Welche Folgerung ist nach dem Modul fachlich richtig?
 - **Richtige Antwort:** Der Chloridgehalt ist an Bohrmehlproben in Tiefenstufen zusätzlich zu bestimmen
-- **Auffälligkeit:** Vorprüfung „korrigiert“: normRef ergänzt · bereits freigegeben (verified)
+- **Auffälligkeit:** Vorprüfung „korrigiert“: normRef ergänzt. Modulname angeglichen 04.11. · bereits freigegeben (verified)
 - [x] ok
 - [ ] ändern: …
 

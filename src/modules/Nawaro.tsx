@@ -157,7 +157,7 @@ export default function Nawaro() {
             </div>
             <div>
               <h2 className="text-2xl font-black text-text-main flex items-center gap-2 tracking-tight">
-                NaWaRo <span className="text-shiraz font-medium text-lg"><MdText text={inhalt.texte.biobasierteBaustoffe} /></span>
+                <MdText text={inhalt.texte.nawaroModultitel} /> <span className="text-shiraz font-medium text-lg"><MdText text={inhalt.texte.nawaroModulZusatz} /></span>
               </h2>
               <p className="text-xs text-text-main/60 font-medium"><MdText text={inhalt.texte.überblickMitBezugAuf} /></p>
             </div>
