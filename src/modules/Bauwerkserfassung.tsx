@@ -13,6 +13,7 @@ import { ModuleTabs, type ModulTab } from '@/src/components/ui/ModuleTabs';
 import { EingabeHinweise } from '@/src/components/ui/EingabeHinweise';
 import { verformterDruckstab, KMOD, GAMMA_M_HOLZ } from '@/src/calc/holzbau';
 import { HOLZ_EN338 } from '@/src/data/kennwerte';
+import { ErgebnisAnsage, ansageWert, kurzzeile } from '@/src/components/ui/ErgebnisAnsage';
 
 type ErfassungReiter = 'grundlagen' | 'methoden' | 'leica_workflow' | 'tragwerksplanung';
 const REITER: readonly ModulTab<ErfassungReiter>[] = [
@@ -480,6 +481,7 @@ export default function Bauwerkserfassung() {
                     </div>
 
                     <EingabeHinweise hinweise={staticsResults.hinweise} />
+                    <ErgebnisAnsage text={staticsResults.gueltig ? kurzzeile(ansageWert('Ausnutzung Ersatzstab η', staticsResults.etaErsatzstab, 2), ansageWert('Ausnutzung', staticsResults.limitRatio, 0, '%'), staticsResults.limitRatio > 100 ? 'Einsturzgefahr' : 'Tragverhalten stabil') : 'Ausnutzung –'} />
                     {/* Stress delta message */}
                     <div className="p-3.5 rounded-lg border text-xs leading-normal">
                       {!staticsResults.gueltig ? null : staticsResults.limitRatio > 100 ? (

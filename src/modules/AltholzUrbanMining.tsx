@@ -12,6 +12,7 @@ import { formatDeZahl, formatDeTeX } from '@/src/utils/numberFormat';
 import { sortierbilanz, ALTHOLZ_KATEGORIEN, KATEGORIE_NAME, ZIEL_STOFFLICH, type AltholzKategorie } from '@/src/calc/altholz';
 import inhalt from '@/content/altholzurbanmining/AltholzUrbanMining.json';
 import { MdText } from '@/src/components/inhalt/MdText';
+import { ansageWert, kurzzeile } from '@/src/components/ui/ErgebnisAnsage';
 
 type Reiter = 'einfuehrung' | 'kategorien' | 'nir' | 'grenzen' | 'urbanmining' | 'rechner';
 
@@ -335,6 +336,7 @@ export default function AltholzUrbanMining() {
                 </div>
                 <FormulaDerivationBox
                   live
+                  kurzzeile={kurzzeile(ansageWert('stoffliche Verwertungsquote', erg.qSt * 100, 1, '%'), ansageWert('Fehlsortierquote', erg.qFehl * 100, 1, '%'), erg.mSt > 0 && ansageWert('Reinheit', erg.reinheitSt * 100, 1, '%'))}
                   title={`Ihr Rechenweg: Sortierbilanz für ${formatDeZahl(erg.mIn, 1)} t Altholz`}
                   zielGleichung="q_{st} = \frac{\sum_{A\,I,\,A\,II} a_k\, m_k}{M_{in}}, \quad q_F = \frac{\sum_k (1 - a_k)\, m_k}{M_{in}}"
                   schritte={liveSchritte}

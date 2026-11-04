@@ -13,6 +13,7 @@ import { pfasSummenbewertung, ersatzwert, PFAS20, PFAS4, PFAS_GRENZWERTE, type P
 import inhalt from '@/content/pfasbaustoffe/PfasBaustoffe.json';
 import { MdText } from '@/src/components/inhalt/MdText';
 import { AuswahlGruppe, alsOption } from '../components/ui/Auswahlgruppe';
+import { ansageWert, kurzzeile } from '@/src/components/ui/ErgebnisAnsage';
 
 type Reiter = 'einfuehrung' | 'vorkommen' | 'regulierung' | 'rueckbau' | 'analytik' | 'rechner';
 
@@ -311,6 +312,7 @@ export default function PfasBaustoffe() {
                 </div>
                 <FormulaDerivationBox
                   live
+                  kurzzeile={kurzzeile(ansageWert('Summe PFAS-20', erg.pfas20.summe, 1, 'ng/l'), Number.isFinite(erg.pfas20.summe) && (erg.pfas20.ok ? 'eingehalten' : 'überschritten'), ansageWert('Summe PFAS-4', erg.pfas4.summe, 1, 'ng/l'), Number.isFinite(erg.pfas4.summe) && (erg.pfas4.ok ? 'eingehalten' : 'überschritten'))}
                   title={`Ihr Rechenweg: Summenbewertung PFAS-20 und PFAS-4 (BG = ${formatDeZahl(bg, 1)} ng/l)`}
                   zielGleichung="\Sigma_{20} = \sum_{i=1}^{20} c_i \le 100\,\text{ng/l}, \quad \Sigma_{4} = c_{PFOA} + c_{PFNA} + c_{PFHxS} + c_{PFOS} \le 20\,\text{ng/l}"
                   schritte={liveSchritte}

@@ -5,6 +5,7 @@ import { formatDeZahl, formatDeTeX } from '@/src/utils/numberFormat';
 import inhalt from '@/content/historischematerialkennwerte/NachweisBestandTab.json';
 import { MdText } from '@/src/components/inhalt/MdText';
 import { AuswahlGruppe, alsOption } from '../../components/ui/Auswahlgruppe';
+import { ErgebnisAnsage, ansageWert, kurzzeile } from '@/src/components/ui/ErgebnisAnsage';
 
 export interface NachweisBestandTabProps {
   setNachweisMaterial: Dispatch<SetStateAction<"stahl" | "beton" | "mauerwerk">>;
@@ -215,6 +216,7 @@ export function NachweisBestandTab({ setNachweisMaterial, setSampleMean, setSamp
           </div>
         </div>
     
+        <ErgebnisAnsage text={kurzzeile(ansageWert('f_d nach Eurocode', nachweisCalc.f_d_ec, 2, 'N/mm²'), ansageWert('nach DBV-Merkblatt', nachweisCalc.f_d_dbv, 2, 'N/mm²'), ansageWert('nach EN 1990-2', nachweisCalc.f_d_pren, 2, 'N/mm²'))} />
         {/* Comparative Results Display */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
           {/* Method 1: Eurocode Classic */}

@@ -24,6 +24,7 @@ import { EingabeHinweise } from '@/src/components/ui/EingabeHinweise';
 import { lccVergleich, epsWdvsGwp, EPS_WDVS_SZENARIO, type LccOption } from '@/src/calc/lcc';
 import { GWP_LEHRWERTE } from '@/src/data/gwpLehrwerte';
 import { AuswahlGruppe, ReiterLeiste, alsOption, alsReiter, reiterPanel } from '../components/ui/Auswahlgruppe';
+import { ansageWert, kurzzeile } from '@/src/components/ui/ErgebnisAnsage';
 
 // Define the scenario profiles for LCC calculation
 interface OptionConfig extends LccOption {
@@ -466,6 +467,7 @@ export default function LCC() {
               {/* Live-Rechenweg (AP 3.7) mit den aktuellen Parametern */}
               <FormulaDerivationBox
                 live
+                kurzzeile={kurzzeile(ansageWert(`Barwert über ${formatDeZahl(analysisPeriod, 0)} Jahre: Option A`, calcData.resultA.totalLCCDiscounted, 0, '€'), ansageWert('Option B', calcData.resultB.totalLCCDiscounted, 0, '€'), Number.isFinite(calcData.saving) && (calcData.saving >= 0 ? ansageWert('Option B spart', calcData.saving, 0, '€') : ansageWert('Option A günstiger um', Math.abs(calcData.saving), 0, '€')))}
                 title={`Ihr Rechenweg: Barwertvergleich über ${formatDeZahl(analysisPeriod, 0)} Jahre`}
                 zielGleichung="LCC = C_0 + \sum_{t=1}^{N} \frac{C_t}{(1+r)^t} + \frac{C_{\text{EOL}} - R_N}{(1+r)^N}"
                 schritte={[
