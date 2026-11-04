@@ -6,7 +6,7 @@
  * a11y-diagramme.mjs um Prüfungen, die axe nicht findet. Ersetzt keinen BITV-Test mit echtem Screenreader.
  *
  *   node scripts/qa/a11y-tastatur.mjs [--basis URL] [--routen a,b] [--modi desk,mob] [--nur global,modul,zoom,bewegung,kontrast]
- *        [--json datei] [--details]
+ *        [--json datei] [--details] [--ansagen]
  *     ohne --routen: Stichprobe (Startseite, 10 Rechner aus der Registry mit Startwert 20261103, Quiz, Diagramme, 3D)
  *
  * Geprüft wird (Kennung in Klammern = WCAG-Kriterium):
@@ -16,7 +16,8 @@
  *           Fokus kehrt zum Auslöser zurück (2.4.3); Suche: Ergebnisse per Tab erreichbar, Trefferzahl als
  *           Statusmeldung (4.1.3); Sprache der Seite (3.1.1)
  *   modul   Kopfleiste (aria-expanded per Enter), Reiter (Pfeiltasten, Pos1/Ende, aria-controls), Regler
- *           (Pfeiltasten, aria-valuetext mit Einheit), Live-Region nach Eingabe (4.1.3, höchstens 300 Zeichen),
+ *           (Pfeiltasten, aria-valuetext mit Einheit), Live-Region nach Eingabe (4.1.3, höchstens 300 Zeichen,
+ *           höchstens eine Ergebnisansage, kein „NaN“; ohne Regler das erste Zahlenfeld; --ansagen listet sie),
  *           Überschriften (genau ein h1, keine Sprünge, 1.3.1), Landmarken, Namen (4.1.2), Tabellen (th mit scope,
  *           Beschriftung), Formeln (MathML), Bilder/SVG/Canvas mit Textalternative (1.1.1)
  *   zoom    200 % (720 px) und 400 % (320 px): kein waagerechtes Scrollen der Seite (1.4.10); Textabstände nach
@@ -249,7 +250,10 @@ async function pruefeGlobal(page, basis, modus, befunde, details) {
   }
 }
 
+/** Ergebnisansagen je Route nach der ersten Eingabe (für den Bericht, Kurzzeilen 04.11.2026) */
+export const ansageStatistik = [];
 async function pruefeModul(page, basis, modus, id, befunde, details) {
+  const stat = ansageStatistik;
   const ort = `${modus}:${id}`;
   await laden(page, basis, id, 700);
   // ---- Kopfleiste
@@ -316,8 +320,12 @@ async function pruefeModul(page, basis, modus, id, befunde, details) {
     if (!info.vt || /^-?\d+\.\d+$/.test(info.vt.trim()) || (e && !info.vt.includes(e))) ohneText.push(info.name?.slice(0, 40) || `Regler ${i + 1}`);
   }
   if (ohneText.length) befunde.push(`4.1.2 ${ort}: ${ohneText.length} von ${nRegler} Reglern ohne passenden aria-valuetext (${ohneText.slice(0, 4).join('; ')})`);
-  if (nRegler) {
-    const r = regler.first();
+  // Ohne Regler: erstes sichtbares Zahlenfeld (Pfeiltaste ändert den Wert wie beim Regler; Kurzzeilen 04.11.2026)
+  const zahlfeld = page.locator('main input[type="number"]:visible');
+  const nZahl = nRegler ? 0 : await zahlfeld.count();
+  if (nRegler || nZahl) {
+    const r = nRegler ? regler.first() : zahlfeld.first();
+    const art = nRegler ? 'Regler' : 'Zahlenfeld';
     // Live-Regionen beobachten, dann Pfeiltaste
     await page.evaluate(() => {
       window.__live = [];
@@ -327,18 +335,24 @@ async function pruefeModul(page, basis, modus, id, befunde, details) {
     });
     const vorher = await r.inputValue();
     await r.focus();
-    await page.keyboard.press('ArrowRight');
+    const hoch = nRegler ? 'ArrowRight' : 'ArrowUp', runter = nRegler ? 'ArrowLeft' : 'ArrowDown';
+    await page.keyboard.press(hoch);
     await page.waitForTimeout(80);
     let nachher = await r.inputValue();
-    if (nachher === vorher) { await page.keyboard.press('ArrowLeft'); await page.keyboard.press('ArrowLeft'); await page.waitForTimeout(80); nachher = await r.inputValue(); }
-    if (nachher === vorher) befunde.push(`2.1.1 ${ort}: erster Regler reagiert nicht auf Pfeiltasten`);
+    if (nachher === vorher) { await page.keyboard.press(runter); await page.keyboard.press(runter); await page.waitForTimeout(80); nachher = await r.inputValue(); }
+    if (nachher === vorher) befunde.push(`2.1.1 ${ort}: erster ${art} reagiert nicht auf Pfeiltasten`);
     await page.waitForTimeout(1300);
     const live = await page.evaluate(() => { const s = [...new Set(window.__live)]; window.__liveObs?.disconnect(); return s.filter(e => window.__bb.sichtbar(e) || e.classList.contains('sr-only')).map(e => ({ n: (e.textContent || '').trim().replace(/\s+/g, ' ').length, t: (e.textContent || '').trim().replace(/\s+/g, ' ').slice(0, 90) })); });
-    if (!live.length) befunde.push(`4.1.3 ${ort}: Ergebnis nach Reglereingabe nicht als Statusmeldung angesagt`);
+    if (!live.length) befunde.push(`4.1.3 ${ort}: Ergebnis nach ${art}eingabe nicht als Statusmeldung angesagt`);
+    // Kurzzeilen 04.11.2026: keine rohen Zahlwerte in Ansagen
+    for (const l of live) if (/\bNaN\b|\bundefined\b|Infinity/.test(l.t)) befunde.push(`4.1.3 ${ort}: Ansage enthält „NaN“/„undefined“ („${l.t}“)`);
     for (const l of live) if (l.n > 300) befunde.push(`4.1.3 ${ort}: Live-Region zu geschwätzig (${l.n} Zeichen: „${l.t}…“)`);
     // Ergebnisansagen gebündelt (Kleinpunkte 04.11.2026): eine Eingabe → höchstens eine Ergebnis-Region mit Text
     const ergebnisRegionen = await page.evaluate(() => [...document.querySelectorAll('[data-ergebnis-ansage]')].filter(e => (e.textContent || '').trim()).length);
     if (ergebnisRegionen > 1) befunde.push(`4.1.3 ${ort}: ${ergebnisRegionen} Ergebnisansagen nach einer Eingabe (Mehrfachansage)`);
+    const ansagen = await page.evaluate(() => [...document.querySelectorAll('[data-ergebnis-ansage]')].map(e => (e.textContent || '').trim()).filter(Boolean));
+    if (ansagen.some(t => /\bNaN\b|\bundefined\b|Infinity/.test(t))) befunde.push(`4.1.3 ${ort}: Ergebnisansage enthält „NaN“/„undefined“ („${ansagen.join(' | ').slice(0, 90)}“)`);
+    if (stat) stat.push({ ort, art, ergebnisRegionen, ansage: ansagen[0]?.slice(0, 160) ?? '', live: live.length });
     if (details) console.log(`  ${ort} Live: ${JSON.stringify(live).slice(0, 200)}`);
   }
   // ---- 3D-Ansicht (Mauerwerk, Reiter „Mauerwerksverband“)
@@ -582,7 +596,8 @@ if (process.argv[1] && fs.realpathSync(process.argv[1]) === fs.realpathSync(new 
   if (NUR.includes('kontrast')) { const vor = befunde.length; await pruefeKontrast(browser, BASIS, alle, befunde); console.log(`${befunde.length > vor ? 'FEHLER' : 'ok    '} forced-colors`); }
   await browser.close();
   const json = wert('--json');
-  if (json) fs.writeFileSync(json, JSON.stringify({ routen: alle, modi: MODI, befunde }, null, 2));
+  if (json) fs.writeFileSync(json, JSON.stringify({ routen: alle, modi: MODI, befunde, ansagen: ansageStatistik }, null, 2));
+  if (DETAILS || process.argv.includes('--ansagen')) for (const a of ansageStatistik) console.log(`  ${a.ort} [${a.art}] ${a.ergebnisRegionen} Region(en): ${a.ansage}`);
   if (befunde.length) { console.error(befunde.join('\n')); console.error(`${befunde.length} Befunde.`); process.exit(1); }
   console.log('0 Befunde.');
 }

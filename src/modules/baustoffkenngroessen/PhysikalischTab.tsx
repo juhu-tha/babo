@@ -7,6 +7,7 @@ import { BlockMath, InlineMath } from 'react-katex';
 import inhalt from '@/content/baustoffkenngroessen/PhysikalischTab.json';
 import { MdText } from '@/src/components/inhalt/MdText';
 import { FormulaDerivationBox } from '@/src/components/ui/FormulaDerivationBox';
+import { ErgebnisAnsage, ansageWert, kurzzeile } from '@/src/components/ui/ErgebnisAnsage';
 
 export interface PhysikalischTabProps {
   dichtePresets: { ziegel: { name: string; rhoR: number; rho: number; rhoS: number; desc: string; }; blaehton: { name: string; rhoR: number; rho: number; rhoS: number; desc: string; }; granit: { name: string; rhoR: number; rho: number; rhoS: number; desc: string; }; porenbeton: { name: string; rhoR: number; rho: number; rhoS: number; desc: string; }; };
@@ -227,6 +228,7 @@ export default function PhysikalischTab({ dichtePresets, handleDichtePresetChang
 
             return (
               <div className="space-y-6">
+                <ErgebnisAnsage text={kurzzeile(ansageWert('Kornporosität', grainPorosity, 1, '%'), ansageWert('Haufwerksporigkeit', haufwerkPorosity, 1, '%'), ansageWert('Gesamthohlraum', totalVoidRatio, 1, '%'))} />
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                   {/* Kornporosität */}
                   <div className="bg-slate-50 p-4 rounded-xl border border-home-grau/30 flex flex-col justify-between">

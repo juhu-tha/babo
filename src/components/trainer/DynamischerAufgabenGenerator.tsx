@@ -6,6 +6,7 @@ import {
   HelpCircle, Trophy
 } from 'lucide-react';
 import { BlockMath } from 'react-katex';
+import { ErgebnisAnsage } from '@/src/components/ui/ErgebnisAnsage';
 
 interface GeneratorTask {
   id: string;
@@ -560,6 +561,7 @@ export function DynamischerAufgabenGenerator() {
             )}
 
             {/* Feedback Message */}
+            <ErgebnisAnsage text={isSubmitted && evaluationResult ? (evaluationResult.isCorrect ? 'Korrekt gelöst.' : `Leider nicht ganz richtig (Toleranz ±${formatDeWert(taskInstance.tolerancePercent)} %).${evaluationResult.mistakeNote ? ` Diagnose: ${evaluationResult.mistakeNote}` : ''}`) : ''} />
             {isSubmitted && evaluationResult && (
               <div className={`p-4 rounded-xl border animate-in fade-in duration-200 ${
                 evaluationResult.isCorrect 

@@ -13,6 +13,7 @@ import { FormulaText } from '@/src/components/ui/FormulaText';
 import { formatDeZahl, formatDeWert } from '@/src/utils/numberFormat';
 import inhalt from '@/content/stahlbetoninstandhaltung/ChloridrechnerTab.json';
 import { MdText } from '@/src/components/inhalt/MdText';
+import { ErgebnisAnsage, ansageWert, kurzzeile } from '@/src/components/ui/ErgebnisAnsage';
 
 export interface ChloridrechnerTabProps {
   bauteilAlter: number;
@@ -126,6 +127,7 @@ export default function ChloridrechnerTab({ bauteilAlter, betondeckung, chloridC
             />
           </div>
 
+          <ErgebnisAnsage text={kurzzeile(ansageWert(`Chloridgehalt in ${formatDeWert(betondeckung)} mm Tiefe`, chloridStats.cAtRebar, 2, 'M.-%'), chloridStats.rebarStatus === 'critical' ? inhalt.werte.bewehrungsebeneDepassiviert : chloridStats.rebarStatus === 'warning' ? inhalt.werte.kritischerSchwellenbereich : inhalt.werte.bewehrungNochPassivGeschützt)} />
           {/* Status Callout */}
           <div className={`p-3.5 rounded-xl border mt-2 leading-relaxed ${
             chloridStats.rebarStatus === 'critical'
