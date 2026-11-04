@@ -1,6 +1,6 @@
 {
   "texte": {
-    "hydratationReifeVerformungen": " Hydratation, Reife & Verformungen",
+    "hydratationReifeVerformungen": " Hydratation & Folgen (Wärme, Reife, Rissrisiko)",
     "exothermeReaktionswärmeentwicklungFestig": "Exotherme Reaktionswärmeentwicklung, Festigkeitsentwicklung (Reifegradmodell), Eigenspannungen sowie zeitabhängige Verformungsmechanismen durch Schwinden, Kriechen und Bauteilzwang nach Eurocode 2 und DAfStb-Richtlinien."
   },
   "werte": {
@@ -160,7 +160,7 @@
       },
       {
         "formel": "E_{cm}(t) = \\left(\\frac{f_{cm}(t)}{f_{cm}}\\right)^{0{,}3} \\cdot E_{cm} = [\\beta_{cc}(t)]^{0{,}3} \\cdot E_{cm}",
-        "erklaerung": "Zeitliche Entwicklung des Elastizitätsmoduls nach Eurocode 2 (DIN EN 1992-1-1 Cl. 3.1.3 Gl. 3.5). Durch die 0.3-Potenzierung wird der E-Modul sehr früh (ca. 70–80 % nach 2 Tagen) aufgebaut.",
+        "erklaerung": "Zeitliche Entwicklung des Elastizitätsmoduls nach Eurocode 2 (DIN EN 1992-1-1 Cl. 3.1.3 Gl. 3.5). Durch die Potenz 0,3 auf β_cc(t) wird der E-Modul sehr früh aufgebaut (nach 2 Tagen ca. 70–85 %: 73 % bei Zement der Klasse S, 81 % bei N, 85 % bei R).",
         "quelle": "DIN EN 1992-1-1 Gl. 3.5"
       },
       {
