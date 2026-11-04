@@ -7,6 +7,7 @@ import { EC2_CONCRETE_CLASSES, type ConcreteClassData } from './daten';
 import { Ec2ParameterSkizze } from './Ec2ParameterSkizze';
 import inhalt from '@/content/betonkennwerte/RechnerTab.json';
 import { MdText } from '@/src/components/inhalt/MdText';
+import { NachErstemBild } from '@/src/components/ui/NachErstemBild';
 
 export interface RechnerTabProps {
   aggregateType: 'quarzit' | 'kalkstein' | 'sandstein' | 'basalt';
@@ -283,6 +284,9 @@ export default function RechnerTab({ aggregateType, ambientTempT, festigkeitMitT
         </div>
       )}
 
+      {/* Ergebnisse und Herleitungen: unterhalb des Bildausschnitts nach dem ersten Bild, je Abschnitt eine Task
+          (TBT 04.11.2026); in der vorgerenderten Seite unverändert (statisch) */}
+      <NachErstemBild minHoehe="40rem" statisch>
       {/* 4 Primäre Ergebnisblöcke der Formelsammlung */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
 
@@ -460,7 +464,9 @@ export default function RechnerTab({ aggregateType, ambientTempT, festigkeitMitT
         </div>
 
       </div>
+      </NachErstemBild>
 
+      <NachErstemBild minHoehe="30rem" statisch>
       {/* Formel-Herleitungsbox für Schwinden & Kriechen nach EC2 */}
       <FormulaDerivationBox
         title={inhalt.werte.normativeHerleitungSchwindUnd}
@@ -476,6 +482,7 @@ export default function RechnerTab({ aggregateType, ambientTempT, festigkeitMitT
         schritte={inhalt.daten["RechnerTab.schritte_2"]}
         ergebnisHinweis={inhalt.werte.fCd170}
       />
+      </NachErstemBild>
 
     </div>
   );

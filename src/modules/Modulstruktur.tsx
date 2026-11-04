@@ -32,6 +32,7 @@ import { formatDeWert } from '@/src/utils/numberFormat';
 import type { TabId } from '@/src/contexts/TabContext';
 import inhalt from '@/content/modulstruktur/Modulstruktur.json';
 import { MdText } from '@/src/components/inhalt/MdText';
+import { NachErstemBild } from '@/src/components/ui/NachErstemBild';
 import { AuswahlGruppe, ReiterLeiste, alsOption, alsReiter, reiterPanel } from '../components/ui/Auswahlgruppe';
 export type NodeType = 'calculator' | 'database' | 'quiz' | 'standard' | 'info' | 'norm';
 
@@ -493,8 +494,11 @@ export default function Modulstruktur() {
               const ClusterIcon = cluster.icon;
               const clusterModuleCount = cluster.groups.reduce((acc, g) => acc + g.nodes.length, 0);
 
+              // je Cluster eine Task: unterhalb des Bildausschnitts nach dem ersten Bild (TBT 04.11.2026),
+              // in der vorgerenderten Seite unverändert (statisch)
               return (
-                <div key={cluster.id} className="relative">
+                <NachErstemBild key={cluster.id} minHoehe="40rem" statisch>
+                <div className="relative">
                   {/* Vertikaler Hauptstamm (Baumlinie von Root nach unten) */}
                   {!isLastCluster && (
                     <div className="absolute left-5 top-12 bottom-0 w-0.5 bg-home-grau/25 pointer-events-none" />
@@ -611,6 +615,7 @@ export default function Modulstruktur() {
                     </div>
                   </div>
                 </div>
+                </NachErstemBild>
               );
             })}
           </div>

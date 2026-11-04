@@ -60,7 +60,7 @@ function beobachte(el: Element): () => void {
 if (typeof window !== 'undefined') {
   window.addEventListener('keydown', starten, { once: true, capture: true });
   const ruhe = () => {
-    const idle = (f: () => void) => ('requestIdleCallback' in window ? window.requestIdleCallback(f, { timeout: 5000 }) : window.setTimeout(f, 200));
+    const idle = (f: () => void) => (typeof window.requestIdleCallback === 'function' ? window.requestIdleCallback(f, { timeout: 5000 }) : window.setTimeout(f, 200));
     window.setTimeout(() => idle(starten), 3000);
   };
   if (document.readyState === 'complete') ruhe(); else window.addEventListener('load', ruhe, { once: true });

@@ -5,6 +5,7 @@ import React, { useMemo, useState } from 'react';
 import inhalt from '@/content/beispielrechnungen/RechnungMauerwerk.json';
 import { MdText } from '@/src/components/inhalt/MdText';
 import { EingabeHinweise } from '@/src/components/ui/EingabeHinweise';
+import { NachErstemBild } from '@/src/components/ui/NachErstemBild';
 import { bemesseWandVereinfacht, fkNA, FK_TAFEL_NA, ZETA_MW, GAMMA_M_MW, SCHLANKHEIT_MAX, type WandLage } from '@/src/calc/mauerwerk';
 
 const FREI = 'frei';
@@ -117,6 +118,8 @@ export default function RechnungMauerwerk() {
 
         <EingabeHinweise hinweise={r.hinweise} />
 
+        {/* Rechenweg und Ergebnis: unterhalb des Bildausschnitts nach dem ersten Bild (TBT 04.11.2026), vorgerendert unverändert */}
+        <NachErstemBild minHoehe="40rem" statisch>
         {/* RECHENWEG */}
         <div className="bg-white p-5 rounded-xl border border-slate-200 space-y-4">
           <h4 className="font-bold text-sm text-slate-800 border-b border-slate-100 pb-2"><MdText text={inhalt.texte.vereinfachterTragfähigkeitsnachweisEuroc} /></h4>
@@ -193,6 +196,7 @@ export default function RechnungMauerwerk() {
           <Info size={15} className="shrink-0 mt-0.5 text-amber-700" aria-hidden="true" />
           <span><MdText text={inhalt.texte.vorlaeufigHinweis} /></span>
         </div>
+        </NachErstemBild>
       </div>
     );
 }

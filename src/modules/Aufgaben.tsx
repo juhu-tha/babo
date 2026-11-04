@@ -24,9 +24,17 @@ try {
 import { taskCategories } from '../data/aufgabenData';
 import inhalt from '@/content/aufgaben/Aufgaben.json';
 import { MdText } from '@/src/components/inhalt/MdText';
+import { NachErstemBild } from '@/src/components/ui/NachErstemBild';
 import { ReiterLeiste, alsReiter, reiterPanel } from '../components/ui/Auswahlgruppe';
 
 const TAB_TO_QUIZ_CONFIG = AUFGABEN_QUIZ_GRUPPEN;
+
+/** Aufgabenliste in Blöcke zu je `n` teilen (je Block eine Task beim ersten Rendern) */
+function bloecke<T>(liste: readonly T[], n = 8): T[][] {
+  const aus: T[][] = [];
+  for (let i = 0; i < liste.length; i += n) aus.push(liste.slice(i, i + n));
+  return aus;
+}
 
 function clusterDerGruppen(gruppen?: string[]): string {
   if (!gruppen) return 'I–V';
@@ -283,7 +291,11 @@ export default function Aufgaben() {
                     </div>
                     
                     <div className="grid grid-cols-1 gap-4">
-                      {category.tasks.map((task) => (
+                      {/* je 8 Aufgaben eine Task: unterhalb des Bildausschnitts nach dem ersten Bild (TBT 04.11.2026),
+                          in der vorgerenderten Seite unverändert (statisch) */}
+                      {bloecke(category.tasks).map((block, bIdx) => (
+                      <NachErstemBild key={bIdx} minHoehe={`${block.length * 7}rem`} statisch>
+                      {block.map((task) => (
                         <div key={task.id} className={`bg-white border transition-all duration-300 rounded-2xl overflow-hidden shadow-sm hover:shadow-md ${openTasks[task.id] ? 'border-shiraz/30 ring-1 ring-shiraz/10' : 'border-home-grau/30'}`}>
                           <div 
                             className="p-5 sm:p-6 cursor-pointer flex justify-between items-start gap-4 group"
@@ -365,6 +377,8 @@ export default function Aufgaben() {
                             </div>
                           )}
                         </div>
+                      ))}
+                      </NachErstemBild>
                       ))}
                     </div>
                   </div>
