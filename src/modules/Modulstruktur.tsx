@@ -545,7 +545,8 @@ export default function Modulstruktur() {
                             const GroupIcon = group.icon;
 
                             return (
-                              <div key={group.id} className="relative">
+                              <NachErstemBild key={group.id} minHoehe="16rem" statisch>
+                              <div className="relative">
                                 {/* Horizontaler Ast zur Gruppe */}
                                 <div className="absolute -left-5 top-5 w-5 h-0.5 bg-home-grau/25 pointer-events-none" />
 
@@ -608,6 +609,7 @@ export default function Modulstruktur() {
                                   </div>
                                 )}
                               </div>
+                              </NachErstemBild>
                             );
                           })}
                         </div>
