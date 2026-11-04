@@ -9,6 +9,7 @@ import { zustandsnote, schulnoteAusZustandsnote } from '@/src/calc/schutzInstand
 import { MdText } from '@/src/components/inhalt/MdText';
 import { ModuleTabs, type ModulTab } from '@/src/components/ui/ModuleTabs';
 import { ReiterLeiste, alsReiter, reiterPanel } from '../components/ui/Auswahlgruppe';
+import { ErgebnisAnsage, ansageWert, kurzzeile } from '@/src/components/ui/ErgebnisAnsage';
 
 const SCHADEN_KATEGORIEN = [
   { id: 'all', label: inhalt.werte.alleKategorien },
@@ -522,6 +523,7 @@ export default function Zustandsbewertung() {
               return (
                 <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
                   
+                  <ErgebnisAnsage text={kurzzeile(ansageWert('Zustandsnote', currentZ, 1), `Schulnote ${interpolatedSchulnote}`, `${noteInfo.label} (Kategorie ${formatDeWert(noteInfo.grade)})`)} />
                   {/* INPUT PANEL */}
                   <div className="lg:col-span-7 space-y-6">
                     

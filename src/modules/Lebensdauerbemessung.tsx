@@ -23,6 +23,7 @@ import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
 import { useTabContext } from '@/src/contexts/TabContext';
 import inhalt from '@/content/lebensdauerbemessung/Lebensdauerbemessung.json';
 import { MdText } from '@/src/components/inhalt/MdText';
+import { ErgebnisAnsage, ansageWert, kurzzeile } from '@/src/components/ui/ErgebnisAnsage';
 
 type Reiter = 'grundlagen' | 'karbonatisierung' | 'chlorid' | 'rechner' | 'beispiele' | 'konzepte' | 'grenzen';
 
@@ -435,7 +436,9 @@ export default function Lebensdauerbemessung() {
                 </div>
 
                 <div className="lg:col-span-7 flex flex-col gap-4">
-                  <div className="bg-white p-5 rounded-xl border border-home-grau/30 shadow-sm flex flex-col gap-4" aria-live="polite">
+                  <div className="bg-white p-5 rounded-xl border border-home-grau/30 shadow-sm flex flex-col gap-4">
+                    {/* Kurzzeile statt der ganzen Ergebniskarte als Live-Region (Kurzzeilen 04.11.2026) */}
+                    <ErgebnisAnsage text={erg.gueltig ? kurzzeile(ansageWert('Versagenswahrscheinlichkeit p_f', erg.pf * 100, 2, '%'), `β ${betaText(erg.beta, erg.betaUntergrenze)}`, erg.erfDeckung === null ? 'erforderliche Deckung über 400 mm' : ansageWert('erforderliche Deckung', erg.erfDeckung, 1, 'mm'), erg.nachweis ? inhalt.werte.nachweisOk : inhalt.werte.nachweisNicht) : 'Versagenswahrscheinlichkeit –'} />
                     <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
                       {[
                         { l: inhalt.werte.ergPf, w: erg.gueltig ? formatDeZahl(erg.pf * 100, 2) : '–', e: '%' },

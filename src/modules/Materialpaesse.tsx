@@ -8,6 +8,7 @@ import { InfoTooltip } from '@/src/components/ui/InfoTooltip';
 import inhalt from '@/content/materialpaesse/Materialpaesse.json';
 import { MdText } from '@/src/components/inhalt/MdText';
 import { materialpassBilanz } from '@/src/calc/materialpass';
+import { ErgebnisAnsage, ansageWert, kurzzeile } from '@/src/components/ui/ErgebnisAnsage';
 
 interface BuildingArchetype {
   id: string;
@@ -245,6 +246,7 @@ export default function Materialpaesse() {
                   </h4>
                 </div>
 
+                <ErgebnisAnsage text={kurzzeile(ansageWert('Kreislauffähigkeit', circularityIndex, 'frei', '%'), ansageWert('Gesamtmasse', totalWeightTons, 'frei', 't'), ansageWert('Restwert', totalResidualValue, 0, '€'), ansageWert('biogener CO₂-Speicher', carbonStoredTons, 'frei', 't'))} />
                 <div className="my-4 flex items-baseline gap-2">
                   <span className={`text-4xl md:text-5xl font-black ${
                     circularityIndex > 70 ? 'text-emerald-600' : circularityIndex > 40 ? 'text-amber-500' : 'text-red-500'

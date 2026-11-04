@@ -18,6 +18,7 @@ import inhalt from '@/content/schutzgrundlagen/SchutzGrundlagen.json';
 import { deSitterKosten } from '@/src/calc/schutzInstandsetzung';
 import { MdText } from '@/src/components/inhalt/MdText';
 import { ModuleTabs, type ModulTab } from '@/src/components/ui/ModuleTabs';
+import { ErgebnisAnsage } from '@/src/components/ui/ErgebnisAnsage';
 
 type SchutzReiter = 'prinzipien' | 'mechanismen' | 'lebensdauer' | 'verfahrenswahl';
 const REITER: readonly ModulTab<SchutzReiter>[] = [
@@ -458,6 +459,7 @@ export default function SchutzGrundlagen() {
                 <span className="text-[11px] text-slate-500 block mt-1"><MdText text={inhalt.texte.qualitätszementBetondeckung15Mm} /></span>
               </div>
 
+              <ErgebnisAnsage text={`Fünferregel: Entwurf ${formatDeIntl(deSitterInitialCost)} €, vor Schadensbeginn ${formatDeIntl(deSitterKosten(deSitterInitialCost, 1))} €, lokaler Schaden ${formatDeIntl(deSitterKosten(deSitterInitialCost, 2))} €, umfassende Instandsetzung ${formatDeIntl(deSitterKosten(deSitterInitialCost, 3))} €`} />
               <div className="p-3 bg-off-white rounded-lg border border-home-grau/20 text-center">
                 <span className="text-slate-500 font-bold block mb-1"><MdText text={inhalt.texte.vorSchadensbeginn5} /></span>
                 <span className="text-lg font-bold text-blue-700 block">

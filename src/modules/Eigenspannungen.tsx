@@ -25,6 +25,7 @@ import inhalt from '@/content/eigenspannungen/Eigenspannungen.json';
 import { ModuleTabs } from '@/src/components/ui/ModuleTabs';
 import { MdText } from '@/src/components/inhalt/MdText';
 import { eigenspannungsVerlauf } from '@/src/calc/eigenspannungen';
+import { ErgebnisAnsage, ansageWert, kurzzeile } from '@/src/components/ui/ErgebnisAnsage';
 
 ChartJS.register(
   CategoryScale,
@@ -169,6 +170,7 @@ export default function Eigenspannungen() {
 
           {/* Charts & Results */}
           <div className="lg:col-span-2 flex flex-col gap-6">
+            <ErgebnisAnsage text={betonResults.gueltig ? kurzzeile(ansageWert(betonResults.zugLage === 'kern' ? 'größte Zugeigenspannung im Kern' : 'größte Zugeigenspannung am Rand', betonResults.maxTensile, 1, 'MPa'), ansageWert('größte Druckeigenspannung', betonResults.maxCompressive, 1, 'MPa'), betonResults.crackRisk ? 'Rissgefahr' : 'keine Rissgefahr') : 'Eigenspannungen –'} />
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <div className="bg-white p-4 rounded-xl border border-home-grau/30 shadow-sm">
                     <div className="text-xs text-home-grau uppercase tracking-wider mb-1"><MdText text={betonResults.zugLage === 'kern' ? inhalt.texte.maxZugeigenspannungKern : inhalt.texte.maxZugeigenspannungRand} /></div>
