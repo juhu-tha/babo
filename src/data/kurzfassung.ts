@@ -245,7 +245,7 @@ export const KURZFASSUNG: Readonly<Record<string, readonly string[]>> = {
     "Hydratation, Eigenspannungen, Zwang sowie Kriechen und Schwinden laufen im jungen Beton gleichzeitig ab; übersteigt die Zwangspannung die aktuelle Zugfestigkeit, entsteht ein Trennriss.",
     "Der Reifegrad nach Saul summiert (T − T₀) · Δt mit T₀ = −10 °C; im Beispiel entsprechen 48 h bei 10 °C rund 32 h bei 20 °C, das Äquivalentalter nach Arrhenius nutzt Ea von 30 bis 50 kJ/mol.",
     "Ohne Wärmeabfuhr steigt die Temperatur um ΔT_ad = z · Q/(c · ρ); 320 kg/m³ Zement mit 350 kJ/kg ergeben mit c · ρ = 2400 kJ/(m³K) rund 47 K, und über 15 K Kern-Rand-Differenz drohen Risse aus Eigenspannungen.",
-    "Nach Eurocode 2 eilt der E-Modul der Festigkeit voraus: Wegen der Potenz 0,3 auf β_cc(t) erreicht er nach 2 Tagen bereits etwa 70 bis 80 %, während die Druckfestigkeit noch deutlich geringer ist.",
+    "Nach Eurocode 2 eilt der E-Modul der Festigkeit voraus: Wegen der Potenz 0,3 auf β_cc(t) erreicht er nach 2 Tagen bereits etwa 70 bis 85 %, während die Druckfestigkeit noch deutlich geringer ist.",
     "Gegen frühe Risse helfen Zement mit niedriger Wärmeentwicklung wie CEM III, Gleitfolien unter Bodenplatten zur Zwangminderung, nächtliches Betonieren im Sommer und eine Mindestbewehrung nach Eurocode 2.",
   ],
   ki_thesen: [

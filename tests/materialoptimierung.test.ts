@@ -7,7 +7,7 @@ const nahe = (ist: number, soll: number, tol: number) => Math.abs(ist - soll) <=
 console.log('--- Test: Materialoptimierung ---');
 
 // 1. Handrechnung Startwerte: Decke, Hohlkörper, CEM III/A, 56 d, grüner Stahl
-//    Lehrwerte seit 29.10.2026 (T11-MO-3): Beton = round(320·GWP_Zement + 30); Stahl-Referenz ÖKOBAUDAT 0,64
+//    Lehrwerte seit 29.10.2026 (T11-MO-3): Beton = round(320·GWP_Zement + 45) (Rest + 45 seit 30.10.2026); Stahl-Referenz ÖKOBAUDAT 0,64
 //    Zement-GWP seit 29.10.2026 (T15-NH-3, src/data/zementGwp.ts); Lehrbeton-Rest seit 30.10.2026 einheitlich 45 kg/m³:
 //    CEM I 320·0,665 + 45 = 257,8 → 258, CEM III/A 320·0,40 + 45 = 173 kg/m³
 //    Referenz: 26·258 = 6708; 2860·0,64 = 1830,4 → 1830; Summe 8538 kg CO₂e (85,38 je m²)
