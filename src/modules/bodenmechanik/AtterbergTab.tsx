@@ -13,6 +13,7 @@ import { BloomLernziele, type BloomGoalItem } from '@/src/components/ui/BloomLer
 import { DiagrammAngaben } from '@/src/lib/diagrammAlternative';
 import { formatDeZahl, formatDeTeX } from '@/src/utils/numberFormat';
 import { atterberg, aLinie, type FliessVersuch } from '@/src/calc/boden';
+import { ErgebnisAnsage, ansageWert, kurzzeile } from '@/src/components/ui/ErgebnisAnsage';
 
 const START: FliessVersuch[] = [{ schlaege: 17, w: 44.1 }, { schlaege: 22, w: 42.6 }, { schlaege: 28, w: 41.2 }, { schlaege: 34, w: 40.0 }];
 const feld = 'w-full p-2 text-sm border border-home-grau/30 rounded-lg focus:ring-2 focus:ring-shiraz outline-none bg-white';
@@ -99,7 +100,9 @@ export default function AtterbergTab() {
           </label>
         </section>
 
-        <section className="bg-off-white border border-home-grau/30 text-text-main p-5 rounded-2xl shadow-md flex flex-col gap-3" aria-live="polite">
+        <section className="bg-off-white border border-home-grau/30 text-text-main p-5 rounded-2xl shadow-md flex flex-col gap-3">
+          {/* Kurzzeile statt der ganzen Ergebniskarte als Live-Region (Kurzzeilen 04.11.2026) */}
+          <ErgebnisAnsage text={kurzzeile(ansageWert('Fließgrenze w_L', r.wL, 1, '%'), ansageWert('Plastizitätszahl I_P', r.iP, 1, '%'), ansageWert('Konsistenzzahl I_C', r.iC, 2), r.zustand, `Bodengruppe ${r.gruppe?.text ?? '–'}`)} />
           <h3 className="text-sm font-bold uppercase tracking-wider opacity-90"><MdText text={inhalt.texte.ergebnisTitel} /></h3>
           <dl className="grid grid-cols-2 gap-x-4 gap-y-2 text-sm">
             <dt className="text-slate-600"><FormulaText text="Fließgrenze $w_L$" /></dt><dd className="text-xl font-bold">{formatDeZahl(r.wL, 1)} % <span className="text-xs font-normal">({fl.verfahren === 'einpunkt' ? 'Einpunkt' : 'Mehrpunkt'})</span></dd>

@@ -29,6 +29,7 @@ import {
 import inhalt from '@/content/feuchteschutz/Feuchteschutz.json';
 import { MdText } from '@/src/components/inhalt/MdText';
 import { AuswahlGruppe, alsOption } from '../components/ui/Auswahlgruppe';
+import { ErgebnisAnsage, ansageWert, kurzzeile } from '@/src/components/ui/ErgebnisAnsage';
 
 // Register necessary Chart.js components
 ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend, Filler);
@@ -411,6 +412,7 @@ export default function Feuchteschutz() {
           {/* Live-Rechenweg (AP 3.7) mit dem aktuellen Innenklima */}
           <FormulaDerivationBox
             live
+            kurzzeile={kurzzeile(ansageWert('Taupunkt', indoorClimate.dewPoint, 1, '°C'), ansageWert('Schimmelgrenze', indoorClimate.schimmelPoint, 1, '°C'), ansageWert('Oberflächenfeuchte', surfaceAuditStatus.actualSurfaceRH, 0, '%'), surfaceAuditStatus.level === 'danger' ? 'Tauwasser' : surfaceAuditStatus.level === 'warning' ? 'Schimmelgefahr' : 'unkritisch')}
             title={inhalt.werte.ihrRechenwegTaupunktUnd}
             zielGleichung="\varphi_{si} = \frac{\varphi_i \cdot p_{sat}(\theta_i)}{p_{sat}(\theta_{si})}"
             schritte={[
@@ -758,6 +760,7 @@ export default function Feuchteschutz() {
 
               <div className="lg:col-span-5 space-y-3">
                 <EingabeHinweise hinweise={g.hinweise} />
+                <ErgebnisAnsage text={!g.gueltig ? 'Glaser-Verfahren –' : !g.tauwasser ? 'Glaser-Verfahren: kein Tauwasser in der Konstruktion' : kurzzeile(ansageWert('Glaser-Verfahren: Tauwasser', g.mc, 3, 'kg/m²'), ansageWert('Verdunstung', g.mev, 3, 'kg/m²'), Number.isFinite(g.trocknungsTage) && ansageWert('Trocknungsdauer', g.trocknungsTage, 1, 'Tage'), `${g.kriterien.filter(k => k.eingehalten).length} von ${g.kriterien.length} Kriterien eingehalten`)} />
                 {!g.gueltig ? null : !g.tauwasser ? (
                   <div className="p-4 bg-emerald-50 border border-emerald-200 rounded-xl flex items-start gap-3">
                     <CheckCircle className="text-emerald-600 shrink-0 mt-0.5" size={18} />

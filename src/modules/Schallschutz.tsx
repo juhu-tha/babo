@@ -23,6 +23,7 @@ import {
 } from 'chart.js';
 import inhalt from '@/content/schallschutz/Schallschutz.json';
 import { MdText } from '@/src/components/inhalt/MdText';
+import { ansageWert, kurzzeile } from '@/src/components/ui/ErgebnisAnsage';
 
 // Reiter Trittschall (Z24) als eigener Chunk
 const TrittschallTab = React.lazy(() => import('./schallschutz/TrittschallTab'));
@@ -256,6 +257,7 @@ export default function Schallschutz() {
             {/* Live-Rechenweg (AP 3.7) mit dem aktuellen Schichtaufbau */}
             <FormulaDerivationBox
               live
+              kurzzeile={kurzzeile(ansageWert('flächenbezogene Masse', schallData.m_prime, 1, 'kg/m²'), ansageWert('Schalldämmmaß R_w', schallData.Rw, 1, 'dB'), !schallData.isValidRange && 'außerhalb des Gültigkeitsbereichs')}
               title={inhalt.werte.ihrRechenwegSchalldämmMaß}
               zielGleichung="R_w = 30{,}9 \cdot \lg\left(\frac{m'}{1\,\text{kg/m}^2}\right) - 22{,}2\,\text{dB}"
               schritte={[

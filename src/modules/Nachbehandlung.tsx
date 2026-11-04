@@ -10,6 +10,7 @@ import inhalt from '@/content/nachbehandlung/Nachbehandlung.json';
 import { MdText } from '@/src/components/inhalt/MdText';
 import { EingabeHinweise } from '@/src/components/ui/EingabeHinweise';
 import { verdunstungsrate, nachbehandlungsdauer, type Festigkeitsentwicklung, type ExpositionNB, type OberflaechenTemp } from '@/src/calc/hydratation';
+import { ErgebnisAnsage, ansageWert, kurzzeile } from '@/src/components/ui/ErgebnisAnsage';
 
 export default function Nachbehandlung() {
   const [tempAir, setTempAir] = useState(25); // °C
@@ -82,6 +83,7 @@ export default function Nachbehandlung() {
         />
 
         <EingabeHinweise hinweise={verdunstung.hinweise} />
+        <ErgebnisAnsage text={kurzzeile(ansageWert('Verdunstungsrate', evaporationRate, 2, 'kg/(m²·h)'), Number.isFinite(evaporationRate) && (isCritical ? 'kritisch' : 'unkritisch'))} />
 
         <div className={`mt-4 p-4 rounded-xl border ${isCritical ? 'bg-torch-red/10 border-torch-red/30' : 'bg-emerald-50 border-emerald-200'}`}>
           <h3 className="text-sm font-bold text-text-main mb-2">Ergebnis</h3>
@@ -153,6 +155,7 @@ export default function Nachbehandlung() {
 
           <div className={`mt-2 p-4 rounded-xl border ${curingTime === -1 ? 'bg-torch-red/10 border-torch-red/30' : 'bg-off-white border-shiraz/20'}`}>
             <h3 className="text-sm font-bold text-text-main mb-2"><MdText text={inhalt.texte.ergebnisNachbehandlungsdauer} /></h3>
+            <ErgebnisAnsage text={`Mindestdauer der Nachbehandlung: ${curingTime === -1 ? 'Sondermaßnahmen erforderlich' : `${formatDeZahl(curingTime, curingTime % 1 ? 1 : 0)} ${curingTime === 1 ? 'Tag' : 'Tage'}`}`} />
             <div className="flex justify-between items-center mb-1">
               <span className="text-sm text-text-main/80"><MdText text={inhalt.texte.erforderlicheMindestdauer} /></span>
               <span className={`text-xl font-bold ${curingTime === -1 ? 'text-torch-red' : 'text-shiraz'}`}>

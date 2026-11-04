@@ -13,6 +13,7 @@ import { BloomLernziele, type BloomGoalItem } from '@/src/components/ui/BloomLer
 import { DiagrammAngaben } from '@/src/lib/diagrammAlternative';
 import { formatDeZahl, formatDeTeX } from '@/src/utils/numberFormat';
 import { trittschall, deltaLFrequenz, ANFORDERUNGEN_TRITTSCHALL } from '@/src/calc/schall';
+import { ErgebnisAnsage, ansageWert, kurzzeile } from '@/src/components/ui/ErgebnisAnsage';
 
 /** Terzmittenfrequenzen 50 … 3150 Hz */
 const TERZEN = [50, 63, 80, 100, 125, 160, 200, 250, 315, 400, 500, 630, 800, 1000, 1250, 1600, 2000, 2500, 3150];
@@ -70,7 +71,9 @@ export default function TrittschallTab() {
           </div>
         </section>
 
-        <section className="bg-off-white border border-home-grau/30 text-text-main p-5 rounded-2xl shadow-md flex flex-col gap-3" aria-live="polite">
+        <section className="bg-off-white border border-home-grau/30 text-text-main p-5 rounded-2xl shadow-md flex flex-col gap-3">
+          {/* Kurzzeile statt der ganzen Ergebniskarte als Live-Region (Kurzzeilen 04.11.2026) */}
+          <ErgebnisAnsage text={kurzzeile(ansageWert("Trittschall L'n,w", r.lnwStrich, 1, 'dB'), ansageWert('mit Sicherheitszuschlag', r.nachweis, 1, 'dB'), ansageWert('Anforderung höchstens', anf.wert, 0, 'dB'), r.gueltig && (r.erfuellt ? inhalt.werte.erfuellt : inhalt.werte.nichtErfuellt))} />
           <h3 className="text-sm font-bold uppercase tracking-wider opacity-90"><MdText text={inhalt.texte.ergebnisTitel} /></h3>
           <dl className="grid grid-cols-2 gap-x-4 gap-y-2 text-sm">
             <dt className="text-slate-600"><FormulaText text="$m'_s$ Rohdecke" /></dt><dd className="font-semibold">{formatDeZahl(r.mDecke, 0)} kg/m²</dd>

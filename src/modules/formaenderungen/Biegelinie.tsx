@@ -13,6 +13,7 @@ import { MdText } from '@/src/components/inhalt/MdText';
 import { formatDeZahl, formatDeTeX } from '@/src/utils/numberFormat';
 import { biegelinie, werkstoffVergleich, traegheitRechteck, BIEGE_WERKSTOFFE, BIEGE_PROFILE, type Lagerung, type BiegeWerkstoffId } from '@/src/calc/biegelinie';
 import inhalt from '@/content/formaenderungen/Biegelinie.json';
+import { ErgebnisAnsage, ansageWert, kurzzeile } from '@/src/components/ui/ErgebnisAnsage';
 
 ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, Tooltip, Legend, Filler);
 
@@ -111,6 +112,7 @@ export default function Biegelinie() {
         </div>
 
         <EingabeHinweise hinweise={r.hinweise} />
+        <ErgebnisAnsage text={ok ? kurzzeile(ansageWert('größte Durchbiegung w_max', r.wMax, 2, 'mm'), ansageWert('bei x =', r.xWMax, 2, 'm'), Number.isFinite(r.lDurchW) && ansageWert('L/w_max', r.lDurchW, 0)) : 'Durchbiegung –'} />
         {ok && (<>
           <div className="bg-shiraz/5 p-5 rounded-xl border border-shiraz/20">
             <h4 className="text-sm font-bold text-shiraz uppercase tracking-wider mb-3"><MdText text={inhalt.texte.ergebnisse} /></h4>
