@@ -26,6 +26,7 @@ import { MdText } from '@/src/components/inhalt/MdText';
 import { ModuleTabs } from '@/src/components/ui/ModuleTabs';
 import { EingabeHinweise } from '@/src/components/ui/EingabeHinweise';
 import { messwerteAusText, gumMessunsicherheit, ringversuch } from '@/src/calc/pruefverfahren';
+import { ErgebnisAnsage, ansageWert, kurzzeile } from '@/src/components/ui/ErgebnisAnsage';
 
 export default function MessenPruefen() {
   // Tabs for the Messen & Prüfen component
@@ -370,6 +371,7 @@ export default function MessenPruefen() {
                   </div>
                 </div>
                 <EingabeHinweise hinweise={rvStats.hinweise} />
+                <ErgebnisAnsage text={kurzzeile(ansageWert('z-Score', rvStats.zScore, 2), rvStats.zStatus === '–' ? '' : rvStats.zStatus === 'ok' ? 'zufriedenstellend' : rvStats.zStatus === 'warning' ? 'Warnsignal' : inhalt.werte.nichtAkzeptabel, ansageWert('E_n', rvStats.enScore, 2), rvStats.enStatus === '–' ? '' : rvStats.enStatus === 'ok' ? inhalt.werte.en10Zufriedenstellend : inhalt.werte.en10Nicht)} />
               </div>
 
               {/* Evaluation Output Column (7 cols) */}

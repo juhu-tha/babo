@@ -7,6 +7,7 @@ import inhalt from '@/content/bitumenversuche/BitumenVersuche.json';
 import { MdText } from '@/src/components/inhalt/MdText';
 import { ringKugelZustand, RUK_STARTTEMPERATUR, RUK_AUFHEIZRATE } from '@/src/calc/laborVersuch';
 import { AuswahlGruppe, ReiterLeiste, alsOption, alsReiter, reiterPanel } from '../components/ui/Auswahlgruppe';
+import { ErgebnisAnsage, ansageWert } from '@/src/components/ui/ErgebnisAnsage';
 
 type BitumenSorte = '160/220' | '70/100' | '50/70' | '30/45' | '20/30' | 'PmB 25/55-55';
 
@@ -300,6 +301,7 @@ export default function BitumenVersuche({ isEmbedded = false }: BitumenVersucheP
                </figure>
 
                <div className="flex-1 space-y-4">
+                 <ErgebnisAnsage text={testStatus !== 'finished' ? '' : `Bitumen ${sorte}: ${activeTest === 'penetration' ? ansageWert('Nadelpenetration', currentProps.pen, 0, '· 0,1 mm') : ansageWert('Erweichungspunkt Ring und Kugel', currentProps.ruk, 1, '°C')}`} />
                  {testStatus === 'finished' ? (
                    <div className="animate-in fade-in slide-in-from-right-4 space-y-4">
                      <div className="bg-emerald-50 border border-emerald-200 p-4 rounded-xl">

@@ -101,6 +101,8 @@ export default function BpVerkehrswegebau({ initialTab }: BpVerkehrswegebauProps
     return {
       maxDichte: formatDeZahl(e.maxDichte, 3),
       luftporen: formatDeZahl(e.hohlraum, 2),
+      // Zahl für Anzeige, Bewertung und Ansage (vorher Number("4,50") = NaN → Anzeige „–“; Kurzzeilen 04.11.2026)
+      hohlraum: e.hohlraum,
       isOk: e.ok
     };
   }, [asphaltMischung]);

@@ -10,6 +10,7 @@ import {
   BookmarkCheck,
   Zap
 } from 'lucide-react';
+import { ErgebnisAnsage, ansageWert, kurzzeile } from '@/src/components/ui/ErgebnisAnsage';
 
 // Definitions matching the exact scientific building physics standards
 interface ApplicationType {
@@ -358,6 +359,7 @@ export function DaemmungBerater() {
           {/* Metric Dashboard */}
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
             
+            <ErgebnisAnsage text={kurzzeile(ansageWert('U-Wert', u_value, 3, 'W/(m²K)'), meetsGeg ? 'GModG erfüllt' : 'GModG unterschritten', existing.id !== 'none' && ansageWert('Heizenergie-Ersparnis etwa', energySavingsKwh, 'frei', 'kWh/(m²a)'), existing.id !== 'none' && ansageWert('CO₂-Ersparnis etwa', co2SavingsKg, 'frei', 'kg/(m²a)'))} />
             {/* U-Wert Component Result */}
             <div className="bg-white p-4 rounded-xl border border-home-grau/20 shadow-sm flex flex-col justify-between">
               <span className="text-[10px] font-bold text-slate-400 uppercase tracking-widest block">U-WERT (BERECHNET)</span>

@@ -6,6 +6,7 @@ import inhalt from '@/content/messenpruefen/MessunsicherheitTab.json';
 import { MdText } from '@/src/components/inhalt/MdText';
 import { EingabeHinweise } from '@/src/components/ui/EingabeHinweise';
 import type { Hinweis } from '@/src/calc/plausibilitaet';
+import { ErgebnisAnsage, ansageWert, kurzzeile } from '@/src/components/ui/ErgebnisAnsage';
 
 export interface MessunsicherheitTabProps {
   measurements: string;
@@ -159,6 +160,7 @@ export function MessunsicherheitTab({ measurements, setMeasurements, parsedData,
                   <p className="text-[10px] text-slate-500 italic text-right -mt-1 leading-normal font-sans"><MdText text={inhalt.texte.quadratischeAddition} /><FormulaText text="u_c = \sqrt{u_A^2 + u_{B,1}^2 + u_{B,2}^2}" />
                   </p>
                   <EingabeHinweise hinweise={hinweise} />
+                  <ErgebnisAnsage text={kurzzeile(ansageWert('Mittelwert', mean, 3, 'MPa'), ansageWert('erweiterte Messunsicherheit U (k = 2)', expandedU, 3, 'MPa'), `Intervall ${formatDeZahl(minInterval, 3)} bis ${formatDeZahl(maxInterval, 3)} MPa`)} />
 
                 </div>
               ) : (

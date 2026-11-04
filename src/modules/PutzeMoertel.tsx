@@ -15,6 +15,7 @@ import { ModuleTabs, type ModulTab } from '@/src/components/ui/ModuleTabs';
 import { AuswahlGruppe, alsOption } from '../components/ui/Auswahlgruppe';
 import { putzbedarf, mauermoertelNormalfuge, duennbettmoertel, type Putzart, type Wanddicke, type Steinformat } from '@/src/calc/moertelbedarf';
 import { EingabeHinweise } from '@/src/components/ui/EingabeHinweise';
+import { ErgebnisAnsage, ansageWert, kurzzeile } from '@/src/components/ui/ErgebnisAnsage';
 
 interface MortarProduct {
   id: string;
@@ -633,6 +634,7 @@ export default function PutzeMoertel() {
                   </div>
                 </div>
                 <EingabeHinweise hinweise={plasterResult.hinweise} />
+                <ErgebnisAnsage text={kurzzeile(ansageWert('Putz: Trockenmischung', plasterResult.masse, 'frei', 'kg'), ansageWert('Säcke zu 25 kg', plasterResult.saecke, 'frei'), ansageWert('Wasserbedarf', plasterResult.wasser, 'frei', 'Liter'))} />
               </div>
 
               {/* Masonry Normalfuge Panel (Card 2) */}
@@ -711,6 +713,7 @@ export default function PutzeMoertel() {
                   </div>
                 </div>
                 <EingabeHinweise hinweise={normalfugeResult.hinweise} />
+                <ErgebnisAnsage text={kurzzeile(ansageWert('Mauermörtel: Nassvolumen', normalfugeResult.liter, 'frei', 'Liter'), ansageWert('Trockengewicht', normalfugeResult.masse, 'frei', 'kg'), ansageWert('Säcke zu 25 kg', normalfugeResult.saecke, 'frei'))} />
               </div>
 
               {/* Planstein ThinBed Calculator Panel (Card 3) */}
@@ -779,6 +782,7 @@ export default function PutzeMoertel() {
                   </div>
                 </div>
                 <EingabeHinweise hinweise={plansteinResult.hinweise} />
+                <ErgebnisAnsage text={kurzzeile(ansageWert('Dünnbettmörtel', plansteinResult.masse, 'frei', 'kg'), ansageWert('Säcke zu 25 kg', plansteinResult.saecke, 'frei'), ansageWert('Wasserbedarf', plansteinResult.wasser, 'frei', 'Liter'))} />
               </div>
             </div>
           </div>

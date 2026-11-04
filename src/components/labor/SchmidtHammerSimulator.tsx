@@ -7,6 +7,7 @@ import { saveStoredLabProtocol } from '@/src/utils/studyStorage';
 import { rueckprallLehrkurve, rueckprallRichtungskorrektur, rueckprallMesssatz } from '@/src/calc/bauwerksuntersuchung';
 import { Fz } from '../ui/Formelzeichen';
 import { useTabContext } from '@/src/contexts/TabContext';
+import { ErgebnisAnsage, ansageWert, kurzzeile } from '@/src/components/ui/ErgebnisAnsage';
 
 type ImpactAngle = 'horizontal' | 'downward' | 'upward';
 type ConcreteAge = '28d' | '1year' | 'bestand_alt';
@@ -465,6 +466,7 @@ export default function SchmidtHammerSimulator() {
                   <div className="bg-off-white p-2.5 rounded-xl border border-home-grau/25">
                     <span className="text-text-main/60 block text-[11px] uppercase font-bold">Median <Fz>R</Fz></span>
                     <strong className="text-base text-text-main font-mono">{formatDeZahl(stats.median, 1)}</strong>
+                    <ErgebnisAnsage text={stats.count ? kurzzeile(`${formatDeZahl(stats.count, 0)} Schläge`, ansageWert('Median', stats.median, 1), ansageWert('R korrigiert', stats.correctedR, 1), stats.seriesInvalid ? 'Messsatz zu verwerfen' : ansageWert('Schätzwert Druckfestigkeit', stats.estFck, 1, 'MPa')) : ''} />
                   </div>
                   <div className="bg-off-white p-2.5 rounded-xl border border-home-grau/25">
                     <span className="text-text-main/60 block text-[11px] uppercase font-bold">Mittelwert <Fz>R̄</Fz></span>

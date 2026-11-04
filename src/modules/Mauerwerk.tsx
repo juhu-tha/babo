@@ -27,6 +27,7 @@ import { ModuleTabs, type ModulTab } from '@/src/components/ui/ModuleTabs';
 import { AuswahlGruppe, alsOption } from '@/src/components/ui/Auswahlgruppe';
 import { fkEmpfehlungENGenormt, fdAusFk, fvk0NA, phiAusmitte } from '@/src/calc/mauerwerk';
 import { EcKennwerteVerweis } from '@/src/components/ui/EcKennwerteVerweis';
+import { ErgebnisAnsage, ansageWert, kurzzeile } from '@/src/components/ui/ErgebnisAnsage';
 
 ChartJS.register(
   CategoryScale,
@@ -462,6 +463,7 @@ export default function Mauerwerk() {
           <div className="flex flex-col gap-6">
             <div className="bg-shiraz text-white p-6 rounded-xl shadow-md">
               <h3 className="text-sm font-bold uppercase tracking-wider mb-4 opacity-90"><MdText text={inhalt.texte.ergebnisseDruckfestigkeit} /></h3>
+              <ErgebnisAnsage text={kurzzeile(ansageWert('f_k', results.gesperrt ? NaN : results.fk, 2, 'MPa'), ansageWert('f_d', results.gesperrt ? NaN : results.fd, 2, 'MPa'), ansageWert('N_Rd', results.gesperrt ? NaN : results.NRd, 0, 'kN/m'), ansageWert('f_vd', results.fvd, 3, 'MPa'))} />
               <div className="grid grid-cols-2 gap-4 mb-6">
                 <div>
                   <div className="text-white/70 text-sm mb-1"><FormulaText text={inhalt.werte.charaktFestigkeitFK} /></div>
@@ -599,6 +601,7 @@ export default function Mauerwerk() {
               <h4 className={`text-sm font-bold mb-2 ${results.overlapValid ? 'text-slate-800' : 'text-shiraz'}`}>
                 Überbindemaß-Kontrolle
               </h4>
+              <ErgebnisAnsage text={kurzzeile(ansageWert('Überbindemaß vorhanden', results.actualOverlap, 0, 'mm'), ansageWert('erforderlich', results.minOverlap, 0, 'mm'), results.overlapValid ? 'eingehalten' : 'nicht eingehalten')} />
               <div className="flex justify-between text-sm mb-1">
                 <span className="text-text-main/70"><MdText text={inhalt.texte.erforderlichMin} /></span>
                 <span className="font-bold">{formatDeZahl(results.minOverlap, 0)} mm</span>

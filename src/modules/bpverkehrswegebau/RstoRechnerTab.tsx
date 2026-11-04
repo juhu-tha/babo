@@ -7,6 +7,7 @@ import { TrendingUp, AlertTriangle, Milestone } from 'lucide-react';
 import { type RstoProfile } from './daten';
 import inhalt from '@/content/bpverkehrswegebau/RstoRechnerTab.json';
 import { MdText } from '@/src/components/inhalt/MdText';
+import { ErgebnisAnsage, ansageWert } from '@/src/components/ui/ErgebnisAnsage';
 
 export interface RstoRechnerTabProps {
   activeProfile: RstoProfile;
@@ -116,6 +117,7 @@ export default function RstoRechnerTab({ activeProfile, bauweise, belastungsKlas
             <p className="text-xs text-text-main/70 leading-relaxed mb-4 italic">
               {activeProfile.description}
             </p>
+            <ErgebnisAnsage text={`${bauweise === 'asphalt' ? 'Asphaltbauweise' : 'Betonbauweise'}, ${belastungsKlasse}: ${ansageWert('Gesamtdicke', activeProfile.totalThickness, 'frei', 'cm')}, ${activeProfile.layers.map(l => `${l.name} ${formatDeWert(l.thickness)} cm`).join(', ')}`} />
 
             {/* Profil-Stapel */}
             <div className="flex flex-col gap-1.5 border border-zinc-200/50 p-3 rounded-lg bg-zinc-50 shadow-inner">

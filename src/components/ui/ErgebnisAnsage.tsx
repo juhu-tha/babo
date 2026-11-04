@@ -1,4 +1,5 @@
 import React, { useEffect, useId, useSyncExternalStore } from 'react';
+import { formatDeWert } from '@/src/utils/numberFormat';
 
 /**
  * Kurze Statusmeldung des Hauptergebnisses eines Rechners für Screenreader (WCAG 4.1.3, aria-live="polite").
@@ -33,6 +34,27 @@ export function buendelText(geaendert: readonly string[]): string {
   const kopf = ansageText(geaendert[0]);
   const platz = ANSAGE_MAX - zusatz.length;
   return `${kopf.length > platz ? `${kopf.slice(0, platz - 1).trimEnd()}…` : kopf}${zusatz}`;
+}
+
+/**
+ * Ein Wert für eine Kurzzeile (Kurzzeilen 04.11.2026): „Name Zahl Einheit“, deutsch formatiert (Dezimalkomma,
+ * Tausender ab 5 Stellen mit U+202F); bei ungültiger Eingabe (NaN, ±∞, null) „Name –“ ohne Einheit.
+ *   ansageWert('Druckfestigkeit', 31.6, 1, 'MPa') → „Druckfestigkeit 31,6 MPa“
+ */
+export function ansageWert(name: string, wert: number | null | undefined, stellen: number | 'frei', einheit = ''): string {
+  if (wert === null || wert === undefined || !Number.isFinite(wert)) return `${name} –`;
+  // 'frei': wie die Anzeige mit formatDeWert (bis 6 Nachkommastellen, Tausender ab 5 Stellen mit U+202F)
+  if (stellen === 'frei') return `${name} ${formatDeWert(wert).replace('-', '−')}${einheit ? ` ${einheit}` : ''}`;
+  const z = new Intl.NumberFormat('de-DE', { minimumFractionDigits: stellen, maximumFractionDigits: stellen, useGrouping: false })
+    .format(Number(wert.toFixed(stellen)) || 0);   // gerundet null ohne Vorzeichen
+  const ganz = z.replace(/^-/, '').split(',')[0];
+  const gruppiert = ganz.length >= 5 ? z.replace(/\d+/, g => g.replace(/\B(?=(\d{3})+$)/g, ' ')) : z;
+  return `${name} ${gruppiert.replace('-', '−')}${einheit ? ` ${einheit}` : ''}`;
+}
+
+/** Kurzzeile aus Teilen: leere Teile entfallen, Trennung mit Komma. */
+export function kurzzeile(...teile: Array<string | false | null | undefined>): string {
+  return teile.filter(Boolean).join(', ');
 }
 
 interface Planer { setTimeout: (f: () => void, ms: number) => number; clearTimeout: (id: number) => void }

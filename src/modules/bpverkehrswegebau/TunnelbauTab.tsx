@@ -5,6 +5,7 @@ import { Calculator, HardHat } from 'lucide-react';
 import inhalt from '@/content/bpverkehrswegebau/TunnelbauTab.json';
 import { MdText } from '@/src/components/inhalt/MdText';
 import { spritzbetonRing } from '@/src/calc/verkehrswegebau';
+import { ErgebnisAnsage, ansageWert, kurzzeile } from '@/src/components/ui/ErgebnisAnsage';
 
 export interface TunnelbauTabProps {
   betonKlasse: 'C20/25' | 'C25/30' | 'C30/37';
@@ -139,6 +140,7 @@ export default function TunnelbauTab({ betonKlasse, gebirgsdruck, setBetonKlasse
 
               return (
                 <div className="p-4 bg-zinc-50 border border-zinc-200 rounded-lg space-y-3 mt-4 text-xs font-sans">
+                  <ErgebnisAnsage text={kurzzeile(ansageWert('Ringdruckspannung', sigma_ring, 2, 'MPa'), ansageWert('f_cd', f_cd, 2, 'MPa'), ansageWert('Auslastung', utilization, 1, '%'), Number.isFinite(utilization) && (isSafe ? 'Nachweis erfüllt' : 'Nachweis nicht erfüllt'))} />
                   <div className="grid grid-cols-2 font-mono gap-y-1">
                     <div className="text-zinc-500 font-bold"><MdText text={inhalt.texte.ringdruckkraftNRing} /></div>
                     <div className="text-right font-bold text-zinc-950">{formatDeZahl(ring.ringKraftKnM, 1)} kN/m</div>

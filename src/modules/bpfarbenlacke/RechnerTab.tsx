@@ -5,6 +5,7 @@ import { formatDeZahl, formatDeWert } from '@/src/utils/numberFormat';
 import { FormulaText } from '@/src/components/ui/FormulaText';
 import inhalt from '@/content/bpfarbenlacke/RechnerTab.json';
 import { MdText } from '@/src/components/inhalt/MdText';
+import { ErgebnisAnsage, ansageWert, kurzzeile } from '@/src/components/ui/ErgebnisAnsage';
 
 export interface RechnerTabProps {
   targetDft: number;
@@ -199,6 +200,7 @@ export function RechnerTab({ targetDft, setTargetDft, solidsVol, setSolidsVol, t
                 <div className="text-3xl font-black font-mono text-shiraz block py-1">
                   {formatDeZahl(totalLitersRequired, 2)} Liter
                 </div>
+                <ErgebnisAnsage text={kurzzeile(ansageWert('Nassschichtdicke verdünnt', thinnedWft, 1, 'µm'), ansageWert('Verbrauch effektiv', effectiveConsumption, 0, 'ml/m²'), ansageWert('Farbmenge gesamt', totalLitersRequired, 2, 'Liter'))} />
                 <div className="text-[10px] text-text-main/60 inline-flex items-center gap-1.5 max-w-sm px-2 text-center">
                   <Check className="text-emerald-600 flex-none" size={12} />
                   <span><MdText text={inhalt.texte.empfohleneGebindebestellung} /><strong>{formatDeWert(Math.ceil(totalLitersRequired / 10))}<MdText text={inhalt.texte.eimer10Liter} /></strong> (oder {formatDeWert(Math.ceil(totalLitersRequired / 2.5))}<MdText text={inhalt.texte.eimer25Liter} /></span>
