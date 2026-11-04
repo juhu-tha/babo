@@ -28,9 +28,16 @@ const sofort = new Set<() => void>();
 // vor Formeln und Diagrammen (src/lib/druckVorbereitung.ts): erscheinende Abschnitte enthalten oft beides
 beimDrucken(STUFE.abschnitte, () => { if (sofort.size) flushSync(() => sofort.forEach(f => f())); });
 
-export function NachErstemBild({ children, minHoehe }: { children: React.ReactNode; /** Platzhalterhöhe (≈ spätere Höhe) */ minHoehe?: number | string }) {
+export function NachErstemBild({ children, minHoehe, statisch = false }: {
+  children: React.ReactNode;
+  /** Platzhalterhöhe (≈ spätere Höhe) */
+  minHoehe?: number | string;
+  /** Beim Vorrendern (ohne window) den Inhalt statt des Platzhalters ausgeben: für Abschnitte, die schon in der
+   *  vorgerenderten Seite stehen (scripts/vorrendern.ts). Im Browser gilt dieselbe Regel wie ohne. */
+  statisch?: boolean;
+}) {
   const ref = React.useRef<HTMLDivElement>(null);
-  const [bereit, setBereit] = React.useState(false);
+  const [bereit, setBereit] = React.useState(() => statisch && typeof window === 'undefined');
   // aus der Reihe freigegeben → nach dem Einhängen den nächsten Abschnitt anstoßen
   const ausReihe = React.useRef(false);
   React.useLayoutEffect(() => {

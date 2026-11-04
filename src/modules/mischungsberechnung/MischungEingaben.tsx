@@ -109,6 +109,9 @@ export default function MischungEingaben({ applyWalzSandReduction, bauteil, bioc
   return (
     <div className="flex flex-col gap-6">
 
+      {/* Mobil liegen schon die ersten Karten unterhalb des Bildausschnitts → nach dem ersten Bild, je Karte eine
+          Task (TBT 04.11.2026); in der vorgerenderten Seite stehen sie weiter (statisch) */}
+      <NachErstemBild minHoehe="7.5rem" statisch>
       {/* Vorgegebene Rezepturen */}
       <div className="bg-off-white p-5 rounded-xl border border-home-grau/30">
         <h3 className="font-semibold mb-4 text-text-main flex items-center gap-2">
@@ -130,7 +133,9 @@ export default function MischungEingaben({ applyWalzSandReduction, bauteil, bioc
           </select>
         </div>
       </div>
+      </NachErstemBild>
 
+      <NachErstemBild minHoehe="46rem" statisch>
       {/* Expositionsklassen & Bauteil */}
       <div className="bg-off-white p-5 rounded-xl border border-home-grau/30">
         <h3 className="font-semibold mb-4 text-text-main"><MdText text={inhalt.texte.expositionsklassenBauteil} /></h3>
@@ -226,6 +231,7 @@ export default function MischungEingaben({ applyWalzSandReduction, bauteil, bioc
           </div>
         )}
       </div>
+      </NachErstemBild>
 
       <NachErstemBild minHoehe="40rem">
       {/* Zement & Wasser */}

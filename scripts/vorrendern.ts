@@ -19,6 +19,7 @@ import fs from 'fs';
 import path from 'path';
 import { pathToFileURL, fileURLToPath } from 'url';
 import { erzeugeSchale, KOPF_ANKER } from './startSchale';
+import { kritischEntfernen } from './kritischesCss';
 import { zerlege, zusammensetzen, kuerze, finde, attr, maskiere, type Knoten, type Budget } from './vorrendernHtml';
 import { modulPfad } from '../src/routing/pfad';
 
@@ -154,7 +155,8 @@ export function baueSeite(vorlage: string, startRoot: string, route: RouteInfo, 
   // Modultitel (baum.titel) wie der Fenstertitel der App (Regel Modultitel 03.11.2026, docs/architektur.md)
   const titel = maskiere(`BaustoffBoard THA - ${route.titel ?? route.label}`);
   const url = maskiere(BASIS_URL + modulPfad(route.id));
-  let s = vorlage.replace(startRoot, () => `<div id="root"><div data-schale inert>${schale}</div></div>`);
+  // Kritisches CSS gilt nur für die Startseiten-Schale: Stylesheet wieder in den Kopf (scripts/kritischesCss.ts)
+  let s = kritischEntfernen(vorlage).replace(startRoot, () => `<div id="root"><div data-schale inert>${schale}</div></div>`);
   // vor dem Inline-Skript startschale-boot.js (direkt hinter <meta charset>), das die Kennung liest
   s = s.replace(KOPF_ANKER, () => `${KOPF_ANKER}\n    <meta name="bb-vorgerendert" content="${maskiere(route.id)}"${nurHell ? ` ${NUR_HELL}` : ''}${nurBreit ? ` ${NUR_BREIT}` : ''} />`);
   s = ersetze(s, /<title>[\s\S]*?<\/title>/, `<title>${titel}</title>`, '<title>');

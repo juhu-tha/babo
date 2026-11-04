@@ -44,6 +44,8 @@ interface MischungErgebnisseProps {
 export default function MischungErgebnisse({ betonMengeL, biochar, dmax, expClasses, fa, feuchte04, feuchte1632, feuchte48, feuchte816, feuchteBiochar, hues, lineChartData, sieblinienBereich, luft, pieChartData, ppFaser, results, rhoGestein, setBetonMengeL, sf, stahlfaser, zement, zementArt, zementFestigkeit, zusatzmittel }: MischungErgebnisseProps) {
   return (
     <div className="flex flex-col gap-6">
+      {/* mobil unterhalb des Bildausschnitts: nach dem ersten Bild (TBT 04.11.2026), vorgerendert unverändert */}
+      <NachErstemBild minHoehe="60rem" statisch>
       <div className="bg-shiraz text-white p-6 rounded-xl shadow-md">
         <h3 className="text-sm font-bold uppercase tracking-wider mb-4 opacity-90"><FormulaText text={inhalt.werte.ergebnisseProMBeton} /></h3>
 
@@ -179,6 +181,7 @@ export default function MischungErgebnisse({ betonMengeL, biochar, dmax, expClas
           </div>
         </div>
       </div>
+      </NachErstemBild>
 
       <NachErstemBild minHoehe="30rem">
       {/* Live-Rechenweg (AP 3.7): Stoffraumrechnung mit den aktuellen Eingaben */}

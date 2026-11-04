@@ -133,6 +133,10 @@ function AppContent({ vorgerendert = false, vorrendern = false }: Omit<AppProps,
     }
   });
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  // Schmale Ansicht: Menüeinträge erst ab dem ersten Öffnen zeichnen (content-visibility, src/index.css „Seitenleiste“);
+  // vorher ist die Seitenleiste ohnehin inert – spart Stil und Layout beim ersten Rendern (TBT 04.11.2026)
+  const [menueWarOffen, setMenueWarOffen] = useState(false);
+  useEffect(() => { if (mobileMenuOpen) setMenueWarOffen(true); }, [mobileMenuOpen]);
   const [mobilWerkzeugeOffen, setMobilWerkzeugeOffen] = useState(false);
   useAutoFormLabels('module-content', activeTab);
   useEffect(() => { setMobilWerkzeugeOffen(false); }, [activeTab]);
@@ -355,6 +359,7 @@ function AppContent({ vorgerendert = false, vorrendern = false }: Omit<AppProps,
       id="seitenleiste"
       aria-label={language === 'en' ? 'Module navigation' : 'Modulnavigation'}
       inert={(istSchmal && !mobileMenuOpen) || (!istSchmal && sidebarCollapsed) ? true : undefined}
+      data-war-offen={menueWarOffen || mobileMenuOpen ? '' : undefined}
       className={"fixed md:sticky top-0 left-0 z-50 h-screen bg-white dark:bg-slate-900 border-r border-home-grau/30 dark:border-slate-800 flex flex-col flex-shrink-0 transition-all duration-300 ease-in-out overflow-hidden " + 
       (sidebarCollapsed ? "md:w-0 md:opacity-0 md:pointer-events-none md:border-r-0" : "md:w-72 md:opacity-100") + " " +
       (mobileMenuOpen ? "translate-x-0 w-72" : "-translate-x-full md:translate-x-0 w-72")}>

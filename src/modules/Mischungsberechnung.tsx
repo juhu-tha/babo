@@ -534,7 +534,8 @@ export default function Mischungsberechnung() {
       <CalculatorDisclaimerBanner className="my-2" />
       <ModulTest moduleId="mischungsberechnung" />
 
-      <ModuleFooter 
+      <NachErstemBild minHoehe="56rem">
+      <ModuleFooter
         weblinks={[
           { title: inhalt.werte.betonWikiMischungsberechnung, url: "https://beton.wiki/index.php?title=Mischungsberechnung" }, 
           { title: inhalt.werte.zementMerkblattB12Entwurf, url: "https://www.beton.org/betonbau/planungshilfen/zementmerkblaetter/" }, 
@@ -549,6 +550,7 @@ export default function Mischungsberechnung() {
         regelwerke={inhalt.daten["Mischungsberechnung.regelwerke"]}
         formeln={inhalt.daten["Mischungsberechnung.formeln"]}
       />
+      </NachErstemBild>
     </div>
   );
 } 

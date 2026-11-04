@@ -41,8 +41,22 @@ export function umgruppiereDe(s: string): string {
  */
 export function formatDeIntl(val: number | null | undefined, optionen: Intl.NumberFormatOptions = {}): string {
   if (val === null || val === undefined || !Number.isFinite(val)) return '–';
-  const ohne = val.toLocaleString('de-DE', { ...optionen, useGrouping: false });
+  const ohne = formatierer(optionen).format(val);
   return optionen.useGrouping === false ? ohne : gruppiere(ohne);
+}
+
+// Formatierer je Optionensatz wiederverwenden: `toLocaleString` legt bei jedem Aufruf intern ein neues
+// Intl.NumberFormat an (teuer; beim ersten Rendern der Rechnerseiten mehrere hundert Aufrufe, TBT 04.11.2026).
+// Ergebnis identisch: `x.toLocaleString(l, o)` ist als `new Intl.NumberFormat(l, o).format(x)` definiert.
+const FORMATIERER = new Map<string, Intl.NumberFormat>();
+function formatierer(optionen: Intl.NumberFormatOptions): Intl.NumberFormat {
+  const schluessel = JSON.stringify(optionen);
+  let f = FORMATIERER.get(schluessel);
+  if (!f) {
+    f = new Intl.NumberFormat('de-DE', { ...optionen, useGrouping: false });
+    if (FORMATIERER.size < 200) FORMATIERER.set(schluessel, f);
+  }
+  return f;
 }
 
 export function formatDeZahl(

@@ -9,6 +9,7 @@ import {bedarfsLadenPlugin} from './scripts/bedarfsLaden';
 import {inhaltEinbettenPlugin} from './scripts/inhaltEinbetten';
 import {registryKernPlugin} from './scripts/registryKern';
 import {startSchalePlugin} from './scripts/startSchale';
+import {kritischesCssPlugin} from './scripts/kritischesCss';
 import {vorrendernPlugin} from './scripts/vorrendernPlugin';
 import {auditDatenPlugin} from './scripts/auditDaten';
 import {sitemapStandPlugin} from './scripts/sitemapStand';
@@ -33,7 +34,7 @@ export default defineConfig(() => {
     // auditDatenPlugin: Kennzahlen des Admin-Bereichs „Audit“ aus dem Quelltext (virtual:audit-daten, dist/audit-bundle.json)
     // sitemapStandPlugin: dist/sitemap.xml mit <lastmod> = Build-Datum (public/sitemap.xml ohne lastmod)
     // vorrendernPlugin: nach dem Build je Modul dist/modul/<id>.html vorrendern (Z52, scripts/vorrendern.ts)
-    plugins: [inhaltEinbettenPlugin(), bedarfsLadenPlugin(), registryKernPlugin(), react(), tailwindcss(), quizPoolPlugin(), modulKopfPlugin(), modulVorladenPlugin(), startSchalePlugin(), auditDatenPlugin(), sitemapStandPlugin(() => stand), vorrendernPlugin()],
+    plugins: [inhaltEinbettenPlugin(), bedarfsLadenPlugin(), registryKernPlugin(), react(), tailwindcss(), quizPoolPlugin(), modulKopfPlugin(), modulVorladenPlugin(), startSchalePlugin(), kritischesCssPlugin(), auditDatenPlugin(), sitemapStandPlugin(() => stand), vorrendernPlugin()],
     // Hinweis: GEMINI_API_KEY wird bewusst NICHT per `define` in das Frontend geschrieben.
     // Der Schlüssel wird nur im Server (server.ts) verwendet.
     resolve: {

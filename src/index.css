@@ -1130,6 +1130,14 @@ html:not(.dark) :is(.text-slate-400, .text-gray-400, .text-slate-500, .text-gray
   #module-content [class*="-mx-"] { margin-left: 0; margin-right: 0; }
 }
 
+/* Seitenleiste in der schmalen Ansicht (TBT 04.11.2026, docs/pruefung/perf-tbt-2026-11-04.md): Bis zum ersten
+   Öffnen des Menüs ist sie inert (nicht bedien- und nicht vorlesbar) und liegt außerhalb des Bildes – ihre
+   Menüeinträge bekommen dann weder Stil noch Layout. Ab dem ersten Öffnen (data-war-offen) gilt die Regel nicht
+   mehr, auch nicht beim Hinausgleiten. */
+@media (width < 48rem) {
+  #seitenleiste[inert]:not([data-war-offen]) > nav { content-visibility: hidden; }
+}
+
 /* Mindestgröße für Bedienelemente auf Touch-Geräten: 24 × 24 px (WCAG 2.2, 2.5.8; AP 2.7) */
 @media (pointer: coarse), (max-width: 640px) {
   #module-content button, header button, #module-content select,
