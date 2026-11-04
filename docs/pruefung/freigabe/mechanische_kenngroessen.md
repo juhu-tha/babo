@@ -21,7 +21,7 @@ Komponente `src/modules/MechanischeKenngroessen.tsx`; Inhalt `content/mechanisch
 | Kern | Tests (Zahl der Prüfungen) | Referenzwerte |
 |---|---|---|
 | `src/calc/mechanischeKenngroessen.ts` | `tests/mechanischeKenngroessen.test.ts` (22), `tests/modulpruefungTranche10.test.ts` (104) | S235, Ø 25 mm, L = 3 m, F = 80 kN: σ = 162,97 N/mm², ε = 0,776 ‰, ΔL = 2,33 mm, F_K = 4,42 kN |
-| `src/calc/kriechenSchwinden.ts` | `tests/kriechenSchwinden.test.ts` (46), `tests/modulpruefungTranche10.test.ts` (104), `tests/tranche16.test.ts` (45) | SOFiSTiK-Verifikation C35/45, RH 80 %, h₀ = 500 mm: φ(t,t₀)/1,05 = 1,393, Δε_cs = 18,85·10⁻⁵; Relaxation Klasse 2, μ = 0,7, 1 000 h: 0,96 % |
+| `src/calc/kriechenSchwinden.ts` | `tests/kriechenSchwinden.test.ts` (46), `tests/modulpruefungTranche10.test.ts` (104), `tests/tranche16.test.ts` (45) | SOFiSTiK-Verifikation C35/45, RH 80 %, h₀ = 500 mm: φ(t,t₀)/1,05 = 1,393, Δε_cs = 18,85·10⁻⁵; Relaxation Klasse 2, μ = 0,7, 1000 h: 0,96 % |
 
 ## Bisherige Befunde
 
@@ -56,10 +56,10 @@ DIN EN 1992-1-1 (3.1.4, 3.3.2, Anhang B), DIN EN 1996-1-1/NA (Verformungskennwer
 
 ## Prüfschritte für die Freigabe (ca. 15 min)
 
-1. Beispiel 1: S235, d = 30 mm, L = 4 m, F = 120 kN → A = 706,86 mm², EA = 148,44 MN, σ = 169,77 N/mm², ΔL = 3,234 mm, Δd = −7,3 µm, U = 194,0 J; G = 80 769, K = 175 000 N/mm².
-2. C24 100/200 mm, L = 3 m, Druck 50 kN: I_min = 1,667·10⁷ mm⁴, F_K = 201,0 kN, σ = −2,5 N/mm².
+1. Beispiel 1: S235, d = 30 mm, L = 4 m, F = 120 kN → A = 706,86 mm², EA = 148,44 MN, σ = 169,77 N/mm², ΔL = 3,234 mm, Δd = −7,3 µm, U = 194,0 J; G = 80 769, K = 175 000 N/mm².
+2. C24 100/200 mm, L = 3 m, Druck 50 kN: I_min = 1,667·10⁷ mm⁴, F_K = 201,0 kN, σ = −2,5 N/mm².
 3. Kriechen mit E_c = 1,05·E_cm (EC 2, 3.1.4(3)): Rechteck 30 × 60 mm, C30/37, 20 kN, φ = 2,2, ε_s = 0,45 ‰ → ΔL_ges = −1,010·3,2 − 1,35 = −4,58 mm.
-4. Relaxation Klasse 2 (Litze, niedrig), μ = 0,7, 1 000 h → 0,96 %; Klasse 1 → 4,69 %; Klasse 3 → 2,14 %.
+4. Relaxation Klasse 2 (Litze, niedrig), μ = 0,7, 1000 h → 0,96 %; Klasse 1 → 4,69 %; Klasse 3 → 2,14 %.
 5. Endkriechzahlen Mauerwerk: Leichtbeton 1,5–2,5, Kalksandstein 1,0–2,0, Porenbeton 0,5 (0,2–0,7) gegen die Tabelle des NA zu DIN EN 1996-1-1 prüfen (T10-MK-5a/b).
 6. Werkstoffmatrix Holz C24: ν = 0,05 und ε_cs = −0,20 ‰ längs (`content/mechanischekenngroessen/daten.json:10`) sowie Elastomerlager „bis etwa 70 %“ – als vorläufige Lehrwerte gekennzeichnet; Quelle eintragen oder Kennzeichnung als ausreichend werten (T10-MK-6a–c).
 

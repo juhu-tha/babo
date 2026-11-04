@@ -47,7 +47,7 @@ VO (EU) 2024/3110 (BauPVO, anwendbar seit 08.01.2026), VO (EU) 305/2011, DIN 104
 
 ## Prüfschritte für die Freigabe (ca. 15 min)
 
-1. Feuchtekorrektur: 1 000 kg Sand mit 4 % Eigenfeuchte → 1 040 kg einwiegen, Zugabewasser 125 kg; ohne Korrektur w/z = 0,683.
+1. Feuchtekorrektur: 1000 kg Sand mit 4 % Eigenfeuchte → 1040 kg einwiegen, Zugabewasser 125 kg; ohne Korrektur w/z = 0,683.
 2. Konformität Erstherstellung: f_cm = 41,0 ≥ f_ck + 4 = 41 und f_ci,min = 39 ≥ f_ck − 4 = 33 → erfüllt.
 3. System 2+: notifizierte Stelle stellt das Zertifikat der Konformität der WPK aus (T15-PR-2).
 4. RC-Höchstanteile Typ 1 25–45, Typ 2 20–35 Vol.-% je Expositionsklasse (vorläufig) – wie `grundlagen` am Anhang E prüfen.

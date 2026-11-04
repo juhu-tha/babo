@@ -30,7 +30,7 @@ Komponente `src/modules/Labor.tsx`; Inhalt `content/bitumenversuche/BitumenVersu
 
 | Kennung | Befund | Status | Fundstelle |
 |---|---|---|---|
-| T4 Nr. 11 | Stichprobe des Formelkerns je Simulator (rund 6 500 Zeilen), Betonkennwerte nach Tab. 3.1 | keine Befunde | T4 (`module-tranche-4.md`) (Nr. 11) |
+| T4 Nr. 11 | Stichprobe des Formelkerns je Simulator (rund 6500 Zeilen), Betonkennwerte nach Tab. 3.1 | keine Befunde | T4 (`module-tranche-4.md`) (Nr. 11) |
 | T4-PN-2 | Schmidt-Hammer nutzt die Verwerfungsregel des Messsatzes (6 Einheiten, 20 %) → im Freigabeabschnitt 29.10. als Grund genannt, im Prüfbogen nur `probenahme` zugeordnet | offen (Normtext) | T4 (`module-tranche-4.md`), Freigabe 29.10. |
 | Befund 04.11. | Ausgabenzuordnung der Verwerfungsregel widersprüchlich: Kern-Hinweis und Simulator nennen „6 Einheiten nach DIN EN 12504-2:2012; nach Sekundärquellen nennt die Ausgabe 2021-10 25 % des Medians“ (`src/calc/bauwerksuntersuchung.ts:129`); Kernkopf, `Probenahme.json` und `pruefverfahrenData.json` schreiben die 6-Einheiten-Regel der Ausgabe 2021-10 zu | offen (klärt sich mit T4-PN-2 am Normtext) | `bearbeitungsvermerke-2026-11-02.md`, Nr. 34/35 und „Offen“ |
 
@@ -52,9 +52,9 @@ DIN EN 12390-3/-6/-13, DIN EN 12504-2:2021-10, DIN EN 1992-1-1 Tab. 3.1; Herstel
 
 ## Prüfschritte für die Freigabe (ca. 15 min)
 
-1. Haftzug (Beispiel 1): Ø 50 mm, 3,20 kN → A = 1 963,5 mm², f_h = 1,63 N/mm²; Laststeigerung 0,05 MPa/s ≙ 98 N/s.
-2. E-Modul (Beispiel 2): f_c = 38,0 N/mm², σ_a = f_c/3 = 12,67, σ_b = 3,8 N/mm², Δε = 2,70·10⁻⁴ → E_C,S = 32 840 N/mm².
-3. Spaltzug C30/37, Zylinder 150/300 mm: F = f_ct,sp·π·d·l/2 = 3,22·π·150·300/2 000 = 227,6 kN.
+1. Haftzug (Beispiel 1): Ø 50 mm, 3,20 kN → A = 1963,5 mm², f_h = 1,63 N/mm²; Laststeigerung 0,05 MPa/s ≙ 98 N/s.
+2. E-Modul (Beispiel 2): f_c = 38,0 N/mm², σ_a = f_c/3 = 12,67, σ_b = 3,8 N/mm², Δε = 2,70·10⁻⁴ → E_C,S = 32 840 N/mm².
+3. Spaltzug C30/37, Zylinder 150/300 mm: F = f_ct,sp·π·d·l/2 = 3,22·π·150·300/2000 = 227,6 kN.
 4. Biegezug: Hebelarm L/6 (4-Punkt) bzw. L/4 (3-Punkt) im Moment M = F·L/6 bzw. F·L/4.
 5. Schmidt-Hammer: Verwerfungskriterium „> 20 % der Einzelwerte mehr als 6 Einheiten vom Median“ (`src/calc/bauwerksuntersuchung.ts:109`) gegen DIN EN 12504-2:2021-10 prüfen – Sekundärquellen nennen für 2021-10 „25 % des Medians“.
 

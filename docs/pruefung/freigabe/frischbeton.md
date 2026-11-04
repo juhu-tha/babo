@@ -55,7 +55,7 @@ DIN EN 206:2021-06, 5.4.3 (obere LP-Grenze, öffentlich wiedergegeben bei Glinic
 1. Rechenbeispiel LP: XF4, D_max = 32 mm, Ablesung 4,8 %, Gesteinskorrektur G = 0,2 % → L = 4,6 %; Mindestwert 4,0 %, Einzelwert ≥ 3,5 %, obere Grenze 8,0 %, oberer Einzelwert 9,0 % → erfüllt.
 2. Quizfall `qn_frischbeton_4` (nicht freigegeben): XF4, D_max = 16 mm, L = 9,0 % → obere Grenze 8,5 % überschritten, als Einzelwert bis 9,5 % zulässig.
 3. XF2, D_max = 8 mm: Mindestwert 5,5 %, Einzelwert ≥ 5,0 % → L = 5,2 / 5,0 / 4,9 % ergibt Grenzbereich / Grenzbereich / unterschritten.
-4. Frischbetonrohdichte: m₁ = 10,2 kg, m₂ = 29,1 kg, V = 8 l → D = 2 362,5 kg/m³.
+4. Frischbetonrohdichte: m₁ = 10,2 kg, m₂ = 29,1 kg, V = 8 l → D = 2362,5 kg/m³.
 5. Toleranzprüfer Konsistenz: Staffeln Setzmaß ±10/±20/±30/±40 mm und Ausbreitmaß ±20/±30/±40 mm am Normtext DIN EN 206 bestätigen (T3-FB-2).
 
 ## Empfehlung

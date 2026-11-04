@@ -63,11 +63,11 @@ export const FACHGEBIETE: readonly { name: string; datei: RegExp; text: RegExp }
   { name: 'Geotechnik', datei: /boden|atterberg/i, text: /Fließgrenze|Atterberg|17892|DIN 18122|14688|Zustandsform|ZTV E-StB/ },
   { name: 'Nachhaltigkeit (LCA/LCC)', datei: /lca|lcc|materialoptimierung|oekobilanz|modulD|dafstb|cbam|energieausweis/i, text: /QNG|ÖKOBAUDAT|Ökobilanz|Restwert|Modul D|EN 15804|KrWG|CBAM|GModG|DIN\/TS 18599/ },
   { name: 'Stahl & Korrosionsschutz', datei: /korrosionsschutz|eisenKohlenstoff|stahlbau/i, text: /ISO 12944|DIN EN 10025|Eisen-Kohlenstoff/ },
-  { name: 'Prüfverfahren & Bauwerksdiagnostik', datei: /pruefverfahren|bauwerksuntersuchung|karsten|zfp|zustandsbewertung/i, text: /Prüfverfahren|Rückprall|Karsten|DIN EN 13791|ACI 214/ },
+  { name: 'Prüfverfahren & Bauwerksdiagnostik', datei: /pruefverfahren|bauwerksuntersuchung|karsten|zfp|zustandsbewertung|bohrkernserie/i, text: /Prüfverfahren|Rückprall|Karsten|DIN EN 13791|ACI 214|Bohrkern|Prüfbereich/ },
   { name: 'Verkehrswege- & Tunnelbau', datei: /verkehrswegebau|tunnel|tiefbau|asphalt/i, text: /Tunnel|ZTV-ING|RStO|DWA-A 138|Rigole|f_Ort|ZTV Asphalt|Bitumen|TL Gestein|DIN EN 13450|Beton-StB/ },
   { name: 'Bauen im Bestand & Aufmaß', datei: /bauwerkserfassung|altbau|denkmal|historisch/i, text: /DIN 18202|Aufmaß|Bauaufnahme/ },
   { name: 'Bauprodukte', datei: /bauprodukte|^Bp[A-Z]/, text: /Lehmstein|DIN 1894[0-8]|Fugenband|DIN 18533|DIN 18534|DIN 18365|DIN 18540/ },
-  { name: 'Beton & Stahlbeton', datei: /biegung|verankerung|durchstanzen|stuetze|querkraft|kennwerte|mischung|hydratation|festbeton|spannbeton|beton|lebensdauer|brandschutz|frischbeton|exposition/i, text: /Konsistenz|Luftgehalt|DIN EN 206|DIN EN 1992|DIN 1045|Verankerung|l_b,rqd|α₆|Tab\. 8\.3DE|DIN EN 197|C55\/67|C90\/105|fib Bulletin 34|Reifefunktion|de Vree|Karbonatisierung|Chlorid|Stahlbetonbauteile|Alkali-Richtlinie|DIN EN 1504|Betonbauwerk|f_ctm/ },
+  { name: 'Beton & Stahlbeton', datei: /biegung|verankerung|durchstanzen|stuetze|querkraft|kennwerte|mischung|hydratation|festbeton|spannbeton|beton|lebensdauer|brandschutz|frischbeton|exposition/i, text: /Konsistenz|Luftgehalt|DIN EN 206|DIN EN 1992|DIN 1045|Verankerung|l_b,rqd|α₆|Tab\. 8\.3DE|DIN EN 197|C55\/67|C90\/105|fib Bulletin 34|Reifefunktion|de Vree|Karbonatisierung|Chlorid|Stahlbetonbauteile|Alkali-Richtlinie|DIN EN 1504|Betonbauwerk|f_ctm|WU-Richtlinie/ },
 ];
 export const FACHGEBIET_SONST = 'Weitere';
 

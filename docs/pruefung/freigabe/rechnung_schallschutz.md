@@ -22,7 +22,7 @@ Komponente `src/modules/Beispielrechnungen.tsx`; Inhalt `content/beispielrechnun
 
 | Kern | Tests (Zahl der Prüfungen) | Referenzwerte |
 |---|---|---|
-| `src/calc/schall.ts` | `tests/schall.test.ts` (38), `tests/modulpruefungTranche1.test.ts` (46), `tests/modulpruefungTranche3.test.ts` (60), `tests/quizRechenfragen.test.ts` (43) | KS 17,5 cm, ρ = 2 000 kg/m³, Putz 40 kg/m²: m′ = 390 kg/m², R_w = 57,9 dB, R′_w = 55,9 dB (K_F = 2 dB) |
+| `src/calc/schall.ts` | `tests/schall.test.ts` (38), `tests/modulpruefungTranche1.test.ts` (46), `tests/modulpruefungTranche3.test.ts` (60), `tests/quizRechenfragen.test.ts` (43) | KS 17,5 cm, ρ = 2000 kg/m³, Putz 40 kg/m²: m′ = 390 kg/m², R_w = 57,9 dB, R′_w = 55,9 dB (K_F = 2 dB) |
 
 Die Quizfragen `qn_rechnung_schallschutz_1` bis `_3` werden in `tests/quizRechenfragen.test.ts` gegen den Kern nachgerechnet.
 
@@ -51,9 +51,9 @@ DIN 4109-32:2016-07 (Massekurve), DIN 4109-1:2018-01 (Anforderungen). Befundlist
 
 ## Prüfschritte für die Freigabe (ca. 15 min)
 
-1. m′ = 0,175 m · 2 000 kg/m³ + 40 kg/m² = 390 kg/m².
+1. m′ = 0,175 m · 2000 kg/m³ + 40 kg/m² = 390 kg/m².
 2. R_w = 30,9·lg 390 − 22,2 = 57,9 dB; R′_w = R_w − K_F = 55,9 dB mit K_F = 2 dB.
-3. Vergleich HLz 24 cm, ρ = 1 200 kg/m³: m′ = 328 kg/m², R_w = 55,5 dB – Hinweis „Massekurve nur eingeschränkt, Prüfwerte des Herstellers maßgebend“ lesen (`content/beispielrechnungen/RechnungSchallschutz.json:24`; #247-9).
+3. Vergleich HLz 24 cm, ρ = 1200 kg/m³: m′ = 328 kg/m², R_w = 55,5 dB – Hinweis „Massekurve nur eingeschränkt, Prüfwerte des Herstellers maßgebend“ lesen (`content/beispielrechnungen/RechnungSchallschutz.json:24`; #247-9).
 4. Quizfragen `qn_rechnung_schallschutz_1` bis `_3`: Antworten m′ = 390 kg/m², R_w ≈ 57,9 dB, R′_w ≈ 55,9 dB.
 5. Anforderung Wohnungstrennwand R′_w ≥ 53 dB (DIN 4109-1:2018-01) im Ergebnistext.
 

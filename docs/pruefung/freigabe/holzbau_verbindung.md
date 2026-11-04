@@ -52,8 +52,8 @@ DIN EN 1995-1-1:2010-12 mit A2:2014 und NA:2013-08 (Normtext nicht öffentlich),
 
 ## Prüfschritte für die Freigabe (ca. 15 min)
 
-1. Holzschraube C24 (ρ_k = 350 kg/m³), d = 8 mm, l_ef = 80 mm, 90°, n = 4, NKL 1, KLED mittel: f_ax,k = 0,52·d^(−0,5)·l_ef^(−0,1)·ρ_k^0,8 = 12,865 N/mm², F_ax,Rk = 8 233 N, F_ax,Rd = 17,64 kN (n_ef = 4^0,9).
-2. Abscheren derselben Schraube: f_h,k = 26,40 N/mm², M_y,Rk = 26 743 Nmm, F_v,Rk = 5 924 N, F_v,Rd = 14,58 kN.
+1. Holzschraube C24 (ρ_k = 350 kg/m³), d = 8 mm, l_ef = 80 mm, 90°, n = 4, NKL 1, KLED mittel: f_ax,k = 0,52·d^(−0,5)·l_ef^(−0,1)·ρ_k^0,8 = 12,865 N/mm², F_ax,Rk = 8233 N, F_ax,Rd = 17,64 kN (n_ef = 4^0,9).
+2. Abscheren derselben Schraube: f_h,k = 26,40 N/mm², M_y,Rk = 26 743 Nmm, F_v,Rk = 5924 N, F_v,Rd = 14,58 kN.
 3. GL24h (ρ_k = 385), d = 10 mm, l_ef = 120 mm, 45°, n = 6, NKL 2, kurz → F_ax,Rd = 45,17 kN, F_v,Rd = 38,40 kN.
 4. Kurze Einschraubtiefe: C30, d = 12, l_ef = 60 mm (< 6·d), n = 2, NKL 3 → F_ax,Rd = 7,76 kN mit Warnung.
 5. Mit Kerndurchmesser d₁: d_ef = 1,1·d₁, z. B. d_ef = 6,16 mm → f_h,k = 0,082·(1 − 0,01·6,16)·350 = 26,93 N/mm².

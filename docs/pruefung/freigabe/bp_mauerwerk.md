@@ -28,7 +28,7 @@ Kein eigener Kern; das Beispiel nutzt `fkEmpfehlungEN`/`fdAusFk` aus `src/calc/m
 |---|---|---|---|
 | T7-MW-1 | Kerndämmung „Klasse A1 bis A2“ (EPS ist nicht A1/A2) → „A1 (Mineralwolle) bis E (EPS); PUR je nach Produkt“ | erledigt (behoben) | T7 (`module-tranche-7.md`) (Nr. 11) |
 | T7-MW-2 | WDVS „A1 bis B1“ (Euroklassen und DIN 4102 gemischt) → „A2-s1,d0 bis B-s1,d0; maßgebend abZ/aBG bzw. ETA“; offen bleibt DIN EN 13499/13500 gegenüber DIN EN 17237 | erledigt (umgesetzt) (29.10.) | T7 (`module-tranche-7.md`), Umsetzung 29.10. |
-| T7-MW-3 | Lehmstein-λ (0,81 bei 1 700 oder 1 800 kg/m³) und Klinker-Wasseraufnahme ≤ 6 M.-% | offen (Normtext) | T7 (`module-tranche-7.md`) |
+| T7-MW-3 | Lehmstein-λ (0,81 bei 1700 oder 1800 kg/m³) und Klinker-Wasseraufnahme ≤ 6 M.-% | offen (Normtext) | T7 (`module-tranche-7.md`) |
 
 ## Offene Normpunkte
 
@@ -52,7 +52,7 @@ DIN EN 771, DIN 4108-4:2020-11, DIN 105-100:2012-01 bzw. DIN 20000-401:2017-01, 
 1. Beispiel KS-Innenwand (EN-Empfehlung): Gruppe 1, NM, K = 0,55, f_b = 20, f_m = 10 → f_k = 8,93, f_d = 5,06 N/mm²; t = 175 mm, Φ = 0,8 → n_Rd = 709 kN/m (Text ≈ 710).
 2. Dünnbettmörtel: K = 0,80, f_b = 20 → f_k = 0,80·20^0,85 = 10,21 N/mm².
 3. VIP λ = 0,007 gegenüber EPS λ = 0,035 → rund fünfmal dünner.
-4. Lehmstein „λ 0,47–0,81 W/(mK) bei 1 200–1 800 kg/m³“ (`content/bpmauerwerk/BpMauerwerk.json:267`) gegen DIN 4108-4 prüfen (0,81 bei 1 700, 0,91 bei 1 800?; T7-MW-3a).
+4. Lehmstein „λ 0,47–0,81 W/(mK) bei 1200–1800 kg/m³“ (`content/bpmauerwerk/BpMauerwerk.json:267`) gegen DIN 4108-4 prüfen (0,81 bei 1700, 0,91 bei 1800?; T7-MW-3a).
 5. Klinker „Wasseraufnahme ≤ 6 M.-%“ gegen DIN 105-100/DIN 20000-401 prüfen (T7-MW-3b).
 
 ## Empfehlung

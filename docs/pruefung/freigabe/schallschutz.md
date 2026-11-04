@@ -53,9 +53,9 @@ DIN 4109-1:2018-01, DIN 4109-2:2018-01, DIN 4109-32:2016-07, DIN 4109-34; Massek
 
 ## Prüfschritte für die Freigabe (ca. 15 min)
 
-1. Massekurve: KS 24 cm, ρ = 1 800 kg/m³ → m′ = 432 kg/m², R_w = 30,9·lg 432 − 22,2 = 59,2 dB; Masseverdopplung → +9,3 dB.
-2. Bau-Schalldämmmaß: 17,5 cm, ρ = 2 000, Putz 20 kg/m², K_F = 2 dB → R′_w = 55,2 dB; Anforderung Wohnungstrennwand R′_w ≥ 53 dB.
-3. Trittschall Standardwerte (Rohdecke 18 cm, 2 400 kg/m³ + 10 kg/m²; Estrich 5 cm; s′ = 20 MN/m³; m′_f,m = 250 kg/m²): L_n,eq,0,w = 71,41, ΔL_w = 28,33, K = 1,96, L′_n,w = 45,05 dB; + 3 dB = 48,0 ≤ 50 dB.
+1. Massekurve: KS 24 cm, ρ = 1800 kg/m³ → m′ = 432 kg/m², R_w = 30,9·lg 432 − 22,2 = 59,2 dB; Masseverdopplung → +9,3 dB.
+2. Bau-Schalldämmmaß: 17,5 cm, ρ = 2000, Putz 20 kg/m², K_F = 2 dB → R′_w = 55,2 dB; Anforderung Wohnungstrennwand R′_w ≥ 53 dB.
+3. Trittschall Standardwerte (Rohdecke 18 cm, 2400 kg/m³ + 10 kg/m²; Estrich 5 cm; s′ = 20 MN/m³; m′_f,m = 250 kg/m²): L_n,eq,0,w = 71,41, ΔL_w = 28,33, K = 1,96, L′_n,w = 45,05 dB; + 3 dB = 48,0 ≤ 50 dB.
 4. f₀ = 160·√(s′/m′): s′ = 20, m′ = 100 → 71,55 Hz (exakt 71,18 Hz, Abweichung 0,5 % durch den Faktor 160).
 5. Gleichungen ΔL_w und K sowie die Treppenwerte 53/46 dB am Normtext DIN 4109-34/-2/-1 bestätigen (vorläufig gekennzeichnet in `src/calc/schall.ts`).
 6. Beispiel HLz 24 cm (ρ = 800 kg/m³, m′ = 243 kg/m², R_w = 51,5 dB) mit Hinweis „Massekurve für Lochsteine nur eingeschränkt“ (`content/schallschutz/Schallschutz.json:83`; #247-9).

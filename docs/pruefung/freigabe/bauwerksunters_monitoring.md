@@ -22,14 +22,14 @@ Komponente `src/modules/Bauwerksunters_Monitoring.tsx`; Inhalt `content/bauwerks
 
 | Kern | Tests (Zahl der Prüfungen) | Referenzwerte |
 |---|---|---|
-| `src/calc/bauwerksuntersuchung.ts` | `tests/bauwerksuntersuchung.test.ts` (38), `tests/durchsichtA.test.ts` (49), `tests/hist13791.test.ts` (51), `tests/karsten.test.ts` (10), `tests/keinErgebnisAnzeige.test.ts` (1), `tests/lebensdauerUebergabe.test.ts` (35) und 6 weitere | Ultraschall 0,300 m in 71,4 µs, ρ = 2 400, ν = 0,2: v_L = 4 202 m/s, E_dyn = 38,1 GPa; Karbonatisierung x_c = 15 mm nach 40 a: k_c = 2,37 mm/√a |
+| `src/calc/bauwerksuntersuchung.ts` | `tests/bauwerksuntersuchung.test.ts` (38), `tests/durchsichtA.test.ts` (49), `tests/hist13791.test.ts` (51), `tests/karsten.test.ts` (10), `tests/keinErgebnisAnzeige.test.ts` (1), `tests/lebensdauerUebergabe.test.ts` (35) und 6 weitere | Ultraschall 0,300 m in 71,4 µs, ρ = 2400, ν = 0,2: v_L = 4202 m/s, E_dyn = 38,1 GPa; Karbonatisierung x_c = 15 mm nach 40 a: k_c = 2,37 mm/√a |
 | `src/calc/schutzInstandsetzung.ts` | `tests/keinErgebnisAnzeige.test.ts` (1), `tests/modulpruefungTranche13.test.ts` (19), `tests/nachstichprobe4.test.ts` (60) | CM-Belegreife CT 2,0 / beheizt 1,8, CA 0,5 / beheizt 0,3 CM-% (`belegreifeGrenzeCM`) |
 
 ## Bisherige Befunde
 
 | Kennung | Befund | Status | Fundstelle |
 |---|---|---|---|
-| T13-SHM-1 | Wenner-Einordnung nach RILEM TC 154-EMC (< 100 hoch, 100–500 mäßig, 500–1 000 gering, > 1 000 Ωm vernachlässigbar) | erledigt (behoben) | T13 (`module-tranche-13.md`) (Nr. 3) |
+| T13-SHM-1 | Wenner-Einordnung nach RILEM TC 154-EMC (< 100 hoch, 100–500 mäßig, 500–1000 gering, > 1000 Ωm vernachlässigbar) | erledigt (behoben) | T13 (`module-tranche-13.md`) (Nr. 3) |
 | T13-SHM-2 | TDR misst volumetrischen Wassergehalt über die Dielektrizitätszahl | erledigt (behoben) | T13 (`module-tranche-13.md`) |
 | T13-SHM-3 | Calciumsulfatestrich nicht belegreif: Erweichung, Haftungsverlust statt „Nadelbildung“ | erledigt (behoben) | T13 (`module-tranche-13.md`) |
 | T13-SHM-4 | Verweis auf Prüfverfahren-Katalog, Begriffe, Splintholzkäfer nur Laubholz | erledigt (behoben) | T13 (`module-tranche-13.md`) |
@@ -55,7 +55,7 @@ VDI 6200:2010-02 und Blatt 1.1:2026-06, DIN 1076:2026-01, VDI/VDE 2635 Blatt 1, 
 
 ## Prüfschritte für die Freigabe (ca. 15 min)
 
-1. Beispiel 1 Ultraschall: 0,300 m in 71,4 µs → v_L = 4 202 m/s; Faktor (1+ν)(1−2ν)/(1−ν) = 0,90 → E_dyn = 2 400·4 202²·0,90 = 38,1 GPa.
+1. Beispiel 1 Ultraschall: 0,300 m in 71,4 µs → v_L = 4202 m/s; Faktor (1+ν)(1−2ν)/(1−ν) = 0,90 → E_dyn = 2400·4202²·0,90 = 38,1 GPa.
 2. Beispiel 2 Wenner: a = 50 mm, 0,40 V bei 1,0 mA → ρ = 2π·0,05·400 = 125,7 Ωm → Korrosionsgefahr mäßig (100–500 Ωm).
 3. Karbonatisierung: x_c = 15 mm nach 40 a → k_c = 15/√40 = 2,37 mm/√a.
 4. CM-Belegreife: CT 2,0 / beheizt 1,8, CA 0,5 / beheizt 0,3 CM-%.

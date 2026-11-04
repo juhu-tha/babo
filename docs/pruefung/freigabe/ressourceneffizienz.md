@@ -29,7 +29,7 @@ Komponente `src/modules/Ressourceneffizienz.tsx`; Inhalt `content/ressourceneffi
 | Kennung | Befund | Status | Fundstelle |
 |---|---|---|---|
 | T12-RE-1 | RC-Anteil pauschal 50 % → Höchstanteil nach DIN 1045-2, Anhang E, je Typ und Expositionsgruppe (Kern `rcGesteinskoernung.ts`) | erledigt (umgesetzt, als vorläufig gekennzeichnet) | T12 (`module-tranche-12.md`) (Nr. 17), Umsetzung 29.10. |
-| Nachrechnung T12 | MCI = 1 − 0,50·0,9 = 0,55; Beispiel 2: 2 500·1,85·0,35 = 1 619 t, 65 Lkw-Fahrten | ohne Befund | T12 (`module-tranche-12.md`) |
+| Nachrechnung T12 | MCI = 1 − 0,50·0,9 = 0,55; Beispiel 2: 2500·1,85·0,35 = 1619 t, 65 Lkw-Fahrten | ohne Befund | T12 (`module-tranche-12.md`) |
 
 ## Offene Normpunkte
 
@@ -50,7 +50,7 @@ DIN 1045-2:2023-08, Anhang E (Normtext nicht öffentlich); Ellen MacArthur Found
 ## Prüfschritte für die Freigabe (ca. 15 min)
 
 1. MCI-Beispiel: Kreislaufanteil 50 %, Ausbringung 0,9 → MCI = 1 − 0,50·0,9 = 0,55; bei Nutzungsfaktor X = 2: 0,78.
-2. Beispiel 2: 2 500 m³·1,85 t/m³·0,35 = 1 619 t RC-Material, 65 Lkw-Fahrten, Anteil 35 %.
+2. Beispiel 2: 2500 m³·1,85 t/m³·0,35 = 1619 t RC-Material, 65 Lkw-Fahrten, Anteil 35 %.
 3. Bauteil-Simulator, Standardplatte 120 m³ (CEM I 310 kg/m³, Stahl 110 kg/m³ · 1,3 kg/kg, 65 km · 0,08 kg/tkm): CO₂ = 37,2 + 17,2 + 1,5 = 55,9 t CO₂-Äq.
 4. RC-Anteil im Simulator: Typ 1, X0–XC4 → 45 Vol.-% der groben Gesteinskörnung = 31,5 % der gesamten Gesteinskörnung; XA2/XA3/XM → nicht zulässig (`src/calc/rcGesteinskoernung.ts:13`).
 5. Quizfrage `qlz_ressourceneffizienz_1` (nicht freigegeben) gegen den Simulator lesen.

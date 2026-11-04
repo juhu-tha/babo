@@ -48,7 +48,7 @@ DIN EN 1338, DIN EN 1339, DIN EN 1340, DIN EN 1916, DIN EN 1610, DWA-A 127-1 (No
 
 ## Prüfschritte für die Freigabe (ca. 15 min)
 
-1. Spaltzug (Beispiel): P = 72 kN, l = 200 mm, t = 80 mm → k = 1,3 − 30·(0,18 − 0,08)² = 1,000; T = 0,637·1,0·72 000/(200·80) = 2,87 N/mm² < 2,9 (Einzelwert); F/l = 360 ≥ 250 N/mm.
+1. Spaltzug (Beispiel): P = 72 kN, l = 200 mm, t = 80 mm → k = 1,3 − 30·(0,18 − 0,08)² = 1,000; T = 0,637·1,0·72 000/(200·80) = 2,87 N/mm² < 2,9 (Einzelwert); F/l = 360 ≥ 250 N/mm.
 2. Dickenfaktor: t = 100 mm → k = 1,108, T = 3,35 N/mm²; t = 60 mm → k = 0,868.
 3. Frost-Tausalz Klasse 3 (D): Mittel ≤ 1,0 kg/m², Einzelwert ≤ 1,5 kg/m² (`content/bpbetonwaren/BpBetonwaren.json:22`; T7-BW-2b).
 4. Prüfdruck Wasserdichtheit Betonrohre „≥ 0,5 bar“ (`content/bpbetonwaren/BpBetonwaren.json:25`) gegen DIN EN 1916 (nach Kenntnisstand 1 bar) prüfen (T7-BW-2a).

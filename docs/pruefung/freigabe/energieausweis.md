@@ -52,7 +52,7 @@ GModG (BGBl. 2026 I Nr. 226), Anlage 4 und Anlage 9 (Haufe-Synopse, buzer.de), D
 
 ## Prüfschritte für die Freigabe (ca. 15 min)
 
-1. Startwerte EFH 150 m², GEG-Standard, Luft-Wasser-WP: H_T = 180·0,24 + 90·0,18 + 33·1,10 + 90·0,25·0,6 + 393·0,05 = 128,85 W/K, H′_T = 0,328 W/(m²K), q_h = 31, q_E = 18 → A+, q_P = 32, CO₂ = 18·560/1 000 = 10 kg/(m²a).
+1. Startwerte EFH 150 m², GEG-Standard, Luft-Wasser-WP: H_T = 180·0,24 + 90·0,18 + 33·1,10 + 90·0,25·0,6 + 393·0,05 = 128,85 W/K, H′_T = 0,328 W/(m²K), q_h = 31, q_E = 18 → A+, q_P = 32, CO₂ = 18·560/1000 = 10 kg/(m²a).
 2. Unsanierter Altbau mit Gasbrennwert: H_T = 546,9 W/K, q_h = 224, q_E = 264 → Klasse H, q_P = 293 kWh/(m²a).
 3. Stichtagsschalter „ab 01.01.2027“: WP q_P = 18·1,5 = 27, CO₂ = 18·0,1 = 2 kg/(m²a); Gas unsaniert q_P = 292.
 4. Interne Gewinne pauschal 35 kWh/(m²a) (`src/calc/energieausweis.ts:76`) gegen das Nutzungsprofil Wohnen der DIN/TS 18599-10:2025-10 prüfen; Text nennt 25–30 kWh/(m²a) (T11-EA-4).

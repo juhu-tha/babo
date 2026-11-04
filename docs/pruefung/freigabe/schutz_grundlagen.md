@@ -22,7 +22,7 @@ Komponente `src/modules/SchutzGrundlagen.tsx`; Inhalt `content/schutzgrundlagen/
 
 | Kern | Tests (Zahl der Prüfungen) | Referenzwerte |
 |---|---|---|
-| `src/calc/schutzInstandsetzung.ts` | `tests/keinErgebnisAnzeige.test.ts` (1), `tests/modulpruefungTranche13.test.ts` (19), `tests/nachstichprobe4.test.ts` (60) | de Sitter K₃ = 2 000·5³ = 250 000 €; Klopfer s_d,CO₂ = 400 000·0,00025 = 100 m ≥ 50 m |
+| `src/calc/schutzInstandsetzung.ts` | `tests/keinErgebnisAnzeige.test.ts` (1), `tests/modulpruefungTranche13.test.ts` (19), `tests/nachstichprobe4.test.ts` (60) | de Sitter K₃ = 2000·5³ = 250 000 €; Klopfer s_d,CO₂ = 400 000·0,00025 = 100 m ≥ 50 m |
 
 ## Bisherige Befunde
 
@@ -51,8 +51,8 @@ DIN EN 1504-9, DIN EN 14038-1/-2, DIN EN ISO 12696:2022-09, DIN EN ISO 1461:2022
 
 ## Prüfschritte für die Freigabe (ca. 15 min)
 
-1. De-Sitter-Regel: Kosten je Phase × 5; K₃ = 2 000·5³ = 250 000 €.
-2. Klopfer-Kriterium: s_d,CO₂ = µ·d = 400 000·0,00025 m = 100 m ≥ 50 m → karbonatisierungsbremsend.
+1. De-Sitter-Regel: Kosten je Phase × 5; K₃ = 2000·5³ = 250 000 €.
+2. Klopfer-Kriterium: s_d,CO₂ = µ·d = 400 000·0,00025 m = 100 m ≥ 50 m → karbonatisierungsbremsend.
 3. Tuutti: Einleitungsphase t₀ = (c/k)² (wie `korrosion`/`karbonatisierung`).
 4. Prinzipien DIN EN 1504-9: 1–6 Beton, 7–11 Bewehrung; Rili-SIB-Prinzipien W/C/R/K.
 5. KKS-Kriterium „≥ 100 mV Depolarisation innerhalb von 24 h bis 72 h“ gegen DIN EN ISO 12696:2022-09 prüfen (T13-IH-10).

@@ -51,8 +51,8 @@ DIN EN 1995-1-2:2010-12 (β_n, d₀ = 7 mm, k_fi 1,25/1,15, η_fi = 0,6), DIN EN
 
 1. Holz GL28h 18/36 cm, R60, dreiseitig, M_Ed = 45 kNm: d_ef = 0,7·60 + 7 = 49 mm, Restquerschnitt 82 × 311 mm, f_m,fi,d = 1,15·28 = 32,2 N/mm², M_fi,Rd = 42,56 kNm ≥ η_fi·M_Ed = 27 kNm (Ausnutzung 63 %).
 2. Holz C24 12/24 cm, R30, vierseitig: d_ef = 31 mm, 58 × 178 mm, M_fi,Rd = 9,19 kNm (k_fi = 1,25).
-3. Beton Balken Tab. 5.5 (erste Spalte): R30 80/25, R60 120/40, R90 150/55, R120 200/65 mm; Platten h_s 60/80/100/120 mm.
-4. Stützen Tab. 5.2a, μ_fi = 0,5: R30 200/25, R60 200/36 (300/31), R90 300/45 (400/38), R120 350/45 (450/40); μ_fi = 0,7: 200/32, 250/46, 350/53, 350/57 mm (`src/data/brandschutzBeton.ts:29`; #247-7).
+3. Beton Balken Tab. 5.5 (erste Spalte): R30 80/25, R60 120/40, R90 150/55, R120 200/65 mm; Platten h_s 60/80/100/120 mm.
+4. Stützen Tab. 5.2a, μ_fi = 0,5: R30 200/25, R60 200/36 (300/31), R90 300/45 (400/38), R120 350/45 (450/40); μ_fi = 0,7: 200/32, 250/46, 350/53, 350/57 mm (`src/data/brandschutzBeton.ts:29`; #247-7).
 5. Abplatzen hochfester Beton: Silikastaub < 6 M.-% → Regeln für Normalbeton, sonst eine der Methoden A–D; Auswahl nach NA DE (`content/beispielrechnungen/RechnungBrandschutz.json:29`; #247-8).
 
 ## Empfehlung

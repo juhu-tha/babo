@@ -69,7 +69,7 @@ Bedeutung: **1** Pflichtlehre bzw. zentrales Lehrmodul (Lernpfad Baustoffkunde d
 | 41 | [bauwerksunters_monitoring](bauwerksunters_monitoring.md) | Tragwerksmonitoring (SHM) | 3 | – | freigabereif nach Klärung von T12-BU-7 – nach Regel 02.11. freigabereif | 1 | 1/7 | 10 min (Normtext gemeinsam mit `pruefverfahren_katalog`) |
 | 42 | [bp_betonwaren](bp_betonwaren.md) | Betonwaren & Pflaster | 3 | – | freigabereif nach Klärung von T7-BW-2a/b | 2 | 0/6 | 5 min + DIN EN 1916/1338 (2 Werte) |
 | 43 | [bp_mauerwerk](bp_mauerwerk.md) | Mauerwerksprodukte | 3 | – | freigabereif nach Klärung von T7-MW-3a/b – nach Regel 02.11. freigabereif | 2 | 0/6 | 5 min + DIN 4108-4, DIN 105-100 (2 Werte) |
-| 44 | [bp_verkehr_bahn](bp_verkehr_bahn.md) | Bahnbau & Oberbau | 3 | – | freigabereif nach Klärung von T7-BA-1a/b – nach Regel 02.11. freigabereif | 2 | 0/6 | 5 min + DIN EN 13450/TL 918 061 (2 Werte) |
+| 44 | [bp_verkehr_bahn](bp_verkehr_bahn.md) | Bahnbau & Oberbau | 3 | – | freigabereif nach Klärung von T7-BA-1a/b – nach Regel 02.11. freigabereif | 2 | 0/6 | 5 min + DIN EN 13450/TL 918 061 (2 Werte) |
 | 45 | [instandsetzung_materialien](instandsetzung_materialien.md) | Instandsetzung nach Material | 3 | Zertifikat Ausbau und Bestand | freigabereif nach Klärung von T13-WTA-5 – nach Regel 02.11. freigabereif | 1 | 0/6 | 10 min (WTA-Merkblatt gemeinsam mit `wta`) |
 | 46 | [rechnung_schallschutz](rechnung_schallschutz.md) | Bauakustik: Bauschalldämmmaß | 3 | – | freigabereif nach Klärung von #247-9 – nach Regel 02.11. freigabereif | 1 | 0/6 | 10 min + Normtext (1 Punkt, gemeinsam mit `schallschutz`) |
 | 47 | [schadreaktionen_beton](schadreaktionen_beton.md) | Betonkorrosion & Treiben | 3 | – | freigabereif nach Klärung von T12-AS-8 – nach Regel 02.11. freigabereif | 1 | 0/6 | 10 min + Richtlinientext (1 Benennung) |
@@ -112,7 +112,7 @@ Bedeutung: **1** Pflichtlehre bzw. zentrales Lehrmodul (Lernpfad Baustoffkunde d
 | DIN EN 1916; DIN EN 1338 | T7-BW-2a/b | [`bp_betonwaren`](bp_betonwaren.md) |
 | DIN 4108-4:2020-11; DIN 105-100/DIN 20000-401 | T7-MW-3a/b | [`bp_mauerwerk`](bp_mauerwerk.md) |
 | TL Gestein-StB 04/23; ZTV/TL Beton-StB 26; ZTV Asphalt-StB 26 | T7-BT-1a, T7-BD-2, T7-BD-3a/b, F-Stelle T3/8 | [`bp_verkehr_bitumen`](bp_verkehr_bitumen.md), [`bp_verkehr_betondecken`](bp_verkehr_betondecken.md), [`asphalt`](asphalt.md) |
-| DIN EN 13450; DB TL 918 061 | T7-BA-1a/b | [`bp_verkehr_bahn`](bp_verkehr_bahn.md) |
+| DIN EN 13450; DB TL 918 061 | T7-BA-1a/b | [`bp_verkehr_bahn`](bp_verkehr_bahn.md) |
 | DWA-A 138-1:2024-10 | #247-1 bis -4 | [`bp_verkehr_tiefbau`](bp_verkehr_tiefbau.md) |
 | DIN 18202:2019-07; DIN EN 12390-13 | T14-LP-7, T14-TH-5 | [`ki_llmpraxis`](ki_llmpraxis.md), [`ki_thesen`](ki_thesen.md) |
 
@@ -124,13 +124,14 @@ Eindeutige Kleinfehler, die beim Zusammenstellen auffielen (Regressionstest `tes
 |---|---|---|---|---|
 | `hydratation_folgen` | `src/data/kurzfassung.ts` | E-Modul nach 2 Tagen „etwa 70 bis 80 %“ | „etwa 70 bis 85 %“ | DIN EN 1992-1-1, Gl. 3.2/3.5: β_cc(2 d)^0,3 = 73 % (S), 81 % (N), 85 % (R); Hinweis aus Tranche 3, Nr. 5; Kern `kennwerteZumAlter` |
 | `hydratation_folgen` | `content/hydratationfolgen/HydratationFolgen.json` (Erläuterung E-Modul-Entwicklung) | „0.3-Potenzierung … ca. 70–80 % nach 2 Tagen“ | „Potenz 0,3 auf β_cc(t) … ca. 70–85 %: 73 % S, 81 % N, 85 % R“ | wie oben; Dezimalkomma |
+| `historisch` (F-Freigabe-Liste) | `scripts/auditDaten.ts`, `FACHGEBIETE` | 17 Fundstellen „vorläufig, Normprüfung ausstehend“ des Reiters Bohrkernserie und eine der WU-Quizfrage ohne Fachgebiet (Hinweis in `tests/auditDaten.test.ts`) | Alternativen angehängt: `bohrkernserie`, `Bohrkern`, `Prüfbereich` (Prüfverfahren & Bauwerksdiagnostik), `WU-Richtlinie` (Beton & Stahlbeton); keine Fundstelle mehr unter „Weitere“ | Vorgabe „F-Freigabe-Fundstellen brauchen ein Fachgebiet“; nur Anhängen, keine bestehende Alternative geändert |
 | `materialoptimierung` | `tests/materialoptimierung.test.ts`, Kommentar Zeile 10 | „round(320·GWP_Zement + 30)“ | „+ 45 (seit 30.10.2026)“ | Kern `src/calc/materialoptimierung.ts` und Zeile 12 desselben Tests rechnen mit + 45 (nur Kommentar) |
 
 ## Größere Punkte (nur aufgelistet, nicht geändert)
 
 - **Rückprall-Verwerfungsregel, Ausgabenzuordnung widersprüchlich:** Kern-Hinweis und Simulator nennen „6 Einheiten nach DIN EN 12504-2:2012; Ausgabe 2021-10 laut Sekundärquellen 25 % des Medians“, Kernkopf, `Probenahme.json` und `pruefverfahrenData.json` schreiben die 6-Einheiten-Regel der Ausgabe 2021-10 zu. Klärt sich mit T4-PN-2 am Normtext (Vorschlag in `bearbeitungsvermerke-2026-11-02.md`: auf 25 % umstellen, sobald bestätigt).
 - **Mindeststandardabweichung nach DIN EN 13791 uneinheitlich:** `historisch` (Reiter Bohrkernserie) setzt s ≥ 0,08·f_m standardmäßig an, `rechnung_bestand` und `bauwerksdiagnose` nicht. Nach dem Normtext einheitlich festlegen.
-- **`pruefverfahren_katalog`, zwei Textwidersprüche aus Tranche 12:** Ultraschall-Gefügestufen (Kern 3 000/3 800 m/s, Text 3 000/3 500/4 500 m/s) und Ablesezeit Phenolphthalein (30–60 s gegen 60–120 s). Fachliche Festlegung nötig.
+- **`pruefverfahren_katalog`, zwei Textwidersprüche aus Tranche 12:** Ultraschall-Gefügestufen (Kern 3000/3800 m/s, Text 3000/3500/4500 m/s) und Ablesezeit Phenolphthalein (30–60 s gegen 60–120 s). Fachliche Festlegung nötig.
 - **Fugentiefe:** DIN 18540, Tab. 2 in `bp_klebstoffe` (b = 20 mm → t = 12 ± 2 mm) neben der Faustregel b : t ≈ 2 : 1 (10 mm) in `bauchemie` und `schadensbilder`. Mit T4-BC-2 einheitlich fassen.
 - **`historisch` (EK-5):** γ = 1,0/1,5 als Literale und f_k Mauerwerk nach EN-Formel (K = 0,55) statt NA-Tafeln; Vorschlag aus `ec-kennwerte-2026-11-02.md`: zentrale Konstanten verwenden.
 - **Prüfbogen „Wert in der App“ veraltet** bei T4-PN-2, T12-BU-7 (seit 29.10. Messsatz verwerfen, 6 Einheiten), T9-NB-1a/b (seit 29.10. Hinweis unter 5 °C, XF3/XF4 doppelt) und T8-LE-Q1 (seit 29.10. als Lehrmodell gekennzeichnet). Die Pakete nennen den aktuellen Stand.

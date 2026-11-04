@@ -49,7 +49,7 @@ DIN 4102-1, DIN EN 13501-1, DIN EN 1363-1 (ETK), DIN EN 1995-1-2 (Abbrandraten 0
 
 ## Prüfschritte für die Freigabe (ca. 15 min)
 
-1. ETK θ = 20 + 345·lg(8t + 1): 30/60/90 min → 842 / 945 / 1 006 °C (`content/brandschutz/Brandschutz.json:77`).
+1. ETK θ = 20 + 345·lg(8t + 1): 30/60/90 min → 842 / 945 / 1006 °C (`content/brandschutz/Brandschutz.json:77`).
 2. Abbrand BSH 200/400 mm, dreiseitig, β_n = 0,7 mm/min: nach 30 min 144 × 372 mm, nach 60 min 102 × 351 mm (W/W₀ = 0,62 / 0,39; in der Simulation ohne d₀).
 3. Euroklassen: A1/A2 nichtbrennbar, B bis E brennbar, F ohne Leistung; Zusatz s1–s3 (Rauch) und d0–d2 (Abtropfen).
 4. Hinweis zur nationalen Bezeichnung F90 ↔ REI 90 und „R90“ für Stützen ohne Raumabschluss (`content/brandschutz/Brandschutz.json:46`).

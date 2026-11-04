@@ -22,7 +22,7 @@ Komponente `src/modules/Lehm.tsx`; Inhalt `content/lehm/Lehm.json`.
 
 | Kern | Tests (Zahl der Prüfungen) | Referenzwerte |
 |---|---|---|
-| `src/calc/lehm.ts` | `tests/lehm.test.ts` (11) | Ton 15, Schluff 35, Sand 50 Teile, w = 12 %: ρ = 1 920 kg/m³, f = 1,21 N/mm², Schwinden 0,84 %, λ = 0,918 W/(mK), Kennzahl 12 (Lehrmodell ohne Normbezug) |
+| `src/calc/lehm.ts` | `tests/lehm.test.ts` (11) | Ton 15, Schluff 35, Sand 50 Teile, w = 12 %: ρ = 1920 kg/m³, f = 1,21 N/mm², Schwinden 0,84 %, λ = 0,918 W/(mK), Kennzahl 12 (Lehrmodell ohne Normbezug) |
 
 ## Bisherige Befunde
 
@@ -51,8 +51,8 @@ DIN 18940:2023-06, DIN 18945:2024-03 mit A1:2026-06 (DIN Media), DIN 18946, DIN 
 
 ## Prüfschritte für die Freigabe (ca. 15 min)
 
-1. Schätzmodell Startwerte: Ton 15, Schluff 35, Sand 50 Teile, w = 12 % → ρ = 1 700 + 5·50 − 2·15 = 1 920 kg/m³, f = 1,21 N/mm², Schwinden 0,84 %, λ = 0,918 W/(mK); Kennzeichnung „Lehrmodell“.
-2. Beispiel Trocknungswasser: 100 m², 20 mm, ρ_d = 1 700 kg/m³, u₀ = 18 %, u_eq = 1,5 % → m_W = 3 400·0,165 = 561 kg (≈ 560 kg).
+1. Schätzmodell Startwerte: Ton 15, Schluff 35, Sand 50 Teile, w = 12 % → ρ = 1700 + 5·50 − 2·15 = 1920 kg/m³, f = 1,21 N/mm², Schwinden 0,84 %, λ = 0,918 W/(mK); Kennzeichnung „Lehrmodell“.
+2. Beispiel Trocknungswasser: 100 m², 20 mm, ρ_d = 1700 kg/m³, u₀ = 18 %, u_eq = 1,5 % → m_W = 3400·0,165 = 561 kg (≈ 560 kg).
 3. Anwendungsgrenze DIN 18940: „bis 13,0 m Höhe, Gebäudeklassen 1–4; nicht für Keller-, Brand- und freistehende Wände“ (`content/lehm/Lehm.json:21`) am Normtext prüfen (T5-LE-2a).
 4. Druckfestigkeitsklassen Lehmsteine 2 – 2,5 – 3 – 4 – 5 – 6 N/mm² (DIN 18945 + A1) prüfen (T5-LE-2b).
 5. Sorption: Ausgabe „Feuchtepuffer-Kennzahl (Lehrmodell, ohne Zeitbezug)“ mit Verweis auf die Zeitstufen der DIN 18947 (T5-LE-1).

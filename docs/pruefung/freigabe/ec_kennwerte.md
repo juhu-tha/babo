@@ -22,7 +22,7 @@ Komponente `src/modules/EcKennwerte.tsx`; Inhalt `content/eckennwerte/EcKennwert
 
 | Kern | Tests (Zahl der Prüfungen) | Referenzwerte |
 |---|---|---|
-| `src/calc/ecKennwerte.ts` | `tests/ecKennwerte.test.ts` (45) | C30/37: f_cm = 38, f_ctm = 2,90, E_cm = 33 000, f_cd = 17,0, f_ctd = 1,133; B500B f_yd = 434,8; S355 355/322,7/352,8; GL24h NKL 1 mittel 14,77; KS 12/NM IIa f_d = 3,40; Prüfserie n = 6: X_k = 32,90, X_d = 18,64 N/mm² |
+| `src/calc/ecKennwerte.ts` | `tests/ecKennwerte.test.ts` (45) | C30/37: f_cm = 38, f_ctm = 2,90, E_cm = 33 000, f_cd = 17,0, f_ctd = 1,133; B500B f_yd = 434,8; S355 355/322,7/352,8; GL24h NKL 1 mittel 14,77; KS 12/NM IIa f_d = 3,40; Prüfserie n = 6: X_k = 32,90, X_d = 18,64 N/mm² |
 
 `tests/ecKennwerte.test.ts` rechnet alle sechs Beispiele von Hand nach, prüft die k_n-Tabelle gegen 1,64·√(1 + 1/n), die Gleichheit mit den zentralen Konstanten (`CONCRETE`, `BETONSTAHL`, `EC3_NA_DE`, `KMOD`, `FK_TAFEL_NA`) und die Quizfragen 4–6. Eigene Nachrechnung für dieses Paket (Python): alle sechs Beispiele und das Vorhaltemaß 8 N/mm² ↔ σ = 4,86 N/mm² stimmen.
 
@@ -63,7 +63,7 @@ DIN EN 1990 Anhang D, DIN EN 1992-1-1 Tab. 3.1 mit NA, DIN EN 1993-1-1/NA, DIN E
 
 ## Prüfschritte für die Freigabe (ca. 15 min)
 
-1. Beispiel C30/37: f_cm = f_ck + 8 = 38, f_ctm = 0,30·30^(2/3) = 2,90, E_cm = 22 000·(38/10)^0,3 = 32 837 → 33 000, f_cd = 0,85·30/1,5 = 17,0, f_ctd = 0,85·2,0/1,5 = 1,13 N/mm².
+1. Beispiel C30/37: f_cm = f_ck + 8 = 38, f_ctm = 0,30·30^(2/3) = 2,90, E_cm = 22 000·(38/10)^0,3 = 32 837 → 33 000, f_cd = 0,85·30/1,5 = 17,0, f_ctd = 0,85·2,0/1,5 = 1,13 N/mm².
 2. Beispiel S355 (t ≤ 40 mm): f_y/γ_M0 = 355, f_y/γ_M1 = 322,7, 0,9·f_u/γ_M2 = 0,9·490/1,25 = 352,8 N/mm².
 3. Beispiel GL24h: f_m,d = k_mod·f_m,k/γ_M = 0,8·24/1,3 = 14,77 (NKL 1, mittel); NKL 3: 0,65·24/1,3 = 12,0; ständig 0,6·24/1,3 = 11,08 N/mm².
 4. Beispiel Mauerwerk KS 12/NM IIa: f_k = 6,0 (Tafelwert NA) → f_d = 0,85·6,0/1,5 = 3,40 N/mm²; außergewöhnlich mit γ_M = 1,3 (EK-N3).

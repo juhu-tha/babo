@@ -37,6 +37,7 @@ Datenbank, Labor-Rechner und Nachweis rechnen über `src/utils/bestandKern.ts` (
 | NP2-HI-1 | Formbeiwert d als lineare h/w-Näherung, Beispiel (0,82) und Rechner (0,75) widersprechen sich → als Näherung gekennzeichnet | gekennzeichnet; Frage offen (Tab. A.1 der DIN EN 772-1 übernehmen) | `nachpruefung2-2026-10-29.md` |
 | EK-5 | γ = 1,0/1,5 als Literale, f_k Mauerwerk nach EN-Formel K = 0,55 statt NA-Tafeln | offen (notiert) | `ec-kennwerte-2026-11-02.md` |
 | Hinweis HK | Labor-Reiter wertet Stichproben nach DIN EN 1990 Anhang D aus und teilt durch 0,85 – andere Methode als DIN EN 13791; ob sie bleiben soll, ist Teil der Prüfung | offen (Entscheidung) | `hist-kennwerte-13791-2026-11-02.md`, „Hinweise“ |
+| F-Freigabe-Liste | 17 Fundstellen des Reiters Bohrkernserie ohne Fachgebiet in der F-Freigabe-Liste des Admin-Bereichs → `FACHGEBIETE` in `scripts/auditDaten.ts` um Alternativen ergänzt | erledigt (dieser PR) | `tests/freigabepakete_20261104.test.ts` |
 
 ## Offene Normpunkte
 

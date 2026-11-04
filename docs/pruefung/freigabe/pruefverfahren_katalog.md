@@ -24,7 +24,7 @@ Komponente `src/modules/Bauwerksuntersuchung.tsx`; Inhalt `content/bauwerksunter
 |---|---|---|
 | `src/calc/pruefverfahren.ts` | `tests/pruefverfahren.test.ts` (78), `tests/durchsichtC.test.ts` (21), `tests/karsten.test.ts` (10), `tests/keinErgebnisAnzeige.test.ts` (1), `tests/modulpruefungTranche4.test.ts` (61), `tests/modulpruefungTranche9.test.ts` (38) und 4 weitere | Simulatoren des Katalogs (GUM-Messunsicherheit, Potential, Torrent) |
 | `src/calc/karsten.ts` | `tests/karsten.test.ts` (10), `tests/keinErgebnisAnzeige.test.ts` (1) | Karsten 2,5 ml in 60 min, A = 5,73 cm² → w = 4,36 kg/(m²√h) → wassersaugend |
-| `src/calc/bauwerksuntersuchung.ts` | `tests/bauwerksuntersuchung.test.ts` (38), `tests/durchsichtA.test.ts` (49), `tests/hist13791.test.ts` (51), `tests/karsten.test.ts` (10), `tests/keinErgebnisAnzeige.test.ts` (1), `tests/lebensdauerUebergabe.test.ts` (35) und 6 weitere | R = 30 abwärts, d_k = 15 mm → R_korr = 33,0, f_c = 20,5 N/mm²; 0,40 m/95 µs → v_p = 4 211 m/s, E_dyn = 38,3 GPa; Impact-Echo 6 kHz → d = 32,0 cm |
+| `src/calc/bauwerksuntersuchung.ts` | `tests/bauwerksuntersuchung.test.ts` (38), `tests/durchsichtA.test.ts` (49), `tests/hist13791.test.ts` (51), `tests/karsten.test.ts` (10), `tests/keinErgebnisAnzeige.test.ts` (1), `tests/lebensdauerUebergabe.test.ts` (35) und 6 weitere | R = 30 abwärts, d_k = 15 mm → R_korr = 33,0, f_c = 20,5 N/mm²; 0,40 m/95 µs → v_p = 4211 m/s, E_dyn = 38,3 GPa; Impact-Echo 6 kHz → d = 32,0 cm |
 
 ## Bisherige Befunde
 
@@ -34,7 +34,7 @@ Komponente `src/modules/Bauwerksuntersuchung.tsx`; Inhalt `content/bauwerksunter
 | T12-BU-3 | Karsten-Klassen widersprachen DIN 4108-3 und dem Kern; Prüffläche 4,5 → 5,73 cm² | erledigt (behoben) | T12 (`module-tranche-12.md`) |
 | T12-BU-4 | Ausgaben DIN EN 12504-1:2021-02, -2 und -4:2021-10 | erledigt (behoben) | T12 (`module-tranche-12.md`) |
 | T12-BU-7 | Rückprall: „Ausreißer > 6 Einheiten streichen“ → Median aller Werte, Messsatz verwerfen bei > 20 % mit > 6 Einheiten (Kern `rueckprallMesssatz`) | erledigt (umgesetzt, als vorläufig gekennzeichnet); offen (Normtext) | T12 (`module-tranche-12.md`), Umsetzung 29.10. |
-| Hinweis T12 (a) | Gefügestufen Ultraschall: Kern < 3 000 kritisch, < 3 800 mäßig (`src/calc/bauwerksuntersuchung.ts:173`); Texte nennen 3 000–3 500 / 3 500–4 200 / > 4 500 m/s | offen (nicht angeglichen) | T12 (`module-tranche-12.md`) |
+| Hinweis T12 (a) | Gefügestufen Ultraschall: Kern < 3000 kritisch, < 3800 mäßig (`src/calc/bauwerksuntersuchung.ts:173`); Texte nennen 3000–3500 / 3500–4200 / > 4500 m/s | offen (nicht angeglichen) | T12 (`module-tranche-12.md`) |
 | Hinweis T12 (b) | Ablesezeit Phenolphthalein: 30–60 s in Diagnosedaten und Planer, „60 bis 120 s abwarten“ im Prüfkatalog (`content/bauwerksuntersuchung/pruefverfahrenData.json:146`) | offen (nicht angeglichen) | T12 (`module-tranche-12.md`) |
 | Befund 04.11. | Ausgabenzuordnung der Verwerfungsregel widersprüchlich: Kern-Hinweis und Simulator nennen „6 Einheiten nach DIN EN 12504-2:2012; nach Sekundärquellen nennt die Ausgabe 2021-10 25 % des Medians“ (`src/calc/bauwerksuntersuchung.ts:129`); Kernkopf, `Probenahme.json` und `pruefverfahrenData.json` schreiben die 6-Einheiten-Regel der Ausgabe 2021-10 zu | offen (klärt sich mit T4-PN-2 am Normtext) | `bearbeitungsvermerke-2026-11-02.md`, Nr. 34/35 und „Offen“ |
 
@@ -58,11 +58,11 @@ DIN EN 12504-1/-2/-4:2021, DIN EN 13791:2020-02, DIN EN 14630, DIN 4108-3 (Karst
 ## Prüfschritte für die Freigabe (ca. 15 min)
 
 1. Rückprall R = 30, Schlag nach unten, d_k = 15 mm: Richtungskorrektur +3,01 → 33,0; k = 0,85 → 28,06; f_c = 0,0125·28,06^2,22 = 20,5 N/mm² (Lehrkurve).
-2. Ultraschall: 0,40 m in 95 µs → v_p = 4 211 m/s, E_dyn = 38,3 GPa (ρ = 2 400 kg/m³); Impact-Echo 6 kHz bei v_p = 4 000 m/s → d = 32,0 cm.
+2. Ultraschall: 0,40 m in 95 µs → v_p = 4211 m/s, E_dyn = 38,3 GPa (ρ = 2400 kg/m³); Impact-Echo 6 kHz bei v_p = 4000 m/s → d = 32,0 cm.
 3. Karsten-Röhrchen: 2,5 ml in 60 min, A = 5,73 cm² → w = 4,36 kg/(m²√h) → wassersaugend (≤ 0,5 wasserabweisend, ≤ 2,0 wasserhemmend).
 4. Karbonatisierung: d_k = 15 mm nach 36 a → K = 2,5 mm/√a; c = 25 mm → Depassivierung nach 100 a.
 5. Verwerfungsregel Rückprall am Normtext DIN EN 12504-2:2021-10 klären (6 Einheiten oder 25 % des Medians) – entscheidet zugleich `probenahme`, `labor` und `bauwerksunters_monitoring`.
-6. Entscheiden: Gefügestufen Ultraschall (Kern 3 000/3 800 m/s gegen Text 3 000/3 500/4 500 m/s) und Ablesezeit Phenolphthalein (30–60 s gegen 60–120 s) angleichen.
+6. Entscheiden: Gefügestufen Ultraschall (Kern 3000/3800 m/s gegen Text 3000/3500/4500 m/s) und Ablesezeit Phenolphthalein (30–60 s gegen 60–120 s) angleichen.
 
 ## Empfehlung
 

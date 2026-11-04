@@ -31,8 +31,8 @@ Komponente `src/modules/HydratationFolgen.tsx`; Inhalt `content/eigenspannungen/
 | Kennung | Befund | Status | Fundstelle |
 |---|---|---|---|
 | T3-HY-1 | Form der gewogenen Reife nach NEN 5970 (k_T = C^((T − 20)/10) gegenüber der integrierten Form nach de Vree) und C-Bereich 1,15–1,75 | offen (Normtext) (vorläufig gekennzeichnet) | T3 (`module-tranche-3.md`) (Nr. 5) |
-| T3-HY-2 | c·ρ im Anwendungsbeispiel 2 500 statt 2 400 kJ/(m³K) wie Kern und Quiz → angeglichen (46,7 K, 61,7 °C) | erledigt (umgesetzt) (29.10.) | T3 (`module-tranche-3.md`), Umsetzung 29.10. |
-| QZ-4 | `q_hyf_2`, `q_hyf_4` auf c·ρ = 2 400 umgerechnet (29,2 K; 61,7 °C) | erledigt (umgesetzt) (Quiz wieder offen) | T3 (`module-tranche-3.md`), Umsetzung 29.10. |
+| T3-HY-2 | c·ρ im Anwendungsbeispiel 2500 statt 2400 kJ/(m³K) wie Kern und Quiz → angeglichen (46,7 K, 61,7 °C) | erledigt (umgesetzt) (29.10.) | T3 (`module-tranche-3.md`), Umsetzung 29.10. |
+| QZ-4 | `q_hyf_2`, `q_hyf_4` auf c·ρ = 2400 umgerechnet (29,2 K; 61,7 °C) | erledigt (umgesetzt) (Quiz wieder offen) | T3 (`module-tranche-3.md`), Umsetzung 29.10. |
 | Hinweis | Kurzfassung „E-Modul nach 2 Tagen etwa 70 bis 80 %“ – nach Gl. 3.2/3.5 73 % (S), 81 % (N), 85 % (R) | offen (Formulierung, siehe unten) | T3 (`module-tranche-3.md`) |
 | F-Stelle T3/5 | Zuordnung der L-Zemente zur Klasse S/N (32,5 L → S, 42,5 L → S, 52,5 L → N) | vorläufig gekennzeichnet | T3 (`module-tranche-3.md`) |
 | T16-KS-1, T16-ES-1, T16-ZW-1 bis -3 | Eingebettete Seiten Kriechen, Eigenspannungen, Zwang | erledigt (behoben) (#293, #297) | T16 (`module-tranche-16.md`) |
@@ -56,11 +56,11 @@ DIN EN 1992-1-1 Gl. (3.1)–(3.5), fib Model Code 2010 Gl. (5.1-85), NEN 5970:20
 
 ## Prüfschritte für die Freigabe (ca. 15 min)
 
-1. Arrhenius, E_a = 38 kJ/mol, T = 10 °C: k_T = exp[38 000/8,314·(1/293,15 − 1/283,15)] = 0,577; fib MC 2010, 5 °C: 0,479.
+1. Arrhenius, E_a = 38 kJ/mol, T = 10 °C: k_T = exp[38 000/8,314·(1/293,15 − 1/283,15)] = 0,577; fib MC 2010, 5 °C: 0,479.
 2. Saul (Beispiel des Moduls): 48 h bei 10 °C → M = 960 °C·h, t₂₀ = 32 h.
 3. Gewogene Reife, C = 1,45: 5 °C → 1,45^(−1,5) = 0,573; 10 °C → 0,690; Form und C-Bereich als „vorläufig“ gekennzeichnet (T3-HY-1).
 4. Festigkeitsentwicklung: s = 0,25, t_e = 7 d, C30/37 → β_cc = 0,7788, f_cm = 29,6, f_ctm = 2,26 N/mm², E_cm = 30,5 GPa.
-5. Adiabatische Erwärmung (Anwendungsbeispiel): z·Q = 320·350 = 112 000 kJ/m³, ΔT_ad = 112 000/2 400 = 46,7 K, T_Kern = 15 + 46,7 = 61,7 °C.
+5. Adiabatische Erwärmung (Anwendungsbeispiel): z·Q = 320·350 = 112 000 kJ/m³, ΔT_ad = 112 000/2400 = 46,7 K, T_Kern = 15 + 46,7 = 61,7 °C.
 6. Eigenspannungen (eingebettet): Kern kühler als die Ränder (20/10/20 °C) → Zug im Kern +0,50 N/mm², Beschriftung „Kern“ statt „Rand“.
 
 ## Empfehlung

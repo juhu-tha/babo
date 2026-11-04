@@ -23,7 +23,7 @@ Komponente `src/modules/Feuchteschutz.tsx`; Inhalt `content/feuchteschutz/Feucht
 | Kern | Tests (Zahl der Prüfungen) | Referenzwerte |
 |---|---|---|
 | `src/calc/glaser.ts` | `tests/glaser.test.ts` (28), `tests/modulpruefungTranche1.test.ts` (46), `tests/modulpruefungTranche2.test.ts` (58), `tests/modulpruefungTranche6.test.ts` (50) | KS 17,5 cm + MW 14 cm + s_d = 100 m: Tauwasserebene bei s_d = 4,515 m, M_c = 0,260 > M_ev = 0,180 kg/m²; Dach ohne Dampfbremse: M_c = 2,60 kg/m² |
-| `src/calc/waermeschutz.ts` | `tests/waermeschutz.test.ts` (9), `tests/glaser.test.ts` (28), `tests/modulpruefungTranche11.test.ts` (26), `tests/modulpruefungTranche3.test.ts` (60), `tests/nachstichprobe20261029.test.ts` (32), `tests/quizRechenfragen.test.ts` (43) und 1 weitere | Magnus: p_sat(20 °C) = 2 337 Pa, p_sat(−5 °C) = 401 Pa (Eis); Taupunkt 20 °C/50 % = 9,3 °C |
+| `src/calc/waermeschutz.ts` | `tests/waermeschutz.test.ts` (9), `tests/glaser.test.ts` (28), `tests/modulpruefungTranche11.test.ts` (26), `tests/modulpruefungTranche3.test.ts` (60), `tests/nachstichprobe20261029.test.ts` (32), `tests/quizRechenfragen.test.ts` (43) und 1 weitere | Magnus: p_sat(20 °C) = 2337 Pa, p_sat(−5 °C) = 401 Pa (Eis); Taupunkt 20 °C/50 % = 9,3 °C |
 
 ## Bisherige Befunde
 
@@ -40,9 +40,9 @@ Diese Punkte sind im Modul als „vorläufig, Normprüfung ausstehend“ gekennz
 
 | Kennung | Norm, Fundstelle | Zu prüfen | Wert in der App |
 |---|---|---|---|
-| DIN4108-3-a | DIN 4108-3:2024-03, Anhang A, Tab. A.3 | Tauperiode (−5 °C/80 %, 20 °C/50 %, 2 160 h) und Verdunstungsperiode in der Ausgabe 2024-03 unverändert? | Normklima im Kern `src/calc/glaser.ts`; Grenzen und Fachtext `content/feuchteschutz/Feuchteschutz.json` |
+| DIN4108-3-a | DIN 4108-3:2024-03, Anhang A, Tab. A.3 | Tauperiode (−5 °C/80 %, 20 °C/50 %, 2160 h) und Verdunstungsperiode in der Ausgabe 2024-03 unverändert? | Normklima im Kern `src/calc/glaser.ts`; Grenzen und Fachtext `content/feuchteschutz/Feuchteschutz.json` |
 | DIN4108-3-b | DIN 4108-3:2024-03, A.2.5 | δ₀ = 2,0·10⁻¹⁰ kg/(m·s·Pa) (= 7,2·10⁻⁷ kg/(m·h·Pa)) | `src/calc/glaser.ts` |
-| DIN4108-3-c | DIN 4108-3:2024-03, Anhang A | Neue Außenbedingungen für verschattete oder helle Dächer; Anwendungsgrenze Höhenlage ≤ 700 m | Dachklima 2 000 Pa (Verdunstung) im Kern; Hinweis im Fachtext |
+| DIN4108-3-c | DIN 4108-3:2024-03, Anhang A | Neue Außenbedingungen für verschattete oder helle Dächer; Anwendungsgrenze Höhenlage ≤ 700 m | Dachklima 2000 Pa (Verdunstung) im Kern; Hinweis im Fachtext |
 
 ## Quizfragen
 

@@ -50,7 +50,7 @@ VO (EU) 2024/1689 (KI-VO) und VO (EU) 2026/1744 (Digital Omnibus), DSGVO Art. 83
 
 1. Frist: 20.10.2026 → 02.12.2027 (Hochrisiko Anhang III) = 408 Tage ≈ 13,4 Monate.
 2. Bußgeld: Umsatz 800 Mio. € → max(20; 0,04·800 = 32) = 32 Mio. €; Umsatz 5 Mio. € → 20 Mio. €.
-3. Praxisfall Einheiten: σ = 25 N/mm² = 25 000 kN/m², A = 0,15 m² → N = 3 750 kN.
+3. Praxisfall Einheiten: σ = 25 N/mm² = 25 000 kN/m², A = 0,15 m² → N = 3750 kN.
 4. Praxisfall Teilsicherheitsbeiwerte: „γ_c = 1,35 und γ_s = …“ als KI-Fehler (`content/ki/FehlerRechtEthik.json:94`) – prüfen, ob der NA für Fertigteile 1,35 zulässt; dann Fall auf einen eindeutig falschen Wert umstellen (T14-RE-2).
 5. KI-VO-Fristen: Verbote und KI-Kompetenz 02.02.2025, GPAI 02.08.2025, Art. 50 02.08.2026, Anhang III 02.12.2027, Anhang I 02.08.2028.
 

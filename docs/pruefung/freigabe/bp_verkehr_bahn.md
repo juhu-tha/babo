@@ -2,7 +2,7 @@
 
 Stand 04.11.2026 · Gruppe „Bauprodukte“ · Typ `standard` · Prüfvermerk „offen“ (Prüfung ausstehend).
 
-**Empfehlung: freigabereif nach Klärung von T7-BA-1a/b** – Temperaturkern in drei Fällen nachgerechnet, Faktenstichprobe ohne Befund; offen sind zwei Schotterkennwerte (DIN EN 13450/DB TL 918 061).
+**Empfehlung: freigabereif nach Klärung von T7-BA-1a/b** – Temperaturkern in drei Fällen nachgerechnet, Faktenstichprobe ohne Befund; offen sind zwei Schotterkennwerte (DIN EN 13450/DB TL 918 061).
 
 Dieses Paket bereitet die Freigabe vor. Es setzt keinen Prüfvermerk; die Freigabe trägt die prüfende Person in `src/data/pruefvermerke.ts` ein.
 
@@ -38,8 +38,8 @@ Diese Punkte sind im Modul als „vorläufig, Normprüfung ausstehend“ gekennz
 
 | Kennung | Norm, Fundstelle | Zu prüfen | Wert in der App |
 |---|---|---|---|
-| T7-BA-1a | DIN EN 13450 / DB-Richtlinie TL 918 061 (Ausgaben in der App nicht angegeben), Kategorie Flachheitskennzahl, Anforderung DB | Grenzwert Flachheitskennzahl Gleisschotter | „Flachheitskennzahl (≤ 20 %)“ – `content/bpverkehrswegebau/BahnbauTab.json:5` |
-| T7-BA-1b | DIN EN 13450 / DB-Richtlinie TL 918 061 (Ausgaben in der App nicht angegeben), Kategorie Widerstand gegen Schlagzertrümmerung, Anforderung DB | Grenzwert SZ | „Widerstand gegen Schlagzertrümmerung (SZ ≤ 20 %)“ – `content/bpverkehrswegebau/BahnbauTab.json:5` |
+| T7-BA-1a | DIN EN 13450 / DB-Richtlinie TL 918 061 (Ausgaben in der App nicht angegeben), Kategorie Flachheitskennzahl, Anforderung DB | Grenzwert Flachheitskennzahl Gleisschotter | „Flachheitskennzahl (≤ 20 %)“ – `content/bpverkehrswegebau/BahnbauTab.json:5` |
+| T7-BA-1b | DIN EN 13450 / DB-Richtlinie TL 918 061 (Ausgaben in der App nicht angegeben), Kategorie Widerstand gegen Schlagzertrümmerung, Anforderung DB | Grenzwert SZ | „Widerstand gegen Schlagzertrümmerung (SZ ≤ 20 %)“ – `content/bpverkehrswegebau/BahnbauTab.json:5` |
 
 ## Quizfragen
 
@@ -47,18 +47,18 @@ Diese Punkte sind im Modul als „vorläufig, Normprüfung ausstehend“ gekennz
 
 ## Quellen
 
-DIN EN 13450, DB-Richtlinie TL 918 061 (nicht öffentlich), DIN EN 13674-1; British Steel „Rail profiles and grades“ (07/2026). Befundliste Tranche 7, Nr. 19.
+DIN EN 13450, DB-Richtlinie TL 918 061 (nicht öffentlich), DIN EN 13674-1; British Steel „Rail profiles and grades“ (07/2026). Befundliste Tranche 7, Nr. 19.
 
 ## Prüfschritte für die Freigabe (ca. 15 min)
 
-1. Temperaturspannung: σ_T = 210 000·1,2·10⁻⁵·ΔT; 55 °C/20 °C → σ = 88,2 N/mm², F = σ·7 686 mm² = 677,9 kN (Beispiel ≈ 680 kN); 88,2 < 0,7·135 → unkritisch.
+1. Temperaturspannung: σ_T = 210 000·1,2·10⁻⁵·ΔT; 55 °C/20 °C → σ = 88,2 N/mm², F = σ·7686 mm² = 677,9 kN (Beispiel ≈ 680 kN); 88,2 < 0,7·135 → unkritisch.
 2. Winter −20 °C/20 °C → σ = −100,8 N/mm² (Zug, Grenze −120 N/mm²).
 3. 45 °C/20 °C, Schotter mager → σ = 63 ≥ 0,7·90 → erhöht; F = 484,2 kN.
-4. Gleisschotter „Flachheitskennzahl ≤ 20 %“ und „SZ ≤ 20 %“ (`content/bpverkehrswegebau/BahnbauTab.json:5`) gegen DIN EN 13450 und TL 918 061 prüfen (T7-BA-1a/b).
+4. Gleisschotter „Flachheitskennzahl ≤ 20 %“ und „SZ ≤ 20 %“ (`content/bpverkehrswegebau/BahnbauTab.json:5`) gegen DIN EN 13450 und TL 918 061 prüfen (T7-BA-1a/b).
 5. Schienenprofil: 60E1 60,21 kg/m (UIC 60 alt 60,34 kg/m, 76,86 cm²), Stahlsorte R260 mit R_m ≥ 880 MPa.
 
 ## Empfehlung
 
-**freigabereif nach Klärung von T7-BA-1a/b.** Temperaturkern in drei Fällen nachgerechnet, Faktenstichprobe ohne Befund; offen sind zwei Schotterkennwerte (DIN EN 13450/DB TL 918 061).
+**freigabereif nach Klärung von T7-BA-1a/b.** Temperaturkern in drei Fällen nachgerechnet, Faktenstichprobe ohne Befund; offen sind zwei Schotterkennwerte (DIN EN 13450/DB TL 918 061).
 
 Nach der Regel der Freigabe vom 02.11.2026 (Tranche 16: im Modul gekennzeichnete Normtextpunkte gelten als erledigt) wäre das Modul schon jetzt freigabereif; nach der Regel vom 28.10.2026 (Normtextpunkte blockieren) erst nach dem Normtextabgleich. Siehe `README.md`, Abschnitt „Zu entscheiden“.

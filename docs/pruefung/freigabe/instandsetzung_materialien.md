@@ -51,7 +51,7 @@ DIN 68800, DIN EN 350:2016, DIN EN ISO 9223 (Tab. 2), DIN EN ISO 12944, ZTV BEA-
 ## Prüfschritte für die Freigabe (ca. 15 min)
 
 1. Beispiel 1 Duplex: t_Zn = 85 µm/4,2 µm/a = 20 a; t_Duplex = 1,5·(20 + 10) = 45 a.
-2. Beispiel 2 Holzbalken: W₀ = 1 290 667 mm³, W_Rest = 601 667 mm³ → Verhältnis 0,47.
+2. Beispiel 2 Holzbalken: W₀ = 1 290 667 mm³, W_Rest = 601 667 mm³ → Verhältnis 0,47.
 3. Dauerhaftigkeitsklassen: Teak DC 1, Robinie DC 1–2, Eiche DC 2–4, Lärche DC 3–4 (DIN EN 350:2016).
 4. Sanierputz: „Altputz mindestens 80 cm über die Schadensgrenze“ (`content/instandsetzungmaterialien/InstandsetzungMaterialien.json:179`) gegen WTA 2-9 und den Wert 1 m in `wta` abgleichen (T13-WTA-5).
 5. Holzschutz: Borsalze auswaschbar, nur bis GK 2; für Erdkontakt (GK 4) Kupferverbindungen (T13-IM-2).

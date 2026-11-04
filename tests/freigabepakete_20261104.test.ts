@@ -4,6 +4,7 @@ import { readFileSync, readdirSync } from 'fs';
 import { kennwerteZumAlter } from '../src/calc/hydratation';
 import { KURZFASSUNG } from '../src/data/kurzfassung';
 import hydFolgen from '../content/hydratationfolgen/HydratationFolgen.json';
+import { sammleFFreigabe, fachgebietVon, FACHGEBIET_SONST } from '../scripts/auditDaten';
 
 const fehler: string[] = [];
 const gilt = (ok: boolean, fall: string) => { if (!ok) fehler.push(fall); };
@@ -40,6 +41,12 @@ for (const f of pakete) {
 }
 const readme = readFileSync(`${ordner}/README.md`, 'utf8');
 for (const f of pakete) gilt(readme.includes(`](${f})`), `README: Paket ${f} nicht verlinkt`);
+
+// 3. F-Freigabe-Liste: die Fundstellen des Reiters Bohrkernserie (`historisch`, #318) und der WU-Quizfrage hatten kein
+//    Fachgebiet (Hinweis in tests/auditDaten.test.ts); FACHGEBIETE um Alternativen ergänzt, jetzt keine Fundstelle unter „Weitere“
+const sonst = sammleFFreigabe().gruppen.find(g => g.fachgebiet === FACHGEBIET_SONST);
+gilt(!sonst, `F-Freigabe ohne Fachgebiet: ${sonst?.eintraege.map(e => `${e.datei}:${e.zeile}`).join(', ')}`);
+gilt(fachgebietVon('src/calc/bohrkernserie13791.ts', 'vorläufig, Normprüfung ausstehend') === 'Prüfverfahren & Bauwerksdiagnostik', 'Fachgebiet Bohrkernserie');
 
 if (fehler.length) { for (const f of fehler) console.error(`FAIL: ${f}`); process.exit(1); }
 console.log(`OK: Freigabepakete (${pakete.length}) und Korrekturen 04.11.2026`);

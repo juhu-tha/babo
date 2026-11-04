@@ -28,7 +28,7 @@ Kein Rechenkern in `src/calc/`; die Bogue-Rechnung steht inline in {{src/modules
 |---|---|---|---|
 | Faktenstichprobe T9 | NA-Grenzen DIN 1164-10, LH ≤ 270 J/g, VLH ≤ 220 J/g, SR ab Sulfat > 600 mg/l, CEM II/C-M, CEM VI, Kalzinierung | ohne Befund | T9 (`module-tranche-9.md`) (Nr. 4) |
 | T9-BM-1 | Zementkarten nennen verkürzte Anwendungsbereiche (CEM II/A-LL, CEM II/A-V) → Kennzeichnung „vorläufig“ | erledigt (umgesetzt, als vorläufig gekennzeichnet) | T9 (`module-tranche-9.md`), Umsetzung 29.10.; Normtext T9-BM-1a/b |
-| Hinweis | Schematische Wärmekurve endet bei 900/200 J/g, Text nennt 1 350/250 J/g – als schematische Lehrkurve gekennzeichnet | kein Handlungsbedarf | T9 (`module-tranche-9.md`) |
+| Hinweis | Schematische Wärmekurve endet bei 900/200 J/g, Text nennt 1350/250 J/g – als schematische Lehrkurve gekennzeichnet | kein Handlungsbedarf | T9 (`module-tranche-9.md`) |
 
 ## Offene Normpunkte
 

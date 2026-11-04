@@ -46,8 +46,8 @@ DGUV Vorschrift 38, BaustellV, BayBauKaG, DBV (Ausbildungsbeirat SIVV), DIN 1045
 
 ## Prüfschritte für die Freigabe (ca. 15 min)
 
-1. Angebot: 100 000 €·1,09·1,05 = 114 450 €.
-2. Lohnkosten: 250 h·0,8·30 €/h = 6 000 €.
+1. Angebot: 100 000 €·1,09·1,05 = 114 450 €.
+2. Lohnkosten: 250 h·0,8·30 €/h = 6000 €.
 3. Fortbildungspflicht nach BayBauKaG und Zusatzqualifikationen (SIVV-Schein, E-Schein) – Aussagen plausibel.
 4. Überwachungsklassen: „ÜK 2 … bis 2012 auch ÜK 3“ an DIN 1045-3:2023-08 prüfen (T15-PK-1).
 5. Arbeitsschutz: DGUV Vorschrift 38 und BaustellV korrekt zugeordnet (Bauherrenpflichten, SiGeKo).

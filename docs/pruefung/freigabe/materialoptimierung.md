@@ -20,7 +20,7 @@ Komponente `src/modules/Materialoptimierung.tsx`; Inhalt `content/materialoptimi
 
 | Kern | Tests (Zahl der Prüfungen) | Referenzwerte |
 |---|---|---|
-| `src/calc/materialoptimierung.ts` | `tests/materialoptimierung.test.ts` (14), `tests/keinErgebnisAnzeige.test.ts` (1), `tests/konsistenz1029.test.ts` (60), `tests/modulpruefungTranche11.test.ts` (26), `tests/modulpruefungTranche15.test.ts` (77), `tests/umsetzungNachpruefung2_20261029.test.ts` (35) | Lehrbeton 320 kg Zement: CEM I 258, CEM II/A-LL 237, CEM II/B-S 215, CEM III/A 173 kg CO₂e/m³; Referenzdecke 8 538 → optimiert 4 099 kg CO₂e, Minderung 51,99 % → „Klasse A+“ (Lehreinteilung) |
+| `src/calc/materialoptimierung.ts` | `tests/materialoptimierung.test.ts` (14), `tests/keinErgebnisAnzeige.test.ts` (1), `tests/konsistenz1029.test.ts` (60), `tests/modulpruefungTranche11.test.ts` (26), `tests/modulpruefungTranche15.test.ts` (77), `tests/umsetzungNachpruefung2_20261029.test.ts` (35) | Lehrbeton 320 kg Zement: CEM I 258, CEM II/A-LL 237, CEM II/B-S 215, CEM III/A 173 kg CO₂e/m³; Referenzdecke 8538 → optimiert 4099 kg CO₂e, Minderung 51,99 % → „Klasse A+“ (Lehreinteilung) |
 
 ## Bisherige Befunde
 
@@ -52,8 +52,8 @@ DAfStb-Richtlinie „Treibhausgasreduzierte Tragwerke aus Beton, Stahlbeton oder
 ## Prüfschritte für die Freigabe (ca. 15 min)
 
 1. Beton-GWP des Lehrbetons: round(320·GWP_Zement + 45): CEM I 320·0,665 + 45 = 258; CEM III/A 320·0,40 + 45 = 173 kg CO₂e/m³.
-2. Referenzdecke 100 m²: 26 m³·258 + 2 860 kg·0,64 = 6 708 + 1 830 = 8 538 kg CO₂e (85,4 kg/m²).
-3. Optimiert (CEM III/A, 56 d, Elektrostahl): round(173·0,91) = 157 kg/m³; 19,5·157 + 2 470·0,42 = 3 062 + 1 037 = 4 099 kg → Minderung 51,99 %.
+2. Referenzdecke 100 m²: 26 m³·258 + 2860 kg·0,64 = 6708 + 1830 = 8538 kg CO₂e (85,4 kg/m²).
+3. Optimiert (CEM III/A, 56 d, Elektrostahl): round(173·0,91) = 157 kg/m³; 19,5·157 + 2470·0,42 = 3062 + 1037 = 4099 kg → Minderung 51,99 %.
 4. Lehreinteilung ≥ 50 % „A+“, ≥ 40 % „A“, ≥ 25 % „B“, ≥ 10 % „C“, sonst „Referenz“ (`src/calc/materialoptimierung.ts:82`) gegen die Treibhausgas-Minderungsklassen der DAfStb-Richtlinie, Teil 1, halten (T11-MO-2).
 5. Beispiel k-Wert: (w/z)_eq = 165/(280 + 0,4·60) = 0,543 ≤ 0,60.
 6. Pflanzenkohle: 10 kg/m³ bei 2,5–3,0 t CO₂/t → 25–30 kg CO₂ ≙ 10,4–12,5 % von 240 kg.

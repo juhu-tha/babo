@@ -53,7 +53,7 @@ DIN 4108-2/-3, DIN 1045-2, DIN EN 1992-1-1 (Tab. 7.1DE), Handlungsanweisung Span
 
 1. Rissbreite Beispiel 1: w_k = s_r,max·(ε_sm − ε_cm) = 200·0,0006 = 0,12 mm ≤ 0,3 mm (XC4).
 2. Bruchmechanik Beispiel 2: K_I = 1,12·150·√(π·0,010) = 29,8 MPa√m; kritische Risslänge a_c = (50/168)²/π = 28,2 mm.
-3. Fugenbeispiel (Kleb- & Dichtstoffe): ΔL = 6 000·10·10⁻⁶·80 = 4,8 mm; b_erf = 4,8/0,25 = 19,2 → 20 mm (ZGV 25 %).
+3. Fugenbeispiel (Kleb- & Dichtstoffe): ΔL = 6000·10·10⁻⁶·80 = 4,8 mm; b_erf = 4,8/0,25 = 19,2 → 20 mm (ZGV 25 %).
 4. Kontaktkorrosion: Kupfer oberhalb, Zink unterhalb in Fließrichtung → Lochfraß am Zink; i_corr = 10 µA/cm² ≈ 116 µm/a.
 5. Zementsuspension „Füllen breiter Risse (> 0,8 mm)“ (`content/typischebauschaeden/TypischeBauschaeden.json:71`) gegen `instandhaltung` (ab 0,2 mm) und die TR Instandhaltung prüfen (T13-IH-12).
 
