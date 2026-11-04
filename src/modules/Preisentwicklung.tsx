@@ -18,6 +18,7 @@ import '@/src/lib/chartSetup';
 import { InfoTooltip } from '@/src/components/ui/InfoTooltip';
 import inhalt from '@/content/preisentwicklung/Preisentwicklung.json';
 import { MdText } from '@/src/components/inhalt/MdText';
+import { ErgebnisAnsage } from '@/src/components/ui/ErgebnisAnsage';
 
 ChartJS.register(
   CategoryScale,
@@ -206,6 +207,7 @@ export default function Preisentwicklung() {
             </div>
           </div>
           
+          <ErgebnisAnsage text={`Preisindex ${RAW_PRICE_DATA.labels[RAW_PRICE_DATA.labels.length - 1]} (Basisjahr ${baseYear} = 100): ${normalizedData.datasets.map(d => `${d.label} ${formatDeZahl(d.data[d.data.length - 1], 0)}`).join(', ')}`} />
           <div className="h-[400px] w-full">
             <Line data={normalizedData} options={getChartOptions(baseYear)} />
           </div>

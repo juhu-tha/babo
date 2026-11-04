@@ -295,6 +295,7 @@ export default function Frischbeton() {
                     </div>
                   </div>
 
+                  <ErgebnisAnsage text={kurzzeile(istKonform ? inhalt.werte.konformInnerhalbDerZulässigen : inhalt.werte.nichtKonformGrenzabmaßÜberschritten, ansageWert('Abweichung', abweichung, verfahren === 'verdichtungsmass' ? 2 : 0, verfahren === 'verdichtungsmass' ? '' : 'mm'), `zulässig ${formatDeZahl(minZul, verfahren === 'verdichtungsmass' ? 2 : 0)} bis ${formatDeZahl(maxZul, verfahren === 'verdichtungsmass' ? 2 : 0)}${verfahren === 'verdichtungsmass' ? '' : ' mm'}`)} />
                   {/* Ergebnis-Box */}
                   <div className={`p-4 rounded-xl border flex flex-col gap-2 transition-all ${
                     istKonform 
