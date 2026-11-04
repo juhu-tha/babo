@@ -98,6 +98,9 @@ export async function abgleich({ dist = path.join(ROOT, 'dist') } = {}) {
     if (!titel) continue;
     const f = fehlendeWoerter(m.label, titel, h);
     if (f.length) labelFehler.push({ id: m.id, label: m.label, titel, fehlt: f });
+    // dist/modul/admin.html ist im Statik-Build keine vorgerenderte Modulseite, sondern eine Kopie der Startseite
+    // (buildCommand in vercel.json: cp dist/index.html dist/modul/admin.html) – ihre Überschrift ist die Begrüßung
+    if (m.id === 'admin') continue;
     const datei = path.join(dist, 'modul', `${m.id}.html`);
     if (!fs.existsSync(datei)) continue;
     const ueberschrift = ersteUeberschrift(fs.readFileSync(datei, 'utf8'));

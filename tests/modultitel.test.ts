@@ -46,7 +46,8 @@ pruefe(fs_.label === 'Feuchteschutz & Tauwasser' && fs_.baum?.titel === 'Feuchte
 const inhalt = JSON.parse(fs.readFileSync('content/feuchteschutz/Feuchteschutz.json', 'utf8'));
 pruefe(inhalt.texte.feuchteschutzWasserdampfTaupunkt === fs_.baum?.titel, 'feuchteschutz: sichtbare Überschrift = Titel');
 
-// 4. Mit Build: Modulüberschriften
+// 4. Mit Build: Modulüberschriften (ohne admin.html: im Statik-Build eine Kopie der Startseite aus dem
+//    Vercel-buildCommand, keine vorgerenderte Modulseite – abgleich() überspringt sie)
 if (r.geprueft > 0) {
   pruefe(r.kopfFehler.length === 0, `Modulüberschrift nennt das Modul nicht: ${r.kopfFehler.map((f: { id: string; ueberschrift: string }) => `${f.id} („${f.ueberschrift}“)`).join('; ')}`);
   pruefe(r.ausnahmenUngenutzt.length === 0, `Ausnahmen nicht mehr nötig: ${r.ausnahmenUngenutzt.join(', ')}`);
