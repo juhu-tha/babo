@@ -71,7 +71,7 @@
         "step": 6,
         "title": "Dokumentation & Nachweisführung über das eANV",
         "desc": "Handelt es sich um einen gefährlichen Abfall (mit * markiert), muss das elektronische Abfallnachweisverfahren genutzt werden. Generieren Sie behördliche Erzeugernummern, Entsorgungsnachweise sowie Begleit- oder Übernahmescheine und bewahren Sie diese mindestens 3 Jahre ab Einstellung in das Register auf (§ 25 NachwV).",
-        "ref": "Nachweisverordnung (NachwV) § 4"
+        "ref": "Nachweisverordnung (NachwV) §§ 3, 10, 17, 25"
       }
     ],
     "Checklisten_2": [
@@ -108,7 +108,7 @@
       {
         "step": 6,
         "title": "Kataster- & Voranzeigepflicht prüfen (§ 22 EBV)",
-        "desc": "Liegt die geplante Einbaumenge über 250 m³? Wenn ja, sende eine Voranzeige mindestens 4 Wochen vor Baubeginn an die zuständige Untere Umweltbehörde. Reichen Sie im Nachgang die Abschlussanzeige (Ersatzbaustoffkataster) ein.",
+        "desc": "Werden RC-3, BM-F3, BG-F3 oder Schlacken und Aschen nach § 20 Abs. 1 EBV mit insgesamt mindestens 250 m³ eingebaut, oder liegt die Baumaßnahme in einem Wasser- oder Heilquellenschutzgebiet? Wenn ja, sende eine Voranzeige mindestens 4 Wochen vor Baubeginn an die zuständige Behörde. Reichen Sie im Nachgang die Abschlussanzeige (Ersatzbaustoffkataster) ein.",
         "ref": "EBV § 22 (Bauherrenpflicht)"
       }
     ],
@@ -231,37 +231,37 @@
         "step": 1,
         "title": "Gefahrstoff-Identifikation im Bestand",
         "desc": "Lokalisieren Sie kritische Schadstoffe im Bestand: Liegt Asbest vor (z. B. asbesthaltige Dichtungen, Fliesenkleber)? Gibt es künstliche Mineralfasern (KMF) ohne Nachweis der Biosolubilität? Sind Teerkleber unter Parkett oder polychlorierte Biphenyle (PCB) in Dehnungsfugen vorhanden?",
-        "ref": "GefStoffV Anhang II"
+        "ref": "GefStoffV §§ 5a, 6, 11a (Asbest); Anhang II Nr. 5 (KMF)"
       },
       {
         "step": 2,
         "title": "Gefährdungsbeurteilung &amp; behördliche Arbeitsanzeige",
         "desc": "Erstellen Sie vor Ausführungsbeginn eine Gefährdungsbeurteilung. Tätigkeiten mit Asbest (TRGS 519) sind der zuständigen Behörde (Gewerbeaufsicht) spätestens eine Woche vor Beginn anzuzeigen (§ 11a GefStoffV); Arbeiten in kontaminierten Bereichen (TRGS 524) sind ebenfalls rechtzeitig vor Beginn der Behörde und der BG BAU anzuzeigen.",
-        "ref": "GefStoffV / TRGS 519 Abs. 3"
+        "ref": "GefStoffV § 11a Abs. 4 / TRGS 519 Nr. 3"
       },
       {
         "step": 3,
         "title": "Personelle Sachkunde &amp; Fachbetriebsnachweis",
         "desc": "Für Sanierungsarbeiten müssen sachkundige Aufsichtspersonen benannt werden. Stellen Sie sicher, dass für Asbestarbeiten die Sachkunde nach TRGS 519 (Anlage 3 für Großbaustellen, Anlage 4 für Arbeiten geringen Umfanges) und für kontaminierte Bereiche nach TRGS 524 vorliegt.",
-        "ref": "TRGS 519 Abs. 2.7 / TRGS 524"
+        "ref": "TRGS 519 Nr. 2.7 / TRGS 524"
       },
       {
         "step": 4,
         "title": "Einrichtung von Sicherheitsbereichen &amp; Schutzstufen",
         "desc": "Richten Sie staubdichte Abschottungen (Schwarz-Weiß-Bereiche) mit Unterdruckanlagen und Schleusen ein, um eine Faserverschleppung in unbelastete Gebäudeteile auszuschließen. Verhindern Sie Staubbildung durch permanentes Befeuchten oder Absaugen.",
-        "ref": "TRGS 519 Abs. 7"
+        "ref": "TRGS 519 Nr. 8 und 14"
       },
       {
         "step": 5,
         "title": "Persönliche Schutzausrüstung (PSA) bereitstellen",
         "desc": "Rüsten Sie sämtliche im Arbeitsbereich tätige Mitarbeiter mit partikelfiltrierendem Atemschutz (min. Halbmasken mit P3-Filter oder gebläseunterstützte Vollhauben), staubdichten Einweg-Schutzanzügen (Typ 5/6, z. B. Tyvek), dichten Schutzbrillen und Handschuhen aus.",
-        "ref": "TRGS 519 Abs. 9 / TRGS 521"
+        "ref": "TRGS 519 Nr. 9 / TRGS 521"
       },
       {
         "step": 6,
         "title": "Verpackung, Kennzeichnung &amp; eANV-Transport",
         "desc": "Verpacken Sie kontaminierte Massen direkt an der Arbeitsstelle in staubdichte, zugelassene Big-Bags oder Platten-Bags, die mit dem offiziellen Asbest-Warnzeichen (\"a\"-Symbol) bedruckt sind. Deklarieren Sie das Material als gefährlichen Abfall.",
-        "ref": "GefStoffV § 8 / TRGS 519 Abs. 14"
+        "ref": "GefStoffV § 8 / TRGS 519 Nr. 18"
       }
     ]
   }

@@ -10,9 +10,11 @@ export interface MauerwerkVerband3DProps {
   stoneLength: number;
   stoneHeight: number;
   thickness: number;
+  /** Drehung der Wand um die Hochachse in Grad (Tastaturbedienung im Modul) */
+  drehung?: number;
 }
 
-export default function MauerwerkVerband3D({ bond, stoneLength, stoneHeight, thickness }: MauerwerkVerband3DProps) {
+export default function MauerwerkVerband3D({ bond, stoneLength, stoneHeight, thickness, drehung = 0 }: MauerwerkVerband3DProps) {
   const BrickWall = () => {
     const bricks = [];
     const rows = 8;
@@ -140,11 +142,13 @@ export default function MauerwerkVerband3D({ bond, stoneLength, stoneHeight, thi
   };
 
   return (
-  <Canvas gl={{ preserveDrawingBuffer: true }} camera={{ position: [0, 0, 2], fov: 45 }}>
+  <Canvas gl={{ preserveDrawingBuffer: true }} camera={{ position: [0, 0, 2], fov: 45 }} aria-hidden="true">
     <ambientLight intensity={0.8} />
     <directionalLight position={[5, 5, 5]} intensity={1.2} />
     <OrbitControls makeDefault enableZoom={true} />
-    <BrickWall />
+    <group rotation={[0, (drehung * Math.PI) / 180, 0]}>
+      <BrickWall />
+    </group>
   </Canvas>
   );
 }

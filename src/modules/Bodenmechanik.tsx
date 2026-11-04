@@ -21,6 +21,7 @@ import { Line } from 'react-chartjs-2';
 import '@/src/lib/chartSetup';
 import { InfoTooltip } from '@/src/components/ui/InfoTooltip';
 import { formatDeZahl, formatDeTeX } from '@/src/utils/numberFormat';
+import { ErgebnisAnsage } from '@/src/components/ui/ErgebnisAnsage';
 import inhalt from '@/content/bodenmechanik/Bodenmechanik.json';
 import { MdText } from '@/src/components/inhalt/MdText';
 import { ModuleTabs } from '@/src/components/ui/ModuleTabs';
@@ -287,7 +288,8 @@ export default function Bodenmechanik() {
             <div className="bg-white p-5 rounded-xl border border-home-grau/30 shadow-sm">
               <h3 className="font-semibold mb-4 text-text-main"><MdText text={inhalt.texte.schematischeDarstellungKonsistenzbereich} /></h3>
               <div className="flex flex-col items-center bg-off-white rounded-lg border border-home-grau/30 p-4">
-                <svg width="100%" height="100" viewBox="0 0 350 100">
+                <svg width="100%" height="100" viewBox="0 0 350 100" role="img"
+                  aria-label={`Konsistenzbereiche über dem Wassergehalt: fest bis halbfest unter der Ausrollgrenze w_P = ${formatDeZahl(wP, 1)} %, plastisch bis zur Fließgrenze w_L = ${formatDeZahl(wL, 1)} %, darüber flüssig; aktueller Wassergehalt w = ${formatDeZahl(w, 1)} %`}>
                   {/* Achse */}
                   <line x1="20" y1="50" x2="330" y2="50" stroke="#1e293b" strokeWidth="2" markerEnd="url(#arrow-black-boden)" />
                   <text x="330" y="40" fontSize="10" fill="#1e293b" textAnchor="end">Wassergehalt w</text>
@@ -336,6 +338,7 @@ export default function Bodenmechanik() {
           </div>
 
           <div className="flex flex-col gap-6">
+            <ErgebnisAnsage text={`Plastizitätszahl ${formatDeZahl(results.iP, 1)} %, Konsistenzzahl ${formatDeZahl(results.iC, 2)}, Zustand ${results.zustand}`} />
             <div className={`p-6 rounded-xl shadow-md text-white ${results.farbe}`}>
               <h3 className="text-sm font-bold uppercase tracking-wider mb-4 opacity-90">Atterberg-Kennwerte</h3>
               <div className="grid grid-cols-2 gap-y-6 gap-x-4 mb-6">

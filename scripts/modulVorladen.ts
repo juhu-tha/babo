@@ -112,8 +112,16 @@ export function modulVorladenPlugin(wurzel = process.cwd()): Plugin {
           const k = liste(c);
           if (k.length === 1) kopf[decodeURIComponent(modul.slice(KOPF.length))] = k[0];
         }
+        // Rahmen der App (src/main.tsx lädt App.tsx per import(): eigene Task beim Auswerten statt einer langen mit
+        // React und ReactDOM, TBT 04.11.2026) – auf jeder Seite vorladen, als erstes vor dem Inhaltsverteiler.
+        // Über die Karte (nicht als <link> im Kopf), damit er auf den Modulseiten erst nach dem CSS startet.
+        const appId = path.join(wurzel, 'src/App.tsx');
+        const app = chunks.find(c => c.moduleIds.some(m => m.split('?')[0] === appId));
+        if (!app || app === einstieg) throw new Error(`modul-vorladen: src/App.tsx nicht als eigener Chunk (${app?.fileName ?? 'fehlt'}; src/main.tsx lädt App per import())`);
+        const rahmen = liste(app);
+        if (rahmen.some(i => dateien[i].endsWith('.css'))) throw new Error('modul-vorladen: CSS am App-Chunk – käme erst nach dem Einstieg');
         // erst alle Listen bilden (füllt dateien), dann die Karte zusammensetzen
-        const inhalt = liste(datei('./ModulInhalt'));
+        const inhalt = [...new Set([...rahmen, ...liste(datei('./ModulInhalt'))])];
         const modulKopf = liste(datei('./ModulKopf'));
         const t = Object.fromEntries([...z.tabs].map(([id, name]) => [id, fuer(name)]));
         const p = z.praefixe.map(([praefix, name]) => [praefix, fuer(name)]);
@@ -163,43 +171,59 @@ const MODUL_BASIS: RegExp[] = [
 ];
 
 type ModulInfo = { importedIds: readonly string[]; isEntry: boolean; code: string | null } | null;
+/** Rahmen der App, von src/main.tsx per import() geladen (eigener Chunk „rahmen“) */
+const RAHMEN = /\/src\/App\.tsx$/;
 const SAMMEL_EXPORT = /\/lucide-react\/dist\/esm\/lucide-react\.js$/;
 const ICON = /\/lucide-react\/dist\/esm\/icons\/([^/]+)\.js$/;
 
 export function modulBasisChunks() {
   let einstieg: Set<string> | undefined;
-  let einstiegIcons: Set<string> | undefined;
+  let rahmen: Set<string> | undefined;
+  let einstiegIcons: Map<string, 'app' | 'rahmen'> | undefined;
   return (id: string, { getModuleInfo, getModuleIds }: { getModuleInfo: (id: string) => ModulInfo; getModuleIds: () => IterableIterator<string> }) => {
-    if (!einstieg || !einstiegIcons) {
-      einstieg = new Set();
+    if (!einstieg || !rahmen || !einstiegIcons) {
       const alle = [...getModuleIds()];
-      const offen = alle.filter(m => getModuleInfo(m)?.isEntry);
-      while (offen.length) {
-        const m = offen.pop()!;
-        if (einstieg.has(m)) continue;
-        einstieg.add(m);
-        // vom Sammel-Export nicht in die Icons verzweigen (er re-exportiert alle)
-        const sammel = SAMMEL_EXPORT.test(m);
-        offen.push(...(getModuleInfo(m)?.importedIds ?? []).filter(d => !sammel || !ICON.test(d)));
-      }
+      // statischer Graph ab den Startmodulen (ohne bereits Gesammeltes)
+      const sammle = (start: string[], ohne: ReadonlySet<string>) => {
+        const ziel = new Set<string>();
+        const offen = [...start];
+        while (offen.length) {
+          const m = offen.pop()!;
+          if (ziel.has(m) || ohne.has(m)) continue;
+          ziel.add(m);
+          // vom Sammel-Export nicht in die Icons verzweigen (er re-exportiert alle)
+          const sammel = SAMMEL_EXPORT.test(m);
+          offen.push(...(getModuleInfo(m)?.importedIds ?? []).filter(d => !sammel || !ICON.test(d)));
+        }
+        return ziel;
+      };
+      einstieg = sammle(alle.filter(m => getModuleInfo(m)?.isEntry), new Set());
+      // Rahmen der App: src/main.tsx lädt App.tsx per import() (eigene Task beim Auswerten, TBT 04.11.2026). Was
+      // vorher mit im Einstieg lag, kommt geschlossen in den Chunk „rahmen“ (gleiche Zuordnung wie bisher „app“).
+      rahmen = sammle(alle.filter(m => RAHMEN.test(m)), einstieg);
+      const graph = new Set([...einstieg, ...rahmen]);
       // Icons, die der Einstieg nutzt: benannte Importe aus 'lucide-react' → Datei laut Sammel-Export
       const sammel = alle.find(m => SAMMEL_EXPORT.test(m));
       const datei = new Map<string, string>();
       for (const z of ((sammel && getModuleInfo(sammel)?.code) || '').matchAll(/export \{([^}]*)\} from '\.\/icons\/([^']+)\.js'/g))
         for (const n of z[1].split(',')) datei.set(n.trim().split(/\s+as\s+/).pop()!, z[2]);
-      einstiegIcons = new Set();
-      for (const m of einstieg) {
+      einstiegIcons = new Map();
+      for (const m of graph) {
         for (const imp of (getModuleInfo(m)?.code ?? '').matchAll(/import\s*\{([^}]*)\}\s*from\s*["']lucide-react["']/g))
-          for (const n of imp[1].split(',')) { const f = datei.get(n.trim().split(/\s+as\s+/)[0]); if (f) einstiegIcons.add(f); }
+          for (const n of imp[1].split(',')) {
+            const f = datei.get(n.trim().split(/\s+as\s+/)[0]);
+            if (f && einstiegIcons.get(f) !== 'app') einstiegIcons.set(f, einstieg.has(m) ? 'app' : 'rahmen');
+          }
       }
     }
     const icon = ICON.exec(id)?.[1];
     if (icon) {
       // Einstiegs-Icons in „app“, alle übrigen gemeinsam in „icons“ (~11 kB gzip statt bis zu 15 Kleinst-Chunks
       // je Seite). Explizit zuordnen: sonst zöge Rollup sie über den Sammel-Export (Abhängigkeit von „app“) nach „app“.
-      return einstiegIcons.has(icon) ? 'app' : 'icons';
+      return einstiegIcons.get(icon) ?? 'icons';
     }
     if (einstieg.has(id)) return getModuleInfo(id)?.isEntry || /\.css($|\?)/.test(id) ? undefined : 'app';
+    if (rahmen.has(id)) return /\.css($|\?)/.test(id) ? undefined : 'rahmen';
     if (MODUL_BASIS.some(r => r.test(id))) return 'modul-basis';
   };
 }

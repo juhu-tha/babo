@@ -28,8 +28,17 @@ import { abtragsrateFaraday, querschnittsverlust, chloridGehalt, karbonatisierun
 import { wurzelZeitRegression } from '../src/calc/schnellkarbonatisierung';
 import { rentenbarwertfaktor } from '../src/calc/lcc';
 import { zwangSpannung } from '../src/calc/zwang';
+// Lernziel-Abdeckung 03.11.2026 (docs/pruefung/lernziel-abdeckung-2026-11-03.md): neue Rechenfragen qlz_*
+import { bemesseBiegung } from '../src/calc/biegung';
+import { mauermoertelNormalfuge, TROCKENMOERTEL_KG_JE_L } from '../src/calc/moertelbedarf';
+import { pn98Probenzahl } from '../src/calc/probenahme';
+import { huellwerte } from '../src/calc/expositionsklassen';
+import { NORMATIVE_EXPOSURE_CLASSES } from '../src/modules/expositionsklassen/daten';
 import { hauptspannungen, vonMises } from '../src/calc/spannungszustand';
 import { gefuegeAnteile, cev } from '../src/calc/eisenKohlenstoff';
+// Folgerunde Lernziel-Abdeckung 03.11.2026
+import { schichtaufbau } from '../src/calc/kombinationen';
+import { radiusAusStich, membranKraft } from '../src/calc/membran';
 import { bilinearVerfestigung, binghamScherrate, maxwellSpannung, abminderungStahlBrand } from '../src/calc/werkstoffmodelle';
 import { carbonbetonBiegung } from '../src/calc/carbonbeton';
 import { einfeldQ, kragF } from '../src/calc/biegelinie';
@@ -479,6 +488,40 @@ const zm = (x: number, n: number) => (x < 0 ? `−${z(-x, n)}` : z(x, n)); // Mi
   PRUEFUNGEN.push({ id: 'qn_formaenderungen_bl_1', richtig: `w ≈ ${z(einfeldQ(2, 4, 10, 10000).w * 1000, 2)} mm` });
   const kr = kragF(2, 12, 2, 4000);
   PRUEFUNGEN.push({ id: 'qn_formaenderungen_bl_2', richtig: `w = ${z(kr.w * 1000, 1)} mm; φ = ${z(kr.phi * 1000, 1)} mrad` });
+}
+
+// ------------------------------------------------------------------------------------------------
+// Lernziel-Abdeckung 03.11.2026: neue Rechenfragen (qlz_*) gegen die Kerne
+// ------------------------------------------------------------------------------------------------
+{
+  const b = bemesseBiegung({ b: 25, h: 60, d1: 5, d2: 5, med: 180, fck: 25, bewehrung: 'Stahl', fyk: 500, ftk: 0, gammaFRP: 1.3 });
+  pruefe(nahe(b.mu_Ed, 0.168, 0.005) && nahe(b.omega, 0.185, 0.005), `qlz_stahlbeton_1: μ = ${b.mu_Ed}, ω = ${b.omega}`);
+  PRUEFUNGEN.push({ id: 'qlz_stahlbeton_1', richtig: `A_s1 ≈ ${z(b.as1_req, 1)} cm²`, erklaerung: [z(b.mu_Ed, 3), z(b.omega, 3)] });
+  const m = mauermoertelNormalfuge({ flaeche: 20, wanddicke: '24.0', format: 'nf' });
+  PRUEFUNGEN.push({ id: 'qlz_putzemoertel_1', richtig: `${z(m.liter!, 0)} l → ${z(m.masse, 0)} kg → ${m.saecke} Säcke`, frage: [z(TROCKENMOERTEL_KG_JE_L, 2)] });
+  const p = pn98Probenzahl(250);
+  PRUEFUNGEN.push({ id: 'qlz_abfaelle_1', richtig: `${p.einzelproben} Einzel-, ${p.mischproben} Misch-, ${p.laborproben} Laborproben; Einzelprobe mindestens 5 l` });
+  const h = huellwerte(NORMATIVE_EXPOSURE_CLASSES, ['XC4', 'XD1', 'XF1'], 32, 15)!;
+  PRUEFUNGEN.push({ id: 'qlz_expositionsklassen_1', richtig: `(w/z)_eq ≤ ${z(h.minWzEq!, 2)}, z ≥ ${h.maxCement} kg/m³, mindestens ${h.highestClass}` });
+}
+
+// ------------------------------------------------------------------------------------------------
+// Folgerunde Lernziel-Abdeckung 03.11.2026: Rechenwerte neuer Fragen (qlz_*) gegen die Kerne
+// ------------------------------------------------------------------------------------------------
+{
+  const w = schichtaufbau([{ dicke: 15, lambda: 0.70, mu: 10 }, { dicke: 240, lambda: 0.28, mu: 10 }, { dicke: 160, lambda: 0.035, mu: 40 }]);
+  const ohneD = schichtaufbau([{ dicke: 15, lambda: 0.70, mu: 10 }, { dicke: 240, lambda: 0.28, mu: 10 }]);
+  PRUEFUNGEN.push({ id: 'qlz_kombinationen_1', richtig: `U ≈ ${z(w.u, 2)} W/(m²K); s_d ≈ ${z(w.sdGesamt, 2)} m`,
+    optionen: [`U ≈ ${z(w.u, 2)} W/(m²K); s_d ≈ ${z(w.sdGesamt, 2)} m`, `U ≈ ${z(w.rT, 2)} W/(m²K); s_d ≈ ${z(w.sdGesamt, 2)} m`,
+      `U ≈ ${z(ohneD.u, 2)} W/(m²K); s_d ≈ ${z(ohneD.sdGesamt, 2)} m`, `U ≈ ${z(1 / (w.rT - 0.17), 3)} W/(m²K); s_d ≈ ${z(w.sdGesamt, 2)} m`],
+    erklaerung: [`R_T = 0,13 + 0,021 + 0,857 + 4,571 + 0,04 = ${z(w.rT, 2)}`] });
+  PRUEFUNGEN.push({ id: 'qlz_stahl_1', richtig: `CEV ≈ ${z(cev({ C: 0.20, Mn: 1.50, Cr: 0.10, Ni: 0.30 }), 2)} – über 0,45 für S355J2; Lieferung prüfen, sonst Vorwärmen nötig` });
+  const b30 = abbrandQuerschnitt('bsh', 30, 160, 360, 3), b60 = abbrandQuerschnitt('bsh', 60, 160, 360, 3);
+  PRUEFUNGEN.push({ id: 'qlz_brandschutz_2', richtig: `Nach 30 min rund ${z(b30.stiffnessLossPercent, 0)} % Verlust, nach 60 min rund ${z(b60.stiffnessLossPercent, 0)} %; eigener Brandnachweis`,
+    erklaerung: [`${b30.b_fi} × ${b30.h_fi} mm`, `${b60.b_fi} × ${b60.h_fi} mm`] });
+  const n15 = membranKraft('zylinder', 400, radiusAusStich(3, 0.15)) / 1000, n30 = membranKraft('zylinder', 400, radiusAusStich(3, 0.30)) / 1000;
+  PRUEFUNGEN.push({ id: 'qlz_membranen_etfe_1', richtig: 'Stich auf 0,30 m vergrößern und eine dritte Lage ergänzen',
+    erklaerung: [`n ≈ ${z(n15, 2)} kN/m`, `n ≈ ${z(n30, 2)} kN/m`, `r = ${z(radiusAusStich(3, 0.30), 2)} m`] });
 }
 
 // ------------------------------------------------------------------------------------------------

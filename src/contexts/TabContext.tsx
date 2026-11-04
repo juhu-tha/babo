@@ -11,6 +11,8 @@ export type TabType = TabId;
 interface TabContextType {
   activeTab: TabId;
   setActiveTab: (tab: TabId) => void;
+  /** Adresse ohne Modul (unbekannte Modul-ID oder unbekannter Pfad): Hinweis „Seite nicht gefunden“ statt Startseite */
+  nichtGefunden: string | null;
   typischeBauschaedenSubTab?: 'feuchtigkeit' | 'risse' | 'korrosion' | 'unvertraeglichkeiten' | 'tief_ingenieurbau' | 'kleb_dicht' | 'analysator';
   setTypischeBauschaedenSubTab: (subTab: 'feuchtigkeit' | 'risse' | 'korrosion' | 'unvertraeglichkeiten' | 'tief_ingenieurbau' | 'kleb_dicht' | 'analysator') => void;
   theme: 'light' | 'dark';
@@ -56,6 +58,22 @@ export function tabAusAdresse(ort: Pick<Location, 'pathname' | 'hash'> = window.
   return ausHash && isKnownTab(ausHash) ? ausHash : 'start';
 }
 
+/**
+ * Unbekannte Adresse (Gesamtgutachten 03.11.2026, 3.1/3.4): '/modul/<id>' mit unbekannter oder abgeschalteter ID
+ * → id; anderer Pfad als '/' oder '/modul/<id>' → Pfad; sonst null (bekanntes Modul, Alias, Startseite, alter Hash-Link).
+ * Status 404 setzt der Server bzw. Vercel (404.html); die App zeigt den Hinweis, die Adresse bleibt stehen.
+ */
+export function unbekannteAdresse(ort: Pick<Location, 'pathname' | 'hash'> = window.location): string | null {
+  const ausPfad = tabAusPfad(ort.pathname);
+  if (ausPfad === null) return ort.pathname || null;
+  if (ausPfad === 'start') return null;
+  return isKnownTab(ausPfad) ? null : ausPfad;
+}
+
+function nichtGefundenFuerAdresse(): string | null {
+  try { return typeof window === 'undefined' ? null : unbekannteAdresse(); } catch { return null; }
+}
+
 function tabFuerAdresse(): TabId {
   try {
     const tab = tabAusAdresse();
@@ -74,8 +92,11 @@ function getInitialTab(): TabId {
 export function TabProvider({ children, startTab }: { children: ReactNode; /** nur Vorrendern im Build (scripts/vorrendern.ts) */ startTab?: TabId }) {
   // Startzustand aus der Adresse (/modul/<id> bzw. alter Hash-Link), sonst 'start'
   const [activeTabState, setActiveTabState] = useState<TabId>(() => startTab ?? getInitialTab());
+  // Vorrendern (startTab) kennt keine unbekannte Adresse
+  const [nichtGefunden, setNichtGefunden] = useState<string | null>(() => (startTab ? null : nichtGefundenFuerAdresse()));
 
   const setActiveTab = (tab: TabId) => {
+    setNichtGefunden(null);
     const resolved = resolveTabId(tab);
     // inaktive Seiten (INAKTIVE_GRUPPEN in src/registry/modules.ts) fehlen im Kern → Startseite statt Lernpfad
     setActiveTabState(MODUL_KERN.has(resolved) ? resolved : 'start');
@@ -164,6 +185,8 @@ export function TabProvider({ children, startTab }: { children: ReactNode; /** n
   const ersterLauf = useRef(true);
   useEffect(() => {
     try {
+      // Unbekannte Adresse bleibt in der Adresszeile stehen (Hinweis „Seite nicht gefunden“)
+      if (nichtGefunden !== null) { ersterLauf.current = false; return; }
       const ziel = modulPfad(activeTab);
       const erster = ersterLauf.current;
       ersterLauf.current = false;
@@ -177,11 +200,11 @@ export function TabProvider({ children, startTab }: { children: ReactNode; /** n
         window.history.pushState(null, '', ziel + window.location.search);
       }
     } catch (e) {}
-  }, [activeTab]);
+  }, [activeTab, nichtGefunden]);
 
   // Zurück/Vor: Modul aus der Adresse übernehmen (ohne neuen Verlaufseintrag, Pfad stimmt dann schon)
   useEffect(() => {
-    const beiVerlauf = () => setActiveTabState(tabFuerAdresse());
+    const beiVerlauf = () => { setNichtGefunden(nichtGefundenFuerAdresse()); setActiveTabState(tabFuerAdresse()); };
     // Alte In-App-Links (href="#id", location.hash = 'id') auf Pfad umschreiben; Anker (#abschnitt) unberührt
     const beiHash = () => {
       try {
@@ -189,6 +212,7 @@ export function TabProvider({ children, startTab }: { children: ReactNode; /** n
         if (!h || !isKnownTab(h)) return;
         const tab = resolveTabId(h);
         window.history.replaceState(null, '', modulPfad(tab) + window.location.search);
+        setNichtGefunden(null);
         setActiveTabState(tab);
       } catch (e) {}
     };
@@ -201,7 +225,7 @@ export function TabProvider({ children, startTab }: { children: ReactNode; /** n
   }, []);
 
   return (
-    <TabContext.Provider value={{ activeTab, setActiveTab, typischeBauschaedenSubTab, setTypischeBauschaedenSubTab, theme, setTheme, toggleTheme, glossaryTooltipMode, setGlossaryTooltipMode, toggleGlossaryTooltipMode, formulaDerivationMode, setFormulaDerivationMode, toggleFormulaDerivationMode }}>
+    <TabContext.Provider value={{ activeTab, setActiveTab, nichtGefunden, typischeBauschaedenSubTab, setTypischeBauschaedenSubTab, theme, setTheme, toggleTheme, glossaryTooltipMode, setGlossaryTooltipMode, toggleGlossaryTooltipMode, formulaDerivationMode, setFormulaDerivationMode, toggleFormulaDerivationMode }}>
       {children}
     </TabContext.Provider>
   );

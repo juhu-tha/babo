@@ -1,6 +1,6 @@
 import {StrictMode, startTransition} from 'react';
 import {createRoot} from 'react-dom/client';
-import App, { vorbereiten } from './App';
+import type * as AppModul from './App';
 import { LanguageProvider } from './contexts/LanguageContext';
 import { isKnownTab, resolveTabId, tabAusAdresse, type TabId } from './contexts/TabContext';
 import './index.css';
@@ -34,7 +34,12 @@ const vorgerendert = tab !== 'start'
   && document.documentElement.classList.contains('bb-schale')
   && document.querySelector('meta[name="bb-vorgerendert"]')?.getAttribute('content') === tab;
 
-const starte = () => {
+// Rahmen der App (App.tsx mit Navigation, Registry-Auszug, Bausteinen) als eigener Chunk, per modulepreload im HTML
+// parallel zum Einstieg geladen (scripts/modulVorladen.ts): Der Browser wertet ihn in einer eigenen Task aus statt
+// zusammen mit React und ReactDOM in einer langen (TBT 04.11.2026, docs/pruefung/perf-tbt-2026-11-04.md).
+const appModul = import('./App');
+
+const starte = ({ default: App }: typeof AppModul) => {
   const wurzel = createRoot(document.getElementById('root')!);
   const rendern = () => wurzel.render(
     <StrictMode>
@@ -52,11 +57,11 @@ if (vorgerendert) {
   // Erst rendern, wenn alle Teile da sind: React ersetzt die statische Seite dann in einem Schritt (ohne Spinner).
   // Bis dahin bleibt die statische Seite stehen (inert); nach spätestens 10 s wird trotzdem gerendert.
   let gestartet = false;
-  const einmal = () => { if (!gestartet) { gestartet = true; starte(); } };
-  vorbereiten(tab).then(einmal, einmal);
+  const einmal = () => { if (!gestartet) { gestartet = true; void appModul.then(starte); } };
+  appModul.then(m => m.vorbereiten(tab)).then(einmal, einmal);
   setTimeout(einmal, 10_000);
 } else {
-  starte();
+  void appModul.then(starte);
 }
 
 // Vorgerendert: Schrift erst einsetzen, wenn React die statische Seite ersetzt hat (src/lib/schriften.ts)
