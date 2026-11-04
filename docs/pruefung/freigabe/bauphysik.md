@@ -2,7 +2,7 @@
 
 Stand 04.11.2026 · Gruppe „Bauphysik“ · Typ `calculator` · Prüfvermerk „offen“ (Prüfung ausstehend).
 
-**Empfehlung: freigabereif nach Klärung von T11-BP-2a/b** – U-Wert-Kern in Tranche 1, Sommer und Akustik in Tranche 11 nachgerechnet, alle Fälle identisch; offen sind zwei Wärmekapazitäten am Normtext.
+**Empfehlung: freigabereif** – U-Wert-Kern in Tranche 1, Sommer und Akustik in Tranche 11 nachgerechnet, alle Fälle identisch; offen sind zwei Wärmekapazitäten am Normtext. Die Normpunkte sind in der App gekennzeichnet und gelten nach der Regel vom 02.11.2026 als erledigt.
 
 Dieses Paket bereitet die Freigabe vor. Es setzt keinen Prüfvermerk; die Freigabe trägt die prüfende Person in `src/data/pruefvermerke.ts` ein.
 
@@ -40,7 +40,7 @@ Phasenverschiebung (Standardwand: X = 3,190, η = 12,19 h, TAV = 0,041) und Nach
 
 ## Offene Normpunkte
 
-Diese Punkte sind im Modul als „vorläufig, Normprüfung ausstehend“ gekennzeichnet und lassen sich nur am Normtext klären. Kennungen nach dem Prüfbogen Normtext (Stand 28.10.2026) bzw. nach der Befundliste; Zeilenangaben in „Wert in der App“ vom Stand des Prüfbogens.
+Diese Punkte sind im Modul als „vorläufig, Normprüfung ausstehend“ gekennzeichnet und lassen sich nur am Normtext klären. Für die Freigabe gelten sie als erledigt (Regel vom 02.11.2026, Entscheidung vom 04.11.2026); sie bleiben im Prüfbogen Normtext, Reiter „Nach Normen (04.11.)“, offen. Kennungen nach dem Prüfbogen bzw. nach der Befundliste; Zeilenangaben in „Wert in der App“ vom Stand des Prüfbogens (28.10.2026).
 
 | Kennung | Norm, Fundstelle | Zu prüfen | Wert in der App |
 |---|---|---|---|
@@ -67,6 +67,6 @@ DIN EN ISO 6946 (R_si/R_se, Tab. 7), DIN EN ISO 10456:2010-05 Tab. 3, DIN 4108-4
 
 ## Empfehlung
 
-**freigabereif nach Klärung von T11-BP-2a/b.** Alle drei Reiter sind nachgerechnet (Tranche 1 und 11), die Fragen B-2 und T11-BP-1 sind entschieden. Offen sind die beiden c-Werte (T11-BP-2a/b, DIN EN ISO 10456 Tab. 3). Sie wirken nur auf den Reiter Sommer und sind als Lehrwerte gekennzeichnet. Die F-Stellen DIN 4108-3 betreffen hauptsächlich `feuchteschutz`; im Freigabeabschnitt 29.10. werden sie auch hier genannt. Vorschlag: für `bauphysik` nicht blockierend.
+**freigabereif.** Alle drei Reiter sind nachgerechnet (Tranche 1 und 11), die Fragen B-2 und T11-BP-1 sind entschieden. Offen sind die beiden c-Werte (T11-BP-2a/b, DIN EN ISO 10456 Tab. 3). Sie wirken nur auf den Reiter Sommer und sind als Lehrwerte gekennzeichnet. Die F-Stellen DIN 4108-3 betreffen hauptsächlich `feuchteschutz`; im Freigabeabschnitt 29.10. werden sie auch hier genannt. Vorschlag: für `bauphysik` nicht blockierend.
 
-Nach der Regel der Freigabe vom 02.11.2026 (Tranche 16: im Modul gekennzeichnete Normtextpunkte gelten als erledigt) wäre das Modul schon jetzt freigabereif; nach der Regel vom 28.10.2026 (Normtextpunkte blockieren) erst nach dem Normtextabgleich. Siehe `README.md`, Abschnitt „Zu entscheiden“.
+Bisher „freigabereif nach Klärung von T11-BP-2a/b“. Die offenen Normpunkte (von T11-BP-2a/b) sind in der App als „vorläufig, Normprüfung ausstehend“ gekennzeichnet und gelten nach der Regel vom 02.11.2026 (Entscheidung vom 04.11.2026) für die Freigabe als erledigt. Sie bleiben im Prüfbogen Normtext offen; nach der Normprüfung wird der Wert angepasst.

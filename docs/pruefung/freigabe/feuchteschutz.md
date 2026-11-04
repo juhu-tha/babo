@@ -2,7 +2,7 @@
 
 Stand 04.11.2026 · Gruppe „Bauphysik“ · Typ `calculator` · Prüfvermerk „offen“ (Prüfung ausstehend).
 
-**Empfehlung: freigabereif nach Klärung der drei Normtextstellen DIN 4108-3:2024-03** – Kern zweimal unabhängig nachgerechnet (Tranche 1 und 2, acht Fälle, alle identisch); offen sind nur die Klimarandbedingungen und δ₀ am Normtext.
+**Empfehlung: freigabereif** – Kern zweimal unabhängig nachgerechnet (Tranche 1 und 2, acht Fälle, alle identisch); offen sind nur die Klimarandbedingungen und δ₀ am Normtext. Die Normpunkte sind in der App gekennzeichnet und gelten nach der Regel vom 02.11.2026 als erledigt.
 
 Dieses Paket bereitet die Freigabe vor. Es setzt keinen Prüfvermerk; die Freigabe trägt die prüfende Person in `src/data/pruefvermerke.ts` ein.
 
@@ -36,7 +36,7 @@ Komponente `src/modules/Feuchteschutz.tsx`; Inhalt `content/feuchteschutz/Feucht
 
 ## Offene Normpunkte
 
-Diese Punkte sind im Modul als „vorläufig, Normprüfung ausstehend“ gekennzeichnet und lassen sich nur am Normtext klären. Kennungen nach dem Prüfbogen Normtext (Stand 28.10.2026) bzw. nach der Befundliste; Zeilenangaben in „Wert in der App“ vom Stand des Prüfbogens.
+Diese Punkte sind im Modul als „vorläufig, Normprüfung ausstehend“ gekennzeichnet und lassen sich nur am Normtext klären. Für die Freigabe gelten sie als erledigt (Regel vom 02.11.2026, Entscheidung vom 04.11.2026); sie bleiben im Prüfbogen Normtext, Reiter „Nach Normen (04.11.)“, offen. Kennungen nach dem Prüfbogen bzw. nach der Befundliste; Zeilenangaben in „Wert in der App“ vom Stand des Prüfbogens (28.10.2026).
 
 | Kennung | Norm, Fundstelle | Zu prüfen | Wert in der App |
 |---|---|---|---|
@@ -63,6 +63,6 @@ DIN 4108-3:2024-03 (Normtext für die drei F-Stellen nicht öffentlich; noch nic
 
 ## Empfehlung
 
-**freigabereif nach Klärung der drei Normtextstellen DIN 4108-3:2024-03.** Glaser-Kern und Taupunktrechnung sind in zwei Tranchen mit eigener Tangentenkonstruktion nachgerechnet, ohne Rechenfehler. Frage B-2 ist beantwortet, der Titel vereinheitlicht. Offen sind die drei F-Stellen DIN 4108-3:2024-03 (Tab. A.3, δ₀ nach A.2.5, Dachbedingungen und Höhenlage). Sie stehen noch nicht im Prüfbogen Normtext; Vorschlag: dort als eigene Norm aufnehmen. Gelten die Werte der Ausgabe 2018 unverändert weiter, ist das Modul ohne Änderung freigabereif.
+**freigabereif.** Glaser-Kern und Taupunktrechnung sind in zwei Tranchen mit eigener Tangentenkonstruktion nachgerechnet, ohne Rechenfehler. Frage B-2 ist beantwortet, der Titel vereinheitlicht. Offen sind die drei F-Stellen DIN 4108-3:2024-03 (Tab. A.3, δ₀ nach A.2.5, Dachbedingungen und Höhenlage). Sie stehen noch nicht im Prüfbogen Normtext; Vorschlag: dort als eigene Norm aufnehmen. Gelten die Werte der Ausgabe 2018 unverändert weiter, ist das Modul ohne Änderung freigabereif.
 
-Nach der Regel der Freigabe vom 02.11.2026 (Tranche 16: im Modul gekennzeichnete Normtextpunkte gelten als erledigt) wäre das Modul schon jetzt freigabereif; nach der Regel vom 28.10.2026 (Normtextpunkte blockieren) erst nach dem Normtextabgleich. Siehe `README.md`, Abschnitt „Zu entscheiden“.
+Bisher „freigabereif nach Klärung der drei Normtextstellen DIN 4108-3:2024-03“. Die offenen Normpunkte (der drei Normtextstellen DIN 4108-3:2024-03) sind in der App als „vorläufig, Normprüfung ausstehend“ gekennzeichnet und gelten nach der Regel vom 02.11.2026 (Entscheidung vom 04.11.2026) für die Freigabe als erledigt. Sie bleiben im Prüfbogen Normtext offen; nach der Normprüfung wird der Wert angepasst.

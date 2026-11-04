@@ -14,11 +14,13 @@ export const PRUEFUNG_IN_BEARBEITUNG = 'Fachliche Prüfung in Bearbeitung';
 export const istGeprueft = (v: Pruefvermerk | undefined): boolean => v?.status === 'geprueft' && !!v.am;
 
 /** Text des Prüfvermerks: „Fachlich geprüft am TT.MM.JJJJ“ (passiv; „von …“ nur, wenn eingetragen),
- *  „Fachliche Nachprüfung erforderlich (…)“ oder „Fachliche Prüfung in Bearbeitung“ */
+ *  „Fachliche Nachprüfung erforderlich (letzte Prüfung TT.MM.JJJJ)“ oder „Fachliche Prüfung in Bearbeitung“ */
 export function pruefvermerkText(v: Pruefvermerk): string {
   if (istGeprueft(v)) return `Fachlich geprüft am ${datumDe(v.am)}${v.von ? ` von ${v.von}` : ''}`;
   if (v.status === 're-review') {
-    return `Fachliche Nachprüfung erforderlich${v.am && v.von ? ` (zuletzt geprüft am ${datumDe(v.am)} von ${v.von})` : ''}`;
+    // passiv ohne Namen, wenn keine Person eingetragen ist (Entscheidung 04.11.2026, wie bei „geprüft“); ohne „zuletzt geprüft“,
+    // das tests/pruefaussagen.test.ts als widersprüchlich ausschließt
+    return `Fachliche Nachprüfung erforderlich${v.am ? ` (letzte Prüfung ${datumDe(v.am)}${v.von ? `, ${v.von}` : ''})` : ''}`;
   }
   return PRUEFUNG_IN_BEARBEITUNG;
 }

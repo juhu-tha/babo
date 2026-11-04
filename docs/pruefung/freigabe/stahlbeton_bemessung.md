@@ -2,7 +2,7 @@
 
 Stand 04.11.2026 · Gruppe „Massivbau“ · Typ `calculator` · Prüfvermerk „offen“ (Prüfung ausstehend).
 
-**Empfehlung: freigabereif nach Klärung von #242-1 bis #242-4** – Alle Rechenkerne sind unabhängig nachgerechnet und ohne offenen Rechenfehler; offen sind nur vier Normtextpunkte des NA (DE) in den Reitern Verankerung und Querkraft.
+**Empfehlung: freigabereif** – Alle Rechenkerne sind unabhängig nachgerechnet und ohne offenen Rechenfehler; offen sind nur vier Normtextpunkte des NA (DE) in den Reitern Verankerung und Querkraft. Die Normpunkte sind in der App gekennzeichnet und gelten nach der Regel vom 02.11.2026 als erledigt.
 
 Dieses Paket bereitet die Freigabe vor. Es setzt keinen Prüfvermerk; die Freigabe trägt die prüfende Person in `src/data/pruefvermerke.ts` ein.
 
@@ -49,7 +49,7 @@ Unabhängige Nachrechnungen mit eigenem Skript: Tranche 1 (159 Vergleiche, Biegu
 
 ## Offene Normpunkte
 
-Diese Punkte sind im Modul als „vorläufig, Normprüfung ausstehend“ gekennzeichnet und lassen sich nur am Normtext klären. Kennungen nach dem Prüfbogen Normtext (Stand 28.10.2026) bzw. nach der Befundliste; Zeilenangaben in „Wert in der App“ vom Stand des Prüfbogens.
+Diese Punkte sind im Modul als „vorläufig, Normprüfung ausstehend“ gekennzeichnet und lassen sich nur am Normtext klären. Für die Freigabe gelten sie als erledigt (Regel vom 02.11.2026, Entscheidung vom 04.11.2026); sie bleiben im Prüfbogen Normtext, Reiter „Nach Normen (04.11.)“, offen. Kennungen nach dem Prüfbogen bzw. nach der Befundliste; Zeilenangaben in „Wert in der App“ vom Stand des Prüfbogens (28.10.2026).
 
 | Kennung | Norm, Fundstelle | Zu prüfen | Wert in der App |
 |---|---|---|---|
@@ -79,6 +79,6 @@ DIN EN 1992-1-1:2011-01 mit NA (DE):2013-04 und NA/A1:2015-12 (Normtext für #24
 
 ## Empfehlung
 
-**freigabereif nach Klärung von #242-1 bis #242-4.** Alle sieben Reiter sind in Tranche 1 und 2 unabhängig nachgerechnet; alle Fragen (S-2, P-2, Q-1, F-1, T2-S-1/-2) sind entschieden und umgesetzt. Offen sind vier Punkte am Normtext DIN EN 1992-1-1/NA (Tab. 8.3DE, NCI zu 8.4.4, Gl. (8.6)/(8.7) nach NA, Gl. (9.5aDE)). Sie sind im Modul als vorläufig gekennzeichnet. Biegung, Stütze, Durchstanzen, Rissbreite und σ-ε-Linien hängen nicht davon ab. Bestätigt der Normtext die vier Werte, ist das Modul ohne Änderung freigabereif; sonst sind nur `src/calc/verankerung.ts` und eine Quellenangabe anzupassen.
+**freigabereif.** Alle sieben Reiter sind in Tranche 1 und 2 unabhängig nachgerechnet; alle Fragen (S-2, P-2, Q-1, F-1, T2-S-1/-2) sind entschieden und umgesetzt. Offen sind vier Punkte am Normtext DIN EN 1992-1-1/NA (Tab. 8.3DE, NCI zu 8.4.4, Gl. (8.6)/(8.7) nach NA, Gl. (9.5aDE)). Sie sind im Modul als vorläufig gekennzeichnet. Biegung, Stütze, Durchstanzen, Rissbreite und σ-ε-Linien hängen nicht davon ab. Bestätigt der Normtext die vier Werte, ist das Modul ohne Änderung freigabereif; sonst sind nur `src/calc/verankerung.ts` und eine Quellenangabe anzupassen.
 
-Nach der Regel der Freigabe vom 02.11.2026 (Tranche 16: im Modul gekennzeichnete Normtextpunkte gelten als erledigt) wäre das Modul schon jetzt freigabereif; nach der Regel vom 28.10.2026 (Normtextpunkte blockieren) erst nach dem Normtextabgleich. Siehe `README.md`, Abschnitt „Zu entscheiden“.
+Bisher „freigabereif nach Klärung von #242-1 bis #242-4“. Die offenen Normpunkte (von #242-1 bis #242-4) sind in der App als „vorläufig, Normprüfung ausstehend“ gekennzeichnet und gelten nach der Regel vom 02.11.2026 (Entscheidung vom 04.11.2026) für die Freigabe als erledigt. Sie bleiben im Prüfbogen Normtext offen; nach der Normprüfung wird der Wert angepasst.

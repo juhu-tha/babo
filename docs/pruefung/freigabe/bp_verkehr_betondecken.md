@@ -2,7 +2,7 @@
 
 Stand 04.11.2026 · Gruppe „Bauprodukte“ · Typ `standard` · Prüfvermerk „offen“ (Prüfung ausstehend).
 
-**Empfehlung: freigabereif nach Klärung von T7-BD-2 und T7-BD-3a/b** – Westergaard und Fugenkern nachgerechnet, Regelwerksliste ergänzt; offen sind drei Werte der ZTV/TL Beton-StB 26 (Fugenabstand, Festigkeitskenngröße, LP-Grenzen).
+**Empfehlung: freigabereif** – Westergaard und Fugenkern nachgerechnet, Regelwerksliste ergänzt; offen sind drei Werte der ZTV/TL Beton-StB 26 (Fugenabstand, Festigkeitskenngröße, LP-Grenzen). Die Normpunkte sind in der App gekennzeichnet und gelten nach der Regel vom 02.11.2026 als erledigt.
 
 Dieses Paket bereitet die Freigabe vor. Es setzt keinen Prüfvermerk; die Freigabe trägt die prüfende Person in `src/data/pruefvermerke.ts` ein.
 
@@ -35,7 +35,7 @@ Komponente `src/modules/BpVerkehrswegebau.tsx`; Inhalt `content/bpverkehrswegeba
 
 ## Offene Normpunkte
 
-Diese Punkte sind im Modul als „vorläufig, Normprüfung ausstehend“ gekennzeichnet und lassen sich nur am Normtext klären. Kennungen nach dem Prüfbogen Normtext (Stand 28.10.2026) bzw. nach der Befundliste; Zeilenangaben in „Wert in der App“ vom Stand des Prüfbogens.
+Diese Punkte sind im Modul als „vorläufig, Normprüfung ausstehend“ gekennzeichnet und lassen sich nur am Normtext klären. Für die Freigabe gelten sie als erledigt (Regel vom 02.11.2026, Entscheidung vom 04.11.2026); sie bleiben im Prüfbogen Normtext, Reiter „Nach Normen (04.11.)“, offen. Kennungen nach dem Prüfbogen bzw. nach der Befundliste; Zeilenangaben in „Wert in der App“ vom Stand des Prüfbogens (28.10.2026).
 
 | Kennung | Norm, Fundstelle | Zu prüfen | Wert in der App |
 |---|---|---|---|
@@ -61,6 +61,6 @@ ZTV Beton-StB 26 (ARS 09/2026), TL Beton-StB 26 (ARS 10/2026), RDO Beton 24, RSt
 
 ## Empfehlung
 
-**freigabereif nach Klärung von T7-BD-2 und T7-BD-3a/b.** Westergaard und Fugenkern nachgerechnet, Regelwerksliste ergänzt; offen sind drei Werte der ZTV/TL Beton-StB 26 (Fugenabstand, Festigkeitskenngröße, LP-Grenzen).
+**freigabereif.** Westergaard und Fugenkern nachgerechnet, Regelwerksliste ergänzt; offen sind drei Werte der ZTV/TL Beton-StB 26 (Fugenabstand, Festigkeitskenngröße, LP-Grenzen). Die Normpunkte sind in der App gekennzeichnet und gelten nach der Regel vom 02.11.2026 als erledigt.
 
-Nach der Regel der Freigabe vom 02.11.2026 (Tranche 16: im Modul gekennzeichnete Normtextpunkte gelten als erledigt) wäre das Modul schon jetzt freigabereif; nach der Regel vom 28.10.2026 (Normtextpunkte blockieren) erst nach dem Normtextabgleich. Siehe `README.md`, Abschnitt „Zu entscheiden“.
+Bisher „freigabereif nach Klärung von T7-BD-2 und T7-BD-3a/b“. Die offenen Normpunkte (von T7-BD-2 und T7-BD-3a/b) sind in der App als „vorläufig, Normprüfung ausstehend“ gekennzeichnet und gelten nach der Regel vom 02.11.2026 (Entscheidung vom 04.11.2026) für die Freigabe als erledigt. Sie bleiben im Prüfbogen Normtext offen; nach der Normprüfung wird der Wert angepasst.

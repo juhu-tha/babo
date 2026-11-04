@@ -2,7 +2,7 @@
 
 Stand 04.11.2026 · Gruppe „Bauprodukte“ · Typ `standard` · Prüfvermerk „offen“ (Prüfung ausstehend).
 
-**Empfehlung: freigabereif nach Klärung von T7-BT-1a** – Faktenstichprobe ohne Befund; offen sind nur die PSV-Kategorien nach TL Gestein-StB.
+**Empfehlung: freigabereif** – Faktenstichprobe ohne Befund; offen sind nur die PSV-Kategorien nach TL Gestein-StB. Die Normpunkte sind in der App gekennzeichnet und gelten nach der Regel vom 02.11.2026 als erledigt.
 
 Dieses Paket bereitet die Freigabe vor. Es setzt keinen Prüfvermerk; die Freigabe trägt die prüfende Person in `src/data/pruefvermerke.ts` ein.
 
@@ -31,7 +31,7 @@ Kein eigener Rechenkern in diesem Reiter (`BindemittelTab`).
 
 ## Offene Normpunkte
 
-Diese Punkte sind im Modul als „vorläufig, Normprüfung ausstehend“ gekennzeichnet und lassen sich nur am Normtext klären. Kennungen nach dem Prüfbogen Normtext (Stand 28.10.2026) bzw. nach der Befundliste; Zeilenangaben in „Wert in der App“ vom Stand des Prüfbogens.
+Diese Punkte sind im Modul als „vorläufig, Normprüfung ausstehend“ gekennzeichnet und lassen sich nur am Normtext klären. Für die Freigabe gelten sie als erledigt (Regel vom 02.11.2026, Entscheidung vom 04.11.2026); sie bleiben im Prüfbogen Normtext, Reiter „Nach Normen (04.11.)“, offen. Kennungen nach dem Prüfbogen bzw. nach der Befundliste; Zeilenangaben in „Wert in der App“ vom Stand des Prüfbogens (28.10.2026).
 
 | Kennung | Norm, Fundstelle | Zu prüfen | Wert in der App |
 |---|---|---|---|
@@ -55,6 +55,6 @@ DIN EN 12591, DIN EN 1426, DIN EN 1427, TL Gestein-StB 04/23, ZTV Asphalt-StB 26
 
 ## Empfehlung
 
-**freigabereif nach Klärung von T7-BT-1a.** Faktenstichprobe ohne Befund; offen sind nur die PSV-Kategorien nach TL Gestein-StB.
+**freigabereif.** Faktenstichprobe ohne Befund; offen sind nur die PSV-Kategorien nach TL Gestein-StB. Die Normpunkte sind in der App gekennzeichnet und gelten nach der Regel vom 02.11.2026 als erledigt.
 
-Nach der Regel der Freigabe vom 02.11.2026 (Tranche 16: im Modul gekennzeichnete Normtextpunkte gelten als erledigt) wäre das Modul schon jetzt freigabereif; nach der Regel vom 28.10.2026 (Normtextpunkte blockieren) erst nach dem Normtextabgleich. Siehe `README.md`, Abschnitt „Zu entscheiden“.
+Bisher „freigabereif nach Klärung von T7-BT-1a“. Die offenen Normpunkte (von T7-BT-1a) sind in der App als „vorläufig, Normprüfung ausstehend“ gekennzeichnet und gelten nach der Regel vom 02.11.2026 (Entscheidung vom 04.11.2026) für die Freigabe als erledigt. Sie bleiben im Prüfbogen Normtext offen; nach der Normprüfung wird der Wert angepasst.

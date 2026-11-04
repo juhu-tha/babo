@@ -31,7 +31,7 @@ Kein Rechenkern; das Spaltzugbeispiel ist in Tranche 7 mit eigener Umsetzung von
 
 ## Offene Normpunkte
 
-Diese Punkte sind im Modul als „vorläufig, Normprüfung ausstehend“ gekennzeichnet und lassen sich nur am Normtext klären. Kennungen nach dem Prüfbogen Normtext (Stand 28.10.2026) bzw. nach der Befundliste; Zeilenangaben in „Wert in der App“ vom Stand des Prüfbogens.
+Diese Punkte sind im Modul als „vorläufig, Normprüfung ausstehend“ gekennzeichnet und lassen sich nur am Normtext klären. Für die Freigabe gelten sie als erledigt (Regel vom 02.11.2026, Entscheidung vom 04.11.2026); sie bleiben im Prüfbogen Normtext, Reiter „Nach Normen (04.11.)“, offen. Kennungen nach dem Prüfbogen bzw. nach der Befundliste; Zeilenangaben in „Wert in der App“ vom Stand des Prüfbogens (28.10.2026).
 
 | Kennung | Norm, Fundstelle | Zu prüfen | Wert in der App |
 |---|---|---|---|
@@ -58,4 +58,4 @@ DIN EN 1338, DIN EN 1339, DIN EN 1340, DIN EN 1916, DIN EN 1610, DWA-A 127-1 (No
 
 **freigabereif nach Klärung von T7-BW-2a/b.** Spaltzugbeispiel richtig, T7-BW-1 behoben; offen sind Prüfdruck der Rohrprüfung (Verdacht 1 bar statt 0,5 bar) und der Einzelwert der Abwitterung.
 
-Nach der Regel der Freigabe vom 02.11.2026 wäre T7-BW-2 als gekennzeichnet erledigt. Wegen des begründeten Verdachts (1 bar statt 0,5 bar) wird der Normtextabgleich vor der Freigabe empfohlen.
+Nach der Regel vom 02.11.2026 gilt T7-BW-2 als gekennzeichnet erledigt. Wegen des begründeten Verdachts auf einen falschen Wert (Prüfdruck 1 bar statt 0,5 bar) wird der Normtextabgleich vor der Freigabe empfohlen.

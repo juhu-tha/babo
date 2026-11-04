@@ -1,8 +1,8 @@
 # Freigabepaket: Historische Materialkennwerte (`historisch`)
 
-Stand 04.11.2026 · Gruppe „Bauen im Bestand“ · Typ `database` · Prüfvermerk „geprüft“ vom 29.10.2026; Inhalt seitdem wesentlich geändert (siehe Abschnitt „Änderungen seit dem Prüfdatum“).
+Stand 04.11.2026 · Gruppe „Bauen im Bestand“ · Typ `database` · Prüfvermerk seit 04.11.2026 „Nachprüfung erforderlich“ (`re-review`, letzte Prüfung 29.10.2026); Inhalt seitdem wesentlich geändert (siehe Abschnitt „Änderungen seit dem Prüfdatum“).
 
-**Empfehlung: nicht freigabereif** – Der neue Reiter Bohrkernserie (#318) ist nach der Freigabe dazugekommen, ohne unabhängige Modulprüfung, und stützt fast alle Werte auf Sekundärquellen; dazu sieben neue Normpunkte zu DIN EN 13791.
+**Empfehlung: nicht freigabereif** – Prüfvermerk seit 04.11.2026 auf „Nachprüfung erforderlich“: Der neue Reiter Bohrkernserie (#318) ist nach der Freigabe dazugekommen und nicht unabhängig geprüft.
 
 Dieses Paket bereitet die Freigabe vor. Es setzt keinen Prüfvermerk; die Freigabe trägt die prüfende Person in `src/data/pruefvermerke.ts` ein.
 
@@ -41,7 +41,7 @@ Datenbank, Labor-Rechner und Nachweis rechnen über `src/utils/bestandKern.ts` (
 
 ## Offene Normpunkte
 
-Diese Punkte sind im Modul als „vorläufig, Normprüfung ausstehend“ gekennzeichnet und lassen sich nur am Normtext klären. Kennungen nach dem Prüfbogen Normtext (Stand 28.10.2026) bzw. nach der Befundliste; Zeilenangaben in „Wert in der App“ vom Stand des Prüfbogens.
+Diese Punkte sind im Modul als „vorläufig, Normprüfung ausstehend“ gekennzeichnet und lassen sich nur am Normtext klären. Für die Freigabe gelten sie als erledigt (Regel vom 02.11.2026, Entscheidung vom 04.11.2026); sie bleiben im Prüfbogen Normtext, Reiter „Nach Normen (04.11.)“, offen. Kennungen nach dem Prüfbogen bzw. nach der Befundliste; Zeilenangaben in „Wert in der App“ vom Stand des Prüfbogens (28.10.2026).
 
 | Kennung | Norm, Fundstelle | Zu prüfen | Wert in der App |
 |---|---|---|---|
@@ -54,6 +54,8 @@ Diese Punkte sind im Modul als „vorläufig, Normprüfung ausstehend“ gekennz
 | HK-13791-4 | DIN EN 13791:2020-02, 8.1(7), 8.3 | Volumengrenzen 10/30 m³, 1–3 Bauteile, Spannweite ≤ 15 % | `VOLUMEN_MAX`, `SPANNWEITE_MAX_KLEIN` in `src/calc/bohrkernserie13791.ts` |
 | HK-13791-5 | DIN EN 13791:2020-02, 8.2 | Mindestzahl der Wertepaare indirekt ↔ Kern | nur Text |
 | HK-13791-6 | DIN EN 12504-1:2021-02 | Ø ≥ 3·D_max, Ø ≥ 50 mm, Toleranzen h/d | Warnung bzw. Fehler im Rechner |
+| #248-γc | DBV-Merkblatt „Modifizierte Teilsicherheitsbeiwerte“ (03/2013); DIN EN 1992-1-1 Anhang A.2.2(2) | Grenze des Variationskoeffizienten V_c, ab der γ_c = 1,35 angesetzt werden darf | gekennzeichnet („Zuordnung von γ_c = 1,35 zu einer Grenze des Variationskoeffizienten ist vorläufig, Normprüfung ausstehend“, `content/historischematerialkennwerte/RechnerLaborTab.json:79`) → nicht blockierend |
+| NP2-HI-1 | DIN EN 772-1, Tab. A.1 | Formbeiwert d nach Höhe und Breite statt h/w-Näherung (Beispiel 0,82, Rechner 0,75) | gekennzeichnet („Formbeiwert für Mauerwerk vorläufig, Normprüfung ausstehend“, `content/historischematerialkennwerte/RechnerLaborTab.json:54`) → nicht blockierend |
 
 ## Quizfragen
 
@@ -80,4 +82,4 @@ DIN EN 1990 Anhang D, DIN EN 13791:2020-02 mit A20:2022-04, DIN EN 12504-1:2021-
 
 ## Empfehlung
 
-**nicht freigabereif.** Die drei bisherigen Reiter sind geprüft und unverändert richtig. Der neue Reiter rechnet in sich richtig (Test mit 60 Zufallsserien, beide Lehrbeispiele nachgerechnet), aber Mindeststandardabweichung, Kernschlankheit, Zuschlag M, Zuordnungsregel und die Volumengrenzen sind nur über Sekundärquellen belegt und als vorläufig gekennzeichnet. Vorschlag zur Entscheidung: den Prüfvermerk auf „Nachprüfung erforderlich“ (`re-review`) mit diesen offenen Punkten umstellen, bis der Normtext DIN EN 13791:2020-02 mit A20:2022-04 vorliegt; danach mit den Prüfschritten 1–4 freigeben. Die Frage aus HK „Hinweise“ (Stichprobe nach DIN EN 1990 Anhang D im Labor-Reiter) ist eine didaktische Entscheidung.
+**nicht freigabereif.** Die drei bisherigen Reiter sind geprüft und unverändert richtig. Der neue Reiter rechnet in sich richtig (Test mit 60 Zufallsserien, beide Lehrbeispiele nachgerechnet); seine Normpunkte (Mindeststandardabweichung, Kernschlankheit, Zuschlag M, Zuordnungsregel, Volumengrenzen) sind als vorläufig gekennzeichnet und gelten nach der Regel vom 02.11.2026 als erledigt. Es fehlt die unabhängige Nachprüfung des Reiters selbst. Nach Entscheidung vom 04.11.2026 steht der Prüfvermerk deshalb auf „Nachprüfung erforderlich“ (`re-review`, Datum der letzten Prüfung 29.10.2026, offene Punkte im Admin-Bereich). Freigabe nach den Prüfschritten 1–4 und der einheitlichen Festlegung der Mindeststandardabweichung (siehe `rechnung_bestand.md`). Die Frage aus HK „Hinweise“ (Stichprobe nach DIN EN 1990 Anhang D im Labor-Reiter) ist eine didaktische Entscheidung.

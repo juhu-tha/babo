@@ -2,7 +2,7 @@
 
 Stand 04.11.2026 · Gruppe „Betontechnologie“ · Typ `calculator` · Prüfvermerk „offen“ (Prüfung ausstehend).
 
-**Empfehlung: freigabereif nach Klärung von T3-HY-1** – Rechnung in Tranche 3 freigabefähig, eingebettete Seiten in Tranche 16 freigegeben; offen bleibt die Form der gewogenen Reife nach NEN 5970.
+**Empfehlung: freigabereif** – Rechnung in Tranche 3 freigabefähig, eingebettete Seiten in Tranche 16 freigegeben; offen bleibt die Form der gewogenen Reife nach NEN 5970. Die Normpunkte sind in der App gekennzeichnet und gelten nach der Regel vom 02.11.2026 als erledigt.
 
 Dieses Paket bereitet die Freigabe vor. Es setzt keinen Prüfvermerk; die Freigabe trägt die prüfende Person in `src/data/pruefvermerke.ts` ein.
 
@@ -39,7 +39,7 @@ Komponente `src/modules/HydratationFolgen.tsx`; Inhalt `content/eigenspannungen/
 
 ## Offene Normpunkte
 
-Diese Punkte sind im Modul als „vorläufig, Normprüfung ausstehend“ gekennzeichnet und lassen sich nur am Normtext klären. Kennungen nach dem Prüfbogen Normtext (Stand 28.10.2026) bzw. nach der Befundliste; Zeilenangaben in „Wert in der App“ vom Stand des Prüfbogens.
+Diese Punkte sind im Modul als „vorläufig, Normprüfung ausstehend“ gekennzeichnet und lassen sich nur am Normtext klären. Für die Freigabe gelten sie als erledigt (Regel vom 02.11.2026, Entscheidung vom 04.11.2026); sie bleiben im Prüfbogen Normtext, Reiter „Nach Normen (04.11.)“, offen. Kennungen nach dem Prüfbogen bzw. nach der Befundliste; Zeilenangaben in „Wert in der App“ vom Stand des Prüfbogens (28.10.2026).
 
 | Kennung | Norm, Fundstelle | Zu prüfen | Wert in der App |
 |---|---|---|---|
@@ -65,6 +65,6 @@ DIN EN 1992-1-1 Gl. (3.1)–(3.5), fib Model Code 2010 Gl. (5.1-85), NEN 5970:20
 
 ## Empfehlung
 
-**freigabereif nach Klärung von T3-HY-1.** Alle Kerne sind nachgerechnet (Tranche 3: sechs Fälle; Tranche 16: Zwang, Eigenspannungen, Kriechen). T3-HY-2 ist umgesetzt. Offen ist T3-HY-1 (Form und C-Bereich der gewogenen Reife); das Verfahren ist eines von fünf wählbaren Reifeverfahren und als vorläufig gekennzeichnet. Vorschlag: NEN 5970 in den Prüfbogen Normtext aufnehmen. Die Kurzfassung „70 bis 80 %“ könnte „70 bis 85 %“ heißen (Hinweis aus T3, nicht als Fehler gewertet).
+**freigabereif.** Alle Kerne sind nachgerechnet (Tranche 3: sechs Fälle; Tranche 16: Zwang, Eigenspannungen, Kriechen). T3-HY-2 ist umgesetzt. Offen ist T3-HY-1 (Form und C-Bereich der gewogenen Reife); das Verfahren ist eines von fünf wählbaren Reifeverfahren und als vorläufig gekennzeichnet. Vorschlag: NEN 5970 in den Prüfbogen Normtext aufnehmen. Die Kurzfassung „70 bis 80 %“ könnte „70 bis 85 %“ heißen (Hinweis aus T3, nicht als Fehler gewertet).
 
-Nach der Regel der Freigabe vom 02.11.2026 (Tranche 16: im Modul gekennzeichnete Normtextpunkte gelten als erledigt) wäre das Modul schon jetzt freigabereif; nach der Regel vom 28.10.2026 (Normtextpunkte blockieren) erst nach dem Normtextabgleich. Siehe `README.md`, Abschnitt „Zu entscheiden“.
+Bisher „freigabereif nach Klärung von T3-HY-1“. Die offenen Normpunkte (von T3-HY-1) sind in der App als „vorläufig, Normprüfung ausstehend“ gekennzeichnet und gelten nach der Regel vom 02.11.2026 (Entscheidung vom 04.11.2026) für die Freigabe als erledigt. Sie bleiben im Prüfbogen Normtext offen; nach der Normprüfung wird der Wert angepasst.

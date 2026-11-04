@@ -2,7 +2,7 @@
 
 Stand 04.11.2026 · Gruppe „Grundlagen“ · Typ `calculator` · Prüfvermerk „offen“ (Prüfung ausstehend).
 
-**Empfehlung: freigabereif nach Klärung von EK-N1 bis EK-N4** – Neues Modul aus zentralen, bereits geprüften Konstanten; Beispiele zweimal nachgerechnet (Test und Paket). Offen sind vier NA-Werte der außergewöhnlichen Situation bzw. α_ct; EK-N5 bis EK-N7 betreffen belegte Formeln oder den Ausblick.
+**Empfehlung: freigabereif** – Neues Modul aus zentralen, bereits geprüften Konstanten; Beispiele zweimal nachgerechnet (Test und Paket). Offen sind vier NA-Werte der außergewöhnlichen Situation bzw. α_ct; EK-N5 bis EK-N7 betreffen belegte Formeln oder den Ausblick. Die Normpunkte sind in der App gekennzeichnet und gelten nach der Regel vom 02.11.2026 als erledigt.
 
 Dieses Paket bereitet die Freigabe vor. Es setzt keinen Prüfvermerk; die Freigabe trägt die prüfende Person in `src/data/pruefvermerke.ts` ein.
 
@@ -40,7 +40,7 @@ Komponente `src/modules/EcKennwerte.tsx`; Inhalt `content/eckennwerte/EcKennwert
 
 ## Offene Normpunkte
 
-Diese Punkte sind im Modul als „vorläufig, Normprüfung ausstehend“ gekennzeichnet und lassen sich nur am Normtext klären. Kennungen nach dem Prüfbogen Normtext (Stand 28.10.2026) bzw. nach der Befundliste; Zeilenangaben in „Wert in der App“ vom Stand des Prüfbogens.
+Diese Punkte sind im Modul als „vorläufig, Normprüfung ausstehend“ gekennzeichnet und lassen sich nur am Normtext klären. Für die Freigabe gelten sie als erledigt (Regel vom 02.11.2026, Entscheidung vom 04.11.2026); sie bleiben im Prüfbogen Normtext, Reiter „Nach Normen (04.11.)“, offen. Kennungen nach dem Prüfbogen bzw. nach der Befundliste; Zeilenangaben in „Wert in der App“ vom Stand des Prüfbogens (28.10.2026).
 
 | Kennung | Norm, Fundstelle | Zu prüfen | Wert in der App |
 |---|---|---|---|
@@ -73,6 +73,6 @@ DIN EN 1990 Anhang D, DIN EN 1992-1-1 Tab. 3.1 mit NA, DIN EN 1993-1-1/NA, DIN E
 
 ## Empfehlung
 
-**freigabereif nach Klärung von EK-N1 bis EK-N4.** Alle Kennwerte kommen aus den zentralen Konstanten, die in den Tranchen 1, 4, 5 und 10 geprüft sind; die sechs Beispiele sind im Test und für dieses Paket nachgerechnet. Eine Modulprüfung durch eine zweite Person gibt es noch nicht – die Prüfschritte oben ersetzen sie im Umfang einer Stichprobe. Blockierend sind die vier NA-Punkte EK-N1 bis EK-N4 (γ-Werte außergewöhnlich, α_ct). EK-N5 ist über die Formel 1,64·√(1 + 1/n) belegt, EK-N6/EK-N7 sind Ausblicktext. Alle sieben Quizfragen sind noch nicht freigegeben.
+**freigabereif.** Alle Kennwerte kommen aus den zentralen Konstanten, die in den Tranchen 1, 4, 5 und 10 geprüft sind; die sechs Beispiele sind im Test und für dieses Paket nachgerechnet. Eine Modulprüfung durch eine zweite Person gibt es noch nicht – die Prüfschritte oben ersetzen sie im Umfang einer Stichprobe. Blockierend sind die vier NA-Punkte EK-N1 bis EK-N4 (γ-Werte außergewöhnlich, α_ct). EK-N5 ist über die Formel 1,64·√(1 + 1/n) belegt, EK-N6/EK-N7 sind Ausblicktext. Alle sieben Quizfragen sind noch nicht freigegeben.
 
-Nach der Regel der Freigabe vom 02.11.2026 (gekennzeichnete Normtextpunkte gelten als erledigt) wäre das Modul freigabereif; weil eine Modulprüfung durch eine zweite Person fehlt, sind die Prüfschritte oben die Stichprobe dafür.
+Bisher „freigabereif nach Klärung von EK-N1 bis EK-N4“. Die offenen Normpunkte (von EK-N1 bis EK-N4) sind in der App als „vorläufig, Normprüfung ausstehend“ gekennzeichnet und gelten nach der Regel vom 02.11.2026 (Entscheidung vom 04.11.2026) für die Freigabe als erledigt. Sie bleiben im Prüfbogen Normtext offen; nach der Normprüfung wird der Wert angepasst. Weil eine Modulprüfung durch eine zweite Person fehlt, sind die Prüfschritte oben die Stichprobe dafür.

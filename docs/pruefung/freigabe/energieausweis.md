@@ -2,7 +2,7 @@
 
 Stand 04.11.2026 · Gruppe „Bauphysik“ · Typ `calculator` · Prüfvermerk „offen“ (Prüfung ausstehend).
 
-**Empfehlung: freigabereif nach Klärung von T11-EA-4** – Rechtsstand GModG geprüft und umgesetzt, Rechner in sechs Fällen nachgerechnet; offen ist der Wert der internen Gewinne (Kern 35, Text 25–30 kWh/(m²a)).
+**Empfehlung: freigabereif** – Rechtsstand GModG geprüft und umgesetzt, Rechner in sechs Fällen nachgerechnet; offen ist der Wert der internen Gewinne (Kern 35, Text 25–30 kWh/(m²a)). Die Normpunkte sind in der App gekennzeichnet und gelten nach der Regel vom 02.11.2026 als erledigt.
 
 Dieses Paket bereitet die Freigabe vor. Es setzt keinen Prüfvermerk; die Freigabe trägt die prüfende Person in `src/data/pruefvermerke.ts` ein.
 
@@ -36,7 +36,7 @@ Komponente `src/modules/Energieausweis.tsx`; Inhalt `content/energieausweis/Ener
 
 ## Offene Normpunkte
 
-Diese Punkte sind im Modul als „vorläufig, Normprüfung ausstehend“ gekennzeichnet und lassen sich nur am Normtext klären. Kennungen nach dem Prüfbogen Normtext (Stand 28.10.2026) bzw. nach der Befundliste; Zeilenangaben in „Wert in der App“ vom Stand des Prüfbogens.
+Diese Punkte sind im Modul als „vorläufig, Normprüfung ausstehend“ gekennzeichnet und lassen sich nur am Normtext klären. Für die Freigabe gelten sie als erledigt (Regel vom 02.11.2026, Entscheidung vom 04.11.2026); sie bleiben im Prüfbogen Normtext, Reiter „Nach Normen (04.11.)“, offen. Kennungen nach dem Prüfbogen bzw. nach der Befundliste; Zeilenangaben in „Wert in der App“ vom Stand des Prüfbogens (28.10.2026).
 
 | Kennung | Norm, Fundstelle | Zu prüfen | Wert in der App |
 |---|---|---|---|
@@ -61,6 +61,6 @@ GModG (BGBl. 2026 I Nr. 226), Anlage 4 und Anlage 9 (Haufe-Synopse, buzer.de), D
 
 ## Empfehlung
 
-**freigabereif nach Klärung von T11-EA-4.** T11-EA-1 bis -3 sind erledigt, der Stichtagsschalter für 2027 ist eingebaut. Offen ist T11-EA-4: Kern und Text nennen verschiedene Werte für die internen Gewinne; beide sind als Lehrwert gekennzeichnet. Zusätzlich ist der Strom-CO₂-Faktor ab 2027 (100 g/kWh) vorläufig, weil die Fassung 2027 der Anlage 9 öffentlich nicht abrufbar war. Vor dem 01.01.2027 lohnt eine kurze Kontrolle beider Werte.
+**freigabereif.** T11-EA-1 bis -3 sind erledigt, der Stichtagsschalter für 2027 ist eingebaut. Offen ist T11-EA-4: Kern und Text nennen verschiedene Werte für die internen Gewinne; beide sind als Lehrwert gekennzeichnet. Zusätzlich ist der Strom-CO₂-Faktor ab 2027 (100 g/kWh) vorläufig, weil die Fassung 2027 der Anlage 9 öffentlich nicht abrufbar war. Vor dem 01.01.2027 lohnt eine kurze Kontrolle beider Werte.
 
-Nach der Regel der Freigabe vom 02.11.2026 (Tranche 16: im Modul gekennzeichnete Normtextpunkte gelten als erledigt) wäre das Modul schon jetzt freigabereif; nach der Regel vom 28.10.2026 (Normtextpunkte blockieren) erst nach dem Normtextabgleich. Siehe `README.md`, Abschnitt „Zu entscheiden“.
+Bisher „freigabereif nach Klärung von T11-EA-4“. Die offenen Normpunkte (von T11-EA-4) sind in der App als „vorläufig, Normprüfung ausstehend“ gekennzeichnet und gelten nach der Regel vom 02.11.2026 (Entscheidung vom 04.11.2026) für die Freigabe als erledigt. Sie bleiben im Prüfbogen Normtext offen; nach der Normprüfung wird der Wert angepasst.

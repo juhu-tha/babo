@@ -5,6 +5,8 @@ import { kennwerteZumAlter } from '../src/calc/hydratation';
 import { KURZFASSUNG } from '../src/data/kurzfassung';
 import hydFolgen from '../content/hydratationfolgen/HydratationFolgen.json';
 import { sammleFFreigabe, fachgebietVon, FACHGEBIET_SONST } from '../scripts/auditDaten';
+import { pruefvermerkFuer } from '../src/data/pruefvermerke';
+import { pruefvermerkText } from '../src/components/ui/pruefvermerkText';
 
 const fehler: string[] = [];
 const gilt = (ok: boolean, fall: string) => { if (!ok) fehler.push(fall); };
@@ -47,6 +49,22 @@ for (const f of pakete) gilt(readme.includes(`](${f})`), `README: Paket ${f} nic
 const sonst = sammleFFreigabe().gruppen.find(g => g.fachgebiet === FACHGEBIET_SONST);
 gilt(!sonst, `F-Freigabe ohne Fachgebiet: ${sonst?.eintraege.map(e => `${e.datei}:${e.zeile}`).join(', ')}`);
 gilt(fachgebietVon('src/calc/bohrkernserie13791.ts', 'vorläufig, Normprüfung ausstehend') === 'Prüfverfahren & Bauwerksdiagnostik', 'Fachgebiet Bohrkernserie');
+
+// 4. Entscheidungen 04.11.2026: Regel vom 02.11. (gekennzeichnete Normtextpunkte gelten als erledigt) in der README;
+//    historisch auf Nachprüfung, Anzeige passiv ohne Namen; die übrigen geänderten Module bleiben „geprüft“
+gilt(readme.includes('Entscheidung vom 04.11.2026') && readme.includes('Reiter „Nach Normen (04.11.)“'), 'README: Regel vom 04.11.2026 und Verweis auf den Prüfbogen');
+const hv = pruefvermerkFuer('historisch');
+gilt(hv?.status === 're-review' && hv.am === '2026-10-29' && !hv.von && (hv.offenePunkte?.length ?? 0) > 0, `historisch: Prüfvermerk ${JSON.stringify(hv)}`);
+gilt(!!hv && pruefvermerkText(hv) === 'Fachliche Nachprüfung erforderlich (letzte Prüfung 29.10.2026)', `historisch: Anzeige ${hv && pruefvermerkText(hv)}`);
+for (const id of ['bauschaeden', 'pfas_baustoffe', 'normen_ausblick']) gilt(pruefvermerkFuer(id)?.status === 'geprueft', `${id}: Prüfvermerk unverändert „geprüft“`);
+gilt(/\*\*nicht freigabereif\.\*\*/.test(readFileSync(`${ordner}/historisch.md`, 'utf8')) && readFileSync(`${ordner}/historisch.md`, 'utf8').includes('„Nachprüfung erforderlich“ (`re-review`'), 'Paket historisch: Nachprüfung');
+
+// 5. Rückprallskala (labor): markiert werden seit #254 die Werte aus rueckprallMesssatz (> 6 Einheiten vom Median),
+//    die Bildunterschrift nannte noch die alte 25-%-Regel
+const schmidt = readFileSync('src/components/labor/SchmidtHammerSimulator.tsx', 'utf8');
+gilt(schmidt.includes('rot: mehr als 6 Einheiten vom Median') && !schmidt.includes('&gt; 25 % vom Median'), 'Schmidt-Hammer: Bildunterschrift der Rückprallskala');
+const labor = readFileSync(`${ordner}/labor.md`, 'utf8');
+gilt(labor.includes('#253-HZ') && labor.includes('#255-RuK') && !labor.includes('outliers.length > 0.2'), 'Paket labor: Normpunkte #253-HZ/#255-RuK, aktueller Stand T4-PN-2');
 
 if (fehler.length) { for (const f of fehler) console.error(`FAIL: ${f}`); process.exit(1); }
 console.log(`OK: Freigabepakete (${pakete.length}) und Korrekturen 04.11.2026`);

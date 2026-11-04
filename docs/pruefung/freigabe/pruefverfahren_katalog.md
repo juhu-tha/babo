@@ -40,7 +40,7 @@ Komponente `src/modules/Bauwerksuntersuchung.tsx`; Inhalt `content/bauwerksunter
 
 ## Offene Normpunkte
 
-Diese Punkte sind im Modul als „vorläufig, Normprüfung ausstehend“ gekennzeichnet und lassen sich nur am Normtext klären. Kennungen nach dem Prüfbogen Normtext (Stand 28.10.2026) bzw. nach der Befundliste; Zeilenangaben in „Wert in der App“ vom Stand des Prüfbogens.
+Diese Punkte sind im Modul als „vorläufig, Normprüfung ausstehend“ gekennzeichnet und lassen sich nur am Normtext klären. Für die Freigabe gelten sie als erledigt (Regel vom 02.11.2026, Entscheidung vom 04.11.2026); sie bleiben im Prüfbogen Normtext, Reiter „Nach Normen (04.11.)“, offen. Kennungen nach dem Prüfbogen bzw. nach der Befundliste; Zeilenangaben in „Wert in der App“ vom Stand des Prüfbogens (28.10.2026).
 
 | Kennung | Norm, Fundstelle | Zu prüfen | Wert in der App |
 |---|---|---|---|
@@ -68,4 +68,4 @@ DIN EN 12504-1/-2/-4:2021, DIN EN 13791:2020-02, DIN EN 14630, DIN 4108-3 (Karst
 
 **freigabereif nach Klärung von T12-BU-7.** T12-BU-2 bis -4 sind behoben, T12-BU-7 ist umgesetzt und gekennzeichnet. Vor der Freigabe sind zwei Hinweise aus Tranche 12 noch nicht angeglichen (Ultraschall-Gefügestufen, Ablesezeit Phenolphthalein); beides sind Textwidersprüche, die eine fachliche Festlegung brauchen. Die Ausgabenzuordnung der Verwerfungsregel ist im Code widersprüchlich (Befund 04.11.).
 
-Auch nach der Regel der Freigabe vom 02.11.2026 (gekennzeichnete Normtextpunkte gelten als erledigt) bleiben hier zwei Textwidersprüche zu entscheiden: Ultraschall-Gefügestufen und Ablesezeit Phenolphthalein.
+Die gekennzeichneten Normtextpunkte gelten nach der Regel vom 02.11.2026 als erledigt. Offen bleiben zwei Textwidersprüche, die fachlich zu entscheiden sind: Ultraschall-Gefügestufen und Ablesezeit Phenolphthalein.

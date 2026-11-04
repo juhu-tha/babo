@@ -2,7 +2,7 @@
 
 Stand 04.11.2026 · Gruppe „Labor & Auswertung“ · Typ `standard` · Prüfvermerk „offen“ (Prüfung ausstehend).
 
-**Empfehlung: freigabereif nach Klärung von T4-PN-2** – Rechnungen nachgerechnet, T4-PN-1 behoben; offen ist allein die Verwerfungsregel nach DIN EN 12504-2 (6 Einheiten oder 25 % des Medians).
+**Empfehlung: freigabereif** – Rechnungen nachgerechnet, T4-PN-1 behoben; offen ist allein die Verwerfungsregel nach DIN EN 12504-2 (6 Einheiten oder 25 % des Medians). Die Normpunkte sind in der App gekennzeichnet und gelten nach der Regel vom 02.11.2026 als erledigt.
 
 Dieses Paket bereitet die Freigabe vor. Es setzt keinen Prüfvermerk; die Freigabe trägt die prüfende Person in `src/data/pruefvermerke.ts` ein.
 
@@ -37,11 +37,11 @@ Bohrmehl- und Bohrkernrechnung stehen inline in der Komponente und sind in Tranc
 
 ## Offene Normpunkte
 
-Diese Punkte sind im Modul als „vorläufig, Normprüfung ausstehend“ gekennzeichnet und lassen sich nur am Normtext klären. Kennungen nach dem Prüfbogen Normtext (Stand 28.10.2026) bzw. nach der Befundliste; Zeilenangaben in „Wert in der App“ vom Stand des Prüfbogens.
+Diese Punkte sind im Modul als „vorläufig, Normprüfung ausstehend“ gekennzeichnet und lassen sich nur am Normtext klären. Für die Freigabe gelten sie als erledigt (Regel vom 02.11.2026, Entscheidung vom 04.11.2026); sie bleiben im Prüfbogen Normtext, Reiter „Nach Normen (04.11.)“, offen. Kennungen nach dem Prüfbogen bzw. nach der Befundliste; Zeilenangaben in „Wert in der App“ vom Stand des Prüfbogens (28.10.2026).
 
 | Kennung | Norm, Fundstelle | Zu prüfen | Wert in der App |
 |---|---|---|---|
-| T4-PN-2 | DIN EN 12504-2:2021-10, Auswertung (Verwerfen der Messreihe) | Schwelle für das Verwerfen der Messreihe: Abweichung vom Median in % oder in Einheiten? | Mehr als 20 % der Einzelwerte weichen um mehr als 25 % vom Median ab → Messreihe verwerfen. Code: `Math.abs(v - median) / median > 0.25`, `outliers.length > 0.2 * valid.length` – `src/components/labor/SchmidtHammerSimulator.tsx:110–111`, Meldung `:170`; Text `content/probenahme/Probenahme.json:79`; Quiz `q_prob_4` `src/data/quiz.json:2586` |
+| T4-PN-2 | DIN EN 12504-2:2021-10, Auswertung (Verwerfen der Messreihe) | Schwelle für das Verwerfen des Messsatzes: 6 Einheiten (Ausgabe 2012) oder 25 % des Medians (Ausgabe 2021-10 laut Sekundärquellen)? | Seit #254 (29.10.): Median aller Einzelwerte, kein Streichen; weichen mehr als 20 % der Einzelwerte um mehr als 6 Einheiten vom Median ab, wird der ganze Messsatz verworfen – Kern `src/calc/bauwerksuntersuchung.ts:109` (`rueckprallMesssatz`), Simulator `src/components/labor/SchmidtHammerSimulator.tsx:109`, Meldung „vorläufig, Normprüfung ausstehend“ `src/calc/bauwerksuntersuchung.ts:129`; Text `content/probenahme/Probenahme.json:79`. Die frühere 25-%-Regel (Prüfbogen-Stand 28.10.) ist entfernt. |
 
 ## Quizfragen
 
@@ -62,6 +62,6 @@ LAGA PN 98 (2019), DIN 19698-1/-2, DIN EN 932-2, DIN EN 12504-1:2021-02, DIN EN 
 
 ## Empfehlung
 
-**freigabereif nach Klärung von T4-PN-2.** Rechnungen nachgerechnet, T4-PN-1 behoben; offen ist allein die Verwerfungsregel nach DIN EN 12504-2 (6 Einheiten oder 25 % des Medians).
+**freigabereif.** Rechnungen nachgerechnet, T4-PN-1 behoben; offen ist allein die Verwerfungsregel nach DIN EN 12504-2 (6 Einheiten oder 25 % des Medians). Die Normpunkte sind in der App gekennzeichnet und gelten nach der Regel vom 02.11.2026 als erledigt.
 
-Nach der Regel der Freigabe vom 02.11.2026 (Tranche 16: im Modul gekennzeichnete Normtextpunkte gelten als erledigt) wäre das Modul schon jetzt freigabereif; nach der Regel vom 28.10.2026 (Normtextpunkte blockieren) erst nach dem Normtextabgleich. Siehe `README.md`, Abschnitt „Zu entscheiden“.
+Bisher „freigabereif nach Klärung von T4-PN-2“. Die offenen Normpunkte (von T4-PN-2) sind in der App als „vorläufig, Normprüfung ausstehend“ gekennzeichnet und gelten nach der Regel vom 02.11.2026 (Entscheidung vom 04.11.2026) für die Freigabe als erledigt. Sie bleiben im Prüfbogen Normtext offen; nach der Normprüfung wird der Wert angepasst.

@@ -2,7 +2,7 @@
 
 Stand 04.11.2026 · Gruppe „Betontechnologie“ · Typ `calculator` · Prüfvermerk „offen“ (Prüfung ausstehend).
 
-**Empfehlung: freigabereif nach Klärung von #247-5 und #247-6** – Hüllwerte, k-Wert-Ansatz und Klassendaten nachgerechnet und richtig; offen ist nur der Wortlaut der AKR-Maßnahmen bei WF/WA am Richtlinientext.
+**Empfehlung: freigabereif** – Hüllwerte, k-Wert-Ansatz und Klassendaten nachgerechnet und richtig; offen ist nur der Wortlaut der AKR-Maßnahmen bei WF/WA am Richtlinientext. Die Normpunkte sind in der App gekennzeichnet und gelten nach der Regel vom 02.11.2026 als erledigt.
 
 Dieses Paket bereitet die Freigabe vor. Es setzt keinen Prüfvermerk; die Freigabe trägt die prüfende Person in `src/data/pruefvermerke.ts` ein.
 
@@ -34,7 +34,7 @@ Komponente `src/modules/Expositionsklassen.tsx`; Inhalt `content/expositionsklas
 
 ## Offene Normpunkte
 
-Diese Punkte sind im Modul als „vorläufig, Normprüfung ausstehend“ gekennzeichnet und lassen sich nur am Normtext klären. Kennungen nach dem Prüfbogen Normtext (Stand 28.10.2026) bzw. nach der Befundliste; Zeilenangaben in „Wert in der App“ vom Stand des Prüfbogens.
+Diese Punkte sind im Modul als „vorläufig, Normprüfung ausstehend“ gekennzeichnet und lassen sich nur am Normtext klären. Für die Freigabe gelten sie als erledigt (Regel vom 02.11.2026, Entscheidung vom 04.11.2026); sie bleiben im Prüfbogen Normtext, Reiter „Nach Normen (04.11.)“, offen. Kennungen nach dem Prüfbogen bzw. nach der Befundliste; Zeilenangaben in „Wert in der App“ vom Stand des Prüfbogens (28.10.2026).
 
 | Kennung | Norm, Fundstelle | Zu prüfen | Wert in der App |
 |---|---|---|---|
@@ -60,6 +60,6 @@ DIN 1045-2:2023-08, Tab. F.2.1/F.2.2; DIN EN 206; DIN EN 1992-1-1/NA Tab. 4.4DE;
 
 ## Empfehlung
 
-**freigabereif nach Klärung von #247-5 und #247-6.** Alle vier Nachrechnungen und die Klassendaten stimmen mit DIN 1045-2/DIN EN 206; T3-EX-1 ist umgesetzt. Offen ist der Tabellenwortlaut der Alkali-Richtlinie für WF und WA (#247-5/-6). Er betrifft nur die Texttabelle der Feuchtigkeitsklassen, nicht den Rechner.
+**freigabereif.** Alle vier Nachrechnungen und die Klassendaten stimmen mit DIN 1045-2/DIN EN 206; T3-EX-1 ist umgesetzt. Offen ist der Tabellenwortlaut der Alkali-Richtlinie für WF und WA (#247-5/-6). Er betrifft nur die Texttabelle der Feuchtigkeitsklassen, nicht den Rechner.
 
-Nach der Regel der Freigabe vom 02.11.2026 (Tranche 16: im Modul gekennzeichnete Normtextpunkte gelten als erledigt) wäre das Modul schon jetzt freigabereif; nach der Regel vom 28.10.2026 (Normtextpunkte blockieren) erst nach dem Normtextabgleich. Siehe `README.md`, Abschnitt „Zu entscheiden“.
+Bisher „freigabereif nach Klärung von #247-5 und #247-6“. Die offenen Normpunkte (von #247-5 und #247-6) sind in der App als „vorläufig, Normprüfung ausstehend“ gekennzeichnet und gelten nach der Regel vom 02.11.2026 (Entscheidung vom 04.11.2026) für die Freigabe als erledigt. Sie bleiben im Prüfbogen Normtext offen; nach der Normprüfung wird der Wert angepasst.

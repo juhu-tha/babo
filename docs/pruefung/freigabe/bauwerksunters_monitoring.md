@@ -2,7 +2,7 @@
 
 Stand 04.11.2026 · Gruppe „Mängel & Schäden“ · Typ `standard` · Prüfvermerk „offen“ (Prüfung ausstehend).
 
-**Empfehlung: freigabereif nach Klärung von T12-BU-7** – Fünf Befunde behoben, vier Nachrechnungen identisch; das Modul hängt nur über den eingebetteten Prüfkatalog an der Rückprall-Verwerfungsregel.
+**Empfehlung: freigabereif** – Fünf Befunde behoben, vier Nachrechnungen identisch; das Modul hängt nur über den eingebetteten Prüfkatalog an der Rückprall-Verwerfungsregel. Die Normpunkte sind in der App gekennzeichnet und gelten nach der Regel vom 02.11.2026 als erledigt.
 
 Dieses Paket bereitet die Freigabe vor. Es setzt keinen Prüfvermerk; die Freigabe trägt die prüfende Person in `src/data/pruefvermerke.ts` ein.
 
@@ -39,7 +39,7 @@ Komponente `src/modules/Bauwerksunters_Monitoring.tsx`; Inhalt `content/bauwerks
 
 ## Offene Normpunkte
 
-Diese Punkte sind im Modul als „vorläufig, Normprüfung ausstehend“ gekennzeichnet und lassen sich nur am Normtext klären. Kennungen nach dem Prüfbogen Normtext (Stand 28.10.2026) bzw. nach der Befundliste; Zeilenangaben in „Wert in der App“ vom Stand des Prüfbogens.
+Diese Punkte sind im Modul als „vorläufig, Normprüfung ausstehend“ gekennzeichnet und lassen sich nur am Normtext klären. Für die Freigabe gelten sie als erledigt (Regel vom 02.11.2026, Entscheidung vom 04.11.2026); sie bleiben im Prüfbogen Normtext, Reiter „Nach Normen (04.11.)“, offen. Kennungen nach dem Prüfbogen bzw. nach der Befundliste; Zeilenangaben in „Wert in der App“ vom Stand des Prüfbogens (28.10.2026).
 
 | Kennung | Norm, Fundstelle | Zu prüfen | Wert in der App |
 |---|---|---|---|
@@ -63,6 +63,6 @@ VDI 6200:2010-02 und Blatt 1.1:2026-06, DIN 1076:2026-01, VDI/VDE 2635 Blatt 1, 
 
 ## Empfehlung
 
-**freigabereif nach Klärung von T12-BU-7.** Fünf Befunde behoben, vier Nachrechnungen identisch; das Modul hängt nur über den eingebetteten Prüfkatalog an der Rückprall-Verwerfungsregel.
+**freigabereif.** Fünf Befunde behoben, vier Nachrechnungen identisch; das Modul hängt nur über den eingebetteten Prüfkatalog an der Rückprall-Verwerfungsregel. Die Normpunkte sind in der App gekennzeichnet und gelten nach der Regel vom 02.11.2026 als erledigt.
 
-Nach der Regel der Freigabe vom 02.11.2026 (Tranche 16: im Modul gekennzeichnete Normtextpunkte gelten als erledigt) wäre das Modul schon jetzt freigabereif; nach der Regel vom 28.10.2026 (Normtextpunkte blockieren) erst nach dem Normtextabgleich. Siehe `README.md`, Abschnitt „Zu entscheiden“.
+Bisher „freigabereif nach Klärung von T12-BU-7“. Die offenen Normpunkte (von T12-BU-7) sind in der App als „vorläufig, Normprüfung ausstehend“ gekennzeichnet und gelten nach der Regel vom 02.11.2026 (Entscheidung vom 04.11.2026) für die Freigabe als erledigt. Sie bleiben im Prüfbogen Normtext offen; nach der Normprüfung wird der Wert angepasst.

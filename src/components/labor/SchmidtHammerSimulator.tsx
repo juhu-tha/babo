@@ -403,7 +403,7 @@ export default function SchmidtHammerSimulator() {
                       )}
                     </svg>
                     <figcaption className="text-[11px] leading-snug mt-1" style={{ color: 'var(--pg-text2)' }}>
-                      Rückprallwert R (Skalenteile, ohne Einheit); Punkte = Einzelwerte (rot: &gt; 25 % vom Median), Strich = Median.
+                      Rückprallwert R (Skalenteile, ohne Einheit); Punkte = Einzelwerte (rot: mehr als 6 Einheiten vom Median), Strich = Median.
                     </figcaption>
                   </figure>
 

@@ -2,7 +2,7 @@
 
 Stand 04.11.2026 · Gruppe „Beispielrechnungen“ · Typ `calculator` · Prüfvermerk „offen“ (Prüfung ausstehend).
 
-**Empfehlung: freigabereif nach Klärung von #247-7 und #247-8** – Holzteil und Balken-/Plattentabellen nachgerechnet und richtig; offen sind die Stützenwerte der Tab. 5.2a mit NA DE und die zulässigen Abplatzmethoden in Deutschland.
+**Empfehlung: freigabereif** – Holzteil und Balken-/Plattentabellen nachgerechnet und richtig; offen sind die Stützenwerte der Tab. 5.2a mit NA DE und die zulässigen Abplatzmethoden in Deutschland. Die Normpunkte sind in der App gekennzeichnet und gelten nach der Regel vom 02.11.2026 als erledigt.
 
 Dieses Paket bereitet die Freigabe vor. Es setzt keinen Prüfvermerk; die Freigabe trägt die prüfende Person in `src/data/pruefvermerke.ts` ein.
 
@@ -32,7 +32,7 @@ Kein Rechenkern in `src/calc/`: die Holzrechnung steht inline in {{src/modules/B
 
 ## Offene Normpunkte
 
-Diese Punkte sind im Modul als „vorläufig, Normprüfung ausstehend“ gekennzeichnet und lassen sich nur am Normtext klären. Kennungen nach dem Prüfbogen Normtext (Stand 28.10.2026) bzw. nach der Befundliste; Zeilenangaben in „Wert in der App“ vom Stand des Prüfbogens.
+Diese Punkte sind im Modul als „vorläufig, Normprüfung ausstehend“ gekennzeichnet und lassen sich nur am Normtext klären. Für die Freigabe gelten sie als erledigt (Regel vom 02.11.2026, Entscheidung vom 04.11.2026); sie bleiben im Prüfbogen Normtext, Reiter „Nach Normen (04.11.)“, offen. Kennungen nach dem Prüfbogen bzw. nach der Befundliste; Zeilenangaben in „Wert in der App“ vom Stand des Prüfbogens (28.10.2026).
 
 | Kennung | Norm, Fundstelle | Zu prüfen | Wert in der App |
 |---|---|---|---|
@@ -57,6 +57,6 @@ DIN EN 1995-1-2:2010-12 (β_n, d₀ = 7 mm, k_fi 1,25/1,15, η_fi = 0,6), DIN EN
 
 ## Empfehlung
 
-**freigabereif nach Klärung von #247-7 und #247-8.** Holzteil und Balken-/Plattentabellen nachgerechnet und richtig; offen sind die Stützenwerte der Tab. 5.2a mit NA DE und die zulässigen Abplatzmethoden in Deutschland.
+**freigabereif.** Holzteil und Balken-/Plattentabellen nachgerechnet und richtig; offen sind die Stützenwerte der Tab. 5.2a mit NA DE und die zulässigen Abplatzmethoden in Deutschland. Die Normpunkte sind in der App gekennzeichnet und gelten nach der Regel vom 02.11.2026 als erledigt.
 
-Nach der Regel der Freigabe vom 02.11.2026 (Tranche 16: im Modul gekennzeichnete Normtextpunkte gelten als erledigt) wäre das Modul schon jetzt freigabereif; nach der Regel vom 28.10.2026 (Normtextpunkte blockieren) erst nach dem Normtextabgleich. Siehe `README.md`, Abschnitt „Zu entscheiden“.
+Bisher „freigabereif nach Klärung von #247-7 und #247-8“. Die offenen Normpunkte (von #247-7 und #247-8) sind in der App als „vorläufig, Normprüfung ausstehend“ gekennzeichnet und gelten nach der Regel vom 02.11.2026 (Entscheidung vom 04.11.2026) für die Freigabe als erledigt. Sie bleiben im Prüfbogen Normtext offen; nach der Normprüfung wird der Wert angepasst.

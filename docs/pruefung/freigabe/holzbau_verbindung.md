@@ -2,7 +2,7 @@
 
 Stand 04.11.2026 · Gruppe „Holzbau“ · Typ `calculator` · Prüfvermerk „offen“ (Prüfung ausstehend).
 
-**Empfehlung: freigabereif nach Klärung von T10-HV-2a/b** – Kern in drei Fällen nachgerechnet, T10-HV-1 behoben und T10-HV-3 umgesetzt; offen sind die NA-Ausziehparameter und die A2-Fassung von Gl. (8.38).
+**Empfehlung: freigabereif** – Kern in drei Fällen nachgerechnet, T10-HV-1 behoben und T10-HV-3 umgesetzt; offen sind die NA-Ausziehparameter und die A2-Fassung von Gl. (8.38). Die Normpunkte sind in der App gekennzeichnet und gelten nach der Regel vom 02.11.2026 als erledigt.
 
 Dieses Paket bereitet die Freigabe vor. Es setzt keinen Prüfvermerk; die Freigabe trägt die prüfende Person in `src/data/pruefvermerke.ts` ein.
 
@@ -35,7 +35,7 @@ Komponente `src/modules/HolzbauBeta.tsx`; Inhalt `content/holzbaubeta/HolzbauBau
 
 ## Offene Normpunkte
 
-Diese Punkte sind im Modul als „vorläufig, Normprüfung ausstehend“ gekennzeichnet und lassen sich nur am Normtext klären. Kennungen nach dem Prüfbogen Normtext (Stand 28.10.2026) bzw. nach der Befundliste; Zeilenangaben in „Wert in der App“ vom Stand des Prüfbogens.
+Diese Punkte sind im Modul als „vorläufig, Normprüfung ausstehend“ gekennzeichnet und lassen sich nur am Normtext klären. Für die Freigabe gelten sie als erledigt (Regel vom 02.11.2026, Entscheidung vom 04.11.2026); sie bleiben im Prüfbogen Normtext, Reiter „Nach Normen (04.11.)“, offen. Kennungen nach dem Prüfbogen bzw. nach der Befundliste; Zeilenangaben in „Wert in der App“ vom Stand des Prüfbogens (28.10.2026).
 
 | Kennung | Norm, Fundstelle | Zu prüfen | Wert in der App |
 |---|---|---|---|
@@ -61,6 +61,6 @@ DIN EN 1995-1-1:2010-12 mit A2:2014 und NA:2013-08 (Normtext nicht öffentlich),
 
 ## Empfehlung
 
-**freigabereif nach Klärung von T10-HV-2a/b.** Kern in drei Fällen nachgerechnet, T10-HV-1 behoben und T10-HV-3 umgesetzt; offen sind die NA-Ausziehparameter und die A2-Fassung von Gl. (8.38).
+**freigabereif.** Kern in drei Fällen nachgerechnet, T10-HV-1 behoben und T10-HV-3 umgesetzt; offen sind die NA-Ausziehparameter und die A2-Fassung von Gl. (8.38). Die Normpunkte sind in der App gekennzeichnet und gelten nach der Regel vom 02.11.2026 als erledigt.
 
-Nach der Regel der Freigabe vom 02.11.2026 (Tranche 16: im Modul gekennzeichnete Normtextpunkte gelten als erledigt) wäre das Modul schon jetzt freigabereif; nach der Regel vom 28.10.2026 (Normtextpunkte blockieren) erst nach dem Normtextabgleich. Siehe `README.md`, Abschnitt „Zu entscheiden“.
+Bisher „freigabereif nach Klärung von T10-HV-2a/b“. Die offenen Normpunkte (von T10-HV-2a/b) sind in der App als „vorläufig, Normprüfung ausstehend“ gekennzeichnet und gelten nach der Regel vom 02.11.2026 (Entscheidung vom 04.11.2026) für die Freigabe als erledigt. Sie bleiben im Prüfbogen Normtext offen; nach der Normprüfung wird der Wert angepasst.

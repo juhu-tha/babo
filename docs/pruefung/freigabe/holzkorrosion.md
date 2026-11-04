@@ -32,7 +32,7 @@ Kein Rechenkern in `src/calc/`; Holzfeuchte und Wirkstoffbedarf in zwei Beispiel
 
 ## Offene Normpunkte
 
-Diese Punkte sind im Modul als „vorläufig, Normprüfung ausstehend“ gekennzeichnet und lassen sich nur am Normtext klären. Kennungen nach dem Prüfbogen Normtext (Stand 28.10.2026) bzw. nach der Befundliste; Zeilenangaben in „Wert in der App“ vom Stand des Prüfbogens.
+Diese Punkte sind im Modul als „vorläufig, Normprüfung ausstehend“ gekennzeichnet und lassen sich nur am Normtext klären. Für die Freigabe gelten sie als erledigt (Regel vom 02.11.2026, Entscheidung vom 04.11.2026); sie bleiben im Prüfbogen Normtext, Reiter „Nach Normen (04.11.)“, offen. Kennungen nach dem Prüfbogen bzw. nach der Befundliste; Zeilenangaben in „Wert in der App“ vom Stand des Prüfbogens (28.10.2026).
 
 | Kennung | Norm, Fundstelle | Zu prüfen | Wert in der App |
 |---|---|---|---|
@@ -59,4 +59,4 @@ DIN 68800-1 bis -4, DIN EN 350:2016, DIN EN 351-1:2023-07 (Normtext nicht öffen
 
 **freigabereif nach Klärung von T12-HK-2a/b.** Die Nachrechnungen und die Faktenstichprobe sind ohne Befund. Bei T12-HK-2 besteht der begründete Verdacht, dass die Werte nicht stimmen (NP4 25 mm seitlich statt 9 mm, NP5 vollständige Splintdurchdringung). Das ist mehr als eine Bestätigung; der Normtextabgleich sollte vor der Freigabe stattfinden.
 
-Nach der Regel der Freigabe vom 02.11.2026 wäre T12-HK-2 als gekennzeichnet erledigt. Hier wird trotzdem der Normtextabgleich vor der Freigabe empfohlen, weil der Verdacht besteht, dass NP4/NP5 zu niedrig angegeben sind.
+Nach der Regel vom 02.11.2026 gilt T12-HK-2 als gekennzeichnet erledigt. Empfohlen wird trotzdem der Normtextabgleich vor der Freigabe, weil der begründete Verdacht besteht, dass NP4/NP5 zu niedrig angegeben sind (Verdacht auf falschen Wert, nicht nur fehlende Bestätigung).

@@ -41,7 +41,7 @@ Die Tabelle `ALTBETON_ZUORDNUNG` in `src/data/kennwerte.ts` teilt sich das Modul
 
 ## Offene Normpunkte
 
-Diese Punkte sind im Modul als „vorläufig, Normprüfung ausstehend“ gekennzeichnet und lassen sich nur am Normtext klären. Kennungen nach dem Prüfbogen Normtext (Stand 28.10.2026) bzw. nach der Befundliste; Zeilenangaben in „Wert in der App“ vom Stand des Prüfbogens.
+Diese Punkte sind im Modul als „vorläufig, Normprüfung ausstehend“ gekennzeichnet und lassen sich nur am Normtext klären. Für die Freigabe gelten sie als erledigt (Regel vom 02.11.2026, Entscheidung vom 04.11.2026); sie bleiben im Prüfbogen Normtext, Reiter „Nach Normen (04.11.)“, offen. Kennungen nach dem Prüfbogen bzw. nach der Befundliste; Zeilenangaben in „Wert in der App“ vom Stand des Prüfbogens (28.10.2026).
 
 | Kennung | Norm, Fundstelle | Zu prüfen | Wert in der App |
 |---|---|---|---|
@@ -68,4 +68,4 @@ Schnell/Fischer/Loch, Kurzbericht BBR 2008, Tab. 2.1; DIN EN 13791:2020-02 mit A
 
 **freigabereif nach Klärung von T15-BS-5 (Mindeststandardabweichung).** Rechnung, Tabelle und Kern sind geprüft und mit `historisch` gemeinsam geführt. Offen ist T15-BS-5: In `historisch` ist s ≥ 0,08·f_m schaltbar und standardmäßig an, hier und in `bauwerksdiagnose` nicht. Unabhängig vom Normtext sollten die drei Rechner dieselbe Regel verwenden; Vorschlag: nach dem Normtextabgleich einheitlich festlegen.
 
-Nach der Regel der Freigabe vom 02.11.2026 wäre der Normtextpunkt erledigt; zu entscheiden bleibt die einheitliche Behandlung der Mindeststandardabweichung in `rechnung_bestand`, `bauwerksdiagnose` und `historisch`.
+Der Normtextpunkt gilt nach der Regel vom 02.11.2026 als erledigt; zu entscheiden bleibt die einheitliche Behandlung der Mindeststandardabweichung in `rechnung_bestand`, `bauwerksdiagnose` und `historisch`.

@@ -2,7 +2,7 @@
 
 Stand 04.11.2026 · Gruppe „Mechanik“ · Typ `calculator` · Prüfvermerk „offen“ (Prüfung ausstehend).
 
-**Empfehlung: freigabereif nach Klärung von T10-MK-5a/b und T10-MK-6a–c** – Vier Fehlerbefunde behoben, Kerne nachgerechnet (auch gegen SOFiSTiK-Verifikation); offen sind zwei Kriechzahlen am NA und drei Kennwerte ohne Quelle.
+**Empfehlung: freigabereif** – Vier Fehlerbefunde behoben, Kerne nachgerechnet (auch gegen SOFiSTiK-Verifikation); offen sind zwei Kriechzahlen am NA und drei Kennwerte ohne Quelle. Die Normpunkte sind in der App gekennzeichnet und gelten nach der Regel vom 02.11.2026 als erledigt.
 
 Dieses Paket bereitet die Freigabe vor. Es setzt keinen Prüfvermerk; die Freigabe trägt die prüfende Person in `src/data/pruefvermerke.ts` ein.
 
@@ -36,7 +36,7 @@ Komponente `src/modules/MechanischeKenngroessen.tsx`; Inhalt `content/mechanisch
 
 ## Offene Normpunkte
 
-Diese Punkte sind im Modul als „vorläufig, Normprüfung ausstehend“ gekennzeichnet und lassen sich nur am Normtext klären. Kennungen nach dem Prüfbogen Normtext (Stand 28.10.2026) bzw. nach der Befundliste; Zeilenangaben in „Wert in der App“ vom Stand des Prüfbogens.
+Diese Punkte sind im Modul als „vorläufig, Normprüfung ausstehend“ gekennzeichnet und lassen sich nur am Normtext klären. Für die Freigabe gelten sie als erledigt (Regel vom 02.11.2026, Entscheidung vom 04.11.2026); sie bleiben im Prüfbogen Normtext, Reiter „Nach Normen (04.11.)“, offen. Kennungen nach dem Prüfbogen bzw. nach der Befundliste; Zeilenangaben in „Wert in der App“ vom Stand des Prüfbogens (28.10.2026).
 
 | Kennung | Norm, Fundstelle | Zu prüfen | Wert in der App |
 |---|---|---|---|
@@ -65,6 +65,6 @@ DIN EN 1992-1-1 (3.1.4, 3.3.2, Anhang B), DIN EN 1996-1-1/NA (Verformungskennwer
 
 ## Empfehlung
 
-**freigabereif nach Klärung von T10-MK-5a/b und T10-MK-6a–c.** Alle Rechenfälle stimmen, T10-MK-1 bis -4 sind behoben. T10-MK-5a/b brauchen den NA zu DIN EN 1996-1-1. T10-MK-6a–c sind keine Normwerte, sondern Kennwerte ohne Quelle; sie sind im Modul bereits als vorläufige Lehrwerte gekennzeichnet (`content/mechanischekenngroessen/daten.json`, `KriechenSchwinden.json`). Vorschlag: Quelle nachtragen oder die Kennzeichnung als Lehrwert als ausreichend werten.
+**freigabereif.** Alle Rechenfälle stimmen, T10-MK-1 bis -4 sind behoben. T10-MK-5a/b brauchen den NA zu DIN EN 1996-1-1. T10-MK-6a–c sind keine Normwerte, sondern Kennwerte ohne Quelle; sie sind im Modul bereits als vorläufige Lehrwerte gekennzeichnet (`content/mechanischekenngroessen/daten.json`, `KriechenSchwinden.json`). Vorschlag: Quelle nachtragen oder die Kennzeichnung als Lehrwert als ausreichend werten.
 
-Nach der Regel der Freigabe vom 02.11.2026 (Tranche 16: im Modul gekennzeichnete Normtextpunkte gelten als erledigt) wäre das Modul schon jetzt freigabereif; nach der Regel vom 28.10.2026 (Normtextpunkte blockieren) erst nach dem Normtextabgleich. Siehe `README.md`, Abschnitt „Zu entscheiden“.
+Bisher „freigabereif nach Klärung von T10-MK-5a/b und T10-MK-6a–c“. Die offenen Normpunkte (von T10-MK-5a/b und T10-MK-6a–c) sind in der App als „vorläufig, Normprüfung ausstehend“ gekennzeichnet und gelten nach der Regel vom 02.11.2026 (Entscheidung vom 04.11.2026) für die Freigabe als erledigt. Sie bleiben im Prüfbogen Normtext offen; nach der Normprüfung wird der Wert angepasst.

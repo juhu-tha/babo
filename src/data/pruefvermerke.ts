@@ -7,7 +7,8 @@
  *
  *   geprüft:    modul_id: { status: 'geprueft', am: '2026-11-03' }   (passiv „Fachlich geprüft am …“, ohne Namen)
  *               modul_id: { status: 'geprueft', am: '2026-11-03', von: 'Vorname Nachname' }   (mit prüfender Person)
- *   Nachprüfung: modul_id: { status: 're-review', am: '2026-11-03', von: '…', offenePunkte: ['Normausgabe EC 2 prüfen'] },
+ *   Nachprüfung: modul_id: { status: 're-review', am: '2026-11-03', offenePunkte: ['Normausgabe EC 2 prüfen'] }
+ *               (am = Datum der letzten Prüfung; passiv ohne Namen, „von: '…'“ optional wie bei 'geprueft'),
  *
  * Getrennt von src/registry/modules.ts gehalten, damit Prüfvermerke ohne Eingriff in die Registry
  * gepflegt werden können. ModulKopf zeigt den Vermerk an, der Admin-Bereich („Meine Module“) listet ihn.
@@ -22,7 +23,7 @@ export interface Pruefvermerk {
   status: PruefStatus;
   /** Datum der (letzten) fachlichen Prüfung, ISO-Format JJJJ-MM-TT; Pflicht bei 'geprueft' und 're-review' */
   am?: string;
-  /** prüfende Person; Pflicht bei 're-review'. Bei 'geprueft' optional – ohne Angabe passiver Vermerk ohne Namen */
+  /** prüfende Person; optional bei 'geprueft' und 're-review' – ohne Angabe passiver Vermerk ohne Namen (Entscheidungen 28.10. und 04.11.2026) */
   von?: string;
   /** offene fachliche Punkte (Anzeige im Admin-Bereich) */
   offenePunkte?: readonly string[];
@@ -151,7 +152,17 @@ export const PRUEFVERMERKE: Record<string, Pruefvermerk> = {
   glas: { status: 'geprueft', am: '2026-10-29' }, // Modulprüfung Tranche 5, freigegeben 29.10.2026 (docs/pruefung/module-tranche-5.md)
   grundlagen: { status: 'offen' },
   herstellung_einbau: { status: 'geprueft', am: '2026-10-29' }, // Modulprüfung Tranche 9, freigegeben 29.10.2026 (docs/pruefung/module-tranche-9.md)
-  historisch: { status: 'geprueft', am: '2026-10-29' }, // Modulprüfung Tranche 12, freigegeben 29.10.2026 (docs/pruefung/module-tranche-12.md)
+  // Modulprüfung Tranche 12, freigegeben 29.10.2026 (docs/pruefung/module-tranche-12.md); Nachprüfung nach Entscheidung vom
+  // 04.11.2026, weil der Reiter Bohrkernserie (#318) danach dazukam (docs/pruefung/freigabe/historisch.md)
+  historisch: {
+    status: 're-review',
+    am: '2026-10-29',
+    offenePunkte: [
+      'Reiter Bohrkernserie (#318) unabhängig nachprüfen (Prüfschritte 1–4 im Freigabepaket)',
+      'Mindeststandardabweichung nach DIN EN 13791 einheitlich mit rechnung_bestand und bauwerksdiagnose festlegen (T15-BS-5)',
+      'Normpunkte HK-13791-1 bis -6 und NS-BD-3 am Normtext (im Modul gekennzeichnet)',
+    ],
+  },
   historische_bauprodukte: { status: 'geprueft', am: '2026-10-29' }, // Modulprüfung Tranche 12, freigegeben 29.10.2026 (docs/pruefung/module-tranche-12.md)
   historische_bauweisen: { status: 'geprueft', am: '2026-10-29' }, // Modulprüfung Tranche 12, freigegeben 29.10.2026 (docs/pruefung/module-tranche-12.md)
   holz: { status: 'geprueft', am: '2026-10-29' }, // Modulprüfung Tranche 6, freigegeben 29.10.2026 (docs/pruefung/module-tranche-6.md)

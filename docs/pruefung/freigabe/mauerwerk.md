@@ -2,7 +2,7 @@
 
 Stand 04.11.2026 · Gruppe „Baustoffe“ · Typ `standard` · Prüfvermerk „offen“ (Prüfung ausstehend).
 
-**Empfehlung: freigabereif nach Klärung von #239-W-1 und #239-MW-1** – Kern in Tranche 1 und 3 unabhängig nachgerechnet und gegen Herstellertafeln belegt; T3-MW-1/-2 sind umgesetzt, offen sind Φ₁ für Innenwände und drei f_vk0-Werte am NA.
+**Empfehlung: freigabereif** – Kern in Tranche 1 und 3 unabhängig nachgerechnet und gegen Herstellertafeln belegt; T3-MW-1/-2 sind umgesetzt, offen sind Φ₁ für Innenwände und drei f_vk0-Werte am NA. Die Normpunkte sind in der App gekennzeichnet und gelten nach der Regel vom 02.11.2026 als erledigt.
 
 Dieses Paket bereitet die Freigabe vor. Es setzt keinen Prüfvermerk; die Freigabe trägt die prüfende Person in `src/data/pruefvermerke.ts` ein.
 
@@ -40,7 +40,7 @@ Fremdbelege in `tests/mauerwerk.test.ts`: Herstellerbeispiele des BV Kalksandste
 
 ## Offene Normpunkte
 
-Diese Punkte sind im Modul als „vorläufig, Normprüfung ausstehend“ gekennzeichnet und lassen sich nur am Normtext klären. Kennungen nach dem Prüfbogen Normtext (Stand 28.10.2026) bzw. nach der Befundliste; Zeilenangaben in „Wert in der App“ vom Stand des Prüfbogens.
+Diese Punkte sind im Modul als „vorläufig, Normprüfung ausstehend“ gekennzeichnet und lassen sich nur am Normtext klären. Für die Freigabe gelten sie als erledigt (Regel vom 02.11.2026, Entscheidung vom 04.11.2026); sie bleiben im Prüfbogen Normtext, Reiter „Nach Normen (04.11.)“, offen. Kennungen nach dem Prüfbogen bzw. nach der Befundliste; Zeilenangaben in „Wert in der App“ vom Stand des Prüfbogens (28.10.2026).
 
 | Kennung | Norm, Fundstelle | Zu prüfen | Wert in der App |
 |---|---|---|---|
@@ -67,6 +67,6 @@ DIN EN 1996-1-1/NA:2019-12, DIN EN 1996-3/NA:2019-12 (Normtext nicht öffentlich
 
 ## Empfehlung
 
-**freigabereif nach Klärung von #239-W-1 und #239-MW-1.** Der Wandnachweis stimmt in zehn eigenen Fällen und mit den Herstellertafeln (Abweichung ≤ 1,2 %). Die Fragen T3-MW-1 (f_vk0 nach NA) und T3-MW-2 (Sperre ohne K-Wert) sind entschieden und umgesetzt. Offen sind zwei Normtextpunkte des NA (#239-W-1, #239-MW-1), beide im Kern als vorläufig geführt. Die übrigen F-Stellen (ρ₂ bei 2/3 < a/t < 1, KS P/KS L-P, Tab. NA.2) gelten laut Freigabeabschnitt nicht als blockierend.
+**freigabereif.** Der Wandnachweis stimmt in zehn eigenen Fällen und mit den Herstellertafeln (Abweichung ≤ 1,2 %). Die Fragen T3-MW-1 (f_vk0 nach NA) und T3-MW-2 (Sperre ohne K-Wert) sind entschieden und umgesetzt. Offen sind zwei Normtextpunkte des NA (#239-W-1, #239-MW-1), beide im Kern als vorläufig geführt. Die übrigen F-Stellen (ρ₂ bei 2/3 < a/t < 1, KS P/KS L-P, Tab. NA.2) gelten laut Freigabeabschnitt nicht als blockierend.
 
-Nach der Regel der Freigabe vom 02.11.2026 (Tranche 16: im Modul gekennzeichnete Normtextpunkte gelten als erledigt) wäre das Modul schon jetzt freigabereif; nach der Regel vom 28.10.2026 (Normtextpunkte blockieren) erst nach dem Normtextabgleich. Siehe `README.md`, Abschnitt „Zu entscheiden“.
+Bisher „freigabereif nach Klärung von #239-W-1 und #239-MW-1“. Die offenen Normpunkte (von #239-W-1 und #239-MW-1) sind in der App als „vorläufig, Normprüfung ausstehend“ gekennzeichnet und gelten nach der Regel vom 02.11.2026 (Entscheidung vom 04.11.2026) für die Freigabe als erledigt. Sie bleiben im Prüfbogen Normtext offen; nach der Normprüfung wird der Wert angepasst.
