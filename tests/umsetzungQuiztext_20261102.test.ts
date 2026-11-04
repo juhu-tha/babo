@@ -51,7 +51,8 @@ const artA = erg.flatMap(e => e.treffer.filter((t: { art: string }) => t.art ===
 gilt(artA.length === 0, `Lernhilfe verweist auf nicht vorhandenen Abschnitt: ${[...new Set(artA)].slice(0, 10).join(', ')}`);
 const thema = fragen.filter(q => /das Thema „/.test(q.gapAnalysis?.actionableAdvice ?? ''));
 gilt(thema.length >= 232, `nur ${thema.length} Lernhilfen mit „das Thema „…““`);
-gilt(thema.filter(q => q.verified).length >= 218, 'Wortänderung „Thema“ hat Freigaben aufgehoben');
+// 217: q_ndr_2 ist seit der Rechtsquellen-Prüfung 03.11.2026 wegen einer berichtigten Rückmeldung (§ 650o BGB) zurückgesetzt
+gilt(thema.filter(q => q.verified).length >= 217, 'Wortänderung „Thema“ hat Freigaben aufgehoben');
 gilt(fragen.filter(q => /den Abschnitt „/.test(q.gapAnalysis?.actionableAdvice ?? '')).length >= 800, 'Abschnittsverweise mit vorhandenem Namen wurden mit geändert');
 
 // 4. Tranche 16, weitere Hinweise: Heft 555 (WU-Richtlinie) nicht als Quelle für massige Bauteile; VDI 6210 statt 6205

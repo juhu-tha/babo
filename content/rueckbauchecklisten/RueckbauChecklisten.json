@@ -152,7 +152,7 @@
       },
       {
         "formel": "c_{\\text{Misch}} = \\frac{\\sum m_i \\cdot c_i}{\\sum m_i} \\le \\text{MEB (Materialwerte ErsatzbaustoffV)}",
-        "erklaerung": "Eluat- und Feststoffkonzentration bei der Einstufung von mineralischen Ersatzbaustoffen (RC-1, RC-2, RC-3) in Einbauklassen nach ErsatzbaustoffV.",
+        "erklaerung": "Eluat- und Feststoffkonzentration bei der Einstufung von mineralischen Ersatzbaustoffen (RC-1, RC-2, RC-3) in Materialklassen nach ErsatzbaustoffV.",
         "quelle": "ErsatzbaustoffV Anlage 1"
       }
     ]

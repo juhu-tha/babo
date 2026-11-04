@@ -7,6 +7,7 @@ import fs from "fs";
 import { pruefeAntwort, semesterSchluessel } from "./src/data/kurzfragebogen.ts";
 import { ladeSpeicher, nimmAuf, speichereSpeicher, statistik } from "./server/kurzfragebogen.ts";
 import { KI_FUNKTION_AKTIV, KI_HINWEIS_AUS } from "./src/data/kiSchalter.ts";
+import { tabAusPfad } from "./src/routing/pfad.ts";
 
 // ---------------------------------------------------------------------------
 // Konfiguration über Umgebungsvariablen (in AI Studio: Settings → Secrets)
@@ -624,7 +625,8 @@ ${prompt}
       })
     );
     // Modulseiten /modul/<id> (Z52): vorgerenderte Datei aus dist/modul/ (scripts/vorrendern.ts), sonst index.html.
-    // Alias und Großschreibung → 301 auf die kanonische Adresse; unbekannte ID → 404 mit index.html (App zeigt Start).
+    // Alias und Großschreibung → 301 auf die kanonische Adresse; unbekannte ID → 404 mit index.html (App zeigt den
+    // Hinweis „Seite nicht gefunden“, Gesamtgutachten 03.11.2026).
     app.get("/modul/:id", (req, res) => {
       const roh = String(req.params.id);
       const id = roh.trim().toLowerCase();
@@ -643,9 +645,11 @@ ${prompt}
     });
     // Fehlende Dateien (z. B. alte Asset-Namen) nicht mit der Startseite beantworten.
     app.get(/\.[a-z0-9]{2,5}$/i, (_req, res) => res.status(404).send("Not found"));
-    app.get("*", (_req, res) => {
+    // Übrige Pfade: Startseite unter „/“ (und /index.html), sonst 404 mit index.html – die App zeigt dort den Hinweis
+    // „Seite nicht gefunden“ (wie Vercel mit dist/404.html)
+    app.get("*", (req, res) => {
       res.setHeader("Cache-Control", "no-cache");
-      res.sendFile(path.join(distPath, "index.html"));
+      res.status(tabAusPfad(req.path) === null ? 404 : 200).sendFile(path.join(distPath, "index.html"));
     });
   }
 

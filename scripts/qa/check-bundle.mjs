@@ -23,7 +23,10 @@ const KB = 1024;
 // AP 5.5 Nachtrag: Einstieg 135,8 → 103,2 kB (Stand main nach #138) – Registry nur als Auszug
 // (scripts/registryKern.ts), Meta-Beschreibungen und Suchbegriffe bei Bedarf. Grenze mit ~5 kB Puffer für
 // anstehende Registry-Einträge (je Modul ≈ 20 Byte gzip im Auszug).
-const GRENZE_EINSTIEG = 108;
+// TBT 04.11.2026: Einstieg in „app“ (React, ReactDOM, Kontexte) und „rahmen“ (App.tsx, per import()) geteilt, damit
+// das Auswerten zwei Tasks statt einer langen braucht (TBT Modulseiten −80–100 ms). Gleicher Code, aber zwei
+// getrennt komprimierte Dateien: 107,9 → 109,2 kB gzip. Grenze 108 → 110 kB (Puffer wie bisher ≈ 1 kB).
+const GRENZE_EINSTIEG = 110;
 const GRENZE_CHUNK = 300;
 // LCP 02.11.2026: Erstpfad je vorgerenderter Modulseite (Summe der vorgeladenen JS-Chunks ohne Einstieg, gzip -9).
 // Vorher max. 235,2 kB (Lebenszykluskosten mit jsPDF), nachher 217,5 kB (KI-Module, Chunk KiBaustoffe); Grenze mit Puffer.
@@ -72,9 +75,12 @@ const einstiegSrc = [...html.matchAll(/<script[^>]*type="module"[^>]*src="([^"]+
 if (!einstiegSrc) { console.error('check-bundle: kein Einstiegs-Chunk in dist/index.html gefunden'); process.exit(2); }
 const einstieg = path.basename(einstiegSrc);
 
-// statische Importe des Einstiegs (werden beim ersten Aufruf sofort geladen)
-const statisch = new Set([einstieg]);
-const offen = [einstieg];
+// statische Importe des Einstiegs (werden beim ersten Aufruf sofort geladen). Der Rahmen der App (Chunk „rahmen“,
+// src/main.tsx lädt App.tsx per import() – eigene Task beim Auswerten, TBT 04.11.2026) war bis dahin Teil des
+// Einstiegs und wird auf jeder Seite sofort mitgeladen: zählt weiter zum Einstieg, nicht zum Erstpfad.
+const rahmen = fs.readdirSync(ASSETS).filter(f => /^rahmen-[A-Za-z0-9_-]{8}\.js$/.test(f));
+const statisch = new Set([einstieg, ...rahmen]);
+const offen = [einstieg, ...rahmen];
 while (offen.length) {
   const code = fs.readFileSync(path.join(ASSETS, offen.pop()), 'utf8');
   for (const m of code.matchAll(/(?:^|[;}\n])\s*import\s*(?:[\w${},\s*]+from\s*)?["']\.\/([^"']+\.js)["']/g)) {
@@ -90,7 +96,7 @@ const groesster = chunks[0];
 const groessterOhneAusnahme = chunks.find(c => !(basis(c.f) in AUSNAHMEN));
 
 console.log(`Bundle (${chunks.length} JS-Chunks, gesamt ${kb(chunks.reduce((s, c) => s + c.gz, 0))} kB gzip)`);
-console.log(`  Einstieg ${einstieg}${statisch.size > 1 ? ` + ${statisch.size - 1} statische Importe` : ''}: ${kb(einstiegGz)} kB gzip (Grenze ${String(GRENZE_EINSTIEG).replace(".", ",")} kB)`);
+console.log(`  Einstieg ${einstieg}${rahmen.length ? ` + ${rahmen.join(", ")}` : ''}${statisch.size > 1 + rahmen.length ? ` + ${statisch.size - 1 - rahmen.length} statische Importe` : ''}: ${kb(einstiegGz)} kB gzip (Grenze ${String(GRENZE_EINSTIEG).replace(".", ",")} kB)`);
 for (const c of css) console.log(`  CSS ${c.f}: ${kb(c.gz)} kB gzip`);
 console.log(`  größter Chunk: ${groesster.f} ${kb(groesster.gz)} kB gzip; ohne Ausnahmen: ${groessterOhneAusnahme?.f} ${kb(groessterOhneAusnahme?.gz ?? 0)} kB (Grenze ${GRENZE_CHUNK} kB)`);
 console.log(`  Top ${TOP}:`);
@@ -116,7 +122,7 @@ for (const datei of fs.readdirSync(modulDir).filter(f => f.endsWith('.html'))) {
   const k = JSON.parse(m[1]);
   const hat = (o, s) => Object.prototype.hasOwnProperty.call(o, s);
   const c = hat(k.t, id) ? k.t[id] : k.p.find(([p]) => id.startsWith(p))?.[1];
-  const dateien = [...new Set([...k.i, ...k.k, ...(c === undefined ? [] : k.c[c]), ...(hat(k.h, id) ? [k.h[id]] : [])].map(i => k.d[i]).filter(f => f.endsWith('.js')))];
+  const dateien = [...new Set([...k.i, ...k.k, ...(c === undefined ? [] : k.c[c]), ...(hat(k.h, id) ? [k.h[id]] : [])].map(i => k.d[i]).filter(f => f.endsWith('.js') && !statisch.has(f)))];
   erstpfad.push({ id, gz: dateien.reduce((s, f) => s + gzAsset(f), 0), verboten: dateien.filter(f => ERSTPFAD_VERBOTEN.includes(basis(f))) });
 }
 erstpfad.sort((a, b) => b.gz - a.gz);

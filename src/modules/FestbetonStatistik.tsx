@@ -26,6 +26,7 @@ import { ModulTest } from '@/src/components/quiz/ModulTest';
 import inhalt from '@/content/festbetonstatistik/FestbetonStatistik.json';
 import { MdText } from '@/src/components/inhalt/MdText';
 import { festbetonStatistik } from '@/src/calc/festbetonStatistik';
+import { ErgebnisAnsage } from '@/src/components/ui/ErgebnisAnsage';
 import { EcKennwerteVerweis } from '@/src/components/ui/EcKennwerteVerweis';
 
 ChartJS.register(
@@ -164,6 +165,7 @@ export default function FestbetonStatistik() {
 
   return (
     <div className="flex flex-col gap-8">
+      <ErgebnisAnsage text={`Charakteristische Zylinderdruckfestigkeit ${formatDeZahl(fckCyl, 1)} MPa, Bemessungswert ${formatDeZahl(fcd, 1)} MPa`} />
       <div className="bg-white p-6 rounded-2xl shadow-sm border border-home-grau/30 flex flex-col gap-6">
         <h2 className="text-xl font-bold text-text-main flex items-center gap-2">
           <BarChart3 className="text-shiraz" /><MdText text={inhalt.texte.festbetonStatistikKonformität} /></h2>
@@ -365,7 +367,7 @@ export default function FestbetonStatistik() {
               {/* Zylinder */}
               <div className="flex flex-col items-center bg-off-white rounded-lg border border-home-grau/30 p-4">
                 <div className="text-sm font-bold mb-2"><MdText text={inhalt.texte.zylinder150X300} /></div>
-                <svg width="100%" height="150" viewBox="0 0 200 150">
+                <svg width="100%" height="150" viewBox="0 0 200 150" role="img" aria-label="Schema Zylinderdruckversuch: schlanker Probekörper zwischen den Druckplatten, Reibungskegel nur an den Enden, Mitte mit ungehinderter Querdehnung">
                   {/* Druckplatten */}
                   <rect x="60" y="10" width="80" height="10" fill="#64748b" />
                   <rect x="60" y="130" width="80" height="10" fill="#64748b" />
@@ -391,7 +393,7 @@ export default function FestbetonStatistik() {
               {/* Würfel */}
               <div className="flex flex-col items-center bg-off-white rounded-lg border border-home-grau/30 p-4">
                 <div className="text-sm font-bold mb-2"><MdText text={inhalt.texte.würfel150X150} /></div>
-                <svg width="100%" height="150" viewBox="0 0 200 150">
+                <svg width="100%" height="150" viewBox="0 0 200 150" role="img" aria-label="Schema Würfeldruckversuch: gedrungener Probekörper, die Reibungskegel der Druckplatten überdecken fast den ganzen Querschnitt und behindern die Querdehnung">
                   {/* Druckplatten */}
                   <rect x="50" y="25" width="100" height="10" fill="#64748b" />
                   <rect x="50" y="115" width="100" height="10" fill="#64748b" />
