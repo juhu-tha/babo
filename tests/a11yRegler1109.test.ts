@@ -13,9 +13,10 @@ const fehler: string[] = [];
 const gilt = (ok: boolean, fall: string) => { if (!ok) fehler.push(fall); };
 console.log('--- Test: a11y Regler, SVG, Überschriften 09.11.2026 ---');
 
-/** Zählerstände: Stand vor dem Auftrag (08.11.) → nach der Umsetzung (09.11.); Höchstwert = nach der Umsetzung */
+/** Zählerstände: Stand vor dem Auftrag (08.11.) → nach der Umsetzung (09.11.); Höchstwert = nach der Umsetzung.
+ *  Regler: 311 → 0 im Folgeauftrag (docs/pruefung/a11y-slider-2026-11-09.md). */
 export const STAND = {
-  reglerOhneText: { vorher: 348, max: 311 },
+  reglerOhneText: { vorher: 348, max: 0 },
   svgOhneAlternative: { vorher: 118, max: 0 },
   ueberschriftSprung: { vorher: 45, max: 0 },
 };

@@ -594,6 +594,8 @@ export default function LaborAuswertung() {
                     max="0.0" 
                     step="0.1" 
                     value={delta18O}
+                    aria-label="Sauerstoff-Isotop (δ18O)"
+                    aria-valuetext={`${formatDeZahl(delta18O, 2)} ‰`}
                     onChange={(e) => setDelta18O(parseFloat(e.target.value))}
                     className="w-full accent-middle-blue"
                   />
@@ -615,6 +617,8 @@ export default function LaborAuswertung() {
                     max="10.0" 
                     step="1" 
                     value={deltaD}
+                    aria-label="Wasserstoff-Isotop (δD)"
+                    aria-valuetext={`${formatDeZahl(deltaD, 1)} ‰`}
                     onChange={(e) => setDeltaD(parseInt(e.target.value))}
                     className="w-full accent-middle-blue"
                   />

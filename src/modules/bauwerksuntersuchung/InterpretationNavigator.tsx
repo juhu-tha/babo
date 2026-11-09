@@ -14,6 +14,7 @@ import { befundSynthese } from '@/src/calc/bauwerksuntersuchung';
 import { fcdBeton, FCD_MODUL } from '@/src/data/kennwerte';
 import { MdText } from '@/src/components/inhalt/MdText';
 import { ErgebnisAnsage, kurzzeile } from '@/src/components/ui/ErgebnisAnsage';
+import { reglerName, reglerEinheit } from '@/src/lib/reglerName';
 
 interface DiagnosticScenario {
   id: string;
@@ -235,6 +236,8 @@ export default function InterpretationNavigator() {
                 max="2.50"
                 step="0.05"
                 value={chloridVal}
+                aria-label={reglerName(inhalt.texte.chloridAnBewehrung)}
+                aria-valuetext={`${formatDeZahl(chloridVal, 2)} M.-%`}
                 onChange={(e) => setChloridVal(Number(e.target.value))}
                 className="w-full accent-shiraz"
               />
@@ -256,6 +259,8 @@ export default function InterpretationNavigator() {
                   max="50"
                   step="1"
                   value={deckungVal}
+                  aria-label={inhalt.werte.betondeckungCMm}
+                  aria-valuetext={`${formatDeZahl(deckungVal, 0)} mm`}
                   title={inhalt.werte.betondeckungCMm}
                   onChange={(e) => setDeckungVal(Number(e.target.value))}
                   className="w-full accent-shiraz"
@@ -266,6 +271,8 @@ export default function InterpretationNavigator() {
                   max="50"
                   step="1"
                   value={karbVal}
+                  aria-label={inhalt.werte.karbonatisierungDKMm}
+                  aria-valuetext={`${formatDeZahl(karbVal, 0)} mm`}
                   title={inhalt.werte.karbonatisierungDKMm}
                   onChange={(e) => setKarbVal(Number(e.target.value))}
                   className="w-full accent-amber-600"
@@ -290,6 +297,8 @@ export default function InterpretationNavigator() {
                 max="0"
                 step="10"
                 value={potentialVal}
+                aria-label={reglerName(inhalt.texte.halbzellenpotentialUCse)}
+                aria-valuetext={`${formatDeZahl(potentialVal, 0)} mV`}
                 onChange={(e) => setPotentialVal(Number(e.target.value))}
                 className="w-full accent-shiraz"
               />
@@ -310,6 +319,8 @@ export default function InterpretationNavigator() {
                 max="50"
                 step="1"
                 value={fckIsVal}
+                aria-label={reglerName(inhalt.texte.druckfestigkeitFCkIs)}
+                aria-valuetext={`${formatDeZahl(fckIsVal, 1)}${reglerEinheit(inhalt.texte.nMmSoll)}${formatDeZahl(fckPlanVal, 0)})`}
                 onChange={(e) => setFckIsVal(Number(e.target.value))}
                 className="w-full accent-shiraz"
               />
@@ -333,6 +344,7 @@ export default function InterpretationNavigator() {
                   step="0.05"
                   aria-label={inhalt.werte.haftzugfestigkeitFCtNMm}
                   value={haftzugVal}
+                  aria-valuetext={`${formatDeZahl(haftzugVal, 2)} N/mm² (Typ ${bruchTyp})`}
                   onChange={(e) => setHaftzugVal(Number(e.target.value))}
                   className="w-full accent-shiraz"
                 />
@@ -365,6 +377,8 @@ export default function InterpretationNavigator() {
                 max="100"
                 step="5"
                 value={holzRestVal}
+                aria-label={reglerName(inhalt.texte.holzRestquerschnitt)}
+                aria-valuetext={`${formatDeZahl(holzRestVal, 0)} %`}
                 onChange={(e) => setHolzRestVal(Number(e.target.value))}
                 className="w-full accent-shiraz"
               />

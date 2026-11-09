@@ -6,6 +6,7 @@ import inhalt from '@/content/bpverkehrswegebau/BetondeckenTab.json';
 import { MdText } from '@/src/components/inhalt/MdText';
 import { westergaardRand, betondeckenFugen } from '@/src/calc/verkehrswegebau';
 import { ErgebnisAnsage, ansageWert, kurzzeile } from '@/src/components/ui/ErgebnisAnsage';
+import { reglerName } from '@/src/lib/reglerName';
 
 export interface BetondeckenTabProps {
   betonAchslast: number;
@@ -73,6 +74,8 @@ export default function BetondeckenTab({ betonAchslast, betonAggregate, betonBet
                   max="35" 
                   step="1"
                   value={betonSlabThickness}
+                  aria-label={reglerName(inhalt.texte.deckendickeH)}
+                  aria-valuetext={`${formatDeWert(betonSlabThickness)} cm`}
                   onChange={(e) => setBetonSlabThickness(parseInt(e.target.value))}
                   className="w-full accent-shiraz" 
                 />
@@ -94,6 +97,8 @@ export default function BetondeckenTab({ betonAchslast, betonAggregate, betonBet
                   max="180" 
                   step="5"
                   value={betonAchslast}
+                  aria-label={reglerName(inhalt.texte.bemessungsAchsübergangPAchse)}
+                  aria-valuetext={`${formatDeWert(betonAchslast)} kN`}
                   onChange={(e) => setBetonAchslast(parseInt(e.target.value))}
                   className="w-full accent-shiraz" 
                 />
@@ -112,6 +117,8 @@ export default function BetondeckenTab({ betonAchslast, betonAggregate, betonBet
                   max="150" 
                   step="5"
                   value={betonBettung}
+                  aria-label={reglerName(inhalt.texte.bettungsmodulDesUnterbausK)}
+                  aria-valuetext={`${formatDeWert(betonBettung)} MN/m³`}
                   onChange={(e) => setBetonBettung(parseInt(e.target.value))}
                   className="w-full accent-shiraz" 
                 />
@@ -268,6 +275,8 @@ export default function BetondeckenTab({ betonAchslast, betonAggregate, betonBet
                   max="7.0" 
                   step="0.1"
                   value={betonFugenAbstand}
+                  aria-label={reglerName(inhalt.texte.längsabstandDerScheinfugenPlattenlänge)}
+                  aria-valuetext={`${formatDeZahl(betonFugenAbstand, 1)} m`}
                   onChange={(e) => setBetonFugenAbstand(parseFloat(e.target.value))}
                   className="w-full accent-shiraz" 
                 />

@@ -60,6 +60,7 @@ import { MdText } from '@/src/components/inhalt/MdText';
 import { ModuleTabs } from '@/src/components/ui/ModuleTabs';
 import { useTabContext, type TabId } from '@/src/contexts/TabContext';
 import { AuswahlGruppe, ReiterLeiste, alsOption, alsReiter, reiterPanel } from '../components/ui/Auswahlgruppe';
+import { reglerName } from '@/src/lib/reglerName';
 
 ChartJS.register(
   CategoryScale,
@@ -580,6 +581,8 @@ export default function Spannbeton({ bereiche }: { bereiche: readonly Spannbeton
                     max={28}
                     step={1}
                     value={concreteAge}
+                    aria-label="Alter t₀"
+                    aria-valuetext={`${formatDeWert(concreteAge)} d`}
                     onChange={(e) => setConcreteAge(Number(e.target.value))}
                     className="w-full accent-shiraz mt-1"
                   />
@@ -731,6 +734,8 @@ export default function Spannbeton({ bereiche }: { bereiche: readonly Spannbeton
                     max="60"
                     step="5"
                     value={spanLength}
+                    aria-label={reglerName(inhalt.texte.trägerstützweiteL)}
+                    aria-valuetext={`${formatDeWert(spanLength)} m`}
                     onChange={(e) => setSpanLength(Number(e.target.value))}
                     className="w-full accent-shiraz"
                   />
@@ -748,6 +753,8 @@ export default function Spannbeton({ bereiche }: { bereiche: readonly Spannbeton
                     max="0.30"
                     step="0.01"
                     value={frictionCoeff}
+                    aria-label={reglerName(inhalt.texte.reibungsbeiwertEc2Tab5)}
+                    aria-valuetext={`${formatDeZahl(frictionCoeff, 2)}`}
                     onChange={(e) => setFrictionCoeff(Number(e.target.value))}
                     className="w-full accent-shiraz"
                   />
@@ -771,6 +778,8 @@ export default function Spannbeton({ bereiche }: { bereiche: readonly Spannbeton
                       max="0.012"
                       step="0.001"
                       value={wobbleCoeff}
+                      aria-label="Wobble k"
+                      aria-valuetext={`${formatDeZahl(wobbleCoeff, 4)}`}
                       onChange={(e) => setWobbleCoeff(Number(e.target.value))}
                       className="w-full accent-shiraz"
                     />
@@ -788,6 +797,8 @@ export default function Spannbeton({ bereiche }: { bereiche: readonly Spannbeton
                       max="1.00"
                       step="0.05"
                       value={totalCurvature}
+                      aria-label="Krümmung θ"
+                      aria-valuetext={`${formatDeZahl(totalCurvature, 2)} rad`}
                       onChange={(e) => setTotalCurvature(Number(e.target.value))}
                       className="w-full accent-shiraz"
                     />
@@ -806,6 +817,8 @@ export default function Spannbeton({ bereiche }: { bereiche: readonly Spannbeton
                     max="12"
                     step="1"
                     value={nTendons}
+                    aria-label={reglerName(inhalt.texte.anzahlNacheinanderGespannterSpannglieder)}
+                    aria-valuetext={`${formatDeWert(nTendons)}`}
                     onChange={(e) => setNTendons(Number(e.target.value))}
                     className="w-full accent-shiraz"
                   />
@@ -826,6 +839,8 @@ export default function Spannbeton({ bereiche }: { bereiche: readonly Spannbeton
                 max="8"
                 step="1"
                 value={anchorSlip}
+                aria-label={reglerName(inhalt.texte.verankerungsschlupfWKeilschlupf)}
+                aria-valuetext={`${formatDeWert(anchorSlip)} mm`}
                 onChange={(e) => setAnchorSlip(Number(e.target.value))}
                 className="w-full accent-shiraz"
               />

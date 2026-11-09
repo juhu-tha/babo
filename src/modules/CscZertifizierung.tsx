@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import { Leaf, Award, ShieldCheck, Factory, Flame, Star, Percent, BookOpen } from 'lucide-react';
 import inhalt from '@/content/csczertifizierung/CscZertifizierung.json';
 import { MdText } from '@/src/components/inhalt/MdText';
+import { reglerName } from '@/src/lib/reglerName';
 
 export default function CscZertifizierung() {
   // State for Interactive CSC Estimator
@@ -103,7 +104,9 @@ export default function CscZertifizierung() {
               </div>
               <input 
                 type="range" min="0" max="100" 
-                value={managementScore} 
+                value={managementScore}
+                aria-label={reglerName(inhalt.texte.t1ManagementSystemeGewichtung)}
+                aria-valuetext={`${formatDeWert(managementScore)}%`} 
                 onChange={(e) => setManagementScore(Number(e.target.value))}
                 className="w-full accent-shiraz cursor-pointer"
               />
@@ -117,7 +120,9 @@ export default function CscZertifizierung() {
               </div>
               <input 
                 type="range" min="0" max="100" 
-                value={umweltScore} 
+                value={umweltScore}
+                aria-label={reglerName(inhalt.texte.t2UmweltCoGewichtung)}
+                aria-valuetext={`${formatDeWert(umweltScore)}%`} 
                 onChange={(e) => setUmweltScore(Number(e.target.value))}
                 className="w-full accent-shiraz cursor-pointer"
               />
@@ -131,7 +136,9 @@ export default function CscZertifizierung() {
               </div>
               <input 
                 type="range" min="0" max="100" 
-                value={sozialesScore} 
+                value={sozialesScore}
+                aria-label={reglerName(inhalt.texte.t3SozialeStandardsGewichtung)}
+                aria-valuetext={`${formatDeWert(sozialesScore)}%`} 
                 onChange={(e) => setSozialesScore(Number(e.target.value))}
                 className="w-full accent-shiraz cursor-pointer"
               />
@@ -145,7 +152,9 @@ export default function CscZertifizierung() {
               </div>
               <input 
                 type="range" min="0" max="100" 
-                value={oekonomieScore} 
+                value={oekonomieScore}
+                aria-label={reglerName(inhalt.texte.t4RegionaleÖkonomieGewichtung)}
+                aria-valuetext={`${formatDeWert(oekonomieScore)}%`} 
                 onChange={(e) => setOekonomieScore(Number(e.target.value))}
                 className="w-full accent-shiraz cursor-pointer"
               />
@@ -159,7 +168,9 @@ export default function CscZertifizierung() {
               </div>
               <input 
                 type="range" min="0" max="100" 
-                value={supplyChainScore} 
+                value={supplyChainScore}
+                aria-label={reglerName(inhalt.texte.t5NachhaltigeLieferketteSourcing)}
+                aria-valuetext={`${formatDeWert(supplyChainScore)}%`} 
                 onChange={(e) => setSupplyChainScore(Number(e.target.value))}
                 className="w-full accent-shiraz cursor-pointer"
               />

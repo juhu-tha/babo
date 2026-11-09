@@ -8,6 +8,7 @@ import { MdText } from '@/src/components/inhalt/MdText';
 import { FormulaDerivationBox } from '@/src/components/ui/FormulaDerivationBox';
 import { Fz } from '@/src/components/ui/Formelzeichen';
 import { ErgebnisAnsage, ansageWert, kurzzeile } from '@/src/components/ui/ErgebnisAnsage';
+import { reglerName, reglerEinheit } from '@/src/lib/reglerName';
 
 export interface ThermischTabProps {
   alphaT: number;
@@ -69,7 +70,9 @@ export default function ThermischTab({ alphaT, deltaT, handleThermischPresetChan
                 min="0.020" 
                 max="3.000" 
                 step="0.005" 
-                value={lambda} 
+                value={lambda}
+                aria-label={reglerName(inhalt.texte.wärmeleitfähigkeit)}
+                aria-valuetext={`${formatDeZahl(lambda, 3)} W / (m · K)`} 
                 onChange={(e) => setLambda(Number(e.target.value))}
                 className="w-full accent-shiraz"
               />
@@ -139,7 +142,9 @@ export default function ThermischTab({ alphaT, deltaT, handleThermischPresetChan
                 min="100" 
                 max="2500" 
                 step="50" 
-                value={spezKapazitaetC} 
+                value={spezKapazitaetC}
+                aria-label={reglerName(inhalt.texte.spezifischeWärmekapazitätC)}
+                aria-valuetext={`${formatDeIntl(spezKapazitaetC)}${reglerEinheit(inhalt.texte.jKgK)}`} 
                 onChange={(e) => setSpezKapazitaetC(Number(e.target.value))}
                 className="w-full accent-shiraz"
               />

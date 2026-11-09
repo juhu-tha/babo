@@ -71,6 +71,8 @@ export function BetonDauerhaftigkeitsSimulator() {
                 max="6.0"
                 step="0.1"
                 value={k}
+                aria-label="Karbonatisierungsbeiwert"
+                aria-valuetext={`${formatDeWert(k)} mm/√a`}
                 onChange={(e) => setK(parseFloat(e.target.value))}
                 className="w-full accent-shiraz"
               />
@@ -88,6 +90,8 @@ export function BetonDauerhaftigkeitsSimulator() {
                 max="60"
                 step="5"
                 value={cnom}
+                aria-label="Betondeckung c nom (Soll)"
+                aria-valuetext={`${formatDeWert(cnom)} mm`}
                 onChange={(e) => setCnom(parseInt(e.target.value))}
                 className="w-full accent-slate-700"
               />
@@ -105,6 +109,8 @@ export function BetonDauerhaftigkeitsSimulator() {
                 max="100"
                 step="1"
                 value={t}
+                aria-label="Bauteilalter"
+                aria-valuetext={`${formatDeWert(t)} Jahre`}
                 onChange={(e) => setT(parseInt(e.target.value))}
                 className="w-full accent-shiraz"
               />

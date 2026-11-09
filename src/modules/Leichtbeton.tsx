@@ -51,6 +51,8 @@ export default function Leichtbeton() {
               <input 
                 type="range" min="0.8" max="2.0" step="0.1"
                 value={dichte}
+                aria-label="Rohdichte"
+                aria-valuetext={`${formatDeZahl(dichte, 2)} kg/dm³`}
                 onChange={(e) => setDichte(parseFloat(e.target.value))}
                 className="w-full accent-shiraz cursor-pointer"
               />

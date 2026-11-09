@@ -10,6 +10,7 @@ import { InnovationPraxisSection } from '@/src/components/ui/InnovationPraxisSec
 import inhalt from '@/content/bpstahlbauprofile/BpStahlbauprofile.json';
 import { MdText } from '@/src/components/inhalt/MdText';
 import { ErgebnisAnsage, ansageWert, kurzzeile } from '@/src/components/ui/ErgebnisAnsage';
+import { reglerName } from '@/src/lib/reglerName';
 
 interface ProfileData {
   name: string;
@@ -218,6 +219,8 @@ export default function BpStahlbauprofile() {
                   max={activeProfileList.length - 1}
                   step="1"
                   value={activeProfileIndex}
+                  aria-label={reglerName(inhalt.texte.profilGrößeSchieberegler)}
+                  aria-valuetext={`${formatDeWert(activeProfileIndex + 1)} / ${activeProfileList.length}`}
                   onChange={(e) => setSelectedIx(Number(e.target.value))}
                   className="w-full h-6 rounded-lg appearance-none cursor-pointer accent-shiraz"
                 />
@@ -440,12 +443,13 @@ export default function BpStahlbauprofile() {
                     />
                     <span className="absolute right-2 top-2.5 text-xs text-text-main/30 font-bold">kN</span>
                   </div>
-                  <input aria-label="kN"
+                  <input aria-label={inhalt.werte.normalkraftNEd}
                     type="range"
                     min="0"
                     max="2000"
                     step="10"
                     value={ned}
+                    aria-valuetext={`${formatDeWert(ned)} kN`}
                     onChange={(e) => setNed(Number(e.target.value))}
                     className="w-full h-1.5 bg-home-grau/25 rounded-lg appearance-none cursor-pointer accent-shiraz"
                   />
@@ -464,12 +468,13 @@ export default function BpStahlbauprofile() {
                     />
                     <span className="absolute right-2 top-2.5 text-xs text-text-main/30 font-bold">kNm</span>
                   </div>
-                  <input aria-label="kNm"
+                  <input aria-label={inhalt.werte.biegungMYEd}
                     type="range"
                     min="0"
                     max="500"
                     step="5"
                     value={myed}
+                    aria-valuetext={`${formatDeWert(myed)} kNm`}
                     onChange={(e) => setMyed(Number(e.target.value))}
                     className="w-full h-1.5 bg-home-grau/25 rounded-lg appearance-none cursor-pointer accent-shiraz"
                   />

@@ -8,6 +8,7 @@ import { Ec2ParameterSkizze } from './Ec2ParameterSkizze';
 import inhalt from '@/content/betonkennwerte/RechnerTab.json';
 import { MdText } from '@/src/components/inhalt/MdText';
 import { ErgebnisAnsage, ansageWert, kurzzeile } from '@/src/components/ui/ErgebnisAnsage';
+import { reglerName } from '@/src/lib/reglerName';
 
 export interface RechnerTabProps {
   aggregateType: 'quarzit' | 'kalkstein' | 'sandstein' | 'basalt';
@@ -132,6 +133,8 @@ export default function RechnerTab({ aggregateType, ambientTempT, festigkeitMitT
               max="100" 
               step="5"
               value={relativeHumidity}
+              aria-label={reglerName(inhalt.texte.luftfeuchteRhAbschnitt5)}
+              aria-valuetext={`${formatDeWert(relativeHumidity)} %`}
               onChange={(e) => setRelativeHumidity(Number(e.target.value))}
               className="w-full accent-shiraz cursor-pointer"
             />

@@ -298,6 +298,7 @@ export default function HolzbauBauphysik({ fireB, fireH, fireResults, fireSides,
                   max="8.0"
                   step="0.1"
                   value={vib.span}
+                  aria-valuetext={`${formatDeZahl(vib.span, 2)} m`}
                   onChange={(e) => vib.setSpan(parseFloat(e.target.value))}
                   className="w-full accent-blue-700 cursor-pointer"
                 />

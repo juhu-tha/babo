@@ -48,6 +48,7 @@ export default function RechnungUWert({ R_T, R_concrete, R_insulation, R_plaster
               <input aria-label="Dicke (cm)" 
                 type="range" min="10" max="40" step="5"
                 value={uConcreteThick}
+                aria-valuetext={`${formatDeWert(uConcreteThick)} cm`}
                 onChange={(e) => setUConcreteThick(Number(e.target.value))}
                 className="w-full accent-shiraz"
               />
@@ -64,6 +65,7 @@ export default function RechnungUWert({ R_T, R_concrete, R_insulation, R_plaster
               <input aria-label="Dicke (cm)" 
                 type="range" min="0" max="30" step="2"
                 value={uInsuThick}
+                aria-valuetext={`${formatDeWert(uInsuThick)} cm`}
                 onChange={(e) => setUInsuThick(Number(e.target.value))}
                 className="w-full accent-shiraz"
               />
@@ -80,6 +82,7 @@ export default function RechnungUWert({ R_T, R_concrete, R_insulation, R_plaster
               <input aria-label="Dicke (cm)" 
                 type="range" min="0.5" max="3.0" step="0.5"
                 value={uPlasterThick}
+                aria-valuetext={`${formatDeWert(uPlasterThick)} cm`}
                 onChange={(e) => setUPlasterThick(Number(e.target.value))}
                 className="w-full accent-shiraz"
               />

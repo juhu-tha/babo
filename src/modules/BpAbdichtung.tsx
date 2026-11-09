@@ -28,6 +28,7 @@ import inhalt from '@/content/bpabdichtung/BpAbdichtung.json';
 import { MdText } from '@/src/components/inhalt/MdText';
 import { AuswahlGruppe, alsOption } from '../components/ui/Auswahlgruppe';
 import { ErgebnisAnsage, ansageWert, kurzzeile } from '@/src/components/ui/ErgebnisAnsage';
+import { reglerName } from '@/src/lib/reglerName';
 
 export default function BpAbdichtung() {
   const [activeTab, setActiveTab] = useState<'allgemein' | 'praxis' | 'innovation'>('allgemein');
@@ -464,6 +465,8 @@ export default function BpAbdichtung() {
                       max="20" 
                       step="1"
                       value={fbWaterPressure}
+                      aria-label="Wassersäule"
+                      aria-valuetext={`${formatDeWert(fbWaterPressure)} m`}
                       onChange={(e) => setFbWaterPressure(parseInt(e.target.value))}
                       className="w-full accent-shiraz"
                     />
@@ -485,6 +488,8 @@ export default function BpAbdichtung() {
                       max="60" 
                       step="5"
                       value={fbSlabThickness}
+                      aria-label={reglerName(inhalt.texte.wandSohldickeD)}
+                      aria-valuetext={`${formatDeWert(fbSlabThickness)} cm`}
                       onChange={(e) => setFbSlabThickness(parseInt(e.target.value))}
                       className="w-full accent-shiraz"
                     />
@@ -603,6 +608,8 @@ export default function BpAbdichtung() {
                       max="15" 
                       step="1"
                       value={isLength}
+                      aria-label="Länge"
+                      aria-valuetext={`${formatDeWert(isLength)} m`}
                       onChange={(e) => setIsLength(parseInt(e.target.value))}
                       className="w-full accent-shiraz"
                     />
@@ -623,6 +630,8 @@ export default function BpAbdichtung() {
                       max="20" 
                       step="1"
                       value={isConCover}
+                      aria-label={reglerName(inhalt.texte.abstandZumRand)}
+                      aria-valuetext={`${formatDeWert(isConCover)} cm`}
                       onChange={(e) => setIsConCover(parseInt(e.target.value))}
                       className="w-full accent-shiraz"
                     />
@@ -643,6 +652,8 @@ export default function BpAbdichtung() {
                       max="30" 
                       step="2"
                       value={isFasteningInterval}
+                      aria-label="Clip-Intervall"
+                      aria-valuetext={`${formatDeWert(isFasteningInterval)} cm`}
                       onChange={(e) => setIsFasteningInterval(parseInt(e.target.value))}
                       className="w-full accent-shiraz"
                     />

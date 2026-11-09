@@ -6,6 +6,7 @@ import inhalt from '@/content/bpverkehrswegebau/TunnelbauTab.json';
 import { MdText } from '@/src/components/inhalt/MdText';
 import { spritzbetonRing } from '@/src/calc/verkehrswegebau';
 import { ErgebnisAnsage, ansageWert, kurzzeile } from '@/src/components/ui/ErgebnisAnsage';
+import { reglerName } from '@/src/lib/reglerName';
 
 export interface TunnelbauTabProps {
   betonKlasse: 'C20/25' | 'C25/30' | 'C30/37';
@@ -71,6 +72,8 @@ export default function TunnelbauTab({ betonKlasse, gebirgsdruck, setBetonKlasse
                 max="8.0" 
                 step="0.1"
                 value={tunnelRadius}
+                aria-label={reglerName(inhalt.texte.vortriebsAussenradiusR)}
+                aria-valuetext={`${formatDeZahl(tunnelRadius, 1)} m`}
                 onChange={(e) => setTunnelRadius(parseFloat(e.target.value))}
                 className="w-full accent-shiraz" 
               />
@@ -89,6 +92,7 @@ export default function TunnelbauTab({ betonKlasse, gebirgsdruck, setBetonKlasse
                 max="0.50" 
                 step="0.01"
                 value={gebirgsdruck}
+                aria-valuetext={`${formatDeZahl(gebirgsdruck, 2)} MPa`}
                 onChange={(e) => setGebirgsdruck(parseFloat(e.target.value))}
                 className="w-full accent-shiraz" 
               />
@@ -106,6 +110,8 @@ export default function TunnelbauTab({ betonKlasse, gebirgsdruck, setBetonKlasse
                 max="35" 
                 step="1"
                 value={spritzbetonDicke}
+                aria-label={reglerName(inhalt.texte.sicherungsdickeD)}
+                aria-valuetext={`${formatDeWert(spritzbetonDicke)} cm`}
                 onChange={(e) => setSpritzbetonDicke(parseInt(e.target.value))}
                 className="w-full accent-shiraz" 
               />

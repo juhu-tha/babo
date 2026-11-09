@@ -6,6 +6,7 @@ import { FormulaText } from '@/src/components/ui/FormulaText';
 import inhalt from '@/content/bpfarbenlacke/RechnerTab.json';
 import { MdText } from '@/src/components/inhalt/MdText';
 import { ErgebnisAnsage, ansageWert, kurzzeile } from '@/src/components/ui/ErgebnisAnsage';
+import { reglerName } from '@/src/lib/reglerName';
 
 export interface RechnerTabProps {
   targetDft: number;
@@ -57,6 +58,8 @@ export function RechnerTab({ targetDft, setTargetDft, solidsVol, setSolidsVol, t
                 max="300"
                 step="5"
                 value={targetDft}
+                aria-label={reglerName(inhalt.texte.dryFilmThickness)}
+                aria-valuetext={`${formatDeWert(targetDft)} µm`}
                 onChange={(e) => setTargetDft(Number(e.target.value))}
                 className="w-full accent-shiraz h-2 bg-home-grau/20 rounded-lg cursor-pointer"
               />
@@ -77,6 +80,8 @@ export function RechnerTab({ targetDft, setTargetDft, solidsVol, setSolidsVol, t
                 max="100"
                 step="1"
                 value={solidsVol}
+                aria-label={reglerName(inhalt.texte.festkörperVolumenanteilVolSolids)}
+                aria-valuetext={`${formatDeWert(solidsVol)} %`}
                 onChange={(e) => setSolidsVol(Number(e.target.value))}
                 className="w-full accent-shiraz h-2 bg-home-grau/20 rounded-lg cursor-pointer"
               />
@@ -104,6 +109,8 @@ export function RechnerTab({ targetDft, setTargetDft, solidsVol, setSolidsVol, t
                 max="25"
                 step="1"
                 value={thinning}
+                aria-label="Verdünnungszugabe"
+                aria-valuetext={`${formatDeWert(thinning)} %`}
                 onChange={(e) => setThinning(Number(e.target.value))}
                 className="w-full accent-shiraz h-2 bg-home-grau/20 rounded-lg cursor-pointer"
               />
@@ -124,6 +131,8 @@ export function RechnerTab({ targetDft, setTargetDft, solidsVol, setSolidsVol, t
                 max="60"
                 step="5"
                 value={lossFactor}
+                aria-label={reglerName(inhalt.texte.verlustfaktorProzessverlust)}
+                aria-valuetext={`${formatDeWert(lossFactor)} %`}
                 onChange={(e) => setLossFactor(Number(e.target.value))}
                 className="w-full accent-shiraz h-2 bg-home-grau/20 rounded-lg cursor-pointer"
               />

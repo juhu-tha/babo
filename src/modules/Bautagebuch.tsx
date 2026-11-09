@@ -733,6 +733,7 @@ export default function Bautagebuch() {
                           max="45" 
                           step="0.5"
                           value={tempMin}
+                          aria-valuetext={`${formatDeWert(tempMin)} °C`}
                           onChange={(e) => setTempMin(Number(e.target.value))}
                           className="w-full accent-shiraz"
                         />
@@ -748,6 +749,7 @@ export default function Bautagebuch() {
                           max="45" 
                           step="0.5"
                           value={tempMax}
+                          aria-valuetext={`${formatDeWert(tempMax)} °C`}
                           onChange={(e) => setTempMax(Number(e.target.value))}
                           className="w-full accent-shiraz"
                         />

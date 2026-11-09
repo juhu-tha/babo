@@ -259,6 +259,8 @@ export function DaemmungBerater() {
                 max="30"
                 step="1"
                 value={thickness}
+                aria-label="4. Dämmstoff-Dicke (cm)"
+                aria-valuetext={`${formatDeWert(thickness)} cm`}
                 onChange={(e) => setThickness(parseInt(e.target.value))}
                 className="w-full h-2 bg-slate-100 rounded-lg appearance-none cursor-pointer accent-shiraz"
               />

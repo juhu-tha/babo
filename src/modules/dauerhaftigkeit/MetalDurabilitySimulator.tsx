@@ -131,6 +131,8 @@ export function MetalDurabilitySimulator() {
                 max="50"
                 step="1"
                 value={years}
+                aria-label="Betrachtungszeitraum"
+                aria-valuetext={`${formatDeWert(years)} Jahre`}
                 onChange={(e) => setYears(parseInt(e.target.value))}
                 className="w-full accent-shiraz"
               />

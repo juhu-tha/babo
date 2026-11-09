@@ -756,6 +756,8 @@ export default function Statistik() {
                     max="80"
                     step="1"
                     value={v}
+                    aria-label={`Probe ${idx + 1}`}
+                    aria-valuetext={`${formatDeZahl(v, 0)} MPa`}
                     onChange={(e) => {
                       const newVal = Number(e.target.value);
                       setInteractiveSamples(prev => {

@@ -22,6 +22,7 @@ import { EingabeHinweise } from '@/src/components/ui/EingabeHinweise';
 import { bohrkernPruefung, spaltzugfestigkeit, marshallQuotient, zugversuchStahl, holzSchaetzung } from '@/src/calc/pruefverfahren';
 import { ReiterLeiste, alsReiter, reiterPanel } from '../components/ui/Auswahlgruppe';
 import { ErgebnisAnsage, ansageWert, kurzzeile } from '@/src/components/ui/ErgebnisAnsage';
+import { reglerName } from '@/src/lib/reglerName';
 
 // Define categories of building materials
 type MaterialCategory = 'beton_mineralisch' | 'asphalt_bituminoes' | 'stahl_metalle' | 'holz_organisch';
@@ -337,7 +338,7 @@ export default function MechanischePruefungen() {
                       <span className="text-shiraz font-mono font-bold">{formatDeWert(concreteDiam)} mm</span>
                     </label>
                     <input 
-                      type="range" min="50" max="150" step="5" value={concreteDiam}
+                      type="range" min="50" max="150" step="5" value={concreteDiam} aria-label={reglerName(inhalt.texte.probenDurchmesserDBohrkern)} aria-valuetext={`${formatDeWert(concreteDiam)} mm`}
                       onChange={(e) => setConcreteDiam(Number(e.target.value))}
                       className="w-full accent-shiraz cursor-pointer"
                     />
@@ -350,7 +351,7 @@ export default function MechanischePruefungen() {
                       <span className="text-shiraz font-mono font-bold">{formatDeWert(concreteHeight)} mm</span>
                     </label>
                     <input 
-                      type="range" min="50" max="300" step="5" value={concreteHeight}
+                      type="range" min="50" max="300" step="5" value={concreteHeight} aria-label={reglerName(inhalt.texte.probenHöheHPlanhöhe)} aria-valuetext={`${formatDeWert(concreteHeight)} mm`}
                       onChange={(e) => setConcreteHeight(Number(e.target.value))}
                       className="w-full accent-shiraz cursor-pointer"
                     />
@@ -366,7 +367,7 @@ export default function MechanischePruefungen() {
                       <span className="text-emerald-700 font-mono font-bold">{formatDeWert(concreteForce)} kN</span>
                     </label>
                     <input 
-                      type="range" min="50" max="1200" step="10" value={concreteForce}
+                      type="range" min="50" max="1200" step="10" value={concreteForce} aria-label={reglerName(inhalt.texte.zerstörendeBruchkraftLastspitzeF)} aria-valuetext={`${formatDeWert(concreteForce)} kN`}
                       onChange={(e) => setConcreteForce(Number(e.target.value))}
                       className="w-full accent-emerald-600 cursor-pointer"
                     />
@@ -482,7 +483,7 @@ export default function MechanischePruefungen() {
                           <span className="text-shiraz font-mono font-bold">{formatDeWert(asphaltHeight)} mm</span>
                         </label>
                         <input 
-                          type="range" min="30" max="150" step="5" value={asphaltHeight}
+                          type="range" min="30" max="150" step="5" value={asphaltHeight} aria-label={reglerName(inhalt.texte.bohrkernDickeHSchichthöhe)} aria-valuetext={`${formatDeWert(asphaltHeight)} mm`}
                           onChange={(e) => setAsphaltHeight(Number(e.target.value))}
                           className="w-full accent-shiraz cursor-pointer"
                         />
@@ -494,7 +495,7 @@ export default function MechanischePruefungen() {
                           <span className="text-emerald-700 font-mono font-bold">{formatDeWert(asphaltForce)} kN</span>
                         </label>
                         <input 
-                          type="range" min="2" max="60" step="0.5" value={asphaltForce}
+                          type="range" min="2" max="60" step="0.5" value={asphaltForce} aria-label={reglerName(inhalt.texte.maximaleBelastungskraftP)} aria-valuetext={`${formatDeWert(asphaltForce)} kN`}
                           onChange={(e) => setAsphaltForce(Number(e.target.value))}
                           className="w-full accent-emerald-600 cursor-pointer"
                         />
@@ -539,7 +540,7 @@ export default function MechanischePruefungen() {
                           <span className="text-shiraz font-mono font-bold">{formatDeWert(marshallStability)} kN</span>
                         </label>
                         <input 
-                          type="range" min="2.0" max="25.0" step="0.5" value={marshallStability}
+                          type="range" min="2.0" max="25.0" step="0.5" value={marshallStability} aria-label={reglerName(inhalt.texte.marshallStabilitätSBruchlast)} aria-valuetext={`${formatDeWert(marshallStability)} kN`}
                           onChange={(e) => setMarshallStability(Number(e.target.value))}
                           className="w-full accent-shiraz cursor-pointer"
                         />
@@ -552,7 +553,7 @@ export default function MechanischePruefungen() {
                           <span className="text-emerald-700 font-mono font-bold">{formatDeWert(marshallFlow)} mm</span>
                         </label>
                         <input 
-                          type="range" min="0.5" max="8.0" step="0.1" value={marshallFlow}
+                          type="range" min="0.5" max="8.0" step="0.1" value={marshallFlow} aria-label={reglerName(inhalt.texte.prüfFließwertFStauchung)} aria-valuetext={`${formatDeWert(marshallFlow)} mm`}
                           onChange={(e) => setMarshallFlow(Number(e.target.value))}
                           className="w-full accent-shiraz cursor-pointer"
                         />
@@ -635,7 +636,7 @@ export default function MechanischePruefungen() {
                       <span className="text-shiraz font-mono font-bold">{formatDeZahl(steelForceYield, 1)} kN</span>
                     </label>
                     <input 
-                      type="range" min="10" max="400" step="1" value={steelForceYield}
+                      type="range" min="10" max="400" step="1" value={steelForceYield} aria-label={reglerName(inhalt.texte.kraftAnDerStreckgrenze)} aria-valuetext={`${formatDeZahl(steelForceYield, 1)} kN`}
                       onChange={(e) => {
                         setSteelForceYield(Number(e.target.value));
                         // ultimate strength must be higher than yield strength always
@@ -653,7 +654,7 @@ export default function MechanischePruefungen() {
                       <span className="text-emerald-700 font-mono font-bold">{formatDeZahl(steelForceUltimate, 1)} kN</span>
                     </label>
                     <input 
-                      type="range" min="12" max="500" step="1" value={steelForceUltimate}
+                      type="range" min="12" max="500" step="1" value={steelForceUltimate} aria-label={reglerName(inhalt.texte.höchstkraftFM)} aria-valuetext={`${formatDeZahl(steelForceUltimate, 1)} kN`}
                       onChange={(e) => setSteelForceUltimate(Math.max(steelForceYield + 2, Number(e.target.value)))}
                       className="w-full accent-emerald-600 cursor-pointer"
                     />
@@ -665,7 +666,7 @@ export default function MechanischePruefungen() {
                       <span className="text-slate-700 font-mono font-bold">{formatDeWert(steelLengthU)} mm</span>
                     </label>
                     <input 
-                      type="range" min={steelLength0} max={steelLength0 + 40} step="0.5" value={steelLengthU}
+                      type="range" min={steelLength0} max={steelLength0 + 40} step="0.5" value={steelLengthU} aria-label={reglerName(inhalt.texte.messlängeBeiHöchstkraftL)} aria-valuetext={`${formatDeWert(steelLengthU)} mm`}
                       onChange={(e) => setSteelLengthU(Math.max(steelLength0, Number(e.target.value)))}
                       className="w-full accent-slate-800 cursor-pointer"
                     />
@@ -720,7 +721,7 @@ export default function MechanischePruefungen() {
                         <span className="text-shiraz font-mono font-bold">{formatDeZahl(woodDensity, 2)} g/cm³</span>
                       </label>
                       <input 
-                        type="range" min="0.30" max="0.85" step="0.01" value={woodDensity}
+                        type="range" min="0.30" max="0.85" step="0.01" value={woodDensity} aria-label={reglerName(inhalt.texte.rohdichte0)} aria-valuetext={`${formatDeZahl(woodDensity, 2)} g/cm³`}
                         onChange={(e) => setWoodDensity(Number(e.target.value))}
                         className="w-full h-1 accent-shiraz cursor-pointer"
                       />
@@ -733,7 +734,7 @@ export default function MechanischePruefungen() {
                         <span className="text-emerald-700 font-mono font-bold">{formatDeWert(woodMoisture)} %</span>
                       </label>
                       <input 
-                        type="range" min="5" max="35" step="1" value={woodMoisture}
+                        type="range" min="5" max="35" step="1" value={woodMoisture} aria-label={reglerName(inhalt.texte.holzfeuchteU)} aria-valuetext={`${formatDeWert(woodMoisture)} %`}
                         onChange={(e) => setWoodMoisture(Number(e.target.value))}
                         className="w-full h-1 accent-emerald-600 cursor-pointer"
                       />
@@ -774,7 +775,7 @@ export default function MechanischePruefungen() {
                       <span className="text-emerald-700 font-mono font-bold">{formatDeZahl(woodBendingForce, 1)} kN</span>
                     </label>
                     <input 
-                      type="range" min="0.5" max="25" step="0.5" value={woodBendingForce}
+                      type="range" min="0.5" max="25" step="0.5" value={woodBendingForce} aria-label={reglerName(inhalt.texte.gemesseneGesamtBruchlastF)} aria-valuetext={`${formatDeZahl(woodBendingForce, 1)} kN`}
                       onChange={(e) => setWoodBendingForce(Number(e.target.value))}
                       className="w-full accent-emerald-600 cursor-pointer"
                     />

@@ -28,6 +28,7 @@ import { reiterZiel } from '@/src/components/ui/ModuleTabs';
 import { AuswahlGruppe, alsOption } from '../components/ui/Auswahlgruppe';
 import { RC_HOECHSTANTEIL, rcBilanz, ANTEIL_GROB, GESTEINSKOERNUNG_T_JE_M3, type RcTyp, type RcExpositionsgruppe } from '@/src/calc/rcGesteinskoernung';
 import { ErgebnisAnsage } from '@/src/components/ui/ErgebnisAnsage';
+import { reglerName } from '@/src/lib/reglerName';
 
 // Define the tabs representing the 4 concepts of REZ Bayern
 type RezTab = 'informieren' | 'handeln' | 'nutzen' | 'staerken';
@@ -859,7 +860,9 @@ export default function Ressourceneffizienz() {
                       min="50" 
                       max="150" 
                       step="5"
-                      value={reinforcementRatio} 
+                      value={reinforcementRatio}
+                      aria-label={reglerName(inhalt.texte.t3BewehrungsgehaltStahl)}
+                      aria-valuetext={`${formatDeWert(reinforcementRatio)}%`} 
                       onChange={(e) => setReinforcementRatio(parseInt(e.target.value) || 100)}
                       className="w-full h-1.5 bg-slate-200 dark:bg-slate-800 rounded-lg appearance-none cursor-pointer accent-shiraz dark:accent-rose-500"
                     />
@@ -995,7 +998,9 @@ export default function Ressourceneffizienz() {
                         min="100" 
                         max="3000" 
                         step="50"
-                        value={projectSize} 
+                        value={projectSize}
+                        aria-label={reglerName(inhalt.texte.gebäudeNutzflächeM)}
+                        aria-valuetext={`${formatDeWert(projectSize)} m²`} 
                         onChange={(e) => setProjectSize(parseInt(e.target.value) || 650)}
                         className="w-full h-1.5 bg-slate-200 dark:bg-slate-800 rounded-lg appearance-none cursor-pointer accent-shiraz dark:accent-rose-500"
                       />
@@ -1012,7 +1017,9 @@ export default function Ressourceneffizienz() {
                         min="0" 
                         max="80" 
                         step="5"
-                        value={wasteOptimization} 
+                        value={wasteOptimization}
+                        aria-label={reglerName(inhalt.texte.abfallvermeidungVorOrtGewerke)}
+                        aria-valuetext={`${formatDeWert(wasteOptimization)}%`} 
                         onChange={(e) => { const v = Number(e.target.value); if (Number.isFinite(v)) setWasteOptimization(v); }}
                         className="w-full h-1.5 bg-slate-200 dark:bg-slate-800 rounded-lg appearance-none cursor-pointer accent-shiraz dark:accent-rose-500"
                       />
@@ -1033,7 +1040,9 @@ export default function Ressourceneffizienz() {
                         min="0" 
                         max="60" 
                         step="5"
-                        value={recyclingUsage} 
+                        value={recyclingUsage}
+                        aria-label={reglerName(inhalt.texte.rcBaustoffErsatzanteilIm)}
+                        aria-valuetext={`${formatDeWert(recyclingUsage)}%`} 
                         onChange={(e) => { const v = Number(e.target.value); if (Number.isFinite(v)) setRecyclingUsage(v); }}
                         className="w-full h-1.5 bg-slate-200 dark:bg-slate-800 rounded-lg appearance-none cursor-pointer accent-shiraz dark:accent-rose-500"
                       />

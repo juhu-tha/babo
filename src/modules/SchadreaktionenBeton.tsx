@@ -179,6 +179,7 @@ function AkrGefuegeSimulator() {
                 max={25}
                 step={1}
                 value={years}
+                aria-valuetext={`${formatDeWert(years)} Jahre`}
                 onChange={(e) => setYears(Number(e.target.value))}
                 aria-label="Expositionsdauer in Jahren"
                 className="w-full h-2 bg-slate-200 rounded-lg appearance-none cursor-pointer accent-shiraz"

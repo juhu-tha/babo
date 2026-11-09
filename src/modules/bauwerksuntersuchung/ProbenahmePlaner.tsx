@@ -18,6 +18,7 @@ import inhalt from '@/content/bauwerksuntersuchung/ProbenahmePlaner.json';
 import { MdText } from '@/src/components/inhalt/MdText';
 import { AuswahlGruppe, alsOption } from '../../components/ui/Auswahlgruppe';
 import { ErgebnisAnsage, ansageWert, kurzzeile } from '@/src/components/ui/ErgebnisAnsage';
+import { reglerName } from '@/src/lib/reglerName';
 
 export default function ProbenahmePlaner() {
   const [selectedPresetId, setSelectedPresetId] = useState<string>('tiefgarage');
@@ -155,6 +156,8 @@ export default function ProbenahmePlaner() {
                 max="3000"
                 step="50"
                 value={flaecheM2}
+                aria-label={reglerName(inhalt.texte.prüfflächeLosgröße)}
+                aria-valuetext={`${formatDeZahl(flaecheM2, 0)} m²`}
                 onChange={(e) => setFlaecheM2(Number(e.target.value))}
                 className="w-full accent-shiraz"
               />

@@ -13,6 +13,7 @@ import { MdText } from '@/src/components/inhalt/MdText';
 import { energieausweis, rechtsstandAm, FAKTOREN, type Rechtsstand } from '@/src/calc/energieausweis';
 import { ModuleTabs, type ModulTab } from '@/src/components/ui/ModuleTabs';
 import { AuswahlGruppe, alsOption } from '../components/ui/Auswahlgruppe';
+import { reglerName } from '@/src/lib/reglerName';
 
 /** Farbe der Effizienzklasse (Wohngebäude, GModG/GEG Anlage 10 zu § 86) */
 const KLASSEN_FARBE: Readonly<Record<string, string>> = {
@@ -500,7 +501,9 @@ export default function Energieausweis() {
                       min="80" 
                       max="400" 
                       step="10" 
-                      value={simArea} 
+                      value={simArea}
+                      aria-label={reglerName(inhalt.texte.gebäudenutzflächeAN2)}
+                      aria-valuetext={`${formatDeWert(simArea)} m²`} 
                       onChange={(e) => setSimArea(Number(e.target.value))}
                       className="w-full accent-shiraz cursor-pointer"
                     />

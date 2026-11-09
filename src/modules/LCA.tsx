@@ -12,6 +12,7 @@ import { MdText } from '@/src/components/inhalt/MdText';
 import { ModuleTabs } from '@/src/components/ui/ModuleTabs';
 import { AuswahlGruppe, ReiterLeiste, alsOption, alsReiter, reiterPanel } from '../components/ui/Auswahlgruppe';
 import { ErgebnisAnsage, ansageWert, kurzzeile } from '@/src/components/ui/ErgebnisAnsage';
+import { reglerName } from '@/src/lib/reglerName';
 
 // Comprehensive EPD Reference Database representing realistic German ÖKOBAUDAT entries for students
 // Beton und BSH aus der gemeinsamen Lehrwerttabelle (Konsistenz 29.10.2026, F-4); Dämmstoffe EPS und Mineralwolle je kg
@@ -801,6 +802,8 @@ export default function LCA() {
                     min="1"
                     max="150"
                     value={calcQuantity}
+                    aria-label="2. Menge"
+                    aria-valuetext={`${formatDeWert(calcQuantity)} ${REFERENZEN_EPD.find(m => m.id === calcMaterialId)?.einheit.split(' ')[1] || 'Einheiten'}`}
                     onChange={(e) => setCalcQuantity(parseInt(e.target.value))}
                     className="w-full h-1.5 bg-slate-200 rounded-lg appearance-none cursor-pointer accent-shiraz"
                   />
@@ -822,6 +825,8 @@ export default function LCA() {
                     max="1000"
                     step="10"
                     value={calcDistance}
+                    aria-label={reglerName(inhalt.texte.t3DistanzZurBaustelle)}
+                    aria-valuetext={`${formatDeWert(calcDistance)} km`}
                     onChange={(e) => setCalcDistance(parseInt(e.target.value))}
                     className="w-full h-1.5 bg-slate-200 rounded-lg appearance-none cursor-pointer accent-shiraz"
                   />

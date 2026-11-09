@@ -123,6 +123,7 @@ export default function KennwerteBeton({ activeMatData, concDatabase, matAgeDays
                   max="90"
                   step="1"
                   value={matAgeDays}
+                  aria-valuetext={`${formatDeWert(matAgeDays)} d`}
                   onChange={(e) => setMatAgeDays(Number(e.target.value))}
                   className="w-full accent-shiraz cursor-pointer"
                 />
@@ -149,6 +150,7 @@ export default function KennwerteBeton({ activeMatData, concDatabase, matAgeDays
                   max="60"
                   step="5"
                   value={matTemp}
+                  aria-valuetext={`${formatDeWert(matTemp)} °C`}
                   onChange={(e) => setMatTemp(Number(e.target.value))}
                   className="w-full accent-shiraz cursor-pointer"
                 />
@@ -192,6 +194,7 @@ export default function KennwerteBeton({ activeMatData, concDatabase, matAgeDays
                   max="2000"
                   step="50"
                   value={matBeamHeight}
+                  aria-valuetext={`${formatDeWert(matBeamHeight)} mm`}
                   onChange={(e) => setMatBeamHeight(Number(e.target.value))}
                   className="w-full accent-shiraz cursor-pointer"
                 />

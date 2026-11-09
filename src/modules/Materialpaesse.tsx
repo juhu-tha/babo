@@ -9,6 +9,7 @@ import inhalt from '@/content/materialpaesse/Materialpaesse.json';
 import { MdText } from '@/src/components/inhalt/MdText';
 import { materialpassBilanz } from '@/src/calc/materialpass';
 import { ErgebnisAnsage, ansageWert, kurzzeile } from '@/src/components/ui/ErgebnisAnsage';
+import { reglerName } from '@/src/lib/reglerName';
 
 interface BuildingArchetype {
   id: string;
@@ -180,7 +181,9 @@ export default function Materialpaesse() {
                 min={500} 
                 max={15000} 
                 step={250} 
-                value={gfa} 
+                value={gfa}
+                aria-label={reglerName(inhalt.texte.bruttogrundflächeBgf)}
+                aria-valuetext={`${formatDeIntl(gfa)} m²`} 
                 onChange={(e) => setGfa(Number(e.target.value))}
                 className="cursor-pointer"
               />
@@ -198,7 +201,9 @@ export default function Materialpaesse() {
                 min={0} 
                 max={100} 
                 step={5} 
-                value={recycledInput} 
+                value={recycledInput}
+                aria-label={reglerName(inhalt.texte.recyceltesMaterialInput)}
+                aria-valuetext={`${formatDeWert(recycledInput)}%`} 
                 onChange={(e) => setRecycledInput(Number(e.target.value))}
                 className="cursor-pointer"
               />

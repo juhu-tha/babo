@@ -15,6 +15,7 @@ import inhalt from '@/content/bauwerksunters_monitoring/Bauwerksunters_Monitorin
 import { MdText } from '@/src/components/inhalt/MdText';
 import { ModuleTabs, type ModulTab } from '@/src/components/ui/ModuleTabs';
 import { ErgebnisAnsage, ansageWert, kurzzeile } from '@/src/components/ui/ErgebnisAnsage';
+import { reglerName } from '@/src/lib/reglerName';
 
 // Constants for Wood Drill Simulator
 interface TimberConfig {
@@ -554,6 +555,8 @@ export default function Bauwerksunters_Monitoring() {
                       max="5.0"
                       step="0.1"
                       value={measuredCM}
+                      aria-label={reglerName(inhalt.texte.messergebnisCalciumcarbidMethode)}
+                      aria-valuetext={`${formatDeWert(measuredCM)} CM-%`}
                       onChange={(e) => setMeasuredCM(parseFloat(e.target.value))}
                       className="w-full accent-shiraz"
                     />
@@ -569,6 +572,8 @@ export default function Bauwerksunters_Monitoring() {
                       min="10"
                       max="120"
                       value={measuredDigits}
+                      aria-label={reglerName(inhalt.texte.zerstörungsfreieHfMessungEindringtiefe)}
+                      aria-valuetext={`${formatDeWert(measuredDigits)} Digits`}
                       onChange={(e) => setMeasuredDigits(parseInt(e.target.value))}
                       className="w-full accent-slate-600"
                     />
@@ -616,6 +621,8 @@ export default function Bauwerksunters_Monitoring() {
                       min="20"
                       max="60"
                       value={reboundVal}
+                      aria-label={reglerName(inhalt.texte.gemessenerSchlagrückprallRMittelwert)}
+                      aria-valuetext={`R = ${formatDeWert(reboundVal)}`}
                       onChange={(e) => setReboundVal(parseInt(e.target.value))}
                       className="w-full accent-slate-800"
                     />
@@ -631,6 +638,8 @@ export default function Bauwerksunters_Monitoring() {
                       min="0"
                       max="40"
                       value={carbDepth}
+                      aria-label={reglerName(inhalt.texte.mitPhenolphthaleinBestimmteKarbonatisier)}
+                      aria-valuetext={`${formatDeWert(carbDepth)} mm`}
                       onChange={(e) => setCarbDepth(parseInt(e.target.value))}
                       className="w-full accent-shiraz"
                     />
@@ -646,6 +655,8 @@ export default function Bauwerksunters_Monitoring() {
                       min="5"
                       max="100"
                       value={concreteAge}
+                      aria-label={reglerName(inhalt.texte.alterDesTragwerks)}
+                      aria-valuetext={`${formatDeWert(concreteAge)} Jahre`}
                       onChange={(e) => setConcreteAge(parseInt(e.target.value))}
                       className="w-full accent-slate-800"
                     />

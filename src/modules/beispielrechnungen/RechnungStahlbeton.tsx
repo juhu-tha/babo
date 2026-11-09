@@ -52,6 +52,7 @@ export default function RechnungStahlbeton({ a_s_req, a_s_min, bWidth, b_m, conc
               <input aria-label={inhalt.werte.bemessungsmomentKnm} 
                 type="range" min="50" max="300" step="10"
                 value={mEd}
+                aria-valuetext={`${formatDeWert(mEd)} kNm`}
                 onChange={(e) => setMEd(Number(e.target.value))}
                 className="w-full accent-shiraz"
               />

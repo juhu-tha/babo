@@ -7,6 +7,7 @@ import { EingabeHinweise } from '@/src/components/ui/EingabeHinweise';
 import inhalt from '@/content/bpglaeser/KalkulatorTab.json';
 import { MdText } from '@/src/components/inhalt/MdText';
 import { ErgebnisAnsage, ansageWert, kurzzeile } from '@/src/components/ui/ErgebnisAnsage';
+import { reglerName } from '@/src/lib/reglerName';
 
 export interface KalkulatorTabProps {
   fensterBreite: number;
@@ -52,6 +53,8 @@ export function KalkulatorTab({ fensterBreite, setFensterBreite, fensterHoehe, s
                   max={3.00}
                   step={0.05}
                   value={fensterBreite}
+                  aria-label={reglerName(inhalt.texte.fensterbreiteB)}
+                  aria-valuetext={`${formatDeZahl(fensterBreite, 2)} m`}
                   onChange={(e) => setFensterBreite(parseFloat(e.target.value))}
                   className="w-full accent-shiraz cursor-pointer"
                 />
@@ -74,6 +77,8 @@ export function KalkulatorTab({ fensterBreite, setFensterBreite, fensterHoehe, s
                   max={3.00}
                   step={0.05}
                   value={fensterHoehe}
+                  aria-label={reglerName(inhalt.texte.fensterhöheH)}
+                  aria-valuetext={`${formatDeZahl(fensterHoehe, 2)} m`}
                   onChange={(e) => setFensterHoehe(parseFloat(e.target.value))}
                   className="w-full accent-shiraz cursor-pointer"
                 />
@@ -98,6 +103,8 @@ export function KalkulatorTab({ fensterBreite, setFensterBreite, fensterHoehe, s
                   max={160}
                   step={5}
                   value={rahmenBreiteMm}
+                  aria-label={reglerName(inhalt.texte.rahmenbreiteBF)}
+                  aria-valuetext={`${formatDeWert(rahmenBreiteMm)} mm`}
                   onChange={(e) => setRahmenBreiteMm(parseInt(e.target.value))}
                   className="w-full accent-shiraz cursor-pointer"
                 />
@@ -120,6 +127,8 @@ export function KalkulatorTab({ fensterBreite, setFensterBreite, fensterHoehe, s
                   max={2.00}
                   step={0.05}
                   value={ufWert}
+                  aria-label={reglerName(inhalt.texte.rahmenUfWert)}
+                  aria-valuetext={`${formatDeZahl(ufWert, 2)} W/(m²K)`}
                   onChange={(e) => setUfWert(parseFloat(e.target.value))}
                   className="w-full accent-shiraz cursor-pointer"
                 />
@@ -144,6 +153,8 @@ export function KalkulatorTab({ fensterBreite, setFensterBreite, fensterHoehe, s
                   max={3.00}
                   step={0.05}
                   value={ugWert}
+                  aria-label={reglerName(inhalt.texte.glasUgWert)}
+                  aria-valuetext={`${formatDeZahl(ugWert, 2)} W/(m²K)`}
                   onChange={(e) => setUgWert(parseFloat(e.target.value))}
                   className="w-full accent-shiraz cursor-pointer"
                 />
@@ -182,6 +193,8 @@ export function KalkulatorTab({ fensterBreite, setFensterBreite, fensterHoehe, s
                   max={0.80}
                   step={0.02}
                   value={gWert}
+                  aria-label={reglerName(inhalt.texte.gesamtenergiedurchlassGWert)}
+                  aria-valuetext={`${formatDeZahl((gWert * 100), 0)} % (${formatDeZahl(gWert, 2)})`}
                   onChange={(e) => setGWert(parseFloat(e.target.value))}
                   className="w-full accent-shiraz cursor-pointer"
                 />
@@ -203,6 +216,8 @@ export function KalkulatorTab({ fensterBreite, setFensterBreite, fensterHoehe, s
                   max={900}
                   step={50}
                   value={sonneneinstrahlung}
+                  aria-label={reglerName(inhalt.texte.sonneneinstrahlungAufFassade)}
+                  aria-valuetext={`${formatDeWert(sonneneinstrahlung)} W/m²`}
                   onChange={(e) => setSonneneinstrahlung(parseInt(e.target.value))}
                   className="w-full accent-shiraz cursor-pointer"
                 />

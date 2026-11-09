@@ -22,6 +22,7 @@ import { ModuleTabs } from '@/src/components/ui/ModuleTabs';
 import { FormulaDerivationBox } from '@/src/components/ui/FormulaDerivationBox';
 import { AuswahlGruppe, alsOption } from '../components/ui/Auswahlgruppe';
 import { ansageWert, kurzzeile } from '@/src/components/ui/ErgebnisAnsage';
+import { reglerName } from '@/src/lib/reglerName';
 
 interface LoamStandardInfo {
   id: string;
@@ -199,6 +200,8 @@ export default function BpLehmbauprodukte() {
                     max="3.5"
                     step="0.05"
                     value={height}
+                    aria-label={reglerName(inhalt.texte.lichteWandhöheH)}
+                    aria-valuetext={`${formatDeZahl(height, 2)} m`}
                     onChange={(e) => setHeight(parseFloat(e.target.value))}
                     className="w-full accent-shiraz cursor-pointer"
                   />
@@ -288,6 +291,8 @@ export default function BpLehmbauprodukte() {
                     max="100"
                     step="5"
                     value={designLoad}
+                    aria-label={reglerName(inhalt.texte.bemessungslastNSubEd)}
+                    aria-valuetext={`${formatDeWert(designLoad)} kN/m`}
                     onChange={(e) => setDesignLoad(parseInt(e.target.value))}
                     className="w-full accent-shiraz cursor-pointer"
                   />

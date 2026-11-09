@@ -98,13 +98,15 @@ function Param({ label, value, unit, info, min, max, step, onChange, display }: 
   label: React.ReactNode; value: number; unit: string; info?: React.ReactNode;
   min: number; max: number; step: number; onChange: (v: number) => void; display?: string;
 }) {
+  // Beschriftung (auch Formel) über htmlFor mit dem Regler verknüpft
+  const id = React.useId();
   return (
     <div className="flex flex-col gap-1.5">
       <div className="flex justify-between items-center gap-2">
-        <label className="text-sm font-medium text-text-main">{label}</label>
+        <label htmlFor={id} className="text-sm font-medium text-text-main">{label}</label>
         <span className="text-sm font-bold text-shiraz whitespace-nowrap">{display ?? de(value)} {unit}</span>
       </div>
-      <input type="range" min={min} max={max} step={step} value={value}
+      <input id={id} type="range" min={min} max={max} step={step} value={value} aria-valuetext={`${display ?? de(value)} ${unit}`}
         onChange={e => onChange(Number(e.target.value))}
         className="w-full h-2 bg-home-grau/30 rounded-lg appearance-none cursor-pointer accent-shiraz" />
       {info && <div className="text-[11px] text-text-main/60 leading-snug">{info}</div>}

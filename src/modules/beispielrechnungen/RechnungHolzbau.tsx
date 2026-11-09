@@ -52,6 +52,7 @@ export default function RechnungHolzbau({ A_wood, E_005, colHeight, colLength, c
               <input aria-label={inhalt.werte.knicklängeM} 
                 type="range" min="1.5" max="6.0" step="0.5"
                 value={colLength}
+                aria-valuetext={`${formatDeZahl(colLength, 1)} m`}
                 onChange={(e) => setColLength(Number(e.target.value))}
                 className="w-full accent-shiraz"
               />
@@ -64,6 +65,7 @@ export default function RechnungHolzbau({ A_wood, E_005, colHeight, colLength, c
               <input aria-label={inhalt.werte.querschnittCm} 
                 type="range" min="8" max="24" step="2"
                 value={colHeight}
+                aria-valuetext={`${formatDeWert(colHeight)} x ${formatDeWert(colHeight)} cm`}
                 onChange={(e) => {
                   setColHeight(Number(e.target.value));
                   setColWidth(Number(e.target.value));
@@ -79,6 +81,7 @@ export default function RechnungHolzbau({ A_wood, E_005, colHeight, colLength, c
               <input aria-label={inhalt.werte.normalkraftKn} 
                 type="range" min="10" max="150" step="5"
                 value={designForce}
+                aria-valuetext={`${formatDeWert(designForce)} kN`}
                 onChange={(e) => setDesignForce(Number(e.target.value))}
                 className="w-full accent-shiraz"
               />

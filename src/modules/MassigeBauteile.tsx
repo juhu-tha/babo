@@ -64,6 +64,8 @@ export default function MassigeBauteile() {
               <input 
                 type="range" min="250" max="500" step="10"
                 value={zementGehalt}
+                aria-label="Zementgehalt"
+                aria-valuetext={`${formatDeWert(zementGehalt)} kg/m³`}
                 onChange={(e) => setZementGehalt(Number(e.target.value))}
                 className="w-full accent-middle-blue"
               />

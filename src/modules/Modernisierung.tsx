@@ -24,6 +24,7 @@ import inhalt from '@/content/modernisierung/Modernisierung.json';
 import { MdText } from '@/src/components/inhalt/MdText';
 import { ModuleTabs, type ModulTab } from '@/src/components/ui/ModuleTabs';
 import { ansageWert, kurzzeile } from '@/src/components/ui/ErgebnisAnsage';
+import { reglerName } from '@/src/lib/reglerName';
 
 type TabKey = 'begriffe' | 'nachruestpflichten' | 'bauphysik' | 'gebaeudetechnik' | 'isfp';
 
@@ -442,6 +443,8 @@ export default function Modernisierung() {
                     max="2.50"
                     step="0.05"
                     value={originalU}
+                    aria-label={reglerName(inhalt.texte.ausgangsUWertBestand)}
+                    aria-valuetext={`${formatDeZahl(originalU, 2)} W/(m²K)`}
                     onChange={(e) => setOriginalU(parseFloat(e.target.value))}
                     className="w-full accent-shiraz cursor-pointer"
                   />
@@ -479,6 +482,8 @@ export default function Modernisierung() {
                     max="300"
                     step="10"
                     value={thicknessMm}
+                    aria-label={reglerName(inhalt.texte.dämmstoffdickeD)}
+                    aria-valuetext={`${formatDeWert(thicknessMm)} mm`}
                     onChange={(e) => setThicknessMm(parseInt(e.target.value))}
                     className="w-full accent-shiraz cursor-pointer"
                   />

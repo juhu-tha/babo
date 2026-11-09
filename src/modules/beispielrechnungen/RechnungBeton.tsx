@@ -307,6 +307,7 @@ export default function RechnungBeton({ ausschal, ausschalVorgabe, setAusschalVo
                   <input aria-label={inhalt.werte.zementgehaltKgM} 
                     type="range" min="200" max="450" step="10"
                     value={kCement}
+                    aria-valuetext={`${formatDeWert(kCement)} kg/m³`}
                     onChange={(e) => setKCement(Number(e.target.value))}
                     className="w-full accent-shiraz"
                   />
@@ -319,6 +320,7 @@ export default function RechnungBeton({ ausschal, ausschalVorgabe, setAusschalVo
                   <input aria-label={inhalt.werte.zusatzstoffmengeKgM} 
                     type="range" min="0" max="150" step="5"
                     value={kAddition}
+                    aria-valuetext={`${formatDeWert(kAddition)} kg/m³`}
                     onChange={(e) => setKAddition(Number(e.target.value))}
                     className="w-full accent-shiraz"
                   />
@@ -331,6 +333,7 @@ export default function RechnungBeton({ ausschal, ausschalVorgabe, setAusschalVo
                   <input aria-label={inhalt.werte.wassergehaltLM} 
                     type="range" min="120" max="220" step="5"
                     value={kWater}
+                    aria-valuetext={`${formatDeWert(kWater)} l/m³`}
                     onChange={(e) => setKWater(Number(e.target.value))}
                     className="w-full accent-shiraz"
                   />
@@ -388,6 +391,7 @@ export default function RechnungBeton({ ausschal, ausschalVorgabe, setAusschalVo
                   <input aria-label={inhalt.werte.gesteinskörnungC} 
                     type="range" min="-10" max="35" step="1"
                     value={tempAggregate}
+                    aria-valuetext={`${formatDeWert(tempAggregate)} °C`}
                     onChange={(e) => setTempAggregate(Number(e.target.value))}
                     className="w-full accent-shiraz"
                   />
@@ -403,6 +407,7 @@ export default function RechnungBeton({ ausschal, ausschalVorgabe, setAusschalVo
                   <input aria-label="Zement (°C)" 
                     type="range" min="0" max="60" step="2"
                     value={tempCement}
+                    aria-valuetext={`${formatDeWert(tempCement)} °C`}
                     onChange={(e) => setTempCement(Number(e.target.value))}
                     className="w-full accent-shiraz"
                   />
@@ -418,6 +423,7 @@ export default function RechnungBeton({ ausschal, ausschalVorgabe, setAusschalVo
                   <input aria-label={inhalt.werte.anmachwasserC} 
                     type="range" min="2" max="80" step="2"
                     value={tempWater}
+                    aria-valuetext={`${formatDeWert(tempWater)} °C`}
                     onChange={(e) => setTempWater(Number(e.target.value))}
                     className="w-full accent-shiraz"
                   />
@@ -436,6 +442,7 @@ export default function RechnungBeton({ ausschal, ausschalVorgabe, setAusschalVo
                   <input aria-label={inhalt.werte.schuppeneisKgErsetztWasser} 
                     type="range" min="0" max="50" step="5"
                     value={mIceInput}
+                    aria-valuetext={`${formatDeWert(mIceInput)} kg`}
                     onChange={(e) => setMIceInput(Math.min(Number(e.target.value), mWaterInput))}
                     className="w-full accent-shiraz"
                   />
@@ -550,6 +557,7 @@ export default function RechnungBeton({ ausschal, ausschalVorgabe, setAusschalVo
                   <input aria-label={inhalt.werte.mittlereBauteiltemperaturC} 
                     type="range" min="2" max="40" step="1"
                     value={strengthCureTemp}
+                    aria-valuetext={`${formatDeWert(strengthCureTemp)} °C`}
                     onChange={(e) => setStrengthCureTemp(Number(e.target.value))}
                     className="w-full accent-shiraz"
                   />
@@ -562,6 +570,7 @@ export default function RechnungBeton({ ausschal, ausschalVorgabe, setAusschalVo
                   <input aria-label={inhalt.werte.aktuellesAlterTage} 
                     type="range" min="1" max="90" step="1"
                     value={strengthCureAge}
+                    aria-valuetext={`${formatDeWert(strengthCureAge)} Tage`}
                     onChange={(e) => setStrengthCureAge(Number(e.target.value))}
                     className="w-full accent-shiraz"
                   />
@@ -574,6 +583,7 @@ export default function RechnungBeton({ ausschal, ausschalVorgabe, setAusschalVo
                   <input aria-label={inhalt.werte.ausschalVorgabe}
                     type="range" min="20" max="100" step="5"
                     value={ausschalVorgabe}
+                    aria-valuetext={`${formatDeWert(ausschalVorgabe)} %`}
                     onChange={(e) => setAusschalVorgabe(Number(e.target.value))}
                     className="w-full accent-shiraz"
                   />

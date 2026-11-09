@@ -27,6 +27,7 @@ import inhalt from '@/content/bpkunststoffe/BpKunststoffe.json';
 import { MdText } from '@/src/components/inhalt/MdText';
 import { ModuleTabs } from '@/src/components/ui/ModuleTabs';
 import { ErgebnisAnsage, ansageWert, kurzzeile } from '@/src/components/ui/ErgebnisAnsage';
+import { reglerName } from '@/src/lib/reglerName';
 
 interface PlasticType {
   id: string;
@@ -672,6 +673,8 @@ export default function BpKunststoffe() {
                     className="w-full h-1.5 bg-slate-100 rounded-lg appearance-none cursor-pointer accent-shiraz"
                     step="0.5"
                     value={burgersStress}
+                    aria-label={reglerName(inhalt.texte.t2ZugspannungKonstantlast)}
+                    aria-valuetext={`${formatDeZahl(burgersStress, 1)} MPa`}
                     onChange={(e) => setBurgersStress(Number(e.target.value))}
                   />
                   <span className="text-[10px] text-slate-400 block leading-none"><MdText text={inhalt.texte.lastniveauImInnerenVon} /></span>
@@ -689,6 +692,8 @@ export default function BpKunststoffe() {
                     className="w-full h-1.5 bg-slate-100 rounded-lg appearance-none cursor-pointer accent-shiraz"
                     step="5"
                     value={burgersTime}
+                    aria-label={reglerName(inhalt.texte.t3StandzeitLastzeitraumT)}
+                    aria-valuetext={`${formatDeWert(burgersTime)} Stunden`}
                     onChange={(e) => setBurgersTime(Number(e.target.value))}
                   />
                   <span className="text-[10px] text-slate-400 block leading-none"><MdText text={inhalt.texte.intervallZurVeranschaulichungDes} /></span>
@@ -970,7 +975,9 @@ export default function BpKunststoffe() {
                   min="1.0" 
                   max="30.0" 
                   step="0.5" 
-                  value={length} 
+                  value={length}
+                  aria-label={reglerName(inhalt.texte.ausgangslängeLDesProfils)}
+                  aria-valuetext={`${formatDeZahl(length, 1)} Meter`} 
                   onChange={(e) => setLength(Number(e.target.value))} 
                   className="w-full h-1.5 bg-slate-100 rounded-lg appearance-none cursor-pointer accent-shiraz"
                 />
@@ -986,7 +993,9 @@ export default function BpKunststoffe() {
                   min="10" 
                   max="80" 
                   step="2" 
-                  value={tempDelta} 
+                  value={tempDelta}
+                  aria-label={reglerName(inhalt.texte.temperaturbereichTZB)}
+                  aria-valuetext={`${formatDeWert(tempDelta)} K (°C)`} 
                   onChange={(e) => setTempDelta(Number(e.target.value))} 
                   className="w-full h-1.5 bg-slate-100 rounded-lg appearance-none cursor-pointer accent-shiraz"
                 />

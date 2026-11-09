@@ -23,6 +23,7 @@ import { ModuleTabs, type ModulTab } from '@/src/components/ui/ModuleTabs';
 import { AuswahlGruppe, alsOption } from '../components/ui/Auswahlgruppe';
 import { wtaBohrplan, wtaKombiBewertung, wtaZertifikatsstufe, type Daemmstoff, type SperreStatus, type Salzklasse, type Regengruppe, type KombiAlarm, type KombiEmpfehlung } from '@/src/calc/schutzInstandsetzung';
 import { ErgebnisAnsage, ansageWert, kurzzeile } from '@/src/components/ui/ErgebnisAnsage';
+import { reglerName } from '@/src/lib/reglerName';
 
 // Kombi-Planer: Punkteschema im Kern src/calc/schutzInstandsetzung.ts (eigenes Lehrmodell, keine Bewertung der WTA)
 const ALARMTEXT: Record<KombiAlarm, string> = {
@@ -211,7 +212,9 @@ export default function WTA() {
                 min={11.5} 
                 max={100} 
                 step={0.5}
-                value={wallThicknessInput} 
+                value={wallThicknessInput}
+                aria-label={reglerName(inhalt.texte.mauerwerkWandstärkeD)}
+                aria-valuetext={`${formatDeWert(wallThicknessInput)} cm`} 
                 onChange={(e) => setWallThicknessInput(parseFloat(e.target.value))}
                 className="w-full h-1.5 bg-stone-200 rounded-lg appearance-none cursor-pointer accent-shiraz"
               />
@@ -234,7 +237,9 @@ export default function WTA() {
                 min={5} 
                 max={100} 
                 step={5}
-                value={moistureLevel} 
+                value={moistureLevel}
+                aria-label={reglerName(inhalt.texte.mauerwerkDurchfeuchtungsgradDfSoll)}
+                aria-valuetext={`${formatDeWert(moistureLevel)} % DF`} 
                 onChange={(e) => setMoistureLevel(parseInt(e.target.value))}
                 className="w-full h-1.5 bg-stone-200 rounded-lg appearance-none cursor-pointer accent-shiraz"
               />

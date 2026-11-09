@@ -10,6 +10,7 @@ import { MdText } from '@/src/components/inhalt/MdText';
 import { ModuleTabs, type ModulTab } from '@/src/components/ui/ModuleTabs';
 import { ReiterLeiste, alsReiter, reiterPanel } from '../components/ui/Auswahlgruppe';
 import { ErgebnisAnsage, ansageWert, kurzzeile } from '@/src/components/ui/ErgebnisAnsage';
+import { reglerName } from '@/src/lib/reglerName';
 
 const SCHADEN_KATEGORIEN = [
   { id: 'all', label: inhalt.werte.alleKategorien },
@@ -548,6 +549,8 @@ export default function Zustandsbewertung() {
                             max="4.0"
                             step="0.1"
                             value={zustandsnoteInput}
+                            aria-label={reglerName(inhalt.texte.manuelleBaustoffBauwerksnoteZustandsnote)}
+                            aria-valuetext={`Zustandsnote ${formatDeZahl(zustandsnoteInput, 1)}`}
                             onChange={(e) => setZustandsnoteInput(parseFloat(e.target.value))}
                             className="w-full h-2 rounded-lg cursor-pointer bg-slate-200 accent-shiraz"
                           />

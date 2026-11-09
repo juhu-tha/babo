@@ -103,6 +103,7 @@ export default function StahlbauEC3() {
       <input
         type="range" min={min} max={max} step={step} value={wert}
         aria-label={label}
+        aria-valuetext={`${formatDeZahl(wert, step < 1 ? 2 : 0)} ${einheit}`}
         onChange={e => setze(Number(e.target.value))}
         className="w-full accent-shiraz cursor-pointer mt-1"
       />

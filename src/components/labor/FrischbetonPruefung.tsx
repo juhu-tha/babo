@@ -277,6 +277,8 @@ export default function FrischbetonPruefung() {
                 max="0.70"
                 step="0.01"
                 value={wzValue}
+                aria-label="Wasserzementwert (w/z-Wert)"
+                aria-valuetext={`${formatDeZahl(wzValue, 2)}`}
                 onChange={e => setWzValue(parseFloat(e.target.value))}
                 className="w-full accent-shiraz cursor-pointer"
               />
@@ -298,6 +300,8 @@ export default function FrischbetonPruefung() {
                 max="2.0"
                 step="0.1"
                 value={fließmittelPCE}
+                aria-label="Fließmittel (PCE)"
+                aria-valuetext={`${formatDeZahl(fließmittelPCE, 1)} M.-%`}
                 onChange={e => setFließmittelPCE(parseFloat(e.target.value))}
                 className="w-full accent-emerald-600 cursor-pointer"
               />

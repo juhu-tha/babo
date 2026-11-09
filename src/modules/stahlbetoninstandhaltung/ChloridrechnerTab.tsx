@@ -14,6 +14,7 @@ import { formatDeZahl, formatDeWert } from '@/src/utils/numberFormat';
 import inhalt from '@/content/stahlbetoninstandhaltung/ChloridrechnerTab.json';
 import { MdText } from '@/src/components/inhalt/MdText';
 import { ErgebnisAnsage, ansageWert, kurzzeile } from '@/src/components/ui/ErgebnisAnsage';
+import { reglerName, reglerEinheit } from '@/src/lib/reglerName';
 
 export interface ChloridrechnerTabProps {
   bauteilAlter: number;
@@ -64,6 +65,8 @@ export default function ChloridrechnerTab({ bauteilAlter, betondeckung, chloridC
               max="4.0"
               step="0.1"
               value={chloridCs}
+              aria-label={reglerName(inhalt.texte.oberflächenchlorid)}
+              aria-valuetext={`${formatDeZahl(chloridCs, 2)}${reglerEinheit(inhalt.texte.mZement)}`}
               onChange={(e) => setChloridCs(parseFloat(e.target.value))}
               className="w-full accent-amber-600 cursor-pointer"
             />
@@ -83,6 +86,8 @@ export default function ChloridrechnerTab({ bauteilAlter, betondeckung, chloridC
               max="5.0"
               step="0.1"
               value={diffD}
+              aria-label={reglerName(inhalt.texte.diffusionskoeffizient)}
+              aria-valuetext={`${formatDeZahl(diffD, 1)}${reglerEinheit(inhalt.texte.t10MS)}`}
               onChange={(e) => setDiffD(parseFloat(e.target.value))}
               className="w-full accent-amber-600 cursor-pointer"
             />
@@ -103,6 +108,8 @@ export default function ChloridrechnerTab({ bauteilAlter, betondeckung, chloridC
               max="60"
               step="1"
               value={bauteilAlter}
+              aria-label={reglerName(inhalt.texte.bauteilalterExpositionsdauer)}
+              aria-valuetext={`${formatDeWert(bauteilAlter)} Jahre`}
               onChange={(e) => setBauteilAlter(parseInt(e.target.value, 10))}
               className="w-full accent-amber-600 cursor-pointer"
             />
@@ -122,6 +129,8 @@ export default function ChloridrechnerTab({ bauteilAlter, betondeckung, chloridC
               max="65"
               step="5"
               value={betondeckung}
+              aria-label={reglerName(inhalt.texte.betondeckung)}
+              aria-valuetext={`${formatDeWert(betondeckung)} mm`}
               onChange={(e) => setBetondeckung(parseInt(e.target.value, 10))}
               className="w-full accent-amber-600 cursor-pointer"
             />

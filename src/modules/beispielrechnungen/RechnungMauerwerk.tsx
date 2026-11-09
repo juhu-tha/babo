@@ -63,7 +63,7 @@ export default function RechnungMauerwerk() {
               {fkWahl === FREI && (
                 <div className="pt-1">
                   <label className="font-bold text-slate-700 block"><MdText text={inhalt.texte.freiesFk} /></label>
-                  <input aria-label={inhalt.werte.freiesFk} type="range" min="1" max="20" step="0.1" value={fkFrei}
+                  <input aria-label={inhalt.werte.freiesFk} type="range" min="1" max="20" step="0.1" value={fkFrei} aria-valuetext={`${formatDeZahl(fkFrei, 1)} N/mm²`}
                     onChange={(e) => setFkFrei(Number(e.target.value))} className="w-full accent-shiraz" />
                   <div className="font-mono text-xxs font-bold text-shiraz mt-1">{formatDeZahl(fkFrei, 1)} N/mm²</div>
                 </div>
@@ -79,7 +79,7 @@ export default function RechnungMauerwerk() {
 
             <div className={feld}>
               <label className="font-bold text-slate-700 block"><MdText text={inhalt.texte.wandhöheHM} /></label>
-              <input aria-label={inhalt.werte.wandhöheM} type="range" min="2.25" max="3.60" step="0.05" value={h}
+              <input aria-label={inhalt.werte.wandhöheM} type="range" min="2.25" max="3.60" step="0.05" value={h} aria-valuetext={`${formatDeZahl(h, 2)} m`}
                 onChange={(e) => setH(Number(e.target.value))} className="w-full accent-shiraz" />
               <div className="font-mono text-xxs font-bold text-shiraz mt-1">{formatDeZahl(h, 2)} m</div>
             </div>
@@ -101,14 +101,14 @@ export default function RechnungMauerwerk() {
 
             <div className={feld}>
               <label className="font-bold text-slate-700 block"><MdText text={inhalt.texte.deckenstuetzweite} /></label>
-              <input aria-label={inhalt.werte.deckenstuetzweite} type="range" min="3" max="7" step="0.25" value={lf}
+              <input aria-label={inhalt.werte.deckenstuetzweite} type="range" min="3" max="7" step="0.25" value={lf} aria-valuetext={`${formatDeZahl(lf, 2)} m`}
                 onChange={(e) => setLf(Number(e.target.value))} className="w-full accent-shiraz" disabled={lage !== 'zwischen'} />
               <div className="font-mono text-xxs font-bold text-shiraz mt-1">{formatDeZahl(lf, 2)} m</div>
             </div>
 
             <div className={`${feld} md:col-span-2 lg:col-span-4`}>
               <label className="font-bold text-slate-700 block"><MdText text={inhalt.texte.druckkraftNEdKn} /></label>
-              <input aria-label={inhalt.werte.druckkraftKnM} type="range" min="30" max="1000" step="10" value={nEd}
+              <input aria-label={inhalt.werte.druckkraftKnM} type="range" min="30" max="1000" step="10" value={nEd} aria-valuetext={`${formatDeWert(nEd)} kN/m`}
                 onChange={(e) => setNEd(Number(e.target.value))} className="w-full accent-shiraz" />
               <div className="font-mono text-xxs font-bold text-shiraz mt-1">{formatDeWert(nEd)} kN/m</div>
             </div>

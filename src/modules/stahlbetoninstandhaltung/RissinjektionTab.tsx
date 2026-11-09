@@ -6,6 +6,7 @@ import inhalt from '@/content/stahlbetoninstandhaltung/RissinjektionTab.json';
 import { MdText } from '@/src/components/inhalt/MdText';
 import { AuswahlGruppe, alsOption } from '../../components/ui/Auswahlgruppe';
 import { ErgebnisAnsage, ansageWert, kurzzeile } from '@/src/components/ui/ErgebnisAnsage';
+import { reglerName } from '@/src/lib/reglerName';
 
 export interface RissinjektionTabProps {
   bauteilDicke: number;
@@ -134,6 +135,8 @@ export default function RissinjektionTab({ bauteilDicke, crackActivity, crackMoi
               max="1.5"
               step="0.05"
               value={crackWidth}
+              aria-label={reglerName(inhalt.texte.t4RissbreiteW)}
+              aria-valuetext={`${formatDeZahl(crackWidth, 2)} mm`}
               onChange={(e) => setCrackWidth(parseFloat(e.target.value))}
               className="w-full accent-shiraz cursor-pointer"
             />
@@ -158,6 +161,8 @@ export default function RissinjektionTab({ bauteilDicke, crackActivity, crackMoi
               max="800"
               step="50"
               value={bauteilDicke}
+              aria-label={reglerName(inhalt.texte.t5BauteildickeH)}
+              aria-valuetext={`${formatDeWert(bauteilDicke)} mm`}
               onChange={(e) => setBauteilDicke(parseInt(e.target.value, 10))}
               className="w-full accent-shiraz cursor-pointer"
             />

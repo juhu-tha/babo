@@ -6,6 +6,7 @@ import inhalt from '@/content/bpverkehrswegebau/BahnbauTab.json';
 import { MdText } from '@/src/components/inhalt/MdText';
 import { schienenTemperatur, type GleisStatus } from '@/src/calc/verkehrswegebau';
 import { ErgebnisAnsage, ansageWert, kurzzeile } from '@/src/components/ui/ErgebnisAnsage';
+import { reglerName } from '@/src/lib/reglerName';
 
 export interface BahnbauTabProps {
   bettungstyp: 'schotter_mager' | 'schotter_gut' | 'feste_fahrbahn';
@@ -68,6 +69,8 @@ export default function BahnbauTab({ bettungstyp, neutralTemp, schieneTemp, setB
                 max="60" 
                 step="1"
                 value={schieneTemp}
+                aria-label={reglerName(inhalt.texte.aktuelleSchienentemperaturTSchiene)}
+                aria-valuetext={`${formatDeWert(schieneTemp)} °C`}
                 onChange={(e) => setSchieneTemp(parseInt(e.target.value))}
                 className="w-full accent-shiraz" 
               />
@@ -85,6 +88,8 @@ export default function BahnbauTab({ bettungstyp, neutralTemp, schieneTemp, setB
                 max="25" 
                 step="1"
                 value={neutralTemp}
+                aria-label={reglerName(inhalt.texte.herstellungsNeutralisationstemperaturTNe)}
+                aria-valuetext={`${formatDeWert(neutralTemp)} °C`}
                 onChange={(e) => setNeutralTemp(parseInt(e.target.value))}
                 className="w-full accent-shiraz" 
               />

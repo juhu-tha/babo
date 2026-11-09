@@ -7,6 +7,7 @@ import { MdText } from '@/src/components/inhalt/MdText';
 import { EingabeHinweise } from '@/src/components/ui/EingabeHinweise';
 import type { Hinweis } from '@/src/calc/plausibilitaet';
 import { ErgebnisAnsage, ansageWert, kurzzeile } from '@/src/components/ui/ErgebnisAnsage';
+import { reglerName } from '@/src/lib/reglerName';
 
 export interface MessunsicherheitTabProps {
   measurements: string;
@@ -67,6 +68,8 @@ export function MessunsicherheitTab({ measurements, setMeasurements, parsedData,
                 max="1.0"
                 step="0.01"
                 value={resolution}
+                aria-label={reglerName(inhalt.texte.auflösungDZiffernschrittBzw)}
+                aria-valuetext={`${formatDeWert(resolution)} MPa`}
                 onChange={(e) => setResolution(parseFloat(e.target.value))}
                 className="w-full h-1 bg-slate-200 rounded-lg appearance-none cursor-pointer accent-shiraz"
               />
@@ -86,6 +89,8 @@ export function MessunsicherheitTab({ measurements, setMeasurements, parsedData,
                 max="1.5"
                 step="0.01"
                 value={calibrationError}
+                aria-label={reglerName(inhalt.texte.kalibrierscheinUnsicherheitUCal)}
+                aria-valuetext={`${formatDeWert(calibrationError)} MPa`}
                 onChange={(e) => setCalibrationError(parseFloat(e.target.value))}
                 className="w-full h-1 bg-slate-200 rounded-lg appearance-none cursor-pointer accent-shiraz"
               />

@@ -4,6 +4,7 @@ import { useId, type Dispatch, type SetStateAction } from 'react';
 import inhalt from '@/content/nachhaltigkeit/QngNachweis.json';
 import { MdText } from '@/src/components/inhalt/MdText';
 import { AuswahlGruppe, alsOption } from '../../components/ui/Auswahlgruppe';
+import { reglerName } from '@/src/lib/reglerName';
 
 interface QngNachweisProps {
   bgf: number;
@@ -48,6 +49,8 @@ export default function QngNachweis({ bgf, constructionType, greenTariff, heatin
                   max="1500"
                   step="20"
                   value={bgf}
+                  aria-label={reglerName(inhalt.texte.bruttogrundflächeBgf)}
+                  aria-valuetext={`${formatDeWert(bgf)} m²`}
                   onChange={(e) => setBgf(parseInt(e.target.value))}
                   className="w-full h-1 bg-slate-200 rounded-lg appearance-none cursor-pointer accent-shiraz"
                 />
@@ -138,6 +141,7 @@ export default function QngNachweis({ bgf, constructionType, greenTariff, heatin
                     max="40"
                     step="2"
                     value={pvSizeKwp}
+                    aria-valuetext={`${formatDeWert(pvSizeKwp)} kWp`}
                     onChange={(e) => setPvSizeKwp(parseInt(e.target.value))}
                     className="w-full h-1 bg-slate-200 rounded-lg appearance-none cursor-pointer accent-emerald-600"
                   />

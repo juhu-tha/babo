@@ -33,6 +33,7 @@ import { formatDeZahl, formatDeWert, formatDeTeXWert, formatDeTeX } from '@/src/
 import inhalt from '@/content/betonpraxis/Betonpraxis.json';
 import { MdText } from '@/src/components/inhalt/MdText';
 import { AuswahlGruppe, alsOption } from '../components/ui/Auswahlgruppe';
+import { reglerName } from '@/src/lib/reglerName';
 
 // Mindestdauer der Nachbehandlung: zentrale Werte nach DIN 1045-3 (normParams)
 const curingTable: Record<string, Record<string, number>> = {
@@ -405,7 +406,9 @@ export default function Betonpraxis({ initialSubTab }: BetonpraxisProps = {}) {
                     type="range" 
                     min="140" 
                     max="240" 
-                    value={calcW} 
+                    value={calcW}
+                    aria-label={reglerName(inhalt.texte.wassergehaltW)}
+                    aria-valuetext={`${formatDeWert(calcW)} kg/m³`} 
                     onChange={(e) => setCalcW(Number(e.target.value))} 
                     className="w-full accent-shiraz"
                   />
@@ -420,7 +423,9 @@ export default function Betonpraxis({ initialSubTab }: BetonpraxisProps = {}) {
                     type="range" 
                     min="250" 
                     max="500" 
-                    value={calcMK} 
+                    value={calcMK}
+                    aria-label={reglerName(inhalt.texte.mehlkornMkPartikel0)}
+                    aria-valuetext={`${formatDeWert(calcMK)} kg/m³`} 
                     onChange={(e) => setCalcMK(Number(e.target.value))} 
                     className="w-full accent-shiraz"
                   />
@@ -515,6 +520,8 @@ export default function Betonpraxis({ initialSubTab }: BetonpraxisProps = {}) {
                       max="40" 
                       step="5"
                       value={waterAddition}
+                      aria-label="Zusatzwassergehalt"
+                      aria-valuetext={`${formatDeWert(waterAddition)} Liter/m³`}
                       onChange={(e) => setWaterAddition(Number(e.target.value))}
                       className="w-full accent-red-700"
                     />
@@ -551,6 +558,8 @@ export default function Betonpraxis({ initialSubTab }: BetonpraxisProps = {}) {
                       max="10" 
                       step="0.5"
                       value={airAddition}
+                      aria-label="Porengehalt-Differenz"
+                      aria-valuetext={`+${formatDeWert(airAddition)} Vol.-%`}
                       onChange={(e) => setAirAddition(Number(e.target.value))}
                       className="w-full accent-sky-700"
                     />
@@ -642,7 +651,9 @@ export default function Betonpraxis({ initialSubTab }: BetonpraxisProps = {}) {
                 type="range" 
                 min="-5" 
                 max="35" 
-                value={tempWalk} 
+                value={tempWalk}
+                aria-label="Umgebungstemperatur"
+                aria-valuetext={`${formatDeWert(tempWalk)} °C`} 
                 onChange={(e) => setTempWalk(Number(e.target.value))} 
                 className="w-full accent-shiraz"
               />

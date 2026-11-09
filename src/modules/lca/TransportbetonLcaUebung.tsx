@@ -23,6 +23,7 @@ const FALLSTUDIE_EXPOSITION = ['XC4', 'XD1', 'XF1'] as const;
 const WZ_GRENZE_FALLSTUDIE = getMassgebendeAnforderung([...FALLSTUDIE_EXPOSITION]).maxWz ?? 0.55;
 import inhalt from '@/content/lca/TransportbetonLcaUebung.json';
 import { MdText } from '@/src/components/inhalt/MdText';
+import { reglerName } from '@/src/lib/reglerName';
 
 interface ConcretePreset {
   id: string;
@@ -294,7 +295,9 @@ export default function TransportbetonLcaUebung() {
                 min="240" 
                 max="420" 
                 step="5" 
-                value={cemAmount} 
+                value={cemAmount}
+                aria-label="Zementgehalt"
+                aria-valuetext={`${formatDeWert(cemAmount)} kg/m³`} 
                 onChange={e => setCemAmount(Number(e.target.value))}
                 className="w-full accent-shiraz h-1.5 bg-slate-200 rounded-lg cursor-pointer"
               />
@@ -314,7 +317,9 @@ export default function TransportbetonLcaUebung() {
                 min="0" 
                 max="100" 
                 step="5" 
-                value={flyAsh} 
+                value={flyAsh}
+                aria-label={reglerName(inhalt.texte.zusatzstoffFlugasche)}
+                aria-valuetext={`${formatDeWert(flyAsh)} kg/m³`} 
                 onChange={e => setFlyAsh(Number(e.target.value))}
                 className="w-full accent-slate-600 h-1.5 bg-slate-200 rounded-lg cursor-pointer"
               />
@@ -335,7 +340,7 @@ export default function TransportbetonLcaUebung() {
                   <span className="font-mono">{formatDeWert(sand)} kg</span>
                 </div>
                 <input 
-                  type="range" min="500" max="900" step="10" value={sand} 
+                  type="range" min="500" max="900" step="10" value={sand} aria-label={reglerName(inhalt.texte.sand04Mm)} aria-valuetext={`${formatDeWert(sand)} kg`} 
                   onChange={e => setSand(Number(e.target.value))}
                   className="w-full accent-slate-500 h-1 bg-slate-200 rounded cursor-pointer"
                 />
@@ -346,7 +351,7 @@ export default function TransportbetonLcaUebung() {
                   <span className="font-mono">{formatDeWert(gravel)} kg</span>
                 </div>
                 <input 
-                  type="range" min="400" max="1300" step="10" value={gravel} 
+                  type="range" min="400" max="1300" step="10" value={gravel} aria-label={reglerName(inhalt.texte.kies416Primär)} aria-valuetext={`${formatDeWert(gravel)} kg`} 
                   onChange={e => setGravel(Number(e.target.value))}
                   className="w-full accent-slate-500 h-1 bg-slate-200 rounded cursor-pointer"
                 />
@@ -357,7 +362,7 @@ export default function TransportbetonLcaUebung() {
                   <span className="font-mono font-bold text-emerald-700">{formatDeWert(rcGravel)} kg</span>
                 </div>
                 <input 
-                  type="range" min="0" max="700" step="10" value={rcGravel} 
+                  type="range" min="0" max="700" step="10" value={rcGravel} aria-label={reglerName(inhalt.texte.rcKies416)} aria-valuetext={`${formatDeWert(rcGravel)} kg`} 
                   onChange={e => setRcGravel(Number(e.target.value))}
                   className="w-full accent-emerald-600 h-1 bg-slate-200 rounded cursor-pointer"
                 />
@@ -373,7 +378,7 @@ export default function TransportbetonLcaUebung() {
                 <span className="font-mono">{formatDeWert(water)} kg/m³</span>
               </div>
               <input 
-                type="range" min="140" max="210" step="5" value={water} 
+                type="range" min="140" max="210" step="5" value={water} aria-label="Zugabewasser" aria-valuetext={`${formatDeWert(water)} kg/m³`} 
                 onChange={e => setWater(Number(e.target.value))}
                 className="w-full accent-blue-500 h-1 bg-slate-200 rounded cursor-pointer"
               />
@@ -384,7 +389,7 @@ export default function TransportbetonLcaUebung() {
                 <span className="font-mono">{formatDeZahl(superplasticizer, 1)} kg/m³</span>
               </div>
               <input 
-                type="range" min="1.0" max="6.0" step="0.2" value={superplasticizer} 
+                type="range" min="1.0" max="6.0" step="0.2" value={superplasticizer} aria-label={reglerName(inhalt.texte.fließmittelPce)} aria-valuetext={`${formatDeZahl(superplasticizer, 1)} kg/m³`} 
                 onChange={e => setSuperplasticizer(Number(e.target.value))}
                 className="w-full accent-purple-500 h-1 bg-slate-200 rounded cursor-pointer"
               />

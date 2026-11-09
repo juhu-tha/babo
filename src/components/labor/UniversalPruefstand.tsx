@@ -847,6 +847,8 @@ export default function UniversalPruefstand({ onNavigateToProtocols }: Universal
                   max="90"
                   step="5"
                   value={woodAngle}
+                  aria-label="Faserwinkel α (Hankinson)"
+                  aria-valuetext={`${formatDeWert(woodAngle)}°`}
                   onChange={e => setWoodAngle(Number(e.target.value))}
                   disabled={testStatus === 'running'}
                   className="w-full accent-amber-700 cursor-pointer"
@@ -900,6 +902,8 @@ export default function UniversalPruefstand({ onNavigateToProtocols }: Universal
                 max="1.5"
                 step="0.05"
                 value={loadingRate}
+                aria-label="Prüfgeschwindigkeit"
+                aria-valuetext={`${formatDeZahl(loadingRate, 2)} MPa/s`}
                 onChange={e => setLoadingRate(parseFloat(e.target.value))}
                 disabled={testStatus === 'running'}
                 className="w-full accent-shiraz cursor-pointer"

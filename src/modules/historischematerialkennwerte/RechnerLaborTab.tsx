@@ -7,6 +7,7 @@ import { MdText } from '@/src/components/inhalt/MdText';
 import { AuswahlGruppe, alsOption } from '../../components/ui/Auswahlgruppe';
 import { altbeton1972, fcdBeton, FCD_MODUL } from '@/src/data/kennwerte';
 import { ErgebnisAnsage, ansageWert, kurzzeile } from '@/src/components/ui/ErgebnisAnsage';
+import { reglerName } from '@/src/lib/reglerName';
 
 // Beispiel 1: Bn 250 aus der gemeinsamen Zuordnungstabelle (Schnell/Fischer/Loch 2008, Tab. 2.2; Entscheidung 29.10.2026, Nachtrag)
 const BN250 = altbeton1972('Bn 250')!;
@@ -142,6 +143,8 @@ export function RechnerLaborTab({ probeType, setProbeType, setCoreDiameter, core
                   max="300"
                   step="5"
                   value={coreHeight}
+                  aria-label={reglerName(inhalt.texte.längeDesBohrkernsH)}
+                  aria-valuetext={`${formatDeWert(coreHeight)} mm`}
                   onChange={(e) => setCoreHeight(Number(e.target.value))}
                   className="w-full accent-shiraz"
                 />
@@ -163,6 +166,8 @@ export function RechnerLaborTab({ probeType, setProbeType, setCoreDiameter, core
                   max="800"
                   step="10"
                   value={failureForceKn}
+                  aria-label={reglerName(inhalt.texte.prüfkraftZylinderpresseF)}
+                  aria-valuetext={`${formatDeWert(failureForceKn)} kN`}
                   onChange={(e) => setFailureForceKn(Number(e.target.value))}
                   className="w-full accent-shiraz"
                 />
@@ -283,6 +288,8 @@ export function RechnerLaborTab({ probeType, setProbeType, setCoreDiameter, core
                   max="600"
                   step="10"
                   value={brickForceKn}
+                  aria-label={reglerName(inhalt.texte.zylinderStempelprüfkraftFC)}
+                  aria-valuetext={`${formatDeWert(brickForceKn)} kN`}
                   onChange={(e) => setBrickForceKn(Number(e.target.value))}
                   className="w-full accent-shiraz"
                 />
@@ -299,6 +306,8 @@ export function RechnerLaborTab({ probeType, setProbeType, setCoreDiameter, core
                   max="15.0"
                   step="0.5"
                   value={mortarStrength}
+                  aria-label={reglerName(inhalt.texte.mörtelfestigkeitsklasseFM)}
+                  aria-valuetext={`${formatDeZahl(mortarStrength, 1)} MPa`}
                   onChange={(e) => setMortarStrength(Number(e.target.value))}
                   className="w-full accent-shiraz"
                 />
@@ -377,6 +386,8 @@ export function RechnerLaborTab({ probeType, setProbeType, setCoreDiameter, core
                     max="32"
                     step="1"
                     value={steelDiameter}
+                    aria-label={reglerName(inhalt.texte.nenndurchmesserD)}
+                    aria-valuetext={`${formatDeWert(steelDiameter)} mm`}
                     onChange={(e) => setSteelDiameter(Number(e.target.value))}
                     className="w-full accent-shiraz"
                   />
@@ -394,6 +405,8 @@ export function RechnerLaborTab({ probeType, setProbeType, setCoreDiameter, core
                   max="250"
                   step="2"
                   value={steelForceYieldKn}
+                  aria-label={reglerName(inhalt.texte.kraftAnDerStreckgrenze)}
+                  aria-valuetext={`${formatDeWert(steelForceYieldKn)} kN`}
                   onChange={(e) => setSteelForceYieldKn(Number(e.target.value))}
                   className="w-full accent-shiraz"
                 />
@@ -410,6 +423,8 @@ export function RechnerLaborTab({ probeType, setProbeType, setCoreDiameter, core
                   max="350"
                   step="2"
                   value={steelForceTensileKn}
+                  aria-label={reglerName(inhalt.texte.zerreißkraftPlastischFM)}
+                  aria-valuetext={`${formatDeWert(steelForceTensileKn)} kN`}
                   onChange={(e) => setSteelForceTensileKn(Math.max(steelForceYieldKn + 1, Number(e.target.value)))}
                   className="w-full accent-shiraz"
                 />

@@ -14,6 +14,7 @@ import { ModuleTabs } from '@/src/components/ui/ModuleTabs';
 import { AuswahlGruppe, alsOption } from '../components/ui/Auswahlgruppe';
 import { rueckprall, rueckprallLehrkurve, SCHLAGWINKEL, type Schlagrichtung } from '@/src/calc/bauwerksuntersuchung';
 import { ErgebnisAnsage, ansageWert, kurzzeile } from '@/src/components/ui/ErgebnisAnsage';
+import { reglerName } from '@/src/lib/reglerName';
 
 /** Schlagwinkel des Simulators (−90° Boden, 0° Wand, +90° Decke) → Schlagrichtung des zentralen Rechenkerns */
 const RICHTUNG_AUS_WINKEL = Object.fromEntries(Object.entries(SCHLAGWINKEL).map(([r, a]) => [a, r])) as Record<number, Schlagrichtung>;
@@ -417,7 +418,9 @@ export default function Probenahme() {
                       </div>
                       <input
                         type="range" min="10" max="25" step="1"
-                        value={drillD} onChange={(e) => setDrillD(Number(e.target.value))}
+                        value={drillD}
+                        aria-label={reglerName(inhalt.texte.bohrdurchmesserDB)}
+                        aria-valuetext={`${formatDeWert(drillD)} mm`} onChange={(e) => setDrillD(Number(e.target.value))}
                         className="w-full accent-shiraz"
                       />
                     </div>
@@ -429,7 +432,9 @@ export default function Probenahme() {
                       </div>
                       <input
                         type="range" min="5" max="20" step="5"
-                        value={layerD} onChange={(e) => setLayerD(Number(e.target.value))}
+                        value={layerD}
+                        aria-label={reglerName(inhalt.texte.schichtIntervallDz)}
+                        aria-valuetext={`${formatDeWert(layerD)} mm`} onChange={(e) => setLayerD(Number(e.target.value))}
                         className="w-full accent-shiraz"
                       />
                     </div>
@@ -441,7 +446,9 @@ export default function Probenahme() {
                       </div>
                       <input
                         type="range" min="1" max="5" step="1"
-                        value={numHoles} onChange={(e) => setNumHoles(Number(e.target.value))}
+                        value={numHoles}
+                        aria-label={reglerName(inhalt.texte.vereinigteBohrungenN)}
+                        aria-valuetext={`${formatDeWert(numHoles)} Löcher`} onChange={(e) => setNumHoles(Number(e.target.value))}
                         className="w-full accent-shiraz"
                       />
                     </div>
@@ -521,7 +528,9 @@ export default function Probenahme() {
                       </div>
                       <input
                         type="range" min="20" max="55" step="1"
-                        value={rawR} onChange={(e) => setRawR(Number(e.target.value))}
+                        value={rawR}
+                        aria-label={reglerName(inhalt.texte.rohwertRückprallMedianR)}
+                        aria-valuetext={`${formatDeWert(rawR)} Skt.`} onChange={(e) => setRawR(Number(e.target.value))}
                         className="w-full accent-shiraz"
                       />
                     </div>
@@ -533,7 +542,9 @@ export default function Probenahme() {
                       </div>
                       <input
                         type="range" min="0" max="40" step="1"
-                        value={carbX} onChange={(e) => setCarbX(Number(e.target.value))}
+                        value={carbX}
+                        aria-label={reglerName(inhalt.texte.karbonatisierungsTiefeXCo)}
+                        aria-valuetext={`${formatDeWert(carbX)} mm`} onChange={(e) => setCarbX(Number(e.target.value))}
                         className="w-full accent-shiraz"
                       />
                     </div>

@@ -14,6 +14,7 @@ import { EingabeHinweise } from '@/src/components/ui/EingabeHinweise';
 import { verformterDruckstab, KMOD, GAMMA_M_HOLZ } from '@/src/calc/holzbau';
 import { HOLZ_EN338 } from '@/src/data/kennwerte';
 import { ErgebnisAnsage, ansageWert, kurzzeile } from '@/src/components/ui/ErgebnisAnsage';
+import { reglerName } from '@/src/lib/reglerName';
 
 type ErfassungReiter = 'grundlagen' | 'methoden' | 'leica_workflow' | 'tragwerksplanung';
 const REITER: readonly ModulTab<ErfassungReiter>[] = [
@@ -417,6 +418,8 @@ export default function Bauwerkserfassung() {
                       max="120"
                       className="w-full accent-shiraz"
                       value={initialDeformation}
+                      aria-label={reglerName(inhalt.texte.gemesseneVerformungE0)}
+                      aria-valuetext={`${formatDeWert(initialDeformation)} mm`}
                       onChange={(e) => setInitialDeformation(parseInt(e.target.value) || 0)}
                     />
                     <p className="text-xs text-slate-500 mt-0.5 leading-normal"><MdText text={inhalt.texte.dieserWertStehtFür} /></p>

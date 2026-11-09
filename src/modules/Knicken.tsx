@@ -24,6 +24,7 @@ import { Querverweis } from '@/src/components/ui/Querverweis';
 import inhalt from '@/content/knicken/Knicken.json';
 import { MdText } from '@/src/components/inhalt/MdText';
 import { ModuleTabs } from '@/src/components/ui/ModuleTabs';
+import { reglerName } from '@/src/lib/reglerName';
 
 ChartJS.register(
   CategoryScale,
@@ -151,6 +152,8 @@ export default function Knicken() {
                     max={120}
                     step={1}
                     value={loadPercent}
+                    aria-label={reglerName(inhalt.texte.normalkraftNEd)}
+                    aria-valuetext={`${formatDeZahl(results.N_Ed_kN, 1)} kN (${formatDeZahl(results.utilization, 0)} % FK)`}
                     onChange={(e) => setLoadPercent(Number(e.target.value))}
                     className="w-full h-2.5 bg-slate-300 rounded-lg appearance-none cursor-pointer accent-shiraz"
                   />

@@ -7,6 +7,7 @@ import { MdText } from '@/src/components/inhalt/MdText';
 import { AuswahlGruppe, alsOption } from '../../components/ui/Auswahlgruppe';
 import type { Massenkennwerte } from '@/src/calc/rueckbauMassen';
 import { ErgebnisAnsage, ansageWert, kurzzeile } from '@/src/components/ui/ErgebnisAnsage';
+import { reglerName } from '@/src/lib/reglerName';
 
 export interface RechnerTabProps {
   setBuildingVolume: Dispatch<SetStateAction<number>>;
@@ -77,6 +78,8 @@ export function RechnerTab({ setBuildingVolume, setStructureType, buildingVolume
               max="20000"
               step="500"
               value={buildingVolume}
+              aria-label={reglerName(inhalt.texte.gebäudevolumenBri)}
+              aria-valuetext={`${formatDeIntl(buildingVolume)} m³`}
               onChange={(e) => setBuildingVolume(Number(e.target.value))}
               className="w-full accent-shiraz"
             />

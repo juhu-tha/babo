@@ -5,6 +5,7 @@ import { InlineMath, BlockMath } from 'react-katex';
 import { formatDeZahl, formatDeWert } from '@/src/utils/numberFormat';
 import inhalt from '@/content/spannbeton/nullbishundert/Station4LoadBalancing.json';
 import { MdText } from '@/src/components/inhalt/MdText';
+import { reglerName } from '@/src/lib/reglerName';
 
 export interface Station4LoadBalancingProps {
   beamLength: number;
@@ -108,6 +109,8 @@ export function Station4LoadBalancing({ beamLength, setBeamLength, deadLoad, set
               max={40}
               step={1}
               value={beamLength}
+              aria-label={reglerName(inhalt.texte.stützweiteL)}
+              aria-valuetext={`${formatDeWert(beamLength)} m`}
               onChange={(e) => setBeamLength(Number(e.target.value))}
               className="w-full accent-shiraz cursor-pointer"
             />
@@ -124,6 +127,8 @@ export function Station4LoadBalancing({ beamLength, setBeamLength, deadLoad, set
               max={60}
               step={5}
               value={deadLoad}
+              aria-label={reglerName(inhalt.texte.eigengewichtG)}
+              aria-valuetext={`${formatDeWert(deadLoad)} kN/m`}
               onChange={(e) => setDeadLoad(Number(e.target.value))}
               className="w-full accent-shiraz cursor-pointer"
             />
@@ -140,6 +145,8 @@ export function Station4LoadBalancing({ beamLength, setBeamLength, deadLoad, set
               max={0.90}
               step={0.05}
               value={sagittaF}
+              aria-label={reglerName(inhalt.texte.parabelstichF)}
+              aria-valuetext={`${formatDeZahl((sagittaF * 100), 0)} cm`}
               onChange={(e) => setSagittaF(Number(e.target.value))}
               className="w-full accent-shiraz cursor-pointer"
             />

@@ -27,6 +27,7 @@ import { ModuleTabs } from '@/src/components/ui/ModuleTabs';
 import { EingabeHinweise } from '@/src/components/ui/EingabeHinweise';
 import { messwerteAusText, gumMessunsicherheit, ringversuch } from '@/src/calc/pruefverfahren';
 import { ErgebnisAnsage, ansageWert, kurzzeile } from '@/src/components/ui/ErgebnisAnsage';
+import { reglerName } from '@/src/lib/reglerName';
 
 export default function MessenPruefen() {
   // Tabs for the Messen & Prüfen component
@@ -265,6 +266,8 @@ export default function MessenPruefen() {
                     max="58"
                     step="0.1"
                     value={rvMeasuredValue}
+                    aria-label={reglerName(inhalt.texte.eigenesPrüfergebnis)}
+                    aria-valuetext={`${formatDeZahl(rvMeasuredValue, 1)} MPa`}
                     onChange={(e) => setRvMeasuredValue(parseFloat(e.target.value))}
                     className="w-full accent-shiraz cursor-pointer"
                   />
@@ -285,6 +288,8 @@ export default function MessenPruefen() {
                     max="55"
                     step="0.1"
                     value={rvAssignedValue}
+                    aria-label={reglerName(inhalt.texte.referenzwertDesRingversuchs)}
+                    aria-valuetext={`${formatDeZahl(rvAssignedValue, 1)} MPa`}
                     onChange={(e) => setRvAssignedValue(parseFloat(e.target.value))}
                     className="w-full accent-shiraz cursor-pointer"
                   />
@@ -305,6 +310,8 @@ export default function MessenPruefen() {
                     max="4.0"
                     step="0.1"
                     value={rvSigmaPT}
+                    aria-label={reglerName(inhalt.texte.zielStandardabweichung)}
+                    aria-valuetext={`±${formatDeZahl(rvSigmaPT, 2)} MPa`}
                     onChange={(e) => setRvSigmaPT(parseFloat(e.target.value))}
                     className="w-full accent-shiraz cursor-pointer"
                   />

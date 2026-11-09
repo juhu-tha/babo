@@ -10,6 +10,7 @@ import { MdText } from '@/src/components/inhalt/MdText';
 import { AuswahlGruppe, alsOption } from '../../components/ui/Auswahlgruppe';
 import { LebensdauerUebernehmen } from '../../components/ui/LebensdauerUebernehmen';
 import { ErgebnisAnsage } from '@/src/components/ui/ErgebnisAnsage';
+import { reglerName } from '@/src/lib/reglerName';
 
 interface SimulatorProps {
   method: PruefverfahrenDetail;
@@ -289,6 +290,8 @@ export function PruefverfahrenSimulator({ method }: SimulatorProps) {
                 max="55"
                 step="1"
                 value={rebound}
+                aria-label={reglerName(inhalt.texte.rückprallwertRMedianAus)}
+                aria-valuetext={`${formatDeWert(rebound)}`}
                 onChange={(e) => setRebound(Number(e.target.value))}
                 className="w-full accent-shiraz cursor-pointer"
               />
@@ -326,6 +329,8 @@ export function PruefverfahrenSimulator({ method }: SimulatorProps) {
                 max="40"
                 step="1"
                 value={carbDepth}
+                aria-label={reglerName(inhalt.texte.karbonatisierungstiefeDK)}
+                aria-valuetext={`${formatDeWert(carbDepth)} mm`}
                 onChange={(e) => setCarbDepth(Number(e.target.value))}
                 className="w-full accent-shiraz cursor-pointer"
               />
@@ -370,6 +375,8 @@ export function PruefverfahrenSimulator({ method }: SimulatorProps) {
                 max="1.50"
                 step="0.05"
                 value={usDistance}
+                aria-label={reglerName(inhalt.texte.messstreckeSDurchschallungsdicke)}
+                aria-valuetext={`${formatDeZahl((usDistance * 100), 0)} cm`}
                 onChange={(e) => setUsDistance(Number(e.target.value))}
                 className="w-full accent-shiraz cursor-pointer"
               />
@@ -386,6 +393,8 @@ export function PruefverfahrenSimulator({ method }: SimulatorProps) {
                 max="400"
                 step="5"
                 value={usTime}
+                aria-label={reglerName(inhalt.texte.gemessenePWellenlaufzeitT)}
+                aria-valuetext={`${formatDeWert(usTime)} µs`}
                 onChange={(e) => setUsTime(Number(e.target.value))}
                 className="w-full accent-shiraz cursor-pointer"
               />
@@ -430,6 +439,8 @@ export function PruefverfahrenSimulator({ method }: SimulatorProps) {
                 max="0"
                 step="10"
                 value={potentialVal}
+                aria-label={reglerName(inhalt.texte.halbzellenpotentialECellCu)}
+                aria-valuetext={`${formatDeWert(potentialVal)} mV`}
                 onChange={(e) => setPotentialVal(Number(e.target.value))}
                 className="w-full accent-shiraz cursor-pointer"
               />
@@ -494,6 +505,8 @@ export function PruefverfahrenSimulator({ method }: SimulatorProps) {
                 max="65"
                 step="1"
                 value={measuredCover}
+                aria-label={reglerName(inhalt.texte.gemesseneBetondeckungCIst)}
+                aria-valuetext={`${formatDeWert(measuredCover)} mm`}
                 onChange={(e) => setMeasuredCover(Number(e.target.value))}
                 className="w-full accent-shiraz cursor-pointer"
               />
@@ -561,6 +574,8 @@ export function PruefverfahrenSimulator({ method }: SimulatorProps) {
                 max="1.50"
                 step="0.05"
                 value={chlorideVal}
+                aria-label={reglerName(inhalt.texte.chloridgehaltAnBewehrungslage)}
+                aria-valuetext={`${formatDeZahl(chlorideVal, 2)} M.-%`}
                 onChange={(e) => setChlorideVal(Number(e.target.value))}
                 className="w-full accent-shiraz cursor-pointer"
               />
@@ -608,6 +623,8 @@ export function PruefverfahrenSimulator({ method }: SimulatorProps) {
                 max="8.0"
                 step="0.1"
                 value={breakForce}
+                aria-label={reglerName(inhalt.texte.bruchlastFBreakAm)}
+                aria-valuetext={`${formatDeZahl(breakForce, 1)} kN`}
                 onChange={(e) => setBreakForce(Number(e.target.value))}
                 className="w-full accent-shiraz cursor-pointer"
               />
@@ -673,6 +690,8 @@ export function PruefverfahrenSimulator({ method }: SimulatorProps) {
                 max="5.0"
                 step="0.05"
                 value={waterLoss60}
+                aria-label={reglerName(inhalt.texte.eingesaugtesWasservolumenNach60)}
+                aria-valuetext={`${formatDeZahl(waterLoss60, 2)} ml`}
                 onChange={(e) => setWaterLoss60(Number(e.target.value))}
                 className="w-full accent-shiraz cursor-pointer"
               />
@@ -710,6 +729,8 @@ export function PruefverfahrenSimulator({ method }: SimulatorProps) {
                 max="50"
                 step="1"
                 value={carbMeasured}
+                aria-label={reglerName(inhalt.texte.gemesseneKarbonatisierungstiefeDK)}
+                aria-valuetext={`${formatDeWert(carbMeasured)} mm`}
                 onChange={(e) => setCarbMeasured(Number(e.target.value))}
                 className="w-full accent-shiraz cursor-pointer"
               />
@@ -726,6 +747,8 @@ export function PruefverfahrenSimulator({ method }: SimulatorProps) {
                 max="100"
                 step="5"
                 value={elementAge}
+                aria-label="Bauteilalter"
+                aria-valuetext={`${formatDeWert(elementAge)} Jahre`}
                 onChange={(e) => setElementAge(Number(e.target.value))}
                 className="w-full accent-shiraz cursor-pointer"
               />
@@ -742,6 +765,8 @@ export function PruefverfahrenSimulator({ method }: SimulatorProps) {
                 max="60"
                 step="2"
                 value={elementCover}
+                aria-label={reglerName(inhalt.texte.vorhandeneBetondeckungC)}
+                aria-valuetext={`${formatDeWert(elementCover)} mm`}
                 onChange={(e) => setElementCover(Number(e.target.value))}
                 className="w-full accent-shiraz cursor-pointer"
               />
@@ -799,6 +824,8 @@ export function PruefverfahrenSimulator({ method }: SimulatorProps) {
                   max="200"
                   step="5"
                   value={coreLength}
+                  aria-label="Kernhöhe L"
+                  aria-valuetext={`${formatDeWert(coreLength)} mm`}
                   onChange={(e) => setCoreLength(Number(e.target.value))}
                   className="w-full accent-shiraz cursor-pointer"
                 />
@@ -816,6 +843,8 @@ export function PruefverfahrenSimulator({ method }: SimulatorProps) {
                 max="600"
                 step="5"
                 value={coreMaxForce}
+                aria-label={reglerName(inhalt.texte.bruchkraftFMaxIn)}
+                aria-valuetext={`${formatDeWert(coreMaxForce)} kN`}
                 onChange={(e) => setCoreMaxForce(Number(e.target.value))}
                 className="w-full accent-shiraz cursor-pointer"
               />
@@ -852,6 +881,8 @@ export function PruefverfahrenSimulator({ method }: SimulatorProps) {
                 max="25.0"
                 step="0.5"
                 value={ieFreq}
+                aria-label={reglerName(inhalt.texte.dominanteResonanzfrequenzFPeak)}
+                aria-valuetext={`${formatDeZahl(ieFreq, 1)} kHz`}
                 onChange={(e) => setIeFreq(Number(e.target.value))}
                 className="w-full accent-shiraz cursor-pointer"
               />
@@ -868,6 +899,8 @@ export function PruefverfahrenSimulator({ method }: SimulatorProps) {
                 max="60"
                 step="5"
                 value={ieNominalThickness}
+                aria-label={reglerName(inhalt.texte.sollBauteildickePlattenstärke)}
+                aria-valuetext={`${formatDeWert(ieNominalThickness)} cm`}
                 onChange={(e) => setIeNominalThickness(Number(e.target.value))}
                 className="w-full accent-shiraz cursor-pointer"
               />

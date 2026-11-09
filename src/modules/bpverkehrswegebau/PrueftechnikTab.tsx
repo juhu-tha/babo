@@ -6,6 +6,7 @@ import { Calculator, CheckCircle2 } from 'lucide-react';
 import inhalt from '@/content/bpverkehrswegebau/PrueftechnikTab.json';
 import { MdText } from '@/src/components/inhalt/MdText';
 import { ErgebnisAnsage, ansageWert, kurzzeile } from '@/src/components/ui/ErgebnisAnsage';
+import { reglerName, reglerEinheit } from '@/src/lib/reglerName';
 
 export interface PrueftechnikTabProps {
   asphaltMischung: { gesteinAnteil: number; bitumenAnteil: number; rhoGestein: number; rhoBitumen: number; raumdichteMischung: number; };
@@ -56,6 +57,8 @@ export default function PrueftechnikTab({ asphaltMischung, luftPorenErrechnet, s
                 max="9.0" 
                 step="0.1"
                 value={asphaltMischung.bitumenAnteil}
+                aria-label={reglerName(inhalt.texte.bitumengehaltB)}
+                aria-valuetext={`${formatDeZahl(asphaltMischung.bitumenAnteil, 1)}${reglerEinheit(inhalt.texte.mGestein)}${formatDeZahl(asphaltMischung.gesteinAnteil, 1)} M.-%)`}
                 onChange={(e) => {
                   const bit = parseFloat(e.target.value);
                   setAsphaltMischung(prev => ({
@@ -80,6 +83,8 @@ export default function PrueftechnikTab({ asphaltMischung, luftPorenErrechnet, s
                 max="2.55" 
                 step="0.01"
                 value={asphaltMischung.raumdichteMischung}
+                aria-label={reglerName(inhalt.texte.gemesseneRaumdichteRhoR)}
+                aria-valuetext={`${formatDeZahl(asphaltMischung.raumdichteMischung, 2)} g/cm³`}
                 onChange={(e) => {
                   const rd = parseFloat(e.target.value);
                   setAsphaltMischung(prev => ({

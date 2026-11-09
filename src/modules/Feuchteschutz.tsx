@@ -30,6 +30,7 @@ import inhalt from '@/content/feuchteschutz/Feuchteschutz.json';
 import { MdText } from '@/src/components/inhalt/MdText';
 import { AuswahlGruppe, alsOption } from '../components/ui/Auswahlgruppe';
 import { ErgebnisAnsage, ansageWert, kurzzeile } from '@/src/components/ui/ErgebnisAnsage';
+import { reglerName } from '@/src/lib/reglerName';
 
 // Register necessary Chart.js components
 ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend, Filler);
@@ -308,7 +309,9 @@ export default function Feuchteschutz() {
                 </div>
                 <input 
                   type="range" min="15" max="30" step="0.5"
-                  value={Ti} 
+                  value={Ti}
+                  aria-label={reglerName(inhalt.texte.innenLufttemperaturTI)}
+                  aria-valuetext={`${formatDeZahl(Ti, 1)} °C`} 
                   onChange={(e) => setTi(parseFloat(e.target.value))}
                   className="w-full accent-orange-800 cursor-pointer"
                 />
@@ -321,7 +324,9 @@ export default function Feuchteschutz() {
                 </div>
                 <input 
                   type="range" min="20" max="95" step="1"
-                  value={phiI} 
+                  value={phiI}
+                  aria-label={reglerName(inhalt.texte.relRaumluftfeuchteI)}
+                  aria-valuetext={`${formatDeZahl(phiI, 0)} %`} 
                   onChange={(e) => setPhiI(parseFloat(e.target.value))}
                   className="w-full accent-blue-500 cursor-pointer"
                 />
@@ -334,7 +339,9 @@ export default function Feuchteschutz() {
                 </div>
                 <input 
                   type="range" min="-5" max="25" step="0.5"
-                  value={Tsi} 
+                  value={Tsi}
+                  aria-label={reglerName(inhalt.texte.bauteilOberflächeTSi)}
+                  aria-valuetext={`${formatDeZahl(Tsi, 1)} °C`} 
                   onChange={(e) => setTsi(parseFloat(e.target.value))}
                   className="w-full accent-rose-600 cursor-pointer"
                 />
@@ -746,7 +753,7 @@ export default function Feuchteschutz() {
                     <span className="text-shiraz font-mono">{formatDeWert(tauperiodeTage)} Tage ({formatDeWert(tauperiodeTage * 24)} h)</span>
                   </div>
                   <input
-                    type="range" min="30" max="150" step="5" value={tauperiodeTage}
+                    type="range" min="30" max="150" step="5" value={tauperiodeTage} aria-valuetext={`${formatDeWert(tauperiodeTage)} Tage (${formatDeWert(tauperiodeTage * 24)} h)`}
                     aria-label={inhalt.werte.dauerDerTauperiodeIn}
                     onChange={(e) => setTauperiodeTage(Number(e.target.value))}
                     className="w-full accent-shiraz h-1 bg-slate-200 rounded-lg appearance-none cursor-pointer"

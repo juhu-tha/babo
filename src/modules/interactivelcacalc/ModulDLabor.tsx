@@ -6,6 +6,7 @@ import { CustomRow } from './daten';
 import inhalt from '@/content/interactivelcacalc/ModulDLabor.json';
 import { MdText } from '@/src/components/inhalt/MdText';
 import { VERWERTUNGSFAKTOR } from '@/src/calc/lca';
+import { reglerName } from '@/src/lib/reglerName';
 
 export interface ModulDLaborProps {
   results: { totalWeightTons: number; totalCircularWeightTons: number; overallCircularityRate: number; gwpA1A3: number; gwpBioStorageInstalled: number; gwpA4: number; gwpC: number; gwpD: number; gwpAC: number; gwpPerSqmYearAC: number; totalGwpNet: number; gwpPerSqmYearNet: number; gwpPerSqmYearD: number; weightedUmi: number; totalPenrtMj: number; penrtKwhPerSqmYear: number; rowModulDDetails: { rowId: string; matName: string; category: string; unit: string; qty: number; weightTons: number; circularQuota: number; sortingRate: number; recoveryType: string; circularMassTons: number; effectiveRecoveredMassTons: number; rowGwpD: number; substitutesPrimary: string; }[]; };
@@ -142,6 +143,8 @@ export function ModulDLabor({ results, setGlobalModulDStrategy, rows, updateRow 
                       max="100"
                       step="5"
                       value={detail.circularQuota}
+                      aria-label={reglerName(inhalt.texte.kreislauffähigerAnteil)}
+                      aria-valuetext={`${formatDeZahl(detail.circularQuota, 0)} %`}
                       onChange={(e) => updateRow(detail.rowId, { circularQuota: parseInt(e.target.value) })}
                       className="w-full h-1.5 bg-slate-200 rounded-lg appearance-none cursor-pointer accent-teal-600"
                     />
@@ -168,6 +171,8 @@ export function ModulDLabor({ results, setGlobalModulDStrategy, rows, updateRow 
                       max="100"
                       step="5"
                       value={detail.sortingRate}
+                      aria-label={reglerName(inhalt.texte.sortenreinheitRückbau)}
+                      aria-valuetext={`${formatDeZahl(detail.sortingRate, 0)} %`}
                       onChange={(e) => updateRow(detail.rowId, { sortingRate: parseInt(e.target.value) })}
                       className="w-full h-1.5 bg-slate-200 rounded-lg appearance-none cursor-pointer accent-shiraz"
                     />

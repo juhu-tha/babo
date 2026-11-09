@@ -42,6 +42,7 @@ const VERMIEDEN_HERLEITUNG = inhalt.texte.vermiedeneTransporteAbbau
   .replace('{summe}', formatDeZahl(VERMIEDEN_KG_JE_T, 1));
 import { ModuleTabs } from '@/src/components/ui/ModuleTabs';
 import { ErgebnisAnsage } from '@/src/components/ui/ErgebnisAnsage';
+import { reglerName, reglerEinheit } from '@/src/lib/reglerName';
 
 export type DatenRegelnTab = 
   | 'definitionen'
@@ -222,6 +223,8 @@ export default function NachhaltigkeitDatenRegeln() {
                 max="10000"
                 step="100"
                 value={interactiveMasse}
+                aria-label={reglerName(inhalt.texte.interaktiverStoffstromRechnerUrban)}
+                aria-valuetext={`Eingabe: ${formatDeWert(interactiveMasse)}${reglerEinheit(inhalt.texte.tonnenBauschutt)}`}
                 onChange={(e) => setInteractiveMasse(parseInt(e.target.value))}
                 className="w-full h-1 bg-emerald-200 rounded-lg appearance-none cursor-pointer accent-emerald-700"
               />

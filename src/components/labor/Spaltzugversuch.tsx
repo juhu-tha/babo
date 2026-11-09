@@ -346,6 +346,8 @@ export default function Spaltzugversuch({ onNavigateToProtocols }: Spaltzugversu
                 max="0.10"
                 step="0.01"
                 value={loadingRate}
+                aria-label="Prüfgeschwindigkeit"
+                aria-valuetext={`${formatDeZahl(loadingRate, 2)} MPa/s`}
                 onChange={e => setLoadingRate(parseFloat(e.target.value))}
                 disabled={testStatus === 'running'}
                 className="w-full accent-shiraz cursor-pointer"

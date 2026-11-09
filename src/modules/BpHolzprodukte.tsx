@@ -12,6 +12,7 @@ import { EingabeHinweise } from '@/src/components/ui/EingabeHinweise';
 import { bemesseEinfeldbalken, GAMMA_M_HOLZ, type KLED, type Nutzungsklasse } from '@/src/calc/holzbau';
 import { BSH_EN14080, HOLZ_EN338, type HolzKennwerte } from '@/src/data/kennwerte';
 import { ErgebnisAnsage, ansageWert, kurzzeile } from '@/src/components/ui/ErgebnisAnsage';
+import { reglerName } from '@/src/lib/reglerName';
 
 interface WoodProductType {
   id: string;
@@ -294,7 +295,9 @@ export default function BpHolzprodukte() {
                 min="2.0" 
                 max="10.0" 
                 step="0.1" 
-                value={span} 
+                value={span}
+                aria-label={reglerName(inhalt.texte.spannweiteL)}
+                aria-valuetext={`${formatDeZahl(span, 2)} m`} 
                 onChange={(e) => setSpan(Number(e.target.value))} 
                 className="w-full h-1.5 bg-slate-100 rounded-lg appearance-none cursor-pointer accent-shiraz"
               />
@@ -310,7 +313,9 @@ export default function BpHolzprodukte() {
                 min="0.300" 
                 max="1.250" 
                 step="0.025" 
-                value={spacing} 
+                value={spacing}
+                aria-label={reglerName(inhalt.texte.achsabstandDerBalkenS)}
+                aria-valuetext={`${formatDeZahl((spacing * 100), 1)} cm`} 
                 onChange={(e) => setSpacing(Number(e.target.value))} 
                 className="w-full h-1.5 bg-slate-100 rounded-lg appearance-none cursor-pointer accent-shiraz"
               />
@@ -328,6 +333,7 @@ export default function BpHolzprodukte() {
                 max="8.0"
                 step="0.1"
                 value={loadk}
+                aria-valuetext={`${formatDeZahl(loadk, 1)} kN/m²`}
                 onChange={(e) => setLoadk(Number(e.target.value))}
                 className="w-full h-1.5 bg-slate-100 rounded-lg appearance-none cursor-pointer accent-shiraz"
               />
@@ -346,6 +352,7 @@ export default function BpHolzprodukte() {
                 max="4.0"
                 step="0.1"
                 value={loadg}
+                aria-valuetext={`${formatDeZahl(loadg, 1)} kN/m²`}
                 onChange={(e) => setLoadg(Number(e.target.value))}
                 className="w-full h-1.5 bg-slate-100 rounded-lg appearance-none cursor-pointer accent-shiraz"
               />
@@ -400,7 +407,9 @@ export default function BpHolzprodukte() {
                 min="60" 
                 max="240" 
                 step="20" 
-                value={beamWidth} 
+                value={beamWidth}
+                aria-label={reglerName(inhalt.texte.balkenbreiteB)}
+                aria-valuetext={`${formatDeWert(beamWidth)} mm`} 
                 onChange={(e) => setBeamWidth(Number(e.target.value))} 
                 className="w-full h-1.5 bg-slate-100 rounded-lg appearance-none cursor-pointer accent-shiraz"
               />
@@ -416,7 +425,9 @@ export default function BpHolzprodukte() {
                 min="100" 
                 max="440" 
                 step="20" 
-                value={beamHeight} 
+                value={beamHeight}
+                aria-label={reglerName(inhalt.texte.balkenhöheH)}
+                aria-valuetext={`${formatDeWert(beamHeight)} mm`} 
                 onChange={(e) => setBeamHeight(Number(e.target.value))} 
                 className="w-full h-1.5 bg-slate-100 rounded-lg appearance-none cursor-pointer accent-shiraz"
               />

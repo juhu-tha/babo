@@ -578,6 +578,8 @@ export default function PutzeMoertel() {
                         min="1" 
                         max="250" 
                         value={plasterArea}
+                        aria-label={inhalt.werte.putzflächeM}
+                        aria-valuetext={`${formatDeWert(plasterArea)} m²`}
                         onChange={(e) => setPlasterArea(Number(e.target.value))}
                         className="w-full h-6 mt-1.5 accent-shiraz"
                       />
@@ -596,6 +598,8 @@ export default function PutzeMoertel() {
                         min="2" 
                         max="80" 
                         value={plasterThickness}
+                        aria-label={inhalt.werte.schichtstärkeDMm}
+                        aria-valuetext={`${formatDeWert(plasterThickness)} mm`}
                         onChange={(e) => setPlasterThickness(Number(e.target.value))}
                         className="w-full h-6 mt-1.5 accent-shiraz"
                       />
@@ -657,6 +661,8 @@ export default function PutzeMoertel() {
                         min="1" 
                         max="250" 
                         value={masonryArea}
+                        aria-label={inhalt.werte.wandflächeM}
+                        aria-valuetext={`${formatDeWert(masonryArea)} m²`}
                         onChange={(e) => setMasonryArea(Number(e.target.value))}
                         className="w-full h-6 mt-1.5 accent-shiraz"
                       />
@@ -736,6 +742,8 @@ export default function PutzeMoertel() {
                         min="1" 
                         max="250" 
                         value={plansteinArea}
+                        aria-label={inhalt.werte.wandflächeM2}
+                        aria-valuetext={`${formatDeWert(plansteinArea)} m²`}
                         onChange={(e) => setPlansteinArea(Number(e.target.value))}
                         className="w-full h-6 mt-1.5 accent-shiraz"
                       />

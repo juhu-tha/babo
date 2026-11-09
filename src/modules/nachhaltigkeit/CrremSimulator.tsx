@@ -5,6 +5,7 @@ import inhalt from '@/content/nachhaltigkeit/CrremSimulator.json';
 import { MdText } from '@/src/components/inhalt/MdText';
 import { AuswahlGruppe, alsOption } from '../../components/ui/Auswahlgruppe';
 import { ErgebnisAnsage, ansageWert, kurzzeile } from '@/src/components/ui/ErgebnisAnsage';
+import { reglerName, reglerEinheit } from '@/src/lib/reglerName';
 
 interface CrremSimulatorProps {
   crremBuildingType: "office" | "residential";
@@ -89,6 +90,8 @@ export default function CrremSimulator({ crremBuildingType, crremCurrentGwp, crr
             max="90"
             step="1"
             value={crremCurrentGwp}
+            aria-label={reglerName(inhalt.texte.aktuelleCoIntensitätDes)}
+            aria-valuetext={`${formatDeWert(crremCurrentGwp)}${reglerEinheit(inhalt.texte.kgCoEM)}`}
             onChange={(e) => setCrremCurrentGwp(parseFloat(e.target.value))}
             className="w-full h-1 bg-slate-200 rounded-lg appearance-none cursor-pointer accent-shiraz"
           />

@@ -175,6 +175,8 @@ export default function Wandkonfigurator({ addLayer, addThickness, applyPreset, 
                         max="40"
                         step="0.5"
                         value={layer.thicknessCm}
+                        aria-label="Dicke"
+                        aria-valuetext={`${formatDeWert(layer.thicknessCm)} cm`}
                         onChange={(e) => handleThicknessChange(index, parseFloat(e.target.value))}
                         className="w-full h-1 bg-slate-200 rounded-lg appearance-none cursor-pointer accent-shiraz"
                       />

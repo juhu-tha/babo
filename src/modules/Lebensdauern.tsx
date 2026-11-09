@@ -19,6 +19,7 @@ import inhalt from '@/content/lebensdauern/Lebensdauern.json';
 import { MdText } from '@/src/components/inhalt/MdText';
 import { ReiterLeiste, alsReiter, reiterPanel } from '../components/ui/Auswahlgruppe';
 import { ErgebnisAnsage } from '@/src/components/ui/ErgebnisAnsage';
+import { reglerName } from '@/src/lib/reglerName';
 
 ChartJS.register(
   CategoryScale,
@@ -205,6 +206,8 @@ export default function Lebensdauern() {
                   max="100"
                   step="5"
                   value={buildingLifespan}
+                  aria-label={reglerName(inhalt.texte.typischerReferenzStudienzeitraumFür)}
+                  aria-valuetext={`${formatDeWert(buildingLifespan)} Jahre`}
                   onChange={(e) => setBuildingLifespan(Number(e.target.value))}
                   className="flex-1 h-2 bg-home-grau/20 rounded-lg appearance-none cursor-pointer accent-shiraz"
                 />

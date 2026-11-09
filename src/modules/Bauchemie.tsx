@@ -25,6 +25,7 @@ import { stellmittelRheologie, SCHERRATEN, akrKurve, K_RICHTWERTE, KARBONATISIER
 import { EingabeHinweise } from '@/src/components/ui/EingabeHinweise';
 import { ModuleTabs, type ModulTab } from '@/src/components/ui/ModuleTabs';
 import { ErgebnisAnsage, ansageWert, kurzzeile } from '@/src/components/ui/ErgebnisAnsage';
+import { reglerName } from '@/src/lib/reglerName';
 
 ChartJS.register(
   CategoryScale,
@@ -377,6 +378,8 @@ export const Bauchemie: React.FC = () => {
                     max="2.0"
                     step="0.1"
                     value={stellmittelConc}
+                    aria-label={reglerName(inhalt.texte.stellmittelKonzentrationZB)}
+                    aria-valuetext={`${formatDeZahl(stellmittelConc, 1)} %`}
                     onChange={(e) => setStellmittelConc(Number(e.target.value))}
                     className="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer accent-shiraz"
                   />
@@ -399,6 +402,8 @@ export const Bauchemie: React.FC = () => {
                     max="100.0"
                     step="1.0"
                     value={currentShear}
+                    aria-label={reglerName(inhalt.texte.auswirkendeScherrateEinwirkkraft)}
+                    aria-valuetext={`${formatDeZahl(currentShear, 0)} s⁻¹`}
                     onChange={(e) => setCurrentShear(Number(e.target.value))}
                     className="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer accent-shiraz"
                   />

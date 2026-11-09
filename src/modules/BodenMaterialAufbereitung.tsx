@@ -380,6 +380,7 @@ export default function BodenMaterialAufbereitung() {
                     max="3000" 
                     step="5"
                     value={heapVolume} 
+                    aria-valuetext={`${formatDeWert(heapVolume)} m³`}
                     onChange={(e) => setHeapVolume(parseInt(e.target.value))}
                     disabled={isFinalized}
                     className="w-full accent-shiraz h-1.5 bg-slate-100 rounded-lg cursor-pointer"

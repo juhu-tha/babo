@@ -13,6 +13,7 @@ import { EingabeHinweise } from '@/src/components/ui/EingabeHinweise';
 import type { Hinweis } from '@/src/calc/plausibilitaet';
 import { pren as prenWirksumme, gefuegeklasse } from '@/src/calc/werkstoffmodelle';
 import { ErgebnisAnsage, ansageWert, kurzzeile } from '@/src/components/ui/ErgebnisAnsage';
+import { reglerName } from '@/src/lib/reglerName';
 
 interface StahlWerkstoffkundeProps {
   activeTab: "steckbrief" | "spannungsdehnung" | "stahlsorten" | "allgemein" | "walzen" | "schweissen" | "legierungen";
@@ -235,6 +236,8 @@ export default function StahlWerkstoffkunde({ activeTab, alloyC, alloyCr, alloyM
                 max="30"
                 step="0.5"
                 value={alloyCr}
+                aria-label="Chrom (Cr)"
+                aria-valuetext={`${formatDeZahl(alloyCr, 1)}%`}
                 onChange={(e) => setAlloyCr(Number(e.target.value))}
                 className="w-full accent-shiraz h-1 cursor-pointer"
               />
@@ -251,6 +254,8 @@ export default function StahlWerkstoffkunde({ activeTab, alloyC, alloyCr, alloyM
                 max="25"
                 step="0.5"
                 value={alloyNi}
+                aria-label="Nickel (Ni)"
+                aria-valuetext={`${formatDeZahl(alloyNi, 1)}%`}
                 onChange={(e) => setAlloyNi(Number(e.target.value))}
                 className="w-full accent-shiraz h-1 cursor-pointer"
               />
@@ -267,6 +272,8 @@ export default function StahlWerkstoffkunde({ activeTab, alloyC, alloyCr, alloyM
                 max="10"
                 step="0.1"
                 value={alloyMo}
+                aria-label={reglerName(inhalt.texte.molybdänMo)}
+                aria-valuetext={`${formatDeZahl(alloyMo, 1)}%`}
                 onChange={(e) => setAlloyMo(Number(e.target.value))}
                 className="w-full accent-shiraz h-1 cursor-pointer"
               />
@@ -283,6 +290,8 @@ export default function StahlWerkstoffkunde({ activeTab, alloyC, alloyCr, alloyM
                 max="1.5"
                 step="0.01"
                 value={alloyC}
+                aria-label={reglerName(inhalt.texte.kohlenstoffC)}
+                aria-valuetext={`${formatDeZahl(alloyC, 2)}%`}
                 onChange={(e) => setAlloyC(Number(e.target.value))}
                 className="w-full accent-shiraz h-1 cursor-pointer"
               />

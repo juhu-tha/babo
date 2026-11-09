@@ -8,6 +8,7 @@ import { MdText } from '@/src/components/inhalt/MdText';
 import { EingabeHinweise } from '@/src/components/ui/EingabeHinweise';
 import { rigole, F_METHODE, type KfMethode } from '@/src/calc/verkehrswegebau';
 import { ErgebnisAnsage, ansageWert, kurzzeile } from '@/src/components/ui/ErgebnisAnsage';
+import { reglerName } from '@/src/lib/reglerName';
 
 /** Bestimmungsmethoden des k_f-Werts (DWA-A 138-1:2024-10, f_Methode vorläufig) */
 const METHODEN: readonly (readonly [KfMethode, string])[] = [
@@ -240,6 +241,8 @@ export default function TiefbauTab({ setTiefbauArea, setTiefbauDuration, setTief
                   max="2000" 
                   step="10"
                   value={tiefbauArea}
+                  aria-label={reglerName(inhalt.texte.angeschlosseneAuffangflächeAE)}
+                  aria-valuetext={`${formatDeWert(tiefbauArea)} m²`}
                   onChange={(e) => setTiefbauArea(parseInt(e.target.value))}
                   className="w-full accent-shiraz" 
                 />
@@ -275,6 +278,8 @@ export default function TiefbauTab({ setTiefbauArea, setTiefbauDuration, setTief
                   max="500" 
                   step="10"
                   value={tiefbauRain}
+                  aria-label={reglerName(inhalt.texte.bemessungsregenIntensitätRD)}
+                  aria-valuetext={`${formatDeWert(tiefbauRain)} l/(s·ha)`}
                   onChange={(e) => setTiefbauRain(parseInt(e.target.value))}
                   className="w-full accent-shiraz" 
                 />
@@ -292,6 +297,8 @@ export default function TiefbauTab({ setTiefbauArea, setTiefbauDuration, setTief
                   max="60" 
                   step="5"
                   value={tiefbauDuration}
+                  aria-label={reglerName(inhalt.texte.regendauerTD)}
+                  aria-valuetext={`${formatDeWert(tiefbauDuration)} min`}
                   onChange={(e) => setTiefbauDuration(parseInt(e.target.value))}
                   className="w-full accent-shiraz" 
                 />

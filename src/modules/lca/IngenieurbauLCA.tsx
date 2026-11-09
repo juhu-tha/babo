@@ -14,6 +14,7 @@ import inhalt from '@/content/lca/IngenieurbauLCA.json';
 import { MdText } from '@/src/components/inhalt/MdText';
 import { AuswahlGruppe, ReiterLeiste, alsOption, alsReiter, reiterPanel } from '../../components/ui/Auswahlgruppe';
 import { ErgebnisAnsage, ansageWert, kurzzeile } from '@/src/components/ui/ErgebnisAnsage';
+import { reglerName } from '@/src/lib/reglerName';
 
 /**
  * Lehrwerte des Brücken-Simulators je m² Brückendeckfläche [kg CO₂-Äq./m²] bzw. je Zyklus (Durchsicht B 29.10.2026,
@@ -371,6 +372,8 @@ export default function IngenieurbauLCA() {
                 max="4000"
                 step="100"
                 value={deckArea}
+                aria-label={reglerName(inhalt.texte.brückendeckflächeATextDeck)}
+                aria-valuetext={`${formatDeZahl(deckArea, 0)} m²`}
                 onChange={(e) => setDeckArea(parseInt(e.target.value))}
                 className="w-full h-1.5 bg-slate-200 rounded-lg appearance-none cursor-pointer accent-shiraz"
               />
@@ -389,6 +392,8 @@ export default function IngenieurbauLCA() {
                 max="120"
                 step="10"
                 value={studyPeriod}
+                aria-label={reglerName(inhalt.texte.betrachtungszeitraumTTextRef)}
+                aria-valuetext={`${formatDeWert(studyPeriod)} Jahre`}
                 onChange={(e) => setStudyPeriod(parseInt(e.target.value))}
                 className="w-full h-1.5 bg-slate-200 rounded-lg appearance-none cursor-pointer accent-shiraz"
               />
@@ -407,6 +412,8 @@ export default function IngenieurbauLCA() {
                 max="12000"
                 step="500"
                 value={dtvSchwerverkehr}
+                aria-label={reglerName(inhalt.texte.schwerverkehrDtvTextSv)}
+                aria-valuetext={`${formatDeZahl(dtvSchwerverkehr, 0)} LKW/d`}
                 onChange={(e) => setDtvSchwerverkehr(parseInt(e.target.value))}
                 className="w-full h-1.5 bg-slate-200 rounded-lg appearance-none cursor-pointer accent-shiraz"
               />

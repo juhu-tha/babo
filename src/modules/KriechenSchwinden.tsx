@@ -28,6 +28,7 @@ import { MdText } from '@/src/components/inhalt/MdText';
 import { ModuleTabs } from '@/src/components/ui/ModuleTabs';
 import { EingabeHinweise } from '@/src/components/ui/EingabeHinweise';
 import { kriechSchwindModell, kriechSchwindVerlauf, relaxationsVerlauf, stuetzenVerformung, STUETZE_LEHRWERTE, type Zementklasse, type Relaxationsklasse } from '@/src/calc/kriechenSchwinden';
+import { reglerName } from '@/src/lib/reglerName';
 
 ChartJS.register(
   CategoryScale,
@@ -525,6 +526,8 @@ export default function KriechenSchwinden() {
                   max={5}
                   step={1}
                   value={timeIndex}
+                  aria-label={reglerName(inhalt.texte.standzeitDesTragwerks)}
+                  aria-valuetext={`${simDays[timeIndex].label}`}
                   onChange={(e) => setTimeIndex(Number(e.target.value))}
                   className="w-full h-2 bg-slate-200 rounded-lg appearance-none cursor-pointer accent-shiraz"
                 />

@@ -18,6 +18,7 @@ import { MdText } from '@/src/components/inhalt/MdText';
 import { EingabeHinweise } from '@/src/components/ui/EingabeHinweise';
 import { dehnungsZustand, DEHNUNG_TRAEGER, type Spanngliedlage } from '@/src/calc/spannbeton';
 import { AuswahlGruppe, alsOption } from '../../components/ui/Auswahlgruppe';
+import { reglerName } from '@/src/lib/reglerName';
 
 export type TendonTrajectoryType = Spanngliedlage;
 
@@ -298,6 +299,7 @@ export default function SpannbetonDehnungsAnimation() {
               max="3000"
               step="10"
               value={prestressForce}
+              aria-valuetext={`${formatDeZahl((prestressForce / 2720) * 100, 0)} %`}
               onChange={(e) => setPrestressForce(Number(e.target.value))}
               className="w-full accent-shiraz cursor-pointer h-3 bg-slate-200 rounded-lg transition-all"
             />
@@ -382,6 +384,8 @@ export default function SpannbetonDehnungsAnimation() {
               max="50"
               step="1"
               value={loadQ}
+              aria-label={reglerName(inhalt.texte.zusatzlastQOhneEigengewicht)}
+              aria-valuetext={`${formatDeZahl(loadQ, 0)} kN/m`}
               onChange={(e) => setLoadQ(Number(e.target.value))}
               className="w-full accent-slate-600 cursor-pointer h-1.5 bg-slate-200 rounded-lg"
             />
@@ -411,6 +415,8 @@ export default function SpannbetonDehnungsAnimation() {
               max="380"
               step="10"
               value={eccentricity}
+              aria-label={tendonTrajectory === 'centric' ? inhalt.werte.exzentrizitätEPZentrisch : tendonTrajectory === 'parabolic' ? inhalt.werte.parabelstichFTiefpunktFeldmitte : inhalt.werte.spanngliedabstandEPUnten}
+              aria-valuetext={`${tendonTrajectory === 'centric' ? '0 mm' : `${formatDeZahl(eccentricity, 0)} mm`}`}
               disabled={tendonTrajectory === 'centric'}
               onChange={(e) => setEccentricity(Number(e.target.value))}
               className={`w-full cursor-pointer h-1.5 rounded-lg ${
