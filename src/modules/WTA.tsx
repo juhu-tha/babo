@@ -22,6 +22,7 @@ import { MdText } from '@/src/components/inhalt/MdText';
 import { ModuleTabs, type ModulTab } from '@/src/components/ui/ModuleTabs';
 import { AuswahlGruppe, alsOption } from '../components/ui/Auswahlgruppe';
 import { wtaBohrplan, wtaKombiBewertung, wtaZertifikatsstufe, type Daemmstoff, type SperreStatus, type Salzklasse, type Regengruppe, type KombiAlarm, type KombiEmpfehlung } from '@/src/calc/schutzInstandsetzung';
+import { ErgebnisAnsage, ansageWert, kurzzeile } from '@/src/components/ui/ErgebnisAnsage';
 
 // Kombi-Planer: Punkteschema im Kern src/calc/schutzInstandsetzung.ts (eigenes Lehrmodell, keine Bewertung der WTA)
 const ALARMTEXT: Record<KombiAlarm, string> = {
@@ -350,6 +351,7 @@ export default function WTA() {
                   </div>
                 </div>
 
+                <ErgebnisAnsage text={kurzzeile(ansageWert('Bohrlochtiefe', drillDepth, 'frei', 'cm'), ansageWert('Bohrlochabstand', drillSpacing, 'frei', 'cm'), ansageWert('Cremebedarf mindestens', creamConsumption, 2, 'Liter je m'))} />
                 {/* Drilling Parameters Grid */}
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                   <div className="bg-white p-3 rounded border border-home-grau/20 flex flex-col justify-between">
@@ -763,6 +765,7 @@ export default function WTA() {
 
                 return (
                   <div className="space-y-4">
+                    <ErgebnisAnsage text={kurzzeile(evalData.suitabilityLabel, ansageWert('Kombi-Score', evalData.score, 'frei', 'von 100'), evalData.criticalAlarms.length > 0 && `${formatDeZahl(evalData.criticalAlarms.length, 0)} kritische Hinweise`)} />
                     {/* Suitability score meter */}
                     <div className="bg-[#FCFAF7] border border-home-grau/35 rounded-xl p-5 shadow-xs bg-white space-y-3">
                       <div className="flex justify-between items-center flex-wrap gap-2">

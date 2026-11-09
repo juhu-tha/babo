@@ -24,6 +24,7 @@ import { MdText } from '@/src/components/inhalt/MdText';
 import { stellmittelRheologie, SCHERRATEN, akrKurve, K_RICHTWERTE, KARBONATISIERUNG_ZEITEN, karbonatisierungstiefe } from '@/src/calc/bauchemie';
 import { EingabeHinweise } from '@/src/components/ui/EingabeHinweise';
 import { ModuleTabs, type ModulTab } from '@/src/components/ui/ModuleTabs';
+import { ErgebnisAnsage, ansageWert, kurzzeile } from '@/src/components/ui/ErgebnisAnsage';
 
 ChartJS.register(
   CategoryScale,
@@ -425,6 +426,7 @@ export const Bauchemie: React.FC = () => {
                   </div>
                 </div>
                 <EingabeHinweise hinweise={rheologyResults.hinweise} />
+                <ErgebnisAnsage text={kurzzeile(ansageWert('Viskosität', rheologyResults.currentViscosity, 1, 'Pa·s'), `Status ${rheologyResults.statusClass || '–'}`)} />
               </div>
 
               {/* Chart Column */}
@@ -534,6 +536,7 @@ export const Bauchemie: React.FC = () => {
               />
             </div>
             <EingabeHinweise hinweise={akr.hinweise} />
+            <ErgebnisAnsage text={ansageWert(`AKR-Dehnung nach ${formatDeWert(akr.jahre[akr.jahre.length - 1])} Jahren`, akr.dehnung[akr.dehnung.length - 1], 2, 'mm/m')} />
             <div className="h-[200px] relative mt-4">
               <Line 
                 data={akrData} 

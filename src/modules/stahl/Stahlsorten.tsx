@@ -10,6 +10,7 @@ import type { Dispatch, SetStateAction } from 'react';
 import inhalt from '@/content/stahl/Stahlsorten.json';
 import { MdText } from '@/src/components/inhalt/MdText';
 import { AuswahlGruppe, ReiterLeiste, alsOption, alsReiter, reiterPanel } from '../../components/ui/Auswahlgruppe';
+import { ErgebnisAnsage } from '@/src/components/ui/ErgebnisAnsage';
 
 interface StahlsortenProps {
   activeGradedData: ExtendedSteelGrade;
@@ -551,6 +552,11 @@ export default function Stahlsorten({ activeGradedData, activeProfile, designMom
 
           {/* Live Vergleichsergebnisse */}
           <div className="space-y-3">
+            <ErgebnisAnsage text={`${activeProfile.name} bei M_Ed ${formatDeWert(designMoment)} kNm: ${['S235', 'S355', 'S460', 'S690'].map(g => {
+              const fyG = extendedSteelGrades.find(x => x.id === g)!.fy;
+              const mpl = plastischeKapazitaet(activeProfile.Wpl_y, activeProfile.Area, fyG).MplRd;
+              return `${g} ${formatDeZahl(mpl, 1)} kNm ${mpl >= designMoment ? 'ausreichend' : 'nicht ausreichend'}`;
+            }).join(', ')}`} />
             <h4 className="font-bold text-sm text-slate-500 uppercase tracking-wider flex items-center gap-1.5">
               <Activity size={14} className="text-shiraz" /><MdText text={inhalt.texte.liveFestigkeitsvergleichDesProfils} />{activeProfile.name}<MdText text={inhalt.texte.inAbhängigkeitDerStahlgüten} /></h4>
             <div className="overflow-x-auto rounded-xl border border-slate-150">

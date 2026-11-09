@@ -13,6 +13,7 @@ import { ModulTest } from '@/src/components/quiz/ModulTest';
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
 import inhaltJson from '@/content/laborhandouts/DruckfestigkeitWuerfel.json';
 import { MdText } from '@/src/components/inhalt/MdText';
+import { ansageWert, kurzzeile } from '@/src/components/ui/ErgebnisAnsage';
 
 const th = 'p-2 text-left text-xs font-bold text-text-main border-b border-home-grau/30 bg-off-white';
 const td = 'p-2 text-xs text-text-main/85 border-b border-home-grau/15 font-mono';
@@ -110,7 +111,11 @@ function auswerten(stand: ProtokollStand): AuswertungsAnsicht {
       )}
     </div>
   );
-  return { inhalt, ergebnisse };
+  const kz = erg.gueltig
+    ? kurzzeile(ansageWert('f_cm,Würfel', erg.fcm, 1, 'MPa'), ansageWert('f_ci,min', erg.fmin, 1, 'MPa'), `Klasse ${erg.erreicht}`,
+      erg.ziel && `Zielklasse ${erg.ziel.name} ${erg.ziel.krit1 && erg.ziel.krit2 ? inhaltJson.werte.kriterienErfüllt : inhaltJson.werte.kriterienNichtErfüllt}`)
+    : 'f_cm,Würfel –';
+  return { inhalt, ergebnisse, kurzzeile: kz };
 }
 
 export default function DruckfestigkeitWuerfel() {

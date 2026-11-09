@@ -31,6 +31,7 @@ import { EingabeHinweise } from '@/src/components/ui/EingabeHinweise';
 import { gleichgewichtsfeuchte, feuchteNachLagerung, schwinden, schwindmass, HOLZWERKSTOFF_SCHWINDMASSE, SCHWINDBEIWERTE } from '@/src/calc/holzphysik';
 import { festigkeitswerte, kdefFuer, KLED_NAME, GAMMA_M_HOLZ, type Nutzungsklasse } from '@/src/calc/holzbau';
 import { BSH_EN14080, HOLZ_EN338, type HolzKennwerte } from '@/src/data/kennwerte';
+import { ErgebnisAnsage, ansageWert, kurzzeile } from '@/src/components/ui/ErgebnisAnsage';
 
 ChartJS.register(
   CategoryScale,
@@ -499,6 +500,7 @@ export default function Holz() {
               <span className="font-bold text-shiraz">{formatDeZahl(uEnde, 1)} %</span>
             </div>
             <EingabeHinweise hinweise={feuchteHinweise} />
+            <ErgebnisAnsage text={kurzzeile(ansageWert('Gleichgewichtsfeuchte', uGleichgewicht, 1, '%'), ansageWert('Endfeuchte', uEnde, 1, '%'))} />
           </div>
 
           <div className="bg-off-white p-4 rounded-xl border border-home-grau/30 flex flex-col gap-4">
@@ -680,6 +682,7 @@ export default function Holz() {
         <div className="lg:col-span-8 bg-white p-6 rounded-2xl shadow-sm border border-home-grau/30 flex flex-col">
           <h2 className="text-xl font-bold text-text-main mb-4"><MdText text={inhalt.texte.bemessungswerteDerFestigkeitF} /></h2>
           <EingabeHinweise hinweise={fw.hinweise} />
+          <ErgebnisAnsage text={kurzzeile(`${festigkeitsklasse}: ${ansageWert('k_mod', kmod, 2)}`, ansageWert('f_m,d', fmd, 2, 'MPa'), ansageWert(`f_c,α,d bei ${formatDeZahl(winkel, 0)}°`, fcad, 2, 'MPa'))} />
           
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
             <div className="bg-off-white p-4 rounded-xl border border-home-grau/30">
@@ -773,7 +776,7 @@ export default function Holz() {
           <div className="bg-white p-5 rounded-xl border border-home-grau/30 shadow-sm mt-6">
             <h3 className="font-semibold mb-4 text-text-main"><MdText text={inhalt.texte.schematischeDarstellungFaserrichtungUnd} /></h3>
             <div className="flex flex-col items-center bg-off-white rounded-lg border border-home-grau/30 p-4">
-              <svg width="100%" height="160" viewBox="0 0 350 160">
+              <svg role="img" aria-label="Schematische Darstellung: Faserrichtung und Festigkeit" width="100%" height="160" viewBox="0 0 350 160">
                 {/* Holzbalken */}
                 <rect x="100" y="40" width="150" height="80" fill="#cbd5e1" stroke="#A3113E" strokeWidth="2" />
                 

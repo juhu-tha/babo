@@ -5,6 +5,7 @@ import inhalt from '@/content/abfaelle/LagaPn98.json';
 import { MdText } from '@/src/components/inhalt/MdText';
 import { pn98Probenzahl } from '@/src/calc/probenahme';
 import { AuswahlGruppe, alsOption } from '../../components/ui/Auswahlgruppe';
+import { ErgebnisAnsage, ansageWert, kurzzeile } from '@/src/components/ui/ErgebnisAnsage';
 
 interface LagaPn98Props {
   pnGrainSize: string;
@@ -138,6 +139,7 @@ export default function LagaPn98({ pnGrainSize, pnMaterialState, pnVolume, setPn
           {/* Results Column */}
           <div className="md:col-span-2 space-y-4">
             <h5 className="font-bold text-slate-800 text-xs uppercase tracking-wider"><MdText text={inhalt.texte.vorgeschriebenerBeprobungsumfangTabelle2} /></h5>
+            <ErgebnisAnsage text={kurzzeile(`${formatDeWert(pnVolume)} m³`, ansageWert('Einzelproben', einzelproben, 'frei'), ansageWert('Mischproben', mischproben, 'frei'), ansageWert('Laborproben', laborproben, 'frei'), ansageWert('Mindestvolumen Einzelprobe', minVolEinzel, 'frei', 'Liter'))} />
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               {/* Card 1: Einzelproben */}

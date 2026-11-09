@@ -21,6 +21,7 @@ import { InnovationPraxisSection } from '@/src/components/ui/InnovationPraxisSec
 import inhalt from '@/content/bpmetallisch/BpMetallisch.json';
 import { LAMBDA_ALUMINIUM } from '@/src/data/kennwerte';
 import { MdText } from '@/src/components/inhalt/MdText';
+import { ErgebnisAnsage, ansageWert, kurzzeile } from '@/src/components/ui/ErgebnisAnsage';
 
 function MetalThematicLinks({ current }: { current: 'baustoff' | 'bauprodukt' | 'dauerhaftigkeit' }) {
   const { setActiveTab } = useTabContext();
@@ -443,6 +444,7 @@ export default function BpMetallisch() {
             </div>
 
             <div className="p-3 bg-off-white rounded-xl border border-home-grau/20 text-[11px] text-text-main/70 space-y-1">
+              <ErgebnisAnsage text={kurzzeile(ansageWert('Spannungsdifferenz', deltaE * 1000, 0, 'mV'), corrosionResult.rating)} />
               <div className="flex justify-between font-mono">
                 <span><MdText text={inhalt.texte.spannungsdifferenzU} /></span>
                 <strong className="text-slate-800">{formatDeZahl(deltaE, 2)} V ({formatDeZahl((deltaE * 1000), 0)} mV)</strong>
@@ -560,6 +562,7 @@ export default function BpMetallisch() {
 
           <div className="bg-slate-50 p-4 rounded-xl border border-home-grau/20 text-center">
             <span className="text-[10px] text-text-main/50 block font-bold uppercase mb-1">Tafel-Gesamtgewicht</span>
+            <ErgebnisAnsage text={ansageWert('Tafel-Gesamtgewicht', totalWeightKg, 2, 'kg')} />
             <span className="text-lg font-extrabold font-mono text-slate-800">
               {formatDeZahl(totalWeightKg, 2)} kg
             </span>

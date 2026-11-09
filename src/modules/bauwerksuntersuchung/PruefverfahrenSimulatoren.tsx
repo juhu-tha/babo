@@ -9,6 +9,7 @@ import inhalt from '@/content/bauwerksuntersuchung/PruefverfahrenSimulatoren.jso
 import { MdText } from '@/src/components/inhalt/MdText';
 import { AuswahlGruppe, alsOption } from '../../components/ui/Auswahlgruppe';
 import { LebensdauerUebernehmen } from '../../components/ui/LebensdauerUebernehmen';
+import { ErgebnisAnsage } from '@/src/components/ui/ErgebnisAnsage';
 
 interface SimulatorProps {
   method: PruefverfahrenDetail;
@@ -260,6 +261,19 @@ export function PruefverfahrenSimulator({ method }: SimulatorProps) {
         </span>
       </div>
 
+      {/* Kurzzeile je Simulator (Kurzzeilen 04.11.2026) aus den Kernergebnissen; Darrmethode ohne Rechnung */}
+      <ErgebnisAnsage text={({
+        schmidthammer: `Rückprallwert korrigiert ${schmidtCalc.r_final}, geschätzte Druckfestigkeit ${schmidtCalc.fc_est} MPa, ${schmidtCalc.grade}`,
+        ultraschall: `Schallgeschwindigkeit ${formatDeZahl(usCalc.vp, 0)} m/s, E_dyn ${usCalc.edyn} GPa, ${usCalc.status}`,
+        potentialfeld: `Potential ${formatDeWert(potentialVal)} mV: ${potentialCalc.state}, ${potentialCalc.prob}`,
+        covermeter: `Betondeckung gemessen ${formatDeWert(measuredCover)} mm, c_min ${formatDeWert(coverCalc.c_min)} mm, Differenz ${coverCalc.diff} mm, ${coverCalc.isOk ? 'ausreichend' : 'unterschritten'}`,
+        bohrmehl: `Chloridgehalt ${formatDeWert(chlorideVal)} %, Verhältnis zum Anhaltswert ${chlorideCalc.ratio}`,
+        haftabzug: `Abreißfestigkeit ${haftCalc.fct} N/mm², ${haftCalc.isNormOk ? 'Anforderung erfüllt' : 'Anforderung nicht erfüllt'}`,
+        karsten: `Wasseraufnahme ${karstenCalc.w} kg/(m²·h)`,
+        karbonatisierung: carbCalc.gueltig ? `K ${carbCalc.k_carb} mm/√a, ${carbCalc.depassivated ? 'bereits depassiviert' : `Restlebensdauer etwa ${formatDeWert(carbCalc.restJahre)} Jahre`}` : 'Karbonatisierung –',
+        bohrkern: `Kerndruckfestigkeit ${bohrkernCalc.f_corr} N/mm², Schlankheit ${bohrkernCalc.lambda}`,
+        impact_echo: `Reflektortiefe ${ieCalc.d_cm} cm, ${ieCalc.isDelam ? 'Ablösung vermutet' : 'keine Ablösung'}`,
+      } as Record<string, string>)[method.id] ?? ''} />
       {/* 1. SCHMIDT-HAMMER SIMULATOR */}
       {method.id === 'schmidthammer' && (
         <div className="grid grid-cols-1 md:grid-cols-12 gap-5">
@@ -933,7 +947,7 @@ export function PruefverfahrenSimulator({ method }: SimulatorProps) {
             <div>
               <span className="text-[10px] font-mono text-slate-600 uppercase tracking-widest block mb-2"><MdText text={inhalt.texte.resistogrammKurvensimulation0Bis} /></span>
               <div className="h-16 w-full bg-white border border-home-grau/30 rounded-lg p-2 flex items-center relative overflow-hidden">
-                <svg viewBox="0 0 100 40" className="w-full h-full">
+                <svg role="img" aria-label="Resistogramm-Kurve des Bohrwiderstands" viewBox="0 0 100 40" className="w-full h-full">
                   <polyline
                     fill="none"
                     stroke={timberCondition === 'gesund' ? '#059669' : timberCondition === 'faeule' ? '#d97706' : '#ef4444'}

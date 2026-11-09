@@ -12,6 +12,7 @@ import { formatDeZahl, formatDeWert, formatDeIntl } from '@/src/utils/numberForm
 import inhalt from '@/content/kreislaufwirtschaft/Kreislaufwirtschaft.json';
 import { MdText } from '@/src/components/inhalt/MdText';
 import { ModuleTabs } from '@/src/components/ui/ModuleTabs';
+import { ErgebnisAnsage, ansageWert, kurzzeile } from '@/src/components/ui/ErgebnisAnsage';
 
 export interface DeconstructionComponent {
   id: string;
@@ -377,22 +378,22 @@ export default function Kreislaufwirtschaft() {
               <p className="text-sm text-slate-700"><MdText text={inhalt.texte.bauUndAbbruchabfälleStellen} /></p>
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
                 <div className="bg-slate-50 p-4 rounded-xl border border-home-grau/30">
-                  <h4 className="font-bold text-slate-900 mb-2"><MdText text={inhalt.texte.bodenaushubBodenSteine} /></h4>
+                  <h3 className="font-bold text-slate-900 mb-2 wie-h4"><MdText text={inhalt.texte.bodenaushubBodenSteine} /></h3>
                   <div className="text-lg font-bold text-slate-900 mb-1"><MdText text={inhalt.texte.ca130MioT} /></div>
                   <p className="text-sm text-slate-700"><MdText text={inhalt.texte.verwertungswegeVorrangigVerfüllungVon} /></p>
                 </div>
                 <div className="bg-slate-50 p-4 rounded-xl border border-home-grau/30">
-                  <h4 className="font-bold text-slate-900 mb-2"><MdText text={inhalt.texte.bauschuttMineralisch} /></h4>
+                  <h3 className="font-bold text-slate-900 mb-2 wie-h4"><MdText text={inhalt.texte.bauschuttMineralisch} /></h3>
                   <div className="text-lg font-bold text-slate-900 mb-1"><MdText text={inhalt.texte.ca60MioT} /></div>
                   <p className="text-sm text-slate-700"><MdText text={inhalt.texte.verwertungswegeRecyclingbaustoffeStraßen} /></p>
                 </div>
                 <div className="bg-slate-50 p-4 rounded-xl border border-home-grau/30">
-                  <h4 className="font-bold text-slate-900 mb-2"><MdText text={inhalt.texte.straßenaufbruchAsphalt} /></h4>
+                  <h3 className="font-bold text-slate-900 mb-2 wie-h4"><MdText text={inhalt.texte.straßenaufbruchAsphalt} /></h3>
                   <div className="text-lg font-bold text-slate-900 mb-1"><MdText text={inhalt.texte.ca20MioT} /></div>
                   <p className="text-sm text-slate-700"><MdText text={inhalt.texte.verwertungswegeAsphaltrecyclingSehrHohe} /></p>
                 </div>
                 <div className="bg-slate-50 p-4 rounded-xl border border-home-grau/30 lg:col-span-3">
-                  <h4 className="font-bold text-slate-900 mb-2"><MdText text={inhalt.texte.sonstigeBauabfälleGipsHolz} /></h4>
+                  <h3 className="font-bold text-slate-900 mb-2 wie-h4"><MdText text={inhalt.texte.sonstigeBauabfälleGipsHolz} /></h3>
                   <div className="text-lg font-bold text-slate-900 mb-1"><MdText text={inhalt.texte.ca15MioT} /></div>
                   <p className="text-sm text-slate-700"><MdText text={inhalt.texte.verwertungswegeMetalleVollständigesRecyc} /></p>
                 </div>
@@ -404,28 +405,28 @@ export default function Kreislaufwirtschaft() {
                 <Calculator className="text-shiraz" /><MdText text={inhalt.texte.aufbereitungsverfahrenNachMaterialien} /></h2>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div className="bg-white border border-y border-r border-home-grau/25 border-l-4 border-l-stone-500 p-4 rounded-xl">
-                  <h4 className="font-bold text-stone-800 mb-2 border-b border-stone-200 pb-2"><MdText text={inhalt.texte.mineralischeBaustoffeBetonMauerwerk} /></h4>
+                  <h3 className="font-bold text-stone-800 mb-2 border-b border-stone-200 pb-2 wie-h4"><MdText text={inhalt.texte.mineralischeBaustoffeBetonMauerwerk} /></h3>
                   <ul className="text-sm text-slate-700 space-y-2">
                     <li><MdText text={inhalt.texte.verfahrenBrechenBackenbrecherPrallmühle} /></li>
                     <li><MdText text={inhalt.texte.verwertungsquoteSehrHoch90} /></li>
                   </ul>
                 </div>
                 <div className="bg-white border border-y border-r border-home-grau/25 border-l-4 border-l-indigo-500 p-4 rounded-xl">
-                  <h4 className="font-bold text-slate-800 mb-2 border-b border-home-grau/30 pb-2"><MdText text={inhalt.texte.metalleStahlbetonAluProfilbahnen} /></h4>
+                  <h3 className="font-bold text-slate-800 mb-2 border-b border-home-grau/30 pb-2 wie-h4"><MdText text={inhalt.texte.metalleStahlbetonAluProfilbahnen} /></h3>
                   <ul className="text-sm text-slate-700 space-y-2">
                     <li><MdText text={inhalt.texte.verfahrenMagnetabscheidungEisenmetalleWi} /></li>
                     <li><MdText text={inhalt.texte.verwertungsquoteNahe100Metalle} /></li>
                   </ul>
                 </div>
                 <div className="bg-white border border-y border-r border-home-grau/25 border-l-4 border-l-amber-500 p-4 rounded-xl">
-                  <h4 className="font-bold text-amber-900 mb-2 border-b border-amber-200 pb-2"><MdText text={inhalt.texte.bauholzHolzwerkstoffe} /></h4>
+                  <h3 className="font-bold text-amber-900 mb-2 border-b border-amber-200 pb-2 wie-h4"><MdText text={inhalt.texte.bauholzHolzwerkstoffe} /></h3>
                   <ul className="text-sm text-slate-700 space-y-2">
                     <li><MdText text={inhalt.texte.verfahrenSchreddernAltholzverordnungKlas} /></li>
                     <li><MdText text={inhalt.texte.verwertungsquoteHoheErfassungAber} /></li>
                   </ul>
                 </div>
                 <div className="bg-white border border-y border-r border-home-grau/25 border-l-4 border-l-blue-500 p-4 rounded-xl">
-                  <h4 className="font-bold text-blue-900 mb-2 border-b border-blue-200 pb-2"><MdText text={inhalt.texte.kunststoffeDämmstoffe} /></h4>
+                  <h3 className="font-bold text-blue-900 mb-2 border-b border-blue-200 pb-2 wie-h4"><MdText text={inhalt.texte.kunststoffeDämmstoffe} /></h3>
                   <ul className="text-sm text-slate-700 space-y-2">
                     <li><MdText text={inhalt.texte.verfahrenZerkleinerungExtrusionWerkstoff} /></li>
                     <li><MdText text={inhalt.texte.verwertungsquoteImBaubereichOft} /></li>
@@ -478,7 +479,7 @@ export default function Kreislaufwirtschaft() {
 
               <div className="space-y-4">
                 <div className="bg-slate-50 border border-home-grau/30 p-4 rounded-xl">
-                  <h4 className="font-bold text-slate-900 mb-1"><MdText text={inhalt.texte.historischeBauschadstoffeAsbestPcb} /></h4>
+                  <h3 className="font-bold text-slate-900 mb-1 wie-h4"><MdText text={inhalt.texte.historischeBauschadstoffeAsbestPcb} /></h3>
                   <p className="text-sm text-slate-500 mb-2"><MdText text={inhalt.texte.inGebäudenDieVor} /></p>
                   <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
                     <div className="bg-white p-2 rounded border border-home-grau/30 text-xs">
@@ -491,7 +492,7 @@ export default function Kreislaufwirtschaft() {
                 </div>
 
                 <div className="bg-slate-50 border border-home-grau/30 p-4 rounded-xl">
-                  <h4 className="font-bold text-slate-900 mb-1"><MdText text={inhalt.texte.additiveUndStörstoffeIn} /></h4>
+                  <h3 className="font-bold text-slate-900 mb-1 wie-h4"><MdText text={inhalt.texte.additiveUndStörstoffeIn} /></h3>
                   <p className="text-sm text-slate-500 mb-2"><MdText text={inhalt.texte.auchNeuereMaterialienKönnen} /></p>
                   <ul className="list-disc list-inside text-xs text-slate-700 space-y-1">
                     <li><MdText text={inhalt.texte.hbcdHexabromcyclododecanFlammschutzmitte} /></li>
@@ -994,6 +995,8 @@ ${auditComponents.slice(0, 2).map(c => `    {
                         type="range" 
                         min="0" max="100" 
                         value={umiReuseIn} 
+                        aria-label="Wiederverwendete Bauteile (Re-Use)"
+                        aria-valuetext={`${formatDeWert(umiReuseIn)} %`}
                         onChange={(e) => setUmiReuseIn(Number(e.target.value))}
                         className="w-full accent-shiraz h-1.5 rounded-lg bg-stone-200 cursor-pointer"
                       />
@@ -1010,6 +1013,8 @@ ${auditComponents.slice(0, 2).map(c => `    {
                         type="range" 
                         min="0" max="100" 
                         value={umiRecyclingIn} 
+                        aria-label="Recyclingmaterialien (sekundär)"
+                        aria-valuetext={`${formatDeWert(umiRecyclingIn)} %`}
                         onChange={(e) => setUmiRecyclingIn(Number(e.target.value))}
                         className="w-full accent-shiraz h-1.5 rounded-lg bg-stone-200 cursor-pointer"
                       />
@@ -1026,6 +1031,8 @@ ${auditComponents.slice(0, 2).map(c => `    {
                         type="range" 
                         min="0" max="100" 
                         value={umiRenewableIn} 
+                        aria-label="Erneuerbare Rohstoffe (NawaRo)"
+                        aria-valuetext={`${formatDeWert(umiRenewableIn)} %`}
                         onChange={(e) => setUmiRenewableIn(Number(e.target.value))}
                         className="w-full accent-shiraz h-1.5 rounded-lg bg-stone-200 cursor-pointer"
                       />
@@ -1049,6 +1056,8 @@ ${auditComponents.slice(0, 2).map(c => `    {
                         type="range" 
                         min="0" max="100" 
                         value={umiReuseOut} 
+                        aria-label="Demontierbarkeit (Re-Use-Potenzial)"
+                        aria-valuetext={`${formatDeWert(umiReuseOut)} %`}
                         onChange={(e) => setUmiReuseOut(Number(e.target.value))}
                         className="w-full accent-shiraz h-1.5 rounded-lg bg-stone-200 cursor-pointer"
                       />
@@ -1065,6 +1074,8 @@ ${auditComponents.slice(0, 2).map(c => `    {
                         type="range" 
                         min="0" max="100" 
                         value={umiRecyclingOut} 
+                        aria-label="Kreislauf-Recyclingfähigkeit"
+                        aria-valuetext={`${formatDeWert(umiRecyclingOut)} %`}
                         onChange={(e) => setUmiRecyclingOut(Number(e.target.value))}
                         className="w-full accent-shiraz h-1.5 rounded-lg bg-stone-200 cursor-pointer"
                       />
@@ -1073,6 +1084,7 @@ ${auditComponents.slice(0, 2).map(c => `    {
                   </div>
                 </div>
 
+                <ErgebnisAnsage text={kurzzeile(ansageWert('Urban Mining Index', umiTotal, 1, '%'), ansageWert('Input-Rate', umiInputRate, 'frei', '%'), ansageWert('Output-Rate', umiOutputRate, 'frei', '%'))} />
                 <div className="p-4 bg-shiraz/5 rounded-xl border border-shiraz/20">
                   <div className="flex justify-between items-center mb-1.5">
                     <div className="flex flex-col">
@@ -1117,6 +1129,8 @@ ${auditComponents.slice(0, 2).map(c => `    {
                         type="range" 
                         min="0" max="100" 
                         value={mciRecycledIn} 
+                        aria-label="RC-Anteil"
+                        aria-valuetext={`${formatDeWert(mciRecycledIn)} %`}
                         onChange={(e) => setMciRecycledIn(Number(e.target.value))}
                         className="w-full accent-purple-700 h-1.5 rounded-lg bg-stone-200 cursor-pointer"
                       />
@@ -1130,6 +1144,8 @@ ${auditComponents.slice(0, 2).map(c => `    {
                         type="range" 
                         min="0" max="100" 
                         value={mciReusedIn} 
+                        aria-label="Re-Use-Bauteile"
+                        aria-valuetext={`${formatDeWert(mciReusedIn)} %`}
                         onChange={(e) => setMciReusedIn(Number(e.target.value))}
                         className="w-full accent-purple-700 h-1.5 rounded-lg bg-stone-200 cursor-pointer"
                       />
@@ -1147,6 +1163,8 @@ ${auditComponents.slice(0, 2).map(c => `    {
                         type="range" 
                         min="0" max="100" 
                         value={mciRecycledOut} 
+                        aria-label="Recyclingquote"
+                        aria-valuetext={`${formatDeWert(mciRecycledOut)} %`}
                         onChange={(e) => setMciRecycledOut(Number(e.target.value))}
                         className="w-full accent-purple-700 h-1.5 rounded-lg bg-stone-200 cursor-pointer"
                       />
@@ -1160,6 +1178,8 @@ ${auditComponents.slice(0, 2).map(c => `    {
                         type="range" 
                         min="0" max="100" 
                         value={mciReusedOut} 
+                        aria-label="Wiederverwendung"
+                        aria-valuetext={`${formatDeWert(mciReusedOut)} %`}
                         onChange={(e) => setMciReusedOut(Number(e.target.value))}
                         className="w-full accent-purple-700 h-1.5 rounded-lg bg-stone-200 cursor-pointer"
                       />
@@ -1220,6 +1240,7 @@ ${auditComponents.slice(0, 2).map(c => `    {
                   </div>
                 </div>
 
+                <ErgebnisAnsage text={kurzzeile(ansageWert('MCI', circularityIndex, 1, '%'), ansageWert('LFI', lfi * 100, 1, '%'), ansageWert('Nutzungsfaktor X', utility, 2))} />
                 <div className="p-4 bg-purple-50 rounded-xl border border-purple-200">
                   <div className="flex justify-between items-center mb-1.5">
                     <div className="flex flex-col">

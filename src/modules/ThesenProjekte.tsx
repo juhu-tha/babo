@@ -146,7 +146,7 @@ export default function ThesenProjekte() {
                   1
                 </div>
                 <div>
-                  <h4 className="text-sm font-bold text-text-main"><MdText text={inhalt.texte.themenfindungExpos} /></h4>
+                  <h3 className="text-sm font-bold text-text-main wie-h4"><MdText text={inhalt.texte.themenfindungExpos} /></h3>
                   <p className="text-xs text-home-grau mt-1 leading-relaxed"><MdText text={inhalt.texte.egalObEigenesWunschthema} /></p>
                 </div>
               </div>
@@ -156,7 +156,7 @@ export default function ThesenProjekte() {
                   2
                 </div>
                 <div>
-                  <h4 className="text-sm font-bold text-text-main"><MdText text={inhalt.texte.anmeldungBetreuungsvereinbarung} /></h4>
+                  <h3 className="text-sm font-bold text-text-main wie-h4"><MdText text={inhalt.texte.anmeldungBetreuungsvereinbarung} /></h3>
                   <p className="text-xs text-home-grau mt-1 leading-relaxed"><MdText text={inhalt.texte.formalerStartDurchAnmeldung} /></p>
                 </div>
               </div>
@@ -166,7 +166,7 @@ export default function ThesenProjekte() {
                   3
                 </div>
                 <div>
-                  <h4 className="text-sm font-bold text-text-main"><MdText text={inhalt.texte.durchführungLiteratursichtung} /></h4>
+                  <h3 className="text-sm font-bold text-text-main wie-h4"><MdText text={inhalt.texte.durchführungLiteratursichtung} /></h3>
                   <p className="text-xs text-home-grau mt-1 leading-relaxed"><MdText text={inhalt.texte.nutzungDerHochschulbibliothekEinschlägig} /></p>
                 </div>
               </div>
@@ -176,7 +176,7 @@ export default function ThesenProjekte() {
                   4
                 </div>
                 <div>
-                  <h4 className="text-sm font-bold text-text-main"><MdText text={inhalt.texte.kolloquiumPräsentation} /></h4>
+                  <h3 className="text-sm font-bold text-text-main wie-h4"><MdText text={inhalt.texte.kolloquiumPräsentation} /></h3>
                   <p className="text-xs text-home-grau mt-1 leading-relaxed"><MdText text={inhalt.texte.mündlicheVerteidigungDerErarbeiteten} /></p>
                 </div>
               </div>

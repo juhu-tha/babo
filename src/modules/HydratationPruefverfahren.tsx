@@ -250,7 +250,7 @@ export default function HydratationPruefverfahren() {
 
                 {/* SVG Graph */}
                 <div className="w-full h-72 border border-slate-100 rounded-xl relative overflow-hidden bg-slate-50/20">
-                  <svg viewBox="0 0 500 250" className="w-full h-full">
+                  <svg role="img" aria-label="Diagramm: Zwangspannung σz(t) und Zugfestigkeit fct(t) über die Zeit" viewBox="0 0 500 250" className="w-full h-full">
                     {/* Gridlines */}
                     <line x1="40" y1="20" x2="40" y2="220" stroke="#cccccc" strokeWidth="1" strokeDasharray="2" />
                     <line x1="40" y1="220" x2="480" y2="220" stroke="#888888" strokeWidth="1" />

@@ -17,11 +17,11 @@ export function FilmchemieTab({ setSelectedMech, selectedMech }: FilmchemieTabPr
         <p className="mb-3"><MdText text={inhalt.texte.lackeBestehenNichtNur} /></p>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-3 bg-white p-4 rounded-lg border border-home-grau/20">
           <div>
-            <h5 className="font-bold text-text-main text-xs uppercase tracking-wider mb-1"><MdText text={inhalt.texte.physikalischeFilmbildung} /></h5>
+            <h4 className="font-bold text-text-main text-xs uppercase tracking-wider mb-1 wie-h5"><MdText text={inhalt.texte.physikalischeFilmbildung} /></h4>
             <p className="text-xs text-text-main/70"><MdText text={inhalt.texte.reinesTrocknenDurchDas} /></p>
           </div>
           <div>
-            <h5 className="font-bold text-shiraz text-xs uppercase tracking-wider mb-1"><MdText text={inhalt.texte.chemischeFilmbildung} /></h5>
+            <h4 className="font-bold text-shiraz text-xs uppercase tracking-wider mb-1 wie-h5"><MdText text={inhalt.texte.chemischeFilmbildung} /></h4>
             <p className="text-xs text-text-main/70"><MdText text={inhalt.texte.irreversibleChemischeReaktionWährend} /></p>
           </div>
         </div>
@@ -52,7 +52,7 @@ export function FilmchemieTab({ setSelectedMech, selectedMech }: FilmchemieTabPr
           
           {/* Physikalische Erklärung der Lichtstreuung */}
           <div className="mt-4 p-4 bg-amber-50 rounded-xl border border-amber-200 text-xs text-amber-950 space-y-2">
-            <h5 className="font-bold flex items-center gap-1.5"><Layers size={14} className="text-amber-800" /><MdText text={inhalt.texte.streukraftExkursBrechzahl} /></h5>
+            <h4 className="font-bold flex items-center gap-1.5 wie-h5"><Layers size={14} className="text-amber-800" /><MdText text={inhalt.texte.streukraftExkursBrechzahl} /></h4>
             <p className="leading-relaxed"><MdText text={inhalt.texte.dieDeckkraftWeißerPigmente} /><span className="font-mono">n ≈ 1,5</span><MdText text={inhalt.texte.titandioxidRutilBesitztMit} /><span className="font-mono">n = 2,7</span><MdText text={inhalt.texte.dasGrößteDeckvermögenFüllstoffe} /><span className="font-mono">n = 1,6</span><MdText text={inhalt.texte.erscheinenImBindemittelFast} /></p>
           </div>
         </div>

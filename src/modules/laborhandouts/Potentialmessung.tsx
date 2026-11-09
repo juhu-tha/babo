@@ -13,6 +13,7 @@ import { ModulTest } from '@/src/components/quiz/ModulTest';
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
 import inhaltJson from '@/content/laborhandouts/Potentialmessung.json';
 import { MdText } from '@/src/components/inhalt/MdText';
+import { ansageWert, kurzzeile } from '@/src/components/ui/ErgebnisAnsage';
 
 const th = 'p-2 text-left text-xs font-bold text-text-main border-b border-home-grau/30 bg-off-white';
 const td = 'p-2 text-xs text-text-main/85 border-b border-home-grau/15 font-mono';
@@ -156,7 +157,11 @@ function auswerten(stand: ProtokollStand): AuswertungsAnsicht {
       )}
     </div>
   );
-  return { inhalt, ergebnisse };
+  const kz = erg.gueltig && p0
+    ? kurzzeile(ansageWert('Ruhepotential', p0.eCSE, 0, 'mV CSE'), BEREICH_TEXT[p0.bereich],
+      ps ? `Potentialabfall bei ${formatDeZahl(ps.mNaCl, 2)} g NaCl, Cl⁻/OH⁻ = ${formatDeZahl(ps.clOh, 2)}` : `kein Abfall ≥ ${formatDeZahl(sprung, 0)} mV`)
+    : 'Ruhepotential –';
+  return { inhalt, ergebnisse, kurzzeile: kz };
 }
 
 export default function Potentialmessung() {

@@ -15,6 +15,7 @@ import { ModulTest } from '@/src/components/quiz/ModulTest';
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
 import inhalt from '@/content/sommerlicherwaermeschutz/SommerlicherWaermeschutz.json';
 import { MdText } from '@/src/components/inhalt/MdText';
+import { ansageWert, kurzzeile } from '@/src/components/ui/ErgebnisAnsage';
 
 type Reiter = 'einfuehrung' | 'grundlagen' | 'kennwerte' | 'rechner' | 'beispiele';
 const REITER = [
@@ -356,7 +357,7 @@ export default function SommerlicherWaermeschutz() {
                         );
                       })}
                     </div>
-                    <div className={`p-3 rounded-xl border flex items-start gap-2 text-xs ${erg.erfuellt ? 'bg-emerald-50 border-emerald-200 text-emerald-950' : 'bg-red-50 border-red-200 text-red-950'}`} role="status">
+                    <div className={`p-3 rounded-xl border flex items-start gap-2 text-xs ${erg.erfuellt ? 'bg-emerald-50 border-emerald-200 text-emerald-950' : 'bg-red-50 border-red-200 text-red-950'}`}>
                       {erg.erfuellt ? <CheckCircle size={16} className="text-emerald-600 shrink-0" aria-hidden="true" /> : <AlertTriangle size={16} className="text-red-600 shrink-0" aria-hidden="true" />}
                       <span>
                         <strong>{erg.erfuellt ? inhalt.werte.nachweisErfüllt : inhalt.werte.nachweisNichtErfüllt}:</strong>{' '}
@@ -392,6 +393,7 @@ export default function SommerlicherWaermeschutz() {
 
               <FormulaDerivationBox
                 live
+                kurzzeile={erg.gueltig ? kurzzeile(ansageWert('S_vorh', erg.Svorh, 3), ansageWert('S_zul', erg.Szul, 3), erg.erfuellt ? inhalt.werte.nachweisErfüllt : inhalt.werte.nachweisNichtErfüllt) : 'S_vorh –'}
                 title={inhalt.werte.ihrRechenwegSonneneintragskennwerte}
                 zielGleichung="S_{vorh} \le S_{zul} = \sum S_x"
                 schritte={[

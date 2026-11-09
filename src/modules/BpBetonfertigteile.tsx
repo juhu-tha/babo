@@ -87,8 +87,8 @@ export default function BpBetonfertigteile() {
                 <div className="border border-slate-200 rounded-2xl overflow-hidden bg-slate-50/50 p-4 sm:p-6 shadow-xs">
                   <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-4 border-b border-slate-200 pb-4 mb-4">
                     <div>
-                      <h4 className="text-sm font-extrabold text-slate-800 uppercase tracking-wider flex items-center gap-2">
-                        <Sparkles className="text-shiraz w-4 h-4" /><MdText text={inhalt.texte.interaktivesElementenStudioMit} /></h4>
+                      <h3 className="text-sm font-extrabold text-slate-800 uppercase tracking-wider flex items-center gap-2 wie-h4">
+                        <Sparkles className="text-shiraz w-4 h-4" /><MdText text={inhalt.texte.interaktivesElementenStudioMit} /></h3>
                       <p className="text-xs text-slate-600 font-medium"><MdText text={inhalt.texte.klickenSieAufEin} /></p>
                     </div>
 
@@ -143,7 +143,7 @@ export default function BpBetonfertigteile() {
                         
                         {/* 1. FILIGRAN DECKEN SVG */}
                         {selectedElement === 'filigran' && (
-                          <svg 
+                          <svg role="group" aria-label="Skizze Filigrandecke" 
                             viewBox="0 0 400 200" 
                             className="w-full h-auto select-none" 
                             style={{ maxHeight: '250px' }}
@@ -249,7 +249,7 @@ export default function BpBetonfertigteile() {
 
                         {/* 2. DOPPELWAND SVG */}
                         {selectedElement === 'doppelwand' && (
-                          <svg 
+                          <svg role="group" aria-label="Skizze Doppelwand" 
                             viewBox="0 0 400 200" 
                             className="w-full h-auto select-none" 
                             style={{ maxHeight: '250px' }}
@@ -351,7 +351,7 @@ export default function BpBetonfertigteile() {
 
                         {/* 3. HOHLDIELE SVG */}
                         {selectedElement === 'hohldiele' && (
-                          <svg 
+                          <svg role="group" aria-label="Skizze Hohldiele" 
                             viewBox="0 0 400 200" 
                             className="w-full h-auto select-none" 
                             style={{ maxHeight: '250px' }}

@@ -6,6 +6,7 @@ import { FormulaText } from '@/src/components/ui/FormulaText';
 import { Magnet, Zap, Waves } from 'lucide-react';
 import inhalt from '@/content/zfp/ElektromagnetischTab.json';
 import { MdText } from '@/src/components/inhalt/MdText';
+import { ErgebnisAnsage } from '@/src/components/ui/ErgebnisAnsage';
 
 export interface ElektromagnetischTabProps {
   barDiameter: number;
@@ -57,6 +58,7 @@ export default function ElektromagnetischTab({ barDiameter, bewehrungssucherResu
         <div className="mt-4 p-4 bg-shiraz text-white rounded-xl shadow-md relative overflow-hidden">
           <div className="text-sm opacity-90 mb-1"><MdText text={inhalt.texte.relativeSignalstärke} /></div>
           <div className="text-3xl font-bold">{formatDeZahl(bewehrungssucherResults.signalStrength, 0)} %</div>
+          <ErgebnisAnsage text={`Bewehrungssucher: Signalstärke ${formatDeZahl(bewehrungssucherResults.signalStrength, 0)} %`} />
           
           {/* Animation für Signalstärke */}
           <div className="relative w-full h-48 bg-slate-200 rounded-lg overflow-hidden border border-home-grau/30 mt-4">
@@ -69,9 +71,9 @@ export default function ElektromagnetischTab({ barDiameter, bewehrungssucherResu
             </div>
             
             {/* Magnetic Field Lines (simplified) */}
-            <svg className="absolute inset-0 w-full h-full" style={{ opacity: bewehrungssucherResults.signalStrength / 100 }}>
+            <svg aria-hidden="true" className="absolute inset-0 w-full h-full" style={{ opacity: bewehrungssucherResults.signalStrength / 100 }}>
               {/* SVG-Pfade akzeptieren keine %-Koordinaten → zentriertes Unter-SVG */}
-              <svg x="50%" overflow="visible">
+              <svg aria-hidden="true" x="50%" overflow="visible">
                 <path d="M 0 24 Q -40 50 0 100" stroke="rgba(230, 57, 70, 0.3)" strokeWidth="2" fill="none" className="animate-pulse" />
                 <path d="M 0 24 Q 40 50 0 100" stroke="rgba(230, 57, 70, 0.3)" strokeWidth="2" fill="none" className="animate-pulse" />
               </svg>
@@ -159,6 +161,7 @@ export default function ElektromagnetischTab({ barDiameter, bewehrungssucherResu
         <div className="mt-4 p-4 bg-shiraz text-white rounded-xl shadow-md relative overflow-hidden">
           <div className="text-sm opacity-90 mb-1"><MdText text={inhalt.texte.berechneteTiefeDesObjekts} /></div>
           <div className="text-3xl font-bold">{formatDeZahl(radarResults.depth, 1)} mm</div>
+          <ErgebnisAnsage text={`Georadar: Tiefe ${formatDeZahl(radarResults.depth, 1)} mm`} />
           <div className="text-xs opacity-75 mt-2">
             Radargeschwindigkeit: {formatDeZahl(radarResults.vRadar, 1)} mm/ns
           </div>
@@ -173,7 +176,7 @@ export default function ElektromagnetischTab({ barDiameter, bewehrungssucherResu
             </div>
             
             {/* Radar Waves (SVG) */}
-            <svg className="absolute inset-0 w-full h-full" viewBox="0 0 100 100" preserveAspectRatio="none">
+            <svg aria-hidden="true" className="absolute inset-0 w-full h-full" viewBox="0 0 100 100" preserveAspectRatio="none">
               <defs>
                 <linearGradient id="radarGrad" x1="0%" y1="0%" x2="0%" y2="100%">
                   <stop offset="0%" stopColor="rgba(37, 99, 235, 0.6)" />

@@ -19,6 +19,7 @@ import {
 } from 'chart.js';
 import inhalt from '@/content/recyclingbeton/Recyclingbeton.json';
 import { MdText } from '@/src/components/inhalt/MdText';
+import { ErgebnisAnsage, ansageWert, kurzzeile } from '@/src/components/ui/ErgebnisAnsage';
 
 ChartJS.register(
   CategoryScale,
@@ -210,6 +211,7 @@ export default function Recyclingbeton() {
           <div className="flex flex-col gap-6">
             <div className={`p-6 rounded-xl shadow-md text-white ${results.isOk ? 'bg-shiraz' : 'bg-red-600'}`}>
               <h3 className="text-sm font-bold uppercase tracking-wider mb-4 opacity-90"><MdText text={inhalt.texte.auswirkungenBewertung} /></h3>
+              <ErgebnisAnsage text={kurzzeile(ansageWert('E-Modul-Reduktion', results.eModulReduktion, 1, '%'), ansageWert('Wasseranspruch mehr', results.wasseranspruchErhoehung, 1, '%'), ansageWert('Schwinden mehr', results.schwindenErhoehung, 1, '%'), ansageWert('Zusatzwasser etwa', results.zusatzWasser, 0, 'Liter/m³'), results.isOk ? 'RC-Anteil zulässig' : 'RC-Anteil zu hoch')} />
               
               <div className="grid grid-cols-2 gap-y-6 gap-x-4 mb-6">
                 <div>
@@ -256,7 +258,7 @@ export default function Recyclingbeton() {
             <div className="bg-white p-5 rounded-xl border border-home-grau/30 shadow-sm mt-6">
               <h3 className="font-semibold mb-4 text-text-main"><MdText text={inhalt.texte.schematischeDarstellungRcKörnung} /></h3>
               <div className="flex flex-col items-center bg-off-white rounded-lg border border-home-grau/30 p-4">
-                <svg width="100%" height="160" viewBox="0 0 450 160">
+                <svg role="img" aria-label="Schematische Darstellung: RC-Körnung Typ 1 und Typ 2" width="100%" height="160" viewBox="0 0 450 160">
                   {/* Typ 1 (Betonsplitt) */}
                   <g transform="translate(100, 80)">
                     <text x="0" y="-60" fontSize="12" fill="#1e293b" textAnchor="middle" fontWeight="bold">Typ 1 (Betonsplitt)</text>

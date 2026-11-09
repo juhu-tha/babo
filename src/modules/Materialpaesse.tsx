@@ -8,6 +8,7 @@ import { InfoTooltip } from '@/src/components/ui/InfoTooltip';
 import inhalt from '@/content/materialpaesse/Materialpaesse.json';
 import { MdText } from '@/src/components/inhalt/MdText';
 import { materialpassBilanz } from '@/src/calc/materialpass';
+import { ErgebnisAnsage, ansageWert, kurzzeile } from '@/src/components/ui/ErgebnisAnsage';
 
 interface BuildingArchetype {
   id: string;
@@ -96,8 +97,8 @@ export default function Materialpaesse() {
 
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 mt-6 font-normal">
           <div className="bg-slate-50 p-5 rounded-xl border border-home-grau/30">
-            <h4 className="font-bold text-shiraz mb-2 flex items-center gap-2 text-sm">
-              <Layers className="w-4 h-4 text-stone-500" /><MdText text={inhalt.texte.zweckEinesMaterialpasses} /></h4>
+            <h3 className="font-bold text-shiraz mb-2 flex items-center gap-2 text-sm wie-h4">
+              <Layers className="w-4 h-4 text-stone-500" /><MdText text={inhalt.texte.zweckEinesMaterialpasses} /></h3>
             <ul className="list-disc pl-5 space-y-1.5 text-xs text-slate-700">
               <li><MdText text={inhalt.texte.ressourcentransparenzLückenloseDokumenta} /></li>
               <li><MdText text={inhalt.texte.zirkuläresPotenzialGenaueAngabe} /></li>
@@ -107,8 +108,8 @@ export default function Materialpaesse() {
           </div>
           
           <div className="bg-slate-50 p-5 rounded-xl border border-home-grau/30">
-            <h4 className="font-bold text-shiraz mb-2 flex items-center gap-2 text-sm">
-              <RefreshCw className="w-4 h-4 text-emerald-600 animate-spin" style={{ animationDuration: '6s' }} /><MdText text={inhalt.texte.dieMadasterPlattform} /></h4>
+            <h3 className="font-bold text-shiraz mb-2 flex items-center gap-2 text-sm wie-h4">
+              <RefreshCw className="w-4 h-4 text-emerald-600 animate-spin" style={{ animationDuration: '6s' }} /><MdText text={inhalt.texte.dieMadasterPlattform} /></h3>
             <ul className="list-disc pl-5 space-y-1.5 text-xs text-slate-700">
               <li><MdText text={inhalt.texte.einGebäudeWirdAls} /></li>
               <li><MdText text={inhalt.texte.dasPortalBerechnetDen} /></li>
@@ -118,8 +119,8 @@ export default function Materialpaesse() {
           </div>
 
           <div className="bg-slate-50 p-5 rounded-xl border border-home-grau/30">
-            <h4 className="font-bold text-shiraz mb-2 flex items-center gap-2 text-sm">
-              <Award className="w-4 h-4 text-purple-600" /><MdText text={inhalt.texte.dgnbGebäuderessourcenpass} /></h4>
+            <h3 className="font-bold text-shiraz mb-2 flex items-center gap-2 text-sm wie-h4">
+              <Award className="w-4 h-4 text-purple-600" /><MdText text={inhalt.texte.dgnbGebäuderessourcenpass} /></h3>
             <ul className="list-disc pl-5 space-y-1.5 text-xs text-slate-700">
               <li><MdText text={inhalt.texte.steckbriefVorgabenOrientiertAm} /></li>
               <li><MdText text={inhalt.texte.massenBilanzierungGenaueAufteilung} /></li>
@@ -245,6 +246,7 @@ export default function Materialpaesse() {
                   </h4>
                 </div>
 
+                <ErgebnisAnsage text={kurzzeile(ansageWert('Kreislauffähigkeit', circularityIndex, 'frei', '%'), ansageWert('Gesamtmasse', totalWeightTons, 'frei', 't'), ansageWert('Restwert', totalResidualValue, 0, '€'), ansageWert('biogener CO₂-Speicher', carbonStoredTons, 'frei', 't'))} />
                 <div className="my-4 flex items-baseline gap-2">
                   <span className={`text-4xl md:text-5xl font-black ${
                     circularityIndex > 70 ? 'text-emerald-600' : circularityIndex > 40 ? 'text-amber-500' : 'text-red-500'

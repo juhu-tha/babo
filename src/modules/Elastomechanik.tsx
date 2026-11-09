@@ -589,7 +589,7 @@ export default function Elastomechanik({ embedMode = false }: ElastomechanikProp
                   <span className="absolute right-2 bottom-1 text-[8px] font-bold text-slate-500 font-mono select-none">ε (‰)</span>
 
                   {/* Reactive plotting slope representation line */}
-                  <svg className="absolute left-10 top-2 right-2 bottom-6 w-[calc(100%-3rem)] h-[calc(100%-2rem)]" overflow="visible">
+                  <svg role="img" aria-label="Spannungs-Dehnungs-Linie im Hookeschen Bereich" className="absolute left-10 top-2 right-2 bottom-6 w-[calc(100%-3rem)] h-[calc(100%-2rem)]" overflow="visible">
                     {/* Active material linear elastic line slope */}
                     {/* Max length calculations: we can map the active preset Emodul to slope */}
                     {(() => {

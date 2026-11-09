@@ -234,7 +234,7 @@ export default function TransportbetonLcaUebung() {
               className="text-left p-3.5 rounded-xl border border-home-grau/25 hover:border-shiraz/50 hover:bg-off-white transition-all cursor-pointer bg-slate-50/50 flex flex-col justify-between"
             >
               <div>
-                <h5 className="font-bold text-xs text-text-main leading-tight">{p.name}</h5>
+                <h4 className="font-bold text-xs text-text-main leading-tight wie-h5">{p.name}</h4>
                 <p className="text-xxs text-text-main/70 mt-1 leading-relaxed">{p.description}</p>
               </div>
               <span className="text-[10px] text-shiraz font-bold mt-2 inline-flex items-center gap-1"><MdText text={inhalt.texte.presetLaden} /><ArrowRight size={11} />

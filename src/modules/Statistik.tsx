@@ -29,6 +29,7 @@ import { ModuleTabs } from '@/src/components/ui/ModuleTabs';
 import { normalCDF, normalPDF, stichprobe, statistikAuswertung, type StatistikMaterial, type AusreisserMethode } from '@/src/calc/statistik';
 import { AuswahlGruppe, alsOption } from '../components/ui/Auswahlgruppe';
 import { EcKennwerteVerweis } from '@/src/components/ui/EcKennwerteVerweis';
+import { ErgebnisAnsage, ansageWert, kurzzeile } from '@/src/components/ui/ErgebnisAnsage';
 
 ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, BarElement, Title, Tooltip, Legend);
 
@@ -471,7 +472,7 @@ export default function Statistik() {
               <span className="text-[9.5px] font-semibold text-text-main/60 italic font-mono select-none"><MdText text={inhalt.texte.klickenZiehenSieDie} /></span>
             </div>
             <div className="w-full max-w-[500px] aspect-[500/145] relative">
-              <svg
+              <svg role="group" aria-label="Interaktives Diagramm der Baustoff-Prüfsandbox"
                 ref={svgRef}
                 viewBox="0 0 500 145"
                 className="w-full h-full overflow-visible touch-none select-none"
@@ -857,6 +858,7 @@ export default function Statistik() {
         {/* Live-Rechenweg (AP 3.7) mit der aktuellen interaktiven Messreihe */}
         <FormulaDerivationBox
           live
+          kurzzeile={kurzzeile(`${formatDeZahl(intStats.n, 0)} Messwerte`, ansageWert('Mittelwert', intStats.mean, 2, 'MPa'), ansageWert('Median', intStats.median, 2, 'MPa'), ansageWert('Standardabweichung', intStats.stdDev, 2, 'MPa'), ansageWert('Variationskoeffizient', intStats.cv, 1, '%'))}
           title={`Ihr Rechenweg: Kennwerte Ihrer ${formatDeZahl(intStats.n, 0)} Messwerte`}
           zielGleichung="\bar{x} = \frac{1}{n}\sum x_i, \quad s = \sqrt{\frac{\sum (x_i - \bar{x})^2}{n-1}}, \quad V = \frac{s}{\bar{x}}"
           schritte={[
@@ -1028,6 +1030,7 @@ export default function Statistik() {
             )}
 
             <div className="flex-1 flex flex-col">
+              <ErgebnisAnsage text={testStatus === 'finished' && stats ? kurzzeile(ansageWert('Bereinigter Mittelwert', stats.meanClean, 1, 'MPa'), `n = ${formatDeZahl(stats.nClean, 0)}`, ansageWert('charakteristischer Wert X_k', stats.xk, 1, 'MPa'), ansageWert('Bemessungswert X_d', stats.xd, 1, 'MPa'), `${formatDeZahl(stats.outliers.length, 0)} Ausreißer`) : ''} />
               {testStatus === 'idle' ? (
                 <div className="flex-1 flex flex-col items-center justify-center text-home-grau">
                   <Calculator size={64} className="mb-4 opacity-20" />

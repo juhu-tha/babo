@@ -21,6 +21,9 @@ function woerterQuelle(code: string, datei: string): number {
   const besuche = (k: ts.Node): void => {
     if (ts.isImportDeclaration(k) || ts.isExportDeclaration(k)) return;
     if (ts.isJsxAttribute(k) && OHNE_TEXT_ATTRIBUTE.has(k.name.getText(sf))) return;
+    // Screenreader-Kurzzeilen (Kurzzeilen 04.11.2026) sind kein sichtbarer Fließtext
+    if (ts.isJsxSelfClosingElement(k) && k.tagName.getText(sf) === 'ErgebnisAnsage') return;
+    if (ts.isJsxAttribute(k) && k.name.getText(sf) === 'kurzzeile') return;
     if (ts.isCallExpression(k) && /^(import|require)$/.test(k.expression.getText(sf))) return;
     if (ts.isJsxText(k)) n += zaehleText(k.text);
     else if (ts.isStringLiteral(k) || ts.isNoSubstitutionTemplateLiteral(k)) { if (/\s/.test(k.text.trim())) n += zaehleText(k.text); }
@@ -267,6 +270,9 @@ export function ansichtWoerter(id: string, root = process.cwd()): Ansicht {
     const besuche = (k: ts.Node): void => {
       if (ts.isImportDeclaration(k) || ts.isExportDeclaration(k) || ts.isTypeAliasDeclaration(k) || ts.isInterfaceDeclaration(k) || ts.isJsxClosingElement(k)) return;
       if (ts.isJsxAttribute(k) && OHNE_TEXT_ATTRIBUTE.has(k.name.getText(sf))) return;
+      // Screenreader-Kurzzeilen (Kurzzeilen 04.11.2026) sind kein sichtbarer Fließtext
+      if (ts.isJsxSelfClosingElement(k) && k.tagName.getText(sf) === 'ErgebnisAnsage') return;
+      if (ts.isJsxAttribute(k) && k.name.getText(sf) === 'kurzzeile') return;
       if (ts.isCallExpression(k) && /^(import|require|React\.lazy)$/.test(k.expression.getText(sf))) return;
       if (ts.isBinaryExpression(k) && k.operatorToken.kind === ts.SyntaxKind.AmpersandAmpersandToken) {
         const g = pruefe(k.left);

@@ -5,6 +5,7 @@ import { Calculator, Train } from 'lucide-react';
 import inhalt from '@/content/bpverkehrswegebau/BahnbauTab.json';
 import { MdText } from '@/src/components/inhalt/MdText';
 import { schienenTemperatur, type GleisStatus } from '@/src/calc/verkehrswegebau';
+import { ErgebnisAnsage, ansageWert, kurzzeile } from '@/src/components/ui/ErgebnisAnsage';
 
 export interface BahnbauTabProps {
   bettungstyp: 'schotter_mager' | 'schotter_gut' | 'feste_fahrbahn';
@@ -27,12 +28,12 @@ export default function BahnbauTab({ bettungstyp, neutralTemp, schieneTemp, setB
           
           <div className="space-y-4 text-xs text-text-main/75 leading-relaxed">
             <div>
-              <h5 className="font-extrabold text-[#A3113E] text-xs uppercase font-mono mb-1"><MdText text={inhalt.texte.gleisschotterDinEn13450} /></h5>
+              <h4 className="font-extrabold text-[#A3113E] text-xs uppercase font-mono mb-1 wie-h5"><MdText text={inhalt.texte.gleisschotterDinEn13450} /></h4>
               <p><MdText text={inhalt.texte.derKlassischeSchotteroberbauVerteilt} /></p>
             </div>
 
             <div>
-              <h5 className="font-extrabold text-[#A3113E] text-xs uppercase font-mono mb-1"><MdText text={inhalt.texte.festeFahrbahnSlabTrack} /></h5>
+              <h4 className="font-extrabold text-[#A3113E] text-xs uppercase font-mono mb-1 wie-h5"><MdText text={inhalt.texte.festeFahrbahnSlabTrack} /></h4>
               <p><MdText text={inhalt.texte.aufHochgeschwindigkeitsstreckenWirdHäufi} /></p>
               <ul className="list-disc pl-4 mt-1.5 space-y-1 text-[11px]">
                 <li><MdText text={inhalt.texte.vorteilHoheLagestabilitätUnd} /></li>
@@ -41,7 +42,7 @@ export default function BahnbauTab({ bettungstyp, neutralTemp, schieneTemp, setB
             </div>
 
             <div className="bg-zinc-50 p-3 rounded-lg border border-zinc-200">
-              <h5 className="font-bold text-zinc-800 text-xs mb-1"><MdText text={inhalt.texte.uic60Schienenprofil} /></h5>
+              <h4 className="font-bold text-zinc-800 text-xs mb-1 wie-h5"><MdText text={inhalt.texte.uic60Schienenprofil} /></h4>
               <p className="text-[11px]"><MdText text={inhalt.texte.dasSchienenprofilUic60} /></p>
             </div>
           </div>
@@ -125,6 +126,7 @@ export default function BahnbauTab({ bettungstyp, neutralTemp, schieneTemp, setB
 
               return (
                 <div className="p-4 bg-zinc-50 border border-zinc-200 rounded-lg space-y-3 mt-4 text-xs">
+                  <ErgebnisAnsage text={kurzzeile(ansageWert('Eigenspannung', sigma_T, 2, `MPa${!Number.isFinite(sigma_T) ? '' : sigma_T >= 0 ? ' Druck' : ' Zug'}`), ansageWert('Längskraft je Schiene', force_per_rail_kN, 1, 'kN'), statusMsg)} />
                   <div className="grid grid-cols-2 font-mono gap-y-1">
                     <div className="text-zinc-500 font-bold"><MdText text={inhalt.texte.temperaturdifferenzT} /></div>
                     <div className="text-right font-extrabold text-zinc-900">{deltaT > 0 ? `+${formatDeWert(deltaT)}` : formatDeWert(deltaT)} K</div>

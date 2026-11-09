@@ -19,7 +19,7 @@ export default function TrTab() {
       {/* Historisch: Instandsetzungsprinzipien der DAfStb-Rili-SIB (2001) */}
       <div className="bg-white p-6 rounded-xl shadow-sm border border-home-grau/30 flex flex-col items-center justify-center">
         <h3 className="text-sm font-bold text-text-main mb-6 self-start"><MdText text={inhalt.texte.historischInstandsetzungsprinzipienDerDa} /></h3>
-        <svg width="100%" height="250" viewBox="0 0 800 250" className="max-w-3xl">
+        <svg role="img" aria-label="Historisch: Instandsetzungsprinzipien der DAfStb-Richtlinie (2001)" width="100%" height="250" viewBox="0 0 800 250" className="max-w-3xl">
           <defs>
             <pattern id="concrete-tr" patternUnits="userSpaceOnUse" width="20" height="20">
               <circle cx="4" cy="4" r="1.5" fill="#cbd5e1" />

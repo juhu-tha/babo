@@ -31,6 +31,7 @@ import { CalculatorDisclaimerBanner } from '@/src/components/ui/CalculatorDiscla
 import { NachErstemBild } from '@/src/components/ui/NachErstemBild';
 import inhalt from '@/content/bauphysik/Bauphysik.json';
 import { MdText } from '@/src/components/inhalt/MdText';
+import { ErgebnisAnsage } from '@/src/components/ui/ErgebnisAnsage';
 import { ModuleTabs, type ModulTab } from '@/src/components/ui/ModuleTabs';
 
 // Detailed material library with density, lambda, moisture resistance factor (mu) and specific heat capacity (c in J/kgK)
@@ -683,6 +684,8 @@ export default function Bauphysik() {
                   const t_si = Te + f_RSi * (Ti - Te);
                   const is_f_RSi_compliant = f_RSi >= 0.70;
                   return (
+                    <>
+                    <ErgebnisAnsage text={`Innenoberflächentemperatur ${formatDeZahl(t_si, 1)} °C, f_Rsi ${formatDeZahl(f_RSi, 2)}, ${is_f_RSi_compliant ? 'schimmelsicher' : 'Schimmelgefahr'}`} />
                     <div className={`p-4 rounded-xl border ${is_f_RSi_compliant ? 'bg-emerald-50/40 border-emerald-150 text-emerald-950' : 'bg-red-50/40 border-red-150 text-red-950'}`}>
                       <div className="flex items-center justify-between mb-1.5">
                         <span className="text-[10px] font-extrabold uppercase tracking-wider text-slate-400 block">Schimmelpilzkriterium</span>
@@ -711,6 +714,7 @@ export default function Bauphysik() {
                         </div>
                       </div>
                     </div>
+                    </>
                   );
                 })()}
 

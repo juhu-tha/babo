@@ -23,6 +23,7 @@ import { GMODG_ANLAGE7, savings, dRequired, CO2_ERDGAS, type Bauteil, type FxBau
 import inhalt from '@/content/modernisierung/Modernisierung.json';
 import { MdText } from '@/src/components/inhalt/MdText';
 import { ModuleTabs, type ModulTab } from '@/src/components/ui/ModuleTabs';
+import { ansageWert, kurzzeile } from '@/src/components/ui/ErgebnisAnsage';
 
 type TabKey = 'begriffe' | 'nachruestpflichten' | 'bauphysik' | 'gebaeudetechnik' | 'isfp';
 
@@ -645,6 +646,7 @@ export default function Modernisierung() {
                 {/* Live-Rechenweg (AP 3.7) mit den aktuellen Simulator-Eingaben */}
                 <FormulaDerivationBox
                   live
+                  kurzzeile={kurzzeile(ansageWert('neuer U-Wert', simResults.newU, 3, 'W/(m²K)'), simResults.isCompliant ? 'Anforderung erfüllt' : 'Anforderung nicht erfüllt', ansageWert('Kostenersparnis', simResults.annualEuroSaved, 0, '€/a'), ansageWert('Amortisation etwa', simResults.amortizationYears, 1, 'Jahre'))}
                   title={inhalt.werte.ihrRechenwegEinsparungUnd}
                   zielGleichung="t_A = \frac{K_{\text{Mehr}}}{\Delta U \cdot A \cdot F_x \cdot G_t \cdot 24/1000 \,/\, \eta \cdot p}"
                   schritte={[

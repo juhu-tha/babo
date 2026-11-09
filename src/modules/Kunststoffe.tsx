@@ -28,6 +28,7 @@ import { MdText } from '@/src/components/inhalt/MdText';
 import { ModuleTabs, type ModulTab } from '@/src/components/ui/ModuleTabs';
 import { kunststoffTemperatur } from '@/src/calc/werkstoffmodelle';
 import { EingabeHinweise } from '@/src/components/ui/EingabeHinweise';
+import { ErgebnisAnsage } from '@/src/components/ui/ErgebnisAnsage';
 
 ChartJS.register(
   CategoryScale,
@@ -277,6 +278,7 @@ export default function Kunststoffe() {
               onChange={(e) => setTemperature(Number(e.target.value))}
             />
             <EingabeHinweise hinweise={modell.hinweise} />
+            <ErgebnisAnsage text={`${plasticType}: E-Modul bei ${formatDeWert(temperature)} °C ${Number.isFinite(modell.E) ? (modell.E < 1 ? 'unter 1 MPa' : `${formatDeZahl(modell.E, 0)} MPa`) : '–'}`} />
 
             <div className="mt-4 p-4 bg-shiraz text-white rounded-xl shadow-md">
               <div className="text-sm opacity-90 mb-1"><MdText text={inhalt.texte.aktuellerEModul} /></div>
@@ -307,7 +309,7 @@ export default function Kunststoffe() {
           <div className="bg-white p-5 rounded-xl border border-home-grau/30 shadow-sm">
             <h3 className="font-semibold mb-4 text-text-main"><MdText text={inhalt.texte.schematischeDarstellungPolymerstrukturen} /></h3>
             <div className="flex flex-col items-center bg-off-white rounded-lg border border-home-grau/30 p-4">
-              <svg width="100%" height="160" viewBox="0 0 350 160">
+              <svg role="img" aria-label="Schematische Darstellung: Polymerstrukturen" width="100%" height="160" viewBox="0 0 350 160">
                 {/* Amorph */}
                 <text x="50" y="20" fontSize="10" fill="#1e293b" textAnchor="middle" fontWeight="bold">Amorph</text>
                 <path d="M 20 50 Q 40 30 60 70 T 80 50" fill="none" stroke="#3b82f6" strokeWidth="2" />

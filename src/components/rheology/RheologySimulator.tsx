@@ -32,15 +32,15 @@ const LOADS: { key: LoadKey; label: string; title: string; icon: React.ReactNode
   { key: 'kriechen', label: 'Kriechen', title: 'σ = σ0 von 1 bis 5 s, danach Rückkriechen',
     icon: <div className="w-8 h-4 border-t-2 border-r-2 border-l-2 border-b-0 mb-2 border-current" /> },
   { key: 'relaxieren', label: 'Relaxieren', title: 'ε = ε0 von 1 bis 7 s, danach ε = 0',
-    icon: <svg width="32" height="16" viewBox="0 0 32 16" className="mb-2 fill-none stroke-current" strokeWidth="2"><path d="M 0 16 L 4 16 L 4 2 Q 12 4 24 12 L 28 16 L 32 16" /></svg> },
+    icon: <svg aria-hidden="true" width="32" height="16" viewBox="0 0 32 16" className="mb-2 fill-none stroke-current" strokeWidth="2"><path d="M 0 16 L 4 16 L 4 2 Q 12 4 24 12 L 28 16 L 32 16" /></svg> },
   { key: 'dreieck', label: 'Dreieck', title: 'Dreieckförmige Be- und Entlastung (1–5 s)',
-    icon: <svg width="32" height="16" viewBox="0 0 32 16" className="mb-2 fill-none stroke-current" strokeWidth="2" strokeLinejoin="round"><path d="M 0 16 L 16 2 L 32 16" /></svg> },
+    icon: <svg aria-hidden="true" width="32" height="16" viewBox="0 0 32 16" className="mb-2 fill-none stroke-current" strokeWidth="2" strokeLinejoin="round"><path d="M 0 16 L 16 2 L 32 16" /></svg> },
   { key: 'sinus', label: 'Zyklisch', title: 'Zwei Sinuszyklen (T = 4 s) zwischen −Amplitude und +Amplitude',
-    icon: <svg width="32" height="16" viewBox="0 0 32 16" className="mb-2 fill-none stroke-current" strokeWidth="2"><path d="M 0 16 Q 8 2 16 9 T 32 0" /></svg> },
+    icon: <svg aria-hidden="true" width="32" height="16" viewBox="0 0 32 16" className="mb-2 fill-none stroke-current" strokeWidth="2"><path d="M 0 16 Q 8 2 16 9 T 32 0" /></svg> },
   { key: 'stufenweise', label: 'Stufen', title: 'Stufen 1/3 – 2/3 – 1 – 1/2 – 0 der Amplitude (bei 1, 3, 5, 7, 9 s)',
-    icon: <svg width="32" height="16" viewBox="0 0 32 16" className="mb-2 fill-none stroke-current" strokeWidth="2" strokeLinejoin="round"><path d="M 0 16 L 0 10 L 10 10 L 10 4 L 20 4 L 20 12 L 30 12 L 30 16" /></svg> },
+    icon: <svg aria-hidden="true" width="32" height="16" viewBox="0 0 32 16" className="mb-2 fill-none stroke-current" strokeWidth="2" strokeLinejoin="round"><path d="M 0 16 L 0 10 L 10 10 L 10 4 L 20 4 L 20 12 L 30 12 L 30 16" /></svg> },
   { key: 'impuls', label: 'Impuls', title: 'Drei Rechteckimpulse von je 0,5 s (bei 1, 4, 7 s)',
-    icon: <svg width="32" height="16" viewBox="0 0 32 16" className="mb-2 fill-none stroke-current" strokeWidth="2" strokeLinejoin="round"><path d="M 0 16 L 4 16 L 4 4 L 8 4 L 8 16 L 16 16 L 16 4 L 20 4 L 20 16 L 32 16" /></svg> },
+    icon: <svg aria-hidden="true" width="32" height="16" viewBox="0 0 32 16" className="mb-2 fill-none stroke-current" strokeWidth="2" strokeLinejoin="round"><path d="M 0 16 L 4 16 L 4 4 L 8 4 L 8 16 L 16 16 L 16 4 L 20 4 L 20 16 L 32 16" /></svg> },
 ];
 
 /** Zeitpunkte der Lastsprünge je Lastfall (für das Ausblenden von Spannungsspitzen). */

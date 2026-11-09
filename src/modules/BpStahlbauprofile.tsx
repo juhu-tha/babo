@@ -9,6 +9,7 @@ import { Layers, Calculator, Info, CheckCircle, AlertTriangle } from 'lucide-rea
 import { InnovationPraxisSection } from '@/src/components/ui/InnovationPraxisSection';
 import inhalt from '@/content/bpstahlbauprofile/BpStahlbauprofile.json';
 import { MdText } from '@/src/components/inhalt/MdText';
+import { ErgebnisAnsage, ansageWert, kurzzeile } from '@/src/components/ui/ErgebnisAnsage';
 
 interface ProfileData {
   name: string;
@@ -339,7 +340,7 @@ export default function BpStahlbauprofile() {
                     if (profileSeries === 'UPN') {
                       // Draw UPN profile shape
                       return (
-                        <svg width="170" height="170" viewBox="0 0 170 170" className="overflow-visible">
+                        <svg role="img" aria-label="Querschnitt UPN-Profil" width="170" height="170" viewBox="0 0 170 170" className="overflow-visible">
                           {/* Profile boundary path */}
                           <path
                             d={`
@@ -367,7 +368,7 @@ export default function BpStahlbauprofile() {
                     } else {
                       // Draw I-Profile (IPE, HEA, HEB, HEM)
                       return (
-                        <svg width="170" height="170" viewBox="0 0 170 170" className="overflow-visible">
+                        <svg role="img" aria-label={`Querschnitt ${profileSeries}-Profil`} width="170" height="170" viewBox="0 0 170 170" className="overflow-visible">
                           {/* Upper Flange */}
                           <rect
                             x={85 - b_sc/2}
@@ -519,6 +520,7 @@ export default function BpStahlbauprofile() {
                     </div>
                   </div>
 
+                  <ErgebnisAnsage text={kurzzeile(ansageWert('Randspannung σ_Ed', totalStress, 1, 'N/mm²'), ansageWert('f_yd', fyd, 1, 'N/mm²'), ansageWert('Ausnutzung', utilization, 1, '%'), Number.isFinite(utilization) && (utilization <= 100 ? 'Nachweis erfüllt' : 'Nachweis nicht erfüllt'))} />
                   {/* Verbal verification result indicator */}
                   <div className={`p-3 rounded-lg flex items-start gap-2.5 text-xs leading-snug ${
                     utilization <= 100

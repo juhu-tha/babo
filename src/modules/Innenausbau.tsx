@@ -29,6 +29,7 @@ import inhalt from '@/content/innenausbau/Innenausbau.json';
 import { MdText } from '@/src/components/inhalt/MdText';
 import { ModuleTabs, type ModulTab } from '@/src/components/ui/ModuleTabs';
 import { AuswahlGruppe, alsOption } from '../components/ui/Auswahlgruppe';
+import { ErgebnisAnsage } from '@/src/components/ui/ErgebnisAnsage';
 
 interface AusbauToolItem {
   id: string;
@@ -701,6 +702,8 @@ export default function Innenausbau() {
                     max="4.0"
                     step="0.1"
                     value={gemessenerCM}
+                    aria-label="Gemessener CM-Wert"
+                    aria-valuetext={`${formatDeZahl(gemessenerCM, 1)} CM-%`}
                     onChange={(e) => setGemessenerCM(parseFloat(e.target.value))}
                     className="w-full accent-shiraz cursor-pointer"
                   />
@@ -741,6 +744,7 @@ export default function Innenausbau() {
                     </div>
                   </div>
 
+                  <ErgebnisAnsage text={`${istBelegreif ? inhalt.werte.estrichIstBelegreif : inhalt.werte.achtungNochNichtBelegreif}: ${formatDeZahl(gemessenerCM, 1)} CM-% bei Richtwert ${formatDeZahl(cmGrenzwert, 1)} CM-%`} />
                   <div className="grid grid-cols-2 gap-3 text-xs font-mono">
                     <div className="p-3 bg-white rounded-lg border border-home-grau/20">
                       <span className="text-slate-500 text-[10px] block"><MdText text={inhalt.texte.zulässigerGrenzwert} /></span>

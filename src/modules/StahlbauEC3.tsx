@@ -19,6 +19,7 @@ import {
 import inhalt from '@/content/stahlbauec3/StahlbauEC3.json';
 import { MdText } from '@/src/components/inhalt/MdText';
 import { EcKennwerteVerweis } from '@/src/components/ui/EcKennwerteVerweis';
+import { ansageWert, kurzzeile } from '@/src/components/ui/ErgebnisAnsage';
 
 ChartJS.register(LinearScale, PointElement, LineElement, Tooltip, Legend);
 
@@ -350,7 +351,7 @@ export default function StahlbauEC3() {
                       </tbody>
                     </table>
                   </div>
-                  <div className={`mt-4 p-4 rounded-xl border text-sm ${ok ? 'bg-emerald-50 border-emerald-200 text-emerald-950' : 'bg-red-50 border-red-200 text-red-950'}`} role="status">
+                  <div className={`mt-4 p-4 rounded-xl border text-sm ${ok ? 'bg-emerald-50 border-emerald-200 text-emerald-950' : 'bg-red-50 border-red-200 text-red-950'}`}>
                     <strong>{ok ? inhalt.werte.nachweisErfüllt : inhalt.werte.nachweisNichtErfüllt}:</strong><MdText text={inhalt.texte.nEdNB} />{formatDeZahl(nEd, 0)}/{formatDeZahl(r.NRd, 1)} = <strong>{formatDeZahl(r.ausnutzung, 2)}</strong>
                     {' '}({formatDeZahl(r.ausnutzung * 100, 0)}<MdText text={inhalt.texte.ausnutzungMaßgebendAchse} />{r.massgebend}–{r.massgebend}{r.vernachlaessigbar ? inhalt.werte.querschnittMassgebendNcRd : ""})
                   </div>
@@ -376,6 +377,7 @@ export default function StahlbauEC3() {
 
                 <FormulaDerivationBox
                   live
+                  kurzzeile={kurzzeile(`${p.name}, ${guete}`, ansageWert('N_b,Rd', r.NbRd, 1, 'kN'), ansageWert('Ausnutzung', r.ausnutzung * 100, 0, '%'), `maßgebend Achse ${r.massgebend}`, ok ? inhalt.werte.nachweisErfüllt : inhalt.werte.nachweisNichtErfüllt)}
                   title={`Ihr Rechenweg: Biegeknicken ${p.name}, ${guete}, Achse ${r.massgebend}–${r.massgebend}`}
                   zielGleichung={`N_{b,Rd} = \\frac{\\chi \\cdot A \\cdot f_y}{\\gamma_{M1}} = ${tex(r.NbRd, 1)}\\,\\text{kN}`}
                   schritte={[

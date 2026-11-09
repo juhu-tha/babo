@@ -13,6 +13,7 @@ import { ModulTest } from '@/src/components/quiz/ModulTest';
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
 import inhalt from '@/content/schnellkarbonatisierung/Schnellkarbonatisierung.json';
 import { MdText } from '@/src/components/inhalt/MdText';
+import { ansageWert, kurzzeile } from '@/src/components/ui/ErgebnisAnsage';
 
 type Reiter = 'grundlagen' | 'pruefung' | 'auswertung' | 'rechner' | 'grenzen';
 
@@ -328,6 +329,7 @@ export default function Schnellkarbonatisierung() {
 
                   <FormulaDerivationBox
                     live
+                    kurzzeile={erg.gueltig ? kurzzeile(ansageWert('K_AC', erg.kAC, 3, 'mm/√d'), ansageWert('K_nat', erg.kNat, 2, 'mm/√a'), ansageWert(`Front nach ${formatDeZahl(nutzung, 0)} Jahren`, erg.xNutzung, 1, 'mm'), erg.ausreichend ? 'Deckung ausreichend' : 'Deckung nicht ausreichend') : 'K_AC –'}
                     title={inhalt.werte.ihrRechenwegKAc}
                     zielGleichung="d_k = a + K_{AC} \cdot \sqrt{t} \;\Rightarrow\; K_{nat} = K_{AC} \cdot \sqrt{c_{nat}/c_{acc}} \cdot \sqrt{365}"
                     schritte={[

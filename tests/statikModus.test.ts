@@ -52,7 +52,7 @@ const k = leseKonfig() as Record<string, unknown>;
 const bau = String(k.buildCommand ?? '');
 pruefe(/^BB_STATISCH=1 npm run build && /.test(bau), 'vercel.json: Build mit BB_STATISCH=1 über npm run build');
 pruefe(/&& rm -f dist\/server\.cjs(\s|&|$)/.test(bau), 'vercel.json: dist/server.cjs wird vor der Veröffentlichung entfernt');
-pruefe(/&& cp dist\/index\.html dist\/404\.html$/.test(bau), 'vercel.json: 404.html (App mit Status 404) für unbekannte Adressen');
+pruefe(/&& node scripts\/seite404\.mjs$/.test(bau), 'vercel.json: 404.html (App mit Hinweis „Seite nicht gefunden“, Status 404) für unbekannte Adressen');
 pruefe(k.outputDirectory === 'dist' && k.framework === 'vite', 'vercel.json: Ausgabeordner dist, Vite');
 pruefe(!fs.existsSync('.vercelignore') || !/server/.test(lies('.vercelignore')), '.vercelignore wirkt nicht auf Build-Ausgaben – nicht als Schutz verwenden');
 

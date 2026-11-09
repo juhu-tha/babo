@@ -26,6 +26,7 @@ import { PraxisTabContent, InnovationTabContent } from '@/src/components/ui/Inno
 import inhalt from '@/content/bpkunststoffe/BpKunststoffe.json';
 import { MdText } from '@/src/components/inhalt/MdText';
 import { ModuleTabs } from '@/src/components/ui/ModuleTabs';
+import { ErgebnisAnsage, ansageWert, kurzzeile } from '@/src/components/ui/ErgebnisAnsage';
 
 interface PlasticType {
   id: string;
@@ -576,7 +577,7 @@ export default function BpKunststoffe() {
             <h4 className="font-extrabold text-sm text-slate-800"><MdText text={inhalt.texte.rheologischerModellaufbau} /></h4>
             <div className="flex flex-col md:flex-row gap-6 items-center bg-slate-50 p-4 rounded-xl border border-slate-200">
               <div className="w-full md:w-1/3 flex justify-center py-2">
-                <svg width="220" height="150" viewBox="0 0 220 150" className="opacity-90">
+                <svg role="img" aria-label="Rheologischer Modellaufbau" width="220" height="150" viewBox="0 0 220 150" className="opacity-90">
                   {/* Outer Frame */}
                   <line x1="110" y1="10" x2="110" y2="25" stroke="#475569" strokeWidth="2" />
                   
@@ -738,6 +739,7 @@ export default function BpKunststoffe() {
                   </div>
                 </div>
 
+                <ErgebnisAnsage text={kurzzeile(ansageWert('Gesamtdehnung', strainTotal, 3, '%'), ansageWert('davon Kriechverformung', strainViscous, 3, '%'))} />
                 {/* Total results callout block */}
                 <div className="bg-white p-4 rounded-xl border border-slate-300 mt-4 flex flex-col justify-between sm:flex-row items-center gap-4">
                   <div className="text-center sm:text-left">
@@ -998,6 +1000,7 @@ export default function BpKunststoffe() {
                 <span className="text-xs font-bold text-slate-700 uppercase block mb-3"><MdText text={inhalt.texte.berechneteLängenänderungLL} /></span>
                 
                 <div className="space-y-3 font-mono text-xs">
+                  <ErgebnisAnsage text={kurzzeile(`${compObj.short}: ${ansageWert('Längenänderung', elongationPlastic, 2, 'mm')}`, ansageWert('Stahl', elongationSteel, 2, 'mm'), ansageWert('Beton', elongationConcrete, 2, 'mm'))} />
                   {/* comparative Plastic Bar */}
                   <div>
                     <div className="flex justify-between mb-0.5 text-slate-800">

@@ -10,6 +10,7 @@ import { MdText } from '@/src/components/inhalt/MdText';
 import { ModuleTabs } from '@/src/components/ui/ModuleTabs';
 import { EINHEITEN, GROESSENARTEN, LITER, umrechnung, type Groessenart } from '@/src/calc/einheiten';
 import { EingabeHinweise } from '@/src/components/ui/EingabeHinweise';
+import { ErgebnisAnsage } from '@/src/components/ui/ErgebnisAnsage';
 
 type UnitCategory = Groessenart;
 
@@ -297,6 +298,7 @@ export default function Einheiten() {
               </div>
             </div>
             <EingabeHinweise hinweise={ergebnis.hinweise} />
+            <ErgebnisAnsage text={`${formatDeIntl(inputValue)} ${anzeige(fromUnit)} = ${ergebnis.gueltig ? `${formatErgebnis(ergebnis.wert)} ${anzeige(toUnit)}` : '–'}`} />
           </div>
         </div>
       )}

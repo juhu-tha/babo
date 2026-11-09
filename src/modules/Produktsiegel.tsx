@@ -163,7 +163,7 @@ export default function Produktsiegel() {
               </div>
               <div>
                 <a href="https://www.blauer-engel.de/" target="_blank" rel="noopener noreferrer" className="hover:underline text-blue-700">
-                  <h4 className="font-bold text-base mb-1"><MdText text={inhalt.texte.blauerEngel} /><span className="text-xs font-mono text-slate-400 font-normal ml-1">(Typ I)</span></h4>
+                  <h3 className="font-bold text-base mb-1 wie-h4"><MdText text={inhalt.texte.blauerEngel} /><span className="text-xs font-mono text-slate-400 font-normal ml-1">(Typ I)</span></h3>
                 </a>
                 <p className="text-xs text-slate-500"><MdText text={inhalt.texte.dasÄltesteUmweltzeichenDer} /></p>
               </div>
@@ -175,7 +175,7 @@ export default function Produktsiegel() {
               </div>
               <div>
                 <a href="https://c2ccertified.org/" target="_blank" rel="noopener noreferrer" className="hover:underline text-emerald-600">
-                  <h4 className="font-bold text-base mb-1"><MdText text={inhalt.texte.cradleToCradleC2c} /><span className="text-xs font-mono text-slate-400 font-normal ml-1"><MdText text={inhalt.texte.typIArtig} /></span></h4>
+                  <h3 className="font-bold text-base mb-1 wie-h4"><MdText text={inhalt.texte.cradleToCradleC2c} /><span className="text-xs font-mono text-slate-400 font-normal ml-1"><MdText text={inhalt.texte.typIArtig} /></span></h3>
                 </a>
                 <p className="text-xs text-slate-500"><MdText text={inhalt.texte.bewertetDieKreislauffähigkeitVon} /></p>
               </div>
@@ -186,9 +186,9 @@ export default function Produktsiegel() {
                 <Trees size={24} />
               </div>
               <div>
-                <h4 className="font-bold text-slate-900 text-base mb-1">
+                <h3 className="font-bold text-slate-900 text-base mb-1 wie-h4">
                   <a href="https://fsc.org/" target="_blank" rel="noopener noreferrer" className="hover:underline text-amber-600">FSC</a> &amp; <a href="https://pefc.org/" target="_blank" rel="noopener noreferrer" className="hover:underline text-amber-600">PEFC</a>
-                </h4>
+                </h3>
                 <p className="text-xs text-slate-500"><MdText text={inhalt.texte.zertifikateFürNachhaltigeWaldwirtschaft} /></p>
               </div>
             </div>
@@ -199,7 +199,7 @@ export default function Produktsiegel() {
               </div>
               <div>
                 <a href="https://www.natureplus.org/" target="_blank" rel="noopener noreferrer" className="hover:underline text-purple-600">
-                  <h4 className="font-bold text-base mb-1">natureplus <span className="text-xs font-mono text-slate-400 font-normal ml-1">(Typ I)</span></h4>
+                  <h3 className="font-bold text-base mb-1 wie-h4">natureplus <span className="text-xs font-mono text-slate-400 font-normal ml-1">(Typ I)</span></h3>
                 </a>
                 <p className="text-xs text-slate-500"><MdText text={inhalt.texte.internationalesQualitätszeichenFürNachha} /></p>
               </div>
@@ -211,7 +211,7 @@ export default function Produktsiegel() {
               </div>
               <div>
                 <a href="https://www.csc-zertifizierung.de/" target="_blank" rel="noopener noreferrer" className="hover:underline text-slate-700">
-                  <h4 className="font-bold text-base mb-1"><MdText text={inhalt.texte.cscConcreteSustainabilityCouncil} /></h4>
+                  <h3 className="font-bold text-base mb-1 wie-h4"><MdText text={inhalt.texte.cscConcreteSustainabilityCouncil} /></h3>
                 </a>
                 <p className="text-xs text-slate-500"><MdText text={inhalt.texte.weltweitesZertifizierungssystemSpeziellF} /></p>
               </div>
@@ -223,7 +223,7 @@ export default function Produktsiegel() {
               </div>
               <div>
                 <a href="https://www.emicode.com/" target="_blank" rel="noopener noreferrer" className="hover:underline text-teal-600">
-                  <h4 className="font-bold text-base mb-1">EMICODE</h4>
+                  <h3 className="font-bold text-base mb-1 wie-h4">EMICODE</h3>
                 </a>
                 <p className="text-xs text-slate-500"><MdText text={inhalt.texte.wichtigesSiegelFürVerlegewerkstoffe} /></p>
               </div>
@@ -235,7 +235,7 @@ export default function Produktsiegel() {
               </div>
               <div>
                 <a href="https://www.eco-institut-label.de/" target="_blank" rel="noopener noreferrer" className="hover:underline text-green-600">
-                  <h4 className="font-bold text-base mb-1">eco-INSTITUT-Label</h4>
+                  <h3 className="font-bold text-base mb-1 wie-h4">eco-INSTITUT-Label</h3>
                 </a>
                 <p className="text-xs text-slate-500"><MdText text={inhalt.texte.verlässlicheAuszeichnungFürBesonders} /></p>
               </div>
@@ -247,7 +247,7 @@ export default function Produktsiegel() {
               </div>
               <div>
                 <a href="https://ibu-epd.com/" target="_blank" rel="noopener noreferrer" className="hover:underline text-indigo-600">
-                  <h4 className="font-bold text-base mb-1"><MdText text={inhalt.texte.epdEnvironmentalProductDeclaration} /><span className="text-xs font-mono text-slate-400 font-normal ml-1">(Typ III)</span></h4>
+                  <h3 className="font-bold text-base mb-1 wie-h4"><MdText text={inhalt.texte.epdEnvironmentalProductDeclaration} /><span className="text-xs font-mono text-slate-400 font-normal ml-1">(Typ III)</span></h3>
                 </a>
                 <p className="text-xs text-slate-500"><MdText text={inhalt.texte.standardisierteUmweltproduktdeklarationN} /></p>
               </div>

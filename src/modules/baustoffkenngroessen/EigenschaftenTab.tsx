@@ -136,7 +136,7 @@ export default function EigenschaftenTab({ selectedMaterial, setSelectedMaterial
                 <div className="border border-home-grau/30 p-2.5 rounded-lg bg-white shadow-sm space-y-2">
                   <span className="font-bold text-emerald-700"><MdText text={inhalt.texte.isotropZBStahl} /></span>
                   <div className="flex justify-center py-2">
-                    <svg className="w-16 h-16" viewBox="0 0 100 100">
+                    <svg aria-hidden="true" className="w-16 h-16" viewBox="0 0 100 100">
                       {/* Circle indicating same properties in all angles */}
                       <circle cx="50" cy="50" r="30" fill="none" stroke="#334155" strokeWidth="2" strokeDasharray="3 3" />
                       <circle cx="50" cy="50" r="2" fill="#334155" />
@@ -151,7 +151,7 @@ export default function EigenschaftenTab({ selectedMaterial, setSelectedMaterial
                 <div className="border border-home-grau/30 p-2.5 rounded-lg bg-white shadow-sm space-y-2">
                   <span className="font-bold text-rose-700"><MdText text={inhalt.texte.anisotropZBHolz} /></span>
                   <div className="flex justify-center py-2">
-                    <svg className="w-16 h-16" viewBox="0 0 100 100">
+                    <svg aria-hidden="true" className="w-16 h-16" viewBox="0 0 100 100">
                       {/* Ellipse indicating directionality */}
                       <ellipse cx="50" cy="50" rx="40" ry="12" fill="none" stroke="#A3113E" strokeWidth="2" strokeDasharray="3 3" transform="rotate(-30 50 50)" />
                       <circle cx="50" cy="50" r="2" fill="#A3113E" />
@@ -187,7 +187,7 @@ export default function EigenschaftenTab({ selectedMaterial, setSelectedMaterial
                 <div className="border border-home-grau/30 p-2.5 rounded-lg bg-white shadow-sm space-y-2">
                   <span className="font-bold text-emerald-700"><MdText text={inhalt.texte.homogenGefügeZB} /></span>
                   <div className="flex justify-center py-2">
-                    <svg className="w-16 h-16" viewBox="0 0 100 100">
+                    <svg aria-hidden="true" className="w-16 h-16" viewBox="0 0 100 100">
                       {/* Smooth evenly-spaced small dots representing molecules */}
                       <rect x="15" y="15" width="70" height="70" fill="none" stroke="#cbd5e1" strokeWidth="1" />
                       <g fill="#334155" opacity="0.8">
@@ -204,7 +204,7 @@ export default function EigenschaftenTab({ selectedMaterial, setSelectedMaterial
                 <div className="border border-home-grau/30 p-2.5 rounded-lg bg-white shadow-sm space-y-2">
                   <span className="font-bold text-rose-700"><MdText text={inhalt.texte.heterogenGefügeZB} /></span>
                   <div className="flex justify-center py-2">
-                    <svg className="w-16 h-16" viewBox="0 0 100 100">
+                    <svg aria-hidden="true" className="w-16 h-16" viewBox="0 0 100 100">
                       {/* Multi-phase structure with various particle sizes and pores */}
                       <rect x="15" y="15" width="70" height="70" fill="none" stroke="#cbd5e1" strokeWidth="1" />
                       {/* Stone Aggregates */}

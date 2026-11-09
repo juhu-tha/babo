@@ -320,7 +320,7 @@ export default function Durchstanzen() {
             <div className="bg-white p-5 rounded-xl border border-home-grau/30 shadow-sm">
               <h3 className="font-semibold mb-4 text-text-main"><MdText text={inhalt.texte.schematischeDarstellungDraufsicht} /></h3>
               <div className="flex flex-col items-center bg-off-white rounded-lg border border-home-grau/30 p-4 relative overflow-hidden">
-                <svg width={svgSize} height={svgSize} viewBox={`0 0 ${svgSize} ${svgSize}`} className="overflow-visible">
+                <svg role="img" aria-label="Schematische Darstellung: Durchstanzen in der Draufsicht" width={svgSize} height={svgSize} viewBox={`0 0 ${svgSize} ${svgSize}`} className="overflow-visible">
                   <defs>
                     <clipPath id="durchstanzen-u1-clip">
                       <rect x={clipLinks} y={clipOben} width={2 * svgSize} height={2 * svgSize} />

@@ -4,6 +4,7 @@ import inhalt from '@/content/interactivelcacalc/CalculationDashboard.json';
 import { MdText } from '@/src/components/inhalt/MdText';
 import { EingabeHinweise } from '@/src/components/ui/EingabeHinweise';
 import type { LcaErgebnis } from '@/src/calc/lca';
+import { ErgebnisAnsage, ansageWert, kurzzeile } from '@/src/components/ui/ErgebnisAnsage';
 
 export interface QngSchwellen { plus: number; premium: number; label: string }
 export interface QngBenchmarkStatus { label: string; color: string; badge: string; desc: string }
@@ -50,6 +51,7 @@ export function CalculationDashboard({
       </div>
 
       <EingabeHinweise hinweise={ergebnis.hinweise} />
+      <ErgebnisAnsage text={ergebnis.gueltig ? kurzzeile(ansageWert('Treibhauspotenzial', s.qng, 2, 'kg CO₂-Äquivalent je m² und Jahr'), benchmarkStatus.label) : 'Treibhauspotenzial –'} />
 
       {ergebnis.gueltig && (
         <>

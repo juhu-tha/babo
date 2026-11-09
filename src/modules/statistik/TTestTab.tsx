@@ -13,6 +13,7 @@ import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
 import { DiagrammAngaben } from '@/src/lib/diagrammAlternative';
 import { formatDeZahl, formatDeTeX } from '@/src/utils/numberFormat';
 import { einstichprobenTTest, zweistichprobenTTest, tPDF, type TTestAlternative, type TTestVariante } from '@/src/calc/statistik';
+import { ErgebnisAnsage, ansageWert, kurzzeile } from '@/src/components/ui/ErgebnisAnsage';
 
 /** Messwerte aus Freitext: Trennung durch Leerzeichen, Semikolon oder Zeilenumbruch, Dezimalkomma erlaubt */
 export function leseWerte(text: string): number[] {
@@ -126,7 +127,9 @@ export default function TTestTab() {
           </div>
         </section>
 
-        <section className="bg-off-white border border-home-grau/30 text-text-main p-5 rounded-2xl shadow-md flex flex-col gap-3" aria-live="polite">
+        <section className="bg-off-white border border-home-grau/30 text-text-main p-5 rounded-2xl shadow-md flex flex-col gap-3">
+          {/* Kurzzeile statt der ganzen Ergebniskarte als Live-Region (Kurzzeilen 04.11.2026) */}
+          <ErgebnisAnsage text={kurzzeile(ansageWert('t-Test: Prüfgröße t', r.t, 3), ansageWert('p-Wert', r.gueltig ? r.p : NaN, 4), r.gueltig && (r.verworfen ? inhalt.werte.verworfen : inhalt.werte.beibehalten))} />
           <h3 className="text-sm font-bold uppercase tracking-wider opacity-90"><MdText text={inhalt.texte.ergebnisTitel} /></h3>
           <dl className="grid grid-cols-2 gap-x-4 gap-y-2 text-sm">
             <dt className="text-slate-600"><FormulaText text="$n_1,\ \bar{x}_1,\ s_1$" /></dt>

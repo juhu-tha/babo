@@ -13,6 +13,7 @@ import { formatDeZahl, formatDeWert } from '@/src/utils/numberFormat';
 import inhalt from '@/content/lca/IngenieurbauLCA.json';
 import { MdText } from '@/src/components/inhalt/MdText';
 import { AuswahlGruppe, ReiterLeiste, alsOption, alsReiter, reiterPanel } from '../../components/ui/Auswahlgruppe';
+import { ErgebnisAnsage, ansageWert, kurzzeile } from '@/src/components/ui/ErgebnisAnsage';
 
 /**
  * Lehrwerte des Brücken-Simulators je m² Brückendeckfläche [kg CO₂-Äq./m²] bzw. je Zyklus (Durchsicht B 29.10.2026,
@@ -443,6 +444,7 @@ export default function IngenieurbauLCA() {
             </div>
           </div>
 
+          <ErgebnisAnsage text={kurzzeile(ansageWert('Spannbeton', results.beton.total, 1, 't CO₂e'), ansageWert('je m² und Jahr', results.beton.perM2Year, 2, 'kg CO₂e'), ansageWert('Stahlverbund', results.stahl.total, 1, 't CO₂e'), ansageWert('je m² und Jahr', results.stahl.perM2Year, 2, 'kg CO₂e'))} />
           {/* Results Comparison Grid */}
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
             

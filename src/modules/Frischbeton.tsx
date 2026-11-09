@@ -12,6 +12,7 @@ import { MdText } from '@/src/components/inhalt/MdText';
 import { ModuleTabs } from '@/src/components/ui/ModuleTabs';
 import { EingabeHinweise } from '@/src/components/ui/EingabeHinweise';
 import { bewerteLuftgehalt } from '@/src/calc/frischbeton';
+import { ErgebnisAnsage, ansageWert, kurzzeile } from '@/src/components/ui/ErgebnisAnsage';
 
 type TabKey = 'konsistenz' | 'ausbreitversuch' | 'luftporen' | 'frischbetondruck' | 'frischbetontemperatur';
 type TestVerfahren = 'ausbreitmass' | 'verdichtungsmass' | 'setzmass' | 'setzfliessmass';
@@ -294,6 +295,7 @@ export default function Frischbeton() {
                     </div>
                   </div>
 
+                  <ErgebnisAnsage text={kurzzeile(istKonform ? inhalt.werte.konformInnerhalbDerZulässigen : inhalt.werte.nichtKonformGrenzabmaßÜberschritten, ansageWert('Abweichung', abweichung, verfahren === 'verdichtungsmass' ? 2 : 0, verfahren === 'verdichtungsmass' ? '' : 'mm'), `zulässig ${formatDeZahl(minZul, verfahren === 'verdichtungsmass' ? 2 : 0)} bis ${formatDeZahl(maxZul, verfahren === 'verdichtungsmass' ? 2 : 0)}${verfahren === 'verdichtungsmass' ? '' : ' mm'}`)} />
                   {/* Ergebnis-Box */}
                   <div className={`p-4 rounded-xl border flex flex-col gap-2 transition-all ${
                     istKonform 
@@ -441,6 +443,7 @@ export default function Frischbeton() {
 
                   {/* Ergebnis Luftgehalt */}
                   <EingabeHinweise hinweise={lp.hinweise} />
+                  <ErgebnisAnsage text={kurzzeile(ansageWert('Luftgehalt', lEffektiv, 1, '%'), ansageWert('Mindestwert', minLpGefordert, 1, '%'), lpOhne ? '' : lpKonform ? 'Anforderung erfüllt' : 'Anforderung nicht erfüllt')} />
                   <div className={`p-4 rounded-xl border flex flex-col gap-2 transition-all ${
                     lpOhne
                       ? 'bg-off-white border-home-grau/30 text-text-main'

@@ -30,6 +30,7 @@ import { AuswahlGruppe, alsOption } from '../ui/Auswahlgruppe';
 import { Fz } from '../ui/Formelzeichen';
 import { hoechstwert } from '@/src/calc/laborVersuch';
 import { useDiagrammFarben, linAchse, PfeilDefs, Masslinie, useSchriftFaktor } from './laborGrafik';
+import { ErgebnisAnsage, ansageWert, kurzzeile } from '@/src/components/ui/ErgebnisAnsage';
 
 ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend);
 
@@ -737,6 +738,7 @@ export default function HaftzugPruefung({ onNavigateToProtocols }: { onNavigateT
                   <span className="text-xl font-bold font-mono text-emerald-700">
                     {formatDeZahl(maxStressObserved, 2)} <span className="text-xs font-normal">N/mm²</span>
                   </span>
+                  <ErgebnisAnsage text={testStatus === 'finished' ? kurzzeile(ansageWert('Haftzugfestigkeit', maxStressObserved, 2, 'N/mm²'), ansageWert('Abreißkraft', maxForceObserved, 2, 'kN'), systemConfig.fractureType) : ''} />
                 </div>
 
                 <div className="bg-off-white p-3 rounded-xl border border-home-grau/20">

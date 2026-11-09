@@ -41,7 +41,7 @@ export default function DaemmungVergleich() {
               </div>
               
               {/* Temperaturkurve */}
-              <svg className="absolute inset-0 w-full h-full" preserveAspectRatio="none">
+              <svg role="img" aria-label="Temperaturverlauf im Wandquerschnitt bei Außendämmung" className="absolute inset-0 w-full h-full" preserveAspectRatio="none">
                 {/* SVG-Pfade akzeptieren keine %-Koordinaten → Linienzüge */}
                 <line x1="0" y1="80" x2="33%" y2="80" stroke="#A3113E" strokeWidth="3" strokeLinecap="round" />
                 <line x1="33%" y1="80" x2="66%" y2="20" stroke="#A3113E" strokeWidth="3" strokeLinecap="round" />
@@ -99,7 +99,7 @@ export default function DaemmungVergleich() {
               </div>
               
               {/* Temperaturkurve */}
-              <svg className="absolute inset-0 w-full h-full" preserveAspectRatio="none">
+              <svg role="img" aria-label="Temperaturverlauf im Wandquerschnitt bei Innendämmung" className="absolute inset-0 w-full h-full" preserveAspectRatio="none">
                 {/* SVG-Pfade akzeptieren keine %-Koordinaten → Linienzüge */}
                 <line x1="0" y1="80" x2="33%" y2="80" stroke="#A3113E" strokeWidth="3" strokeLinecap="round" />
                 <line x1="33%" y1="80" x2="66%" y2="80" stroke="#A3113E" strokeWidth="3" strokeLinecap="round" />

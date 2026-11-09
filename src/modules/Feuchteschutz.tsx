@@ -29,6 +29,7 @@ import {
 import inhalt from '@/content/feuchteschutz/Feuchteschutz.json';
 import { MdText } from '@/src/components/inhalt/MdText';
 import { AuswahlGruppe, alsOption } from '../components/ui/Auswahlgruppe';
+import { ErgebnisAnsage, ansageWert, kurzzeile } from '@/src/components/ui/ErgebnisAnsage';
 
 // Register necessary Chart.js components
 ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend, Filler);
@@ -295,8 +296,8 @@ export default function Feuchteschutz() {
         {/* Left Side: Interaktiver Berechner (5 Cols) */}
         <div className="lg:col-span-5 flex flex-col gap-6">
           <div className="bg-white p-5 rounded-2xl shadow-sm border border-home-grau/30 space-y-4">
-            <h4 className="text-xs font-extrabold uppercase tracking-wider text-slate-400 border-b border-slate-100 pb-2.5 flex items-center gap-1.5">
-              <Thermometer size={14} className="text-orange-800" /><MdText text={inhalt.texte.raumklimaBauteiloberfläche} /></h4>
+            <h3 className="text-xs font-extrabold uppercase tracking-wider text-slate-400 border-b border-slate-100 pb-2.5 flex items-center gap-1.5 wie-h4">
+              <Thermometer size={14} className="text-orange-800" /><MdText text={inhalt.texte.raumklimaBauteiloberfläche} /></h3>
 
             {/* Inputs: T_i and phi_i */}
             <div className="space-y-4">
@@ -389,11 +390,11 @@ export default function Feuchteschutz() {
               {surfaceAuditStatus.level === 'safe' && <CheckCircle size={18} className="text-emerald-600" />}
             </div>
             <div className="flex-1">
-              <h5 className="font-extrabold uppercase tracking-wide text-[10px] text-slate-400 mb-1">
+              <h4 className="font-extrabold uppercase tracking-wide text-[10px] text-slate-400 mb-1 wie-h5">
                 {surfaceAuditStatus.level === 'danger' && inhalt.werte.kritischerRezessTaukondensat}
                 {surfaceAuditStatus.level === 'warning' && inhalt.werte.vorsichtBiologischesSchimmelrisiko}
                 {surfaceAuditStatus.level === 'safe' && inhalt.werte.auditOberflächeOptimal}
-              </h5>
+              </h4>
               <p className="font-medium text-[11px]">{surfaceAuditStatus.text}</p>
               <div className="mt-2 text-[10px] font-mono font-bold text-slate-500 border-t border-slate-200/50 pt-1 flex justify-between">
                 <span><MdText text={inhalt.texte.relOberflächenfeuchte} /></span>
@@ -411,6 +412,7 @@ export default function Feuchteschutz() {
           {/* Live-Rechenweg (AP 3.7) mit dem aktuellen Innenklima */}
           <FormulaDerivationBox
             live
+            kurzzeile={kurzzeile(ansageWert('Taupunkt', indoorClimate.dewPoint, 1, '°C'), ansageWert('Schimmelgrenze', indoorClimate.schimmelPoint, 1, '°C'), ansageWert('Oberflächenfeuchte', surfaceAuditStatus.actualSurfaceRH, 0, '%'), surfaceAuditStatus.level === 'danger' ? 'Tauwasser' : surfaceAuditStatus.level === 'warning' ? 'Schimmelgefahr' : 'unkritisch')}
             title={inhalt.werte.ihrRechenwegTaupunktUnd}
             zielGleichung="\varphi_{si} = \frac{\varphi_i \cdot p_{sat}(\theta_i)}{p_{sat}(\theta_{si})}"
             schritte={[
@@ -449,10 +451,10 @@ export default function Feuchteschutz() {
         <NachErstemBild minHoehe="30rem">
         <div className="lg:col-span-7 flex flex-col gap-6">
           <div className="bg-white p-5 rounded-2xl shadow-sm border border-home-grau/30 flex flex-col h-full">
-            <h4 className="text-xs font-extrabold uppercase tracking-widest text-slate-800 border-b border-slate-100 pb-2.5 mb-4 flex items-center justify-between">
+            <h3 className="text-xs font-extrabold uppercase tracking-widest text-slate-800 border-b border-slate-100 pb-2.5 mb-4 flex items-center justify-between wie-h4">
               <span><MdText text={inhalt.texte.magnusSättigungskurveDampfdruck} /></span>
               <span className="text-[10px] text-slate-400 font-mono tracking-normal capitalize"><MdText text={inhalt.texte.zustandVsSättigungsdruck} /></span>
-            </h4>
+            </h3>
 
             {/* Coordinates Chart */}
             <div className="h-[260px] w-full relative">
@@ -506,8 +508,8 @@ export default function Feuchteschutz() {
       <div className="bg-white p-6 rounded-2xl shadow-sm border border-home-grau/30">
         <div className="flex flex-col md:flex-row justify-between items-start md:items-center border-b border-slate-150 pb-4 mb-5 gap-3">
           <div>
-            <h4 className="text-md font-extrabold text-slate-800 flex items-center gap-2">
-              <Beaker className="text-blue-600" size={18} /><MdText text={inhalt.texte.sDWertSandbox} /></h4>
+            <h3 className="text-md font-extrabold text-slate-800 flex items-center gap-2 wie-h4">
+              <Beaker className="text-blue-600" size={18} /><MdText text={inhalt.texte.sDWertSandbox} /></h3>
             <p className="text-xs text-slate-500 mt-1"><MdText text={inhalt.texte.testenSieIhreKonstruktion} /></p>
           </div>
           
@@ -645,7 +647,7 @@ export default function Feuchteschutz() {
                   }
                 </div>
                 <div className="flex-1">
-                  <h6 className="font-extrabold uppercase tracking-wide text-[9.5px] text-slate-400"><MdText text={inhalt.texte.regelCheckInnenDichter} /></h6>
+                  <h4 className="font-extrabold uppercase tracking-wide text-[9.5px] text-slate-400 wie-h6"><MdText text={inhalt.texte.regelCheckInnenDichter} /></h4>
                   <p className="font-medium mt-1">
                     {layerCalculations.isInnerTighter && !layerCalculations.hasGlaserTauwasser
                       ? inhalt.werte.konstruktionGünstigDieInnenseitigen
@@ -662,7 +664,7 @@ export default function Feuchteschutz() {
 
             {/* Physic equations with LaTeX rendering */}
             <div className="bg-stone-50 border border-stone-200 rounded-2xl p-4 space-y-3">
-              <h5 className="text-[10px] uppercase font-extrabold tracking-widest text-slate-400"><MdText text={inhalt.texte.diePhysikalischenGrundlagen} /></h5>
+              <h4 className="text-[10px] uppercase font-extrabold tracking-widest text-slate-400 wie-h5"><MdText text={inhalt.texte.diePhysikalischenGrundlagen} /></h4>
               
               <div className="space-y-3.5 text-xs text-slate-600 leading-relaxed">
                 <div>
@@ -697,8 +699,8 @@ export default function Feuchteschutz() {
         return (
           <div className="bg-white p-6 rounded-2xl shadow-sm border border-home-grau/30 space-y-5" id="glaser-diagramm">
             <div>
-              <h4 className="text-md font-extrabold text-slate-800 flex items-center gap-2">
-                <Droplets className="text-shiraz" size={18} /><MdText text={inhalt.texte.glaserDiagrammTauwasserbilanzDin} /></h4>
+              <h3 className="text-md font-extrabold text-slate-800 flex items-center gap-2 wie-h4">
+                <Droplets className="text-shiraz" size={18} /><MdText text={inhalt.texte.glaserDiagrammTauwasserbilanzDin} /></h3>
               <p className="text-xs text-slate-500 mt-1 leading-relaxed"><MdText text={inhalt.texte.schichtaufbauAusDerS} /></p>
             </div>
 
@@ -758,11 +760,12 @@ export default function Feuchteschutz() {
 
               <div className="lg:col-span-5 space-y-3">
                 <EingabeHinweise hinweise={g.hinweise} />
+                <ErgebnisAnsage text={!g.gueltig ? 'Glaser-Verfahren –' : !g.tauwasser ? 'Glaser-Verfahren: kein Tauwasser in der Konstruktion' : kurzzeile(ansageWert('Glaser-Verfahren: Tauwasser', g.mc, 3, 'kg/m²'), ansageWert('Verdunstung', g.mev, 3, 'kg/m²'), Number.isFinite(g.trocknungsTage) && ansageWert('Trocknungsdauer', g.trocknungsTage, 1, 'Tage'), `${g.kriterien.filter(k => k.eingehalten).length} von ${g.kriterien.length} Kriterien eingehalten`)} />
                 {!g.gueltig ? null : !g.tauwasser ? (
                   <div className="p-4 bg-emerald-50 border border-emerald-200 rounded-xl flex items-start gap-3">
                     <CheckCircle className="text-emerald-600 shrink-0 mt-0.5" size={18} />
                     <div className="text-xs text-emerald-900 leading-relaxed">
-                      <h5 className="font-extrabold text-sm text-emerald-800"><MdText text={inhalt.texte.keinTauwasserInDer} /></h5><MdText text={inhalt.texte.anKeinerSchichtgrenzeErreicht} /><FormulaText text="p < p_{sat}" /><MdText text={inhalt.texte.rechnerischeTauwassermasse0G} /></div>
+                      <h4 className="font-extrabold text-sm text-emerald-800 wie-h5"><MdText text={inhalt.texte.keinTauwasserInDer} /></h4><MdText text={inhalt.texte.anKeinerSchichtgrenzeErreicht} /><FormulaText text="p < p_{sat}" /><MdText text={inhalt.texte.rechnerischeTauwassermasse0G} /></div>
                   </div>
                 ) : (
                   <>
@@ -772,12 +775,12 @@ export default function Feuchteschutz() {
                         <div className="text-xs text-slate-800 leading-relaxed">
                           {z.art === 'ebene' && z.grenzeVon > 0 ? (
                             <>
-                              <h5 className="font-extrabold text-sm text-slate-900"><MdText text={inhalt.texte.tauwasserAnGrenzfläche} />{formatDeWert(z.grenzeVon)}</h5>
+                              <h4 className="font-extrabold text-sm text-slate-900 wie-h5"><MdText text={inhalt.texte.tauwasserAnGrenzfläche} />{formatDeWert(z.grenzeVon)}</h4>
                               <MdText text={inhalt.texte.tauwasserebeneHinterDerSchicht} /><strong>„{namen[z.grenzeVon - 1]}“</strong><MdText text={inhalt.texte.dortIstPGleich} />
                             </>
                           ) : (
                             <>
-                              <h5 className="font-extrabold text-sm text-slate-900">{z.art === 'bereich' ? inhalt.werte.tauwasserbereich : inhalt.werte.tauwasserebene}: s_d = {formatDeZahl(z.sdVon, 3)} … {formatDeZahl(z.sdBis, 3)} m</h5>
+                              <h4 className="font-extrabold text-sm text-slate-900 wie-h5">{z.art === 'bereich' ? inhalt.werte.tauwasserbereich : inhalt.werte.tauwasserebene}: s_d = {formatDeZahl(z.sdVon, 3)} … {formatDeZahl(z.sdBis, 3)} m</h4>
                               <span>{inhalt.werte.inDerSchicht} <strong>„{namen[z.schichtVon]}“</strong>{z.schichtBis !== z.schichtVon && <> {inhalt.werte.bis} <strong>„{namen[z.schichtBis]}“</strong></>}. {inhalt.werte.tauwasserbereichText}</span>
                             </>
                           )}

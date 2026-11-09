@@ -151,7 +151,8 @@ const VERGLEICHE: ReadonlyArray<{ name: string; schluessel: string; wert: string
 /** vollständige HTML-Datei einer Modulseite aus dist/index.html */
 export function baueSeite(vorlage: string, startRoot: string, route: RouteInfo, schale: string, { nurHell = false, nurBreit = false }: { nurHell?: boolean; nurBreit?: boolean } = {}): string {
   if (!vorlage.includes(startRoot)) throw new Error('baueSeite: Startseiten-Schale nicht in dist/index.html gefunden');
-  const titel = maskiere(`BaustoffBoard THA - ${route.label}`);
+  // Modultitel (baum.titel) wie der Fenstertitel der App (Regel Modultitel 03.11.2026, docs/architektur.md)
+  const titel = maskiere(`BaustoffBoard THA - ${route.titel ?? route.label}`);
   const url = maskiere(BASIS_URL + modulPfad(route.id));
   let s = vorlage.replace(startRoot, () => `<div id="root"><div data-schale inert>${schale}</div></div>`);
   // vor dem Inline-Skript startschale-boot.js (direkt hinter <meta charset>), das die Kennung liest

@@ -356,7 +356,7 @@ export default function KennwerteBeton({ activeMatData, concDatabase, matAgeDays
             {/* SVG Plot */}
             <div className="w-full overflow-x-auto bg-slate-50/70 p-4 rounded-xl border border-slate-200" role="region" aria-label="Arbeitslinien-Diagramm (horizontal scrollbar)" tabIndex={0}>
               <div className="min-w-[620px]">
-                <svg viewBox="0 0 700 280" className="w-full h-64">
+                <svg role="img" aria-label="Diagramm: Spannungs-Dehnungs-Kennlinie σc–εc" viewBox="0 0 700 280" className="w-full h-64">
                   <defs>
                     <marker id="arrow-axis-mat" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
                       <path d="M 0 0 L 10 5 L 0 10 z" fill="#475569" />

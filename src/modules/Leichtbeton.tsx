@@ -4,6 +4,7 @@ import { Layers, Mountain } from 'lucide-react';
 import { FormulaText } from '@/src/components/ui/FormulaText';
 import inhalt from '@/content/leichtbeton/Leichtbeton.json';
 import { MdText } from '@/src/components/inhalt/MdText';
+import { ErgebnisAnsage, ansageWert, kurzzeile } from '@/src/components/ui/ErgebnisAnsage';
 
 export default function Leichtbeton() {
   const [dichte, setDichte] = useState(1.4);
@@ -58,6 +59,7 @@ export default function Leichtbeton() {
               </div>
             </div>
             
+            <ErgebnisAnsage text={kurzzeile(ansageWert('Rohdichte', dichte, 2, 'kg/dm³'), ansageWert('geschätzte Festigkeit etwa', fc, 1, 'MPa'), ansageWert('Wärmeleitfähigkeit etwa', lambda, 2, 'W/(m·K)'))} />
             <div className="grid grid-cols-2 gap-4">
               <div className="bg-slate-50 border border-home-grau/20 p-4 rounded-xl text-center">
                 <div className="text-xs text-text-main/70 mb-1 font-semibold uppercase tracking-wider"><MdText text={inhalt.texte.geschätzteFestigkeit} /></div>

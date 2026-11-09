@@ -98,7 +98,7 @@ export function TreffbildTab({ accuracy, setAccuracy, precision, setPrecision, t
           <div className="lg:col-span-7 flex flex-col items-center justify-center p-6 bg-slate-100 rounded-xl border border-home-grau/30 relative">
             <span className="absolute top-4 left-4 text-[10px] font-bold text-slate-400 font-mono"><MdText text={inhalt.texte.schussbildAnzeigeTreffbild} /></span>
             
-            <svg width="220" height="220" viewBox="0 0 200 200" className="drop-shadow-sm select-none">
+            <svg role="img" aria-label="Treffbild der Messwerte" width="220" height="220" viewBox="0 0 200 200" className="drop-shadow-sm select-none">
               {/* Outer ring */}
               <circle cx="100" cy="100" r="90" fill="#f8fafc" stroke="#94a3b8" strokeWidth="2" />
               <circle cx="100" cy="100" r="70" fill="transparent" stroke="#cbd5e1" strokeWidth="1.5" />

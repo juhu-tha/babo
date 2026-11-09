@@ -9,6 +9,7 @@ import { zustandsnote, schulnoteAusZustandsnote } from '@/src/calc/schutzInstand
 import { MdText } from '@/src/components/inhalt/MdText';
 import { ModuleTabs, type ModulTab } from '@/src/components/ui/ModuleTabs';
 import { ReiterLeiste, alsReiter, reiterPanel } from '../components/ui/Auswahlgruppe';
+import { ErgebnisAnsage, ansageWert, kurzzeile } from '@/src/components/ui/ErgebnisAnsage';
 
 const SCHADEN_KATEGORIEN = [
   { id: 'all', label: inhalt.werte.alleKategorien },
@@ -74,7 +75,7 @@ export default function Zustandsbewertung() {
               <div className="p-4 bg-off-white rounded-xl border border-home-grau/25 space-y-2">
                 <div className="flex items-center gap-2 mb-1">
                   <div className="w-8 h-8 rounded-full bg-shiraz text-white flex items-center justify-center font-bold text-sm">H</div>
-                  <h4 className="font-bold text-text-main text-sm"><MdText text={inhalt.texte.hauptprüfungH} /></h4>
+                  <h3 className="font-bold text-text-main text-sm wie-h4"><MdText text={inhalt.texte.hauptprüfungH} /></h3>
                 </div>
                 <p className="text-xs text-text-main/80 leading-relaxed"><MdText text={inhalt.texte.alle6JahreEingehende} /></p>
               </div>
@@ -82,7 +83,7 @@ export default function Zustandsbewertung() {
               <div className="p-4 bg-off-white rounded-xl border border-home-grau/25 space-y-2">
                 <div className="flex items-center gap-2 mb-1">
                   <div className="w-8 h-8 rounded-full bg-shiraz text-white flex items-center justify-center font-bold text-sm">E</div>
-                  <h4 className="font-bold text-text-main text-sm"><MdText text={inhalt.texte.einfachePrüfungE} /></h4>
+                  <h3 className="font-bold text-text-main text-sm wie-h4"><MdText text={inhalt.texte.einfachePrüfungE} /></h3>
                 </div>
                 <p className="text-xs text-text-main/80 leading-relaxed"><MdText text={inhalt.texte.t3JahreNachHauptprüfung} /></p>
               </div>
@@ -90,7 +91,7 @@ export default function Zustandsbewertung() {
               <div className="p-4 bg-off-white rounded-xl border border-home-grau/25 space-y-2">
                 <div className="flex items-center gap-2 mb-1">
                   <div className="w-8 h-8 rounded-full bg-[#0284c7] text-white flex items-center justify-center font-bold text-sm">B</div>
-                  <h4 className="font-bold text-text-main text-sm"><MdText text={inhalt.texte.besichtigungB} /></h4>
+                  <h3 className="font-bold text-text-main text-sm wie-h4"><MdText text={inhalt.texte.besichtigungB} /></h3>
                 </div>
                 <p className="text-xs text-text-main/80 leading-relaxed"><MdText text={inhalt.texte.jährlichAußerImH} /></p>
               </div>
@@ -98,7 +99,7 @@ export default function Zustandsbewertung() {
               <div className="p-4 bg-off-white rounded-xl border border-home-grau/25 space-y-2">
                 <div className="flex items-center gap-2 mb-1">
                   <div className="w-8 h-8 rounded-full bg-[#0284c7] text-white flex items-center justify-center font-bold text-sm">L</div>
-                  <h4 className="font-bold text-text-main text-sm"><MdText text={inhalt.texte.laufendeBeobachtungL} /></h4>
+                  <h3 className="font-bold text-text-main text-sm wie-h4"><MdText text={inhalt.texte.laufendeBeobachtungL} /></h3>
                 </div>
                 <p className="text-xs text-text-main/80 leading-relaxed"><MdText text={inhalt.texte.inDerRegelZweimal} /></p>
               </div>
@@ -106,7 +107,7 @@ export default function Zustandsbewertung() {
               <div className="p-4 bg-off-white rounded-xl border border-home-grau/25 space-y-2">
                 <div className="flex items-center gap-2 mb-1">
                   <div className="w-8 h-8 rounded-full bg-emerald-600 text-white flex items-center justify-center font-bold text-sm">S</div>
-                  <h4 className="font-bold text-text-main text-sm"><MdText text={inhalt.texte.sonderprüfungS} /></h4>
+                  <h3 className="font-bold text-text-main text-sm wie-h4"><MdText text={inhalt.texte.sonderprüfungS} /></h3>
                 </div>
                 <p className="text-xs text-text-main/80 leading-relaxed"><MdText text={inhalt.texte.anlassbezogenEingehendeBauwerksprüfungUn} /></p>
               </div>
@@ -114,7 +115,7 @@ export default function Zustandsbewertung() {
               <div className="p-4 bg-off-white rounded-xl border border-home-grau/25 space-y-2">
                 <div className="flex items-center gap-2 mb-1">
                   <div className="w-8 h-8 rounded-full bg-[#7c3aed] text-white flex items-center justify-center font-bold text-sm">P</div>
-                  <h4 className="font-bold text-text-main text-sm"><MdText text={inhalt.texte.prüfungVorAbnahmeVor} /></h4>
+                  <h3 className="font-bold text-text-main text-sm wie-h4"><MdText text={inhalt.texte.prüfungVorAbnahmeVor} /></h3>
                 </div>
                 <p className="text-xs text-text-main/80 leading-relaxed"><MdText text={inhalt.texte.jeweilsAlsHauptprüfungPrüfung} /></p>
               </div>
@@ -522,6 +523,7 @@ export default function Zustandsbewertung() {
               return (
                 <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
                   
+                  <ErgebnisAnsage text={kurzzeile(ansageWert('Zustandsnote', currentZ, 1), `Schulnote ${interpolatedSchulnote}`, `${noteInfo.label} (Kategorie ${formatDeWert(noteInfo.grade)})`)} />
                   {/* INPUT PANEL */}
                   <div className="lg:col-span-7 space-y-6">
                     

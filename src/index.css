@@ -712,6 +712,17 @@ h4 {
 h5 {
   font-size: 0.875rem !important; /* Gewährleistet mind. 14px für Kärtchen-Titel */
 }
+/* Überschriftenfolge korrigiert (a11y 09.11.2026): angehobene Ebene sieht aus wie die frühere
+   (gleiche Spezifität wie „h4“ bzw. „.dark h4“, daher steht diese Regel nach beiden) */
+h3:where(.wie-h4) {
+  font-size: 0.9375rem !important;
+}
+h4:where(.wie-h5) {
+  font-size: 0.875rem !important;
+}
+.dark h3:where(.wie-h4) {
+  color: #e2e8f0 !important; /* slate-200 wie .dark h4 */
+}
 
 /* Hide scrollbar utility */
 .scrollbar-none::-webkit-scrollbar {
@@ -1002,6 +1013,13 @@ input[type=range]:focus:not(:focus-visible) {
   outline: 2px solid var(--fokus-farbe) !important;
   outline-offset: 2px !important;
 }
+/* Zweifarbiger Fokus (Prüfung 03.11.2026): heller bzw. dunkler Saum im Abstand zwischen Element und Umriss, damit
+   der Umriss auch auf farbigen Flächen (z. B. Ergebniskarten) ≥ 3 : 1 zu seiner direkten Umgebung hat (WCAG 1.4.11) */
+:root { --fokus-saum: #FFFFFF; }
+.dark { --fokus-saum: #040814; }
+:where(#module-content) :focus-visible:not(input, select, textarea) {
+  box-shadow: 0 0 0 2px var(--fokus-saum) !important;
+}
 .bg-shiraz :focus-visible,
 .bg-shiraz-700 :focus-visible,
 .bg-shiraz-800 :focus-visible,
@@ -1068,6 +1086,35 @@ html:not(.dark) :is(.text-slate-400, .text-gray-400, .text-slate-500, .text-gray
 .animate-pulse { animation: bb-pulse-dezent 2s cubic-bezier(0.4, 0, 0.6, 1) infinite; }
 @media (prefers-reduced-motion: reduce) {
   .animate-pulse, .animate-spin, .animate-bounce, .animate-ping { animation: none !important; }
+  /* Systemeinstellung „Bewegung reduzieren“ wie der Schalter in der Barrierefreiheits-Leiste: keine Übergänge
+     (Seitenleiste, Einblenden der Module, Fortschrittsbalken) und kein sanftes Scrollen (WCAG 2.3.3; Prüfung 03.11.2026) */
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Nur beim Überfahren eingeblendete Bedienelemente (z. B. Favoritenstern) sind bei Tastaturfokus sichtbar (WCAG 2.4.7) */
+.opacity-0:focus-visible, .opacity-0:has(:focus-visible) { opacity: 1 !important; }
+
+/* Erzwungene Farben (Windows „Kontrastdesigns“, forced-colors): Hintergrundfarben und Schatten entfallen, deshalb
+   gewählte Reiter, Optionen, gedrückte Schalter und das aktuelle Modul zusätzlich mit Innenrahmen und Unterstreichung
+   kennzeichnen; Schalter (role="switch") mit sichtbarem Knopf (WCAG 1.4.1, 1.4.11; Prüfung 03.11.2026) */
+@media (forced-colors: active) {
+  :is([role="tab"][aria-selected="true"], [role="radio"][aria-checked="true"], button[aria-pressed="true"], [aria-current="page"]):not(:focus-visible) {
+    outline: 3px solid Highlight;
+    outline-offset: -3px;
+  }
+  :is([role="tab"][aria-selected="true"], [role="radio"][aria-checked="true"], button[aria-pressed="true"], [aria-current="page"]) {
+    text-decoration: underline 2px;
+    text-underline-offset: 3px;
+  }
+  [role="switch"] { border: 1px solid ButtonText; forced-color-adjust: none; background: Canvas !important; }
+  [role="switch"] > * { forced-color-adjust: none; background: ButtonText !important; }
+  [role="switch"][aria-checked="true"] { background: Highlight !important; border-color: Highlight; }
+  [role="switch"][aria-checked="true"] > * { background: HighlightText !important; }
 }
 
 /* ==========================================================================

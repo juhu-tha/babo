@@ -716,9 +716,9 @@ export default function InteractiveLCACalc() {
         <div className="bg-white border border-home-grau/30 rounded-2xl p-5 shadow-sm space-y-6 animate-in fade-in duration-200">
           <div className="border-b pb-3 flex flex-col md:flex-row items-start md:items-center justify-between gap-2">
             <div className="space-y-1">
-              <h4 className="text-xs font-bold font-sans text-slate-900 uppercase flex items-center gap-1.5">
+              <h3 className="text-xs font-bold font-sans text-slate-900 uppercase flex items-center gap-1.5 wie-h4">
                 <Activity size={15} className="text-shiraz" /><MdText text={inhalt.texte.szenarienVergleichNachQng} />{qngThresholds.label})
-              </h4>
+              </h3>
               <p className="text-[11px] text-slate-500 leading-normal"><MdText text={inhalt.texte.normierterLebenszyklusVergleichModule} />{formatDeZahl(qngThresholds.plus, 1)}<MdText text={inhalt.texte.undQngPremium} />{formatDeZahl(qngThresholds.premium, 1)}).
               </p>
             </div>

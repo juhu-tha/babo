@@ -21,6 +21,7 @@ import { AuswahlGruppe, alsOption } from '../ui/Auswahlgruppe';
 import { Fz } from '../ui/Formelzeichen';
 import { hoechstwert } from '@/src/calc/laborVersuch';
 import { useDiagrammFarben, linAchse, PfeilDefs, Masslinie, useSchriftFaktor } from './laborGrafik';
+import { ErgebnisAnsage, ansageWert, kurzzeile } from '@/src/components/ui/ErgebnisAnsage';
 
 ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend);
 
@@ -797,6 +798,7 @@ export default function BiegezugPruefung() {
               </div>
             </div>
 
+            <ErgebnisAnsage text={testStatus === 'finished' ? kurzzeile(ansageWert('Biegezugfestigkeit', maxStressObserved, 2, 'N/mm²'), ansageWert('Höchstkraft', maxForceObserved, 1, 'kN')) : ''} />
             {/* Test Summary & Archiving Toolbar */}
             {testStatus === 'finished' && (
               <div className="mt-2 p-4 bg-off-white rounded-xl border border-home-grau/30 flex flex-col gap-3 animate-in fade-in">

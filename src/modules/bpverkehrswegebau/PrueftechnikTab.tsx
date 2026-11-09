@@ -5,10 +5,11 @@ import { InlineMath } from 'react-katex';
 import { Calculator, CheckCircle2 } from 'lucide-react';
 import inhalt from '@/content/bpverkehrswegebau/PrueftechnikTab.json';
 import { MdText } from '@/src/components/inhalt/MdText';
+import { ErgebnisAnsage, ansageWert, kurzzeile } from '@/src/components/ui/ErgebnisAnsage';
 
 export interface PrueftechnikTabProps {
   asphaltMischung: { gesteinAnteil: number; bitumenAnteil: number; rhoGestein: number; rhoBitumen: number; raumdichteMischung: number; };
-  luftPorenErrechnet: { maxDichte: string; luftporen: string; isOk: boolean; };
+  luftPorenErrechnet: { maxDichte: string; luftporen: string; hohlraum: number; isOk: boolean; };
   setAsphaltMischung: React.Dispatch<React.SetStateAction<{ gesteinAnteil: number; bitumenAnteil: number; rhoGestein: number; rhoBitumen: number; raumdichteMischung: number; }>>;
 }
 
@@ -24,12 +25,12 @@ export default function PrueftechnikTab({ asphaltMischung, luftPorenErrechnet, s
           
           <div className="space-y-4 text-xs text-text-main/75 leading-relaxed">
             <div>
-              <h5 className="font-extrabold text-[#A3113E] text-xs uppercase font-mono mb-1"><MdText text={inhalt.texte.marshallStabilitätUndFließwert} /></h5>
+              <h4 className="font-extrabold text-[#A3113E] text-xs uppercase font-mono mb-1 wie-h5"><MdText text={inhalt.texte.marshallStabilitätUndFließwert} /></h4>
               <p><MdText text={inhalt.texte.mischprobenWerdenMitDem} /></p>
             </div>
 
             <div className="border-t border-zinc-100 pt-3">
-              <h5 className="font-extrabold text-[#A3113E] text-xs uppercase font-mono mb-1"><MdText text={inhalt.texte.spurbildungsversuchWheelTrackingDin} /></h5>
+              <h4 className="font-extrabold text-[#A3113E] text-xs uppercase font-mono mb-1 wie-h5"><MdText text={inhalt.texte.spurbildungsversuchWheelTrackingDin} /></h4>
               <p><MdText text={inhalt.texte.simuliertDieSpurinnenbildungUnter} /></p>
             </div>
           </div>
@@ -98,14 +99,15 @@ export default function PrueftechnikTab({ asphaltMischung, luftPorenErrechnet, s
               </div>
               <div className="grid grid-cols-2 text-xs font-mono border-t border-zinc-200/50 pt-2">
                 <div className="font-bold"><MdText text={inhalt.texte.errechneterLuftporengehaltVU} /></div>
-                <div className="text-right font-extrabold text-lg text-zinc-900">{formatDeZahl(Number(luftPorenErrechnet.luftporen), 2)} Vol.-%</div>
+                <div className="text-right font-extrabold text-lg text-zinc-900">{formatDeZahl(luftPorenErrechnet.hohlraum, 2)} Vol.-%</div>
               </div>
+              <ErgebnisAnsage text={kurzzeile(`Hohlraumfreie Dichte ${luftPorenErrechnet.maxDichte} g/cm³`, ansageWert('Hohlraumgehalt', luftPorenErrechnet.hohlraum, 2, 'Vol.-%'), Number.isFinite(luftPorenErrechnet.hohlraum) && (luftPorenErrechnet.isOk ? 'konform' : 'nicht konform'))} />
 
               <div className="mt-2 text-[10.5px] border-t border-zinc-250 pt-2">
                 {luftPorenErrechnet.isOk ? (
                   <span className="text-emerald-700 font-bold flex items-center gap-1"><MdText text={inhalt.texte.konformZtvAsphaltStb} /></span>
                 ) : (
-                  <span className="text-rose-700 font-bold flex items-center gap-1"><MdText text={inhalt.texte.nichtKonformFürDeckschichten} />{parseFloat(luftPorenErrechnet.luftporen) < 1.5 ? inhalt.werte.zuDichtGefahrVon : inhalt.werte.zuOffenGefahrVon})
+                  <span className="text-rose-700 font-bold flex items-center gap-1"><MdText text={inhalt.texte.nichtKonformFürDeckschichten} />{luftPorenErrechnet.hohlraum < 1.5 ? inhalt.werte.zuDichtGefahrVon : inhalt.werte.zuOffenGefahrVon})
                   </span>
                 )}
               </div>

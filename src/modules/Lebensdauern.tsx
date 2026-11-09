@@ -13,11 +13,12 @@ import {
 } from 'chart.js';
 import { Bar } from 'react-chartjs-2';
 import '@/src/lib/chartSetup';
-import { formatDeWert } from '@/src/utils/numberFormat';
+import { formatDeWert, formatDeZahl } from '@/src/utils/numberFormat';
 import { InlineMath, BlockMath } from 'react-katex';
 import inhalt from '@/content/lebensdauern/Lebensdauern.json';
 import { MdText } from '@/src/components/inhalt/MdText';
 import { ReiterLeiste, alsReiter, reiterPanel } from '../components/ui/Auswahlgruppe';
+import { ErgebnisAnsage } from '@/src/components/ui/ErgebnisAnsage';
 
 ChartJS.register(
   CategoryScale,
@@ -208,6 +209,12 @@ export default function Lebensdauern() {
                   className="flex-1 h-2 bg-home-grau/20 rounded-lg appearance-none cursor-pointer accent-shiraz"
                 />
               </div>
+              {(() => {
+                // Kurzzeile (04.11.2026): Erneuerungen je Bauteil im Betrachtungszeitraum zusammengefasst, wie die Tabelle
+                const n = lifespanData.map(item => Math.max(0, Math.ceil(buildingLifespan / item.avg) - 1));
+                const zahl = (x: number) => formatDeZahl(x, 0);
+                return <ErgebnisAnsage text={`Betrachtungszeitraum ${formatDeWert(buildingLifespan)} Jahre: ${zahl(n.filter(x => x === 0).length)} Bauteile ohne Erneuerung, ${zahl(n.filter(x => x === 1).length)} mit einer, ${zahl(n.filter(x => x > 1).length)} mit mehreren Erneuerungen`} />;
+              })()}
             </div>
 
             <div className="bg-white p-5 rounded-2xl border border-home-grau/30 shadow-sm overflow-x-auto">
@@ -251,7 +258,7 @@ export default function Lebensdauern() {
               <h3 className="font-bold text-sm text-text-main mb-3 flex items-center gap-2">
                 <Layers className="text-shiraz" size={16} /><MdText text={inhalt.texte.schematischeDarstellungAustauschzyklenIm} /></h3>
               <div className="flex flex-col items-center bg-off-white rounded-xl border border-home-grau/30 p-4">
-                <svg width="100%" height="150" viewBox="0 0 450 150">
+                <svg role="img" aria-label="Schematische Darstellung: Austauschzyklen im Gebäudelebenszyklus" width="100%" height="150" viewBox="0 0 450 150">
                   <line x1="50" y1="120" x2="400" y2="120" stroke="#1e293b" strokeWidth="2" markerEnd="url(#arrow-black-lebensdauer)" />
                   <text x="410" y="125" fontSize="11" fill="#1e293b">Zeit (a)</text>
                   

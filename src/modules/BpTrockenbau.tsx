@@ -16,6 +16,7 @@ import { MdText } from '@/src/components/inhalt/MdText';
 import { ModuleTabs } from '@/src/components/ui/ModuleTabs';
 import { Fz } from '@/src/components/ui/Formelzeichen';
 import { AuswahlGruppe, ReiterLeiste, alsOption, alsReiter, reiterPanel } from '../components/ui/Auswahlgruppe';
+import { ErgebnisAnsage, ansageWert, kurzzeile } from '@/src/components/ui/ErgebnisAnsage';
 
 interface ProductSpec {
   id: string;
@@ -138,7 +139,7 @@ export default function BpTrockenbau() {
               <div {...reiterPanel('trockenbau-bereich', selectedSubCategory)} className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-stretch">
                 {/* Product List Sidebar */}
                 <AuswahlGruppe label="Produkt" className="lg:col-span-5 flex flex-col gap-2 max-h-[500px] overflow-y-auto pr-1">
-                  <h4 className="text-[10px] font-black uppercase tracking-wider text-slate-400 px-2 select-none"><MdText text={inhalt.texte.verfügbareAusbauproduktePlatten} /></h4>
+                  <h3 className="text-[10px] font-black uppercase tracking-wider text-slate-400 px-2 select-none wie-h4"><MdText text={inhalt.texte.verfügbareAusbauproduktePlatten} /></h3>
                   {DRY_PRODUCTS_DB.map((prod) => (
                     <button {...alsOption(selectedProductId === prod.id)}
                       key={prod.id}
@@ -524,6 +525,7 @@ export default function BpTrockenbau() {
               <div className="md:col-span-2 border border-home-grau/30 rounded-xl p-5 bg-white">
                 <h4 className="font-bold text-home-prim text-md mb-4 flex items-center gap-2">
                   <Sparkles size={16} className="text-shiraz" /><MdText text={inhalt.texte.errechneteMaterialmengen} /></h4>
+                <ErgebnisAnsage text={kurzzeile(ansageWert('Gipsbauplatten', plasterboardArea, 'frei', 'm²'), ansageWert('CW-Profile', cwProfilesMeter, 'frei', 'lfm'), ansageWert('UW-Profile', uwProfilesMeter, 'frei', 'lfm'), ansageWert('Schrauben', screwsCount, 0, 'Stück'))} />
                 <div className="space-y-4 divide-y divide-home-grau/10">
                   <div className="flex items-center justify-between pb-2">
                     <div>

@@ -26,6 +26,7 @@ import inhalt from '@/content/festigkeitsberechnungen/Festigkeitsberechnungen.js
 import { grenzhoehen, wuerfelstapel } from '@/src/calc/festigkeitsvergleich';
 import { ALUMINIUM_6060_T6 } from '@/src/data/kennwerte';
 import { MdText } from '@/src/components/inhalt/MdText';
+import { ErgebnisAnsage, ansageWert, kurzzeile } from '@/src/components/ui/ErgebnisAnsage';
 
 ChartJS.register(
   CategoryScale,
@@ -99,6 +100,7 @@ export default function Festigkeitsberechnungen() {
     ]
   };
 
+  const laengeAnsage = (name: string, m: number) => `${name} ${Number.isFinite(m) ? formatLength(m) : '–'}`;
   const formatLength = (m: number) => {
     if (m > 10000) return `${formatDeZahl(m / 1000, 1)} km`;
     if (m > 1000) return `${formatDeZahl(m / 1000, 2)} km`;
@@ -165,6 +167,7 @@ export default function Festigkeitsberechnungen() {
             </div>
           </div>
 
+          <ErgebnisAnsage text={`${mat1.name}: ${laengeAnsage('Turmhöhe', res1.H_max)}, ${laengeAnsage('Reißlänge', res1.L_max)}; ${mat2.name}: ${laengeAnsage('Turmhöhe', res2.H_max)}, ${laengeAnsage('Reißlänge', res2.L_max)}`} />
           {/* Material 2 */}
           <div className="bg-off-white p-5 rounded-xl border border-home-grau/30">
             <h3 className="text-sm font-bold text-text-main uppercase tracking-wider mb-4">Material 2</h3>
@@ -332,6 +335,7 @@ export default function Festigkeitsberechnungen() {
         {/* Live-Rechenweg (AP 3.7) mit den aktuellen Eingaben */}
         <FormulaDerivationBox
           live
+          kurzzeile={kurzzeile(`${cubeMat.name}: ${ansageWert('höchstens', cubeCalc.N_max, 'frei', 'Würfel')}`, laengeAnsage('Stapelhöhe', cubeCalc.H_total), ansageWert('Gesamtstauchung', cubeCalc.delta_total, 1, 'mm'))}
           title={`Ihr Rechenweg: Würfelstapel aus ${cubeMat.name}`}
           zielGleichung="N_{\max} = \left\lfloor \frac{f_c}{\rho \cdot g \cdot a} \right\rfloor"
           schritte={[

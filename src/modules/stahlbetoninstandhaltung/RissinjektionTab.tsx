@@ -5,6 +5,7 @@ import { formatDeZahl, formatDeWert } from '@/src/utils/numberFormat';
 import inhalt from '@/content/stahlbetoninstandhaltung/RissinjektionTab.json';
 import { MdText } from '@/src/components/inhalt/MdText';
 import { AuswahlGruppe, alsOption } from '../../components/ui/Auswahlgruppe';
+import { ErgebnisAnsage, ansageWert, kurzzeile } from '@/src/components/ui/ErgebnisAnsage';
 
 export interface RissinjektionTabProps {
   bauteilDicke: number;
@@ -173,6 +174,7 @@ export default function RissinjektionTab({ bauteilDicke, crackActivity, crackMoi
           
           {/* Result Card */}
           <div className="p-5 rounded-2xl bg-white border border-home-grau/30 shadow-xs space-y-4">
+            <ErgebnisAnsage text={kurzzeile(rissStats.harzTyp, ansageWert('Packerabstand etwa', rissStats.packerSpacingMm, 'frei', 'mm'), ansageWert('Verpressdruck höchstens', rissStats.maxPressureBar, 'frei', 'bar'))} />
             <div className="flex items-center justify-between border-b border-home-grau/20 pb-3">
               <div>
                 <span className="text-[10px] font-mono uppercase font-bold text-shiraz block"><MdText text={inhalt.texte.technologischerInjektionsplan} /></span>
@@ -221,7 +223,7 @@ export default function RissinjektionTab({ bauteilDicke, crackActivity, crackMoi
               <span className="text-emerald-700 font-bold"><MdText text={inhalt.texte.ztvIngDinEn} /></span>
             </div>
 
-            <svg width="100%" height="220" viewBox="0 0 540 220" className="select-none mt-2">
+            <svg role="img" aria-label="Prinzipschnitt: Hochdruck-Rissinjektion mit Schraubpackern" width="100%" height="220" viewBox="0 0 540 220" className="select-none mt-2">
               {/* Concrete Cross-Section */}
               <rect x="20" y="30" width="500" height="150" fill="#f8fafc" stroke="#64748b" strokeWidth="2" rx="4" />
               <text x="35" y="50" fill="#475569" fontSize="10" fontWeight="bold">Betonbauteil (h = {formatDeWert(bauteilDicke)} mm)</text>

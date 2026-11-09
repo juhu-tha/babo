@@ -9,6 +9,7 @@ import inhalt from '@/content/bimbaustoffe/BimBaustoffe.json';
 import { GWP_LEHRWERTE, PROFILSTAHL_HINWEIS, type GwpLehrwertSchluessel } from '@/src/data/gwpLehrwerte';
 import { gwpRegler } from '@/src/modules/bimbaustoffe/gwpRegler';
 import { MdText } from '@/src/components/inhalt/MdText';
+import { ErgebnisAnsage, ansageWert, kurzzeile } from '@/src/components/ui/ErgebnisAnsage';
 
 interface MaterialArchetype {
   id: string;
@@ -182,6 +183,8 @@ export default function BimBaustoffe() {
                       max={selectedId === 'mineralwolle' ? 200 : selectedId === 'holz' ? 900 : selectedId === 'stahl' ? 8500 : 3200} 
                       step={selectedId === 'mineralwolle' ? 5 : 10}
                       value={density} 
+                      aria-label="Rohdichte"
+                      aria-valuetext={`${formatDeWert(density)} kg/m³`}
                       onChange={(e) => setDensity(Number(e.target.value))}
                       className="cursor-pointer"
                     />
@@ -199,6 +202,8 @@ export default function BimBaustoffe() {
                       max={selectedId === 'mineralwolle' ? 0.050 : selectedId === 'holz' ? 0.200 : selectedId === 'stahl' ? 65.0 : 3.00} 
                       step={selectedId === 'stahl' ? 1.0 : 0.005}
                       value={conductivity} 
+                      aria-label="Wärmeleitfähigkeit"
+                      aria-valuetext={`${formatDeZahl(conductivity, 3)} W/(m·K)`}
                       onChange={(e) => setConductivity(Number(e.target.value))}
                       className="cursor-pointer"
                     />
@@ -216,6 +221,8 @@ export default function BimBaustoffe() {
                       max={selectedId === 'mineralwolle' ? 20 : selectedId === 'holz' ? 16000 : selectedId === 'stahl' ? 230000 : 45000} 
                       step={selectedId === 'mineralwolle' ? 1 : selectedId === 'holz' ? 500 : selectedId === 'stahl' ? 5000 : 1000}
                       value={eModulus} 
+                      aria-label="E-Modul"
+                      aria-valuetext={`${formatDeIntl(eModulus)} N/mm²`}
                       onChange={(e) => setEModulus(Number(e.target.value))}
                       className="cursor-pointer"
                     />
@@ -234,6 +241,8 @@ export default function BimBaustoffe() {
                       max={gwpRegler(selectedId).max}
                       step={gwpRegler(selectedId).step}
                       value={gwp} 
+                      aria-label="GWP A1–A3"
+                      aria-valuetext={`${formatDeZahl(gwp, 1)} kg CO₂-Äq./m³`}
                       onChange={(e) => setGwp(Number(e.target.value))}
                       className="cursor-pointer"
                     />
@@ -250,6 +259,8 @@ export default function BimBaustoffe() {
               </div>
             </div>
 
+            <ErgebnisAnsage text={`IFC-Datensatz aktualisiert: ${kurzzeile(ansageWert('Rohdichte', density, 'frei', 'kg/m³'), ansageWert('Wärmeleitfähigkeit', conductivity, 3, 'W/(m·K)'),
+              ansageWert('E-Modul', eModulus, 0, 'N/mm²'), ansageWert('GWP', gwp, 1, 'kg CO₂-Äq./m³'))}`} />
             {/* Right Column: Schema Code Output with pseudo Syntax Highlighting */}
             <div className="lg:col-span-8 p-5 bg-off-white border-t lg:border-t-0 border-home-grau/30 flex flex-col">
               <div className="flex flex-wrap items-center justify-between gap-2 mb-3">

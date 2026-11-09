@@ -9,6 +9,7 @@ import { EingabeHinweise } from '@/src/components/ui/EingabeHinweise';
 import { Slider } from '@/src/components/ui/Slider';
 import { AuswahlGruppe, alsOption } from '../../components/ui/Auswahlgruppe';
 import { cbamKosten, cbamJahrespfad, CBAM_JAHRE, CBAM_FAKTOR, CBAM_BENCHMARK, type CbamJahr, type CbamWare } from '@/src/calc/cbam';
+import { ErgebnisAnsage, ansageWert, kurzzeile } from '@/src/components/ui/ErgebnisAnsage';
 
 const WAREN: readonly (readonly [CbamWare, string])[] = [
   ['zementGrau', 'Grauer Portlandzement (KN 2523 29 00)'],
@@ -72,6 +73,7 @@ export default function CbamRechner() {
             </dl>
           </div>
           <EingabeHinweise hinweise={r.hinweise} />
+          <ErgebnisAnsage text={kurzzeile(ansageWert(`CBAM-Kosten ${jahr}`, r.kosten, 0, '€'), ansageWert('je Tonne Ware', r.kostenJeT, 2, '€'), ansageWert('Zertifikate', r.zertifikate, 1, 't CO₂e'))} />
 
           <div className="bg-white p-4 rounded-2xl border border-home-grau/30 overflow-x-auto">
             <h3 className="font-bold text-sm text-slate-900 mb-2"><MdText text={inhalt.texte.pfadTitel} /></h3>

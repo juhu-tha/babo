@@ -5,6 +5,7 @@ import { Calculator, HardHat } from 'lucide-react';
 import inhalt from '@/content/bpverkehrswegebau/TunnelbauTab.json';
 import { MdText } from '@/src/components/inhalt/MdText';
 import { spritzbetonRing } from '@/src/calc/verkehrswegebau';
+import { ErgebnisAnsage, ansageWert, kurzzeile } from '@/src/components/ui/ErgebnisAnsage';
 
 export interface TunnelbauTabProps {
   betonKlasse: 'C20/25' | 'C25/30' | 'C30/37';
@@ -29,13 +30,13 @@ export default function TunnelbauTab({ betonKlasse, gebirgsdruck, setBetonKlasse
           
           <div className="space-y-4 text-xs text-text-main/75 leading-relaxed">
             <div>
-              <h5 className="font-extrabold text-[#A3113E] text-xs uppercase font-mono mb-1"><MdText text={inhalt.texte.dasPrinzipDerNöt} /></h5>
+              <h4 className="font-extrabold text-[#A3113E] text-xs uppercase font-mono mb-1 wie-h5"><MdText text={inhalt.texte.dasPrinzipDerNöt} /></h4>
               <p><MdText text={inhalt.texte.dieNeueÖsterreichischeTunnelbauweise} /></p>
               <p className="mt-1.5"><MdText text={inhalt.texte.direktNachDemMechanischen} /></p>
             </div>
 
             <div>
-              <h5 className="font-extrabold text-[#A3113E] text-xs uppercase font-mono mb-1"><MdText text={inhalt.texte.frühfestigkeitsklassenBeiSpritzbeton} /></h5>
+              <h4 className="font-extrabold text-[#A3113E] text-xs uppercase font-mono mb-1 wie-h5"><MdText text={inhalt.texte.frühfestigkeitsklassenBeiSpritzbeton} /></h4>
               <p><MdText text={inhalt.texte.nachDerRichtlinieSpritzbeton} /></p>
               <ul className="list-disc pl-4 mt-1.5 space-y-1 text-[11px]">
                 <li><MdText text={inhalt.texte.klasseJ1GeringeFrühfestigkeit} /></li>
@@ -45,7 +46,7 @@ export default function TunnelbauTab({ betonKlasse, gebirgsdruck, setBetonKlasse
             </div>
 
             <div className="bg-zinc-50 p-3 rounded-lg border border-zinc-200">
-              <h5 className="font-bold text-zinc-800 text-xs mb-1"><MdText text={inhalt.texte.vortriebsverfahrenImVergleich} /></h5>
+              <h4 className="font-bold text-zinc-800 text-xs mb-1 wie-h5"><MdText text={inhalt.texte.vortriebsverfahrenImVergleich} /></h4>
               <p className="text-[11px]"><MdText text={inhalt.texte.währendDieNötFlexibel} /></p>
             </div>
           </div>
@@ -139,6 +140,7 @@ export default function TunnelbauTab({ betonKlasse, gebirgsdruck, setBetonKlasse
 
               return (
                 <div className="p-4 bg-zinc-50 border border-zinc-200 rounded-lg space-y-3 mt-4 text-xs font-sans">
+                  <ErgebnisAnsage text={kurzzeile(ansageWert('Ringdruckspannung', sigma_ring, 2, 'MPa'), ansageWert('f_cd', f_cd, 2, 'MPa'), ansageWert('Auslastung', utilization, 1, '%'), Number.isFinite(utilization) && (isSafe ? 'Nachweis erfüllt' : 'Nachweis nicht erfüllt'))} />
                   <div className="grid grid-cols-2 font-mono gap-y-1">
                     <div className="text-zinc-500 font-bold"><MdText text={inhalt.texte.ringdruckkraftNRing} /></div>
                     <div className="text-right font-bold text-zinc-950">{formatDeZahl(ring.ringKraftKnM, 1)} kN/m</div>

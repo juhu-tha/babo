@@ -14,6 +14,7 @@ import {
 } from '@/src/calc/korrosionsschutz';
 import inhaltJson from '@/content/korrosionsschutzbeschichtungen/KorrosionsschutzBeschichtungen.json';
 import { MdText } from '@/src/components/inhalt/MdText';
+import { kurzzeile } from '@/src/components/ui/ErgebnisAnsage';
 
 type Reiter = 'einfuehrung' | 'grundlagen' | 'verzinkung' | 'kennwerte' | 'rechner' | 'beispiele';
 
@@ -343,7 +344,7 @@ export default function KorrosionsschutzBeschichtungen({ startReiter = 'einfuehr
                           <div className="text-lg font-black font-mono text-slate-900">{jahre(erg.tDuplexMax)}</div>
                         </div>
                       </div>
-                      <div className={`p-4 rounded-xl border flex items-start gap-3 text-xs leading-relaxed ${erg.bewertung === 'erfuellt' ? 'bg-emerald-50 border-emerald-200 text-emerald-950' : erg.bewertung === 'grenzwertig' ? 'bg-amber-50 border-amber-200 text-amber-950' : 'bg-red-50 border-red-200 text-red-950'}`} role="status">
+                      <div className={`p-4 rounded-xl border flex items-start gap-3 text-xs leading-relaxed ${erg.bewertung === 'erfuellt' ? 'bg-emerald-50 border-emerald-200 text-emerald-950' : erg.bewertung === 'grenzwertig' ? 'bg-amber-50 border-amber-200 text-amber-950' : 'bg-red-50 border-red-200 text-red-950'}`}>
                         {erg.bewertung === 'erfuellt' ? <CheckCircle size={18} className="text-emerald-600 shrink-0" aria-hidden="true" /> : erg.bewertung === 'grenzwertig' ? <AlertTriangle size={18} className="text-amber-600 shrink-0" aria-hidden="true" /> : <XCircle size={18} className="text-red-600 shrink-0" aria-hidden="true" />}
                         <p><strong>Klasse {erg.klasseUnguenstig}{erg.klasseGuenstig !== erg.klasseUnguenstig ? ` bis ${erg.klasseGuenstig}` : ''}.</strong> {bewertungText}</p>
                       </div>
@@ -375,6 +376,7 @@ export default function KorrosionsschutzBeschichtungen({ startReiter = 'einfuehr
               {erg.gueltig && (
                 <FormulaDerivationBox
                   live
+                  kurzzeile={erg.gueltig ? kurzzeile(`Schutzdauer ${jahre(erg.tDuplexMin)} bis ${jahre(erg.tDuplexMax)}`, `Klasse ${erg.klasseUnguenstig}${erg.klasseGuenstig !== erg.klasseUnguenstig ? ` bis ${erg.klasseGuenstig}` : ''}`, bewertungText) : 'Schutzdauer –'}
                   title={inhaltJson.werte.ihrRechenwegSchutzdauerDer}
                   zielGleichung="t_{Zn} = \frac{d_{Zn}}{r_{corr,Zn}}"
                   schritte={[

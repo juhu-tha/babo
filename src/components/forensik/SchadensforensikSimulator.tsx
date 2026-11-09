@@ -361,7 +361,7 @@ export function SchadensforensikSimulator() {
           </span>
           <h2 className="text-xl font-bold text-text-main flex items-center gap-2">
             <Search className="text-shiraz" size={22} />
-            Bauschadens-Forensik &amp; Diagnostik-Simulator
+            Bauforensik &amp; Fallstudien: Diagnostik-Simulator
           </h2>
           <p className="text-xs text-text-main/70 mt-1">
             Schlüpfen Sie in die Rolle des Bausachverständigen: Untersuchen Sie Schäden, verwalten Sie Ihr Untersuchungsbudget und wählen Sie die normkonforme Sanierung.
@@ -413,7 +413,7 @@ export function SchadensforensikSimulator() {
             </span>
 
             {currentCase.visualType === 'parkhaus' && (
-              <svg width="340" height="180" viewBox="0 0 340 180" className="select-none">
+              <svg role="img" aria-label="Schadensschematik im Querschnitt: Parkhausstütze" width="340" height="180" viewBox="0 0 340 180" className="select-none">
                 {/* Concrete Column Body */}
                 <rect x="70" y="20" width="200" height="140" fill="var(--bu-beton)" stroke="var(--bu-kontur)" strokeWidth="2" rx="4" />
                 
@@ -444,7 +444,7 @@ export function SchadensforensikSimulator() {
             )}
 
             {currentCase.visualType === 'bruecke' && (
-              <svg width="340" height="180" viewBox="0 0 340 180" className="select-none">
+              <svg role="img" aria-label="Schadensschematik im Querschnitt: Brückenbauteil" width="340" height="180" viewBox="0 0 340 180" className="select-none">
                 {/* Bridge Pier Body */}
                 <rect x="60" y="20" width="220" height="140" fill="var(--bu-beton)" stroke="var(--bu-kontur)" strokeWidth="2" rx="4" />
                 

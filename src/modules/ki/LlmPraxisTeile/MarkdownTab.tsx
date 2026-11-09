@@ -3,6 +3,7 @@ import { FileCode, Sliders, Code, AlertTriangle, Table, CheckSquare } from 'luci
 import { formatDeZahl, formatDeWert, formatDeIntl } from '@/src/utils/numberFormat';
 import inhalt from '@/content/ki/LlmPraxisTeile/MarkdownTab.json';
 import { MdText } from '@/src/components/inhalt/MdText';
+import { ErgebnisAnsage, ansageWert, kurzzeile } from '@/src/components/ui/ErgebnisAnsage';
 import { AuswahlGruppe, ReiterLeiste, alsOption, alsReiter, reiterPanel } from '../../../components/ui/Auswahlgruppe';
 
 export interface MarkdownTabProps {
@@ -162,6 +163,8 @@ export function MarkdownTab({ markdownView, setMarkdownView, calcDocPages, setCa
                           max={150} 
                           step={5} 
                           value={calcDocPages} 
+                          aria-label="Dokumentenumfang"
+                          aria-valuetext={`${calcDocPages} Seiten`}
                           onChange={(e) => setCalcDocPages(Number(e.target.value))}
                           className="w-full accent-shiraz cursor-pointer" 
                         />
@@ -203,6 +206,8 @@ export function MarkdownTab({ markdownView, setMarkdownView, calcDocPages, setCa
                       </div>
                     </div>
     
+                    <ErgebnisAnsage text={kurzzeile(ansageWert('Geschätzte Token', tokenStats.totalTokens, 0), ansageWert('Kontextauslastung', tokenStats.contextUsagePercent, 'frei', '%'),
+                      ansageWert('Kosten', tokenStats.costInputStandard, 3, 'US-Dollar'), ansageWert('mit Prompt-Caching', tokenStats.costCached, 3, 'US-Dollar'))} />
                     {/* STATS TILES */}
                     <div className="grid grid-cols-1 sm:grid-cols-4 gap-3 pt-2">
                       <div className="p-3 bg-white rounded-xl border border-home-grau/20">

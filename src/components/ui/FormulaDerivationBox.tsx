@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { ChevronDown, ChevronUp, Calculator, CheckCircle2 } from 'lucide-react';
 import { InlineMath, BlockMath } from 'react-katex';
 import { useTabContext } from '@/src/contexts/TabContext';
+import { ErgebnisAnsage } from './ErgebnisAnsage';
 
 export interface DerivationStep {
   titel: string;
@@ -19,6 +20,13 @@ interface FormulaDerivationBoxProps {
   defaultExpanded?: boolean;
   /** Rechenweg mit den aktuellen Eingaben des Rechners (AP 3.7): zeigt den Hinweis „Live“ */
   live?: boolean;
+  /**
+   * Kurzzeile für Screenreader (WCAG 4.1.3, Kurzzeilen 04.11.2026): Hauptergebnis des Rechners aus den Kernergebnissen
+   * mit Zahl, Einheit und ggf. Klasse/Nachweisstatus, deutsch formatiert, „–“ bei ungültiger Eingabe (`ansageWert`).
+   * Wird statt des Ergebnishinweises angesagt und nicht angezeigt. Ohne Kurzzeile wird wie bisher „Titel: Ergebnishinweis“
+   * angesagt – das ändert sich nur, wenn der Hinweis aus Rechenwerten gebildet wird (feste Texte bleiben stumm).
+   */
+  kurzzeile?: string;
 }
 
 export function FormulaDerivationBox({
@@ -28,7 +36,8 @@ export function FormulaDerivationBox({
   ergebnisHinweis,
   normQuelle,
   defaultExpanded = false,
-  live = false
+  live = false,
+  kurzzeile
 }: FormulaDerivationBoxProps) {
   const { formulaDerivationMode } = useTabContext();
   const [localExpanded, setLocalExpanded] = useState<boolean | null>(null);
@@ -38,6 +47,10 @@ export function FormulaDerivationBox({
 
   return (
     <div className="bg-white rounded-2xl border border-home-grau/30 shadow-xs overflow-hidden transition-all my-3">
+      {/* Ergebnis nach jeder Eingabe kurz ansagen (WCAG 4.1.3): Kurzzeile, sonst Titel + Ergebnishinweis */}
+      {kurzzeile !== undefined
+        ? <ErgebnisAnsage text={kurzzeile} />
+        : ergebnisHinweis && <ErgebnisAnsage text={`${title}: ${ergebnisHinweis}`} />}
       {/* Header mit Aufklapp-Trigger */}
       <button
         type="button"
