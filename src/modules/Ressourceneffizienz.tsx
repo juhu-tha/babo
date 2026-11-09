@@ -27,6 +27,7 @@ import { MdText } from '@/src/components/inhalt/MdText';
 import { reiterZiel } from '@/src/components/ui/ModuleTabs';
 import { AuswahlGruppe, alsOption } from '../components/ui/Auswahlgruppe';
 import { RC_HOECHSTANTEIL, rcBilanz, ANTEIL_GROB, GESTEINSKOERNUNG_T_JE_M3, type RcTyp, type RcExpositionsgruppe } from '@/src/calc/rcGesteinskoernung';
+import { ErgebnisAnsage } from '@/src/components/ui/ErgebnisAnsage';
 
 // Define the tabs representing the 4 concepts of REZ Bayern
 type RezTab = 'informieren' | 'handeln' | 'nutzen' | 'staerken';
@@ -930,6 +931,7 @@ export default function Ressourceneffizienz() {
                     <div className="bg-slate-50/65 dark:bg-slate-850/45 p-3 rounded-xl text-center space-y-1 col-span-2 sm:col-span-1">
                       <span className="text-xs text-slate-500 dark:text-slate-400 font-bold block uppercase"><MdText text={inhalt.texte.grauerCoGehalt} /></span>
                       <span className="font-mono text-lg font-bold text-slate-800 dark:text-slate-200">{simResult.totalCo2} t</span>
+                      <ErgebnisAnsage text={`Grauer CO₂-Gehalt ${simResult.totalCo2} t, Referenz ${simResult.baselineCo2} t, Einsparung ${simResult.co2SavingsPercent} %, Primärkies-Schonung ${simResult.primaryMineralSavings} t`} />
                       <span className="text-xs text-slate-400 dark:text-slate-500 block"><MdText text={inhalt.texte.inklTransportStahl} /></span>
                     </div>
 

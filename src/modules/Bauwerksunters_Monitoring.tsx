@@ -14,6 +14,7 @@ import PruefverfahrenKatalog from './bauwerksuntersuchung/PruefverfahrenKatalog'
 import inhalt from '@/content/bauwerksunters_monitoring/Bauwerksunters_Monitoring.json';
 import { MdText } from '@/src/components/inhalt/MdText';
 import { ModuleTabs, type ModulTab } from '@/src/components/ui/ModuleTabs';
+import { ErgebnisAnsage, ansageWert, kurzzeile } from '@/src/components/ui/ErgebnisAnsage';
 
 // Constants for Wood Drill Simulator
 interface TimberConfig {
@@ -578,6 +579,7 @@ export default function Bauwerksunters_Monitoring() {
                   <div className="font-bold flex items-center gap-1">
                     <span>{substrate === 'brick' ? inhalt.werte.mauerwerkKeineBelegreifeGrenze : moistureEvaluation.isBelegreif ? inhalt.werte.freigabeErteiltBelegreif : inhalt.werte.verlegeSperreNichtBelegreif}</span>
                   </div>
+                  <ErgebnisAnsage text={kurzzeile(ansageWert('CM-Feuchte', measuredCM, 'frei', 'CM-%'), substrate !== 'brick' && ansageWert('Richtwert höchstens', moistureEvaluation.limitCM, 'frei', 'CM-%'), substrate === 'brick' ? inhalt.werte.mauerwerkKeineBelegreifeGrenze : moistureEvaluation.isBelegreif ? inhalt.werte.freigabeErteiltBelegreif : inhalt.werte.verlegeSperreNichtBelegreif)} />
                   <p className="leading-relaxed">{moistureEvaluation.evalText}</p>
                   <p className="border-t border-current/20 pt-1.5 text-[11px] opacity-80">
                     <strong>HF-Vorscan:</strong> {moistureEvaluation.hfIndication}

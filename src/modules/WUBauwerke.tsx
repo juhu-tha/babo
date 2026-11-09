@@ -24,6 +24,7 @@ import inhalt from '@/content/wubauwerke/WUBauwerke.json';
 import { wuNachweis } from '@/src/calc/schutzInstandsetzung';
 import { MdText } from '@/src/components/inhalt/MdText';
 import { ModuleTabs } from '@/src/components/ui/ModuleTabs';
+import { ErgebnisAnsage, ansageWert, kurzzeile } from '@/src/components/ui/ErgebnisAnsage';
 
 ChartJS.register(
   CategoryScale,
@@ -256,6 +257,7 @@ export default function WUBauwerke() {
                     </div>
 
                     <div className="space-y-3.5 text-sm">
+                      <ErgebnisAnsage text={kurzzeile(ansageWert('Druckgefälle', results.druckgefaelle, 2), ansageWert('Mindestdicke', results.mindestDicke, 0, 'mm'), results.dickeOk ? 'Dicke eingehalten' : 'Dicke unterschritten', ansageWert('zulässige Rissbreite', results.zulRissbreite, 2, 'mm'), results.rissbreiteOk ? 'Rissbreite eingehalten' : 'Rissbreite überschritten')} />
                       <div className="flex justify-between items-center border-b border-white/10 pb-2">
                         <span className="text-white/80"><MdText text={inhalt.texte.druckgefälleIHW} /></span>
                         <span className="font-extrabold text-base">{formatDeZahl(results.druckgefaelle, 2)} [-]</span>

@@ -6,6 +6,7 @@ import { formatDeZahl, formatDeWert } from '@/src/utils/numberFormat';
 import { EingabeHinweise } from '@/src/components/ui/EingabeHinweise';
 import inhalt from '@/content/bpglaeser/KalkulatorTab.json';
 import { MdText } from '@/src/components/inhalt/MdText';
+import { ErgebnisAnsage, ansageWert, kurzzeile } from '@/src/components/ui/ErgebnisAnsage';
 
 export interface KalkulatorTabProps {
   fensterBreite: number;
@@ -231,6 +232,7 @@ export function KalkulatorTab({ fensterBreite, setFensterBreite, fensterHoehe, s
               </div>
     
               <EingabeHinweise hinweise={calcResults.hinweise} />
+              <ErgebnisAnsage text={kurzzeile(ansageWert('U_w', calcResults.uw, 2, 'W/(m²K)'), ansageWert('Fensterfläche', calcResults.Af_total, 2, 'm²'))} />
               <div className="text-center my-3">
                 <span className="text-xs text-home-grau font-semibold block"><MdText text={inhalt.texte.gesamterWärmedurchgangskoeffizient} /></span>
                 <div className="text-4xl font-extrabold text-shiraz font-mono mt-1">

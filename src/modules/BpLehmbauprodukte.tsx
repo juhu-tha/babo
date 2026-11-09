@@ -21,6 +21,7 @@ import { MdText } from '@/src/components/inhalt/MdText';
 import { ModuleTabs } from '@/src/components/ui/ModuleTabs';
 import { FormulaDerivationBox } from '@/src/components/ui/FormulaDerivationBox';
 import { AuswahlGruppe, alsOption } from '../components/ui/Auswahlgruppe';
+import { ansageWert, kurzzeile } from '@/src/components/ui/ErgebnisAnsage';
 
 interface LoamStandardInfo {
   id: string;
@@ -371,6 +372,7 @@ export default function BpLehmbauprodukte() {
             {/* Rechenweg mit den aktuellen Eingaben (Z12) */}
             <FormulaDerivationBox
               live
+              kurzzeile={kurzzeile(ansageWert('Schlankheit', slenderness, 1), ansageWert('N_Rd', isSlendernessOk ? n_Rd : NaN, 1, 'kN/m'), ansageWert('N_Ed', designLoad, 'frei', 'kN/m'), isCapacityOk ? 'Nachweis erfüllt' : 'Nachweis nicht erfüllt')}
               title={inhalt.werte.rwTitel}
               zielGleichung={`N_{Ed} \\leq N_{Rd} = \\Phi \\cdot t \\cdot f_d = ${formatDeTeX(n_Rd, 1)}\\,\\text{kN/m}`}
               normQuelle={inhalt.werte.rwNormQuelle}

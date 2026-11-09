@@ -11,6 +11,7 @@ import { MdText } from '@/src/components/inhalt/MdText';
 import { ModuleTabs } from '@/src/components/ui/ModuleTabs';
 import { pn98Plan } from '@/src/calc/probenahme';
 import { AuswahlGruppe, alsOption } from '../components/ui/Auswahlgruppe';
+import { ErgebnisAnsage, ansageWert, kurzzeile } from '@/src/components/ui/ErgebnisAnsage';
 
 const TREATMENT_OPTIONS = inhalt.daten.TREATMENT_OPTIONS;
 
@@ -499,6 +500,7 @@ export default function BodenMaterialAufbereitung() {
                       </div>
                     </div>
                     
+                    <ErgebnisAnsage text={kurzzeile(ansageWert('Haufwerk', tonnage, 'frei', 't'), ansageWert('Untersuchungseinheiten', numInvestigationUnits, 0), ansageWert('Mischproben', samplingReq.mp, 'frei'), ansageWert('Einzelproben', samplingReq.ep, 'frei'))} />
                     <div className="bg-white p-3 rounded-xl border border-home-grau/15">
                       <span className="text-xs font-mono text-slate-400 uppercase tracking-wider block"><MdText text={inhalt.texte.untersuchungseinheitenUe} /></span>
                       <div className="text-xl font-extrabold text-slate-850 mt-0.5 flex items-baseline gap-1">

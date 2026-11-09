@@ -15,6 +15,7 @@ import { membranNachweis, MEMBRAN_LEHRWERTE, type MembranGeometrie } from '@/src
 import inhalt from '@/content/membranenetfe/MembranenETFE.json';
 import { MdText } from '@/src/components/inhalt/MdText';
 import { AuswahlGruppe, alsOption } from '../components/ui/Auswahlgruppe';
+import { ansageWert, kurzzeile } from '@/src/components/ui/ErgebnisAnsage';
 
 type Reiter = 'einfuehrung' | 'werkstoffe' | 'tragverhalten' | 'kennwerte' | 'rechner' | 'regelwerke';
 
@@ -376,6 +377,7 @@ export default function MembranenETFE() {
                 </div>
                 <FormulaDerivationBox
                   live
+                  kurzzeile={gueltig ? kurzzeile(ansageWert('Membrankraft n', erg.nKN, 2, 'kN/m'), ansageWert('Ausnutzung', erg.eta * 100, 0, '%'), erg.ok ? inhalt.werte.lehrwertEingehalten : inhalt.werte.lehrwertÜberschritten) : 'Membrankraft n –'}
                   title={`Ihr Rechenweg: Kesselformel und Ausnutzung (p = ${formatDeZahl(p, 0)} Pa)`}
                   zielGleichung={kessel}
                   schritte={liveSchritte}

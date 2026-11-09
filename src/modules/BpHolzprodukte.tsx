@@ -11,6 +11,7 @@ import { MdText } from '@/src/components/inhalt/MdText';
 import { EingabeHinweise } from '@/src/components/ui/EingabeHinweise';
 import { bemesseEinfeldbalken, GAMMA_M_HOLZ, type KLED, type Nutzungsklasse } from '@/src/calc/holzbau';
 import { BSH_EN14080, HOLZ_EN338, type HolzKennwerte } from '@/src/data/kennwerte';
+import { ErgebnisAnsage, ansageWert, kurzzeile } from '@/src/components/ui/ErgebnisAnsage';
 
 interface WoodProductType {
   id: string;
@@ -435,6 +436,7 @@ export default function BpHolzprodukte() {
               </div>
 
               <EingabeHinweise hinweise={balken.hinweise} />
+              <ErgebnisAnsage text={kurzzeile(ansageWert('Ausnutzung Biegung', bendingUtilization, 0, '%'), ansageWert('Schub', shearUtilization, 0, '%'), ansageWert('Durchbiegung', deflectionUtilization, 0, '%'), Number.isFinite(bendingUtilization) && (isSafe ? 'Nachweis erfüllt' : 'Nachweis nicht erfüllt'))} />
               {/* Util percentages */}
               <div className="space-y-3 font-mono text-xs">
                 <div>

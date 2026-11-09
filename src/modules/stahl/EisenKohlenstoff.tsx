@@ -14,6 +14,7 @@ import {
 } from '@/src/calc/eisenKohlenstoff';
 import inhalt from '@/content/stahl/EisenKohlenstoff.json';
 import { AuswahlGruppe, alsOption } from '../../components/ui/Auswahlgruppe';
+import { ErgebnisAnsage, ansageWert, kurzzeile } from '@/src/components/ui/ErgebnisAnsage';
 
 /** Formeln und Quellen des Reiters für den Modulfuß */
 export const EISEN_KOHLENSTOFF_FUSS = { formeln: inhalt.daten.formeln, literatur: inhalt.daten.literatur, weblinks: inhalt.daten.weblinks };
@@ -171,6 +172,7 @@ export default function EisenKohlenstoff() {
         </div>
 
         <EingabeHinweise hinweise={[...zustand.hinweise, ...anteile.hinweise]} />
+        <ErgebnisAnsage text={ok ? kurzzeile(`${formatDeZahl(c, 2)} % C bei ${formatDeZahl(t, 0)} °C: Feld ${zustand.feld}`, zustand.gefuege, anteilOk && zeilen.map(([id, v]) => `${NAMEN[id]} ${PROZENT(v)}`).join(', ')) : 'Gefüge –'} />
         {ok && (
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
             <div className="bg-shiraz/5 p-5 rounded-xl border border-shiraz/20 text-sm">
@@ -220,6 +222,7 @@ export default function EisenKohlenstoff() {
           ))}
         </div>
         <EingabeHinweise hinweise={cevErg.hinweise} />
+        <ErgebnisAnsage text={kurzzeile(ansageWert('Kohlenstoffäquivalent CEV', cevOk ? cevErg.cev : NaN, 3, '%'), cevOk && `${cevErg.stufe} – ${cevErg.vorwaermen}`)} />
         {cevOk && (
           <dl className="grid grid-cols-1 sm:grid-cols-3 gap-4 text-sm bg-shiraz/5 p-4 rounded-xl border border-shiraz/20">
             <div><dt className="text-text-main/75"><MdText text={inhalt.texte.cevErgebnis} /></dt><dd className="text-lg font-bold tabular-nums">{formatDeZahl(cevErg.cev, 3)} %</dd></div>

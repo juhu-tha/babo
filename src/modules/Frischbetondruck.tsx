@@ -18,6 +18,7 @@ import { Slider } from '@/src/components/ui/Slider';
 import { InfoTooltip } from '@/src/components/ui/InfoTooltip';
 import inhalt from '@/content/frischbetondruck/Frischbetondruck.json';
 import { MdText } from '@/src/components/inhalt/MdText';
+import { ErgebnisAnsage, ansageWert, kurzzeile } from '@/src/components/ui/ErgebnisAnsage';
 
 ChartJS.register(
   CategoryScale,
@@ -222,6 +223,7 @@ export default function Frischbetondruck() {
               <span><MdText text={inhalt.texte.maxSchalungsdruck} /></span>
               <span className="font-bold text-shiraz">{formatDeZahl(maxP, 1)} kN/m²</span>
             </div>
+            <ErgebnisAnsage text={kurzzeile(ansageWert('maximaler Schalungsdruck', maxP, 1, 'kN/m²'), ansageWert('erreicht in Tiefe', hs, 2, 'm'))} />
             <div className="p-3 bg-white border border-home-grau/30 rounded mt-2">
               {maxP <= 40 && (
                 <p><MdText text={inhalt.texte.leichteRahmenschalungBrAusreichend} /></p>

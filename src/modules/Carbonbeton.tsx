@@ -24,6 +24,7 @@ import {
 } from 'chart.js';
 import inhalt from '@/content/carbonbeton/Carbonbeton.json';
 import { MdText } from '@/src/components/inhalt/MdText';
+import { ErgebnisAnsage, ansageWert, kurzzeile } from '@/src/components/ui/ErgebnisAnsage';
 
 ChartJS.register(
   CategoryScale,
@@ -264,6 +265,7 @@ export default function Carbonbeton() {
                 </div>
               </div>
               <EingabeHinweise hinweise={results.kern.hinweise} />
+              <ErgebnisAnsage text={kurzzeile(ansageWert('Biegewiderstand M_Rd', results.mRd, 2, 'kNm/m'), ansageWert('Druckzonenhöhe x', results.x, 1, 'mm'), results.kern.versagen === 'beton' ? 'maßgebend Betonversagen' : 'maßgebend Textilversagen')} />
 
               {/* Graphic */}
               <div className="mt-6 border-t border-home-grau/30 pt-6">

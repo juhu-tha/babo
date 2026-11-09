@@ -27,6 +27,7 @@ import {
 import inhalt from '@/content/bpabdichtung/BpAbdichtung.json';
 import { MdText } from '@/src/components/inhalt/MdText';
 import { AuswahlGruppe, alsOption } from '../components/ui/Auswahlgruppe';
+import { ErgebnisAnsage, ansageWert, kurzzeile } from '@/src/components/ui/ErgebnisAnsage';
 
 export default function BpAbdichtung() {
   const [activeTab, setActiveTab] = useState<'allgemein' | 'praxis' | 'innovation'>('allgemein');
@@ -533,6 +534,7 @@ export default function BpAbdichtung() {
                 return (
                   <div className="bg-white p-4 border border-zinc-200 rounded-lg space-y-3 text-xs">
                     <h5 className="font-bold text-zinc-800"><MdText text={inhalt.texte.prüfberichtFugenbandEignungNach} /></h5>
+                    <ErgebnisAnsage text={kurzzeile(ansageWert('Fugenband: Mindestbreite', reqWidth, 'frei', 'mm'), fb.typ, isThicknessOk ? 'Bauteildicke ausreichend' : 'Bauteildicke zu gering', isGkCoverOk ? 'Randabstand eingehalten' : 'Randabstand zu gering')} />
 
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-x-6 gap-y-1.5 font-mono text-[11px] text-slate-800">
                       <div>

@@ -6,6 +6,7 @@ import inhalt from '@/content/rueckbau/RechnerTab.json';
 import { MdText } from '@/src/components/inhalt/MdText';
 import { AuswahlGruppe, alsOption } from '../../components/ui/Auswahlgruppe';
 import type { Massenkennwerte } from '@/src/calc/rueckbauMassen';
+import { ErgebnisAnsage, ansageWert, kurzzeile } from '@/src/components/ui/ErgebnisAnsage';
 
 export interface RechnerTabProps {
   setBuildingVolume: Dispatch<SetStateAction<number>>;
@@ -126,6 +127,7 @@ export function RechnerTab({ setBuildingVolume, setStructureType, buildingVolume
         </div>
     
         <div className="pt-4 border-t border-home-grau/10 text-xs text-text-main/70 bg-slate-50 p-3 rounded-xl border border-home-grau/5 leading-relaxed space-y-2">
+          <ErgebnisAnsage text={kurzzeile(ansageWert('geschätzte Gesamtmasse', totalMass, 'frei', 't'), ansageWert('mineralischer Anteil', mineralPercentage, 'frei', '%'))} />
           <div className="flex justify-between font-bold text-text-main">
             <span><MdText text={inhalt.texte.geschätzteGesamtmasse} /></span>
             <span className="font-mono text-xs">{formatDeIntl(totalMass)} t</span>

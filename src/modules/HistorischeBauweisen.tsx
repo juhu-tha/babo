@@ -11,6 +11,7 @@ import inhalt from '@/content/historischebauweisen/HistorischeBauweisen.json';
 import { SCHWINDBEIWERTE } from '@/src/calc/holzphysik';
 import { MdText } from '@/src/components/inhalt/MdText';
 import { ModuleTabs, type ModulTab } from '@/src/components/ui/ModuleTabs';
+import { ErgebnisAnsage, ansageWert, kurzzeile } from '@/src/components/ui/ErgebnisAnsage';
 
 /** Lehrwert σ_zul = 120 N/mm² für historische Zugbänder (Schweißeisen/Flussstahl), ohne Normbeleg (DSC-HB-1) */
 const SIGMA_ZUL_ZUGBAND_LEHRWERT = 120;
@@ -377,6 +378,7 @@ export default function HistorischeBauweisen() {
                       <span className="text-[10px] text-red-600/80 block mt-1 leading-tight"><MdText text={inhalt.texte.dieserSchubMussÜber} /></span>
                     </div>
 
+                    <ErgebnisAnsage text={kurzzeile(ansageWert('Gewölbe: Horizontalschub H', archCalculations.H, 1, 'kN'), ansageWert('resultierende Kraft R', archCalculations.R, 1, 'kN'), ansageWert('Winkel', archCalculations.angle, 1, '°'))} />
                     <div className="bg-slate-50 p-2.5 rounded-lg border border-slate-150 col-span-2">
                       <div className="flex justify-between items-center">
                         <span className="text-slate-700"><MdText text={inhalt.texte.resultierendeKraftR} /></span>
@@ -534,6 +536,7 @@ export default function HistorischeBauweisen() {
                       <span className="font-semibold text-amber-700">{formatDeZahl(shrinkageCalculations.percent, 2)} %</span>
                     </div>
 
+                    <ErgebnisAnsage text={kurzzeile(ansageWert('Maßänderung durch Schwinden', shrinkageCalculations.change, 2, 'mm'), ansageWert('neues Maß', shrinkageCalculations.finalDim, 2, 'mm'))} />
                     <div className="bg-amber-50 p-3 rounded-lg border border-amber-100">
                       <div className="flex justify-between items-center text-sm font-bold text-amber-950">
                         <span><MdText text={inhalt.texte.maßänderungSchwund} /></span>
@@ -692,6 +695,7 @@ export default function HistorischeBauweisen() {
                       <span className="font-semibold text-blue-600">{formatDeZahl(kappeCalculations.capacity, 1)} kN</span>
                     </div>
 
+                    <ErgebnisAnsage text={kurzzeile(ansageWert('Spreizkraft je Feldträger', kappeCalculations.totalThrust, 1, 'kN'), ansageWert('erforderliche Zugbänder', Math.ceil(kappeCalculations.requiredRods), 0, 'Stück'))} />
                     <div className="bg-blue-50 p-3 rounded-lg border border-blue-100">
                       <div className="flex justify-between items-center text-xs font-bold text-blue-950">
                         <span><MdText text={inhalt.texte.erforderlicheAnzahlZugbänder} /></span>

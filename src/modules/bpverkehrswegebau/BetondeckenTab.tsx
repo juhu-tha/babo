@@ -5,6 +5,7 @@ import { Layers, Calculator, AlertTriangle, Milestone, Droplets } from 'lucide-r
 import inhalt from '@/content/bpverkehrswegebau/BetondeckenTab.json';
 import { MdText } from '@/src/components/inhalt/MdText';
 import { westergaardRand, betondeckenFugen } from '@/src/calc/verkehrswegebau';
+import { ErgebnisAnsage, ansageWert, kurzzeile } from '@/src/components/ui/ErgebnisAnsage';
 
 export interface BetondeckenTabProps {
   betonAchslast: number;
@@ -135,6 +136,7 @@ export default function BetondeckenTab({ betonAchslast, betonAggregate, betonBet
                 return (
                   <div className="bg-zinc-50 p-4 border border-zinc-200 rounded-lg space-y-3 mt-3 text-xs">
                     <h5 className="font-bold text-zinc-800"><MdText text={inhalt.texte.spannungsermittlungNachWestergaardTheori} /></h5>
+                    <ErgebnisAnsage text={kurzzeile(ansageWert('Randspannung', sigma_e, 2, 'N/mm²'), ansageWert('zulässig', allowed_sigma, 2, 'N/mm²'), Number.isFinite(sigma_e) && (isThicknessOK ? 'Dicke ausreichend' : 'Dicke nicht ausreichend'))} />
                     <div className="grid grid-cols-2 font-mono gap-y-1 text-[11px]">
                       <div className="text-zinc-500"><MdText text={inhalt.texte.radaufstandsflächeRT} /></div>
                       <div className="text-right text-zinc-800">ø {formatDeZahl((r_mm * 2 / 10), 1)} cm (r = {formatDeZahl(r_mm, 0)} mm)</div>
@@ -286,6 +288,7 @@ export default function BetondeckenTab({ betonAchslast, betonAggregate, betonBet
 
                 return (
                   <div className="bg-zinc-50 p-4 border border-zinc-200 rounded-lg space-y-3 text-xs">
+                    <ErgebnisAnsage text={kurzzeile(ansageWert('Fugenabstand höchstens', maxAllowedL, 'frei', 'm'), isFugenOK ? 'eingehalten' : 'überschritten', ansageWert('Dübel', dowelCount, 0), ansageWert('Anker', tieBarCount, 0))} />
                     <div className={`p-2.5 rounded border text-[11px] leading-relaxed ${
                       isFugenOK ? 'bg-emerald-50 text-emerald-800 border-emerald-100' : 'bg-rose-50 text-rose-800 border-red-200'
                     }`}>

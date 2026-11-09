@@ -39,6 +39,7 @@ import { MdText } from '@/src/components/inhalt/MdText';
 import { ModuleTabs, type ModulTab } from '@/src/components/ui/ModuleTabs';
 import { asphaltRaumdichte, marshallKurve, marshallLehrmodell, ntaModell, NTA } from '@/src/calc/asphalt';
 import { EingabeHinweise } from '@/src/components/ui/EingabeHinweise';
+import { ErgebnisAnsage, ansageWert, kurzzeile } from '@/src/components/ui/ErgebnisAnsage';
 
 ChartJS.register(
   CategoryScale,
@@ -163,6 +164,7 @@ export default function Asphalt() {
                 </div>
 
                 <EingabeHinweise hinweise={results.hinweise} />
+                <ErgebnisAnsage text={kurzzeile(ansageWert('Raumdichte', results.gueltig ? results.raumdichte : NaN, 3, 'g/cm³'), ansageWert('Marshall-Stabilität', results.marshall, 1, 'kN'))} />
 
                 <div className="bg-white p-6 rounded-xl border border-home-grau/30 h-[300px] flex flex-col">
                   <h3 className="text-sm font-bold text-center mb-2"><MdText text={inhalt.texte.marshallStabilitätVsBitumengehalt} /></h3>
@@ -501,6 +503,7 @@ export default function Asphalt() {
                   </div>
 
                   <EingabeHinweise hinweise={nta.hinweise} />
+                  <ErgebnisAnsage text={kurzzeile(ratingBadge, ansageWert('Energieeinsparung', energySavedPercent, 'frei', '%'), ansageWert('CO₂-Einsparung', co2SavedPercent, 'frei', '%'))} />
 
                   {/* Ecological Footprint Equivalent Estimate */}
                   <div className="bg-emerald-50 text-emerald-800 p-4.5 rounded-xl border border-emerald-200">

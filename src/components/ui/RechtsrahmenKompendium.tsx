@@ -90,14 +90,15 @@ export const LEGAL_INSTRUMENTS: LegalInstrument[] = [
       'Verbindliche Einhaltung des Unions-Treibhausgasbudgets für 2030–2050.',
       'Sektorübergreifende Überprüfung der nationalen Energie- und Klimapläne (NECPs).',
       'Für den Gebäudesektor nennt die Renovierungswelle (COM(2020) 662) als Zielmarke −60 % THG bis 2030 gegenüber 2015.',
-      'Festlegung eines wissenschaftlich fundierten Zwischenziels für 2040 (Empfehlung: -90 % THG).'
+      'Zwischenziel 2040: −90 % Netto-THG gegenüber 1990 (Änderung des Klimagesetzes, vom Rat am 05.03.2026 verabschiedet; ab 2036 bis zu 5 % internationale Gutschriften anrechenbar).'
     ],
     impactOnMaterials: 'Macht CO₂ zu einem knappen und teuren Wirtschaftsgut. Zwingt Baustoffhersteller zu radikalen Dekarbonisierungsfahrplänen bei der Klinker-, Stahl- und Ziegelherstellung.',
     milestones: [
       { year: '2021', text: 'Inkrafttreten der VO (EU) 2021/1119 mit 2030-Ziel von -55 %.' },
       { year: '2024', text: 'Vorschlag für das EU-Klimaziel 2040 (-90 % Netto-THG).' },
+      { year: '2026', text: 'Änderung des Klimagesetzes verabschiedet (Rat 05.03.2026): verbindliches Ziel −90 % bis 2040.' },
       { year: '2030', text: 'Strikte Überprüfung des 55-%-Zwischenziels.' },
-      { year: '2050', text: 'Rechtliche Pflicht zur Erreichung von Netto-Negativ-Emissionen nach 2050.' }
+      { year: '2050', text: 'Klimaneutralität der Union spätestens 2050 (Art. 2 Abs. 1); danach strebt die EU negative Emissionen an – eine Pflicht dazu enthält die Verordnung nicht.' }
     ],
     formula: {
       math: '\\Delta \\text{GHG}_{\\text{EU}, 2030} \\le -55\\% \\quad (\\text{Ref. } 1990)',
@@ -145,14 +146,14 @@ export const LEGAL_INSTRUMENTS: LegalInstrument[] = [
     coreSummary: 'Das KSG normiert verbindliche nationale Reduktionsziele, die über das EU-Klimagesetz hinausgehen: Treibhausgasneutralität bis 2045 (5 Jahre vor der EU). Es legte historische Jahresemissionsbudgets fest. Für den Gebäudesektor bedeutet dies: Absenkung der Jahres-Emissionen von 120 Mio. t CO₂e (2020) auf maximal 67 Mio. t CO₂e im Jahr 2030.',
     keyDuties: [
       'Erreichung von -65 % THG bis 2030, -88 % bis 2040 und Netto-Null bis 2045.',
-      'Sektor Gebäude muss bis 2030 seinen Ausstoß nahezu halbieren.',
+      'Für den Gebäudesektor sieht Anlage 2 bis 2030 nahezu eine Halbierung des Ausstoßes vor.',
       'Seit der Novelle 2024 sektorübergreifende, mehrjährige Gesamtrechnung: Nachsteuerung, wenn die Projektionsdaten zwei Jahre in Folge eine Zielverfehlung zeigen.',
       'Bildet die verfassungsrechtliche Verankerung (BVerfG-Klimabeschluss 2021).'
     ],
     impactOnMaterials: 'Treibt das nationale Gebäudeenergiegesetz (GEG), die Bundesförderung für effiziente Gebäude (BEG) und die Einführung von grauen Emissionskriterien in deutschen Förderkulissen (QNG) voran.',
     milestones: [
       { year: '2021', text: 'Verschärfung nach Urteil des BVerfG: Ziel 2045 Netto-Null verankert.' },
-      { year: '2030', text: 'Gebäudesektor-Emissionen dürfen max. 67 Mio. t CO₂e betragen.' },
+      { year: '2030', text: 'Jahresemissionsmenge des Gebäudesektors 67 Mio. t CO₂e (Anlage 2); seit der Novelle 2024 nicht mehr sektorscharf verbindlich, sondern Teil der sektorübergreifenden Gesamtrechnung.' },
       { year: '2040', text: 'Deutschlandweit -88 % Treibhausgasemissionen.' },
       { year: '2045', text: 'Netto-Treibhausgasneutralität der Bundesrepublik Deutschland.' }
     ]
@@ -183,8 +184,8 @@ export const LEGAL_INSTRUMENTS: LegalInstrument[] = [
     milestones: [
       { year: '2024', text: 'Inkrafttreten (Mai 2024); Start der 24-monatigen Umsetzungsfrist für Mitgliedstaaten.' },
       { year: '2025', text: 'Subventionsstopp für eigenständige fossile Heizkessel (Öl/Gas).' },
-      { year: '2028', text: 'ZEB-Standard für neue öffentliche Gebäude; Lebenszyklus-GWP-Ausweis für alle Neubauten > 1000 m².' },
-      { year: '2030', text: 'ZEB & GWP für ausnahmslos alle Neubauten; 16 % MEPS-Sanierung Nichtwohn.' },
+      { year: '2028', text: 'ZEB-Standard für neue Gebäude im Eigentum öffentlicher Einrichtungen; Lebenszyklus-GWP-Ausweis für alle Neubauten > 1000 m² Nutzfläche.' },
+      { year: '2030', text: 'ZEB und Lebenszyklus-GWP für alle Neubauten (Art. 7); 16 % MEPS-Sanierung Nichtwohn.' },
       { year: '2035', text: '20–22 % Primärenergiereduktion im Wohngebäudebestand.' },
       { year: '2040', text: 'Zieljahr für den Ausstieg aus fossilen Heizkesseln (nationale Fahrpläne).' }
     ],
@@ -403,12 +404,12 @@ export const LEGAL_INSTRUMENTS: LegalInstrument[] = [
     legalType: 'Bundesverordnung',
     audiences: ['baustoffe', 'planer'],
     primaryTarget: 'Tiefbauunternehmen, Recyclingbetriebe, Straßenbau, Bodenschutzbehörden',
-    leadQuote: 'Rechtlich belastbares Ende der Abfalleigenschaft und bundesweit einheitliche Einbauklassen für RC-Baustoffe.',
+    leadQuote: 'Bundesweit einheitliche Materialklassen und Einbauweisen für mineralische Ersatzbaustoffe; das Ende der Abfalleigenschaft regelt die EBV nicht.',
     coreSummary: 'Die EBV harmonisiert das deutsche Verwertungsrecht für mineralische Sekundärbaustoffe und löste die fragmentierten LAGA-Regelungen der Bundesländer ab. Sie definiert einheitliche Materialwerte und Einbauweisen für güteüberwachte Recycling-Baustoffe (RC-1 bis RC-3), Bodenmaterial (BM-0 bis BM-F3), Schlacken und Bauschutt im Erd- und Tiefbau.',
     keyDuties: [
       'Güteüberwachung durch werkseigene Produktionskontrolle (WPK) und Fremdüberwachung.',
       'Klassifizierung nach Schadstoff-Eluatwerten (Schwermetalle, Sulfat, PAK, MKW).',
-      'Kataster- und Anzeigepflicht nach § 22 EBV: Einbaumengen ab 250 m³ müssen bei den unteren Bodenschutzbehörden dokumentiert werden.',
+      'Anzeigepflicht nach § 22 EBV: Voranzeige vier Wochen vor Einbau für RC-3, BM-F3, BG-F3 ab mindestens 250 m³ sowie für bestimmte Schlacken und Aschen nach § 20 Abs. 1; in Wasser- und Heilquellenschutzgebieten mengenunabhängig (§ 22 Abs. 2); die zuständige Behörde führt ein Kataster.',
       'Sicherstellung des vorsorgenden Grundwasserschutzes in Wasserschutzgebieten.'
     ],
     impactOnMaterials: 'Schafft erstmals Rechtssicherheit beim Einbau von Recycling-Schotter, RC-Betonsplitt und aufbereitetem Bodenaushub. Beseitigt das Stigma des "Abfalls", sofern das Gütezeichen vorliegt.',
@@ -1251,7 +1252,7 @@ export const RechtsrahmenKompendium: React.FC = () => {
                 title: 'Inkrafttreten der Basispakete',
                 badgeColor: 'bg-emerald-100 text-emerald-800 border-emerald-300',
                 items: [
-                  'EBV (01.08.2023): Mineralische Ersatzbaustoffe bundesweit einheitlich klassifiziert; Katasterpflicht ab 250 m³.',
+                  'EBV (01.08.2023): Mineralische Ersatzbaustoffe bundesweit einheitlich klassifiziert; Anzeige- und Katasterpflicht für RC-3, BM-F3, BG-F3 ab 250 m³ und bestimmte Schlacken und Aschen (§ 22 EBV).',
                   'CBAM (01.10.2023): Start der Übergangsphase mit Quartalsberichten über Importemissionen für Zement und Stahl.',
                   'GEG (01.01.2024): 65-%-EE-Pflicht bei Neubauten in Neubaugebieten (mit dem GModG am 29.07.2026 entfallen).',
                   'EPBD IV (Mai 2024): Inkrafttreten der Richtlinie EU 2024/1275; 24 Monate Umsetzungsfrist.',
@@ -1299,7 +1300,7 @@ export const RechtsrahmenKompendium: React.FC = () => {
                 title: 'ZEB & Lebenszyklus-GWP für öffentliche Großbauten',
                 badgeColor: 'bg-rose-100 text-rose-900 border-rose-300',
                 items: [
-                  'EPBD ZEB-Pflicht: Alle neuen öffentlichen Gebäude müssen dem Null-Emissions-Standard (ZEB) entsprechen.',
+                  'EPBD ZEB-Pflicht: Neue Gebäude im Eigentum öffentlicher Einrichtungen müssen Nullemissionsgebäude (ZEB) sein; für neue Gebäude, die sie nur nutzen, streben sie dies an (Art. 7 Abs. 1).',
                   'EPBD GWP-Pflicht: Verpflichtende Ausweisung des Lebenszyklus-Treibhauspotenzials (GWP) im Energieausweis für Neubauten > 1000 m².',
                   'Wärmeplanung flächendeckend: Bis 30.06.2028 müssen alle 11 000 deutschen Kommunen fertige Wärmepläne haben.'
                 ]
@@ -1310,11 +1311,11 @@ export const RechtsrahmenKompendium: React.FC = () => {
                 title: 'ZEB für ALLE Neubauten & MEPS-Sanierungspfad',
                 badgeColor: 'bg-shiraz/15 text-shiraz border-shiraz/30',
                 items: [
-                  'EPBD ZEB für ALLE Neubauten: Ausnahmslos jedes neue Gebäude muss ein Null-Emissions-Gebäude sein.',
-                  'EPBD Lebenszyklus-GWP für ALLE Neubauten: GWP-Berechnung wird ausnahmslos für jedes Wohn- und Nichtwohngebäude zur Pflicht.',
-                  'MEPS Nichtwohngebäude: Die schlechtesten 16 % aller gewerblichen Bestandsgebäude müssen saniert sein.',
+                  'EPBD ZEB für alle Neubauten: Neue Gebäude müssen Nullemissionsgebäude sein (Art. 7 Abs. 1 Buchst. b).',
+                  'EPBD Lebenszyklus-GWP für alle Neubauten: Berechnung und Ausweis im Energieausweis für alle neuen Wohn- und Nichtwohngebäude (Art. 7 Abs. 2 Buchst. b).',
+                  'MEPS Nichtwohngebäude: Die 16 % der Nichtwohngebäude mit der schlechtesten Gesamtenergieeffizienz müssen saniert sein (Art. 9 Abs. 1).',
                   'Wohngebäude: 16 % Einsparung des durchschnittlichen Primärenergieverbrauchs im nationalen Wohnbestand.',
-                  'KSG Sektorziel: Deutsche Gebäudeemissionen sinken auf maximal 67 Mio. t CO₂e.'
+                  'KSG: Jahresemissionsmenge des Gebäudesektors 2030 von 67 Mio. t CO₂e (Anlage 2); seit der Novelle 2024 wird die Einhaltung sektorübergreifend bewertet.'
                 ]
               },
               {

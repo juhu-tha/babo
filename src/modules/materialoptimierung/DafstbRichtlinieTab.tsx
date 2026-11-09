@@ -7,6 +7,7 @@ import { MdText } from '@/src/components/inhalt/MdText';
 import { EingabeHinweise } from '@/src/components/ui/EingabeHinweise';
 import type { Hinweis } from '@/src/calc/plausibilitaet';
 import { ZEMENT_GWP, type DafstbStahlRoute } from '@/src/calc/materialoptimierung';
+import { ErgebnisAnsage, ansageWert, kurzzeile } from '@/src/components/ui/ErgebnisAnsage';
 
 export interface DafstbRichtlinieTabProps {
   dafstbCalc: { label: string; areaUnit: string; refArea: number; refBetonVol: number; refStahlKg: number; optBetonVol: number; optStahlKg: number; optConcreteGwpPerM3: number; refTotalGwp: number; optTotalGwp: number; refConcreteGwpTotal: number; optConcreteGwpTotal: number; refSteelGwpTotal: number; optSteelGwpTotal: number; refSpecificGwp: number; optSpecificGwp: number; diffAbs: number; diffPct: number; efficiencyClass: string; efficiencyBadge: string; classLabel: string; classStar: string; hinweise: readonly Hinweis[]; };
@@ -219,6 +220,7 @@ export function DafstbRichtlinieTab({ dafstbCalc, dafstbBauteil, setDafstbBautei
           </div>
         </div>
         <EingabeHinweise hinweise={dafstbCalc.hinweise} />
+        <ErgebnisAnsage text={kurzzeile(ansageWert('Referenz', dafstbCalc.refTotalGwp, 'frei', 'kg CO₂-Äquivalent'), ansageWert('optimiert', dafstbCalc.optTotalGwp, 'frei', 'kg'), ansageWert('Einsparung', dafstbCalc.diffPct, 1, '%'), `${dafstbCalc.efficiencyClass} (${dafstbCalc.classLabel})`)} />
     
         {/* Controls Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 p-4 rounded-xl bg-slate-50 border border-home-grau/20">

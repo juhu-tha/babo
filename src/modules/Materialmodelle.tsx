@@ -32,6 +32,7 @@ import { bilinearVerfestigung, bilinearKurve, lehrkurve, thixotropieKurve } from
 import { BAUSTAHL_EC3, BETONSTAHL, E_BAUSTAHL, E_BETONSTAHL } from '@/src/data/kennwerte';
 import { EingabeHinweise } from '@/src/components/ui/EingabeHinweise';
 import { AuswahlGruppe, alsOption } from '../components/ui/Auswahlgruppe';
+import { ErgebnisAnsage, ansageWert, kurzzeile } from '@/src/components/ui/ErgebnisAnsage';
 
 ChartJS.register(
   CategoryScale,
@@ -742,6 +743,7 @@ export default function Materialmodelle() {
                 </div>
 
                 <EingabeHinweise hinweise={epAnalytics.hinweise} />
+                <ErgebnisAnsage text={kurzzeile(ansageWert('Höchstspannung', epAnalytics.peakStress, 1, 'N/mm²'), ansageWert('bleibende Dehnung', epAnalytics.epsPlasticResidualPromille, 2, '‰'), ansageWert('elastische Rückfederung', epAnalytics.epsElasticRecoveryPromille, 2, '‰'))} />
 
                 <ul className="list-disc list-inside space-y-1 text-xs text-text-main/70">
                   <li><MdText text={inhalt.texte.entlastungsastBeiLastrücknahmeEntspannt} /></li>

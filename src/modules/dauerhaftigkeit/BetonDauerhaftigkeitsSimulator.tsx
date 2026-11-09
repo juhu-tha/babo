@@ -8,6 +8,7 @@ import { MdText } from '@/src/components/inhalt/MdText';
 import { EingabeHinweise } from '@/src/components/ui/EingabeHinweise';
 import { karbonatisierungsLebensdauer } from '@/src/calc/korrosion';
 import { LebensdauerUebernehmen } from '@/src/components/ui/LebensdauerUebernehmen';
+import { ErgebnisAnsage, ansageWert, kurzzeile } from '@/src/components/ui/ErgebnisAnsage';
 
 export function BetonDauerhaftigkeitsSimulator() {
   const [k, setK] = useState<number>(2.5); // Karbonatisierungsbeiwert in mm/Wurzel(a)
@@ -121,6 +122,7 @@ export function BetonDauerhaftigkeitsSimulator() {
             </div>
           </div>
           <EingabeHinweise hinweise={lebensdauer.hinweise} />
+          <ErgebnisAnsage text={kurzzeile(ansageWert(`Karbonatisierungstiefe nach ${formatDeWert(t)} Jahren`, xCarb, 'frei', 'mm'), ansageWert('Betondeckung', cnom, 'frei', 'mm'), lebensdauer.gueltig && (lebensdauer.depassiviert ? 'Bewehrung depassiviert' : 'Bewehrung geschützt'), lebensdauer.gueltig && ansageWert('Depassivierung nach', lebensdauer.tKrit, 0, 'Jahren'))} />
           <LebensdauerUebernehmen aktiv={lebensdauer.gueltig} art="dauerhaftigkeit" className="pt-1"
             daten={{ quelle: 'dauerhaftigkeit', mech: 'karbonatisierung', deckM: cnom, tSL: t, kNat: k }} />
 

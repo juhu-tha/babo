@@ -11,6 +11,7 @@ import { formatDeZahl, formatDeTeX } from '@/src/utils/numberFormat';
 import { hauptspannungen, transformiere, type EbenerSpannungszustand } from '@/src/calc/spannungszustand';
 import { BAUSTAHL_EC3 } from '@/src/data/kennwerte';
 import inhalt from '@/content/festigkeitsberechnungen/Spannungszustand.json';
+import { ErgebnisAnsage, ansageWert, kurzzeile } from '@/src/components/ui/ErgebnisAnsage';
 
 /** Formeln und Quellen des Reiters für den Modulfuß */
 export const SPANNUNGSZUSTAND_FUSS = { formeln: inhalt.daten.formeln, literatur: inhalt.daten.literatur, weblinks: inhalt.daten.weblinks };
@@ -158,6 +159,7 @@ export default function Spannungszustand() {
         </div>
 
         <EingabeHinweise hinweise={r.hinweise} />
+        <ErgebnisAnsage text={ok ? kurzzeile(ansageWert('σ₁', r.sigma1, 1, 'N/mm²'), ansageWert('σ₂', r.sigma2, 1, 'N/mm²'), ansageWert('Hauptrichtung', r.phi1Grad, 1, '°'), ansageWert('Vergleichsspannung nach Mises', r.sigmaVMises, 1, 'N/mm²'), fy !== undefined && ansageWert('Ausnutzung', r.eta, 2)) : 'Hauptspannungen –'} />
         {ok && (
           <div className="bg-shiraz/5 p-5 rounded-xl border border-shiraz/20">
             <h3 className="text-sm font-bold text-shiraz uppercase tracking-wider mb-3"><MdText text={inhalt.texte.ergebnisse} /></h3>

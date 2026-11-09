@@ -13,6 +13,7 @@ import { InfoTooltip } from '@/src/components/ui/InfoTooltip';
 import inhalt from '@/content/zwang/Zwang.json';
 import { MdText } from '@/src/components/inhalt/MdText';
 import { zwangSpannung } from '@/src/calc/zwang';
+import { ErgebnisAnsage, ansageWert, kurzzeile } from '@/src/components/ui/ErgebnisAnsage';
 
 export function ZwangCalculator() {
   const [deltaT, setDeltaT] = useState(20); // Temperaturänderung in K
@@ -130,6 +131,7 @@ export function ZwangCalculator() {
                 {calcData.isCracked && <AlertTriangle size={24} className="animate-pulse" />}
               </div>
               
+              <ErgebnisAnsage text={kurzzeile(ansageWert('Zwangspannung', calcData.sigmaZ, 2, 'MPa'), Number.isFinite(calcData.sigmaZ) && (calcData.isCracked ? 'gerissen' : 'ungerissen'))} />
               <div className="grid grid-cols-2 gap-4 mb-6">
                 <div>
                   <div className="text-white/70 text-sm mb-1"><FormulaText text="Zwangspannung \sigma_{z}" /></div>

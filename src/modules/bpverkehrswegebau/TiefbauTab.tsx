@@ -7,6 +7,7 @@ import inhalt from '@/content/bpverkehrswegebau/TiefbauTab.json';
 import { MdText } from '@/src/components/inhalt/MdText';
 import { EingabeHinweise } from '@/src/components/ui/EingabeHinweise';
 import { rigole, F_METHODE, type KfMethode } from '@/src/calc/verkehrswegebau';
+import { ErgebnisAnsage, ansageWert, kurzzeile } from '@/src/components/ui/ErgebnisAnsage';
 
 /** Bestimmungsmethoden des k_f-Werts (DWA-A 138-1:2024-10, f_Methode vorläufig) */
 const METHODEN: readonly (readonly [KfMethode, string])[] = [
@@ -438,6 +439,7 @@ export default function TiefbauTab({ setTiefbauArea, setTiefbauDuration, setTief
                     </div>
                   </div>
                   <EingabeHinweise hinweise={rig.hinweise} />
+                  <ErgebnisAnsage text={kurzzeile(ansageWert('Rigole: erforderliche Länge', l_rig, 2, 'm'), ansageWert('Zufluss', q_in, 2, 'l/s'), ansageWert('Versickerung', q_sicker_l_s, 2, 'l/s'))} />
 
                   {/* Formel-Herleitung */}
                   <div className="p-3 text-[10.5px] text-text-main/60 bg-zinc-50 border border-zinc-200 rounded-lg">

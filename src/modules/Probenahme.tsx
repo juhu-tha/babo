@@ -13,6 +13,7 @@ import { MdText } from '@/src/components/inhalt/MdText';
 import { ModuleTabs } from '@/src/components/ui/ModuleTabs';
 import { AuswahlGruppe, alsOption } from '../components/ui/Auswahlgruppe';
 import { rueckprall, rueckprallLehrkurve, SCHLAGWINKEL, type Schlagrichtung } from '@/src/calc/bauwerksuntersuchung';
+import { ErgebnisAnsage, ansageWert, kurzzeile } from '@/src/components/ui/ErgebnisAnsage';
 
 /** Schlagwinkel des Simulators (−90° Boden, 0° Wand, +90° Decke) → Schlagrichtung des zentralen Rechenkerns */
 const RICHTUNG_AUS_WINKEL = Object.fromEntries(Object.entries(SCHLAGWINKEL).map(([r, a]) => [a, r])) as Record<number, Schlagrichtung>;
@@ -575,6 +576,7 @@ export default function Probenahme() {
 
                       return (
                         <div className="p-3 bg-white border border-home-grau/30 rounded-lg space-y-2 mt-2 leading-relaxed text-[11px] text-slate-700">
+                          <ErgebnisAnsage text={kurzzeile(ansageWert('Rückprallwert korrigiert', finalR, 1), ansageWert('geschätzte Druckfestigkeit etwa', finalEstStr, 0, 'MPa'))} />
                           <div className="flex justify-between items-center pb-1 border-b border-home-grau/30 text-shiraz font-bold">
                             <span>Ergebnis-Klassifizierung:</span>
                             <span className="font-mono text-slate-900 font-bold text-xs">

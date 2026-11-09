@@ -26,6 +26,7 @@ import { PraxisTabContent, InnovationTabContent } from '@/src/components/ui/Inno
 import inhalt from '@/content/bpkunststoffe/BpKunststoffe.json';
 import { MdText } from '@/src/components/inhalt/MdText';
 import { ModuleTabs } from '@/src/components/ui/ModuleTabs';
+import { ErgebnisAnsage, ansageWert, kurzzeile } from '@/src/components/ui/ErgebnisAnsage';
 
 interface PlasticType {
   id: string;
@@ -738,6 +739,7 @@ export default function BpKunststoffe() {
                   </div>
                 </div>
 
+                <ErgebnisAnsage text={kurzzeile(ansageWert('Gesamtdehnung', strainTotal, 3, '%'), ansageWert('davon Kriechverformung', strainViscous, 3, '%'))} />
                 {/* Total results callout block */}
                 <div className="bg-white p-4 rounded-xl border border-slate-300 mt-4 flex flex-col justify-between sm:flex-row items-center gap-4">
                   <div className="text-center sm:text-left">
@@ -998,6 +1000,7 @@ export default function BpKunststoffe() {
                 <span className="text-xs font-bold text-slate-700 uppercase block mb-3"><MdText text={inhalt.texte.berechneteLängenänderungLL} /></span>
                 
                 <div className="space-y-3 font-mono text-xs">
+                  <ErgebnisAnsage text={kurzzeile(`${compObj.short}: ${ansageWert('Längenänderung', elongationPlastic, 2, 'mm')}`, ansageWert('Stahl', elongationSteel, 2, 'mm'), ansageWert('Beton', elongationConcrete, 2, 'mm'))} />
                   {/* comparative Plastic Bar */}
                   <div>
                     <div className="flex justify-between mb-0.5 text-slate-800">

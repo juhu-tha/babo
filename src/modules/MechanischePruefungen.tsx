@@ -21,6 +21,7 @@ import { MdText } from '@/src/components/inhalt/MdText';
 import { EingabeHinweise } from '@/src/components/ui/EingabeHinweise';
 import { bohrkernPruefung, spaltzugfestigkeit, marshallQuotient, zugversuchStahl, holzSchaetzung } from '@/src/calc/pruefverfahren';
 import { ReiterLeiste, alsReiter, reiterPanel } from '../components/ui/Auswahlgruppe';
+import { ErgebnisAnsage, ansageWert, kurzzeile } from '@/src/components/ui/ErgebnisAnsage';
 
 // Define categories of building materials
 type MaterialCategory = 'beton_mineralisch' | 'asphalt_bituminoes' | 'stahl_metalle' | 'holz_organisch';
@@ -428,6 +429,7 @@ export default function MechanischePruefungen() {
                     )}
                     {/* h/d < 1 meldet der Kasten oben; hier nur die Warnungen des Rechenkerns */}
                     <EingabeHinweise hinweise={concreteRes.hinweise.filter(h => h.stufe === 'warnung')} />
+                    <ErgebnisAnsage text={kurzzeile(ansageWert('Bohrkern: Druckfestigkeit', concreteRes.rawStrength, 1, 'MPa'), ansageWert('Zylinder-Äquivalent', concreteRes.equivalentCylinder, 1, 'MPa'), ansageWert('Würfel-Äquivalent', concreteRes.equivalentCube, 1, 'MPa'))} />
                   </div>
                 </div>
               )}
@@ -508,6 +510,7 @@ export default function MechanischePruefungen() {
                         <div className="flex justify-between items-center pt-1 border-t border-emerald-100">
                           <span className="text-slate-500 font-bold"><MdText text={inhalt.texte.spaltzugfestigkeitSt} /></span>
                           <span className="font-bold font-mono text-shiraz text-sm">{formatDeZahl(asphaltSt, 2)} MPa</span>
+                          <ErgebnisAnsage text={ansageWert('Spaltzugfestigkeit', asphaltSt, 2, 'MPa')} />
                         </div>
                         <div className="bg-slate-100 p-2 rounded text-[10px] text-slate-700 leading-normal font-semibold text-center">
                           {asphaltSt > 2.2 ? (
@@ -570,6 +573,7 @@ export default function MechanischePruefungen() {
                         <div className="flex justify-between items-center pt-1 border-t border-home-grau/20">
                           <span className="text-slate-500 font-bold text-shiraz"><MdText text={inhalt.texte.marshallQuotientQS} /></span>
                           <span className="font-bold font-mono text-shiraz text-sm">{formatDeZahl(marshallQ, 2)} kN/mm</span>
+                          <ErgebnisAnsage text={ansageWert('Marshall-Quotient', marshallQ, 2, 'kN/mm')} />
                         </div>
                         <div className="bg-slate-100 p-2 rounded text-[10px] text-slate-700 leading-normal font-semibold text-center">
                           {marshallQ > 4.5 ? (
@@ -699,6 +703,7 @@ export default function MechanischePruefungen() {
                       <span className="text-shiraz font-bold">{steelRes.complianceClass}</span>
                     </div>
                     <EingabeHinweise hinweise={steelRes.hinweise} />
+                    <ErgebnisAnsage text={kurzzeile(ansageWert('Streckgrenze R_e', steelRes.yieldStrength, 0, 'MPa'), ansageWert('Zugfestigkeit R_m', steelRes.ultimateStrength, 0, 'MPa'), ansageWert('A_gt', steelRes.elongation, 1, '%'), steelRes.complianceClass)} />
                   </div>
                 </div>
               )}
@@ -802,6 +807,7 @@ export default function MechanischePruefungen() {
 
                     <span className="block text-[10px] text-emerald-850 italic text-center"><MdText text={inhalt.texte.schätzwerteFürEineHolzfeuchte} />{formatDeWert(woodMoisture)}<MdText text={inhalt.texte.bezugsfeuchteDerFestigkeitsklassen12} /></span>
                     <EingabeHinweise hinweise={woodRes.hinweise} />
+                    <ErgebnisAnsage text={kurzzeile(ansageWert('Biegefestigkeit', woodRes.f_bending, 1, 'N/mm²'), ansageWert('Druckfestigkeit faserparallel', woodRes.fc0_actual, 1, 'MPa'), woodRes.strengthClassName)} />
                   </div>
                 </div>
               )}

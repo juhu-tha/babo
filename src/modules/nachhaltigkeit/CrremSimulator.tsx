@@ -4,6 +4,7 @@ import type { Dispatch, SetStateAction } from 'react';
 import inhalt from '@/content/nachhaltigkeit/CrremSimulator.json';
 import { MdText } from '@/src/components/inhalt/MdText';
 import { AuswahlGruppe, alsOption } from '../../components/ui/Auswahlgruppe';
+import { ErgebnisAnsage, ansageWert, kurzzeile } from '@/src/components/ui/ErgebnisAnsage';
 
 interface CrremSimulatorProps {
   crremBuildingType: "office" | "residential";
@@ -127,6 +128,7 @@ export default function CrremSimulator({ crremBuildingType, crremCurrentGwp, crr
           </div>
         </div>
 
+        <ErgebnisAnsage text={kurzzeile(ansageWert('effektive CO₂-Intensität', crremResult.effectiveGwp, 1, 'kg CO₂e/(m²·a)'), ansageWert('Zielpfad 2030', crremResult.target2030, 1, 'kg CO₂e'), crremResult.strandingYear ? `Stranding-Jahr ${crremResult.strandingYear}` : inhalt.werte.nach2050Klimaneutral)} />
         {/* Status & Stranding Calculation Outcome */}
         <div className="bg-slate-50 p-4 rounded-xl border border-home-grau/30 flex flex-col gap-2">
           <span className="text-[10px] uppercase font-bold text-slate-500 tracking-wider"><MdText text={inhalt.texte.ergebnisDerCrremKonformitätsprüfung} /></span>

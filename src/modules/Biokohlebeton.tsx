@@ -13,6 +13,7 @@ import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
 import inhalt from '@/content/biokohlebeton/Biokohlebeton.json';
 import { MdText } from '@/src/components/inhalt/MdText';
 import { ZEMENT_GWP_KG } from '@/src/data/zementGwp';
+import { ansageWert, kurzzeile } from '@/src/components/ui/ErgebnisAnsage';
 
 type Reiter = 'einfuehrung' | 'herstellung' | 'wirkung' | 'rechner' | 'grenzen';
 
@@ -312,6 +313,7 @@ export default function Biokohlebeton() {
 
                   <FormulaDerivationBox
                     live
+                    kurzzeile={kurzzeile(ansageWert('Minderung gegenüber Referenz', erg.minderung, 1, 'kg CO₂e/m³'), ansageWert('bezogen auf den Zementanteil', erg.minderungProzent, 1, '%'), ansageWert('Variante netto', erg.gwpNeu, 1, 'kg CO₂e/m³'))}
                     title={inhalt.werte.ihrRechenwegCoBilanz}
                     zielGleichung="\Delta GWP = \Delta z \cdot GWP_Z + m_{PK} \cdot \left(w_C \cdot \tfrac{44}{12} \cdot F_{perm} - e_{PK}\right)"
                     schritte={[

@@ -17,6 +17,7 @@ import { InlineMath } from 'react-katex';
 import inhalt from '@/content/bauwerksuntersuchung/ProbenahmePlaner.json';
 import { MdText } from '@/src/components/inhalt/MdText';
 import { AuswahlGruppe, alsOption } from '../../components/ui/Auswahlgruppe';
+import { ErgebnisAnsage, ansageWert, kurzzeile } from '@/src/components/ui/ErgebnisAnsage';
 
 export default function ProbenahmePlaner() {
   const [selectedPresetId, setSelectedPresetId] = useState<string>('tiefgarage');
@@ -210,6 +211,7 @@ export default function ProbenahmePlaner() {
           <div className="md:col-span-8 flex flex-col justify-between space-y-4">
             <div>
               <span className="text-xs font-bold text-slate-500 uppercase tracking-wider block mb-2"><MdText text={inhalt.texte.ermittelterNormativerPrüfumfangEntnahmes} /></span>
+              <ErgebnisAnsage text={kurzzeile(ansageWert('Bohrkerne', calculatedScope.bohrkerne, 0), ansageWert('ZfP-Messpunkte', calculatedScope.zfpPunkte, 0), ansageWert('Bohrmehlstellen', calculatedScope.bohrmehlStellen, 0), ansageWert('Haftzugstempel', calculatedScope.haftzugStempel, 0))} />
               <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
                 <div className="p-3 bg-white rounded-xl border border-home-grau/20 shadow-3xs flex flex-col items-center text-center">
                   <span className="text-[10px] text-slate-500 uppercase font-semibold">Bohrkerne</span>

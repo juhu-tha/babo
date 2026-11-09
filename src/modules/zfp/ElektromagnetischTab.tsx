@@ -6,6 +6,7 @@ import { FormulaText } from '@/src/components/ui/FormulaText';
 import { Magnet, Zap, Waves } from 'lucide-react';
 import inhalt from '@/content/zfp/ElektromagnetischTab.json';
 import { MdText } from '@/src/components/inhalt/MdText';
+import { ErgebnisAnsage } from '@/src/components/ui/ErgebnisAnsage';
 
 export interface ElektromagnetischTabProps {
   barDiameter: number;
@@ -57,6 +58,7 @@ export default function ElektromagnetischTab({ barDiameter, bewehrungssucherResu
         <div className="mt-4 p-4 bg-shiraz text-white rounded-xl shadow-md relative overflow-hidden">
           <div className="text-sm opacity-90 mb-1"><MdText text={inhalt.texte.relativeSignalstärke} /></div>
           <div className="text-3xl font-bold">{formatDeZahl(bewehrungssucherResults.signalStrength, 0)} %</div>
+          <ErgebnisAnsage text={`Bewehrungssucher: Signalstärke ${formatDeZahl(bewehrungssucherResults.signalStrength, 0)} %`} />
           
           {/* Animation für Signalstärke */}
           <div className="relative w-full h-48 bg-slate-200 rounded-lg overflow-hidden border border-home-grau/30 mt-4">
@@ -159,6 +161,7 @@ export default function ElektromagnetischTab({ barDiameter, bewehrungssucherResu
         <div className="mt-4 p-4 bg-shiraz text-white rounded-xl shadow-md relative overflow-hidden">
           <div className="text-sm opacity-90 mb-1"><MdText text={inhalt.texte.berechneteTiefeDesObjekts} /></div>
           <div className="text-3xl font-bold">{formatDeZahl(radarResults.depth, 1)} mm</div>
+          <ErgebnisAnsage text={`Georadar: Tiefe ${formatDeZahl(radarResults.depth, 1)} mm`} />
           <div className="text-xs opacity-75 mt-2">
             Radargeschwindigkeit: {formatDeZahl(radarResults.vRadar, 1)} mm/ns
           </div>

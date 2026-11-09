@@ -4,6 +4,7 @@ import React, { useState, useMemo } from 'react';
 import { Slider } from '@/src/components/ui/Slider';
 import inhalt from '@/content/frischbetontemperatur/Frischbetontemperatur.json';
 import { MdText } from '@/src/components/inhalt/MdText';
+import { ErgebnisAnsage, ansageWert } from '@/src/components/ui/ErgebnisAnsage';
 
 export default function Frischbetontemperatur() {
   // Massen in kg/m³
@@ -179,6 +180,7 @@ export default function Frischbetontemperatur() {
                 </div>
               )}
               <h3 className="text-sm font-bold text-text-main/70 mb-2"><MdText text={inhalt.texte.erwarteteFrischbetontemperatur} /></h3>
+              <ErgebnisAnsage text={ansageWert('erwartete Frischbetontemperatur', results.tFrischbeton, 1, '°C')} />
               <div className={`text-5xl font-bold ${results.tFrischbeton > 30 ? 'text-torch-red' : results.tFrischbeton < 5 ? 'text-blue-600' : 'text-emerald-600'}`}>
                 {formatDeZahl(results.tFrischbeton, 1)} °C
               </div>

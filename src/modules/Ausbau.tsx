@@ -22,6 +22,12 @@ export default function Ausbau() {
 
   return (
     <div className="flex flex-col gap-8">
+      {/* Modulüberschrift nach der Regel „Modultitel“ (docs/architektur.md) */}
+      <div className="bg-white p-6 rounded-2xl shadow-sm border border-home-grau/30 flex flex-col gap-2">
+        <h2 className="text-2xl font-bold text-text-main flex items-center gap-2">
+          <Layers className="text-shiraz" aria-hidden="true" /><MdText text={inhalt.texte.ausbauModultitel} /></h2>
+        <p className="text-sm text-text-main/80"><MdText text={inhalt.texte.ausbauModulEinleitung} /></p>
+      </div>
       <ModuleTabs label={inhalt.werte.reiterBereiche} tabs={REITER} aktiv={activeTab} onWechsel={setActiveTab} className="flex flex-col gap-8 [&>[role=tablist]]:pb-3 [&>[role=tablist]]:border-b [&>[role=tablist]]:border-home-grau/20">
 
       <div className="bg-white p-6 rounded-2xl shadow-sm border border-home-grau/30">

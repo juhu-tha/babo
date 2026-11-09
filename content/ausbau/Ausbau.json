@@ -1,5 +1,6 @@
 {
   "texte": {
+    "ausbauModultitel": "Ausbau & Abdichtung",
     "estricheBöden": " Estriche & Böden",
     "keramikFliesen": " Keramik & Fliesen",
     "derTrockenbauUmfasstRaumbegrenzende": "Der Trockenbau umfasst raumbegrenzende, aber meist nicht tragende Bauteile, die in trockener Bauweise montiert werden. Er zeichnet sich durch schnelle Montage, geringes Gewicht und Flexibilität aus.",
@@ -77,7 +78,8 @@
     "t1KSchaumBenötigt": "**1-K-Schaum:** Benötigt Feuchtigkeit zum Aushärten (Untergrund anfeuchten).",
     "t2KSchaumHärtet": "**2-K-Schaum:** Härtet unabhängig von Feuchtigkeit sehr schnell und fest aus.",
     "einsatzFensterUndTürenmontage": "**Einsatz:** Fenster- und Türenmontage (Fixieren, Dämmen), Füllen von Hohlräumen.",
-    "achtungNichtUvBeständig": "**Achtung:** Nicht UV-beständig, muss abgedeckt werden."
+    "achtungNichtUvBeständig": "**Achtung:** Nicht UV-beständig, muss abgedeckt werden.",
+    "ausbauModulEinleitung": "Werkstoffe des Ausbaus im Überblick: Trockenbau, Estriche und Böden, Keramik, Anstriche, Abdichtungen sowie Kleben und Schäumen."
   },
   "werte": {
     "anwendungsbeispielLängenänderungEinesHei": "Anwendungsbeispiel: Längenänderung eines Heizestrichfeldes",

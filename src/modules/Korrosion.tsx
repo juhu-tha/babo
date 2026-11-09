@@ -28,6 +28,7 @@ import { formatDeZahl, formatDeWert } from '@/src/utils/numberFormat';
 import inhalt from '@/content/korrosion/Korrosion.json';
 import { MdText } from '@/src/components/inhalt/MdText';
 import { ModuleTabs, type ModulTab } from '@/src/components/ui/ModuleTabs';
+import { ErgebnisAnsage, ansageWert, kurzzeile } from '@/src/components/ui/ErgebnisAnsage';
 
 ChartJS.register(
   CategoryScale,
@@ -171,6 +172,7 @@ function LokalelementSimulator() {
             </div>
 
             <EingabeHinweise hinweise={lok.hinweise} />
+            <ErgebnisAnsage text={kurzzeile(crackState.title, ansageWert('Abtrag', totalLossMicron, 0, 'µm'), ansageWert('Rostschicht', rustWedgeThicknessMm, 3, 'mm'), ansageWert('Radialspannung', radialStressMPa, 1, 'MPa'))} />
 
             {/* Live Metrics Cards */}
             <div className="grid grid-cols-2 gap-2.5 pt-3 border-t border-home-grau/20">
@@ -546,6 +548,8 @@ export default function Korrosion() {
           fill: false,
         }],
       isCorroding,
+      xc: front.xc,
+      tDeckung: front.tDeckung,
       hinweise: front.hinweise,
     };
   }, [tKarb, cNomKarb, kKarb]);
@@ -747,6 +751,7 @@ export default function Korrosion() {
               onChange={(e) => setA(Number(e.target.value))}
             />
             <EingabeHinweise hinweise={chlorid.hinweise} />
+            <ErgebnisAnsage text={chlorid.gueltig ? kurzzeile(ansageWert(`Chloridgehalt in ${formatDeZahl(cNom, 0)} mm Tiefe`, chlorid.cBewehrung, 2, '%'), chlorid.depassiviert ? 'kritischer Gehalt überschritten' : 'unter dem kritischen Gehalt') : 'Chloridgehalt –'} />
             <LebensdauerUebernehmen aktiv={chlorid.gueltig} art="korrosionChlorid"
               daten={{ quelle: 'korrosion', mech: 'chlorid', deckM: cNom, tSL: t, drcm: dApp, cS, a }} />
           </div>
@@ -1007,6 +1012,7 @@ export default function Korrosion() {
               onChange={(e) => setKKarb(Number(e.target.value))}
             />
             <EingabeHinweise hinweise={karbonatisierungChartData.hinweise} />
+            <ErgebnisAnsage text={kurzzeile(ansageWert(`Karbonatisierungstiefe nach ${formatDeZahl(tKarb, 0)} Jahren`, karbonatisierungChartData.xc, 1, 'mm'), Number.isFinite(karbonatisierungChartData.xc) && (karbonatisierungChartData.isCorroding ? 'Bewehrung erreicht' : 'Bewehrung noch geschützt'), ansageWert('Front an der Bewehrung nach', karbonatisierungChartData.tDeckung, 0, 'Jahren'))} />
             <LebensdauerUebernehmen aktiv={kKarb > 0 && cNomKarb > 0 && tKarb > 0} art="korrosionKarb"
               daten={{ quelle: 'korrosion', mech: 'karbonatisierung', deckM: cNomKarb, tSL: tKarb, kNat: kKarb }} />
           </div>
@@ -1080,6 +1086,7 @@ export default function Korrosion() {
               onChange={(e) => setKKarbSchnell(Number(e.target.value))}
             />
             <EingabeHinweise hinweise={schnellkarbonatisierungChartData.hinweise} />
+            <ErgebnisAnsage text={ansageWert('äquivalenter natürlicher Karbonatisierungskoeffizient K_nat', schnellkarbonatisierungChartData.kNatEquivalent, 2, 'mm/√a')} />
             <LebensdauerUebernehmen aktiv={kKarbSchnell > 0 && co2KonzSchnell > 0} art="korrosionSchnell"
               daten={{ quelle: 'korrosion', mech: 'karbonatisierung', kac: kKarbSchnell, cAcc: co2KonzSchnell }} />
           </div>

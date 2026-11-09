@@ -6,6 +6,7 @@ import { BlockMath, InlineMath } from 'react-katex';
 import inhalt from '@/content/baustoffkenngroessen/HygrischTab.json';
 import { MdText } from '@/src/components/inhalt/MdText';
 import { FormulaDerivationBox } from '@/src/components/ui/FormulaDerivationBox';
+import { ErgebnisAnsage, ansageWert, kurzzeile } from '@/src/components/ui/ErgebnisAnsage';
 
 export interface HygrischTabProps {
   masseFeucht: number;
@@ -117,6 +118,7 @@ export default function HygrischTab({ masseFeucht, masseTrocken, sdDicke, sdMuWe
             }
             return (
               <div className={`p-3 rounded-xl border text-center font-bold text-xs space-y-1 ${colorClass}`}>
+                <ErgebnisAnsage text={kurzzeile(ansageWert('s_d-Wert', sdCalculated, 3, 'm'), classification)} />
                 <div><MdText text={inhalt.texte.errechneterSDWert} />{formatDeZahl(sdCalculated, 3)} m</div>
                 <div className="uppercase text-[10px] tracking-wider"><MdText text={inhalt.texte.klassifizierungNachDin4108} />{classification}</div>
               </div>

@@ -7,6 +7,7 @@ import { InlineMath } from 'react-katex';
 import { Zap, Battery } from 'lucide-react';
 import inhalt from '@/content/zfp/ElektrochemischTab.json';
 import { MdText } from '@/src/components/inhalt/MdText';
+import { ErgebnisAnsage } from '@/src/components/ui/ErgebnisAnsage';
 
 export interface ElektrochemischTabProps {
   potential: number;
@@ -89,6 +90,7 @@ export default function ElektrochemischTab({ potential, potentialResults, render
             <div className="text-xs font-bold uppercase tracking-wider text-slate-500"><MdText text={inhalt.texte.spezifischerElektrischerWiderstand} /></div>
             <div className="flex items-baseline gap-2">
               <span className="text-2xl font-bold text-slate-900">{formatDeZahl(wennerResults.rho, 1)} Ω·m</span>
+              <ErgebnisAnsage text={`Wenner-Sonde: spezifischer Widerstand ${formatDeZahl(wennerResults.rho, 1)} Ω·m`} />
               <span className="text-sm text-slate-500">({formatDeZahl(wennerResults.rhoKohmCm, 1)} kΩ·cm)</span>
             </div>
 

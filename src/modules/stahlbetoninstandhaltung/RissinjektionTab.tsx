@@ -5,6 +5,7 @@ import { formatDeZahl, formatDeWert } from '@/src/utils/numberFormat';
 import inhalt from '@/content/stahlbetoninstandhaltung/RissinjektionTab.json';
 import { MdText } from '@/src/components/inhalt/MdText';
 import { AuswahlGruppe, alsOption } from '../../components/ui/Auswahlgruppe';
+import { ErgebnisAnsage, ansageWert, kurzzeile } from '@/src/components/ui/ErgebnisAnsage';
 
 export interface RissinjektionTabProps {
   bauteilDicke: number;
@@ -173,6 +174,7 @@ export default function RissinjektionTab({ bauteilDicke, crackActivity, crackMoi
           
           {/* Result Card */}
           <div className="p-5 rounded-2xl bg-white border border-home-grau/30 shadow-xs space-y-4">
+            <ErgebnisAnsage text={kurzzeile(rissStats.harzTyp, ansageWert('Packerabstand etwa', rissStats.packerSpacingMm, 'frei', 'mm'), ansageWert('Verpressdruck höchstens', rissStats.maxPressureBar, 'frei', 'bar'))} />
             <div className="flex items-center justify-between border-b border-home-grau/20 pb-3">
               <div>
                 <span className="text-[10px] font-mono uppercase font-bold text-shiraz block"><MdText text={inhalt.texte.technologischerInjektionsplan} /></span>

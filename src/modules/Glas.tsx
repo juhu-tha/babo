@@ -18,6 +18,7 @@ import { MdText } from '@/src/components/inhalt/MdText';
 import { ModuleTabs } from '@/src/components/ui/ModuleTabs';
 import { EingabeHinweise } from '@/src/components/ui/EingabeHinweise';
 import { weibull, vsgEffektiveDicke, sigma0Lehrmodell, VSG_MODUL } from '@/src/calc/glas';
+import { ErgebnisAnsage, ansageWert, kurzzeile } from '@/src/components/ui/ErgebnisAnsage';
 
 const glassTypes = inhalt.daten.glassTypes;
 
@@ -145,6 +146,7 @@ export default function Glas() {
                 <Slider label={inhalt.werte.weibullModulM} info={inhalt.werte.parameterFürDieStreuung} min={3} max={15} step={1} value={m} unit="-" onChange={(e) => setM(Number(e.target.value))} />
               </div>
               <EingabeHinweise hinweise={wb.hinweise} />
+              <ErgebnisAnsage text={kurzzeile(ansageWert('Bruchwahrscheinlichkeit', wb.pf * 100, 2, '%'), ansageWert('bei Spannung', sigma, 'frei', 'MPa'))} />
             </div>
           </div>
 
@@ -191,6 +193,7 @@ export default function Glas() {
 
               <Slider label={<div className="flex items-center gap-2">Temperatur <FormulaText text="T" /></div>} min={-20} max={60} step={5} value={temp} unit="°C" onChange={(e) => setTemp(Number(e.target.value))} />
               <EingabeHinweise hinweise={vsgData.hinweise} />
+              <ErgebnisAnsage text={kurzzeile(ansageWert('Schubmodul PVB', vsgData.G, 2, 'MPa'), ansageWert('effektive Dicke h_ef,w', vsgData.hef_w, 1, 'mm'))} />
               
               <div className="mt-6 grid grid-cols-2 gap-4">
                 <div className="bg-white p-3 rounded-lg border border-home-grau/30">

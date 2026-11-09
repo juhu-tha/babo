@@ -13,6 +13,7 @@ import inhalt from '@/content/bauwerksuntersuchung/InterpretationNavigator.json'
 import { befundSynthese } from '@/src/calc/bauwerksuntersuchung';
 import { fcdBeton, FCD_MODUL } from '@/src/data/kennwerte';
 import { MdText } from '@/src/components/inhalt/MdText';
+import { ErgebnisAnsage, kurzzeile } from '@/src/components/ui/ErgebnisAnsage';
 
 interface DiagnosticScenario {
   id: string;
@@ -373,6 +374,7 @@ export default function InterpretationNavigator() {
         </div>
       </div>
 
+      <ErgebnisAnsage text={kurzzeile(`Gefährdungsstufe ${evaluation.overallRisk}`, evaluation.isCarbDepassivated && 'Karbonatisierung hat die Bewehrung erreicht', evaluation.isChlorideCritical && 'Chloridgehalt kritisch', evaluation.isStrengthDeficient && 'Festigkeit unzureichend', evaluation.isHaftzugFailed && 'Haftzug nicht erreicht')} />
       {/* 3. SYNTHESE & ENTSCHEIDUNGSMATRIX: WAS BEDEUTET DAS INGENIEURTECHNISCH? */}
       <div className="bg-white p-6 rounded-2xl shadow-sm border border-home-grau/30 space-y-6">
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-home-grau/20 pb-4">

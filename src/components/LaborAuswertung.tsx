@@ -22,6 +22,7 @@ import {
 } from 'lucide-react';
 import { exportToCSV, exportToJSON, openPrintableReport } from '@/src/utils/labExportUtils';
 import { AuswahlGruppe, ReiterLeiste, alsOption, alsReiter, reiterPanel } from './ui/Auswahlgruppe';
+import { ErgebnisAnsage, ansageWert, kurzzeile } from '@/src/components/ui/ErgebnisAnsage';
 
 interface MethodItem {
   verfahren: string;
@@ -652,6 +653,7 @@ export default function LaborAuswertung() {
                   <Check className="h-5 w-5 shrink-0 mt-0.5" />
                   <div>
                     <div className="font-bold text-xs uppercase tracking-wider">Ergebnis: {isotopeResults.diagnosis}</div>
+                    <ErgebnisAnsage text={kurzzeile(ansageWert('Deuterium-Exzess', isotopeResults.dExzess, 2, '‰'), isotopeResults.diagnosis)} />
                     <p className="text-xs leading-relaxed mt-1 opacity-90">{isotopeResults.description}</p>
                   </div>
                 </div>
@@ -811,6 +813,7 @@ export default function LaborAuswertung() {
                 <ShieldAlert className="h-5 w-5 shrink-0 mt-0.5" />
                 <div>
                   <div className="font-bold text-xs uppercase tracking-wider">Tracer-Status: {tracerResults.source}</div>
+                  <ErgebnisAnsage text={`Tracer-Status: ${tracerResults.source}`} />
                   <p className="text-xs leading-relaxed mt-1 opacity-90">{tracerResults.details}</p>
                 </div>
               </div>

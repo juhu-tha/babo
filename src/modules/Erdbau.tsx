@@ -10,6 +10,7 @@ import inhalt from '@/content/erdbau/Erdbau.json';
 import { bodengruppe as bodengruppeDin18196, frostschutz } from '@/src/calc/erdbau';
 import { MdText } from '@/src/components/inhalt/MdText';
 import { ModuleTabs } from '@/src/components/ui/ModuleTabs';
+import { ErgebnisAnsage, ansageWert, kurzzeile } from '@/src/components/ui/ErgebnisAnsage';
 
 type Tab = 'grundlagen' | 'klassifikation' | 'frostschutz' | 'steckbrief';
 
@@ -193,6 +194,7 @@ export default function Erdbau() {
                 <h3 className="font-bold uppercase tracking-widest text-sm text-white/80"><MdText text={inhalt.texte.bodengruppeNachDin18196} /></h3>
                 <div>
                   <div className="text-5xl font-black mb-2">{bodenKlasse.gruppe}</div>
+                  <ErgebnisAnsage text={kurzzeile(`Bodengruppe ${bodenKlasse.gruppe}`, bodenKlasse.name, `Frostempfindlichkeit ${bodenKlasse.frost}`)} />
                   <div className="text-xl font-medium">{bodenKlasse.name}</div>
                 </div>
                 
@@ -290,6 +292,7 @@ export default function Erdbau() {
                 
                 <div className="bg-blue-50 border-t border-blue-200 p-3 text-xs text-blue-900">
                   <strong>Zusammenfassung:</strong> {frostschutzDicke.regelausfuehrung}
+                  <ErgebnisAnsage text={kurzzeile(ansageWert('frostsicherer Oberbau', frostschutzDicke.gesamtDicke, 'frei', 'cm'), ansageWert('davon Frostschutzschicht', frostschutzDicke.dickeFSS, 'frei', 'cm'))} />
                 </div>
               </div>
             </div>

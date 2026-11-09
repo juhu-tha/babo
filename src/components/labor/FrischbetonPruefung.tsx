@@ -21,6 +21,7 @@ import { Fz } from '../ui/Formelzeichen';
 import { useDiagrammFarben, linAchse } from './laborGrafik';
 import { AusbreitDraufsicht, AusbreitSeitenansicht, SetzversuchAnsicht, SetzFormen } from './FrischbetonGeraete';
 import { ausbreitAuswertung } from '@/src/calc/laborVersuch';
+import { ErgebnisAnsage, ansageWert, kurzzeile } from '@/src/components/ui/ErgebnisAnsage';
 
 ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend);
 
@@ -402,6 +403,7 @@ export default function FrischbetonPruefung() {
                   )}
                 </div>
 
+                <ErgebnisAnsage text={coneLifted ? kurzzeile(ansageWert('Ausbreitmaß', ausbreit.f, 0, 'mm'), `Konsistenzklasse ${consistencyClass(ausbreit.f).code}`) : ''} />
                 {/* Results Card */}
                 {coneLifted && (
                   <div className="p-3.5 bg-off-white rounded-xl border border-home-grau/30 flex flex-wrap items-center justify-between gap-3 text-xs">
@@ -448,6 +450,7 @@ export default function FrischbetonPruefung() {
                 </figure>
 
                 {/* Slump Control Button */}
+                <ErgebnisAnsage text={slumpLifted ? kurzzeile(ansageWert('Setzmaß', slumpMm, 0, 'mm'), `Konsistenzklasse ${slumpClass(slumpMm).code}`) : ''} />
                 {!slumpLifted ? (
                   <button
                     onClick={liftSlumpCone}
