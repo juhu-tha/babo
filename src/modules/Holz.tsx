@@ -86,7 +86,7 @@ function WoodThematicLinks({ current }: { current: 'baustoff' | 'bauprodukt' | '
   return (
     <div className="bg-shiraz/5 border border-shiraz/35 rounded-2xl p-4 sm:p-5 flex flex-col gap-4">
       <div>
-        <h4 className="text-xs font-bold text-shiraz uppercase tracking-wider"><MdText text={inhalt.texte.materialLehrpfadHolzIm} /></h4>
+        <h3 className="text-xs font-bold text-shiraz uppercase tracking-wider wie-h4"><MdText text={inhalt.texte.materialLehrpfadHolzIm} /></h3>
         <p className="text-xs text-slate-700 font-medium mt-0.5"><MdText text={inhalt.texte.wechsleNahtlosZwischenDen} /></p>
       </div>
       <div className="grid grid-cols-1 md:grid-cols-3 gap-3">

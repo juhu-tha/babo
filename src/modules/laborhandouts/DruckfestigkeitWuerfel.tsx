@@ -129,7 +129,7 @@ export default function DruckfestigkeitWuerfel() {
         </div>
         <p className="text-sm text-text-main/80 leading-relaxed"><MdText text={inhaltJson.texte.dieWürfeldruckfestigkeitIstDer} /></p>
         <VersuchsHandout daten={DRUCK_HANDOUT} auswertung={auswerten} />
-        <Querverweis ziel="festbeton_statistik" titel={inhaltJson.werte.konformitätEinerProduktion} linkText={inhaltJson.werte.zumModulFestbetonStatistik}>
+        <Querverweis ebene={3} ziel="festbeton_statistik" titel={inhaltJson.werte.konformitätEinerProduktion} linkText={inhaltJson.werte.zumModulFestbetonStatistik}>
           <p><MdText text={inhaltJson.texte.dieKriterien1Und} /></p>
         </Querverweis>
       </div>

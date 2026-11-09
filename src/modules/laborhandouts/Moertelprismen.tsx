@@ -119,7 +119,7 @@ export default function Moertelprismen() {
         </div>
         <p className="text-sm text-text-main/80 leading-relaxed"><MdText text={inhaltJson.texte.mitDemNormmörtelWird} /></p>
         <VersuchsHandout daten={MOERTEL_HANDOUT} auswertung={auswerten} />
-        <Querverweis ziel="bindemittel" titel={inhaltJson.werte.zementeUndIhreFestigkeitsentwicklung} linkText={inhaltJson.werte.zumModulBindemittel}>
+        <Querverweis ebene={3} ziel="bindemittel" titel={inhaltJson.werte.zementeUndIhreFestigkeitsentwicklung} linkText={inhaltJson.werte.zumModulBindemittel}>
           <p><MdText text={inhaltJson.texte.zementartenNachDinEn} /></p>
         </Querverweis>
       </div>

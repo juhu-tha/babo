@@ -15,6 +15,9 @@ export interface QuerverweisProps {
   /** Beschriftung des Link-Buttons */
   linkText: string;
   className?: string;
+  /** Überschriftenebene des Titels (Standard 4); 3 unter einer h2, damit die Folge keine Ebene überspringt
+   *  (a11y 09.11.2026). Das Aussehen bleibt das einer h4 (Klasse wie-h4). */
+  ebene?: 3 | 4;
 }
 
 export function springeZu(setActiveTab: (t: TabId) => void, ziel: TabId) {
@@ -24,13 +27,14 @@ export function springeZu(setActiveTab: (t: TabId) => void, ziel: TabId) {
   else window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 
-export function Querverweis({ ziel, titel, children, linkText, className = '' }: QuerverweisProps) {
+export function Querverweis({ ziel, titel, children, linkText, className = '', ebene = 4 }: QuerverweisProps) {
   const { setActiveTab } = useTabContext();
+  const Titel = ebene === 3 ? 'h3' : 'h4';
   return (
     <div className={`p-4 rounded-xl border border-shiraz/25 bg-shiraz/5 text-sm text-text-main/85 leading-relaxed ${className}`} data-querverweis={ziel}>
-      <h4 className="font-bold text-text-main flex items-center gap-2 mb-1.5">
+      <Titel className={`font-bold text-text-main flex items-center gap-2 mb-1.5${ebene === 3 ? ' wie-h4' : ''}`}>
         <Link2 size={16} className="text-shiraz shrink-0" /> {titel}
-      </h4>
+      </Titel>
       <div className="text-xs leading-relaxed space-y-1.5">{children}</div>
       <button
         type="button"

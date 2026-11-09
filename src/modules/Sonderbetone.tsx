@@ -75,7 +75,7 @@ export default function Sonderbetone() {
       )}
       {activeTab === 'Sichtbeton' && (
         <div className="bg-white p-6 rounded-2xl shadow-sm border border-home-grau/30">
-          <Querverweis ziel="sichtbeton" titel={inhalt.werte.sichtbetonEigenesModul} linkText={inhalt.werte.zumModulSichtbetonSb}>
+          <Querverweis ebene={3} ziel="sichtbeton" titel={inhalt.werte.sichtbetonEigenesModul} linkText={inhalt.werte.zumModulSichtbetonSb}>
             <p><MdText text={inhalt.texte.sichtbetonIstKeinEigener} /></p>
             <p><MdText text={inhalt.texte.maßgebendSindSchalungUnd} /></p>
           </Querverweis>

@@ -223,8 +223,8 @@ export default function Denkmalpflege() {
                 {/* GEG Befreiung */}
                 <div className="border border-home-grau/30 p-5 rounded-2xl bg-white space-y-3 shadow-sm flex flex-col justify-between">
                   <div className="space-y-2">
-                    <h4 className="font-bold text-slate-800 text-xs uppercase tracking-wider flex items-center gap-1.5">
-                      <Check className="text-emerald-600" size={16} /><MdText text={inhalt.texte.t105GmodgVormalsGeg} /></h4>
+                    <h3 className="font-bold text-slate-800 text-xs uppercase tracking-wider flex items-center gap-1.5 wie-h4">
+                      <Check className="text-emerald-600" size={16} /><MdText text={inhalt.texte.t105GmodgVormalsGeg} /></h3>
                     <p className="text-slate-600 text-xs leading-relaxed"><MdText text={inhalt.texte.dasGebäudemodernisierungsgesetzVormalsGe} /></p>
                     <p className="text-slate-600 text-xs leading-relaxed"><MdText text={inhalt.texte.einePflichtZurDurchführung} /></p>
                   </div>
@@ -234,8 +234,8 @@ export default function Denkmalpflege() {
                 {/* Materialverträglichkeit */}
                 <div className="border border-home-grau/30 p-5 rounded-2xl bg-white space-y-3 shadow-sm flex flex-col justify-between">
                   <div className="space-y-2">
-                    <h4 className="font-bold text-slate-800 text-xs uppercase tracking-wider flex items-center gap-1.5">
-                      <AlertTriangle className="text-rose-600" size={16} /><MdText text={inhalt.texte.materialverträglichkeitPutzschäden} /></h4>
+                    <h3 className="font-bold text-slate-800 text-xs uppercase tracking-wider flex items-center gap-1.5 wie-h4">
+                      <AlertTriangle className="text-rose-600" size={16} /><MdText text={inhalt.texte.materialverträglichkeitPutzschäden} /></h3>
                     <p className="text-slate-600 text-xs leading-relaxed"><MdText text={inhalt.texte.einHauptgrundFürSchäden} /></p>
                     <p className="text-slate-600 text-xs leading-relaxed"><MdText text={inhalt.texte.daFeuchtigkeitNichtAbtrocknen} /></p>
                   </div>
@@ -245,12 +245,12 @@ export default function Denkmalpflege() {
 
               {/* Innendämmung und WTA Richtlinien */}
               <div className="border border-home-grau/30 p-5 rounded-2xl bg-white space-y-4 shadow-sm">
-                <h4 className="font-bold text-slate-800 text-sm flex items-center gap-1.5">
-                  <Hammer size={18} className="text-shiraz animate-bounce" /><MdText text={inhalt.texte.innendämmungNachWtaRichtlinie} /></h4>
+                <h3 className="font-bold text-slate-800 text-sm flex items-center gap-1.5 wie-h4">
+                  <Hammer size={18} className="text-shiraz animate-bounce" /><MdText text={inhalt.texte.innendämmungNachWtaRichtlinie} /></h3>
                 <p className="text-xs text-slate-600 leading-relaxed"><MdText text={inhalt.texte.daAußendämmungenWdvsWegen} /></p>
 
                 <div className="bg-slate-50 p-4 rounded-xl space-y-3 border border-home-grau/30">
-                  <h5 className="font-bold text-slate-800 text-xs"><MdText text={inhalt.texte.zweiBewährteSystemprinzipien} /></h5>
+                  <h4 className="font-bold text-slate-800 text-xs wie-h5"><MdText text={inhalt.texte.zweiBewährteSystemprinzipien} /></h4>
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs font-medium text-slate-900">
                     <div className="bg-white p-3 rounded-lg border border-home-grau/30 space-y-1">
                       <span className="text-rose-700 block font-bold"><MdText text={inhalt.texte.t1KapillaraktiveDampfoffeneSysteme} /></span>
@@ -275,7 +275,7 @@ export default function Denkmalpflege() {
               
               {/* Dreistufigkeit in Bayern */}
               <div className="border border-home-grau/30 p-5 rounded-2xl bg-white space-y-4 shadow-sm">
-                <h4 className="font-bold text-slate-800 text-sm"><MdText text={inhalt.texte.dasDenkmalpflegerischeDreistufenSystem} /></h4>
+                <h3 className="font-bold text-slate-800 text-sm wie-h4"><MdText text={inhalt.texte.dasDenkmalpflegerischeDreistufenSystem} /></h3>
                 <p className="text-xs text-slate-600 leading-relaxed"><MdText text={inhalt.texte.wieFastDerGesamte} /></p>
 
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-4 text-xs font-medium text-slate-900">
@@ -301,7 +301,7 @@ export default function Denkmalpflege() {
               <div className="border border-home-grau/30 p-5 rounded-2xl bg-white space-y-4 shadow-sm">
                 <div className="flex items-center gap-2">
                   <TrendingUp className="text-shiraz animate-pulse" size={18} />
-                  <h4 className="font-bold text-slate-800 text-sm"><MdText text={inhalt.texte.dieSonderAfaDes} /></h4>
+                  <h3 className="font-bold text-slate-800 text-sm wie-h4"><MdText text={inhalt.texte.dieSonderAfaDes} /></h3>
                 </div>
                 <p className="text-xs text-slate-600 leading-relaxed"><MdText text={inhalt.texte.dieSanierungHistorischerGebäude} /></p>
 

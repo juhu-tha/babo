@@ -175,7 +175,7 @@ export default function Potentialmessung() {
         </div>
         <p className="text-sm text-text-main/80 leading-relaxed"><MdText text={inhaltJson.texte.dieGesättigteCalciumhydroxidlösungBildet} /></p>
         <VersuchsHandout daten={POTENTIAL_HANDOUT} auswertung={auswerten} />
-        <Querverweis ziel="korrosion" titel={inhaltJson.werte.hintergrundChloridinduzierteKorrosion} linkText={inhaltJson.werte.zumModulBewehrungskorrosion}>
+        <Querverweis ebene={3} ziel="korrosion" titel={inhaltJson.werte.hintergrundChloridinduzierteKorrosion} linkText={inhaltJson.werte.zumModulBewehrungskorrosion}>
           <p><MdText text={inhaltJson.texte.passivierungLochfraßKritischerChloridgeh} /></p>
         </Querverweis>
       </div>

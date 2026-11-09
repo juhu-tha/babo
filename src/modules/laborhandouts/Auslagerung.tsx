@@ -146,7 +146,7 @@ export default function Auslagerung() {
         </div>
         <p className="text-sm text-text-main/80 leading-relaxed"><MdText text={inhaltJson.texte.derAuslagerungsversuchErgänztDie} /></p>
         <VersuchsHandout daten={AUSLAGERUNG_HANDOUT} auswertung={auswerten} />
-        <Querverweis ziel="labor_potentialmessung" titel={inhaltJson.werte.parallelerVersuch} linkText={inhaltJson.werte.zumHandoutPotentialmessung}>
+        <Querverweis ebene={3} ziel="labor_potentialmessung" titel={inhaltJson.werte.parallelerVersuch} linkText={inhaltJson.werte.zumHandoutPotentialmessung}>
           <p><MdText text={inhaltJson.texte.probenAusDerselbenCharge} /></p>
         </Querverweis>
       </div>

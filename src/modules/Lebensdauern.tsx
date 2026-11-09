@@ -206,7 +206,7 @@ export default function Lebensdauern() {
                   max="100"
                   step="5"
                   value={buildingLifespan}
-                  aria-label={reglerName(inhalt.texte.typischerReferenzStudienzeitraumFür)}
+                  aria-label={reglerName(inhalt.texte.gebäudeBetrachtungszeitraumLcaLcc)}
                   aria-valuetext={`${formatDeWert(buildingLifespan)} Jahre`}
                   onChange={(e) => setBuildingLifespan(Number(e.target.value))}
                   className="flex-1 h-2 bg-home-grau/20 rounded-lg appearance-none cursor-pointer accent-shiraz"

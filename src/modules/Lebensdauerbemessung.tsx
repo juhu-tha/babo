@@ -285,7 +285,7 @@ export default function Lebensdauerbemessung() {
                   </table>
                 </div>
                 <div className={kasten}><p><MdText text={inhalt.texte.gMonteCarlo} /></p></div>
-                <Querverweis ziel="korrosion" titel={inhalt.texte.querKorrosion} linkText={inhalt.werte.zumModulKorrosion}>
+                <Querverweis ebene={3} ziel="korrosion" titel={inhalt.texte.querKorrosion} linkText={inhalt.werte.zumModulKorrosion}>
                   <p><MdText text={inhalt.texte.gKorrosionVerweis} /></p>
                 </Querverweis>
               </div>
@@ -302,7 +302,7 @@ export default function Lebensdauerbemessung() {
                 <ParameterTabelle titel={inhalt.werte.parameterTitelKarb} zeilen={KARB_PARAMETER} />
                 <p className="text-sm text-text-main/85 leading-relaxed"><MdText text={inhalt.texte.kPruefung} /></p>
                 <div className={kasten}><p><MdText text={inhalt.texte.kWetter} /></p></div>
-                <Querverweis ziel="schnellkarbonatisierung" titel={inhalt.texte.querSchnell} linkText={inhalt.werte.zumModulSchnell}>
+                <Querverweis ebene={3} ziel="schnellkarbonatisierung" titel={inhalt.texte.querSchnell} linkText={inhalt.werte.zumModulSchnell}>
                   <p><MdText text={inhalt.texte.kSchnellVerweis} /></p>
                 </Querverweis>
               </div>
@@ -546,10 +546,10 @@ export default function Lebensdauerbemessung() {
                 <div className={kasten}><p><MdText text={inhalt.texte.kzVorhalte} /></p></div>
                 <p className="text-sm text-text-main/85 leading-relaxed"><MdText text={inhalt.texte.kzErc} /></p>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                  <Querverweis ziel="normen_ausblick" titel={inhalt.texte.querNormen} linkText={inhalt.werte.zumModulNormen}>
+                  <Querverweis ebene={3} ziel="normen_ausblick" titel={inhalt.texte.querNormen} linkText={inhalt.werte.zumModulNormen}>
                     <p><MdText text={inhalt.texte.querNormenText} /></p>
                   </Querverweis>
-                  <Querverweis ziel="expositionsklassen" titel={inhalt.texte.querExposition} linkText={inhalt.werte.zumModulExposition}>
+                  <Querverweis ebene={3} ziel="expositionsklassen" titel={inhalt.texte.querExposition} linkText={inhalt.werte.zumModulExposition}>
                     <p><MdText text={inhalt.texte.querExpositionText} /></p>
                   </Querverweis>
                 </div>

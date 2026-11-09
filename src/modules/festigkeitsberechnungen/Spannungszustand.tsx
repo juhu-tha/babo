@@ -109,7 +109,7 @@ export default function Spannungszustand() {
 
   return (
     <div className="flex flex-col gap-6 animate-in fade-in duration-300">
-      <BloomLernziele moduleId="festigkeit_spannungszustand" moduleTitle={inhalt.werte.lernzielTitel} timeMinutes={45} goals={inhalt.daten.lernziele as BloomGoalItem[]} />
+      <BloomLernziele titelElement="p" titelKlasse="wie-h4" moduleId="festigkeit_spannungszustand" moduleTitle={inhalt.werte.lernzielTitel} timeMinutes={45} goals={inhalt.daten.lernziele as BloomGoalItem[]} />
 
       <div className="bg-white p-6 rounded-2xl shadow-sm border border-home-grau/30 flex flex-col gap-4">
         <h2 className="text-xl font-bold text-text-main flex items-center gap-2"><Compass className="text-shiraz" aria-hidden="true" /><MdText text={inhalt.texte.titel} /></h2>

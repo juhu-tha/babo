@@ -122,7 +122,7 @@ export function VersuchsHandout({ daten, auswertung }: Props) {
                 <tbody>{daten.sicherheit.map(s => <tr key={s.gefahr}><td className={td}><strong>{s.gefahr}</strong></td><td className={td}>{s.massnahme}</td></tr>)}</tbody>
               </table>
             </div>
-            <Querverweis ziel="labor_sicherheit" titel="Laborordnung und Unterweisung" linkText="Zum Modul Baustofflabor">
+            <Querverweis ebene={3} ziel="labor_sicherheit" titel="Laborordnung und Unterweisung" linkText="Zum Modul Baustofflabor">
               <p>Vor dem ersten Versuch ist die Sicherheitsunterweisung des Labors verbindlich. Betriebsanweisungen und Sicherheitsdatenblätter der verwendeten Stoffe gehen diesem Handout vor.</p>
             </Querverweis>
           </div>

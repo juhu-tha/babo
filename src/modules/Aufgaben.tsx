@@ -167,7 +167,7 @@ export default function Aufgaben() {
 
       <div {...reiterPanel('aufgaben-modus', mode)}><React.Suspense fallback={<div className="min-h-screen" aria-busy="true" />}>
       {mode === 'klausur' ? (
-        <KlausurSimulator />
+        <KlausurSimulator ebene={2} />
       ) : mode === 'quizzes' ? (
         <InteractiveQuizSystem 
           initialScope={quizConfig.gruppen ? 'gruppe' : 'diagnose_15'}

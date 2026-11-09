@@ -1139,7 +1139,7 @@ export default function Korrosion() {
         ergebnisHinweis={inhalt.werte.mit35MmDeckung}
         normQuelle={inhalt.werte.fibBulletin342006}
       />
-      <Querverweis ziel="lebensdauerbemessung" titel={inhalt.werte.querLebensdauerTitel} linkText={inhalt.werte.querLebensdauerLink}>
+      <Querverweis ebene={3} ziel="lebensdauerbemessung" titel={inhalt.werte.querLebensdauerTitel} linkText={inhalt.werte.querLebensdauerLink}>
         <p><MdText text={inhalt.texte.querLebensdauerText} /></p>
       </Querverweis>
       <FormulaDerivationBox

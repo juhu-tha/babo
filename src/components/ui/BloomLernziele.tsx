@@ -21,6 +21,8 @@ export interface BloomLernzieleProps {
   /** Element des Kartentitels: 'h4' (Standard) oder 'p', wenn die Karte vor der ersten Bereichsüberschrift steht
    *  (sonst Überschriftensprung h1 → h4; Kleinpunkte 04.11.2026) */
   titelElement?: 'h4' | 'p';
+  /** Zusatzklasse des Kartentitels, z. B. „wie-h4“: ein <p> behält dann das Aussehen der früheren h4 (a11y 09.11.2026) */
+  titelKlasse?: string;
 }
 
 const DEFAULT_GOALS: Record<string, BloomGoalItem[]> = {
@@ -73,6 +75,7 @@ export const BloomLernziele: React.FC<BloomLernzieleProps> = ({
   ects,
   goals,
   titelElement = 'h4',
+  titelKlasse,
 }) => {
   const Titel = titelElement;
   const [isOpen, setIsOpen] = useState(false);
@@ -110,7 +113,7 @@ export const BloomLernziele: React.FC<BloomLernzieleProps> = ({
                 {studyLevel}
               </span>
             </div>
-            <Titel className="text-sm font-bold text-text-main flex items-center gap-2">
+            <Titel className={`text-sm font-bold text-text-main flex items-center gap-2${titelKlasse ? ` ${titelKlasse}` : ''}`}>
               Lernziele: {moduleTitle}
             </Titel>
           </div>

@@ -454,7 +454,7 @@ export default function Zustandsbewertung() {
             <div className="flex items-center justify-between flex-wrap gap-4 mb-6">
               <div className="flex items-center gap-3">
                 <Calculator className="text-shiraz" size={28} />
-                <h3 className="text-xl font-bold text-text-main flex items-center gap-2"><MdText text={inhalt.texte.notenrechnerSchulnotenKonverter} /></h3>
+                <h2 className="text-xl font-bold text-text-main flex items-center gap-2"><MdText text={inhalt.texte.notenrechnerSchulnotenKonverter} /></h2>
         <div className="text-sm text-text-main/80 bg-off-white p-4 rounded-xl border border-home-grau/30">
           <p><MdText text={inhalt.texte.didaktischeVeranschaulichungDerZustandsn} /></p>
         </div>

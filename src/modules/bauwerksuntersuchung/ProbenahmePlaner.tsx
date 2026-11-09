@@ -60,8 +60,8 @@ export default function ProbenahmePlaner() {
       <div className="bg-white p-6 rounded-2xl shadow-sm border border-home-grau/30 flex flex-col gap-3">
         <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
           <div>
-            <h3 className="text-lg font-bold text-text-main flex items-center gap-2">
-              <ClipboardList className="text-shiraz" size={20} /><MdText text={inhalt.texte.normativeStichprobenplanungKonditionieru} /></h3>
+            <h2 className="text-lg font-bold text-text-main flex items-center gap-2">
+              <ClipboardList className="text-shiraz" size={20} /><MdText text={inhalt.texte.normativeStichprobenplanungKonditionieru} /></h2>
             <p className="text-xs text-text-main/70 mt-1"><MdText text={inhalt.texte.verbindlicheFestlegungVonMindestprüfpunk} /></p>
           </div>
           <span className="px-3 py-1 bg-shiraz/10 text-shiraz text-xs font-bold rounded-full border border-shiraz/20 self-start md:self-center"><MdText text={inhalt.texte.prüfdimension3Vollständigkeit} /></span>
@@ -92,8 +92,8 @@ export default function ProbenahmePlaner() {
       <div className="bg-white p-6 rounded-2xl shadow-sm border border-home-grau/30 space-y-6">
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-home-grau/20 pb-4">
           <div>
-            <h4 className="font-bold text-base text-text-main flex items-center gap-2">
-              <Sliders className="text-shiraz" size={18} /><MdText text={inhalt.texte.interaktiverStichprobenrechnerFürBauwerk} /></h4>
+            <h3 className="font-bold text-base text-text-main flex items-center gap-2 wie-h4">
+              <Sliders className="text-shiraz" size={18} /><MdText text={inhalt.texte.interaktiverStichprobenrechnerFürBauwerk} /></h3>
             <p className="text-xs text-text-main/70 mt-0.5"><MdText text={inhalt.texte.wählenSieEinTypisches} /></p>
           </div>
         </div>
@@ -283,8 +283,8 @@ export default function ProbenahmePlaner() {
 
       {/* 3. Ausführlicher Leitfaden: Proben- & Prüfstellenkonditionierung */}
       <div className="bg-white p-6 rounded-2xl shadow-sm border border-home-grau/30 space-y-6">
-        <h4 className="font-bold text-base text-text-main flex items-center gap-2">
-          <Beaker className="text-shiraz" size={18} /><MdText text={inhalt.texte.verbindlicherLeitfadenProbenUnd} /></h4>
+        <h3 className="font-bold text-base text-text-main flex items-center gap-2 wie-h4">
+          <Beaker className="text-shiraz" size={18} /><MdText text={inhalt.texte.verbindlicherLeitfadenProbenUnd} /></h3>
         <p className="text-xs text-text-main/70 -mt-3"><MdText text={inhalt.texte.präziseVorbereitungsLagerungsUnd} /></p>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
@@ -292,7 +292,7 @@ export default function ProbenahmePlaner() {
           <div className="p-4 rounded-xl border border-home-grau/20 bg-slate-50/50 space-y-3 flex flex-col justify-between">
             <div className="space-y-2">
               <span className="text-xs font-mono font-bold text-shiraz bg-shiraz/10 px-2.5 py-0.5 rounded-full inline-block"><MdText text={inhalt.texte.dinEn125041} /></span>
-              <h5 className="font-bold text-sm text-slate-800"><MdText text={inhalt.texte.bohrkerneFürDruckprüfung} /></h5>
+              <h4 className="font-bold text-sm text-slate-800 wie-h5"><MdText text={inhalt.texte.bohrkerneFürDruckprüfung} /></h4>
               <ul className="text-xs text-slate-650 space-y-1.5 list-disc list-inside leading-relaxed">
                 <li><MdText text={inhalt.texte.ablängenSchlankheitsverhältnisHD} /></li>
                 <li><MdText text={inhalt.texte.planparallelitätStirnflächenAufToleranz} /></li>
@@ -306,7 +306,7 @@ export default function ProbenahmePlaner() {
           <div className="p-4 rounded-xl border border-home-grau/20 bg-slate-50/50 space-y-3 flex flex-col justify-between">
             <div className="space-y-2">
               <span className="text-xs font-mono font-bold text-shiraz bg-shiraz/10 px-2.5 py-0.5 rounded-full inline-block"><MdText text={inhalt.texte.dgzfpB1AstmC876} /></span>
-              <h5 className="font-bold text-sm text-slate-800">Potentialfeldmessung</h5>
+              <h4 className="font-bold text-sm text-slate-800 wie-h5">Potentialfeldmessung</h4>
               <ul className="text-xs text-slate-650 space-y-1.5 list-disc list-inside leading-relaxed">
                 <li><MdText text={inhalt.texte.vorbefeuchtungOberflächeMind30} /></li>
                 <li><MdText text={inhalt.texte.pfützenfreiheitFreiesWasserVor} /></li>
@@ -320,7 +320,7 @@ export default function ProbenahmePlaner() {
           <div className="p-4 rounded-xl border border-home-grau/20 bg-slate-50/50 space-y-3 flex flex-col justify-between">
             <div className="space-y-2">
               <span className="text-xs font-mono font-bold text-shiraz bg-shiraz/10 px-2.5 py-0.5 rounded-full inline-block"><MdText text={inhalt.texte.dinEn14629Dibt} /></span>
-              <h5 className="font-bold text-sm text-slate-800"><MdText text={inhalt.texte.bohrmehlanalyseChloride} /></h5>
+              <h4 className="font-bold text-sm text-slate-800 wie-h5"><MdText text={inhalt.texte.bohrmehlanalyseChloride} /></h4>
               <ul className="text-xs text-slate-650 space-y-1.5 list-disc list-inside leading-relaxed">
                 <li><MdText text={inhalt.texte.trockenbohrenAusschließlichMitSchlagbohr} /></li>
                 <li><MdText text={inhalt.texte.tiefenstufungBohrlochNachJeder} /></li>
@@ -334,7 +334,7 @@ export default function ProbenahmePlaner() {
           <div className="p-4 rounded-xl border border-home-grau/20 bg-slate-50/50 space-y-3 flex flex-col justify-between">
             <div className="space-y-2">
               <span className="text-xs font-mono font-bold text-shiraz bg-shiraz/10 px-2.5 py-0.5 rounded-full inline-block"><MdText text={inhalt.texte.dinEn14630} /></span>
-              <h5 className="font-bold text-sm text-slate-800">Karbonatisierungsprüfung</h5>
+              <h4 className="font-bold text-sm text-slate-800 wie-h5">Karbonatisierungsprüfung</h4>
               <ul className="text-xs text-slate-650 space-y-1.5 list-disc list-inside leading-relaxed">
                 <li><MdText text={inhalt.texte.bruchflächeFrischHergestellterStemmbruch} /></li>
                 <li><MdText text={inhalt.texte.entstaubenUnmittelbarVorAufsprühen} /></li>
@@ -348,7 +348,7 @@ export default function ProbenahmePlaner() {
           <div className="p-4 rounded-xl border border-home-grau/20 bg-slate-50/50 space-y-3 flex flex-col justify-between">
             <div className="space-y-2">
               <span className="text-xs font-mono font-bold text-shiraz bg-shiraz/10 px-2.5 py-0.5 rounded-full inline-block"><MdText text={inhalt.texte.dinEn1542Ztv} /></span>
-              <h5 className="font-bold text-sm text-slate-800"><MdText text={inhalt.texte.haftabzugsprüfungAbreißversuch} /></h5>
+              <h4 className="font-bold text-sm text-slate-800 wie-h5"><MdText text={inhalt.texte.haftabzugsprüfungAbreißversuch} /></h4>
               <ul className="text-xs text-slate-650 space-y-1.5 list-disc list-inside leading-relaxed">
                 <li><MdText text={inhalt.texte.ringnutKernbohrung50Mm} /></li>
                 <li><MdText text={inhalt.texte.kleber2kEpoxidharzkleberAuf} /></li>
@@ -362,7 +362,7 @@ export default function ProbenahmePlaner() {
           <div className="p-4 rounded-xl border border-home-grau/20 bg-slate-50/50 space-y-3 flex flex-col justify-between">
             <div className="space-y-2">
               <span className="text-xs font-mono font-bold text-shiraz bg-shiraz/10 px-2.5 py-0.5 rounded-full inline-block"><MdText text={inhalt.texte.dinEnIso12570} /></span>
-              <h5 className="font-bold text-sm text-slate-800"><MdText text={inhalt.texte.gravimetrischeDarrprüfung} /></h5>
+              <h4 className="font-bold text-sm text-slate-800 wie-h5"><MdText text={inhalt.texte.gravimetrischeDarrprüfung} /></h4>
               <ul className="text-xs text-slate-650 space-y-1.5 list-disc list-inside leading-relaxed">
                 <li><MdText text={inhalt.texte.probennahmeDurchMeißelnMit} /></li>
                 <li><MdText text={inhalt.texte.trocknungBetonZementBei} /></li>
@@ -377,8 +377,8 @@ export default function ProbenahmePlaner() {
       {/* 4. Normen- & Regelwerk-Synopse mit DIN Media Links */}
       <div className="bg-white p-6 rounded-2xl shadow-sm border border-home-grau/30 space-y-4">
         <div className="flex items-center justify-between">
-          <h4 className="font-bold text-sm text-text-main flex items-center gap-2">
-            <FileText className="text-shiraz" size={16} /><MdText text={inhalt.texte.relevanteNormenRegelwerkeDer} /></h4>
+          <h3 className="font-bold text-sm text-text-main flex items-center gap-2 wie-h4">
+            <FileText className="text-shiraz" size={16} /><MdText text={inhalt.texte.relevanteNormenRegelwerkeDer} /></h3>
           <span className="text-[11px] font-mono text-slate-400"><MdText text={inhalt.texte.ausgabe2026Harmonisiert} /></span>
         </div>
 

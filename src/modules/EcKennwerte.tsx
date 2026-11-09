@@ -201,7 +201,7 @@ export default function EcKennwerte() {
                   <div className={kasten}><p><MdText text={inhalt.texte.kZeta} /></p></div>
                   <div className={kasten}><p><MdText text={inhalt.texte.kStahl} /></p></div>
                 </div>
-                <Querverweis ziel="sicherheitskonzept" titel={inhalt.texte.querSicherheitTitel} linkText={inhalt.werte.zumModulSicherheit}><p><MdText text={inhalt.texte.querSicherheit} /></p></Querverweis>
+                <Querverweis ebene={3} ziel="sicherheitskonzept" titel={inhalt.texte.querSicherheitTitel} linkText={inhalt.werte.zumModulSicherheit}><p><MdText text={inhalt.texte.querSicherheit} /></p></Querverweis>
               </div>
             )}
 
@@ -243,7 +243,7 @@ export default function EcKennwerte() {
                 </div>
                 <p className={absatz}><MdText text={inhalt.texte.sIs} /></p>
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-                  <Querverweis ziel="statistik" titel={inhalt.texte.querStatistikTitel} linkText={inhalt.werte.zumModulStatistik}><p><MdText text={inhalt.texte.querStatistik} /></p></Querverweis>
+                  <Querverweis ebene={3} ziel="statistik" titel={inhalt.texte.querStatistikTitel} linkText={inhalt.werte.zumModulStatistik}><p><MdText text={inhalt.texte.querStatistik} /></p></Querverweis>
                   <Querverweis ziel="festbeton_statistik" titel={inhalt.texte.querFestbetonTitel} linkText={inhalt.werte.zumModulFestbeton}><p><MdText text={inhalt.texte.querFestbeton} /></p></Querverweis>
                   <Querverweis ziel="historisch" titel={inhalt.texte.querHistTitel} linkText={inhalt.werte.zumModulHist}><p><MdText text={inhalt.texte.querHist} /></p></Querverweis>
                 </div>
@@ -287,7 +287,7 @@ export default function EcKennwerte() {
                   <div className={kasten}><p><MdText text={inhalt.texte.bFcd} /></p></div>
                 </div>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                  <Querverweis ziel="betonkennwerte" titel={inhalt.texte.querBetonTitel} linkText={inhalt.werte.zumModulBeton}><p><MdText text={inhalt.texte.querBeton} /></p></Querverweis>
+                  <Querverweis ebene={3} ziel="betonkennwerte" titel={inhalt.texte.querBetonTitel} linkText={inhalt.werte.zumModulBeton}><p><MdText text={inhalt.texte.querBeton} /></p></Querverweis>
                   <Querverweis ziel="stahlbeton_bemessung" titel={inhalt.texte.querStbTitel} linkText={inhalt.werte.zumModulStb}><p><MdText text={inhalt.texte.querStb} /></p></Querverweis>
                 </div>
               </div>
@@ -312,7 +312,7 @@ export default function EcKennwerte() {
                 </div>
                 <p className={absatz}><MdText text={inhalt.texte.wMauerwerk} /></p>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                  <Querverweis ziel="stahlbau_ec3" titel={inhalt.texte.querStahlTitel} linkText={inhalt.werte.zumModulStahl}><p><MdText text={inhalt.texte.querStahl} /></p></Querverweis>
+                  <Querverweis ebene={3} ziel="stahlbau_ec3" titel={inhalt.texte.querStahlTitel} linkText={inhalt.werte.zumModulStahl}><p><MdText text={inhalt.texte.querStahl} /></p></Querverweis>
                   <Querverweis ziel="holzbau_bemessung" titel={inhalt.texte.querHolzTitel} linkText={inhalt.werte.zumModulHolz}><p><MdText text={inhalt.texte.querHolz} /></p></Querverweis>
                   <Querverweis ziel="mauerwerk" titel={inhalt.texte.querMwTitel} linkText={inhalt.werte.zumModulMw}><p><MdText text={inhalt.texte.querMw} /></p></Querverweis>
                 </div>

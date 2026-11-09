@@ -382,7 +382,7 @@ export default function PutzeMoertel() {
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-stretch">
               {/* Product list sidebar (5 cols) */}
               <AuswahlGruppe label="Putzprodukt" className="lg:col-span-5 flex flex-col gap-2 max-h-[500px] overflow-y-auto pr-1">
-                <h4 className="text-[10px] font-black uppercase tracking-wider text-slate-400 px-2 select-none"><MdText text={inhalt.texte.spezialUndStandardputzeDin} /></h4>
+                <h3 className="text-[10px] font-black uppercase tracking-wider text-slate-400 px-2 select-none wie-h4"><MdText text={inhalt.texte.spezialUndStandardputzeDin} /></h3>
                 {PLASTER_PRODUCTS.map((prod) => (
                   <button {...alsOption(selectedPlasterId === prod.id)}
                     key={prod.id}
@@ -859,7 +859,7 @@ export default function PutzeMoertel() {
                   <Sparkles size={14} /><MdText text={inhalt.texte.t5BauschädlicheKristallisationschemieSila} /></span>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6 text-xs text-slate-600 leading-relaxed">
                   <div className="space-y-2">
-                    <h4 className="font-extrabold text-slate-800 uppercase text-[10px] tracking-tight mb-1 wie-h5"><MdText text={inhalt.texte.kryptofloreszenzThermodynamischeSprengwi} /></h4>
+                    <h3 className="font-extrabold text-slate-800 uppercase text-[10px] tracking-tight mb-1 wie-h5"><MdText text={inhalt.texte.kryptofloreszenzThermodynamischeSprengwi} /></h3>
                     <p><MdText text={inhalt.texte.wennGelösteSalzionenSulfate} /></p>
                     <div className="bg-[#FCFAF7] p-3 rounded-lg border border-home-grau/25 my-1 text-center font-mono">
                       <BlockMath math="\sigma_k = \frac{R \cdot T}{V_m} \cdot \ln\left(\frac{C}{C_0}\right) \ge 100\,\text{MPa}" />
@@ -867,7 +867,7 @@ export default function PutzeMoertel() {
                     <p><MdText text={inhalt.texte.sanierputzeLösenDiesesProblem} /></p>
                   </div>
                   <div className="space-y-2">
-                    <h4 className="font-extrabold text-slate-800 uppercase text-[10px] tracking-tight mb-1 wie-h5"><MdText text={inhalt.texte.kondensationsreaktionDerAlkylalkoxysilan} /></h4>
+                    <h3 className="font-extrabold text-slate-800 uppercase text-[10px] tracking-tight mb-1 wie-h5"><MdText text={inhalt.texte.kondensationsreaktionDerAlkylalkoxysilan} /></h3>
                     <p><MdText text={inhalt.texte.umEinKapillaresVordringen} /></p>
                     <div className="bg-[#FCFAF7] p-3 rounded-lg border border-home-grau/25 my-1 text-center font-mono">
                       <BlockMath math="\equiv\text{Si-OH} + \text{R-Si(OH)}_3 \rightarrow \, \equiv\text{Si-O-Si(OH)}_2\text{-R} + \text{H}_2\text{O}" />

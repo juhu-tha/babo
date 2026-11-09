@@ -12,6 +12,7 @@ import { NachErstemBild } from '@/src/components/ui/NachErstemBild';
 import inhalt from '@/content/mischungsberechnung/MischungEingaben.json';
 import { MdText } from '@/src/components/inhalt/MdText';
 import { AuswahlGruppe, alsOption } from '../../components/ui/Auswahlgruppe';
+import { reglerName } from '@/src/lib/reglerName';
 
 interface MischungEingabenProps {
   applyWalzSandReduction: () => void;
@@ -460,6 +461,7 @@ export default function MischungEingaben({ applyWalzSandReduction, bauteil, bioc
               step={0.1} 
               value={kKsm} 
               unit="-" 
+              aria-label="k-Wert HüS" 
               onChange={(e) => setKKsm(Number(e.target.value))} 
             />
             <div className="text-xs text-home-grau">{inhalt.werte.kWertHuesLehrannahme}</div>
@@ -496,6 +498,7 @@ export default function MischungEingaben({ applyWalzSandReduction, bauteil, bioc
               step={0.1} 
               value={kBiochar} 
               unit="-" 
+              aria-label={reglerName(inhalt.texte.kWertBiochar)} 
               onChange={(e) => setKBiochar(Number(e.target.value))} 
             />
           </div>

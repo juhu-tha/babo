@@ -162,7 +162,7 @@ export default function BodenMaterialAufbereitung() {
             <div className="flex gap-2 items-center mb-1.5 border-b border-home-grau/30 pb-3">
               <Sliders size={20} className="text-shiraz" />
               <div>
-                <h4 className="font-bold text-lg text-slate-900"><MdText text={inhalt.texte.interaktiverBodenMaterialaufbereitungssi} /></h4>
+                <h3 className="font-bold text-lg text-slate-900 wie-h4"><MdText text={inhalt.texte.interaktiverBodenMaterialaufbereitungssi} /></h3>
                 <p className="text-xs text-slate-500"><MdText text={inhalt.texte.kombiniereBodenmatrixUndKontaminationsqu} /></p>
               </div>
             </div>
@@ -229,9 +229,9 @@ export default function BodenMaterialAufbereitung() {
                   <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-3 border-b border-home-grau/30 mb-4">
                     <div>
                       <span className="text-xs font-extrabold text-teal-850 bg-teal-50 border border-teal-200 px-2 py-0.5 rounded tracking-wide uppercase font-mono"><MdText text={inhalt.texte.optimalesBehandlungsverfahren} /></span>
-                      <h4 className="text-lg font-black text-slate-900 mt-1">
+                      <h3 className="text-lg font-black text-slate-900 mt-1 wie-h4">
                         {TREATMENT_OPTIONS[treatmentMaterial][treatmentContaminant].method}
-                      </h4>
+                      </h3>
                     </div>
                     <div className="flex gap-2 text-xs">
                       <span className="px-2 py-1 bg-white border border-home-grau/30 rounded font-bold font-mono text-slate-700">CO₂: {TREATMENT_OPTIONS[treatmentMaterial][treatmentContaminant].co2}</span>
@@ -283,7 +283,7 @@ export default function BodenMaterialAufbereitung() {
             <div className="flex gap-2 items-center mb-1.5 border-b border-home-grau/30 pb-3">
               <Activity size={20} className="text-emerald-600" />
               <div>
-                <h4 className="font-bold text-lg text-slate-900"><MdText text={inhalt.texte.qualitätssicherungGüteüberwachungProdukt} /></h4>
+                <h3 className="font-bold text-lg text-slate-900 wie-h4"><MdText text={inhalt.texte.qualitätssicherungGüteüberwachungProdukt} /></h3>
                 <p className="text-xs text-slate-500"><MdText text={inhalt.texte.dieGesetzlicheQualitätssicherungsschleif} /></p>
               </div>
             </div>
@@ -295,9 +295,9 @@ export default function BodenMaterialAufbereitung() {
               <div className="bg-slate-50 p-4 rounded-xl border border-home-grau/30 relative">
                 <span aria-hidden="true" data-wasserzeichen="01" className="absolute top-2 right-2 text-3xl font-black text-slate-200 font-mono after:content-[attr(data-wasserzeichen)]" />
                 <span className="font-bold text-xs uppercase tracking-wider text-slate-500 font-mono">Schritt 1</span>
-                <h5 className="font-bold text-sm text-slate-950 mt-1 mb-1.5 flex gap-1.5 items-center">
+                <h4 className="font-bold text-sm text-slate-950 mt-1 mb-1.5 flex gap-1.5 items-center wie-h5">
                   <CheckCircle2 size={14} className="text-emerald-500" /> Annahmekontrolle
-                </h5>
+                </h4>
                 <p className="text-xs text-slate-600 leading-relaxed"><MdText text={inhalt.texte.prüfungVonHerkunftsDeklaration} /></p>
               </div>
 
@@ -305,8 +305,8 @@ export default function BodenMaterialAufbereitung() {
               <div className="bg-slate-50 p-4 rounded-xl border border-home-grau/30 relative">
                 <span aria-hidden="true" data-wasserzeichen="02" className="absolute top-2 right-2 text-3xl font-black text-slate-200 font-mono after:content-[attr(data-wasserzeichen)]" />
                 <span className="font-bold text-xs uppercase tracking-wider text-slate-500 font-mono">Schritt 2</span>
-                <h5 className="font-bold text-sm text-slate-950 mt-1 mb-1.5 flex gap-1.5 items-center">
-                  <CheckCircle2 size={14} className="text-emerald-500" /><MdText text={inhalt.texte.werkseigeneKontrolle} /></h5>
+                <h4 className="font-bold text-sm text-slate-950 mt-1 mb-1.5 flex gap-1.5 items-center wie-h5">
+                  <CheckCircle2 size={14} className="text-emerald-500" /><MdText text={inhalt.texte.werkseigeneKontrolle} /></h4>
                 <p className="text-xs text-slate-600 leading-relaxed"><MdText text={inhalt.texte.täglicheMesstechnischeÜberwachungDes} /></p>
               </div>
 
@@ -314,9 +314,9 @@ export default function BodenMaterialAufbereitung() {
               <div className="bg-slate-50 p-4 rounded-xl border border-home-grau/30 relative">
                 <span aria-hidden="true" data-wasserzeichen="03" className="absolute top-2 right-2 text-3xl font-black text-slate-200 font-mono after:content-[attr(data-wasserzeichen)]" />
                 <span className="font-bold text-xs uppercase tracking-wider text-slate-500 font-mono">Schritt 3</span>
-                <h5 className="font-bold text-sm text-slate-950 mt-1 mb-1.5 flex gap-1.5 items-center">
+                <h4 className="font-bold text-sm text-slate-950 mt-1 mb-1.5 flex gap-1.5 items-center wie-h5">
                   <CheckCircle2 size={14} className="text-emerald-500" /> Fremdüberwachung
-                </h5>
+                </h4>
                 <p className="text-xs text-slate-600 leading-relaxed"><MdText text={inhalt.texte.unabhängigeUnangekündigteAuditierungDer} /></p>
               </div>
 
@@ -324,8 +324,8 @@ export default function BodenMaterialAufbereitung() {
               <div className="bg-slate-50 p-4 rounded-xl border border-home-grau/30 relative">
                 <span aria-hidden="true" data-wasserzeichen="04" className="absolute top-2 right-2 text-3xl font-black text-slate-200 font-mono after:content-[attr(data-wasserzeichen)]" />
                 <span className="font-bold text-xs uppercase tracking-wider text-slate-500 font-mono">Schritt 4</span>
-                <h5 className="font-bold text-sm text-slate-950 mt-1 mb-1.5 flex gap-1.5 items-center">
-                  <CheckCircle2 size={14} className="text-emerald-500" /><MdText text={inhalt.texte.güteschutzRegister} /></h5>
+                <h4 className="font-bold text-sm text-slate-950 mt-1 mb-1.5 flex gap-1.5 items-center wie-h5">
+                  <CheckCircle2 size={14} className="text-emerald-500" /><MdText text={inhalt.texte.güteschutzRegister} /></h4>
                 <p className="text-xs text-slate-600 leading-relaxed"><MdText text={inhalt.texte.zertifizierungDurchGütekonsortienZ} /></p>
               </div>
             </div>
@@ -340,7 +340,7 @@ export default function BodenMaterialAufbereitung() {
             <div className="flex gap-2 items-center mb-1.5 border-b border-home-grau/30 pb-3">
               <ClipboardCheck size={20} className="text-shiraz" />
               <div>
-                <h4 className="font-bold text-lg text-slate-900"><MdText text={inhalt.texte.probenahmeNachLagaPn} /></h4>
+                <h3 className="font-bold text-lg text-slate-900 wie-h4"><MdText text={inhalt.texte.probenahmeNachLagaPn} /></h3>
                 <p className="text-xs text-slate-500"><MdText text={inhalt.texte.berechnungDerProbenmengenNach} /><span className="font-mono bg-slate-100 text-slate-700 px-1 py-0.5 rounded text-xs">lfu_abfall_00266.pdf</span>
                 </p>
               </div>
@@ -357,7 +357,7 @@ export default function BodenMaterialAufbereitung() {
               
               {/* Controls Column */}
               <div className="lg:col-span-5 bg-white p-5 rounded-xl border border-home-grau/20 space-y-5">
-                <h5 className="font-bold text-xs uppercase tracking-wider text-slate-400 font-mono mb-4">Input-Parameter</h5>
+                <h4 className="font-bold text-xs uppercase tracking-wider text-slate-400 font-mono mb-4 wie-h5">Input-Parameter</h4>
                 
                 {/* Slope Volume slider & input */}
                 <div className="space-y-1.5">
@@ -490,7 +490,7 @@ export default function BodenMaterialAufbereitung() {
               {/* Calculated Outputs Column */}
               <div className="lg:col-span-7 bg-slate-50 p-5 rounded-xl border border-home-grau/20 flex flex-col justify-between">
                 <div>
-                  <h5 className="font-bold text-xs uppercase tracking-wider text-slate-400 font-mono mb-4"><MdText text={inhalt.texte.berechnetesProbenahmeSollLaga} /></h5>
+                  <h4 className="font-bold text-xs uppercase tracking-wider text-slate-400 font-mono mb-4 wie-h5"><MdText text={inhalt.texte.berechnetesProbenahmeSollLaga} /></h4>
                   
                   <div className="grid grid-cols-2 gap-4 mb-4">
                     <div className="bg-white p-3 rounded-xl border border-home-grau/15">
@@ -601,8 +601,8 @@ export default function BodenMaterialAufbereitung() {
 
             {/* Part 4.2 Probenahmeprotokoll Form & Report Generator */}
             <div className="mt-8 pt-8 border-t border-home-grau/30">
-              <h5 className="font-bold text-sm text-slate-900 flex items-center gap-2 mb-3">
-                <FileText size={16} className="text-shiraz" /><MdText text={inhalt.texte.interaktiverProbenahmeprotokollGenerator} /></h5>
+              <h4 className="font-bold text-sm text-slate-900 flex items-center gap-2 mb-3 wie-h5">
+                <FileText size={16} className="text-shiraz" /><MdText text={inhalt.texte.interaktiverProbenahmeprotokollGenerator} /></h4>
               <p className="text-xs text-slate-600 leading-normal mb-4"><MdText text={inhalt.texte.nutzenSieDiesesInteraktive} /></p>
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">

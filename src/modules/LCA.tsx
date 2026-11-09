@@ -353,7 +353,7 @@ export default function LCA() {
           {/* List and search bar (5-cols) */}
           <div className="lg:col-span-5 flex flex-col gap-4">
             <div className="bg-white p-4 rounded-xl border border-home-grau/30 shadow-sm flex flex-col gap-3">
-              <h4 className="font-bold text-xs uppercase tracking-wider text-slate-900">Referenz-Materialdatenbank</h4>
+              <h3 className="font-bold text-xs uppercase tracking-wider text-slate-900 wie-h4">Referenz-Materialdatenbank</h3>
               
               {/* Search Bar */}
               <div className="relative">

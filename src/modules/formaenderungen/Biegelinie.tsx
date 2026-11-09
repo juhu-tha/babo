@@ -62,7 +62,7 @@ export default function Biegelinie() {
 
   return (
     <div className="flex flex-col gap-6 animate-in fade-in duration-300">
-      <BloomLernziele moduleId="formaenderungen_biegelinie" moduleTitle={inhalt.werte.lernzielTitel} timeMinutes={45} goals={inhalt.daten.lernziele as BloomGoalItem[]} />
+      <BloomLernziele titelElement="p" titelKlasse="wie-h4" moduleId="formaenderungen_biegelinie" moduleTitle={inhalt.werte.lernzielTitel} timeMinutes={45} goals={inhalt.daten.lernziele as BloomGoalItem[]} />
 
       <div className="bg-white p-6 rounded-2xl shadow-sm border border-home-grau/30 flex flex-col gap-4">
         <h3 className="text-lg font-bold text-text-main flex items-center gap-2 border-b border-home-grau/30 pb-2"><Waves className="text-shiraz" aria-hidden="true" /><MdText text={inhalt.texte.titel} /></h3>

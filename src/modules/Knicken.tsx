@@ -494,7 +494,7 @@ export default function Knicken() {
       />
 
       {/* SELBSTTEST (Stufe 4 des Lehrpfads) */}
-      <Querverweis ziel="stahlbau_ec3" titel={inhalt.werte.bemessungNachEurocode3} linkText={inhalt.werte.zumModulStahlbauNach}>{inhalt.werte.dieEulerLastIst}</Querverweis>
+      <Querverweis ebene={3} ziel="stahlbau_ec3" titel={inhalt.werte.bemessungNachEurocode3} linkText={inhalt.werte.zumModulStahlbauNach}>{inhalt.werte.dieEulerLastIst}</Querverweis>
       <ModulTest moduleId="knicken" />
 
       <ModuleFooter 

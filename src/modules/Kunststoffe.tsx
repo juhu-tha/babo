@@ -468,7 +468,7 @@ export default function Kunststoffe() {
 
       {activeTab === 'steckbrief' && (
         <div className="animate-in fade-in duration-300">
-          <BaustoffProfil materialKey="kunststoffe" />
+          <BaustoffProfil materialKey="kunststoffe" ebene={2} />
         </div>
       )}
 
@@ -480,7 +480,7 @@ export default function Kunststoffe() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div className="bg-off-white p-5 rounded-xl border border-home-grau/30">
-              <h3 className="font-bold text-shiraz text-lg mb-2"><MdText text={inhalt.texte.artenVonGeokunststoffen} /></h3>
+              <h2 className="font-bold text-shiraz text-lg mb-2"><MdText text={inhalt.texte.artenVonGeokunststoffen} /></h2>
               <ul className="list-disc list-inside text-sm text-text-main/70 space-y-2 font-medium">
                 <li><MdText text={inhalt.texte.geotextilienDurchlässigeFlächenhafteText} /></li>
                 <li><MdText text={inhalt.texte.geogitterGeogridsGitterartigeStrukturen} /></li>
@@ -490,7 +490,7 @@ export default function Kunststoffe() {
             </div>
 
             <div className="bg-off-white p-5 rounded-xl border border-home-grau/30">
-              <h3 className="font-bold text-shiraz text-lg mb-2">Hauptfunktionen</h3>
+              <h2 className="font-bold text-shiraz text-lg mb-2">Hauptfunktionen</h2>
               <ul className="list-disc list-inside text-sm text-text-main/70 space-y-2 font-medium">
                 <li><MdText text={inhalt.texte.trennenVerhindertDieVermischung} /></li>
                 <li><MdText text={inhalt.texte.filternHältBodenpartikelZurück} /></li>
@@ -511,7 +511,7 @@ export default function Kunststoffe() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div className="bg-off-white p-5 rounded-xl border border-home-grau/30">
-              <h3 className="font-bold text-shiraz text-lg mb-2"><MdText text={inhalt.texte.herausragendeEigenschaften} /></h3>
+              <h2 className="font-bold text-shiraz text-lg mb-2"><MdText text={inhalt.texte.herausragendeEigenschaften} /></h2>
               <ul className="list-disc list-inside text-sm text-text-main/70 space-y-2 font-medium">
                 <li><MdText text={inhalt.texte.geringesEigengewichtEinFolienkissen} /></li>
                 <li><MdText text={inhalt.texte.hoheLichtdurchlässigkeitLässtBis} /></li>
@@ -521,7 +521,7 @@ export default function Kunststoffe() {
             </div>
 
             <div className="bg-off-white p-5 rounded-xl border border-home-grau/30">
-              <h3 className="font-bold text-shiraz text-lg mb-2"><MdText text={inhalt.texte.konstruktionKissenaufbau} /></h3>
+              <h2 className="font-bold text-shiraz text-lg mb-2"><MdText text={inhalt.texte.konstruktionKissenaufbau} /></h2>
               <ul className="list-disc list-inside text-sm text-text-main/70 space-y-2 font-medium">
                 <li><MdText text={inhalt.texte.pneumatischeKissenZweiBis} /></li>
                 <li><MdText text={inhalt.texte.druckluftsteuerungDerDruckIn} /></li>

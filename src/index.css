@@ -723,6 +723,28 @@ h4:where(.wie-h5) {
 .dark h3:where(.wie-h4) {
   color: #e2e8f0 !important; /* slate-200 wie .dark h4 */
 }
+/* Zweimal angehoben (h5 → h4 am 09.11. in #330, h4 → h3 in der Laufzeitprüfung): Aussehen der früheren h5 */
+h3:where(.wie-h5) {
+  font-size: 0.875rem !important;
+}
+.dark h3:where(.wie-h5) {
+  color: #e2e8f0 !important;
+}
+/* Frühere h6 (ohne globale Schriftgröße) jetzt als h5: Schriftgröße der eigenen Klasse statt der h5-Regel */
+h5:where(.wie-h6.text-xs) {
+  font-size: var(--text-xs) !important;
+}
+h5:where(.wie-h6.text-\[11px\]) {
+  font-size: 11px !important;
+}
+/* Kartentitel vor der ersten Bereichsüberschrift als <p> statt h4 (a11y 09.11.2026, Laufzeitprüfung
+   scripts/qa/a11y-ueberschriften.mjs): gleiches Aussehen wie die frühere h4 */
+p:where(.wie-h4) {
+  font-size: 0.9375rem !important;
+}
+.dark p:where(.wie-h4) {
+  color: #e2e8f0 !important;
+}
 
 /* Hide scrollbar utility */
 .scrollbar-none::-webkit-scrollbar {

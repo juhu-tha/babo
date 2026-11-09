@@ -993,13 +993,13 @@ export default function Kombinationen({ initialTab = 'ueberblick' }: Kombination
                 <CheckCircle2 size={20} className="text-emerald-700 shrink-0 mt-0.5" />
               )}
               <div>
-                <h4 className="font-bold text-sm mb-1">
+                <h3 className="font-bold text-sm mb-1 wie-h4">
                   {calcResults.hasDiffusionTrap
                     ? inhalt.werte.hinweisMöglichesTauwasserrisikoIm
                     : calcResults.einordnung === 'aussendaemmung'
                     ? inhalt.werte.außendämmungÜberschrift
                     : inhalt.werte.schichtfolgeEntsprichtDerGrundregel}
-                </h4>
+                </h3>
                 <p>
                   {calcResults.einordnung === 'innendaemmung' ? (
                     <><MdText text={inhalt.texte.innendämmungNachweisErforderlich} /></>

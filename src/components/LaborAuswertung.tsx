@@ -1201,10 +1201,10 @@ export default function LaborAuswertung() {
 
       {/* --------------------- SECTION 10: CONCLUSIO / FAZIT BAR --------------------- */}
       <div className="rounded-xl border border-indigo-100 bg-indigo-50/45 p-4.5 text-slate-800 space-y-2 mt-2">
-        <h4 className="font-bold text-xs uppercase text-indigo-950 flex items-center gap-1.5 leading-none">
+        <h3 className="font-bold text-xs uppercase text-indigo-950 flex items-center gap-1.5 leading-none wie-h4">
           <BookOpen size={14} className="text-indigo-600" />
           10. Fazit der Fachübersicht
-        </h4>
+        </h3>
         <p className="text-xs text-slate-650 leading-relaxed">
           Die moderne Bauwerksdiagnostik ist eine forensische Wissenschaft, die weit über das bloße Messen von Feuchtigkeit hinausgeht. Die Integration von Isotopen-Exzess-Bestimmung und Abwasser-Tracern (Gadolinium) liefert wichtige Indizien zur Unterscheidung von Kondensat, Leckagen und Fäkalwasser – belastbar im Zusammenspiel mit Referenzproben und weiteren Befunden. Verfahren wie TGA und Impakt-Echo erlauben den tiefen Blick in die chemische Geschichte und physikalische Integrität des Materials, während die Schadstoffanalytik gesundheitliche Risiken (Asbest, Fogging, Brandlasten) quantifiziert. Mit dem Einzug von KI, Sensor Fusion und LIBS steht die Branche vor einem Sprung in die digitale Echtzeit-Überwachung und hocheffiziente Vor-Ort-Diagnostik.
         </p>

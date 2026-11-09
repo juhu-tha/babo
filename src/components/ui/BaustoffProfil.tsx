@@ -31,6 +31,7 @@ const FICHTE_QL = formatDeZahl(SCHWINDBEIWERTE.fichte.longitudinal, 2);
 const FICHTE_T_ZU_L = formatDeZahl(SCHWINDBEIWERTE.fichte.tangential / SCHWINDBEIWERTE.fichte.longitudinal, 0);
 
 import type { TabId } from '@/src/contexts/TabContext';
+import { Ueberschrift } from '@/src/components/ui/Ueberschrift';
 export interface ProfilSection {
   title: string;
   icon: React.ReactNode;
@@ -687,9 +688,11 @@ export const DEFT_PROFILES: Record<string, MaterialProfil> = {
 
 interface BaustoffProfilProps {
   materialKey: string;
+  /** Ebene des Steckbrief-Titels (Standard 3 unter einer h2; 2 direkt unter dem Seitentitel, a11y 09.11.2026) */
+  ebene?: 2 | 3;
 }
 
-export default function BaustoffProfil({ materialKey }: BaustoffProfilProps) {
+export default function BaustoffProfil({ materialKey, ebene = 3 }: BaustoffProfilProps) {
   const profil = DEFT_PROFILES[materialKey];
   const tabContext = useTabContext();
   const setActiveTab = tabContext?.setActiveTab;
@@ -831,9 +834,9 @@ export default function BaustoffProfil({ materialKey }: BaustoffProfilProps) {
       {/* Header card with Shirley dark style branding */}
       <div className="flex flex-col gap-1 border-b pb-4">
         <span className="text-[10px] font-bold text-shiraz uppercase tracking-widest">Gekoppeltes Baustoff-Datenblatt</span>
-        <h3 className="text-lg font-bold text-text-main flex items-center gap-2">
+        <Ueberschrift ebene={ebene} wie={3} className="text-lg font-bold text-text-main flex items-center gap-2">
           Steckbrief: {profil.name}
-        </h3>
+        </Ueberschrift>
         <p className="text-xs text-text-main/60 font-sans leading-normal font-normal">
           {profil.subtitle}
         </p>
@@ -848,9 +851,9 @@ export default function BaustoffProfil({ materialKey }: BaustoffProfilProps) {
         <div className="flex items-center justify-between gap-2">
           <div className="flex items-center gap-2 text-text-main">
             <Calculator size={18} className="text-shiraz shrink-0" />
-            <h4 className="text-xs font-bold uppercase tracking-wider text-slate-800">
+            <Ueberschrift ebene={ebene + 1} wie={4} className="text-xs font-bold uppercase tracking-wider text-slate-800">
               Interaktive Berechnungen & Werkzeuge für diesen Baustoff:
-            </h4>
+            </Ueberschrift>
           </div>
           <span className="text-[10px] text-shiraz font-semibold hidden sm:inline-block bg-shiraz/10 px-2 py-0.5 rounded-full">
             Direktkopplung

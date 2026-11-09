@@ -121,7 +121,7 @@ export default function FrischbetonHandout() {
         </div>
         <p className="text-sm text-text-main/80 leading-relaxed"><MdText text={inhaltJson.texte.dieDreiPrüfungenWerden} /></p>
         <VersuchsHandout daten={FRISCHBETON_HANDOUT} auswertung={auswerten} />
-        <Querverweis ziel="frischbeton" titel={inhaltJson.werte.theorieUndVirtuelleVersuche} linkText={inhaltJson.werte.zumModulFrischbeton}>
+        <Querverweis ebene={3} ziel="frischbeton" titel={inhaltJson.werte.theorieUndVirtuelleVersuche} linkText={inhaltJson.werte.zumModulFrischbeton}>
           <p><MdText text={inhaltJson.texte.konsistenzprüfverfahrenImÜberblickRheolo} /></p>
         </Querverweis>
       </div>

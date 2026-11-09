@@ -31,9 +31,9 @@ export function ExpositionsKurzkarte({ hinweis, className = '' }: ExpositionsKur
   const klassen = Object.values(DIN1045_2_EXPOSITIONSKLASSEN);
   return (
     <div className={`bg-white p-5 rounded-xl border border-home-grau/30 shadow-sm ${className}`} data-kurzkarte="expositionsklassen">
-      <h4 className="font-bold text-text-main flex items-center gap-2 mb-1">
+      <h3 className="font-bold text-text-main flex items-center gap-2 mb-1 wie-h4">
         <Grid size={16} className="text-shiraz" /> Kurzkarte Expositionsklassen (DIN EN 206 / DIN 1045-2)
-      </h4>
+      </h3>
       <p className="text-xs text-text-main/70 leading-relaxed mb-3">
         {hinweis ?? 'Überblick über die Klassengruppen. Grenzwerte (w/z, Mindestfestigkeit, Zementgehalt, Luftporen) und Beispiele stehen im Modul Expositionsklassen.'}
       </p>

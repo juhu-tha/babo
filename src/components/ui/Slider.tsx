@@ -40,7 +40,9 @@ export function Slider({ label, value, unit, info, className, id: propId, valueT
     const t = (anzeige.current.textContent ?? '').replace(/\s+/g, ' ').trim();
     if (t) feld.current.setAttribute('aria-valuetext', t);
   });
-  const generatedId = propId || (typeof label === 'string' ? 'slider-' + label.toLowerCase().replace(/[^a-z0-9]/g, '-') : 'slider-' + reactId.replace(/[^a-zA-Z0-9]/g, ''));
+  // eindeutig auch bei gleicher Beschriftung (z. B. mehrfach „Gesamtfeuchte“) bzw. leerer Beschriftung: Kennung aus useId angehängt
+  const eindeutig = reactId.replace(/[^a-zA-Z0-9]/g, '');
+  const generatedId = propId || (typeof label === 'string' && /[a-z0-9]/i.test(label) ? 'slider-' + label.toLowerCase().replace(/[^a-z0-9]/g, '-') + '-' + eindeutig : 'slider-' + eindeutig);
   return (
     <div className={cn("flex flex-col gap-2 pdf-parameter", className)} data-label={typeof label === 'string' ? label : undefined} data-value={value} data-unit={unit || ''}>
       <div className="flex justify-between items-center">

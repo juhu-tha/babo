@@ -41,10 +41,10 @@ export default function TrittschallTab() {
 
   return (
     <div className="flex flex-col gap-6">
-      <BloomLernziele moduleId="schallschutz_trittschall" moduleTitle={inhalt.werte.lernzielTitel} timeMinutes={45} goals={lernziele} />
+      <BloomLernziele titelElement="p" titelKlasse="wie-h4" moduleId="schallschutz_trittschall" moduleTitle={inhalt.werte.lernzielTitel} timeMinutes={45} goals={lernziele} />
 
       <section className="bg-white p-6 rounded-2xl shadow-sm border border-home-grau/30 space-y-3 text-sm text-text-main/90 leading-relaxed">
-        <h3 className="text-lg font-bold text-text-main flex items-center gap-2"><Footprints className="text-shiraz" aria-hidden="true" /><MdText text={inhalt.texte.ueberschrift} /></h3>
+        <h2 className="text-lg font-bold text-text-main flex items-center gap-2"><Footprints className="text-shiraz" aria-hidden="true" /><MdText text={inhalt.texte.ueberschrift} /></h2>
         <p><MdText text={inhalt.texte.einleitung} /></p>
         <p><MdText text={inhalt.texte.verfahren} /></p>
         <p><MdText text={inhalt.texte.masseFeder} /></p>
