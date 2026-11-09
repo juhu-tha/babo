@@ -48,10 +48,39 @@ Unverändert gelassen: `role="status"` von `EingabeHinweise` (Eingabewarnungen),
 
 ## 5. Stichprobe im Browser (`a11y-tastatur.mjs --nur modul`, 15 Rechner, desk und mob)
 
-ERGEBNIS_STICHPROBE
+Vorgabe: genau eine Ergebnisansage je Eingabe, kein „NaN“. Geprüft per Pfeiltaste am ersten Regler bzw. (neu) am ersten Zahlenfeld der Startansicht, 1,3 s Ruhe, dann Zahl der Ergebnis-Regionen mit Text (`--ansagen`). Die Ausgangsliste enthielt fünf Rechner ohne Eingabe in der Startansicht (`einheiten`, `erdbau`, `glas`, `kunststoffe`, `stahlbau_ec3` – Eingaben erst in einem Reiter); sie wurden durch Rechner mit Eingabe in der Startansicht ersetzt. Ergebnis: **16 Rechner × desk/mob, jeweils genau 1 Ergebnisansage, 0 × „NaN“/„undefined“.**
+
+| Route | Eingabe | angesagt (Auszug) |
+|---|---|---|
+| `statistik` | Regler | 6 Messwerte, Mittelwert 41,83 MPa, Median 40,00 MPa, Standardabweichung 14,68 MPa, Variationskoeffizient 35,1 % |
+| `sonderbetone` | Regler | Rohdichte 1,50 kg/dm³, geschätzte Festigkeit etwa 24,5 MPa, Wärmeleitfähigkeit etwa 0,44 W/(m·K) |
+| `frischbeton` | Zahlenfeld | Konform: Innerhalb der zulässigen Normtoleranz, Abweichung −15 mm, zulässig 425 bis 485 mm |
+| `festbeton` | Zahlenfeld | C25/30, f_cd 15,00 N/mm², f_ctd 1,02 N/mm² |
+| `schallschutz` | Zahlenfeld | flächenbezogene Masse 247,2 kg/m², Schalldämmmaß R_w 51,7 dB |
+| `feuchteschutz` | Regler | Taupunkt 9,7 °C, Schimmelgrenze 13,1 °C, Oberflächenfeuchte 71 %, unkritisch |
+| `wu-bauwerke` | Regler | Druckgefälle 11,67, Mindestdicke 240 mm, Dicke eingehalten, zulässige Rissbreite 0,15 mm, Rissbreite eingehalten |
+| `korrosion` | Regler | Chloridgehalt in 35 mm Tiefe 1,79 %, kritischer Gehalt überschritten |
+| `lebenszyklus_kosten` | Regler | Betrachtungszeitraum 55 Jahre: 6 Bauteile ohne Erneuerung, 22 mit einer, 6 mit mehreren Erneuerungen |
+| `bp_holzprodukte` | Regler | Ausnutzung Biegung 63 %, Schub 33 %, Durchbiegung 85 %, Nachweis erfüllt |
+| `knicken` | Regler | Euler-Knicklast …: F_K = 1438,1 kN, w ≈ 34,3 mm (Ergebnishinweis aus Rechenwerten, bestand) |
+| `festigkeit` | Regler | Beton C20/25: höchstens 7722 Würfel, Stapelhöhe 849 m, Gesamtstauchung 283,2 mm |
+| `bp_verkehr_pruefung` | Regler | Hohlraumfreie Dichte 2,456 g/cm³, Hohlraumgehalt 1,88 Vol.-%, konform |
+| `zwang` | Regler | Zwangspannung 15,30 MPa, gerissen |
+| `eigenspannungen` | Regler | größte Zugeigenspannung am Rand 2,7 MPa, größte Druckeigenspannung −1,4 MPa, Rissgefahr |
+| `spannung` | Regler | f_cd 17,6 MPa, f_cm 39,0 MPa, E_cm 33,1 GPa, ε_c2 2,00 ‰ |
+
+Im ersten Lauf fehlten Ansagen in `frischbeton` (Reiter Konsistenz: Zielwert-/Messwertvergleich ohne Rechenkern) und `lebenszyklus_kosten` (Reiter Lebensdauern); beide ergänzt, dazu `Preisentwicklung`. Übrige Befunde desselben Skripts bestanden vorher und sind nicht Gegenstand dieses Auftrags (Folgeauftrag vorgeschlagen): SVG ohne Textalternative (`statistik`, `schallschutz`, `wu-bauwerke`, `korrosion`, `lebenszyklus_kosten`, `zwang`), Überschriftensprünge (`kunststoffe`, `feuchteschutz`, `korrosion`, `bp_trockenbau`, `bp_verkehr_pruefung`), `aria-valuetext` des Reglers „Alterungsexponent (a)“ in `korrosion`.
 
 ## QA
 
-QA_TABELLE
+| Prüfung | Ergebnis |
+|---|---|
+| `npx tsc --noEmit` | 0 Fehler |
+| `npm test` | 201/201 Testdateien ok (neu: `tests/kurzzeilen1104.test.ts`) |
+| `check:formeln` / `check:zahlen` | 0 fehlerhaft / 0 Befunde |
+| `check-design`, `check-verwaist --strict`, `check-any` | 0 neu / 0 verwaist / 0 `any` |
+| Build `BB_STATISCH=1`, `check-bundle --statisch` | ok, Einstieg 107,9 kB gzip (Grenze 108 kB), Erstpfad max. 220,7 kB (Grenze 225 kB) |
+| `a11y-tastatur.mjs --nur modul --ansagen` (16 Rechner, desk, mob) | je Eingabe genau 1 Ergebnisansage, 0 × „NaN“; vorbestehende Befunde s. 5 |
+| `a11y-reiter.mjs` (statistik, sonderbetone, frischbeton, lebenszyklus_kosten, bp_verkehr_pruefung, labor_druckfestigkeit, stahlbau_ec3, lebensdauerbemessung, schallschutz, historisch, pruefverfahren_katalog, labor; desk, mob, desk-dunkel) | 219 Reiter-Prüfungen, 0 Verstöße |
 
 Vorschau: `PORT=4533 node scripts/qa/vercel-vorschau.mjs dist`.
