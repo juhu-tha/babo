@@ -81,6 +81,10 @@ Abdeckung geprüft gegen alle Nicht-ASCII-Zeichen in `src/` (268 verschiedene): 
 
 Messung der vorgerenderten Seiten `/modul/<id>` über die statische Vercel-Vorschau, Ursachen und Maßnahmen (Vorlade-Karte je Seite hinter dem CSS, fehlende Vorlade-Listen, jsPDF bei Bedarf, Schrift erst nach dem Austausch durch React, Erstpfad-Ratsche in `check-bundle`): `docs/pruefung/lcp-module-2026-11-02.md`. Alle gemessenen Modulseiten im Hellmodus jetzt LCP 1,83–1,99 s.
 
+## TBT Rechnerseiten und LCP Startseite (04.11.2026)
+
+Einstieg in zwei Tasks (`app` + `rahmen`), wiederverwendete Zahlformatierer, KaTeX erst in Sichtnähe/Leerlauf, weitere `NachErstemBild`-Abschnitte (Mischungsberechnung, Modulübersicht, Aufgaben, Betonkennwerte, Mauerwerk), mobile Seitenleiste bis zum ersten Öffnen ohne Stil/Layout, kritisches CSS der Startseiten-Schale: `docs/pruefung/perf-tbt-2026-11-04.md`. Mischungsberechnung TBT 386 → 123 ms, Startseite LCP 2,04 → 0,84 s (lokal, Median).
+
 ## Ergebnisse
 
 <!-- perf-messung:start -->

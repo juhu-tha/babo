@@ -1,10 +1,10 @@
 # Prüfliste Quiz – Cluster III: Entwurf & Bemessung
 
-Stand: 02.11.2026 · Grundlage: `src/data/quiz.json` (Felder `vorpruefung` und `verified`), `docs/quiz-pruefhinweise.md`, Lernziele aus `src/data/lernziele.ts`. Erzeugt mit `npx tsx scripts/pruefliste.ts`; gesetzte Kreuze übernimmt das Skript beim nächsten Lauf. quiz.json wurde für diese Liste nicht verändert.
+Stand: 03.11.2026 · Grundlage: `src/data/quiz.json` (Felder `vorpruefung` und `verified`), `docs/quiz-pruefhinweise.md`, Lernziele aus `src/data/lernziele.ts`. Erzeugt mit `npx tsx scripts/pruefliste.ts`; gesetzte Kreuze übernimmt das Skript beim nächsten Lauf. quiz.json wurde für diese Liste nicht verändert.
 
-Cluster III umfasst 194 Fragen aus 33 Modulen. Aufgeführt sind 49 auffällige Fragen (Vorprüfung „korrigiert“ oder „fraglich“, offener Prüfhinweis oder neu seit 26.10.2026 ohne Freigabe) und eine Stichprobe von 5 unauffälligen Fragen. Entscheidung je Frage ankreuzen; bei „ändern“ den Änderungswunsch in die Zeile darunter schreiben.
+Cluster III umfasst 206 Fragen aus 33 Modulen. Aufgeführt sind 61 auffällige Fragen (Vorprüfung „korrigiert“ oder „fraglich“, offener Prüfhinweis oder neu seit 26.10.2026 ohne Freigabe) und eine Stichprobe von 5 unauffälligen Fragen. Entscheidung je Frage ankreuzen; bei „ändern“ den Änderungswunsch in die Zeile darunter schreiben.
 
-Auffällig im Einzelnen (Mehrfachnennung möglich): 46 korrigiert, 1 fraglich, 0 mit offenem Prüfhinweis, 2 neu seit 26.10.2026.
+Auffällig im Einzelnen (Mehrfachnennung möglich): 46 korrigiert, 1 fraglich, 0 mit offenem Prüfhinweis, 14 neu seit 26.10.2026.
 
 ## A. Auffällige Fragen
 
@@ -182,6 +182,102 @@ Auffällig im Einzelnen (Mehrfachnennung möglich): 46 korrigiert, 1 fraglich, 0
 - **Richtige Antwort:** 3,0, zusätzlich begrenzt nach Gl. (6.7aDE)
 - **Auffälligkeit:** Vorprüfung „korrigiert“: Erklärung: Gl. (6.7aDE) vollständig (Längsspannungsterm) · bereits freigegeben (verified)
 - [x] ok
+- [ ] ändern: …
+
+### qlz_betonpraxis_1 · Betonpraxis
+
+- **Frage:** Für einen Keller in drückendem Grundwasser (BK 1) schlägt die Planung 200 mm dicke Ortbetonwände und Elementwände mit 100 mm Kernbeton vor. Wie ist das zu beurteilen?
+- **Richtige Antwort:** Ortbeton 240 mm (200 mm nur mit Sondermaßnahmen); Element 240 mm, Kern ≥ 120 mm
+- **Auffälligkeit:** neu seit 26.10.2026 (Z24), noch nicht freigegeben, ohne Vorprüfung
+- [ ] ok
+- [ ] ändern: …
+
+### qlz_expositionsklassen_1 · Expositionsklassen
+
+- **Frage:** Für ein Außenbauteil sind die Expositionsklassen XC4, XD1 und XF1 festgelegt. Welche maßgebenden Grenzwerte ermittelt der Hüllwertrechner des Moduls?
+- **Richtige Antwort:** (w/z)_eq ≤ 0,55, z ≥ 300 kg/m³, mindestens C30/37
+- **Auffälligkeit:** neu seit 26.10.2026 (Z24), noch nicht freigegeben, ohne Vorprüfung
+- [ ] ok
+- [ ] ändern: …
+
+### qlz_holzbau_werkstoffe_1 · Werkstoffe & dataholz
+
+- **Frage:** Zwei Brettsperrholzdecken haben gleichen U-Wert und gleiche Feuerwiderstandsdauer; eine erhält eine gebundene Splittschüttung unter dem schwimmenden Estrich, die andere nicht. Wie unterscheiden sie sich?
+- **Richtige Antwort:** Die Decke mit Schüttung hat mehr Masse und dämpft tieffrequenten Trittschall besser
+- **Auffälligkeit:** neu seit 26.10.2026 (Z24), noch nicht freigegeben, ohne Vorprüfung
+- [ ] ok
+- [ ] ändern: …
+
+### qlz_hydratation_folgen_1 · Hydratation & Folgen
+
+- **Frage:** Für ein 2 m dickes Fundament ergibt die Abschätzung rund 47 K adiabatische Erwärmung. Welches Maßnahmenpaket ist am besten begründet?
+- **Richtige Antwort:** LH-Zement, Kühlung und Dämmschalung; ΔT ≈ 20 K, Mindestbewehrung gegen Risse
+- **Auffälligkeit:** neu seit 26.10.2026 (Z24), noch nicht freigegeben, ohne Vorprüfung
+- [ ] ok
+- [ ] ändern: …
+
+### qlz_innenausbau_1 · Innenausbau
+
+- **Frage:** Im Wohnungsbad wird eine bodengleiche Dusche mit Rinne auf Calciumsulfatestrich geplant, abgedichtet mit flüssiger Polymerdispersion. Wie ist das zu beurteilen?
+- **Richtige Antwort:** Unzulässig in W2-I: AIV-B oder MDS, kein feuchteempfindlicher Grund
+- **Auffälligkeit:** neu seit 26.10.2026 (Z24), noch nicht freigegeben, ohne Vorprüfung
+- [ ] ok
+- [ ] ändern: …
+
+### qlz_qualitaetssicherung_1 · Qualitätssicherung
+
+- **Frage:** Die Fremdüberwachung stellt fest, dass auf der Baustelle Wasser in den Fahrmischer gegeben und eine Decke im Sommer nicht nachbehandelt wurde. Wie ist das nach dem Modul zu beurteilen?
+- **Richtige Antwort:** Gravierende Abweichungen: im Bericht festhalten, bis zur Einstellung der Arbeiten möglich
+- **Auffälligkeit:** neu seit 26.10.2026 (Z24), noch nicht freigegeben, ohne Vorprüfung
+- [ ] ok
+- [ ] ändern: …
+
+### qlz_sonderbetone_1 · Sonderbetone
+
+- **Frage:** Im Tunnelvortrieb soll die Ausbruchsfläche sofort ohne Schalung gesichert werden. Welcher Sonderbeton ist nach dem Modul zu wählen, und warum?
+- **Richtige Antwort:** Spritzbeton, da er ohne Schalung aufgetragen und durch den Aufprall verdichtet wird
+- **Auffälligkeit:** neu seit 26.10.2026 (Z24), noch nicht freigegeben, ohne Vorprüfung
+- [ ] ok
+- [ ] ändern: …
+
+### qlz_sonderbetone_2 · Sonderbetone
+
+- **Frage:** Massenbeton (260 kg CEM III/B + 80 kg Flugasche, w/z ≈ 0,58), Schwerbeton (350 kg Zement, 160 kg Wasser, 2800 kg Baryt) und Dränbeton (250 kg Zement, kein Sand, 1550 kg Kies 4/8, w/z ≈ 0,38). Welche Folgerung ist richtig?
+- **Richtige Antwort:** Der Dränbeton hat den niedrigsten w/z-Wert und mit Einkorn die geringste Kornmenge
+- **Auffälligkeit:** neu seit 26.10.2026 (Z24), noch nicht freigegeben, ohne Vorprüfung
+- [ ] ok
+- [ ] ändern: …
+
+### qlz_sonderbetone_3 · Sonderbetone
+
+- **Frage:** RC-Beton in XC4 mit 40 % RC-Körnung Typ 1 (WA₂₄ = 5 %, 1800 kg/m³ grobe Körnung). Welche Abschätzung liefert der Rechner des Moduls?
+- **Richtige Antwort:** E-Modul −10 %, Wasseranspruch +6 %, Schwinden +12 %; Mehrwasser 36 kg/m³; zulässig
+- **Auffälligkeit:** neu seit 26.10.2026 (Z24), noch nicht freigegeben, ohne Vorprüfung
+- [ ] ok
+- [ ] ändern: …
+
+### qlz_stahlbeton_1 · Stahlbeton
+
+- **Frage:** Rechteckquerschnitt b/h = 25/60 cm, d = 55 cm, C25/30, B500, M_Ed = 180 kNm (ohne Normalkraft). Welche Zugbewehrung ergibt sich mit μ_Eds, ω = 1 − √(1 − 2μ_Eds) und A_s1 = ω · b · d · f_cd/f_yd?
+- **Richtige Antwort:** A_s1 ≈ 8,3 cm²
+- **Auffälligkeit:** neu seit 26.10.2026 (Z24), noch nicht freigegeben, ohne Vorprüfung
+- [ ] ok
+- [ ] ändern: …
+
+### qlz_stahlbeton_2 · Stahlbeton
+
+- **Frage:** Eine 24 cm dicke Flachdecke ohne Unterzüge liegt punktförmig auf Stützen. Welcher Nachweis bestimmt die Deckendicke im Stützenbereich typischerweise?
+- **Richtige Antwort:** Der Durchstanznachweis im kritischen Rundschnitt um die Stützen
+- **Auffälligkeit:** neu seit 26.10.2026 (Z24), noch nicht freigegeben, ohne Vorprüfung
+- [ ] ok
+- [ ] ändern: …
+
+### qlz_wu_bauwerke_1 · WU-Bauwerke
+
+- **Frage:** In einer Weißen Wanne liegt eine Arbeitsfuge zwischen Bodenplatte und Wand; zusätzlich trennt eine Dehnfuge zwei Gebäudeteile mit unterschiedlicher Setzung. Welche Fugenwahl ist nach dem Modul begründet?
+- **Richtige Antwort:** Arbeitsfuge mit beschichtetem Fugenblech, Dehnfuge mit Dehnfugenband nach DIN 7865
+- **Auffälligkeit:** neu seit 26.10.2026 (Z24), noch nicht freigegeben, ohne Vorprüfung
+- [ ] ok
 - [ ] ändern: …
 
 ### qn_betonpraxis_1 · Betonpraxis

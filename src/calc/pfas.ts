@@ -7,10 +7,12 @@
  *
  * Werte unter der Bestimmungsgrenze (BG) werden wahlweise mit 0 (untere Schranke), BG/2 oder BG (obere Schranke)
  * angesetzt. Der Rechner gibt zusätzlich beide Schranken aus; liegt der Grenzwert dazwischen, ist die Bewertung
- * nicht eindeutig. Maßgebend für die Bewertung einer Probe sind die Vorgaben der TrinkwV und des Labors.
+ * nicht eindeutig. Nach TrinkwV Anlage 2 Teil I bleiben Werte unter der BG bei der Summenbildung unberücksichtigt
+ * (entspricht dem Ansatz 0, rechtlich maßgebend); BG/2 und BG sind Lehr- bzw. Vorsorgevarianten.
  * Reiner Rechenkern – geprüft in tests/pfas.test.ts.
  */
 import { type Hinweis, istEndlich, muss, hatFehler, nurGueltig } from './plausibilitaet';
+import { pfasIstKurzkettig } from '../data/klassengrenzen';
 
 /** Die 20 PFAS der Summe „PFAS-20“ (TrinkwV Anlage 2 Teil I, entspricht Richtlinie (EU) 2020/2184) */
 export const PFAS20 = [
@@ -94,7 +96,8 @@ const LEER = (hinweise: Hinweis[]): PfasErgebnis => nurGueltig(({ pfas20: LEERE_
  * vorher wurden die Sulfonsäuren bis C7 als kurzkettig gezählt.
  */
 export function istKurzkettig(s: { c: number; gruppe: string }): boolean {
-  return s.gruppe === 'Sulfonsäure' ? s.c <= 5 : s.c <= 7;
+  // Grenze zentral in src/data/klassengrenzen.ts (PFAS_KETTENLAENGE, Gesamtgutachten 03.11.2026)
+  return pfasIstKurzkettig(s);
 }
 
 /** Ersatzwert für „< BG“ */

@@ -109,6 +109,9 @@ export default function MischungEingaben({ applyWalzSandReduction, bauteil, bioc
   return (
     <div className="flex flex-col gap-6">
 
+      {/* Mobil liegen schon die ersten Karten unterhalb des Bildausschnitts → nach dem ersten Bild, je Karte eine
+          Task (TBT 04.11.2026); in der vorgerenderten Seite stehen sie weiter (statisch) */}
+      <NachErstemBild minHoehe="7.5rem" statisch>
       {/* Vorgegebene Rezepturen */}
       <div className="bg-off-white p-5 rounded-xl border border-home-grau/30">
         <h3 className="font-semibold mb-4 text-text-main flex items-center gap-2">
@@ -130,7 +133,9 @@ export default function MischungEingaben({ applyWalzSandReduction, bauteil, bioc
           </select>
         </div>
       </div>
+      </NachErstemBild>
 
+      <NachErstemBild minHoehe="46rem" statisch>
       {/* Expositionsklassen & Bauteil */}
       <div className="bg-off-white p-5 rounded-xl border border-home-grau/30">
         <h3 className="font-semibold mb-4 text-text-main"><MdText text={inhalt.texte.expositionsklassenBauteil} /></h3>
@@ -155,7 +160,10 @@ export default function MischungEingaben({ applyWalzSandReduction, bauteil, bioc
           {allExpClasses.map(cls => (
             <div key={cls} className="relative group">
               <button
+                type="button"
                 onClick={() => toggleExpClass(cls)}
+                aria-pressed={expClasses.includes(cls)}
+                aria-describedby={`expklasse-hinweis-${cls}`}
                 className={`px-2 py-1 text-xs font-medium rounded-md border transition-colors ${
                         expClasses.includes(cls) 
                           ? 'bg-shiraz text-white border-shiraz' 
@@ -164,7 +172,7 @@ export default function MischungEingaben({ applyWalzSandReduction, bauteil, bioc
               >
                 {cls}
               </button>
-              <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 hidden group-hover:block w-48 bg-gray-900 text-white text-xs rounded p-2 z-10 text-center pointer-events-none">
+              <div id={`expklasse-hinweis-${cls}`} role="tooltip" className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 hidden group-hover:block group-focus-within:block w-48 bg-gray-900 text-white text-xs rounded p-2 z-10 text-center pointer-events-none">
                 {EXPOSITIONSKLASSEN[cls].desc}
                 <div className="absolute top-full left-1/2 -translate-x-1/2 border-4 border-transparent border-t-gray-900"></div>
               </div>
@@ -223,6 +231,7 @@ export default function MischungEingaben({ applyWalzSandReduction, bauteil, bioc
           </div>
         )}
       </div>
+      </NachErstemBild>
 
       <NachErstemBild minHoehe="40rem">
       {/* Zement & Wasser */}

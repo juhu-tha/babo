@@ -288,7 +288,8 @@ export default function Knicken() {
 
                 {/* SVG Visualizer with White Background */}
                 <div className="relative w-full aspect-4/3 max-h-[380px] bg-white rounded-xl overflow-hidden border border-home-grau/30 shadow-sm flex items-center justify-center">
-                  <svg width="100%" height="100%" viewBox="0 0 460 360" className="select-none">
+                  <svg width="100%" height="100%" viewBox="0 0 460 360" className="select-none" role="img"
+                    aria-label={`Schema des Druckstabs, Euler-Fall ${formatDeZahl(eulerFall, 0)}: Normalkraft ${formatDeZahl(results.N_Ed_kN, 1)} kN, Knicklast ${formatDeZahl(results.F_K_kN, 1)} kN, Ausbiegung w ≈ ${formatDeZahl(results.maxDeflectionMm, 1)} mm${results.isBuckled ? ' – der Stab knickt aus' : ''}`}>
                     <defs>
                       <linearGradient id="columnGradKnicken" x1="0" y1="0" x2="1" y2="0">
                         <stop offset="0%" stopColor="#475569" />

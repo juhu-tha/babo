@@ -1,4 +1,4 @@
-import { formatDeZahl, formatDeTeX, formatDeTeXWert, formatDeWert, formatDeIntl, parseDeZahl, umgruppiereDe, TAUSENDER_TRENNER } from '../src/utils/numberFormat';
+import { formatDeZahl, formatDeTeX, formatDeTeXWert, formatDeWert, formatDeIntl, parseDeZahl, umgruppiereDe, gruppiere, TAUSENDER_TRENNER } from '../src/utils/numberFormat';
 const S = '\u202F'; // schmales geschütztes Leerzeichen
 let fails = 0;
 const eq = (name: string, a: string, b: string) => {
@@ -40,4 +40,14 @@ eq('TeX Division durch 0', formatDeTeX(1 / 0, 1), '\\text{–}');
 eq('Chart.js-Ausgabe umgruppiert', umgruppiereDe('-1.234.567,5'), `-1${S}234${S}567,5`);
 eq('Chart.js-Ausgabe vierstellig', umgruppiereDe('2.500'), '2500');
 eq('Chart.js-Ausgabe klein', umgruppiereDe('0,25'), '0,25');
+// Wiederverwendete Formatierer (TBT 04.11.2026): Ausgabe wie toLocaleString mit denselben Optionen, auch bei Wechsel
+const OPTIONEN: Intl.NumberFormatOptions[] = [{}, { maximumFractionDigits: 6 }, { minimumFractionDigits: 2, maximumFractionDigits: 2 }, { maximumFractionDigits: 0 }, { useGrouping: false }, { maximumSignificantDigits: 3 }, { minimumFractionDigits: undefined, maximumFractionDigits: 2 }];
+let abweichend = 0;
+for (let i = 0; i < 3000; i++) {
+  const o = OPTIONEN[i % OPTIONEN.length];
+  const v = (((i * 7919) % 1000) / 1000 - 0.3) * 10 ** ((i % 12) - 3);
+  const alt = v.toLocaleString('de-DE', { ...o, useGrouping: false });
+  if (formatDeIntl(v, o) !== (o.useGrouping === false ? alt : gruppiere(alt))) abweichend++;
+}
+eq('Intl-Ersatz gleich toLocaleString (3000 Werte, 7 Optionensätze)', String(abweichend), '0');
 if (fails) { console.log(`${fails} FAIL`); process.exit(1); }
