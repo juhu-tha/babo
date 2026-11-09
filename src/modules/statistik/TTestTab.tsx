@@ -63,7 +63,7 @@ export default function TTestTab() {
 
   return (
     <div className="flex flex-col gap-6">
-      <BloomLernziele moduleId="statistik_ttest" moduleTitle={inhalt.werte.lernzielTitel} timeMinutes={45} goals={lernziele} />
+      <BloomLernziele titelElement="p" titelKlasse="wie-h4" moduleId="statistik_ttest" moduleTitle={inhalt.werte.lernzielTitel} timeMinutes={45} goals={lernziele} />
 
       <section className="bg-white p-6 rounded-2xl shadow-sm border border-home-grau/30 space-y-3 text-sm text-text-main/90 leading-relaxed">
         <h3 className="text-lg font-bold text-text-main flex items-center gap-2"><Sigma className="text-shiraz" aria-hidden="true" /><MdText text={inhalt.texte.ueberschrift} /></h3>
