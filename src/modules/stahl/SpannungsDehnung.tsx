@@ -10,6 +10,7 @@ import type { Dispatch, SetStateAction } from 'react';
 import inhalt from '@/content/stahl/SpannungsDehnung.json';
 import { MdText } from '@/src/components/inhalt/MdText';
 import { AuswahlGruppe, alsOption } from '../../components/ui/Auswahlgruppe';
+import { ErgebnisAnsage, ansageWert, kurzzeile } from '@/src/components/ui/ErgebnisAnsage';
 
 interface SpannungsDehnungProps {
   activeSimSteel: SteelCurveDefinition;
@@ -238,6 +239,7 @@ export default function SpannungsDehnung({ activeSimSteel, selectedCurves, setSe
               </div>
 
               <div className="lg:col-span-5 grid grid-cols-2 gap-2.5">
+                <ErgebnisAnsage text={kurzzeile(ansageWert('Dehnung', testStrain, 2, '%'), ansageWert('Spannung', Math.max(0, simStress), 1, 'MPa'), simPhase.phase)} />
                 <div className="bg-white p-3 rounded-xl border border-home-grau/20 flex flex-col">
                   <span className="text-[10px] font-bold text-slate-400 uppercase tracking-widest">Spannung <InlineMath math="\sigma" /></span>
                   <span className="text-lg font-black text-shiraz font-mono mt-0.5">

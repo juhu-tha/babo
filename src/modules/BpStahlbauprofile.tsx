@@ -9,6 +9,8 @@ import { Layers, Calculator, Info, CheckCircle, AlertTriangle } from 'lucide-rea
 import { InnovationPraxisSection } from '@/src/components/ui/InnovationPraxisSection';
 import inhalt from '@/content/bpstahlbauprofile/BpStahlbauprofile.json';
 import { MdText } from '@/src/components/inhalt/MdText';
+import { ErgebnisAnsage, ansageWert, kurzzeile } from '@/src/components/ui/ErgebnisAnsage';
+import { reglerName } from '@/src/lib/reglerName';
 
 interface ProfileData {
   name: string;
@@ -217,6 +219,8 @@ export default function BpStahlbauprofile() {
                   max={activeProfileList.length - 1}
                   step="1"
                   value={activeProfileIndex}
+                  aria-label={reglerName(inhalt.texte.profilGrößeSchieberegler)}
+                  aria-valuetext={`${formatDeWert(activeProfileIndex + 1)} / ${activeProfileList.length}`}
                   onChange={(e) => setSelectedIx(Number(e.target.value))}
                   className="w-full h-6 rounded-lg appearance-none cursor-pointer accent-shiraz"
                 />
@@ -339,7 +343,7 @@ export default function BpStahlbauprofile() {
                     if (profileSeries === 'UPN') {
                       // Draw UPN profile shape
                       return (
-                        <svg width="170" height="170" viewBox="0 0 170 170" className="overflow-visible">
+                        <svg role="img" aria-label="Querschnitt UPN-Profil" width="170" height="170" viewBox="0 0 170 170" className="overflow-visible">
                           {/* Profile boundary path */}
                           <path
                             d={`
@@ -367,7 +371,7 @@ export default function BpStahlbauprofile() {
                     } else {
                       // Draw I-Profile (IPE, HEA, HEB, HEM)
                       return (
-                        <svg width="170" height="170" viewBox="0 0 170 170" className="overflow-visible">
+                        <svg role="img" aria-label={`Querschnitt ${profileSeries}-Profil`} width="170" height="170" viewBox="0 0 170 170" className="overflow-visible">
                           {/* Upper Flange */}
                           <rect
                             x={85 - b_sc/2}
@@ -439,12 +443,13 @@ export default function BpStahlbauprofile() {
                     />
                     <span className="absolute right-2 top-2.5 text-xs text-text-main/30 font-bold">kN</span>
                   </div>
-                  <input aria-label="kN"
+                  <input aria-label={inhalt.werte.normalkraftNEd}
                     type="range"
                     min="0"
                     max="2000"
                     step="10"
                     value={ned}
+                    aria-valuetext={`${formatDeWert(ned)} kN`}
                     onChange={(e) => setNed(Number(e.target.value))}
                     className="w-full h-1.5 bg-home-grau/25 rounded-lg appearance-none cursor-pointer accent-shiraz"
                   />
@@ -463,12 +468,13 @@ export default function BpStahlbauprofile() {
                     />
                     <span className="absolute right-2 top-2.5 text-xs text-text-main/30 font-bold">kNm</span>
                   </div>
-                  <input aria-label="kNm"
+                  <input aria-label={inhalt.werte.biegungMYEd}
                     type="range"
                     min="0"
                     max="500"
                     step="5"
                     value={myed}
+                    aria-valuetext={`${formatDeWert(myed)} kNm`}
                     onChange={(e) => setMyed(Number(e.target.value))}
                     className="w-full h-1.5 bg-home-grau/25 rounded-lg appearance-none cursor-pointer accent-shiraz"
                   />
@@ -519,6 +525,7 @@ export default function BpStahlbauprofile() {
                     </div>
                   </div>
 
+                  <ErgebnisAnsage text={kurzzeile(ansageWert('Randspannung σ_Ed', totalStress, 1, 'N/mm²'), ansageWert('f_yd', fyd, 1, 'N/mm²'), ansageWert('Ausnutzung', utilization, 1, '%'), Number.isFinite(utilization) && (utilization <= 100 ? 'Nachweis erfüllt' : 'Nachweis nicht erfüllt'))} />
                   {/* Verbal verification result indicator */}
                   <div className={`p-3 rounded-lg flex items-start gap-2.5 text-xs leading-snug ${
                     utilization <= 100

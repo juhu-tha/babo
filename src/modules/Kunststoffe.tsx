@@ -28,6 +28,7 @@ import { MdText } from '@/src/components/inhalt/MdText';
 import { ModuleTabs, type ModulTab } from '@/src/components/ui/ModuleTabs';
 import { kunststoffTemperatur } from '@/src/calc/werkstoffmodelle';
 import { EingabeHinweise } from '@/src/components/ui/EingabeHinweise';
+import { ErgebnisAnsage } from '@/src/components/ui/ErgebnisAnsage';
 
 ChartJS.register(
   CategoryScale,
@@ -51,7 +52,7 @@ function PlasticsThematicLinks({ current }: { current: 'baustoff' | 'bauprodukt'
   return (
     <div className="bg-shiraz/5 border border-shiraz/35 rounded-2xl p-4 sm:p-5 flex flex-col gap-4">
       <div>
-        <h4 className="text-xs font-bold text-shiraz uppercase tracking-wider"><MdText text={inhalt.texte.materialLehrpfadKunststoffeIm} /></h4>
+        <h3 className="text-xs font-bold text-shiraz uppercase tracking-wider wie-h4"><MdText text={inhalt.texte.materialLehrpfadKunststoffeIm} /></h3>
         <p className="text-xs text-slate-700 font-medium mt-0.5"><MdText text={inhalt.texte.weiterZuDenAnderen} /></p>
       </div>
       <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
@@ -277,6 +278,7 @@ export default function Kunststoffe() {
               onChange={(e) => setTemperature(Number(e.target.value))}
             />
             <EingabeHinweise hinweise={modell.hinweise} />
+            <ErgebnisAnsage text={`${plasticType}: E-Modul bei ${formatDeWert(temperature)} °C ${Number.isFinite(modell.E) ? (modell.E < 1 ? 'unter 1 MPa' : `${formatDeZahl(modell.E, 0)} MPa`) : '–'}`} />
 
             <div className="mt-4 p-4 bg-shiraz text-white rounded-xl shadow-md">
               <div className="text-sm opacity-90 mb-1"><MdText text={inhalt.texte.aktuellerEModul} /></div>
@@ -307,7 +309,7 @@ export default function Kunststoffe() {
           <div className="bg-white p-5 rounded-xl border border-home-grau/30 shadow-sm">
             <h3 className="font-semibold mb-4 text-text-main"><MdText text={inhalt.texte.schematischeDarstellungPolymerstrukturen} /></h3>
             <div className="flex flex-col items-center bg-off-white rounded-lg border border-home-grau/30 p-4">
-              <svg width="100%" height="160" viewBox="0 0 350 160">
+              <svg role="img" aria-label="Schematische Darstellung: Polymerstrukturen" width="100%" height="160" viewBox="0 0 350 160">
                 {/* Amorph */}
                 <text x="50" y="20" fontSize="10" fill="#1e293b" textAnchor="middle" fontWeight="bold">Amorph</text>
                 <path d="M 20 50 Q 40 30 60 70 T 80 50" fill="none" stroke="#3b82f6" strokeWidth="2" />
@@ -466,7 +468,7 @@ export default function Kunststoffe() {
 
       {activeTab === 'steckbrief' && (
         <div className="animate-in fade-in duration-300">
-          <BaustoffProfil materialKey="kunststoffe" />
+          <BaustoffProfil materialKey="kunststoffe" ebene={2} />
         </div>
       )}
 
@@ -478,7 +480,7 @@ export default function Kunststoffe() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div className="bg-off-white p-5 rounded-xl border border-home-grau/30">
-              <h3 className="font-bold text-shiraz text-lg mb-2"><MdText text={inhalt.texte.artenVonGeokunststoffen} /></h3>
+              <h2 className="font-bold text-shiraz text-lg mb-2"><MdText text={inhalt.texte.artenVonGeokunststoffen} /></h2>
               <ul className="list-disc list-inside text-sm text-text-main/70 space-y-2 font-medium">
                 <li><MdText text={inhalt.texte.geotextilienDurchlässigeFlächenhafteText} /></li>
                 <li><MdText text={inhalt.texte.geogitterGeogridsGitterartigeStrukturen} /></li>
@@ -488,7 +490,7 @@ export default function Kunststoffe() {
             </div>
 
             <div className="bg-off-white p-5 rounded-xl border border-home-grau/30">
-              <h3 className="font-bold text-shiraz text-lg mb-2">Hauptfunktionen</h3>
+              <h2 className="font-bold text-shiraz text-lg mb-2">Hauptfunktionen</h2>
               <ul className="list-disc list-inside text-sm text-text-main/70 space-y-2 font-medium">
                 <li><MdText text={inhalt.texte.trennenVerhindertDieVermischung} /></li>
                 <li><MdText text={inhalt.texte.filternHältBodenpartikelZurück} /></li>
@@ -509,7 +511,7 @@ export default function Kunststoffe() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div className="bg-off-white p-5 rounded-xl border border-home-grau/30">
-              <h3 className="font-bold text-shiraz text-lg mb-2"><MdText text={inhalt.texte.herausragendeEigenschaften} /></h3>
+              <h2 className="font-bold text-shiraz text-lg mb-2"><MdText text={inhalt.texte.herausragendeEigenschaften} /></h2>
               <ul className="list-disc list-inside text-sm text-text-main/70 space-y-2 font-medium">
                 <li><MdText text={inhalt.texte.geringesEigengewichtEinFolienkissen} /></li>
                 <li><MdText text={inhalt.texte.hoheLichtdurchlässigkeitLässtBis} /></li>
@@ -519,7 +521,7 @@ export default function Kunststoffe() {
             </div>
 
             <div className="bg-off-white p-5 rounded-xl border border-home-grau/30">
-              <h3 className="font-bold text-shiraz text-lg mb-2"><MdText text={inhalt.texte.konstruktionKissenaufbau} /></h3>
+              <h2 className="font-bold text-shiraz text-lg mb-2"><MdText text={inhalt.texte.konstruktionKissenaufbau} /></h2>
               <ul className="list-disc list-inside text-sm text-text-main/70 space-y-2 font-medium">
                 <li><MdText text={inhalt.texte.pneumatischeKissenZweiBis} /></li>
                 <li><MdText text={inhalt.texte.druckluftsteuerungDerDruckIn} /></li>

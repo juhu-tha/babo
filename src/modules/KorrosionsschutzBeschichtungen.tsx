@@ -14,6 +14,7 @@ import {
 } from '@/src/calc/korrosionsschutz';
 import inhaltJson from '@/content/korrosionsschutzbeschichtungen/KorrosionsschutzBeschichtungen.json';
 import { MdText } from '@/src/components/inhalt/MdText';
+import { kurzzeile } from '@/src/components/ui/ErgebnisAnsage';
 
 type Reiter = 'einfuehrung' | 'grundlagen' | 'verzinkung' | 'kennwerte' | 'rechner' | 'beispiele';
 
@@ -295,7 +296,7 @@ export default function KorrosionsschutzBeschichtungen({ startReiter = 'einfuehr
 
                   <div>
                     <div className="flex justify-between text-xs font-bold text-slate-700"><label htmlFor="ks-stahl">Stahldicke</label><span className="font-mono">{formatDeZahl(stahlDicke, 1)} mm</span></div>
-                    <input id="ks-stahl" type="range" min="1" max="30" step="0.5" value={stahlDicke} onChange={e => setStahlDicke(Number(e.target.value))} className="w-full accent-shiraz" />
+                    <input id="ks-stahl" type="range" min="1" max="30" step="0.5" value={stahlDicke} aria-valuetext={`${formatDeZahl(stahlDicke, 1)} mm`} onChange={e => setStahlDicke(Number(e.target.value))} className="w-full accent-shiraz" />
                     {erg.mindest1461 && (
                       <button type="button" onClick={() => setDZn(erg.mindest1461!.mittel)} className="text-[11px] text-shiraz font-semibold underline cursor-pointer"><MdText text={inhaltJson.texte.mindestDurchschnittswertNachDin} />{formatDeZahl(erg.mindest1461.mittel, 0)} µm)
                       </button>
@@ -304,7 +305,7 @@ export default function KorrosionsschutzBeschichtungen({ startReiter = 'einfuehr
 
                   <div>
                     <div className="flex justify-between text-xs font-bold text-slate-700"><label htmlFor="ks-dzn"><MdText text={inhaltJson.texte.zinkschichtdickeDZn} /></label><span className="font-mono">{formatDeZahl(dZn, 0)} µm</span></div>
-                    <input id="ks-dzn" type="range" min="20" max="300" step="5" value={dZn} onChange={e => setDZn(Number(e.target.value))} className="w-full accent-shiraz" />
+                    <input id="ks-dzn" type="range" min="20" max="300" step="5" value={dZn} aria-valuetext={`${formatDeZahl(dZn, 0)} µm`} onChange={e => setDZn(Number(e.target.value))} className="w-full accent-shiraz" />
                   </div>
 
                   <label className="block text-xs font-bold text-slate-700"><MdText text={inhaltJson.texte.gewünschteSchutzdauerklasse} /><select value={ziel} onChange={e => setZiel(e.target.value as Schutzdauerklasse)} className="mt-1 w-full p-2 border border-slate-200 rounded-lg bg-white text-sm">
@@ -318,11 +319,11 @@ export default function KorrosionsschutzBeschichtungen({ startReiter = 'einfuehr
                     <div className="space-y-3 pl-5 border-l-2 border-shiraz/20">
                       <div>
                         <div className="flex justify-between text-xs font-bold text-slate-700"><label htmlFor="ks-tb"><MdText text={inhaltJson.texte.schutzdauerDerBeschichtungAllein} /></label><span className="font-mono">{formatDeZahl(tB, 0)} Jahre</span></div>
-                        <input id="ks-tb" type="range" min="0" max="40" step="1" value={tB} onChange={e => setTB(Number(e.target.value))} className="w-full accent-shiraz" />
+                        <input id="ks-tb" type="range" min="0" max="40" step="1" value={tB} aria-valuetext={`${formatDeZahl(tB, 0)} Jahre`} onChange={e => setTB(Number(e.target.value))} className="w-full accent-shiraz" />
                       </div>
                       <div>
                         <div className="flex justify-between text-xs font-bold text-slate-700"><label htmlFor="ks-f"><MdText text={inhaltJson.texte.synergiefaktorFLiteraturwert} /></label><span className="font-mono">{formatDeZahl(f, 1)}</span></div>
-                        <input id="ks-f" type="range" min="1" max="3" step="0.1" value={f} onChange={e => setF(Number(e.target.value))} className="w-full accent-shiraz" />
+                        <input id="ks-f" type="range" min="1" max="3" step="0.1" value={f} aria-valuetext={`${formatDeZahl(f, 1)}`} onChange={e => setF(Number(e.target.value))} className="w-full accent-shiraz" />
                         <p className="text-[10px] text-slate-500">Literaturspanne {formatDeZahl(SYNERGIE_SPANNE[0], 1)} bis {formatDeZahl(SYNERGIE_SPANNE[1], 1)}<MdText text={inhaltJson.texte.keinNormwertLehrannahme} /></p>
                       </div>
                     </div>
@@ -343,7 +344,7 @@ export default function KorrosionsschutzBeschichtungen({ startReiter = 'einfuehr
                           <div className="text-lg font-black font-mono text-slate-900">{jahre(erg.tDuplexMax)}</div>
                         </div>
                       </div>
-                      <div className={`p-4 rounded-xl border flex items-start gap-3 text-xs leading-relaxed ${erg.bewertung === 'erfuellt' ? 'bg-emerald-50 border-emerald-200 text-emerald-950' : erg.bewertung === 'grenzwertig' ? 'bg-amber-50 border-amber-200 text-amber-950' : 'bg-red-50 border-red-200 text-red-950'}`} role="status">
+                      <div className={`p-4 rounded-xl border flex items-start gap-3 text-xs leading-relaxed ${erg.bewertung === 'erfuellt' ? 'bg-emerald-50 border-emerald-200 text-emerald-950' : erg.bewertung === 'grenzwertig' ? 'bg-amber-50 border-amber-200 text-amber-950' : 'bg-red-50 border-red-200 text-red-950'}`}>
                         {erg.bewertung === 'erfuellt' ? <CheckCircle size={18} className="text-emerald-600 shrink-0" aria-hidden="true" /> : erg.bewertung === 'grenzwertig' ? <AlertTriangle size={18} className="text-amber-600 shrink-0" aria-hidden="true" /> : <XCircle size={18} className="text-red-600 shrink-0" aria-hidden="true" />}
                         <p><strong>Klasse {erg.klasseUnguenstig}{erg.klasseGuenstig !== erg.klasseUnguenstig ? ` bis ${erg.klasseGuenstig}` : ''}.</strong> {bewertungText}</p>
                       </div>
@@ -375,6 +376,7 @@ export default function KorrosionsschutzBeschichtungen({ startReiter = 'einfuehr
               {erg.gueltig && (
                 <FormulaDerivationBox
                   live
+                  kurzzeile={erg.gueltig ? kurzzeile(`Schutzdauer ${jahre(erg.tDuplexMin)} bis ${jahre(erg.tDuplexMax)}`, `Klasse ${erg.klasseUnguenstig}${erg.klasseGuenstig !== erg.klasseUnguenstig ? ` bis ${erg.klasseGuenstig}` : ''}`, bewertungText) : 'Schutzdauer –'}
                   title={inhaltJson.werte.ihrRechenwegSchutzdauerDer}
                   zielGleichung="t_{Zn} = \frac{d_{Zn}}{r_{corr,Zn}}"
                   schritte={[

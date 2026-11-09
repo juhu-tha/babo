@@ -6,6 +6,7 @@ import inhalt from '@/content/beispielrechnungen/RechnungBrandschutz.json';
 import { MdText } from '@/src/components/inhalt/MdText';
 import { AuswahlGruppe, ReiterLeiste, alsOption, alsReiter, reiterPanel } from '../../components/ui/Auswahlgruppe';
 import { EC2_BRAND_MINDESTMASSE } from '@/src/data/brandschutzBeton';
+import { reglerName } from '@/src/lib/reglerName';
 
 /** Zeilenbeschriftung je Feuerwiderstandsklasse (Reihenfolge wie EC2_BRAND_MINDESTMASSE) */
 const TABELLE_TEXTE: readonly string[] = [inhalt.texte.r3030Min, inhalt.texte.r6060Min, inhalt.texte.r9090Min, inhalt.texte.r120120Min];
@@ -175,7 +176,9 @@ export default function RechnungBrandschutz({ M_fi_Ed, M_fi_Rd, W_ef_mm3, b_ef_m
                   min="10" 
                   max="150" 
                   step="5" 
-                  value={momentKaltEd} 
+                  value={momentKaltEd}
+                  aria-label={reglerName(inhalt.texte.biegemomentKaltzustandMEd)}
+                  aria-valuetext={`${formatDeWert(momentKaltEd)} kNm`} 
                   onChange={(e) => setMomentKaltEd(parseInt(e.target.value))}
                   className="w-full accent-shiraz"
                 />

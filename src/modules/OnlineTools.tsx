@@ -1,4 +1,5 @@
 import React, { useState, useMemo } from 'react';
+import { formatDeZahl } from '@/src/utils/numberFormat';
 import { 
   ExternalLink, 
   Search, 
@@ -22,6 +23,7 @@ import { FormulaText } from '@/src/components/ui/FormulaText';
 import inhalt from '@/content/onlinetools/OnlineTools.json';
 import { MdText } from '@/src/components/inhalt/MdText';
 import { AuswahlGruppe, ReiterLeiste, alsOption, alsReiter, reiterPanel } from '../components/ui/Auswahlgruppe';
+import { ErgebnisAnsage } from '@/src/components/ui/ErgebnisAnsage';
 
 interface ToolItem {
   id: string;
@@ -547,6 +549,7 @@ export default function OnlineTools() {
           {/* Filter & Search Bar */}
           <div className="bg-white p-5 rounded-2xl shadow-sm border border-home-grau/30 flex flex-col md:flex-row gap-4 justify-between items-stretch md:items-center">
             {/* Search input */}
+            <ErgebnisAnsage text={`${formatDeZahl(filteredTools.length, 0)} ${filteredTools.length === 1 ? 'Werkzeug' : 'Werkzeuge'} gefunden`} />
             <div className="relative flex-1 min-w-[240px]">
               <Search size={18} className="absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400" />
               <input 

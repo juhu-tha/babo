@@ -21,6 +21,7 @@ import { Fz } from '../ui/Formelzeichen';
 import { useDiagrammFarben, linAchse } from './laborGrafik';
 import { AusbreitDraufsicht, AusbreitSeitenansicht, SetzversuchAnsicht, SetzFormen } from './FrischbetonGeraete';
 import { ausbreitAuswertung } from '@/src/calc/laborVersuch';
+import { ErgebnisAnsage, ansageWert, kurzzeile } from '@/src/components/ui/ErgebnisAnsage';
 
 ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend);
 
@@ -276,6 +277,8 @@ export default function FrischbetonPruefung() {
                 max="0.70"
                 step="0.01"
                 value={wzValue}
+                aria-label="Wasserzementwert (w/z-Wert)"
+                aria-valuetext={`${formatDeZahl(wzValue, 2)}`}
                 onChange={e => setWzValue(parseFloat(e.target.value))}
                 className="w-full accent-shiraz cursor-pointer"
               />
@@ -297,6 +300,8 @@ export default function FrischbetonPruefung() {
                 max="2.0"
                 step="0.1"
                 value={fließmittelPCE}
+                aria-label="Fließmittel (PCE)"
+                aria-valuetext={`${formatDeZahl(fließmittelPCE, 1)} M.-%`}
                 onChange={e => setFließmittelPCE(parseFloat(e.target.value))}
                 className="w-full accent-emerald-600 cursor-pointer"
               />
@@ -402,6 +407,7 @@ export default function FrischbetonPruefung() {
                   )}
                 </div>
 
+                <ErgebnisAnsage text={coneLifted ? kurzzeile(ansageWert('Ausbreitmaß', ausbreit.f, 0, 'mm'), `Konsistenzklasse ${consistencyClass(ausbreit.f).code}`) : ''} />
                 {/* Results Card */}
                 {coneLifted && (
                   <div className="p-3.5 bg-off-white rounded-xl border border-home-grau/30 flex flex-wrap items-center justify-between gap-3 text-xs">
@@ -448,6 +454,7 @@ export default function FrischbetonPruefung() {
                 </figure>
 
                 {/* Slump Control Button */}
+                <ErgebnisAnsage text={slumpLifted ? kurzzeile(ansageWert('Setzmaß', slumpMm, 0, 'mm'), `Konsistenzklasse ${slumpClass(slumpMm).code}`) : ''} />
                 {!slumpLifted ? (
                   <button
                     onClick={liftSlumpCone}

@@ -12,6 +12,7 @@ import { ModulTest } from '@/src/components/quiz/ModulTest';
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
 import inhalt from '@/content/keramikziegel/KeramikZiegel.json';
 import { MdText } from '@/src/components/inhalt/MdText';
+import { ansageWert, kurzzeile } from '@/src/components/ui/ErgebnisAnsage';
 
 type Reiter = 'einfuehrung' | 'herstellung' | 'ziegel' | 'normen' | 'rechner' | 'nachhaltigkeit';
 
@@ -399,6 +400,7 @@ export default function KeramikZiegel() {
 
                   <FormulaDerivationBox
                     live
+                    kurzzeile={kurzzeile(ansageWert('Wasseraufnahme E_b', erg.eb, 2, '%'), `Gruppe nach DIN EN 14411 ${erg.gruppe ?? '–'}`)}
                     title={inhalt.werte.ihrRechenwegWasseraufnahmeRohdichte}
                     zielGleichung="E_b = \frac{m_n - m_t}{m_t} \cdot 100\,\%"
                     schritte={[

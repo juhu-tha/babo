@@ -32,7 +32,8 @@ export const AUSNAHMEN = [];
 
 const MONATE = 'Januar|Februar|März|April|Mai|Juni|Juli|August|September|Oktober|November|Dezember';
 const MONAT_NR = Object.fromEntries(MONATE.split('|').map((m, i) => [m, String(i + 1).padStart(2, '0')]));
-const ZAHLWORT = { acht: 8, neun: 9, zehn: 10, elf: 11, zwölf: 12 };
+// „eine“ (Woche), „vier“ (Wochen) usw. seit der zweiten Prüfrunde Rechtsquellen 03.11.2026
+const ZAHLWORT = { ein: 1, eine: 1, einer: 1, zwei: 2, drei: 3, vier: 4, fünf: 5, sechs: 6, sieben: 7, acht: 8, neun: 9, zehn: 10, elf: 11, zwölf: 12 };
 const ABK = 'Art|Abs|Nr|bzw|ca|vgl|z|B|u|a|S|Anh|Buchst|Urt|v|d|h|i|e|o|Äq|ABl|BGBl|GMBl|Drs|Bl|Kap|Tab|Ziff';
 export const BAUSTEINE = {
   D: String.raw`(?:\d{1,2}\.\s?\d{1,2}\.\s?\d{4}|\d{1,2}\.\s?(?:${MONATE})\s\d{4}|(?:${MONATE})\s\d{4})`,
@@ -97,8 +98,11 @@ export function bereite(eintraege) {
 
 /**
  * Einen Text prüfen. Ergebnis: Treffer { id, wert (gefunden), soll, ok, auszug, pos }.
+ * optionen.nachherFaktor: Gewicht der Entfernung eines Ankers hinter der Angabe (Standard 1; der Klassengrenzen-Abgleich
+ * zieht mit 4 den Parameter vor der Angabe vor, z. B. „Kupfer (RC-1: ≤ 110 µg/l, RC-2: ≤ 250 µg/l), Chrom …“).
  */
-export function pruefeText(textRoh, eintraege) {
+export function pruefeText(textRoh, eintraege, optionen = {}) {
+  const nachher = optionen.nachherFaktor ?? 1;
   const text = normalisiere(textRoh);
   const kandidaten = [];
   for (const e of eintraege) {
@@ -110,7 +114,7 @@ export function pruefeText(textRoh, eintraege) {
         let dist = Infinity;
         for (const [as, ae] of anker) {
           if (ae <= m.index && m.index - ae <= 220) dist = Math.min(dist, m.index - ae);
-          else if (as >= m.index && as - (m.index + m[0].length) <= 200) dist = Math.min(dist, Math.max(0, as - m.index));
+          else if (as >= m.index && as - (m.index + m[0].length) <= 200) dist = Math.min(dist, Math.max(0, as - m.index) * nachher);
         }
         if (dist === Infinity) continue;
         const wert = leseWert(m.groups.w);

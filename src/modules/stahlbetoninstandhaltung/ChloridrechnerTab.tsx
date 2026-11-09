@@ -13,6 +13,8 @@ import { FormulaText } from '@/src/components/ui/FormulaText';
 import { formatDeZahl, formatDeWert } from '@/src/utils/numberFormat';
 import inhalt from '@/content/stahlbetoninstandhaltung/ChloridrechnerTab.json';
 import { MdText } from '@/src/components/inhalt/MdText';
+import { ErgebnisAnsage, ansageWert, kurzzeile } from '@/src/components/ui/ErgebnisAnsage';
+import { reglerName, reglerEinheit } from '@/src/lib/reglerName';
 
 export interface ChloridrechnerTabProps {
   bauteilAlter: number;
@@ -63,6 +65,8 @@ export default function ChloridrechnerTab({ bauteilAlter, betondeckung, chloridC
               max="4.0"
               step="0.1"
               value={chloridCs}
+              aria-label={reglerName(inhalt.texte.oberflächenchlorid)}
+              aria-valuetext={`${formatDeZahl(chloridCs, 2)}${reglerEinheit(inhalt.texte.mZement)}`}
               onChange={(e) => setChloridCs(parseFloat(e.target.value))}
               className="w-full accent-amber-600 cursor-pointer"
             />
@@ -82,6 +86,8 @@ export default function ChloridrechnerTab({ bauteilAlter, betondeckung, chloridC
               max="5.0"
               step="0.1"
               value={diffD}
+              aria-label={reglerName(inhalt.texte.diffusionskoeffizient)}
+              aria-valuetext={`${formatDeZahl(diffD, 1)}${reglerEinheit(inhalt.texte.t10MS)}`}
               onChange={(e) => setDiffD(parseFloat(e.target.value))}
               className="w-full accent-amber-600 cursor-pointer"
             />
@@ -102,6 +108,8 @@ export default function ChloridrechnerTab({ bauteilAlter, betondeckung, chloridC
               max="60"
               step="1"
               value={bauteilAlter}
+              aria-label={reglerName(inhalt.texte.bauteilalterExpositionsdauer)}
+              aria-valuetext={`${formatDeWert(bauteilAlter)} Jahre`}
               onChange={(e) => setBauteilAlter(parseInt(e.target.value, 10))}
               className="w-full accent-amber-600 cursor-pointer"
             />
@@ -121,11 +129,14 @@ export default function ChloridrechnerTab({ bauteilAlter, betondeckung, chloridC
               max="65"
               step="5"
               value={betondeckung}
+              aria-label={reglerName(inhalt.texte.betondeckung)}
+              aria-valuetext={`${formatDeWert(betondeckung)} mm`}
               onChange={(e) => setBetondeckung(parseInt(e.target.value, 10))}
               className="w-full accent-amber-600 cursor-pointer"
             />
           </div>
 
+          <ErgebnisAnsage text={kurzzeile(ansageWert(`Chloridgehalt in ${formatDeWert(betondeckung)} mm Tiefe`, chloridStats.cAtRebar, 2, 'M.-%'), chloridStats.rebarStatus === 'critical' ? inhalt.werte.bewehrungsebeneDepassiviert : chloridStats.rebarStatus === 'warning' ? inhalt.werte.kritischerSchwellenbereich : inhalt.werte.bewehrungNochPassivGeschützt)} />
           {/* Status Callout */}
           <div className={`p-3.5 rounded-xl border mt-2 leading-relaxed ${
             chloridStats.rebarStatus === 'critical'
@@ -164,7 +175,7 @@ export default function ChloridrechnerTab({ bauteilAlter, betondeckung, chloridC
             </div>
 
             <div className="w-full bg-slate-50 border border-home-grau/25 rounded-xl p-3 flex flex-col items-center justify-center">
-              <svg width="100%" height="210" viewBox="0 0 500 210" className="select-none font-mono">
+              <svg role="img" aria-label="Diagramm: berechnetes Chlorid-Tiefenprofil C(x)" width="100%" height="210" viewBox="0 0 500 210" className="select-none font-mono">
                 {/* Grid lines */}
                 <line x1="50" y1="30" x2="470" y2="30" stroke="#cbd5e1" strokeWidth="1" strokeDasharray="3,3" />
                 <line x1="50" y1="80" x2="470" y2="80" stroke="#cbd5e1" strokeWidth="1" strokeDasharray="3,3" />

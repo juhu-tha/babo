@@ -21,6 +21,7 @@ import inhalt from '@/content/waermeeigenschaften/Waermeeigenschaften.json';
 import { MdText } from '@/src/components/inhalt/MdText';
 import { EingabeHinweise } from '@/src/components/ui/EingabeHinweise';
 import { thermischeKennwerte, waermeeindringkoeffizient, erforderlicheDaemmdicke } from '@/src/calc/waermeschutz';
+import { ErgebnisAnsage, ansageWert, kurzzeile } from '@/src/components/ui/ErgebnisAnsage';
 
 ChartJS.register(
   CategoryScale,
@@ -245,6 +246,7 @@ export default function Waermeeigenschaften() {
                 </div>
               </div>
               <EingabeHinweise hinweise={results.hinweise} />
+              <ErgebnisAnsage text={kurzzeile(ansageWert('Temperaturleitfähigkeit a', results.a_mm2_s, 2, 'mm²/s'), ansageWert('Wärmeeindringkoeffizient b', results.b, 0, 'J/(m²K√s)'), ansageWert('Kontakttemperatur', results.T_contact, 1, '°C'))} />
               <div className="h-48">
                 <Bar 
                   data={results.chartData} 
@@ -264,6 +266,7 @@ export default function Waermeeigenschaften() {
               <h3 className="font-semibold mb-4 text-text-main"><MdText text={inhalt.texte.erforderlicheDämmdicke} /></h3>
               
               <EingabeHinweise hinweise={daemmResults.hinweise} />
+              <ErgebnisAnsage text={!Number.isFinite(daemmResults.rInsReq) ? 'erforderliche Dämmdicke –' : daemmResults.rInsReq <= 0 ? 'Bestandswand erreicht den Ziel-U-Wert ohne Dämmung' : `erforderliche Dämmdicke: ${daemmMaterials.map((m, i) => `${m.name} ${formatDeZahl(daemmResults.thicknesses[i], 1)} cm`).join(', ')}`} />
               {daemmResults.rInsReq <= 0 ? (
                 <div className="p-4 bg-emerald-50 text-emerald-800 rounded-lg border border-emerald-200"><MdText text={inhalt.texte.dieBestandswandErreichtDen} /></div>
               ) : (

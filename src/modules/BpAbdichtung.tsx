@@ -27,6 +27,8 @@ import {
 import inhalt from '@/content/bpabdichtung/BpAbdichtung.json';
 import { MdText } from '@/src/components/inhalt/MdText';
 import { AuswahlGruppe, alsOption } from '../components/ui/Auswahlgruppe';
+import { ErgebnisAnsage, ansageWert, kurzzeile } from '@/src/components/ui/ErgebnisAnsage';
+import { reglerName } from '@/src/lib/reglerName';
 
 export default function BpAbdichtung() {
   const [activeTab, setActiveTab] = useState<'allgemein' | 'praxis' | 'innovation'>('allgemein');
@@ -463,6 +465,8 @@ export default function BpAbdichtung() {
                       max="20" 
                       step="1"
                       value={fbWaterPressure}
+                      aria-label="Wassersäule"
+                      aria-valuetext={`${formatDeWert(fbWaterPressure)} m`}
                       onChange={(e) => setFbWaterPressure(parseInt(e.target.value))}
                       className="w-full accent-shiraz"
                     />
@@ -484,6 +488,8 @@ export default function BpAbdichtung() {
                       max="60" 
                       step="5"
                       value={fbSlabThickness}
+                      aria-label={reglerName(inhalt.texte.wandSohldickeD)}
+                      aria-valuetext={`${formatDeWert(fbSlabThickness)} cm`}
                       onChange={(e) => setFbSlabThickness(parseInt(e.target.value))}
                       className="w-full accent-shiraz"
                     />
@@ -533,6 +539,7 @@ export default function BpAbdichtung() {
                 return (
                   <div className="bg-white p-4 border border-zinc-200 rounded-lg space-y-3 text-xs">
                     <h5 className="font-bold text-zinc-800"><MdText text={inhalt.texte.prüfberichtFugenbandEignungNach} /></h5>
+                    <ErgebnisAnsage text={kurzzeile(ansageWert('Fugenband: Mindestbreite', reqWidth, 'frei', 'mm'), fb.typ, isThicknessOk ? 'Bauteildicke ausreichend' : 'Bauteildicke zu gering', isGkCoverOk ? 'Randabstand eingehalten' : 'Randabstand zu gering')} />
 
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-x-6 gap-y-1.5 font-mono text-[11px] text-slate-800">
                       <div>
@@ -601,6 +608,8 @@ export default function BpAbdichtung() {
                       max="15" 
                       step="1"
                       value={isLength}
+                      aria-label="Länge"
+                      aria-valuetext={`${formatDeWert(isLength)} m`}
                       onChange={(e) => setIsLength(parseInt(e.target.value))}
                       className="w-full accent-shiraz"
                     />
@@ -621,6 +630,8 @@ export default function BpAbdichtung() {
                       max="20" 
                       step="1"
                       value={isConCover}
+                      aria-label={reglerName(inhalt.texte.abstandZumRand)}
+                      aria-valuetext={`${formatDeWert(isConCover)} cm`}
                       onChange={(e) => setIsConCover(parseInt(e.target.value))}
                       className="w-full accent-shiraz"
                     />
@@ -641,6 +652,8 @@ export default function BpAbdichtung() {
                       max="30" 
                       step="2"
                       value={isFasteningInterval}
+                      aria-label="Clip-Intervall"
+                      aria-valuetext={`${formatDeWert(isFasteningInterval)} cm`}
                       onChange={(e) => setIsFasteningInterval(parseInt(e.target.value))}
                       className="w-full accent-shiraz"
                     />
@@ -795,7 +808,7 @@ export default function BpAbdichtung() {
                 <div className="bg-red-50/25 border border-red-200/50 p-4 rounded-xl space-y-2 flex flex-col justify-between">
                   <div className="space-y-1">
                     <span className="text-[9px] font-black uppercase text-red-700 bg-red-50 px-1.5 py-0.5 rounded tracking-wider">KRAFTSCHLÜSSIG</span>
-                    <h5 className="font-extrabold text-text-main text-xs mt-1"><MdText text={inhalt.texte.epoxidharzeEp} /></h5>
+                    <h4 className="font-extrabold text-text-main text-xs mt-1 wie-h5"><MdText text={inhalt.texte.epoxidharzeEp} /></h4>
                     <p className="text-[11px] text-text-main/60 leading-normal"><MdText text={inhalt.texte.hoheHaftfestigkeitAufTrockenen} /></p>
                   </div>
                   <div className="bg-white/80 p-2 rounded text-[10px] text-text-main/50 font-bold border border-home-grau/10"><MdText text={inhalt.texte.anwendungTrockenFeuchtTragwerksstabilisi} /></div>
@@ -804,7 +817,7 @@ export default function BpAbdichtung() {
                 <div className="bg-emerald-50/25 border border-emerald-200/50 p-4 rounded-xl space-y-2 flex flex-col justify-between">
                   <div className="space-y-1">
                     <span className="text-[9px] font-black uppercase text-emerald-700 bg-emerald-50 px-1.5 py-0.5 rounded tracking-wider"><MdText text={inhalt.texte.elastischDichtend} /></span>
-                    <h5 className="font-extrabold text-text-main text-xs mt-1"><MdText text={inhalt.texte.polyurethanharzePur} /></h5>
+                    <h4 className="font-extrabold text-text-main text-xs mt-1 wie-h5"><MdText text={inhalt.texte.polyurethanharzePur} /></h4>
                     <p className="text-[11px] text-text-main/60 leading-normal"><MdText text={inhalt.texte.elastischesHarzFürDehnfähiges} /></p>
                   </div>
                   <div className="bg-white/80 p-2 rounded text-[10px] text-text-main/50 font-bold border border-home-grau/10"><MdText text={inhalt.texte.anwendungWasserführendeRisseRisse} /></div>
@@ -813,7 +826,7 @@ export default function BpAbdichtung() {
                 <div className="bg-amber-50/25 border border-amber-200/50 p-4 rounded-xl space-y-2 flex flex-col justify-between">
                   <div className="space-y-1">
                     <span className="text-[9px] font-black uppercase text-amber-700 bg-amber-50 px-1.5 py-0.5 rounded tracking-wider"><MdText text={inhalt.texte.mineralischFüllend} /></span>
-                    <h5 className="font-extrabold text-text-main text-xs mt-1"><MdText text={inhalt.texte.zementsuspensionenZs} /></h5>
+                    <h4 className="font-extrabold text-text-main text-xs mt-1 wie-h5"><MdText text={inhalt.texte.zementsuspensionenZs} /></h4>
                     <p className="text-[11px] text-text-main/60 leading-normal"><MdText text={inhalt.texte.feinstzementleimZurMineralischenAuffüllu} /></p>
                   </div>
                   <div className="bg-white/80 p-2 rounded text-[10px] text-text-main/50 font-bold border border-home-grau/10"><MdText text={inhalt.texte.anwendungHohlraumverfüllungDenkmalpflege} /></div>
@@ -822,7 +835,7 @@ export default function BpAbdichtung() {
                 <div className="bg-blue-50/25 border border-blue-200/50 p-4 rounded-xl space-y-2 flex flex-col justify-between">
                   <div className="space-y-1">
                     <span className="text-[9px] font-black uppercase text-blue-700 bg-blue-50 px-1.5 py-0.5 rounded tracking-wider"><MdText text={inhalt.texte.gelbildungExtern} /></span>
-                    <h5 className="font-extrabold text-text-main text-xs mt-1"><MdText text={inhalt.texte.acrylatgeleAy} /></h5>
+                    <h4 className="font-extrabold text-text-main text-xs mt-1 wie-h5"><MdText text={inhalt.texte.acrylatgeleAy} /></h4>
                     <p className="text-[11px] text-text-main/60 leading-normal"><MdText text={inhalt.texte.wasserquellfähigeGeleMitExtrem} /></p>
                   </div>
                   <div className="bg-white/80 p-2 rounded text-[10px] text-text-main/50 font-bold border border-home-grau/10"><MdText text={inhalt.texte.anwendungSchleierinjektionenErdseitigKel} /></div>

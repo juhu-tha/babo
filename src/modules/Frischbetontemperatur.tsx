@@ -4,6 +4,7 @@ import React, { useState, useMemo } from 'react';
 import { Slider } from '@/src/components/ui/Slider';
 import inhalt from '@/content/frischbetontemperatur/Frischbetontemperatur.json';
 import { MdText } from '@/src/components/inhalt/MdText';
+import { ErgebnisAnsage, ansageWert } from '@/src/components/ui/ErgebnisAnsage';
 
 export default function Frischbetontemperatur() {
   // Massen in kg/m³
@@ -179,6 +180,7 @@ export default function Frischbetontemperatur() {
                 </div>
               )}
               <h3 className="text-sm font-bold text-text-main/70 mb-2"><MdText text={inhalt.texte.erwarteteFrischbetontemperatur} /></h3>
+              <ErgebnisAnsage text={ansageWert('erwartete Frischbetontemperatur', results.tFrischbeton, 1, '°C')} />
               <div className={`text-5xl font-bold ${results.tFrischbeton > 30 ? 'text-torch-red' : results.tFrischbeton < 5 ? 'text-blue-600' : 'text-emerald-600'}`}>
                 {formatDeZahl(results.tFrischbeton, 1)} °C
               </div>
@@ -228,7 +230,7 @@ export default function Frischbetontemperatur() {
             <div className="bg-white p-5 rounded-xl border border-home-grau/30 shadow-sm">
               <h3 className="font-semibold mb-4 text-text-main"><MdText text={inhalt.texte.schematischeEnergiebilanz} /></h3>
               <div className="relative w-full h-40 bg-off-white rounded-lg border border-home-grau/30 overflow-hidden flex items-center justify-center">
-                <svg width="100%" height="100%" viewBox="0 0 400 160" preserveAspectRatio="xMidYMid meet">
+                <svg role="img" aria-label="Schematische Energiebilanz der Frischbetontemperatur" width="100%" height="100%" viewBox="0 0 400 160" preserveAspectRatio="xMidYMid meet">
                   {/* Mischer */}
                   <path d="M 150 120 L 250 120 L 270 60 L 130 60 Z" fill="#cbd5e1" stroke="#64748b" strokeWidth="2" />
                   <path d="M 130 60 Q 200 80 270 60" fill="#94a3b8" />

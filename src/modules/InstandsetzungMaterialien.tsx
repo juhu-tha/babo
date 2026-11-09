@@ -228,8 +228,8 @@ export default function InstandsetzungMaterialien({ initialMaterial = 'holz' }: 
 
           {activeSubSection === 'praxis' && (
             <div {...reiterPanel('instmat-bereich', activeSubSection)} className="bg-slate-50 border border-home-grau/30 p-5 rounded-xl space-y-3 text-xs">
-              <h4 className="font-bold text-sm text-slate-900 flex items-center gap-2">
-                <AlertTriangle className="text-shiraz" size={16} /><MdText text={inhalt.texte.häufigerPraxisfehlerLuftdichtesEinpacken} /></h4>
+              <h3 className="font-bold text-sm text-slate-900 flex items-center gap-2 wie-h4">
+                <AlertTriangle className="text-shiraz" size={16} /><MdText text={inhalt.texte.häufigerPraxisfehlerLuftdichtesEinpacken} /></h3>
               <p className="text-slate-800 leading-relaxed"><MdText text={inhalt.texte.schadensbildBeiDerEnergetischen} /></p>
               <p className="text-slate-800 leading-relaxed"><MdText text={inhalt.texte.fataleFolgeRaumseitigEindringende} /></p>
               <p className="text-slate-800 leading-relaxed"><MdText text={inhalt.texte.fachgerechteSanierungStirnUnd} /></p>
@@ -401,8 +401,8 @@ export default function InstandsetzungMaterialien({ initialMaterial = 'holz' }: 
 
           {activeSubSection === 'praxis' && (
             <div {...reiterPanel('instmat-bereich', activeSubSection)} className="bg-slate-50 border border-home-grau/30 p-5 rounded-xl space-y-3 text-xs">
-              <h4 className="font-bold text-sm text-slate-900 flex items-center gap-2">
-                <AlertTriangle className="text-shiraz" size={16} /><MdText text={inhalt.texte.häufigerPraxisfehlerTaupunktunterschreit} /></h4>
+              <h3 className="font-bold text-sm text-slate-900 flex items-center gap-2 wie-h4">
+                <AlertTriangle className="text-shiraz" size={16} /><MdText text={inhalt.texte.häufigerPraxisfehlerTaupunktunterschreit} /></h3>
               <p className="text-slate-800 leading-relaxed"><MdText text={inhalt.texte.ursacheBeimBeschichtenVon} /></p>
               <p className="text-slate-800 leading-relaxed"><MdText text={inhalt.texte.anforderungDinEnIso} /></p>
               <p className="text-slate-800 leading-relaxed"><MdText text={inhalt.texte.schadensfolgeEinUnsichtbarerMikroskopisc} /></p>
@@ -502,8 +502,8 @@ export default function InstandsetzungMaterialien({ initialMaterial = 'holz' }: 
 
           {activeSubSection === 'praxis' && (
             <div {...reiterPanel('instmat-bereich', activeSubSection)} className="bg-slate-50 border border-home-grau/30 p-5 rounded-xl space-y-3 text-xs">
-              <h4 className="font-bold text-sm text-slate-900 flex items-center gap-2">
-                <AlertTriangle className="text-shiraz" size={16} /><MdText text={inhalt.texte.häufigerPraxisfehlerSchweißenAuf} /></h4>
+              <h3 className="font-bold text-sm text-slate-900 flex items-center gap-2 wie-h4">
+                <AlertTriangle className="text-shiraz" size={16} /><MdText text={inhalt.texte.häufigerPraxisfehlerSchweißenAuf} /></h3>
               <p className="text-slate-800 leading-relaxed"><MdText text={inhalt.texte.problemBeiDerInstandsetzung} /></p>
               <p className="text-slate-800 leading-relaxed"><MdText text={inhalt.texte.schadensursacheDurchLangjährigeUv} /></p>
               <p className="text-slate-800 leading-relaxed"><MdText text={inhalt.texte.fachgerechtesVorgehenNachDvs} /></p>
@@ -598,8 +598,8 @@ export default function InstandsetzungMaterialien({ initialMaterial = 'holz' }: 
 
           {activeSubSection === 'praxis' && (
             <div {...reiterPanel('instmat-bereich', activeSubSection)} className="bg-slate-50 border border-home-grau/30 p-5 rounded-xl space-y-3 text-xs">
-              <h4 className="font-bold text-sm text-slate-900 flex items-center gap-2">
-                <AlertTriangle className="text-shiraz" size={16} /><MdText text={inhalt.texte.häufigerPraxisfehlerMangelhafterSchichte} /></h4>
+              <h3 className="font-bold text-sm text-slate-900 flex items-center gap-2 wie-h4">
+                <AlertTriangle className="text-shiraz" size={16} /><MdText text={inhalt.texte.häufigerPraxisfehlerMangelhafterSchichte} /></h3>
               <p className="text-slate-800 leading-relaxed"><MdText text={inhalt.texte.schadensbildNach2Bis} /></p>
               <p className="text-slate-800 leading-relaxed"><MdText text={inhalt.texte.ursacheVorDemEinbau} /></p>
               <p className="text-slate-800 leading-relaxed"><MdText text={inhalt.texte.qualitätsprüfungNachZtvAsphalt} /></p>
@@ -674,8 +674,8 @@ export default function InstandsetzungMaterialien({ initialMaterial = 'holz' }: 
 
           {activeSubSection === 'praxis' && (
             <div {...reiterPanel('instmat-bereich', activeSubSection)} className="bg-slate-50 border border-home-grau/30 p-5 rounded-xl space-y-3 text-xs">
-              <h4 className="font-bold text-sm text-slate-900 flex items-center gap-2">
-                <AlertTriangle className="text-shiraz" size={16} /><MdText text={inhalt.texte.häufigerPraxisfehlerZementputzAuf} /></h4>
+              <h3 className="font-bold text-sm text-slate-900 flex items-center gap-2 wie-h4">
+                <AlertTriangle className="text-shiraz" size={16} /><MdText text={inhalt.texte.häufigerPraxisfehlerZementputzAuf} /></h3>
               <p className="text-slate-800 leading-relaxed"><MdText text={inhalt.texte.fehlerAufFeuchtemSalzbelastetem} /></p>
               <p className="text-slate-800 leading-relaxed"><MdText text={inhalt.texte.fataleFolgeZementputzBesitzt} /></p>
               <p className="text-slate-800 leading-relaxed"><MdText text={inhalt.texte.lösungAltputzMindestens80} /></p>

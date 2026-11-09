@@ -13,8 +13,8 @@ export default function ZeitTheorieTab() {
         {/* Box 1: Zeitliche Festigkeitsentwicklung */}
         <div className="bg-white p-5 rounded-2xl border border-home-grau/30 shadow-sm flex flex-col justify-between">
           <div>
-            <h4 className="font-bold text-slate-900 text-sm flex items-center gap-2 mb-2">
-              <Clock size={16} className="text-shiraz" /><MdText text={inhalt.texte.festigkeitsentwicklungCcTAbschnitt} /></h4>
+            <h3 className="font-bold text-slate-900 text-sm flex items-center gap-2 mb-2 wie-h4">
+              <Clock size={16} className="text-shiraz" /><MdText text={inhalt.texte.festigkeitsentwicklungCcTAbschnitt} /></h3>
             <p className="text-xs text-slate-600 leading-relaxed mb-3"><MdText text={inhalt.texte.dieDruckfestigkeitWächstMit} /></p>
             <div className="p-3 bg-off-white rounded-xl border border-home-grau/25 text-center my-2 overflow-x-auto">
               <BlockMath math="f_{cm}(t) = \beta_{cc}(t) \cdot f_{cm}" />
@@ -32,8 +32,8 @@ export default function ZeitTheorieTab() {
         {/* Box 2: Spannungs-Dehnungs-Gesetze */}
         <div className="bg-white p-5 rounded-2xl border border-home-grau/30 shadow-sm flex flex-col justify-between">
           <div>
-            <h4 className="font-bold text-slate-900 text-sm flex items-center gap-2 mb-2">
-              <Activity size={16} className="text-indigo-600" /><MdText text={inhalt.texte.spannungsDehnungsLinienAbschnitt} /></h4>
+            <h3 className="font-bold text-slate-900 text-sm flex items-center gap-2 mb-2 wie-h4">
+              <Activity size={16} className="text-indigo-600" /><MdText text={inhalt.texte.spannungsDehnungsLinienAbschnitt} /></h3>
             <p className="text-xs text-slate-600 leading-relaxed mb-3"><MdText text={inhalt.texte.fürDieQuerschnittsbemessungIm} /></p>
             <div className="p-3 bg-off-white rounded-xl border border-home-grau/25 text-center my-2 overflow-x-auto">
               <BlockMath math="\sigma_c = \begin{cases} f_{cd} \cdot \left[ 1 - \left(1 - \frac{\varepsilon_c}{\varepsilon_{c2}}\right)^n \right] & \text{für } 0 \le \varepsilon_c \le \varepsilon_{c2} \ f_{cd} & \text{für } \varepsilon_{c2} \le \varepsilon_c \le \varepsilon_{cu2} \end{cases}" />
@@ -47,8 +47,8 @@ export default function ZeitTheorieTab() {
 
       {/* Detaillierter Vergleich der Schwindarten */}
       <div className="bg-white p-6 rounded-2xl shadow-sm border border-home-grau/30">
-        <h4 className="font-bold text-slate-900 text-base mb-3 flex items-center gap-2">
-          <Droplets size={18} className="text-rose-600" /><MdText text={inhalt.texte.trocknungsschwindenVsAutogenesSchwinden} /></h4>
+        <h3 className="font-bold text-slate-900 text-base mb-3 flex items-center gap-2 wie-h4">
+          <Droplets size={18} className="text-rose-600" /><MdText text={inhalt.texte.trocknungsschwindenVsAutogenesSchwinden} /></h3>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 text-xs text-slate-700 leading-relaxed">
           <div className="p-4 bg-off-white rounded-xl border border-home-grau/20">

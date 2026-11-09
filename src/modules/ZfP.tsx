@@ -371,6 +371,12 @@ export default function ZfP() {
 
   return (
     <div className="flex flex-col gap-8">
+      {/* Modulüberschrift nach der Regel „Modultitel“ (docs/architektur.md) */}
+      <div className="bg-white p-6 rounded-2xl shadow-sm border border-home-grau/30 flex flex-col gap-2">
+        <h2 className="text-2xl font-bold text-text-main flex items-center gap-2">
+          <Search className="text-shiraz" aria-hidden="true" /><MdText text={inhalt.texte.zfpModultitel} /></h2>
+        <p className="text-sm text-text-main/80"><MdText text={inhalt.texte.zfpModulEinleitung} /></p>
+      </div>
       <ReiterLeiste label="Verfahrensgruppen" className="flex flex-wrap gap-2 pb-3 border-b border-home-grau/20">
         <button {...alsReiter(activeTab === 'mechanisch', 'zfp-bereich', 'mechanisch')}
           className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${

@@ -12,6 +12,8 @@ import { MdText } from '@/src/components/inhalt/MdText';
 import { EingabeHinweise } from '@/src/components/ui/EingabeHinweise';
 import type { Hinweis } from '@/src/calc/plausibilitaet';
 import { pren as prenWirksumme, gefuegeklasse } from '@/src/calc/werkstoffmodelle';
+import { ErgebnisAnsage, ansageWert, kurzzeile } from '@/src/components/ui/ErgebnisAnsage';
+import { reglerName } from '@/src/lib/reglerName';
 
 interface StahlWerkstoffkundeProps {
   activeTab: "steckbrief" | "spannungsdehnung" | "stahlsorten" | "allgemein" | "walzen" | "schweissen" | "legierungen";
@@ -143,6 +145,7 @@ export default function StahlWerkstoffkunde({ activeTab, alloyC, alloyCr, alloyM
                 </div>
               </div>
               <EingabeHinweise hinweise={hinweiseErmuedung} />
+              <ErgebnisAnsage text={kurzzeile(ansageWert(`Abminderung bei ${formatDeZahl(temp, 0)} °C: k_y`, ky, 2), ansageWert('k_E', kE, 2), `ertragbare Lastwechsel ${nR === Infinity || nR > 1e8 ? inhalt.werte.dauerfest : formatDeZahl(nR, 0)}`)} />
             </div>
 
             <div className="border-t border-home-grau/30 pt-4">
@@ -214,6 +217,7 @@ export default function StahlWerkstoffkunde({ activeTab, alloyC, alloyCr, alloyM
             </div>
             <p className="text-xs text-home-grau mt-3"><MdText text={inhalt.texte.eineHoheStreckenenergieBei} /></p>
             <EingabeHinweise hinweise={hinweiseSchweissen} />
+            <ErgebnisAnsage text={ansageWert('Breite der Zugeigenspannungszone b_t', weldResults.b_t, 1, 'mm')} />
           </div>
         )}
 
@@ -232,6 +236,8 @@ export default function StahlWerkstoffkunde({ activeTab, alloyC, alloyCr, alloyM
                 max="30"
                 step="0.5"
                 value={alloyCr}
+                aria-label="Chrom (Cr)"
+                aria-valuetext={`${formatDeZahl(alloyCr, 1)}%`}
                 onChange={(e) => setAlloyCr(Number(e.target.value))}
                 className="w-full accent-shiraz h-1 cursor-pointer"
               />
@@ -248,6 +254,8 @@ export default function StahlWerkstoffkunde({ activeTab, alloyC, alloyCr, alloyM
                 max="25"
                 step="0.5"
                 value={alloyNi}
+                aria-label="Nickel (Ni)"
+                aria-valuetext={`${formatDeZahl(alloyNi, 1)}%`}
                 onChange={(e) => setAlloyNi(Number(e.target.value))}
                 className="w-full accent-shiraz h-1 cursor-pointer"
               />
@@ -264,6 +272,8 @@ export default function StahlWerkstoffkunde({ activeTab, alloyC, alloyCr, alloyM
                 max="10"
                 step="0.1"
                 value={alloyMo}
+                aria-label={reglerName(inhalt.texte.molybdänMo)}
+                aria-valuetext={`${formatDeZahl(alloyMo, 1)}%`}
                 onChange={(e) => setAlloyMo(Number(e.target.value))}
                 className="w-full accent-shiraz h-1 cursor-pointer"
               />
@@ -280,6 +290,8 @@ export default function StahlWerkstoffkunde({ activeTab, alloyC, alloyCr, alloyM
                 max="1.5"
                 step="0.01"
                 value={alloyC}
+                aria-label={reglerName(inhalt.texte.kohlenstoffC)}
+                aria-valuetext={`${formatDeZahl(alloyC, 2)}%`}
                 onChange={(e) => setAlloyC(Number(e.target.value))}
                 className="w-full accent-shiraz h-1 cursor-pointer"
               />
@@ -360,7 +372,7 @@ export default function StahlWerkstoffkunde({ activeTab, alloyC, alloyCr, alloyM
             <div className="bg-white p-5 rounded-xl border border-home-grau/30 shadow-sm">
               <h3 className="font-semibold mb-4 text-text-main"><MdText text={inhalt.texte.schematischeDarstellungErmüdungKerbwirku} /></h3>
               <div className="flex flex-col items-center bg-off-white rounded-lg border border-home-grau/30 p-4">
-                <svg width="100%" height="160" viewBox="0 0 350 160">
+                <svg role="img" aria-label="Schematische Darstellung: Ermüdung durch Kerbwirkung" width="100%" height="160" viewBox="0 0 350 160">
                   {/* Bauteil mit Kerbe */}
                   <path d="M 50 40 L 150 40 Q 175 40 175 60 Q 175 40 200 40 L 300 40 L 300 120 L 200 120 Q 175 120 175 100 Q 175 120 150 120 L 50 120 Z" fill="#cbd5e1" stroke="#64748b" strokeWidth="2" />
 
@@ -397,6 +409,7 @@ export default function StahlWerkstoffkunde({ activeTab, alloyC, alloyCr, alloyM
 
         {activeTab === 'walzen' && (
           <>
+            <ErgebnisAnsage text={kurzzeile(ansageWert('Druckeigenspannung max.', walzResults.maxCompressive, 0, 'MPa'), ansageWert('Zugeigenspannung max.', walzResults.maxTensile, 0, 'MPa'))} />
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div className="bg-white p-4 rounded-xl border border-home-grau/30 shadow-sm">
                 <div className="text-xs text-home-grau uppercase tracking-wider mb-1"><MdText text={inhalt.texte.maxDruckeigenspannungFlanschrand} /></div>

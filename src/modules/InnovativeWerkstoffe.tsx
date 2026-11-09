@@ -9,6 +9,7 @@ import inhalt from '@/content/innovativewerkstoffe/InnovativeWerkstoffe.json';
 import { MdText } from '@/src/components/inhalt/MdText';
 import { ModuleTabs, type ModulTab } from '@/src/components/ui/ModuleTabs';
 import { AuswahlGruppe, alsOption } from '../components/ui/Auswahlgruppe';
+import { ErgebnisAnsage, ansageWert, kurzzeile } from '@/src/components/ui/ErgebnisAnsage';
 
 interface MaterialProfile {
   id: string;
@@ -475,8 +476,8 @@ export default function InnovativeWerkstoffe() {
                   {/* Option 1: Lost formwork */}
                   <div className="bg-white p-6 rounded-2xl border border-home-grau/30 shadow-sm flex flex-col justify-between">
                     <div>
-                      <h4 className="font-bold text-slate-900 text-sm mb-2 flex items-center gap-2">
-                        <span className="bg-violet-50 text-violet-700 font-mono text-xs px-2 py-0.5 rounded">Option A</span><MdText text={inhalt.texte.ausgießenVonGedrucktenSchalungskernen} /></h4>
+                      <h3 className="font-bold text-slate-900 text-sm mb-2 flex items-center gap-2 wie-h4">
+                        <span className="bg-violet-50 text-violet-700 font-mono text-xs px-2 py-0.5 rounded">Option A</span><MdText text={inhalt.texte.ausgießenVonGedrucktenSchalungskernen} /></h3>
                       <p className="text-xs text-slate-600 leading-relaxed mb-4"><MdText text={inhalt.texte.dasAmHäufigstenPraktizierte} /></p>
                       <ul className="text-xs text-slate-600 space-y-1.5 list-disc pl-4">
                         <li><MdText text={inhalt.texte.kompatibelMitStandardmäßigemBauordnungsr} /></li>
@@ -490,8 +491,8 @@ export default function InnovativeWerkstoffe() {
                   {/* Option 2: Nozzle Fiber Feed */}
                   <div className="bg-white p-6 rounded-2xl border border-home-grau/30 shadow-sm flex flex-col justify-between">
                     <div>
-                      <h4 className="font-bold text-slate-900 text-sm mb-2 flex items-center gap-2">
-                        <span className="bg-violet-50 text-violet-700 font-mono text-xs px-2 py-0.5 rounded">Option B</span><MdText text={inhalt.texte.drahtFasermitextrusionInNozzle} /></h4>
+                      <h3 className="font-bold text-slate-900 text-sm mb-2 flex items-center gap-2 wie-h4">
+                        <span className="bg-violet-50 text-violet-700 font-mono text-xs px-2 py-0.5 rounded">Option B</span><MdText text={inhalt.texte.drahtFasermitextrusionInNozzle} /></h3>
                       <p className="text-xs text-slate-600 leading-relaxed mb-4"><MdText text={inhalt.texte.einHochautomatisierterHighTech} /></p>
                       <ul className="text-xs text-slate-600 space-y-1.5 list-disc pl-4">
                         <li><MdText text={inhalt.texte.t100AutomatisierterGesamtprozess} /></li>
@@ -505,8 +506,8 @@ export default function InnovativeWerkstoffe() {
                   {/* Option 3: Textile mesh */}
                   <div className="bg-white p-6 rounded-2xl border border-home-grau/30 shadow-sm flex flex-col justify-between">
                     <div>
-                      <h4 className="font-bold text-slate-900 text-sm mb-2 flex items-center gap-2">
-                        <span className="bg-violet-50 text-violet-700 font-mono text-xs px-2 py-0.5 rounded">Option C</span><MdText text={inhalt.texte.manuelleEinbettungVonTextilgittern} /></h4>
+                      <h3 className="font-bold text-slate-900 text-sm mb-2 flex items-center gap-2 wie-h4">
+                        <span className="bg-violet-50 text-violet-700 font-mono text-xs px-2 py-0.5 rounded">Option C</span><MdText text={inhalt.texte.manuelleEinbettungVonTextilgittern} /></h3>
                       <p className="text-xs text-slate-600 leading-relaxed mb-4"><MdText text={inhalt.texte.derDruckprozessHältIn} /></p>
                       <ul className="text-xs text-slate-600 space-y-1.5 list-disc pl-4">
                         <li><MdText text={inhalt.texte.hervorragendeZugkraftverteilungImPlatten} /></li>
@@ -520,8 +521,8 @@ export default function InnovativeWerkstoffe() {
                   {/* Option 4: Post Tensioning */}
                   <div className="bg-white p-6 rounded-2xl border border-home-grau/30 shadow-sm flex flex-col justify-between">
                     <div>
-                      <h4 className="font-bold text-slate-900 text-sm mb-2 flex items-center gap-2">
-                        <span className="bg-violet-50 text-violet-700 font-mono text-xs px-2 py-0.5 rounded">Option D</span><MdText text={inhalt.texte.nachträglicheExterneVorspannungPost} /></h4>
+                      <h3 className="font-bold text-slate-900 text-sm mb-2 flex items-center gap-2 wie-h4">
+                        <span className="bg-violet-50 text-violet-700 font-mono text-xs px-2 py-0.5 rounded">Option D</span><MdText text={inhalt.texte.nachträglicheExterneVorspannungPost} /></h3>
                       <p className="text-xs text-slate-600 leading-relaxed mb-4"><MdText text={inhalt.texte.inDasBauteilWerden} /></p>
                       <ul className="text-xs text-slate-600 space-y-1.5 list-disc pl-4">
                         <li><MdText text={inhalt.texte.führtDasGesamteBauteil} /></li>
@@ -590,6 +591,8 @@ export default function InnovativeWerkstoffe() {
                           max="4.0"
                           step="0.1"
                           value={targetHeight}
+                          aria-label="Druckhöhe"
+                          aria-valuetext={`${formatDeZahl(targetHeight, 2)} m`}
                           onChange={(e) => setTargetHeight(parseFloat(e.target.value))}
                           className="w-full text-indigo-600 accent-indigo-600 cursor-pointer"
                         />
@@ -605,6 +608,8 @@ export default function InnovativeWerkstoffe() {
                           max="2.5"
                           step="0.1"
                           value={printSpeed}
+                          aria-label="Steigrate"
+                          aria-valuetext={`${formatDeZahl(printSpeed, 1)} m/h`}
                           onChange={(e) => setPrintSpeed(parseFloat(e.target.value))}
                           className="w-full text-indigo-600 accent-indigo-600 cursor-pointer"
                         />
@@ -620,6 +625,8 @@ export default function InnovativeWerkstoffe() {
                           max="20"
                           step="0.5"
                           value={thixotropy}
+                          aria-label="Thixotropierate"
+                          aria-valuetext={`${formatDeZahl(thixotropy, 1)} Pa/min`}
                           onChange={(e) => setThixotropy(parseFloat(e.target.value))}
                           className="w-full text-indigo-600 accent-indigo-600 cursor-pointer"
                         />
@@ -635,6 +642,8 @@ export default function InnovativeWerkstoffe() {
                             min="40"
                             max="180"
                             value={layerWidth3d}
+                            aria-label="Lagenbreite"
+                            aria-valuetext={`${formatDeWert(layerWidth3d)} mm`}
                             onChange={(e) => setLayerWidth3d(parseInt(e.target.value))}
                             className="w-full text-indigo-600 accent-indigo-600 cursor-pointer"
                           />
@@ -647,6 +656,8 @@ export default function InnovativeWerkstoffe() {
                             max="2400"
                             step="50"
                             value={concreteDensity}
+                            aria-label="Dichte"
+                            aria-valuetext={`${formatDeWert(concreteDensity)} kg/m³`}
                             onChange={(e) => setConcreteDensity(parseInt(e.target.value))}
                             className="w-full text-indigo-600 accent-indigo-600 cursor-pointer"
                           />
@@ -732,6 +743,8 @@ export default function InnovativeWerkstoffe() {
                         </div>
                       </div>
 
+                      <ErgebnisAnsage text={kurzzeile(isStable ? inhalt.werte.druckvorgangStabilSafe : isCritical ? inhalt.werte.achtungGrenzwertigStandsicher : inhalt.werte.einsturzStatischesVersagen,
+                        ansageWert('SF plastisch', sfPlasticVal, 2), ansageWert('SF Knicken', sfBucklingVal, 2))} />
                       {/* Numerical Details Grid */}
                       <div className="grid grid-cols-2 gap-4">
                         <div className="bg-slate-50 p-4 rounded-xl border border-slate-200">
@@ -849,7 +862,7 @@ export default function InnovativeWerkstoffe() {
                         </span>
                       </div>
                       
-                      <h4 className="font-extrabold text-sm text-slate-900">{mat.name}</h4>
+                      <h3 className="font-extrabold text-sm text-slate-900 wie-h4">{mat.name}</h3>
                       <p className="text-[11px] text-slate-500 mt-1 line-clamp-2 leading-tight">{mat.shortDesc}</p>
                     </div>
 
@@ -900,8 +913,8 @@ export default function InnovativeWerkstoffe() {
 
                 {/* Technical detailed description */}
                 <div>
-                  <h5 className="font-bold text-slate-900 text-xs uppercase tracking-widest font-mono mb-2 flex items-center gap-1.5">
-                    <Activity className="w-4 h-4 text-indigo-500" /><MdText text={inhalt.texte.funktionsweiseTechnologie} /></h5>
+                  <h4 className="font-bold text-slate-900 text-xs uppercase tracking-widest font-mono mb-2 flex items-center gap-1.5 wie-h5">
+                    <Activity className="w-4 h-4 text-indigo-500" /><MdText text={inhalt.texte.funktionsweiseTechnologie} /></h4>
                   <p className="text-xs text-slate-600 leading-relaxed bg-indigo-50/40 p-3.5 rounded-xl border border-indigo-100 font-semibold">
                     {selectedMaterialData.details}
                   </p>
@@ -910,7 +923,7 @@ export default function InnovativeWerkstoffe() {
                 {/* Pros and Cons */}
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   <div className="bg-emerald-50/50 p-4 rounded-2xl border border-emerald-100">
-                    <h5 className="font-bold text-emerald-900 text-xs uppercase tracking-widest font-mono mb-2.5 flex items-center gap-1">✔ Vorteile</h5>
+                    <h4 className="font-bold text-emerald-900 text-xs uppercase tracking-widest font-mono mb-2.5 flex items-center gap-1 wie-h5">✔ Vorteile</h4>
                     <ul className="space-y-2">
                       {selectedMaterialData.advantages.map((adv, idx) => (
                         <li key={idx} className="text-xs text-emerald-800 leading-snug flex items-start gap-1 font-semibold">
@@ -922,7 +935,7 @@ export default function InnovativeWerkstoffe() {
                   </div>
 
                   <div className="bg-red-50/30 p-4 rounded-2xl border border-red-100">
-                    <h5 className="font-bold text-red-950 text-xs uppercase tracking-widest font-mono mb-2.5 flex items-center gap-1"><MdText text={inhalt.texte.limitierungenRisiken} /></h5>
+                    <h4 className="font-bold text-red-950 text-xs uppercase tracking-widest font-mono mb-2.5 flex items-center gap-1 wie-h5"><MdText text={inhalt.texte.limitierungenRisiken} /></h4>
                     <ul className="space-y-2">
                       {selectedMaterialData.disadvantages.map((dis, idx) => (
                         <li key={idx} className="text-xs text-red-800 leading-snug flex items-start gap-1 font-semibold">
@@ -936,7 +949,7 @@ export default function InnovativeWerkstoffe() {
 
                 {/* Technical specification table */}
                 <div>
-                  <h5 className="font-bold text-slate-900 text-xs uppercase tracking-widest font-mono mb-2.5 flex items-center gap-1"><Box size={14} className="text-slate-500" /><MdText text={inhalt.texte.technischeKennwerteKennzahlen} /></h5>
+                  <h4 className="font-bold text-slate-900 text-xs uppercase tracking-widest font-mono mb-2.5 flex items-center gap-1 wie-h5"><Box size={14} className="text-slate-500" /><MdText text={inhalt.texte.technischeKennwerteKennzahlen} /></h4>
                   <div className="border border-home-grau/30 rounded-xl overflow-hidden shadow-xs">
                     <table className="w-full text-xs text-left">
                       <thead>
@@ -1196,7 +1209,7 @@ export default function InnovativeWerkstoffe() {
                 <div className="p-2.5 rounded-xl bg-orange-50 border border-orange-150 text-orange-600 w-fit">
                   <Cpu size={20} />
                 </div>
-                <h4 className="font-extrabold text-slate-900 text-sm"><MdText text={inhalt.texte.formgedächtnislegierungenSma} /></h4>
+                <h3 className="font-extrabold text-slate-900 text-sm wie-h4"><MdText text={inhalt.texte.formgedächtnislegierungenSma} /></h3>
                 <p className="text-xs text-slate-600 leading-normal font-semibold"><MdText text={inhalt.texte.metalleMetalleZB} /></p>
                 <div className="pt-2 border-t border-home-grau/30 text-[10px] text-slate-500 font-semibold font-medium leading-relaxed"><MdText text={inhalt.texte.anwendungVorspannenVonBetonbauteilen} /></div>
               </div>
@@ -1205,7 +1218,7 @@ export default function InnovativeWerkstoffe() {
                 <div className="p-2.5 rounded-xl bg-emerald-50 border border-emerald-150 text-emerald-600 w-fit">
                   <Leaf size={20} />
                 </div>
-                <h4 className="font-extrabold text-slate-900 text-sm"><MdText text={inhalt.texte.selbstheilenderBetonSelfHealing} /></h4>
+                <h3 className="font-extrabold text-slate-900 text-sm wie-h4"><MdText text={inhalt.texte.selbstheilenderBetonSelfHealing} /></h3>
                 <p className="text-xs text-slate-600 leading-normal font-semibold"><MdText text={inhalt.texte.einmischenVonBakteriensporenZ} /></p>
                 <div className="pt-2 border-t border-home-grau/30 text-[10px] text-slate-400 font-semibold font-medium leading-relaxed"><MdText text={inhalt.texte.heilungsEffektDringtDurch} /></div>
               </div>
@@ -1214,7 +1227,7 @@ export default function InnovativeWerkstoffe() {
                 <div className="p-2.5 rounded-xl bg-sky-50 border border-sky-150 text-sky-600 w-fit">
                   <Zap size={20} />
                 </div>
-                <h4 className="font-extrabold text-slate-900 text-sm"><MdText text={inhalt.texte.photokatalytischerBeton} /></h4>
+                <h3 className="font-extrabold text-slate-900 text-sm wie-h4"><MdText text={inhalt.texte.photokatalytischerBeton} /></h3>
                 <p className="text-xs text-slate-600 leading-normal font-semibold"><MdText text={inhalt.texte.fotokatalytischeVeredelungDerSichtbetonm} /></p>
                 <div className="pt-2 border-t border-home-grau/30 text-[10px] text-slate-400 font-semibold font-medium leading-relaxed"><MdText text={inhalt.texte.abgasreinigungUnterEinflussVon} /></div>
               </div>
@@ -1226,7 +1239,7 @@ export default function InnovativeWerkstoffe() {
               <div className="md:col-span-2 space-y-3">
                 <div className="flex items-center gap-1.5 text-indigo-650 font-bold text-xs uppercase tracking-wider font-mono">
                   <Sparkles className="w-4 h-4 text-indigo-500" /><MdText text={inhalt.texte.biologischeWerkstoffeDerZukunft} /></div>
-                <h4 className="text-xl font-bold text-slate-900"><MdText text={inhalt.texte.pilzmyzelBioKompositeIm} /></h4>
+                <h3 className="text-xl font-bold text-slate-900 wie-h4"><MdText text={inhalt.texte.pilzmyzelBioKompositeIm} /></h3>
                 <p className="text-xs text-slate-600 leading-relaxed font-semibold"><MdText text={inhalt.texte.forschendeNutzenDasFadenförmige} /></p>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-[10px] text-slate-500 pt-1.5 font-semibold leading-relaxed">
                   <div><MdText text={inhalt.texte.vorteil100KompostierbarVorteil} /></div>

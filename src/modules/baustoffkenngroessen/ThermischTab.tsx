@@ -7,6 +7,8 @@ import inhalt from '@/content/baustoffkenngroessen/ThermischTab.json';
 import { MdText } from '@/src/components/inhalt/MdText';
 import { FormulaDerivationBox } from '@/src/components/ui/FormulaDerivationBox';
 import { Fz } from '@/src/components/ui/Formelzeichen';
+import { ErgebnisAnsage, ansageWert, kurzzeile } from '@/src/components/ui/ErgebnisAnsage';
+import { reglerName, reglerEinheit } from '@/src/lib/reglerName';
 
 export interface ThermischTabProps {
   alphaT: number;
@@ -68,7 +70,9 @@ export default function ThermischTab({ alphaT, deltaT, handleThermischPresetChan
                 min="0.020" 
                 max="3.000" 
                 step="0.005" 
-                value={lambda} 
+                value={lambda}
+                aria-label={reglerName(inhalt.texte.wärmeleitfähigkeit)}
+                aria-valuetext={`${formatDeZahl(lambda, 3)} W / (m · K)`} 
                 onChange={(e) => setLambda(Number(e.target.value))}
                 className="w-full accent-shiraz"
               />
@@ -88,6 +92,7 @@ export default function ThermischTab({ alphaT, deltaT, handleThermischPresetChan
             const uCalc = 1 / (0.13 + rCalc + 0.04); // R_si = 0.13, R_se = 0.04 fur Aussenwand
             return (
               <div className="p-3 bg-indigo-50 border border-indigo-100 rounded-xl text-xs space-y-1">
+                <ErgebnisAnsage text={kurzzeile(ansageWert('Wärmedurchlasswiderstand R', rCalc, 2, 'm²K/W'), ansageWert('U', uCalc, 2, 'W/(m²K)'))} />
                 <div className="flex justify-between">
                   <span>Wärmedurchlasswiderstand <span className="font-semibold">R</span>:</span>
                   <strong className="text-slate-800">{formatDeZahl(rCalc, 2)} m²K/W</strong>
@@ -137,7 +142,9 @@ export default function ThermischTab({ alphaT, deltaT, handleThermischPresetChan
                 min="100" 
                 max="2500" 
                 step="50" 
-                value={spezKapazitaetC} 
+                value={spezKapazitaetC}
+                aria-label={reglerName(inhalt.texte.spezifischeWärmekapazitätC)}
+                aria-valuetext={`${formatDeIntl(spezKapazitaetC)}${reglerEinheit(inhalt.texte.jKgK)}`} 
                 onChange={(e) => setSpezKapazitaetC(Number(e.target.value))}
                 className="w-full accent-shiraz"
               />

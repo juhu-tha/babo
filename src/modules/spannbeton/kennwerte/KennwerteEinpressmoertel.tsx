@@ -5,6 +5,7 @@ import type { Dispatch, SetStateAction } from 'react';
 import inhalt from '@/content/spannbeton/kennwerte/KennwerteEinpressmoertel.json';
 import { MdText } from '@/src/components/inhalt/MdText';
 import { LITZE } from '@/src/calc/spannbeton';
+import { reglerName } from '@/src/lib/reglerName';
 
 interface KennwerteEinpressmoertelProps {
   groutAdmixturePct: number;
@@ -87,6 +88,8 @@ export default function KennwerteEinpressmoertel({ groutAdmixturePct, groutCalcu
                   max="0.45"
                   step="0.01"
                   value={groutWz}
+                  aria-label={reglerName(inhalt.texte.wasserzementwertWZ)}
+                  aria-valuetext={`${formatDeZahl(groutWz, 2)} ${groutWz > 0.40 ? '(Normüberschreitung!)' : '(zulässig)'}`}
                   onChange={(e) => setGroutWz(Number(e.target.value))}
                   className="w-full accent-shiraz cursor-pointer"
                 />
@@ -110,6 +113,8 @@ export default function KennwerteEinpressmoertel({ groutAdmixturePct, groutCalcu
                   max="2.0"
                   step="0.1"
                   value={groutAdmixturePct}
+                  aria-label={reglerName(inhalt.texte.einpresshilfeDinEn934)}
+                  aria-valuetext={`${formatDeZahl(groutAdmixturePct, 1)} % v. Zement`}
                   onChange={(e) => setGroutAdmixturePct(Number(e.target.value))}
                   className="w-full accent-shiraz cursor-pointer"
                 />
@@ -279,6 +284,8 @@ export default function KennwerteEinpressmoertel({ groutAdmixturePct, groutCalcu
                   max="120"
                   step="5"
                   value={groutTendonLength}
+                  aria-label={reglerName(inhalt.texte.spanngliedlängeL)}
+                  aria-valuetext={`${formatDeWert(groutTendonLength)} m`}
                   onChange={(e) => setGroutTendonLength(Number(e.target.value))}
                   className="w-full accent-shiraz cursor-pointer"
                 />

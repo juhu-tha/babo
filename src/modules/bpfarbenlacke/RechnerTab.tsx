@@ -5,6 +5,8 @@ import { formatDeZahl, formatDeWert } from '@/src/utils/numberFormat';
 import { FormulaText } from '@/src/components/ui/FormulaText';
 import inhalt from '@/content/bpfarbenlacke/RechnerTab.json';
 import { MdText } from '@/src/components/inhalt/MdText';
+import { ErgebnisAnsage, ansageWert, kurzzeile } from '@/src/components/ui/ErgebnisAnsage';
+import { reglerName } from '@/src/lib/reglerName';
 
 export interface RechnerTabProps {
   targetDft: number;
@@ -56,6 +58,8 @@ export function RechnerTab({ targetDft, setTargetDft, solidsVol, setSolidsVol, t
                 max="300"
                 step="5"
                 value={targetDft}
+                aria-label={reglerName(inhalt.texte.dryFilmThickness)}
+                aria-valuetext={`${formatDeWert(targetDft)} µm`}
                 onChange={(e) => setTargetDft(Number(e.target.value))}
                 className="w-full accent-shiraz h-2 bg-home-grau/20 rounded-lg cursor-pointer"
               />
@@ -76,6 +80,8 @@ export function RechnerTab({ targetDft, setTargetDft, solidsVol, setSolidsVol, t
                 max="100"
                 step="1"
                 value={solidsVol}
+                aria-label={reglerName(inhalt.texte.festkörperVolumenanteilVolSolids)}
+                aria-valuetext={`${formatDeWert(solidsVol)} %`}
                 onChange={(e) => setSolidsVol(Number(e.target.value))}
                 className="w-full accent-shiraz h-2 bg-home-grau/20 rounded-lg cursor-pointer"
               />
@@ -103,6 +109,8 @@ export function RechnerTab({ targetDft, setTargetDft, solidsVol, setSolidsVol, t
                 max="25"
                 step="1"
                 value={thinning}
+                aria-label="Verdünnungszugabe"
+                aria-valuetext={`${formatDeWert(thinning)} %`}
                 onChange={(e) => setThinning(Number(e.target.value))}
                 className="w-full accent-shiraz h-2 bg-home-grau/20 rounded-lg cursor-pointer"
               />
@@ -123,6 +131,8 @@ export function RechnerTab({ targetDft, setTargetDft, solidsVol, setSolidsVol, t
                 max="60"
                 step="5"
                 value={lossFactor}
+                aria-label={reglerName(inhalt.texte.verlustfaktorProzessverlust)}
+                aria-valuetext={`${formatDeWert(lossFactor)} %`}
                 onChange={(e) => setLossFactor(Number(e.target.value))}
                 className="w-full accent-shiraz h-2 bg-home-grau/20 rounded-lg cursor-pointer"
               />
@@ -199,6 +209,7 @@ export function RechnerTab({ targetDft, setTargetDft, solidsVol, setSolidsVol, t
                 <div className="text-3xl font-black font-mono text-shiraz block py-1">
                   {formatDeZahl(totalLitersRequired, 2)} Liter
                 </div>
+                <ErgebnisAnsage text={kurzzeile(ansageWert('Nassschichtdicke verdünnt', thinnedWft, 1, 'µm'), ansageWert('Verbrauch effektiv', effectiveConsumption, 0, 'ml/m²'), ansageWert('Farbmenge gesamt', totalLitersRequired, 2, 'Liter'))} />
                 <div className="text-[10px] text-text-main/60 inline-flex items-center gap-1.5 max-w-sm px-2 text-center">
                   <Check className="text-emerald-600 flex-none" size={12} />
                   <span><MdText text={inhalt.texte.empfohleneGebindebestellung} /><strong>{formatDeWert(Math.ceil(totalLitersRequired / 10))}<MdText text={inhalt.texte.eimer10Liter} /></strong> (oder {formatDeWert(Math.ceil(totalLitersRequired / 2.5))}<MdText text={inhalt.texte.eimer25Liter} /></span>

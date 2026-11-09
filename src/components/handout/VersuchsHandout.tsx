@@ -5,6 +5,7 @@ import { Querverweis } from '@/src/components/ui/Querverweis';
 import { exportToCSV, openPrintableReport } from '@/src/utils/labExportUtils';
 import { dateiname, handoutHtml, istGleich, kopie, ladeProtokoll, leeresProtokoll, protokollCsv, speichereProtokoll } from '@/src/utils/handoutExport';
 import { LABOR_ANPASSEN, type HandoutErgebnis, type HandoutPosten, type ProtokollStand, type VersuchsHandoutDaten } from './handoutTypen';
+import { ErgebnisAnsage } from '@/src/components/ui/ErgebnisAnsage';
 
 /**
  * Wiederverwendbares Versuchs-Handout (AP 6.4): Reiter Ziel & Ausstattung, Sicherheit, Ablauf, Messprotokoll,
@@ -15,6 +16,11 @@ export interface AuswertungsAnsicht {
   inhalt: React.ReactNode;
   /** Kennwerte für CSV-Export und Druck */
   ergebnisse: HandoutErgebnis[];
+  /**
+   * Kurzzeile für Screenreader (WCAG 4.1.3, Kurzzeilen 04.11.2026): Hauptergebnis aus dem Rechenkern mit Zahl, Einheit
+   * und ggf. Klasse, „–“ bei ungültigem Protokoll. Wird bei jeder Protokolländerung angesagt (auch im Reiter Messprotokoll).
+   */
+  kurzzeile: string;
 }
 
 interface Props {
@@ -84,6 +90,7 @@ export function VersuchsHandout({ daten, auswertung }: Props) {
   return (
     <ModuleTabs label={`Abschnitte des Versuchs-Handouts ${daten.titel}`} tabs={REITER} aktiv={reiter} onWechsel={setReiter}>
       <div className="pt-5 animate-in fade-in duration-300">
+        <ErgebnisAnsage text={`${daten.titel}: ${ansicht.kurzzeile}`} />
         {reiter === 'ziel' && (
           <div className="flex flex-col gap-4">
             <div className="flex flex-wrap gap-3 text-xs text-text-main/80">
@@ -115,7 +122,7 @@ export function VersuchsHandout({ daten, auswertung }: Props) {
                 <tbody>{daten.sicherheit.map(s => <tr key={s.gefahr}><td className={td}><strong>{s.gefahr}</strong></td><td className={td}>{s.massnahme}</td></tr>)}</tbody>
               </table>
             </div>
-            <Querverweis ziel="labor_sicherheit" titel="Laborordnung und Unterweisung" linkText="Zum Modul Baustofflabor">
+            <Querverweis ebene={3} ziel="labor_sicherheit" titel="Laborordnung und Unterweisung" linkText="Zum Modul Baustofflabor">
               <p>Vor dem ersten Versuch ist die Sicherheitsunterweisung des Labors verbindlich. Betriebsanweisungen und Sicherheitsdatenblätter der verwendeten Stoffe gehen diesem Handout vor.</p>
             </Querverweis>
           </div>

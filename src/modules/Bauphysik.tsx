@@ -31,7 +31,9 @@ import { CalculatorDisclaimerBanner } from '@/src/components/ui/CalculatorDiscla
 import { NachErstemBild } from '@/src/components/ui/NachErstemBild';
 import inhalt from '@/content/bauphysik/Bauphysik.json';
 import { MdText } from '@/src/components/inhalt/MdText';
+import { ErgebnisAnsage } from '@/src/components/ui/ErgebnisAnsage';
 import { ModuleTabs, type ModulTab } from '@/src/components/ui/ModuleTabs';
+import { reglerName } from '@/src/lib/reglerName';
 
 // Detailed material library with density, lambda, moisture resistance factor (mu) and specific heat capacity (c in J/kgK)
 const materialLibrary = inhalt.daten.materialLibrary;
@@ -476,7 +478,7 @@ export default function Bauphysik() {
                         <span className="text-shiraz">{formatDeWert(Ti)} °C</span>
                       </div>
                       <input 
-                        type="range" min="15" max="25" step="1" value={Ti} 
+                        type="range" min="15" max="25" step="1" value={Ti} aria-valuetext={`${formatDeWert(Ti)} °C`} 
                         aria-label={inhalt.werte.innentemperaturTiInC}
                         onChange={(e) => setTi(Number(e.target.value))} 
                         className="w-full accent-shiraz h-1 bg-slate-200 rounded-lg appearance-none cursor-pointer"
@@ -494,7 +496,7 @@ export default function Bauphysik() {
                         <span className="text-blue-600">{formatDeWert(Te)} °C</span>
                       </div>
                       <input 
-                        type="range" min="-20" max="5" step="1" value={Te} 
+                        type="range" min="-20" max="5" step="1" value={Te} aria-valuetext={`${formatDeWert(Te)} °C`} 
                         aria-label={inhalt.werte.außentemperaturTeInC}
                         onChange={(e) => setTe(Number(e.target.value))} 
                         className="w-full accent-blue-600 h-1 bg-slate-200 rounded-lg appearance-none cursor-pointer"
@@ -683,6 +685,8 @@ export default function Bauphysik() {
                   const t_si = Te + f_RSi * (Ti - Te);
                   const is_f_RSi_compliant = f_RSi >= 0.70;
                   return (
+                    <>
+                    <ErgebnisAnsage text={`Innenoberflächentemperatur ${formatDeZahl(t_si, 1)} °C, f_Rsi ${formatDeZahl(f_RSi, 2)}, ${is_f_RSi_compliant ? 'schimmelsicher' : 'Schimmelgefahr'}`} />
                     <div className={`p-4 rounded-xl border ${is_f_RSi_compliant ? 'bg-emerald-50/40 border-emerald-150 text-emerald-950' : 'bg-red-50/40 border-red-150 text-red-950'}`}>
                       <div className="flex items-center justify-between mb-1.5">
                         <span className="text-[10px] font-extrabold uppercase tracking-wider text-slate-400 block">Schimmelpilzkriterium</span>
@@ -711,6 +715,7 @@ export default function Bauphysik() {
                         </div>
                       </div>
                     </div>
+                    </>
                   );
                 })()}
 
@@ -1021,7 +1026,7 @@ export default function Bauphysik() {
                     <span className="font-mono">{formatDeZahl(roomL, 1)} m</span>
                   </div>
                   <input 
-                    type="range" min="3.0" max="15.0" step="0.5" value={roomL} 
+                    type="range" min="3.0" max="15.0" step="0.5" value={roomL} aria-label={reglerName(inhalt.texte.längeDesRaumesL)} aria-valuetext={`${formatDeZahl(roomL, 1)} m`} 
                     onChange={(e) => setRoomL(Number(e.target.value))} 
                     className="w-full accent-shiraz h-1 bg-slate-200 rounded-lg appearance-none cursor-pointer"
                   />
@@ -1033,7 +1038,7 @@ export default function Bauphysik() {
                     <span className="font-mono">{formatDeZahl(roomW, 1)} m</span>
                   </div>
                   <input 
-                    type="range" min="3.0" max="12.0" step="0.5" value={roomW} 
+                    type="range" min="3.0" max="12.0" step="0.5" value={roomW} aria-label={reglerName(inhalt.texte.breiteDesRaumesW)} aria-valuetext={`${formatDeZahl(roomW, 1)} m`} 
                     onChange={(e) => setRoomW(Number(e.target.value))} 
                     className="w-full accent-shiraz h-1 bg-slate-200 rounded-lg appearance-none cursor-pointer"
                   />
@@ -1045,7 +1050,7 @@ export default function Bauphysik() {
                     <span className="font-mono">{formatDeZahl(roomH, 1)} m</span>
                   </div>
                   <input 
-                    type="range" min="2.2" max="5.0" step="0.1" value={roomH} 
+                    type="range" min="2.2" max="5.0" step="0.1" value={roomH} aria-label={reglerName(inhalt.texte.lichteHöheDesRaumes)} aria-valuetext={`${formatDeZahl(roomH, 1)} m`} 
                     onChange={(e) => setRoomH(Number(e.target.value))} 
                     className="w-full accent-shiraz h-1 bg-slate-200 rounded-lg appearance-none cursor-pointer"
                   />

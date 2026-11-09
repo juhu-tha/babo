@@ -7,6 +7,7 @@ import { MdText } from '@/src/components/inhalt/MdText';
 import { EingabeHinweise } from '@/src/components/ui/EingabeHinweise';
 import { reissrahmen, type ZementProfil } from '@/src/calc/hydratation';
 import { ReiterLeiste, alsReiter, reiterPanel } from '../components/ui/Auswahlgruppe';
+import { reglerName } from '@/src/lib/reglerName';
 
 const CEMENT_MAP: Record<string, ZementProfil> = inhalt.daten.CEMENT_MAP;
 
@@ -109,6 +110,8 @@ export default function HydratationPruefverfahren() {
                   <input
                     type="range" min={5} max={35} step={1}
                     value={freshTemp}
+                    aria-label={reglerName(inhalt.texte.frischbetonTempTFrisch)}
+                    aria-valuetext={`${formatDeWert(freshTemp)} °C`}
                     onChange={(e) => setFreshTemp(Number(e.target.value))}
                     className="accent-shiraz cursor-pointer"
                   />
@@ -124,6 +127,8 @@ export default function HydratationPruefverfahren() {
                   <input
                     type="range" min={5} max={30} step={1}
                     value={ambientTemp}
+                    aria-label={reglerName(inhalt.texte.umgebungstempTUmg)}
+                    aria-valuetext={`${formatDeWert(ambientTemp)} °C`}
                     onChange={(e) => setAmbientTemp(Number(e.target.value))}
                     className="accent-shiraz cursor-pointer"
                   />
@@ -138,6 +143,8 @@ export default function HydratationPruefverfahren() {
                   <input
                     type="range" min={0} max={60} step={5}
                     value={fiberContent}
+                    aria-label={reglerName(inhalt.texte.fasergehaltPpStahl)}
+                    aria-valuetext={`${formatDeWert(fiberContent)} kg/m³`}
                     onChange={(e) => setFiberContent(Number(e.target.value))}
                     className="accent-shiraz cursor-pointer"
                   />
@@ -153,6 +160,8 @@ export default function HydratationPruefverfahren() {
                   <input
                     type="range" min={30} max={100} step={5}
                     value={stiffnessFrame}
+                    aria-label={reglerName(inhalt.texte.rahmenfesselungsgradRestraintStiffness)}
+                    aria-valuetext={`${formatDeWert(stiffnessFrame)} %`}
                     onChange={(e) => setStiffnessFrame(Number(e.target.value))}
                     className="accent-shiraz cursor-pointer"
                   />
@@ -250,7 +259,7 @@ export default function HydratationPruefverfahren() {
 
                 {/* SVG Graph */}
                 <div className="w-full h-72 border border-slate-100 rounded-xl relative overflow-hidden bg-slate-50/20">
-                  <svg viewBox="0 0 500 250" className="w-full h-full">
+                  <svg role="img" aria-label="Diagramm: Zwangspannung σz(t) und Zugfestigkeit fct(t) über die Zeit" viewBox="0 0 500 250" className="w-full h-full">
                     {/* Gridlines */}
                     <line x1="40" y1="20" x2="40" y2="220" stroke="#cccccc" strokeWidth="1" strokeDasharray="2" />
                     <line x1="40" y1="220" x2="480" y2="220" stroke="#888888" strokeWidth="1" />

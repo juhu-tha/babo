@@ -23,6 +23,7 @@ import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
 import { useTabContext } from '@/src/contexts/TabContext';
 import inhalt from '@/content/lebensdauerbemessung/Lebensdauerbemessung.json';
 import { MdText } from '@/src/components/inhalt/MdText';
+import { ErgebnisAnsage, ansageWert, kurzzeile } from '@/src/components/ui/ErgebnisAnsage';
 
 type Reiter = 'grundlagen' | 'karbonatisierung' | 'chlorid' | 'rechner' | 'beispiele' | 'konzepte' | 'grenzen';
 
@@ -284,7 +285,7 @@ export default function Lebensdauerbemessung() {
                   </table>
                 </div>
                 <div className={kasten}><p><MdText text={inhalt.texte.gMonteCarlo} /></p></div>
-                <Querverweis ziel="korrosion" titel={inhalt.texte.querKorrosion} linkText={inhalt.werte.zumModulKorrosion}>
+                <Querverweis ebene={3} ziel="korrosion" titel={inhalt.texte.querKorrosion} linkText={inhalt.werte.zumModulKorrosion}>
                   <p><MdText text={inhalt.texte.gKorrosionVerweis} /></p>
                 </Querverweis>
               </div>
@@ -301,7 +302,7 @@ export default function Lebensdauerbemessung() {
                 <ParameterTabelle titel={inhalt.werte.parameterTitelKarb} zeilen={KARB_PARAMETER} />
                 <p className="text-sm text-text-main/85 leading-relaxed"><MdText text={inhalt.texte.kPruefung} /></p>
                 <div className={kasten}><p><MdText text={inhalt.texte.kWetter} /></p></div>
-                <Querverweis ziel="schnellkarbonatisierung" titel={inhalt.texte.querSchnell} linkText={inhalt.werte.zumModulSchnell}>
+                <Querverweis ebene={3} ziel="schnellkarbonatisierung" titel={inhalt.texte.querSchnell} linkText={inhalt.werte.zumModulSchnell}>
                   <p><MdText text={inhalt.texte.kSchnellVerweis} /></p>
                 </Querverweis>
               </div>
@@ -435,7 +436,9 @@ export default function Lebensdauerbemessung() {
                 </div>
 
                 <div className="lg:col-span-7 flex flex-col gap-4">
-                  <div className="bg-white p-5 rounded-xl border border-home-grau/30 shadow-sm flex flex-col gap-4" aria-live="polite">
+                  <div className="bg-white p-5 rounded-xl border border-home-grau/30 shadow-sm flex flex-col gap-4">
+                    {/* Kurzzeile statt der ganzen Ergebniskarte als Live-Region (Kurzzeilen 04.11.2026) */}
+                    <ErgebnisAnsage text={erg.gueltig ? kurzzeile(ansageWert('Versagenswahrscheinlichkeit p_f', erg.pf * 100, 2, '%'), `β ${betaText(erg.beta, erg.betaUntergrenze)}`, erg.erfDeckung === null ? 'erforderliche Deckung über 400 mm' : ansageWert('erforderliche Deckung', erg.erfDeckung, 1, 'mm'), erg.nachweis ? inhalt.werte.nachweisOk : inhalt.werte.nachweisNicht) : 'Versagenswahrscheinlichkeit –'} />
                     <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
                       {[
                         { l: inhalt.werte.ergPf, w: erg.gueltig ? formatDeZahl(erg.pf * 100, 2) : '–', e: '%' },
@@ -543,10 +546,10 @@ export default function Lebensdauerbemessung() {
                 <div className={kasten}><p><MdText text={inhalt.texte.kzVorhalte} /></p></div>
                 <p className="text-sm text-text-main/85 leading-relaxed"><MdText text={inhalt.texte.kzErc} /></p>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                  <Querverweis ziel="normen_ausblick" titel={inhalt.texte.querNormen} linkText={inhalt.werte.zumModulNormen}>
+                  <Querverweis ebene={3} ziel="normen_ausblick" titel={inhalt.texte.querNormen} linkText={inhalt.werte.zumModulNormen}>
                     <p><MdText text={inhalt.texte.querNormenText} /></p>
                   </Querverweis>
-                  <Querverweis ziel="expositionsklassen" titel={inhalt.texte.querExposition} linkText={inhalt.werte.zumModulExposition}>
+                  <Querverweis ebene={3} ziel="expositionsklassen" titel={inhalt.texte.querExposition} linkText={inhalt.werte.zumModulExposition}>
                     <p><MdText text={inhalt.texte.querExpositionText} /></p>
                   </Querverweis>
                 </div>

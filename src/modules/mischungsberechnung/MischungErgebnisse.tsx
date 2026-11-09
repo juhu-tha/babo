@@ -12,6 +12,7 @@ import React from 'react';
 import { NachErstemBild } from '@/src/components/ui/NachErstemBild';
 import inhalt from '@/content/mischungsberechnung/MischungErgebnisse.json';
 import { MdText } from '@/src/components/inhalt/MdText';
+import { ansageWert, kurzzeile } from '@/src/components/ui/ErgebnisAnsage';
 
 interface MischungErgebnisseProps {
   betonMengeL: number;
@@ -184,6 +185,7 @@ export default function MischungErgebnisse({ betonMengeL, biochar, dmax, expClas
       {/* Live-Rechenweg (AP 3.7): Stoffraumrechnung mit den aktuellen Eingaben */}
       <FormulaDerivationBox
         live
+        kurzzeile={kurzzeile(ansageWert('w/z', results.wz, 2), ansageWert('w/z äquivalent', results.wzEq, 2), expClasses.length > 0 && (results.isWzOk ? 'Grenzwert eingehalten' : `Grenzwert ${formatDeZahl(results.reqMaxWz, 2)} überschritten`), ansageWert('Gesteinskörnung trocken', results.masseGesteinTrocken, 0, 'kg/m³'), ansageWert('Frischbetonrohdichte', results.frischbetonRohdichte * 1000, 0, 'kg/m³'), ansageWert('CO₂-Fußabdruck', results.co2Gesamt, 0, 'kg CO₂-Äquivalent je m³'))}
         title={inhalt.werte.ihrRechenwegStoffraumrechnungFür}
         zielGleichung="V_G = 1000 - \left(\frac{z}{\rho_z} + \frac{w}{\rho_w} + \sum \frac{m_i}{\rho_i} + 10 \cdot p\right)"
         schritte={[

@@ -9,6 +9,8 @@ import { InnovationPraxisSection } from '@/src/components/ui/InnovationPraxisSec
 import inhalt from '@/content/bpmineralisch/BpMineralisch.json';
 import { MdText } from '@/src/components/inhalt/MdText';
 import { ModuleTabs } from '@/src/components/ui/ModuleTabs';
+import { ErgebnisAnsage, ansageWert, kurzzeile } from '@/src/components/ui/ErgebnisAnsage';
+import { reglerName } from '@/src/lib/reglerName';
 
 interface MineralMaterial {
   id: string;
@@ -334,7 +336,9 @@ export default function BpMineralisch() {
                 min="5" 
                 max="300" 
                 step="5" 
-                value={calcArea} 
+                value={calcArea}
+                aria-label={reglerName(inhalt.texte.gesamtflächeDesBelagsA)}
+                aria-valuetext={`${formatDeWert(calcArea)} m²`} 
                 onChange={(e) => setCalcArea(Number(e.target.value))} 
                 className="w-full h-1.5 bg-slate-100 rounded-lg appearance-none cursor-pointer accent-shiraz"
               />
@@ -350,7 +354,9 @@ export default function BpMineralisch() {
                 min="5" 
                 max="60" 
                 step="1" 
-                value={tileThick} 
+                value={tileThick}
+                aria-label={reglerName(inhalt.texte.plattenBzwBelagsstärkeMm)}
+                aria-valuetext={`${formatDeWert(tileThick)} mm`} 
                 onChange={(e) => setTileThick(Number(e.target.value))} 
                 className="w-full h-1.5 bg-slate-100 rounded-lg appearance-none cursor-pointer accent-shiraz"
               />
@@ -396,6 +402,7 @@ export default function BpMineralisch() {
                 <span className="font-bold text-slate-700">{formatDeWert(calcMat.density)} kg/m³</span>
               </div>
 
+              <ErgebnisAnsage text={kurzzeile(ansageWert('Trocken-Eigenlast', dryWeightKg, 1, 'kg'), ansageWert('Nassgewicht', wetWeightKg, 1, 'kg'))} />
               <div className="flex justify-between items-center bg-white p-2 border border-home-grau/30 rounded-md">
                 <span className="font-sans font-bold text-slate-800">Trocken-Eigenlast:</span>
                 <span className="font-bold text-slate-900">{formatDeZahl(dryWeightKg, 1)} kg</span>

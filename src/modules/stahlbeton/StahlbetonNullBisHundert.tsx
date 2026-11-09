@@ -25,6 +25,7 @@ import { betonAuswahl, fcdBeton, FCD_MODUL } from '@/src/data/kennwerte';
 import inhalt from '@/content/stahlbeton/StahlbetonNullBisHundert.json';
 import { MdText } from '@/src/components/inhalt/MdText';
 import { ReiterLeiste, alsReiter, reiterPanel } from '../../components/ui/Auswahlgruppe';
+import { reglerName } from '@/src/lib/reglerName';
 interface Props {
   onNavigateTab?: (tab: BemessungSubTab) => void;
 }
@@ -456,6 +457,8 @@ export default function StahlbetonNullBisHundert({ onNavigateTab }: Props) {
                     max={500}
                     step={10}
                     value={calcMed}
+                    aria-label={reglerName(inhalt.texte.bemessungsmomentMEd)}
+                    aria-valuetext={`${formatDeWert(calcMed)} kNm`}
                     onChange={(e) => setCalcMed(Number(e.target.value))}
                     className="w-full accent-shiraz cursor-pointer"
                   />
@@ -472,6 +475,8 @@ export default function StahlbetonNullBisHundert({ onNavigateTab }: Props) {
                     max={60}
                     step={5}
                     value={calcWidth}
+                    aria-label={reglerName(inhalt.texte.balkenbreiteB)}
+                    aria-valuetext={`${formatDeWert(calcWidth)} cm`}
                     onChange={(e) => setCalcWidth(Number(e.target.value))}
                     className="w-full accent-shiraz cursor-pointer"
                   />
@@ -488,6 +493,8 @@ export default function StahlbetonNullBisHundert({ onNavigateTab }: Props) {
                     max={90}
                     step={5}
                     value={calcDepth}
+                    aria-label={reglerName(inhalt.texte.nutzhöheD)}
+                    aria-valuetext={`${formatDeWert(calcDepth)} cm`}
                     onChange={(e) => setCalcDepth(Number(e.target.value))}
                     className="w-full accent-shiraz cursor-pointer"
                   />

@@ -13,6 +13,7 @@ import { pfasSummenbewertung, ersatzwert, PFAS20, PFAS4, PFAS_GRENZWERTE, type P
 import inhalt from '@/content/pfasbaustoffe/PfasBaustoffe.json';
 import { MdText } from '@/src/components/inhalt/MdText';
 import { AuswahlGruppe, alsOption } from '../components/ui/Auswahlgruppe';
+import { ansageWert, kurzzeile } from '@/src/components/ui/ErgebnisAnsage';
 
 type Reiter = 'einfuehrung' | 'vorkommen' | 'regulierung' | 'rueckbau' | 'analytik' | 'rechner';
 
@@ -34,7 +35,8 @@ const BEISPIEL: Partial<Record<PfasId, number>> = { PFBA: 12, PFPeA: 8, PFHxA: 1
 const startText = (): Record<PfasId, string> =>
   Object.fromEntries(PFAS20.map(s => [s.id, BEISPIEL[s.id] !== undefined ? formatDeZahl(BEISPIEL[s.id], 1) : ''])) as Record<PfasId, string>;
 
-const ANSATZ_TEXT: Readonly<Record<BgAnsatz, string>> = { null: '< BG = 0', halb: '< BG = BG/2', voll: '< BG = BG' };
+// Voreinstellung nach TrinkwV Anlage 2 Teil I (Werte unter der BG bleiben unberücksichtigt); BG/2 und BG als konservative Varianten
+const ANSATZ_TEXT: Readonly<Record<BgAnsatz, string>> = { null: '< BG = 0 (TrinkwV)', halb: '< BG = BG/2 (konservativ)', voll: '< BG = BG (ungünstigste Annahme)' };
 
 function SummenKachel({ titel, s, ab }: { titel: string; s: PfasSumme; ab: string }) {
   const farbe = !Number.isFinite(s.summe) ? 'bg-off-white border-home-grau/30' : s.ok ? 'bg-emerald-50 border-emerald-200 text-emerald-900' : 'bg-red-50 border-red-200 text-red-900';
@@ -52,7 +54,7 @@ export default function PfasBaustoffe() {
 
   const [text, setText] = useState<Record<PfasId, string>>(startText);
   const [bg, setBg] = useState(1);
-  const [ansatz, setAnsatz] = useState<BgAnsatz>('halb');
+  const [ansatz, setAnsatz] = useState<BgAnsatz>('null');
 
   const werte = useMemo(() => Object.fromEntries(PFAS20.map(s => {
     const t = text[s.id].trim();
@@ -274,6 +276,7 @@ export default function PfasBaustoffe() {
                       </button>
                     ))}
                   </AuswahlGruppe>
+                  <p className="text-[11px] text-text-main/70 mt-2 leading-relaxed"><MdText text={inhalt.werte.ansatzHinweisTrinkwv} /></p>
                 </div>
                 <div className={box}>
                   <div className="flex items-center justify-between mb-3">
@@ -309,6 +312,7 @@ export default function PfasBaustoffe() {
                 </div>
                 <FormulaDerivationBox
                   live
+                  kurzzeile={kurzzeile(ansageWert('Summe PFAS-20', erg.pfas20.summe, 1, 'ng/l'), Number.isFinite(erg.pfas20.summe) && (erg.pfas20.ok ? 'eingehalten' : 'überschritten'), ansageWert('Summe PFAS-4', erg.pfas4.summe, 1, 'ng/l'), Number.isFinite(erg.pfas4.summe) && (erg.pfas4.ok ? 'eingehalten' : 'überschritten'))}
                   title={`Ihr Rechenweg: Summenbewertung PFAS-20 und PFAS-4 (BG = ${formatDeZahl(bg, 1)} ng/l)`}
                   zielGleichung="\Sigma_{20} = \sum_{i=1}^{20} c_i \le 100\,\text{ng/l}, \quad \Sigma_{4} = c_{PFOA} + c_{PFNA} + c_{PFHxS} + c_{PFOS} \le 20\,\text{ng/l}"
                   schritte={liveSchritte}

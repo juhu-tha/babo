@@ -9,6 +9,7 @@ import { FreigabeEtikett } from '@/src/components/quiz/FreigabeEtikett';
 import { useAlleFragen } from '@/src/data/quizLader';
 import { mischeAntworten } from '@/src/utils/mischeAntworten';
 import { KlausurResult, saveKlausurResult, getKlausurHistory } from '@/src/utils/studyStorage';
+import { Ueberschrift } from '@/src/components/ui/Ueberschrift';
 
 type ExamConfig = {
   questionCount: 10 | 20 | 30;
@@ -35,9 +36,11 @@ export interface KlausurSimulatorProps {
   routen?: readonly string[];
   /** Überschrift statt „Simulierte Klausur: Baustoffe & Werkstoffmechanik“ */
   titel?: string;
+  /** Ebene der obersten Überschriften (Standard 3 unter einer h2; 2 direkt unter dem Seitentitel, a11y 09.11.2026) */
+  ebene?: 2 | 3;
 }
 
-export const KlausurSimulator: React.FC<KlausurSimulatorProps> = ({ routen, titel }) => {
+export const KlausurSimulator: React.FC<KlausurSimulatorProps> = ({ routen, titel, ebene = 3 }) => {
   const [phase, setPhase] = useState<'config' | 'exam' | 'result'>('config');
   // Fragenpool in Teilpaketen nachgeladen (quizLader); null, solange er lädt
   const gesamtPool = useAlleFragen();
@@ -196,9 +199,9 @@ export const KlausurSimulator: React.FC<KlausurSimulatorProps> = ({ routen, tite
                 <span className="text-xs font-bold uppercase tracking-wider text-shiraz block">
                   Prüfungssimulation TH Augsburg
                 </span>
-                <h3 className="text-xl font-bold text-text-main">
+                <Ueberschrift ebene={ebene} wie={3} className="text-xl font-bold text-text-main">
                   {titel ?? 'Simulierte Klausur: Baustoffe & Werkstoffmechanik'}
-                </h3>
+                </Ueberschrift>
               </div>
             </div>
             <div className="flex items-center gap-2">
@@ -317,9 +320,9 @@ export const KlausurSimulator: React.FC<KlausurSimulatorProps> = ({ routen, tite
         {/* Bisherige Klausur-Historie */}
         {history.length > 0 && (
           <div className="bg-white p-6 rounded-3xl border border-home-grau/30 shadow-xs flex flex-col gap-4">
-            <h4 className="text-sm font-bold text-text-main flex items-center gap-2">
+            <Ueberschrift ebene={ebene + 1} wie={4} className="text-sm font-bold text-text-main flex items-center gap-2">
               <BarChart3 size={18} className="text-shiraz" /> Bisherige Prüfungsergebnisse (Lokal gespeichert)
-            </h4>
+            </Ueberschrift>
             <div className="overflow-x-auto">
               <table className="w-full text-left text-xs border-collapse">
                 <thead>
@@ -474,9 +477,9 @@ export const KlausurSimulator: React.FC<KlausurSimulatorProps> = ({ routen, tite
           </div>
 
           <div>
-            <h3 className="text-base sm:text-lg font-bold text-text-main leading-snug">
+            <Ueberschrift ebene={ebene} wie={3} className="text-base sm:text-lg font-bold text-text-main leading-snug">
               {currentQuestion.question}
-            </h3>
+            </Ueberschrift>
           </div>
 
           {/* Options */}
@@ -602,9 +605,9 @@ export const KlausurSimulator: React.FC<KlausurSimulatorProps> = ({ routen, tite
               <span className="text-xs font-bold uppercase tracking-wider text-shiraz block">
                 Offizielles Prüfungsergebnis
               </span>
-              <h3 className="text-2xl font-bold text-text-main">
+              <Ueberschrift ebene={ebene} wie={3} className="text-2xl font-bold text-text-main">
                 Leistungsbewertung Baustoffe &amp; Werkstoffe
-              </h3>
+              </Ueberschrift>
               <p className="text-xs text-text-main/60 mt-1">
                 Klausurabschluss am {latestResult.date} • Bearbeitungszeit: {formatDeWert(Math.round(latestResult.timeSpentSeconds / 60))} von {formatDeWert(latestResult.durationMinutes)} Minuten
               </p>
@@ -642,10 +645,10 @@ export const KlausurSimulator: React.FC<KlausurSimulatorProps> = ({ routen, tite
 
           {/* Subject breakdown */}
           <div className="flex flex-col gap-3 pt-2">
-            <h4 className="text-sm font-bold text-text-main flex items-center gap-2">
+            <Ueberschrift ebene={ebene + 1} wie={4} className="text-sm font-bold text-text-main flex items-center gap-2">
               <BarChart3 size={16} className="text-shiraz" />
               Aufschlüsselung nach Fachdisziplinen
-            </h4>
+            </Ueberschrift>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
               {Object.keys(latestResult.categoryScores).map(catKey => {
                 const item = latestResult.categoryScores[catKey];
@@ -686,9 +689,9 @@ export const KlausurSimulator: React.FC<KlausurSimulatorProps> = ({ routen, tite
         <div className="bg-white p-6 sm:p-8 rounded-3xl border border-home-grau/30 shadow-sm flex flex-col gap-6">
           <div className="flex items-center gap-3 border-b border-home-grau/20 pb-4">
             <FileText size={20} className="text-shiraz" />
-            <h4 className="text-lg font-bold text-text-main">
+            <Ueberschrift ebene={ebene + 1} wie={4} className="text-lg font-bold text-text-main">
               Detaillierte Fehler- &amp; Lösungsanalyse (Klausureinsicht)
-            </h4>
+            </Ueberschrift>
           </div>
 
           <div className="flex flex-col gap-6">
@@ -732,9 +735,9 @@ export const KlausurSimulator: React.FC<KlausurSimulatorProps> = ({ routen, tite
                     </div>
                   </div>
 
-                  <h5 className="text-sm font-bold text-text-main leading-snug">
+                  <Ueberschrift ebene={ebene + 2} wie={5} className="text-sm font-bold text-text-main leading-snug">
                     {q.question}
-                  </h5>
+                  </Ueberschrift>
 
                   <div className="space-y-1.5 text-xs">
                     {q.options.map((opt, optIdx) => {

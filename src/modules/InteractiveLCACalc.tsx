@@ -28,6 +28,7 @@ import inhalt from '@/content/interactivelcacalc/InteractiveLCACalc.json';
 import { MdText } from '@/src/components/inhalt/MdText';
 import { ModuleTabs } from '@/src/components/ui/ModuleTabs';
 import { AuswahlGruppe, alsOption } from '../components/ui/Auswahlgruppe';
+import { reglerName } from '@/src/lib/reglerName';
 
 /** Anzeigenamen für den Rechenweg (deklarierte Einheit → Bezugsgröße) */
 const MATERIAL_NAMEN: Record<string, string> = Object.fromEntries(MATERIAL_DATABASE.map(m => [m.id, m.name]));
@@ -482,6 +483,8 @@ export default function InteractiveLCACalc() {
                             max="100"
                             step="5"
                             value={row.circularQuota}
+                            aria-label={reglerName(inhalt.texte.kreislauffähigerStoffanteil)}
+                            aria-valuetext={`${formatDeZahl(row.circularQuota, 0)} %`}
                             onChange={(e) => updateRow(row.id, { circularQuota: parseInt(e.target.value) })}
                             className="w-full h-1.5 bg-slate-200 rounded-lg appearance-none cursor-pointer accent-teal-600"
                           />
@@ -561,6 +564,8 @@ export default function InteractiveLCACalc() {
                     max="800"
                     step="10"
                     value={transportDistance}
+                    aria-label={reglerName(inhalt.texte.distanzZurBaustelle)}
+                    aria-valuetext={`${formatDeZahl(transportDistance, 0)} km`}
                     onChange={(e) => setTransportDistance(parseInt(e.target.value))}
                     className="w-full h-1.5 bg-slate-200 rounded-lg appearance-none cursor-pointer accent-shiraz"
                   />
@@ -607,6 +612,8 @@ export default function InteractiveLCACalc() {
                     max="1200"
                     step="10"
                     value={buildingArea}
+                    aria-label={reglerName(inhalt.texte.nettoRaumflächeNrf)}
+                    aria-valuetext={`${formatDeZahl(buildingArea, 0)} m²`}
                     onChange={(e) => setBuildingArea(parseInt(e.target.value))}
                     className="w-full h-1.5 bg-slate-200 rounded-lg appearance-none cursor-pointer accent-shiraz"
                   />
@@ -716,9 +723,9 @@ export default function InteractiveLCACalc() {
         <div className="bg-white border border-home-grau/30 rounded-2xl p-5 shadow-sm space-y-6 animate-in fade-in duration-200">
           <div className="border-b pb-3 flex flex-col md:flex-row items-start md:items-center justify-between gap-2">
             <div className="space-y-1">
-              <h4 className="text-xs font-bold font-sans text-slate-900 uppercase flex items-center gap-1.5">
+              <h3 className="text-xs font-bold font-sans text-slate-900 uppercase flex items-center gap-1.5 wie-h4">
                 <Activity size={15} className="text-shiraz" /><MdText text={inhalt.texte.szenarienVergleichNachQng} />{qngThresholds.label})
-              </h4>
+              </h3>
               <p className="text-[11px] text-slate-500 leading-normal"><MdText text={inhalt.texte.normierterLebenszyklusVergleichModule} />{formatDeZahl(qngThresholds.plus, 1)}<MdText text={inhalt.texte.undQngPremium} />{formatDeZahl(qngThresholds.premium, 1)}).
               </p>
             </div>

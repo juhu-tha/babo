@@ -457,7 +457,8 @@ function erreichbar(start) {
 /** Modul-IDs, Komponenten und Dateien: { einheiten: [{ name, ids, dateien }], idInfo: Map(id → { gruppe, status }) } */
 export function modulZuordnung() {
   const mi = lies(path.join(ROOT, 'src/routing/ModulInhalt.tsx'));
-  const lazy = new Map([...mi.matchAll(/const (\w+) = React\.lazy\(\(\) => import\('([^']+)'\)\)/g)].map(m => [m[1], aufloesen(path.join(ROOT, 'src/routing/ModulInhalt.tsx'), m[2])]));
+  // auch benannte Exporte: React.lazy(() => import('…').then(module => ({ default: module.X })))
+  const lazy = new Map([...mi.matchAll(/const (\w+) = React\.lazy\(\(\) => import\('([^']+)'\)(?:\.then\(|\))/g)].map(m => [m[1], aufloesen(path.join(ROOT, 'src/routing/ModulInhalt.tsx'), m[2])]));
   const koerper = mi.slice(mi.indexOf('export function ModulInhalt'));
   const komponenteIds = new Map();
   for (const block of koerper.split(/\n\s{4}\{/).slice(1)) {

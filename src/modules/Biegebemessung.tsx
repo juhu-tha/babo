@@ -326,7 +326,7 @@ export default function Biegebemessung() {
             <div className="bg-white p-6 rounded-xl border border-home-grau/30 shadow-sm flex flex-col">
               <h3 className="text-sm font-bold text-text-main uppercase tracking-wider mb-4"><MdText text={inhalt.texte.interaktivesSchnittgrößenmodellUls} /></h3>
               <div className="w-full overflow-x-auto bg-off-white rounded-lg border border-home-grau/30">
-                <svg width="550" height="320" className="mx-auto block">
+                <svg role="img" aria-label="Schnittgrößenmodell des Biegebalkens (ULS)" width="550" height="320" className="mx-auto block">
                   <defs>
                     <marker id="arrow-blue" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
                       <path d="M 0 0 L 10 5 L 0 10 z" fill="#475569" />

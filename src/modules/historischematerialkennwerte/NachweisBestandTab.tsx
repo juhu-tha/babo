@@ -5,6 +5,8 @@ import { formatDeZahl, formatDeTeX } from '@/src/utils/numberFormat';
 import inhalt from '@/content/historischematerialkennwerte/NachweisBestandTab.json';
 import { MdText } from '@/src/components/inhalt/MdText';
 import { AuswahlGruppe, alsOption } from '../../components/ui/Auswahlgruppe';
+import { ErgebnisAnsage, ansageWert, kurzzeile } from '@/src/components/ui/ErgebnisAnsage';
+import { reglerName } from '@/src/lib/reglerName';
 
 export interface NachweisBestandTabProps {
   setNachweisMaterial: Dispatch<SetStateAction<"stahl" | "beton" | "mauerwerk">>;
@@ -135,6 +137,8 @@ export function NachweisBestandTab({ setNachweisMaterial, setSampleMean, setSamp
                 max={nachweisMaterial === 'stahl' ? 550 : (nachweisMaterial === 'beton' ? 60 : 25)}
                 step={nachweisMaterial === 'stahl' ? 5 : (nachweisMaterial === 'beton' ? 1 : 0.5)}
                 value={sampleMean}
+                aria-label={reglerName(inhalt.texte.mittelwertDerFestigkeitF)}
+                aria-valuetext={`${formatDeZahl(sampleMean, 1)} N/mm²`}
                 onChange={(e) => setSampleMean(parseFloat(e.target.value))}
                 className="w-full accent-shiraz cursor-pointer"
               />
@@ -151,6 +155,8 @@ export function NachweisBestandTab({ setNachweisMaterial, setSampleMean, setSamp
                 max={0.35}
                 step={0.01}
                 value={sampleCov}
+                aria-label={reglerName(inhalt.texte.variationskoeffizientVF)}
+                aria-valuetext={`${formatDeZahl((sampleCov * 100), 1)} %`}
                 onChange={(e) => setSampleCov(parseFloat(e.target.value))}
                 className="w-full accent-shiraz cursor-pointer"
               />
@@ -200,6 +206,8 @@ export function NachweisBestandTab({ setNachweisMaterial, setSampleMean, setSamp
                 max="1.3"
                 step="0.05"
                 value={gammaRd}
+                aria-label={reglerName(inhalt.texte.modellunsicherheitGammaRd)}
+                aria-valuetext={`${formatDeZahl(gammaRd, 2)}`}
                 onChange={(e) => setGammaRd(Number(e.target.value))}
                 className="w-full accent-shiraz"
               />
@@ -215,6 +223,7 @@ export function NachweisBestandTab({ setNachweisMaterial, setSampleMean, setSamp
           </div>
         </div>
     
+        <ErgebnisAnsage text={kurzzeile(ansageWert('f_d nach Eurocode', nachweisCalc.f_d_ec, 2, 'N/mm²'), ansageWert('nach DBV-Merkblatt', nachweisCalc.f_d_dbv, 2, 'N/mm²'), ansageWert('nach EN 1990-2', nachweisCalc.f_d_pren, 2, 'N/mm²'))} />
         {/* Comparative Results Display */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
           {/* Method 1: Eurocode Classic */}

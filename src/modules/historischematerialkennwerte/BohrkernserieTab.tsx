@@ -11,6 +11,7 @@ import {
   type Ansatz13791, type Bezug13791,
 } from '@/src/calc/bohrkernserie13791';
 import inhalt from '@/content/historischematerialkennwerte/BohrkernserieTab.json';
+import { ansageWert, kurzzeile } from '@/src/components/ui/ErgebnisAnsage';
 
 // Reiter „Bohrkernserie (DIN EN 13791)“ im Modul Historische Kennwerte (Ergänzung 02.11.2026).
 // Rechenkern: src/calc/bohrkernserie13791.ts (nutzt insituDruckfestigkeit13791 aus bauwerksuntersuchung.ts).
@@ -205,7 +206,7 @@ export function BohrkernserieTab() {
             </label>
           </div>
 
-          <div className="lg:col-span-7 space-y-3" aria-live="polite">
+          <div className="lg:col-span-7 space-y-3">
             {unterMindest && (
               <div className="p-3 rounded-xl border border-amber-200 bg-amber-50 text-xs text-amber-900 font-semibold flex gap-2" role="alert">
                 <AlertTriangle size={16} className="shrink-0" aria-hidden="true" />{inhalt.texte.unterMindestanzahl}
@@ -257,6 +258,7 @@ export function BohrkernserieTab() {
             )}
             <FormulaDerivationBox
               live
+              kurzzeile={kurzzeile(`n = ${formatDeZahl(r.n, 0)}`, ansageWert('Mittelwert', r.mittel, 1, 'N/mm²'), ansageWert('f_ck,is', r.fckIs, 1, 'N/mm²'), klasseText)}
               title={inhalt.texte.rechenwegTitel}
               zielGleichung={`f_{\\mathrm{ck,is}} = ${formatDeTeX(r.fckIs, 2)}\\ \\mathrm{N/mm^2} \\;\\Rightarrow\\; \\text{${klasseText}}`}
               schritte={schritte}

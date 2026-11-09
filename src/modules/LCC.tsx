@@ -24,6 +24,8 @@ import { EingabeHinweise } from '@/src/components/ui/EingabeHinweise';
 import { lccVergleich, epsWdvsGwp, EPS_WDVS_SZENARIO, type LccOption } from '@/src/calc/lcc';
 import { GWP_LEHRWERTE } from '@/src/data/gwpLehrwerte';
 import { AuswahlGruppe, ReiterLeiste, alsOption, alsReiter, reiterPanel } from '../components/ui/Auswahlgruppe';
+import { ansageWert, kurzzeile } from '@/src/components/ui/ErgebnisAnsage';
+import { reglerName } from '@/src/lib/reglerName';
 
 // Define the scenario profiles for LCC calculation
 interface OptionConfig extends LccOption {
@@ -232,6 +234,7 @@ export default function LCC() {
                   max="80"
                   step="5"
                   value={analysisPeriod}
+                  aria-valuetext={`${formatDeWert(analysisPeriod)} Jahre`}
                   onChange={(e) => setAnalysisPeriod(parseInt(e.target.value))}
                   className="w-full text-shiraz accent-shiraz cursor-pointer"
                 />
@@ -251,6 +254,7 @@ export default function LCC() {
                   max="6.0"
                   step="0.5"
                   value={discountRate}
+                  aria-valuetext={`${formatDeZahl(discountRate, 1)} % / a`}
                   onChange={(e) => setDiscountRate(parseFloat(e.target.value))}
                   className="w-full text-shiraz accent-shiraz cursor-pointer"
                 />
@@ -270,6 +274,7 @@ export default function LCC() {
                   max="8.0"
                   step="0.5"
                   value={energyInflation}
+                  aria-valuetext={`${formatDeZahl(energyInflation, 1)} % / a`}
                   onChange={(e) => setEnergyInflation(parseFloat(e.target.value))}
                   className="w-full text-shiraz accent-shiraz cursor-pointer"
                 />
@@ -289,6 +294,7 @@ export default function LCC() {
                   max="5.0"
                   step="0.5"
                   value={generalInflation}
+                  aria-valuetext={`${formatDeZahl(generalInflation, 1)} % / a`}
                   onChange={(e) => setGeneralInflation(parseFloat(e.target.value))}
                   className="w-full text-shiraz accent-shiraz cursor-pointer"
                 />
@@ -332,6 +338,8 @@ export default function LCC() {
                           max="220"
                           step="5"
                           value={co2BasePrice}
+                          aria-label={reglerName(inhalt.texte.coBasispreisStart)}
+                          aria-valuetext={`${formatDeWert(co2BasePrice)} € / t`}
                           onChange={(e) => setCo2BasePrice(parseInt(e.target.value))}
                           className="w-full text-shiraz accent-shiraz cursor-pointer"
                         />
@@ -348,6 +356,8 @@ export default function LCC() {
                           max="10.0"
                           step="0.5"
                           value={co2Escalation}
+                          aria-label={reglerName(inhalt.texte.jährlicheCoTeuerung)}
+                          aria-valuetext={`${formatDeZahl(co2Escalation, 1)} % / a`}
                           onChange={(e) => setCo2Escalation(parseFloat(e.target.value))}
                           className="w-full text-shiraz accent-shiraz cursor-pointer"
                         />
@@ -388,6 +398,8 @@ export default function LCC() {
                         max="40"
                         step="5"
                         value={subsidyPercent}
+                        aria-label={reglerName(inhalt.texte.zuschussAufOptionB)}
+                        aria-valuetext={`${formatDeWert(subsidyPercent)} %`}
                         onChange={(e) => setSubsidyPercent(parseInt(e.target.value))}
                         className="w-full text-shiraz accent-shiraz cursor-pointer"
                       />
@@ -466,6 +478,7 @@ export default function LCC() {
               {/* Live-Rechenweg (AP 3.7) mit den aktuellen Parametern */}
               <FormulaDerivationBox
                 live
+                kurzzeile={kurzzeile(ansageWert(`Barwert über ${formatDeZahl(analysisPeriod, 0)} Jahre: Option A`, calcData.resultA.totalLCCDiscounted, 0, '€'), ansageWert('Option B', calcData.resultB.totalLCCDiscounted, 0, '€'), Number.isFinite(calcData.saving) && (calcData.saving >= 0 ? ansageWert('Option B spart', calcData.saving, 0, '€') : ansageWert('Option A günstiger um', Math.abs(calcData.saving), 0, '€')))}
                 title={`Ihr Rechenweg: Barwertvergleich über ${formatDeZahl(analysisPeriod, 0)} Jahre`}
                 zielGleichung="LCC = C_0 + \sum_{t=1}^{N} \frac{C_t}{(1+r)^t} + \frac{C_{\text{EOL}} - R_N}{(1+r)^N}"
                 schritte={[

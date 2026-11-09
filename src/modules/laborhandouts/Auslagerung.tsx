@@ -13,6 +13,7 @@ import { ModulTest } from '@/src/components/quiz/ModulTest';
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
 import inhaltJson from '@/content/laborhandouts/Auslagerung.json';
 import { MdText } from '@/src/components/inhalt/MdText';
+import { ansageWert, kurzzeile } from '@/src/components/ui/ErgebnisAnsage';
 
 const th = 'p-2 text-left text-xs font-bold text-text-main border-b border-home-grau/30 bg-off-white';
 const td = 'p-2 text-xs text-text-main/85 border-b border-home-grau/15 font-mono';
@@ -128,7 +129,10 @@ function auswerten(stand: ProtokollStand): AuswertungsAnsicht {
       )}
     </div>
   );
-  return { inhalt, ergebnisse };
+  const kz = gueltige.length
+    ? gueltige.map(g => kurzzeile(`${g.medium}: ${ansageWert('mittlere Abtragsrate', g.erg.mittelVKorr, 1, 'µm/a')}`, ansageWert('Massenverlustrate', g.erg.mittelRate, 3, 'g/(m²·d)'))).join('; ')
+    : 'mittlere Abtragsrate –';
+  return { inhalt, ergebnisse, kurzzeile: kz };
 }
 
 export default function Auslagerung() {
@@ -142,7 +146,7 @@ export default function Auslagerung() {
         </div>
         <p className="text-sm text-text-main/80 leading-relaxed"><MdText text={inhaltJson.texte.derAuslagerungsversuchErgänztDie} /></p>
         <VersuchsHandout daten={AUSLAGERUNG_HANDOUT} auswertung={auswerten} />
-        <Querverweis ziel="labor_potentialmessung" titel={inhaltJson.werte.parallelerVersuch} linkText={inhaltJson.werte.zumHandoutPotentialmessung}>
+        <Querverweis ebene={3} ziel="labor_potentialmessung" titel={inhaltJson.werte.parallelerVersuch} linkText={inhaltJson.werte.zumHandoutPotentialmessung}>
           <p><MdText text={inhaltJson.texte.probenAusDerselbenCharge} /></p>
         </Querverweis>
       </div>

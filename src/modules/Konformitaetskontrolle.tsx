@@ -18,6 +18,7 @@ import inhalt from '@/content/konformitaetskontrolle/Konformitaetskontrolle.json
 import { MdText } from '@/src/components/inhalt/MdText';
 import { SIGMA_MIN_KONFORMITAET } from '@/src/calc/festbetonStatistik';
 import { AuswahlGruppe, alsOption } from '../components/ui/Auswahlgruppe';
+import { ErgebnisAnsage, ansageWert, kurzzeile } from '@/src/components/ui/ErgebnisAnsage';
 
 interface ConcreteClass {
   name: string;
@@ -692,6 +693,7 @@ export default function Konformitaetskontrolle() {
                   </div>
                 )}
 
+                <ErgebnisAnsage text={stats.n ? kurzzeile(`n = ${formatDeZahl(stats.n, 0)}`, ansageWert('Mittelwert', stats.mean, 1, 'N/mm²'), ansageWert('Kleinstwert', stats.minVal, 1, 'N/mm²'), stats.isConform ? 'konform' : 'nicht konform') : 'keine Prüfwerte'} />
                 {/* Info and limit exceptions warnings */}
                 {stats.limitMessage && (
                   <div className="bg-amber-50 text-amber-900 border border-amber-200 p-3 rounded-lg text-[10.5px] leading-relaxed flex gap-2">
@@ -746,7 +748,7 @@ export default function Konformitaetskontrolle() {
                   </div>
 
                   <div className="w-full relative overflow-x-auto">
-                    <svg 
+                    <svg role="img" aria-label="Diagramm: Festigkeitsentwicklung mit Grenzwert und Mittelwert" 
                       viewBox={`0 0 ${chartWidth} ${chartHeight}`} 
                       className="w-full min-w-[500px] h-auto text-slate-800"
                     >

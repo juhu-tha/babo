@@ -27,6 +27,8 @@ import { MdText } from '@/src/components/inhalt/MdText';
 import { reiterZiel } from '@/src/components/ui/ModuleTabs';
 import { AuswahlGruppe, alsOption } from '../components/ui/Auswahlgruppe';
 import { RC_HOECHSTANTEIL, rcBilanz, ANTEIL_GROB, GESTEINSKOERNUNG_T_JE_M3, type RcTyp, type RcExpositionsgruppe } from '@/src/calc/rcGesteinskoernung';
+import { ErgebnisAnsage } from '@/src/components/ui/ErgebnisAnsage';
+import { reglerName } from '@/src/lib/reglerName';
 
 // Define the tabs representing the 4 concepts of REZ Bayern
 type RezTab = 'informieren' | 'handeln' | 'nutzen' | 'staerken';
@@ -858,7 +860,9 @@ export default function Ressourceneffizienz() {
                       min="50" 
                       max="150" 
                       step="5"
-                      value={reinforcementRatio} 
+                      value={reinforcementRatio}
+                      aria-label={reglerName(inhalt.texte.t3BewehrungsgehaltStahl)}
+                      aria-valuetext={`${formatDeWert(reinforcementRatio)}%`} 
                       onChange={(e) => setReinforcementRatio(parseInt(e.target.value) || 100)}
                       className="w-full h-1.5 bg-slate-200 dark:bg-slate-800 rounded-lg appearance-none cursor-pointer accent-shiraz dark:accent-rose-500"
                     />
@@ -930,6 +934,7 @@ export default function Ressourceneffizienz() {
                     <div className="bg-slate-50/65 dark:bg-slate-850/45 p-3 rounded-xl text-center space-y-1 col-span-2 sm:col-span-1">
                       <span className="text-xs text-slate-500 dark:text-slate-400 font-bold block uppercase"><MdText text={inhalt.texte.grauerCoGehalt} /></span>
                       <span className="font-mono text-lg font-bold text-slate-800 dark:text-slate-200">{simResult.totalCo2} t</span>
+                      <ErgebnisAnsage text={`Grauer CO₂-Gehalt ${simResult.totalCo2} t, Referenz ${simResult.baselineCo2} t, Einsparung ${simResult.co2SavingsPercent} %, Primärkies-Schonung ${simResult.primaryMineralSavings} t`} />
                       <span className="text-xs text-slate-400 dark:text-slate-500 block"><MdText text={inhalt.texte.inklTransportStahl} /></span>
                     </div>
 
@@ -993,7 +998,9 @@ export default function Ressourceneffizienz() {
                         min="100" 
                         max="3000" 
                         step="50"
-                        value={projectSize} 
+                        value={projectSize}
+                        aria-label={reglerName(inhalt.texte.gebäudeNutzflächeM)}
+                        aria-valuetext={`${formatDeWert(projectSize)} m²`} 
                         onChange={(e) => setProjectSize(parseInt(e.target.value) || 650)}
                         className="w-full h-1.5 bg-slate-200 dark:bg-slate-800 rounded-lg appearance-none cursor-pointer accent-shiraz dark:accent-rose-500"
                       />
@@ -1010,7 +1017,9 @@ export default function Ressourceneffizienz() {
                         min="0" 
                         max="80" 
                         step="5"
-                        value={wasteOptimization} 
+                        value={wasteOptimization}
+                        aria-label={reglerName(inhalt.texte.abfallvermeidungVorOrtGewerke)}
+                        aria-valuetext={`${formatDeWert(wasteOptimization)}%`} 
                         onChange={(e) => { const v = Number(e.target.value); if (Number.isFinite(v)) setWasteOptimization(v); }}
                         className="w-full h-1.5 bg-slate-200 dark:bg-slate-800 rounded-lg appearance-none cursor-pointer accent-shiraz dark:accent-rose-500"
                       />
@@ -1031,7 +1040,9 @@ export default function Ressourceneffizienz() {
                         min="0" 
                         max="60" 
                         step="5"
-                        value={recyclingUsage} 
+                        value={recyclingUsage}
+                        aria-label={reglerName(inhalt.texte.rcBaustoffErsatzanteilIm)}
+                        aria-valuetext={`${formatDeWert(recyclingUsage)}%`} 
                         onChange={(e) => { const v = Number(e.target.value); if (Number.isFinite(v)) setRecyclingUsage(v); }}
                         className="w-full h-1.5 bg-slate-200 dark:bg-slate-800 rounded-lg appearance-none cursor-pointer accent-shiraz dark:accent-rose-500"
                       />

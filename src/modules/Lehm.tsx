@@ -13,6 +13,7 @@ import { MdText } from '@/src/components/inhalt/MdText';
 import { ModuleTabs } from '@/src/components/ui/ModuleTabs';
 import { EingabeHinweise } from '@/src/components/ui/EingabeHinweise';
 import { lehmSchaetzmodell } from '@/src/calc/lehm';
+import { ErgebnisAnsage, ansageWert, kurzzeile } from '@/src/components/ui/ErgebnisAnsage';
 function Pie({ data }: { data: { datasets: { data: number[] }[] }; options?: unknown }) {
   return (
     <div className="text-center font-semibold text-xs text-stone-650 bg-stone-100 p-2 rounded-xl">
@@ -127,6 +128,7 @@ export default function Lehm() {
               </div>
             </div>
             <EingabeHinweise hinweise={results.hinweise} />
+            <ErgebnisAnsage text={kurzzeile(ansageWert('Trockenrohdichte', results.rohdichte, 0, 'kg/m³'), ansageWert('Druckfestigkeit', results.druckfestigkeit, 1, 'MPa'), ansageWert('Schwindmaß', results.schwinden, 1, '%'), ansageWert('λ', results.lambda, 2, 'W/(mK)'))} />
             
             <div className="bg-white p-6 rounded-xl border border-home-grau/30 shadow-sm">
               <h3 className="text-sm font-bold text-text-main uppercase tracking-wider mb-4">Zusammensetzung</h3>
@@ -141,7 +143,7 @@ export default function Lehm() {
             <div className="bg-white p-5 rounded-xl border border-home-grau/30 shadow-sm mt-6">
               <h3 className="font-semibold mb-4 text-text-main"><MdText text={inhalt.texte.schematischeDarstellungLehmstruktur} /></h3>
               <div className="flex flex-col items-center bg-off-white rounded-lg border border-home-grau/30 p-4">
-                <svg width="100%" height="160" viewBox="0 0 450 160">
+                <svg role="img" aria-label="Schematische Darstellung: Lehmstruktur" width="100%" height="160" viewBox="0 0 450 160">
                   {/* Sand/Kies (Gerüst) */}
                   <circle cx="100" cy="80" r="30" fill="#F4A460" stroke="#d97706" strokeWidth="2" />
                   <circle cx="170" cy="60" r="25" fill="#F4A460" stroke="#d97706" strokeWidth="2" />

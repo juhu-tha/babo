@@ -27,6 +27,7 @@ import { MdText } from '@/src/components/inhalt/MdText';
 import { LebensdauerUebernehmen } from '@/src/components/ui/LebensdauerUebernehmen';
 import { ModuleTabs } from '@/src/components/ui/ModuleTabs';
 import { huellwerte, kWertAnsatz } from '@/src/calc/expositionsklassen';
+import { ErgebnisAnsage, ansageWert, kurzzeile } from '@/src/components/ui/ErgebnisAnsage';
 export { NORMATIVE_EXPOSURE_CLASSES, CHEMICAL_LIMITS_XA, MOISTURE_CLASSES_AKR } from './expositionsklassen/daten';
 export type { NormExposureClass } from './expositionsklassen/daten';
 export { ExpositionsklassenSkizze } from './expositionsklassen/ExpositionsklassenSkizze';
@@ -498,6 +499,7 @@ export default function Expositionsklassen() {
             </div>
 
             {/* Ausgabe der Hüllwerte */}
+            <ErgebnisAnsage text={calculatedEnvelopes ? kurzzeile(`Klassen ${selectedClasses.join(', ')}`, `höchste Festigkeitsklasse ${calculatedEnvelopes.highestClass}`, calculatedEnvelopes.minWzEq !== null ? ansageWert('w/z höchstens', calculatedEnvelopes.minWzEq, 2) : 'w/z keine Begrenzung', calculatedEnvelopes.requiresLP && calculatedEnvelopes.minAirVal !== null && ansageWert('Luftgehalt mindestens', calculatedEnvelopes.minAirVal, 1, '%'), ansageWert('c_nom', calculatedEnvelopes.cNom, 'frei', 'mm')) : ''} />
             {calculatedEnvelopes && (
               <div className="space-y-3 pt-2">
                 <span className="text-xs font-bold text-text-main uppercase tracking-wider block"><MdText text={inhalt.texte.t2MaßgebendeHüllwerteGrenzwerte} /></span>
@@ -652,6 +654,7 @@ export default function Expositionsklassen() {
                 <span className="text-2xl font-mono font-black text-shiraz">
                   {formatDeZahl(kValueCalc.wzEq, 3)}
                 </span>
+                <ErgebnisAnsage text={kurzzeile(ansageWert('w/z', kValueCalc.rawWz, 3), ansageWert('äquivalenter w/z', kValueCalc.wzEq, 3))} />
                 <span className="text-[10px] text-text-main/70 block mt-0.5">
                   {calculatedEnvelopes && calculatedEnvelopes.minWzEq !== null ? (
                     kValueCalc.wzEq <= calculatedEnvelopes.minWzEq ? (

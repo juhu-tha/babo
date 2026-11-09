@@ -10,6 +10,7 @@ import inhalt from '@/content/mechanischekenngroessen/Zugversuchsimulator.json';
 import { MdText } from '@/src/components/inhalt/MdText';
 import { AuswahlGruppe, alsOption } from '../../components/ui/Auswahlgruppe';
 import { Fz } from '@/src/components/ui/Formelzeichen';
+import { ansageWert, kurzzeile } from '@/src/components/ui/ErgebnisAnsage';
 
 interface ZugversuchsimulatorProps {
   breiteMm: number;
@@ -286,7 +287,7 @@ export default function Zugversuchsimulator({ breiteMm, durchmesserMm, handleSel
 
             {/* 2D Technical SVG Visualization with White Background */}
             <div className="relative w-full aspect-16/9 max-h-[360px] bg-white rounded-xl overflow-hidden border border-home-grau/30 shadow-sm flex items-center justify-center p-2">
-              <svg width="100%" height="100%" viewBox="0 0 520 280" className="select-none">
+              <svg role="img" aria-label="Stabverformung und Querdehnung im Zugversuch" width="100%" height="100%" viewBox="0 0 520 280" className="select-none">
                 <defs>
                   <pattern id="gridMech" width="20" height="20" patternUnits="userSpaceOnUse">
                     <path d="M 20 0 L 0 0 0 20" fill="none" stroke="#f1f5f9" strokeWidth="1" />
@@ -447,6 +448,7 @@ export default function Zugversuchsimulator({ breiteMm, durchmesserMm, handleSel
         <div className="lg:col-span-12">
           <FormulaDerivationBox
             live
+            kurzzeile={kurzzeile(ansageWert('Spannung', sim.sigma, 1, 'MPa'), ansageWert('Auslastung', sim.auslastungFestigkeit, 0, '%'), ansageWert('Dehnung', sim.epsilonPromille, 2, '‰'), ansageWert('Längenänderung gesamt', sim.deltaL_gesamt_mm, 3, 'mm'), sim.isVersagt ? 'Versagen' : sim.isPlastisch ? 'plastisch' : '', lastArt !== 'zug' && sim.isKnickGefaehrdet && 'knickgefährdet')}
             title={`Ihr Rechenweg: ${lastArt === 'zug' ? 'Zugstab' : 'Druckstab'} aus ${mat.name}`}
             zielGleichung="\Delta L_{ges} = \frac{F \cdot L_0}{E \cdot A_0} \cdot (1 + \varphi) - \varepsilon_{cs} \cdot L_0"
             schritte={[

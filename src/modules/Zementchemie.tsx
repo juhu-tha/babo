@@ -13,6 +13,7 @@ import BaustoffProfil from '@/src/components/ui/BaustoffProfil';
 import inhalt from '@/content/zementchemie/Zementchemie.json';
 import { MdText } from '@/src/components/inhalt/MdText';
 import { AuswahlGruppe, ReiterLeiste, alsOption, alsReiter, reiterPanel } from '../components/ui/Auswahlgruppe';
+import { ErgebnisAnsage, ansageWert, kurzzeile } from '@/src/components/ui/ErgebnisAnsage';
 
 ChartJS.register(LinearScale, ArcElement, Tooltip, Legend);
 
@@ -70,6 +71,8 @@ function GefuegebildungSimulator() {
                 max={5}
                 step={1}
                 value={timeStageIndex}
+                aria-label="Hydratationszeit"
+                aria-valuetext={currentStage.timeLabel}
                 onChange={(e) => setTimeStageIndex(Number(e.target.value))}
                 className="w-full h-2 bg-slate-200 rounded-lg appearance-none cursor-pointer accent-shiraz"
               />
@@ -114,6 +117,8 @@ function GefuegebildungSimulator() {
                 max={0.65}
                 step={0.05}
                 value={wzRatio}
+                aria-label="Wasserzementwert w/z"
+                aria-valuetext={`w/z ${formatDeZahl(wzRatio, 2)}`}
                 onChange={(e) => setWzRatio(Number(e.target.value))}
                 className="w-full h-2 bg-slate-200 rounded-lg appearance-none cursor-pointer accent-shiraz"
               />
@@ -155,6 +160,8 @@ function GefuegebildungSimulator() {
               </AuswahlGruppe>
             </div>
 
+            <ErgebnisAnsage text={kurzzeile(currentStage.timeLabel, ansageWert('Hydratationsgrad', currentStage.alpha, 'frei', '%'),
+              `Druckfestigkeit ${effectiveStrength} MPa`, ansageWert('Kapillarporosität', effectivePorosity, 1, '%'))} />
             {/* Live Metrics Grid */}
             <div className="grid grid-cols-2 gap-2.5 pt-3 border-t border-home-grau/20">
               <div className="bg-off-white p-2.5 rounded-xl border border-home-grau/20">
@@ -199,7 +206,7 @@ function GefuegebildungSimulator() {
             <div className="relative w-full aspect-4/3 max-h-[360px] bg-slate-900 rounded-xl overflow-hidden border border-slate-800 shadow-inner flex items-center justify-center">
               
               {/* REM Reticle / Circular Viewport */}
-              <svg width="100%" height="100%" viewBox="0 0 500 360" className="select-none">
+              <svg role="img" aria-label="REM-Gefügebild (schematisch)" width="100%" height="100%" viewBox="0 0 500 360" className="select-none">
                 <defs>
                   {/* Pore water background gradient */}
                   <radialGradient id="waterGrad" cx="50%" cy="50%" r="60%">
@@ -608,7 +615,7 @@ export default function Zementchemie() {
             <div className="text-sm text-text-main/80 bg-off-white p-5 rounded-xl border border-home-grau/30 space-y-3">
               <p><MdText text={inhalt.texte.didaktischerLeitfadenDinEn} /></p>
               <div className="border-t border-home-grau/30 pt-3 mt-2 space-y-2">
-                <h4 className="text-xs font-bold text-shiraz uppercase tracking-wider"><MdText text={inhalt.texte.hydratationsHauptreaktionenStöchiometrie} /></h4>
+                <h3 className="text-xs font-bold text-shiraz uppercase tracking-wider wie-h4"><MdText text={inhalt.texte.hydratationsHauptreaktionenStöchiometrie} /></h3>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs">
                   <div className="bg-white p-3 rounded-lg border border-home-grau/30">
                     <span className="font-semibold block mb-1"><MdText text={inhalt.texte.t1AlitHydratationC} /></span>
@@ -649,6 +656,8 @@ export default function Zementchemie() {
               </div>
 
               <div className="flex flex-col gap-6">
+                <ErgebnisAnsage text={kurzzeile(ansageWert('Alit C3S', results.c3s, 1, '%'), ansageWert('Belit C2S', results.c2s, 1, '%'),
+                  ansageWert('Aluminat C3A', results.c3a, 1, '%'), ansageWert('Ferrit C4AF', results.c4af, 1, '%'))} />
                 <div className="bg-shiraz text-white p-6 rounded-xl shadow-md">
                   <h3 className="text-sm font-bold uppercase tracking-wider mb-4 opacity-90"><MdText text={inhalt.texte.klinkerphasenNachBogue} /></h3>
                   <div className="grid grid-cols-2 gap-y-6 gap-x-4 mb-2">
@@ -694,7 +703,7 @@ export default function Zementchemie() {
                 <div className="bg-off-white p-5 rounded-xl border border-home-grau/30">
                   <h3 className="font-bold text-sm mb-4 text-text-main uppercase tracking-wider"><MdText text={inhalt.texte.schematischeKlinkerkornStruktur} /></h3>
                   <div className="relative w-full h-48 bg-white rounded-lg border border-home-grau/30 overflow-hidden flex items-center justify-center">
-                    <svg width="100%" height="100%" viewBox="0 0 400 200" preserveAspectRatio="xMidYMid meet">
+                    <svg role="img" aria-label="Schematische Klinkerkorn-Struktur" width="100%" height="100%" viewBox="0 0 400 200" preserveAspectRatio="xMidYMid meet">
                       {/* Klinkerkorn */}
                       <circle cx="200" cy="100" r="80" fill="#e2e8f0" stroke="#94a3b8" strokeWidth="2" />
                       

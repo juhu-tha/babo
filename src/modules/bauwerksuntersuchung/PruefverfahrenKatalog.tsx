@@ -32,8 +32,8 @@ export default function PruefverfahrenKatalog() {
       <div className="bg-white p-6 rounded-2xl shadow-sm border border-home-grau/30 flex flex-col gap-3">
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
           <div>
-            <h3 className="text-lg font-bold text-text-main flex items-center gap-2">
-              <Layers className="text-shiraz" /><MdText text={inhalt.texte.interaktiverPrüfverfahrenKatalogDer} /></h3>
+            <h2 className="text-lg font-bold text-text-main flex items-center gap-2">
+              <Layers className="text-shiraz" /><MdText text={inhalt.texte.interaktiverPrüfverfahrenKatalogDer} /></h2>
             <p className="text-xs text-text-main/70 mt-1"><MdText text={inhalt.texte.alle14AnerkanntenVor} /></p>
           </div>
           <div className="flex items-center gap-2">
@@ -139,10 +139,10 @@ export default function PruefverfahrenKatalog() {
                 {activeMethod.badge}
               </span>
             </div>
-            <h3 className="text-xl font-bold text-slate-900 flex items-center gap-2">
+            <h2 className="text-xl font-bold text-slate-900 flex items-center gap-2">
               <Activity size={20} className="text-shiraz" />
               {activeMethod.name}
-            </h3>
+            </h2>
           </div>
           <div className="text-xs text-slate-700 bg-slate-50 border border-slate-200 rounded-xl px-3.5 py-2.5 flex flex-col sm:flex-row sm:items-center gap-1.5 self-start md:self-center shadow-3xs max-w-md">
             <span className="font-bold text-shiraz shrink-0"><MdText text={inhalt.texte.normenPrüfregeln} /></span>
@@ -156,8 +156,8 @@ export default function PruefverfahrenKatalog() {
           <div className="lg:col-span-7 space-y-5">
             {/* 1. Aufsichtsbehördliches & Physikalisches Messprinzip */}
             <div className="space-y-2 bg-slate-50 p-4 rounded-xl border border-slate-200">
-              <h4 className="text-xs font-bold text-slate-500 uppercase tracking-wider flex items-center gap-1.5">
-                <Info size={14} className="text-shiraz" /><MdText text={inhalt.texte.aufsichtsbehördlichesPhysikalischesMessp} /></h4>
+              <h3 className="text-xs font-bold text-slate-500 uppercase tracking-wider flex items-center gap-1.5 wie-h4">
+                <Info size={14} className="text-shiraz" /><MdText text={inhalt.texte.aufsichtsbehördlichesPhysikalischesMessp} /></h3>
               <p className="text-xs text-slate-700 leading-relaxed text-justify">
                 {activeMethod.principle}
               </p>
@@ -165,8 +165,8 @@ export default function PruefverfahrenKatalog() {
 
             {/* 2. Prozessschritte der Durchführung in der Baupraxis */}
             <div className="space-y-3">
-              <h4 className="text-xs font-bold text-slate-500 uppercase tracking-wider flex items-center gap-1.5">
-                <span className="w-1.5 h-3 bg-shiraz rounded-xs" /><MdText text={inhalt.texte.prozessschritteDerDurchführungBaupraxis} /></h4>
+              <h3 className="text-xs font-bold text-slate-500 uppercase tracking-wider flex items-center gap-1.5 wie-h4">
+                <span className="w-1.5 h-3 bg-shiraz rounded-xs" /><MdText text={inhalt.texte.prozessschritteDerDurchführungBaupraxis} /></h3>
               <div className="grid grid-cols-1 gap-2 mt-2">
                 {activeMethod.steps.map((step, idx) => (
                   <div key={idx} className="flex items-start gap-3 bg-white p-3 rounded-xl border border-slate-100 shadow-3xs hover:border-slate-200 transition-all">
@@ -189,7 +189,7 @@ export default function PruefverfahrenKatalog() {
           <div className="lg:col-span-5 space-y-5">
             {/* Mathematisch-physikalisches Modell */}
             <div className="p-4 bg-slate-50/70 rounded-2xl border border-home-grau/25 space-y-3">
-              <h4 className="text-xs font-bold text-slate-500 uppercase tracking-wider"><MdText text={inhalt.texte.mathematischPhysikalischesModell} /></h4>
+              <h3 className="text-xs font-bold text-slate-500 uppercase tracking-wider wie-h4"><MdText text={inhalt.texte.mathematischPhysikalischesModell} /></h3>
               <div className="py-3 px-4 bg-white rounded-xl border border-slate-200 shadow-3xs flex items-center justify-center text-center overflow-x-auto">
                 <BlockMath math={activeMethod.formula} />
               </div>
@@ -200,11 +200,11 @@ export default function PruefverfahrenKatalog() {
 
             {/* Verfahrensbeurteilung: Vorteile vs Grenzen */}
             <div className="space-y-3">
-              <h4 className="text-xs font-bold text-slate-500 uppercase tracking-wider"><MdText text={inhalt.texte.verfahrensbeurteilungImIngenieurbau} /></h4>
+              <h3 className="text-xs font-bold text-slate-500 uppercase tracking-wider wie-h4"><MdText text={inhalt.texte.verfahrensbeurteilungImIngenieurbau} /></h3>
               <div className="grid grid-cols-1 gap-3">
                 <div className="p-4 bg-emerald-50/60 rounded-xl border border-emerald-100 space-y-1.5">
-                  <h5 className="font-bold text-xs text-emerald-800 flex items-center gap-1.5">
-                    <Check size={14} className="text-emerald-700" /><MdText text={inhalt.texte.unerlässlicheVorteile} /></h5>
+                  <h4 className="font-bold text-xs text-emerald-800 flex items-center gap-1.5 wie-h5">
+                    <Check size={14} className="text-emerald-700" /><MdText text={inhalt.texte.unerlässlicheVorteile} /></h4>
                   <ul className="space-y-1 text-[11px] text-emerald-800 list-disc list-inside leading-snug">
                     {activeMethod.pros.map((pro, i) => (
                       <li key={i} className="align-top">{pro}</li>
@@ -212,8 +212,8 @@ export default function PruefverfahrenKatalog() {
                   </ul>
                 </div>
                 <div className="p-4 bg-rose-50/60 rounded-xl border border-rose-100 space-y-1.5">
-                  <h5 className="font-bold text-xs text-rose-800 flex items-center gap-1.5">
-                    <AlertTriangle size={14} className="text-rose-700" /><MdText text={inhalt.texte.echteSystemgrenzenFehlerquellen} /></h5>
+                  <h4 className="font-bold text-xs text-rose-800 flex items-center gap-1.5 wie-h5">
+                    <AlertTriangle size={14} className="text-rose-700" /><MdText text={inhalt.texte.echteSystemgrenzenFehlerquellen} /></h4>
                   <ul className="space-y-1 text-[11px] text-rose-800 list-disc list-inside leading-snug">
                     {activeMethod.cons.map((con, i) => (
                       <li key={i} className="align-top">{con}</li>
@@ -225,8 +225,8 @@ export default function PruefverfahrenKatalog() {
 
             {/* Richtwerte & Beurteilungskriterien */}
             <div className="p-4 bg-amber-50/50 rounded-xl border border-amber-200/80 space-y-1.5">
-              <h4 className="text-xs font-bold text-amber-900 flex items-center gap-1.5">
-                <Info size={14} className="text-amber-700" /><MdText text={inhalt.texte.normativeRichtwerteBeurteilungskriterien} /></h4>
+              <h3 className="text-xs font-bold text-amber-900 flex items-center gap-1.5 wie-h4">
+                <Info size={14} className="text-amber-700" /><MdText text={inhalt.texte.normativeRichtwerteBeurteilungskriterien} /></h3>
               <p className="text-[11px] text-amber-900/90 leading-relaxed text-justify">
                 {activeMethod.referenceValues}
               </p>
@@ -238,17 +238,17 @@ export default function PruefverfahrenKatalog() {
         {diagnoseDetail && (
           <div className="pt-6 border-t border-home-grau/25 space-y-6">
             <div className="flex items-center justify-between">
-              <h4 className="text-sm font-bold text-text-main flex items-center gap-2">
+              <h3 className="text-sm font-bold text-text-main flex items-center gap-2 wie-h4">
                 <ShieldCheck className="text-shiraz" size={18} /><MdText text={inhalt.texte.prüfungsnormativeVorgabenIngenieurpraxis} />{activeMethod.shortName}
-              </h4>
+              </h3>
               <span className="text-[11px] font-mono text-shiraz bg-shiraz/10 px-2.5 py-0.5 rounded-full font-bold"><MdText text={inhalt.texte.dinEnWtaDbv} /></span>
             </div>
 
             {/* 1. NOTWENDIGE ANZAHL PRÜFUNGEN / PRÜFPUNKTE & ENTNAHMESTELLEN */}
             <div className="bg-slate-50/80 p-5 rounded-2xl border border-home-grau/30 space-y-3">
               <div className="flex items-center justify-between">
-                <h5 className="font-bold text-xs uppercase tracking-wider text-slate-800 flex items-center gap-1.5">
-                  <span className="w-2 h-2 rounded-full bg-shiraz"></span><MdText text={inhalt.texte.t1NotwendigeAnzahlPrüfungen} /></h5>
+                <h4 className="font-bold text-xs uppercase tracking-wider text-slate-800 flex items-center gap-1.5 wie-h5">
+                  <span className="w-2 h-2 rounded-full bg-shiraz"></span><MdText text={inhalt.texte.t1NotwendigeAnzahlPrüfungen} /></h4>
                 <span className="text-[10px] font-mono text-slate-500 font-bold bg-white px-2 py-0.5 rounded border border-slate-200">
                   {diagnoseDetail.samplingPoints.normVorgabe}
                 </span>
@@ -285,8 +285,8 @@ export default function PruefverfahrenKatalog() {
 
             {/* 2. PROBEN- UND PRÜFSTELLENKONDITIONIERUNG */}
             <div className="bg-slate-50/80 p-5 rounded-2xl border border-home-grau/30 space-y-3">
-              <h5 className="font-bold text-xs uppercase tracking-wider text-slate-800 flex items-center gap-1.5">
-                <span className="w-2 h-2 rounded-full bg-shiraz"></span><MdText text={inhalt.texte.t2ProbenUndPrüfstellenkonditionierung} /></h5>
+              <h4 className="font-bold text-xs uppercase tracking-wider text-slate-800 flex items-center gap-1.5 wie-h5">
+                <span className="w-2 h-2 rounded-full bg-shiraz"></span><MdText text={inhalt.texte.t2ProbenUndPrüfstellenkonditionierung} /></h4>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs">
                 <div className="space-y-2">
                   <div className="p-3 bg-white rounded-xl border border-slate-200 space-y-1">
@@ -325,8 +325,8 @@ export default function PruefverfahrenKatalog() {
 
             {/* 3. RELEVANTE NORMEN UND REGELWERKE MIT DIN MEDIA LINKS */}
             <div className="bg-slate-50/80 p-5 rounded-2xl border border-home-grau/30 space-y-3">
-              <h5 className="font-bold text-xs uppercase tracking-wider text-slate-800 flex items-center gap-1.5">
-                <span className="w-2 h-2 rounded-full bg-shiraz"></span><MdText text={inhalt.texte.t3RelevanteNormenRegelwerke} /></h5>
+              <h4 className="font-bold text-xs uppercase tracking-wider text-slate-800 flex items-center gap-1.5 wie-h5">
+                <span className="w-2 h-2 rounded-full bg-shiraz"></span><MdText text={inhalt.texte.t3RelevanteNormenRegelwerke} /></h4>
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
                 {diagnoseDetail.standards.map((std, i) => (
                   <div key={i} className="p-3 bg-white rounded-xl border border-slate-200 space-y-1 flex flex-col justify-between">
@@ -335,7 +335,7 @@ export default function PruefverfahrenKatalog() {
                         <span className="font-mono font-bold text-xs text-slate-900">{std.code}</span>
                         <span className="text-[10px] font-mono text-slate-500 bg-slate-100 px-1.5 py-0.2 rounded">{std.date}</span>
                       </div>
-                      <h6 className="text-[11px] font-semibold text-slate-800 mt-1 leading-snug">{std.title}</h6>
+                      <h5 className="text-[11px] font-semibold text-slate-800 mt-1 leading-snug wie-h6">{std.title}</h5>
                       <p className="text-[10px] text-slate-500 mt-1 leading-normal">{std.scope}</p>
                     </div>
                     {std.url ? (
@@ -361,8 +361,8 @@ export default function PruefverfahrenKatalog() {
             {/* 4. WICHTIG: INTERPRETATION UND ANWENDUNG DER ERGEBNISSE */}
             <div className="bg-slate-50/80 p-5 rounded-2xl border-2 border-shiraz/30 space-y-4">
               <div className="flex items-center justify-between">
-                <h5 className="font-bold text-xs uppercase tracking-wider text-shiraz flex items-center gap-1.5">
-                  <span className="w-2 h-2 rounded-full bg-shiraz animate-pulse"></span><MdText text={inhalt.texte.t4WichtigInterpretationBautechnische} /></h5>
+                <h4 className="font-bold text-xs uppercase tracking-wider text-shiraz flex items-center gap-1.5 wie-h5">
+                  <span className="w-2 h-2 rounded-full bg-shiraz animate-pulse"></span><MdText text={inhalt.texte.t4WichtigInterpretationBautechnische} /></h4>
               </div>
 
               <div className="p-3 bg-white rounded-xl border border-home-grau/20 text-xs text-slate-800 leading-relaxed"><MdText text={inhalt.texte.ingenieurtechnischeKerndiagnose} />{diagnoseDetail.interpretation.kerndiagnose}
@@ -405,16 +405,16 @@ export default function PruefverfahrenKatalog() {
               {/* Tragwerksauswirkung & Instandsetzungskonsequenz Grid */}
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs">
                 <div className="p-4 bg-white rounded-xl border border-slate-200 space-y-2">
-                  <h6 className="font-bold text-xs text-slate-900 flex items-center gap-1.5">
-                    <Scale size={14} className="text-shiraz" /><MdText text={inhalt.texte.tragwerksauswirkungStatikStandsicherheit} /></h6>
+                  <h5 className="font-bold text-xs text-slate-900 flex items-center gap-1.5 wie-h6">
+                    <Scale size={14} className="text-shiraz" /><MdText text={inhalt.texte.tragwerksauswirkungStatikStandsicherheit} /></h5>
                   <p className="text-[11.5px] text-slate-650 leading-relaxed">
                     {diagnoseDetail.interpretation.tragwerksAuswirkung}
                   </p>
                 </div>
 
                 <div className="p-4 bg-white rounded-xl border border-slate-200 space-y-2">
-                  <h6 className="font-bold text-xs text-slate-900 flex items-center gap-1.5">
-                    <Wrench size={14} className="text-shiraz" /><MdText text={inhalt.texte.instandsetzungskonsequenzDibtTrInstandha} /></h6>
+                  <h5 className="font-bold text-xs text-slate-900 flex items-center gap-1.5 wie-h6">
+                    <Wrench size={14} className="text-shiraz" /><MdText text={inhalt.texte.instandsetzungskonsequenzDibtTrInstandha} /></h5>
                   <p className="text-[11.5px] text-slate-650 leading-relaxed">
                     {diagnoseDetail.interpretation.instandsetzungsKonsequenz}
                   </p>
@@ -436,8 +436,8 @@ export default function PruefverfahrenKatalog() {
 
       {/* Comparative Matrix Table */}
       <div className="bg-white p-6 rounded-2xl shadow-sm border border-home-grau/30 space-y-4">
-        <h4 className="font-bold text-sm text-text-main flex items-center gap-2">
-          <Sliders className="text-shiraz" size={16} /><MdText text={inhalt.texte.synopseVergleichendeBewertungsmatrixAlle} /></h4>
+        <h3 className="font-bold text-sm text-text-main flex items-center gap-2 wie-h4">
+          <Sliders className="text-shiraz" size={16} /><MdText text={inhalt.texte.synopseVergleichendeBewertungsmatrixAlle} /></h3>
         <div className="overflow-x-auto">
           <table className="w-full text-left text-xs border-collapse">
             <thead>

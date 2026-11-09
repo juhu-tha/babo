@@ -314,7 +314,7 @@ export default function MaterialitaetArchitektur() {
                   </div>
                   <div className="min-w-0">
                     <div className="flex items-center gap-2">
-                      <h4 className="font-bold text-xs text-text-main truncate">{mat.name}</h4>
+                      <h3 className="font-bold text-xs text-text-main truncate wie-h4">{mat.name}</h3>
                       <span className="text-[10px] text-text-main/60 bg-off-white px-1.5 py-0.5 rounded border border-home-grau/20">
                         {mat.category}
                       </span>
@@ -454,7 +454,7 @@ export default function MaterialitaetArchitektur() {
             <div className="p-4 rounded-xl bg-shiraz/5 border border-shiraz/20 flex items-start gap-3 text-xs">
               <Building2 size={20} className="text-shiraz shrink-0 mt-0.5" />
               <div>
-                <h5 className="font-bold text-shiraz mb-1"><MdText text={inhalt.texte.architekturikonenBaukunstReferenzen} /></h5>
+                <h4 className="font-bold text-shiraz mb-1 wie-h5"><MdText text={inhalt.texte.architekturikonenBaukunstReferenzen} /></h4>
                 <p className="text-text-main/80 leading-relaxed mb-2">
                   {activeDetail.architekturBezug}
                 </p>

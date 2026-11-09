@@ -7,6 +7,8 @@ import { EC2_CONCRETE_CLASSES, type ConcreteClassData } from './daten';
 import { Ec2ParameterSkizze } from './Ec2ParameterSkizze';
 import inhalt from '@/content/betonkennwerte/RechnerTab.json';
 import { MdText } from '@/src/components/inhalt/MdText';
+import { ErgebnisAnsage, ansageWert, kurzzeile } from '@/src/components/ui/ErgebnisAnsage';
+import { reglerName } from '@/src/lib/reglerName';
 
 export interface RechnerTabProps {
   aggregateType: 'quarzit' | 'kalkstein' | 'sandstein' | 'basalt';
@@ -131,6 +133,8 @@ export default function RechnerTab({ aggregateType, ambientTempT, festigkeitMitT
               max="100" 
               step="5"
               value={relativeHumidity}
+              aria-label={reglerName(inhalt.texte.luftfeuchteRhAbschnitt5)}
+              aria-valuetext={`${formatDeWert(relativeHumidity)} %`}
               onChange={(e) => setRelativeHumidity(Number(e.target.value))}
               className="w-full accent-shiraz cursor-pointer"
             />
@@ -298,6 +302,7 @@ export default function RechnerTab({ aggregateType, ambientTempT, festigkeitMitT
             </div>
 
             <div className="space-y-1.5 text-xs">
+              <ErgebnisAnsage text={kurzzeile(ansageWert('f_cm', calcResults.fcm, 'frei', 'MPa'), ansageWert('f_cd', calcResults.fcd, 2, 'MPa'), ansageWert('f_ctm', calcResults.fctm, 2, 'MPa'), ansageWert('E_cm', calcResults.Ecm, 0, 'MPa'), ansageWert('Endkriechzahl φ', calcResults.phiFinal, 2), ansageWert('Schwinddehnung ε_cs', calcResults.epsCs * 1000, 3, '‰'))} />
               <div className="flex justify-between py-0.5 border-b border-slate-100">
                 <span className="text-slate-600"><MdText text={inhalt.texte.zylinderFCk28} /></span>
                 <strong className="font-mono text-slate-900">{formatDeWert(calcResults.fck)} MPa</strong>

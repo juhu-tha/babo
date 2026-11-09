@@ -26,6 +26,8 @@ import { MdText } from '@/src/components/inhalt/MdText';
 import { ModuleTabs } from '@/src/components/ui/ModuleTabs';
 import { EingabeHinweise } from '@/src/components/ui/EingabeHinweise';
 import { messwerteAusText, gumMessunsicherheit, ringversuch } from '@/src/calc/pruefverfahren';
+import { ErgebnisAnsage, ansageWert, kurzzeile } from '@/src/components/ui/ErgebnisAnsage';
+import { reglerName } from '@/src/lib/reglerName';
 
 export default function MessenPruefen() {
   // Tabs for the Messen & Prüfen component
@@ -264,6 +266,8 @@ export default function MessenPruefen() {
                     max="58"
                     step="0.1"
                     value={rvMeasuredValue}
+                    aria-label={reglerName(inhalt.texte.eigenesPrüfergebnis)}
+                    aria-valuetext={`${formatDeZahl(rvMeasuredValue, 1)} MPa`}
                     onChange={(e) => setRvMeasuredValue(parseFloat(e.target.value))}
                     className="w-full accent-shiraz cursor-pointer"
                   />
@@ -284,6 +288,8 @@ export default function MessenPruefen() {
                     max="55"
                     step="0.1"
                     value={rvAssignedValue}
+                    aria-label={reglerName(inhalt.texte.referenzwertDesRingversuchs)}
+                    aria-valuetext={`${formatDeZahl(rvAssignedValue, 1)} MPa`}
                     onChange={(e) => setRvAssignedValue(parseFloat(e.target.value))}
                     className="w-full accent-shiraz cursor-pointer"
                   />
@@ -304,6 +310,8 @@ export default function MessenPruefen() {
                     max="4.0"
                     step="0.1"
                     value={rvSigmaPT}
+                    aria-label={reglerName(inhalt.texte.zielStandardabweichung)}
+                    aria-valuetext={`±${formatDeZahl(rvSigmaPT, 2)} MPa`}
                     onChange={(e) => setRvSigmaPT(parseFloat(e.target.value))}
                     className="w-full accent-shiraz cursor-pointer"
                   />
@@ -370,6 +378,7 @@ export default function MessenPruefen() {
                   </div>
                 </div>
                 <EingabeHinweise hinweise={rvStats.hinweise} />
+                <ErgebnisAnsage text={kurzzeile(ansageWert('z-Score', rvStats.zScore, 2), rvStats.zStatus === '–' ? '' : rvStats.zStatus === 'ok' ? 'zufriedenstellend' : rvStats.zStatus === 'warning' ? 'Warnsignal' : inhalt.werte.nichtAkzeptabel, ansageWert('E_n', rvStats.enScore, 2), rvStats.enStatus === '–' ? '' : rvStats.enStatus === 'ok' ? inhalt.werte.en10Zufriedenstellend : inhalt.werte.en10Nicht)} />
               </div>
 
               {/* Evaluation Output Column (7 cols) */}
@@ -483,8 +492,8 @@ export default function MessenPruefen() {
                 <div className="bg-white p-4 rounded-xl border border-home-grau/30 shadow-xs flex flex-col gap-3">
                   <div className="flex flex-wrap items-center justify-between gap-2 pb-2 border-b border-home-grau/20">
                     <div>
-                      <h4 className="font-bold text-slate-900 text-xs flex items-center gap-1.5 font-sans">
-                        <Target size={15} className="text-shiraz" /><MdText text={inhalt.texte.interaktiverYoudenPlotZwei} /></h4>
+                      <h3 className="font-bold text-slate-900 text-xs flex items-center gap-1.5 font-sans wie-h4">
+                        <Target size={15} className="text-shiraz" /><MdText text={inhalt.texte.interaktiverYoudenPlotZwei} /></h3>
                       <p className="text-[10px] text-slate-500 font-sans"><MdText text={inhalt.texte.wJYoudenMethode} /></p>
                     </div>
                     <span className="text-[10px] font-mono text-slate-500 bg-slate-100 px-2 py-0.5 rounded"><MdText text={inhalt.texte.probeAVsProbe} /></span>
@@ -492,7 +501,7 @@ export default function MessenPruefen() {
 
                   {/* SVG Youden-Plot Canvas */}
                   <div className="w-full svg-buehne border rounded-xl p-3 flex flex-col items-center justify-center relative overflow-hidden">
-                    <svg width="100%" height="220" viewBox="0 0 460 220" className="select-none">
+                    <svg role="img" aria-label="Youden-Plot (Zwei-Proben-Diagnostik)" width="100%" height="220" viewBox="0 0 460 220" className="select-none">
                       {/* Grid Lines */}
                       <line x1="30" y1="110" x2="430" y2="110" stroke="var(--bu-raster)" strokeWidth="1" strokeDasharray="3,3" />
                       <line x1="230" y1="20" x2="230" y2="200" stroke="var(--bu-raster)" strokeWidth="1" strokeDasharray="3,3" />

@@ -5,6 +5,7 @@ import React from 'react';
 import inhalt from '@/content/beispielrechnungen/RechnungNachhaltigkeit.json';
 import { MdText } from '@/src/components/inhalt/MdText';
 import { ReiterLeiste, alsReiter, reiterPanel } from '../../components/ui/Auswahlgruppe';
+import { reglerName } from '@/src/lib/reglerName';
 
 interface RechnungNachhaltigkeitProps {
   bauteilVol: number;
@@ -84,7 +85,9 @@ export default function RechnungNachhaltigkeit({ bauteilVol, caoAnteil, caoMassP
                     min="1.0" 
                     max="12.0" 
                     step="0.5" 
-                    value={kFactor} 
+                    value={kFactor}
+                    aria-label={reglerName(inhalt.texte.karbonatisierungsbeiwertK)}
+                    aria-valuetext={`${formatDeZahl(kFactor, 1)} mm/√a`} 
                     onChange={(e) => setKFactor(parseFloat(e.target.value))}
                     className="w-full accent-shiraz"
                   />
@@ -102,7 +105,9 @@ export default function RechnungNachhaltigkeit({ bauteilVol, caoAnteil, caoMassP
                     min="1" 
                     max="150" 
                     step="1" 
-                    value={durabilityYears} 
+                    value={durabilityYears}
+                    aria-label={reglerName(inhalt.texte.nutzungsdauerT)}
+                    aria-valuetext={`${formatDeWert(durabilityYears)} Jahre`} 
                     onChange={(e) => setDurabilityYears(parseInt(e.target.value))}
                     className="w-full accent-shiraz"
                   />
@@ -119,7 +124,9 @@ export default function RechnungNachhaltigkeit({ bauteilVol, caoAnteil, caoMassP
                     min="150" 
                     max="450" 
                     step="10" 
-                    value={cementGehalt} 
+                    value={cementGehalt}
+                    aria-label={reglerName(inhalt.texte.zementgehaltC)}
+                    aria-valuetext={`${formatDeWert(cementGehalt)} kg/m³`} 
                     onChange={(e) => setCementGehalt(parseInt(e.target.value))}
                     className="w-full accent-shiraz"
                   />
@@ -136,7 +143,9 @@ export default function RechnungNachhaltigkeit({ bauteilVol, caoAnteil, caoMassP
                     min="30" 
                     max="85" 
                     step="5" 
-                    value={caoAnteil} 
+                    value={caoAnteil}
+                    aria-label={reglerName(inhalt.texte.caoAnteilImZement)}
+                    aria-valuetext={`${formatDeWert(caoAnteil)}%`} 
                     onChange={(e) => setCaoAnteil(parseInt(e.target.value))}
                     className="w-full accent-shiraz"
                   />
@@ -154,7 +163,9 @@ export default function RechnungNachhaltigkeit({ bauteilVol, caoAnteil, caoMassP
                     min="10" 
                     max="100" 
                     step="5" 
-                    value={carbGrad} 
+                    value={carbGrad}
+                    aria-label="Karbonatisierungsgrad"
+                    aria-valuetext={`${formatDeWert(carbGrad)}%`} 
                     onChange={(e) => setCarbGrad(parseInt(e.target.value))}
                     className="w-full accent-shiraz"
                   />
@@ -214,7 +225,9 @@ export default function RechnungNachhaltigkeit({ bauteilVol, caoAnteil, caoMassP
                   min="10" 
                   max="1500" 
                   step="10" 
-                  value={bauteilVol} 
+                  value={bauteilVol}
+                  aria-label={reglerName(inhalt.texte.bauteilvolumenV)}
+                  aria-valuetext={`${formatDeWert(bauteilVol)} m³`} 
                   onChange={(e) => setBauteilVol(parseInt(e.target.value))}
                   className="w-full accent-shiraz"
                 />
@@ -233,7 +246,9 @@ export default function RechnungNachhaltigkeit({ bauteilVol, caoAnteil, caoMassP
                     min="200" 
                     max="450" 
                     step="5" 
-                    value={cementGehaltA} 
+                    value={cementGehaltA}
+                    aria-label={reglerName(inhalt.texte.zementgehaltCA)}
+                    aria-valuetext={`${formatDeWert(cementGehaltA)} kg/m³`} 
                     onChange={(e) => setCementGehaltA(parseInt(e.target.value))}
                     className="w-full accent-slate-600"
                   />
@@ -250,6 +265,8 @@ export default function RechnungNachhaltigkeit({ bauteilVol, caoAnteil, caoMassP
                     max="1000" 
                     step="5"
                     value={gwpZementA}
+                    aria-label={reglerName(inhalt.texte.spezifischerGwpAKlinkerreich)}
+                    aria-valuetext={`${formatDeWert(gwpZementA)} kg CO2-eq/t`}
                     onChange={(e) => setGwpZementA(parseInt(e.target.value))}
                     className="w-full accent-slate-600"
                   />
@@ -269,7 +286,9 @@ export default function RechnungNachhaltigkeit({ bauteilVol, caoAnteil, caoMassP
                     min="200" 
                     max="450" 
                     step="5" 
-                    value={cementGehaltB} 
+                    value={cementGehaltB}
+                    aria-label={reglerName(inhalt.texte.zementgehaltCB)}
+                    aria-valuetext={`${formatDeWert(cementGehaltB)} kg/m³`} 
                     onChange={(e) => setCementGehaltB(parseInt(e.target.value))}
                     className="w-full accent-shiraz"
                   />
@@ -285,7 +304,9 @@ export default function RechnungNachhaltigkeit({ bauteilVol, caoAnteil, caoMassP
                     min="100" 
                     max="550" 
                     step="10" 
-                    value={gwpZementB} 
+                    value={gwpZementB}
+                    aria-label={reglerName(inhalt.texte.spezifischerGwpBHüttensandreich)}
+                    aria-valuetext={`${formatDeWert(gwpZementB)} kg CO2-eq/t`} 
                     onChange={(e) => setGwpZementB(parseInt(e.target.value))}
                     className="w-full accent-shiraz"
                   />

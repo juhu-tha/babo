@@ -607,7 +607,7 @@ export default function SpannbetonDauerhaftigkeit() {
               {/* Interaktives SVG: Bauteilquerschnitt + Ultraschall-Echo A-Scan */}
               <div className="w-full overflow-x-auto bg-slate-50 p-4 rounded-xl border border-slate-200">
                 <div className="min-w-[650px]">
-                  <svg viewBox="0 0 700 240" className="w-full h-60">
+                  <svg role="img" aria-label="Ultraschall-Echo (Phased Array): Messung und Rekonstruktion" viewBox="0 0 700 240" className="w-full h-60">
                     <defs>
                       <marker id="arrow-axis-zfp" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
                         <path d="M 0 0 L 10 5 L 0 10 z" fill="#475569" />

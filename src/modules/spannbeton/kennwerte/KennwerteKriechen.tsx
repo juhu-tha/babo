@@ -54,7 +54,7 @@ export default function KennwerteKriechen() {
               <span className="font-mono text-[11px] text-slate-500">schematisch</span>
             </div>
             <div className="w-full overflow-x-auto">
-              <svg viewBox="0 0 700 180" className="w-full h-44 min-w-[500px]">
+              <svg role="img" aria-label="Mikrostruktureller Mechanismus des Kriechens im C-S-H-Gel" viewBox="0 0 700 180" className="w-full h-44 min-w-[500px]">
                 <defs>
                   <marker id="arrow-axis" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
                     <path d="M 0 0 L 10 5 L 0 10 z" fill="#64748b" />

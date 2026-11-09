@@ -727,7 +727,7 @@ export default function Modulstruktur() {
             <GraduationCap size={22} />
           </div>
           <div>
-            <h4 className="text-xs font-bold text-text-main"><MdText text={inhalt.texte.didaktischerLeitfaden6Prüfdimensionen} /></h4>
+            <h3 className="text-xs font-bold text-text-main wie-h4"><MdText text={inhalt.texte.didaktischerLeitfaden6Prüfdimensionen} /></h3>
             <p className="text-[11px] text-text-main/70 mt-0.5"><MdText text={inhalt.texte.erfahrenSieMehrÜber} /></p>
           </div>
         </div>

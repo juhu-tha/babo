@@ -10,6 +10,7 @@ import inhalt from '@/content/nachbehandlung/Nachbehandlung.json';
 import { MdText } from '@/src/components/inhalt/MdText';
 import { EingabeHinweise } from '@/src/components/ui/EingabeHinweise';
 import { verdunstungsrate, nachbehandlungsdauer, type Festigkeitsentwicklung, type ExpositionNB, type OberflaechenTemp } from '@/src/calc/hydratation';
+import { ErgebnisAnsage, ansageWert, kurzzeile } from '@/src/components/ui/ErgebnisAnsage';
 
 export default function Nachbehandlung() {
   const [tempAir, setTempAir] = useState(25); // °C
@@ -82,6 +83,7 @@ export default function Nachbehandlung() {
         />
 
         <EingabeHinweise hinweise={verdunstung.hinweise} />
+        <ErgebnisAnsage text={kurzzeile(ansageWert('Verdunstungsrate', evaporationRate, 2, 'kg/(m²·h)'), Number.isFinite(evaporationRate) && (isCritical ? 'kritisch' : 'unkritisch'))} />
 
         <div className={`mt-4 p-4 rounded-xl border ${isCritical ? 'bg-torch-red/10 border-torch-red/30' : 'bg-emerald-50 border-emerald-200'}`}>
           <h3 className="text-sm font-bold text-text-main mb-2">Ergebnis</h3>
@@ -153,6 +155,7 @@ export default function Nachbehandlung() {
 
           <div className={`mt-2 p-4 rounded-xl border ${curingTime === -1 ? 'bg-torch-red/10 border-torch-red/30' : 'bg-off-white border-shiraz/20'}`}>
             <h3 className="text-sm font-bold text-text-main mb-2"><MdText text={inhalt.texte.ergebnisNachbehandlungsdauer} /></h3>
+            <ErgebnisAnsage text={`Mindestdauer der Nachbehandlung: ${curingTime === -1 ? 'Sondermaßnahmen erforderlich' : `${formatDeZahl(curingTime, curingTime % 1 ? 1 : 0)} ${curingTime === 1 ? 'Tag' : 'Tage'}`}`} />
             <div className="flex justify-between items-center mb-1">
               <span className="text-sm text-text-main/80"><MdText text={inhalt.texte.erforderlicheMindestdauer} /></span>
               <span className={`text-xl font-bold ${curingTime === -1 ? 'text-torch-red' : 'text-shiraz'}`}>
@@ -200,7 +203,7 @@ export default function Nachbehandlung() {
         <div className="bg-white p-6 rounded-2xl shadow-sm border border-home-grau/30">
           <h3 className="font-semibold mb-4 text-text-main"><MdText text={inhalt.texte.schematischeDarstellungVerdunstung} /></h3>
           <div className="relative w-full h-48 bg-off-white rounded-lg border border-home-grau/30 overflow-hidden flex items-center justify-center">
-            <svg width="100%" height="100%" viewBox="0 0 400 200" preserveAspectRatio="xMidYMid meet">
+            <svg role="img" aria-label="Schematische Darstellung: Verdunstung" width="100%" height="100%" viewBox="0 0 400 200" preserveAspectRatio="xMidYMid meet">
               {/* Beton */}
               <rect x="50" y="120" width="300" height="80" fill="#cbd5e1" />
               <text x="200" y="160" fontSize="14" fill="#334155" textAnchor="middle" fontWeight="bold">Frischbeton (T_c)</text>

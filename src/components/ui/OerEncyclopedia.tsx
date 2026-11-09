@@ -535,6 +535,8 @@ export function OerEncyclopedia() {
                         step="1"
                         disabled={probeBroken}
                         value={tensileForce}
+                        aria-label="Prüfkraft steigern (Zugbelastung F)"
+                        aria-valuetext={`${formatDeWert(tensileForce)} kN / 72 kN`}
                         onChange={(e) => handleTensileChange(parseInt(e.target.value))}
                         className="w-full h-2 bg-slate-200 rounded-lg appearance-none cursor-pointer accent-indigo-650"
                       />
@@ -662,6 +664,8 @@ export function OerEncyclopedia() {
                         step="5"
                         disabled={concreteCrushed}
                         value={compressionForce}
+                        aria-label="Zylinder-/Würfeldruckbelastung steigern (F)"
+                        aria-valuetext={`${formatDeWert(compressionForce)} kN / Max ${formatDeWert(failureForceKn)} kN`}
                         onChange={(e) => handleCompressionChange(parseInt(e.target.value))}
                         className="w-full h-2 bg-slate-200 rounded-lg appearance-none cursor-pointer accent-emerald-600"
                       />

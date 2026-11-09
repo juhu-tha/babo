@@ -11,6 +11,8 @@ import inhalt from '@/content/historischebauweisen/HistorischeBauweisen.json';
 import { SCHWINDBEIWERTE } from '@/src/calc/holzphysik';
 import { MdText } from '@/src/components/inhalt/MdText';
 import { ModuleTabs, type ModulTab } from '@/src/components/ui/ModuleTabs';
+import { ErgebnisAnsage, ansageWert, kurzzeile } from '@/src/components/ui/ErgebnisAnsage';
+import { reglerName } from '@/src/lib/reglerName';
 
 /** Lehrwert σ_zul = 120 N/mm² für historische Zugbänder (Schweißeisen/Flussstahl), ohne Normbeleg (DSC-HB-1) */
 const SIGMA_ZUL_ZUGBAND_LEHRWERT = 120;
@@ -236,7 +238,9 @@ export default function HistorischeBauweisen() {
                     </label>
                     <input 
                       type="range" min="1.0" max="10.0" step="0.1" 
-                      value={archSpan} onChange={(e) => setArchSpan(parseFloat(e.target.value))}
+                      value={archSpan}
+                      aria-label={reglerName(inhalt.texte.lichteSpannweiteL)}
+                      aria-valuetext={`${formatDeZahl(archSpan, 2)} m`} onChange={(e) => setArchSpan(parseFloat(e.target.value))}
                       className="w-full h-1 bg-slate-200 rounded-lg appearance-none cursor-pointer accent-shiraz"
                     />
                   </div>
@@ -248,7 +252,9 @@ export default function HistorischeBauweisen() {
                     </label>
                     <input 
                       type="range" min="0.1" max="3.0" step="0.05" 
-                      value={archRise} onChange={(e) => setArchRise(parseFloat(e.target.value))}
+                      value={archRise}
+                      aria-label={reglerName(inhalt.texte.bogenstichhöheF)}
+                      aria-valuetext={`${formatDeZahl(archRise, 2)} m`} onChange={(e) => setArchRise(parseFloat(e.target.value))}
                       className="w-full h-1 bg-slate-200 rounded-lg appearance-none cursor-pointer accent-shiraz"
                     />
                   </div>
@@ -260,7 +266,9 @@ export default function HistorischeBauweisen() {
                     </label>
                     <input 
                       type="range" min="0.12" max="0.50" step="0.01" 
-                      value={archThickness} onChange={(e) => setArchThickness(parseFloat(e.target.value))}
+                      value={archThickness}
+                      aria-label={reglerName(inhalt.texte.bogenstärkeDickeD)}
+                      aria-valuetext={`${formatDeZahl(archThickness, 2)} m`} onChange={(e) => setArchThickness(parseFloat(e.target.value))}
                       className="w-full h-1 bg-slate-200 rounded-lg appearance-none cursor-pointer accent-shiraz"
                     />
                   </div>
@@ -272,7 +280,9 @@ export default function HistorischeBauweisen() {
                     </label>
                     <input 
                       type="range" min="12.0" max="24.0" step="0.5" 
-                      value={masonryDensity} onChange={(e) => setMasonryDensity(parseFloat(e.target.value))}
+                      value={masonryDensity}
+                      aria-label={reglerName(inhalt.texte.wichteMauerwerk)}
+                      aria-valuetext={`${formatDeZahl(masonryDensity, 1)} kN/m³`} onChange={(e) => setMasonryDensity(parseFloat(e.target.value))}
                       className="w-full h-1 bg-slate-200 rounded-lg appearance-none cursor-pointer accent-shiraz"
                     />
                   </div>
@@ -284,7 +294,9 @@ export default function HistorischeBauweisen() {
                     </label>
                     <input 
                       type="range" min="0.0" max="15.0" step="0.5" 
-                      value={surchargeLoad} onChange={(e) => setSurchargeLoad(parseFloat(e.target.value))}
+                      value={surchargeLoad}
+                      aria-label={reglerName(inhalt.texte.gleichmäßigeAuflastQAuffüllung)}
+                      aria-valuetext={`${formatDeZahl(surchargeLoad, 1)} kN/m²`} onChange={(e) => setSurchargeLoad(parseFloat(e.target.value))}
                       className="w-full h-1 bg-slate-200 rounded-lg appearance-none cursor-pointer accent-shiraz"
                     />
                   </div>
@@ -296,7 +308,9 @@ export default function HistorischeBauweisen() {
                     </label>
                     <input 
                       type="range" min="0.0" max="25.0" step="1.0" 
-                      value={pointLoad} onChange={(e) => setPointLoad(parseFloat(e.target.value))}
+                      value={pointLoad}
+                      aria-label={reglerName(inhalt.texte.einzellastImBogenscheitelP)}
+                      aria-valuetext={`${formatDeZahl(pointLoad, 1)} kN`} onChange={(e) => setPointLoad(parseFloat(e.target.value))}
                       className="w-full h-1 bg-slate-200 rounded-lg appearance-none cursor-pointer accent-shiraz"
                     />
                   </div>
@@ -305,7 +319,7 @@ export default function HistorischeBauweisen() {
                 {/* Live SVG Visualization */}
                 <div className="bg-white p-3 rounded-xl border border-home-grau/20 flex flex-col items-center">
                   <span className="text-[10px] text-slate-400 font-mono mb-2"><MdText text={inhalt.texte.vektormodellDerBogenstatik} /></span>
-                  <svg width="220" height="110" viewBox="-10 -10 240 120" className="overflow-visible">
+                  <svg role="img" aria-label="Vektormodell der Bogenstatik" width="220" height="110" viewBox="-10 -10 240 120" className="overflow-visible">
                     {/* Abutments (Widerlager) */}
                     <rect x="0" y="80" width="30" height="20" fill="#e2e8f0" stroke="#94a3b8" strokeWidth="1" />
                     <rect x="190" y="80" width="30" height="20" fill="#e2e8f0" stroke="#94a3b8" strokeWidth="1" />
@@ -377,6 +391,7 @@ export default function HistorischeBauweisen() {
                       <span className="text-[10px] text-red-600/80 block mt-1 leading-tight"><MdText text={inhalt.texte.dieserSchubMussÜber} /></span>
                     </div>
 
+                    <ErgebnisAnsage text={kurzzeile(ansageWert('Gewölbe: Horizontalschub H', archCalculations.H, 1, 'kN'), ansageWert('resultierende Kraft R', archCalculations.R, 1, 'kN'), ansageWert('Winkel', archCalculations.angle, 1, '°'))} />
                     <div className="bg-slate-50 p-2.5 rounded-lg border border-slate-150 col-span-2">
                       <div className="flex justify-between items-center">
                         <span className="text-slate-700"><MdText text={inhalt.texte.resultierendeKraftR} /></span>
@@ -482,7 +497,9 @@ export default function HistorischeBauweisen() {
                     </label>
                     <input 
                       type="range" min="6.0" max="40.0" step="1.0" 
-                      value={moistureInitial} onChange={(e) => setMoistureInitial(parseFloat(e.target.value))}
+                      value={moistureInitial}
+                      aria-label={reglerName(inhalt.texte.anfangsHolzfeuchteU)}
+                      aria-valuetext={`${formatDeZahl(moistureInitial, 1)} %`} onChange={(e) => setMoistureInitial(parseFloat(e.target.value))}
                       className="w-full h-1 bg-slate-200 rounded-lg appearance-none cursor-pointer accent-shiraz"
                     />
                     <span className="text-[10px] text-slate-400"><MdText text={inhalt.texte.frischesFeuchtesHolzLiegt} /></span>
@@ -495,7 +512,9 @@ export default function HistorischeBauweisen() {
                     </label>
                     <input 
                       type="range" min="6.0" max="24.0" step="1.0" 
-                      value={moistureFinal} onChange={(e) => setMoistureFinal(parseFloat(e.target.value))}
+                      value={moistureFinal}
+                      aria-label={reglerName(inhalt.texte.zielHolzfeuchteZB)}
+                      aria-valuetext={`${formatDeZahl(moistureFinal, 1)} %`} onChange={(e) => setMoistureFinal(parseFloat(e.target.value))}
                       className="w-full h-1 bg-slate-200 rounded-lg appearance-none cursor-pointer accent-shiraz"
                     />
                     <span className="text-[10px] text-slate-400"><MdText text={inhalt.texte.ausgleichsfeuchteImBeheiztenWohnraum} /></span>
@@ -508,7 +527,9 @@ export default function HistorischeBauweisen() {
                     </label>
                     <input 
                       type="range" min="60" max="300" step="10" 
-                      value={dimensionInitial} onChange={(e) => setDimensionInitial(parseInt(e.target.value))}
+                      value={dimensionInitial}
+                      aria-label={reglerName(inhalt.texte.bauteilNennmaßDDicke)}
+                      aria-valuetext={`${formatDeWert(dimensionInitial)} mm`} onChange={(e) => setDimensionInitial(parseInt(e.target.value))}
                       className="w-full h-1 bg-slate-200 rounded-lg appearance-none cursor-pointer accent-shiraz"
                     />
                   </div>
@@ -534,6 +555,7 @@ export default function HistorischeBauweisen() {
                       <span className="font-semibold text-amber-700">{formatDeZahl(shrinkageCalculations.percent, 2)} %</span>
                     </div>
 
+                    <ErgebnisAnsage text={kurzzeile(ansageWert('Maßänderung durch Schwinden', shrinkageCalculations.change, 2, 'mm'), ansageWert('neues Maß', shrinkageCalculations.finalDim, 2, 'mm'))} />
                     <div className="bg-amber-50 p-3 rounded-lg border border-amber-100">
                       <div className="flex justify-between items-center text-sm font-bold text-amber-950">
                         <span><MdText text={inhalt.texte.maßänderungSchwund} /></span>
@@ -613,7 +635,9 @@ export default function HistorischeBauweisen() {
                     </label>
                     <input 
                       type="range" min="0.8" max="2.0" step="0.05" 
-                      value={kappeSpacing} onChange={(e) => setKappeSpacing(parseFloat(e.target.value))}
+                      value={kappeSpacing}
+                      aria-label={reglerName(inhalt.texte.abstandDerStahlträgerA)}
+                      aria-valuetext={`${formatDeZahl(kappeSpacing, 2)} m`} onChange={(e) => setKappeSpacing(parseFloat(e.target.value))}
                       className="w-full h-1 bg-slate-200 rounded-lg appearance-none cursor-pointer accent-shiraz"
                     />
                   </div>
@@ -625,7 +649,9 @@ export default function HistorischeBauweisen() {
                     </label>
                     <input 
                       type="range" min="2.0" max="8.0" step="0.5" 
-                      value={kappeSpan} onChange={(e) => setKappeSpan(parseFloat(e.target.value))}
+                      value={kappeSpan}
+                      aria-label={reglerName(inhalt.texte.spannweiteDesTrägersS)}
+                      aria-valuetext={`${formatDeZahl(kappeSpan, 1)} m`} onChange={(e) => setKappeSpan(parseFloat(e.target.value))}
                       className="w-full h-1 bg-slate-200 rounded-lg appearance-none cursor-pointer accent-shiraz"
                     />
                   </div>
@@ -637,7 +663,9 @@ export default function HistorischeBauweisen() {
                     </label>
                     <input 
                       type="range" min="5" max="25" step="1" 
-                      value={kappeRise} onChange={(e) => setKappeRise(parseInt(e.target.value))}
+                      value={kappeRise}
+                      aria-label={reglerName(inhalt.texte.stichhöheDesGewölbesF)}
+                      aria-valuetext={`${formatDeWert(kappeRise)} cm`} onChange={(e) => setKappeRise(parseInt(e.target.value))}
                       className="w-full h-1 bg-slate-200 rounded-lg appearance-none cursor-pointer accent-shiraz"
                     />
                   </div>
@@ -649,7 +677,9 @@ export default function HistorischeBauweisen() {
                     </label>
                     <input 
                       type="range" min="3.0" max="12.0" step="0.5" 
-                      value={kappeLoad} onChange={(e) => setKappeLoad(parseFloat(e.target.value))}
+                      value={kappeLoad}
+                      aria-label={reglerName(inhalt.texte.gesamtlastQEigenlastFüllung)}
+                      aria-valuetext={`${formatDeZahl(kappeLoad, 1)} kN/m²`} onChange={(e) => setKappeLoad(parseFloat(e.target.value))}
                       className="w-full h-1 bg-slate-200 rounded-lg appearance-none cursor-pointer accent-shiraz"
                     />
                   </div>
@@ -661,7 +691,9 @@ export default function HistorischeBauweisen() {
                     </label>
                     <input 
                       type="range" min="10" max="24" step="2" 
-                      value={tieRodDiameter} onChange={(e) => setTieRodDiameter(parseInt(e.target.value))}
+                      value={tieRodDiameter}
+                      aria-label={reglerName(inhalt.texte.durchmesserDerRundenZugstangen)}
+                      aria-valuetext={`Ø ${formatDeWert(tieRodDiameter)} mm`} onChange={(e) => setTieRodDiameter(parseInt(e.target.value))}
                       className="w-full h-1 bg-slate-200 rounded-lg appearance-none cursor-pointer accent-shiraz"
                     />
                   </div>
@@ -692,6 +724,7 @@ export default function HistorischeBauweisen() {
                       <span className="font-semibold text-blue-600">{formatDeZahl(kappeCalculations.capacity, 1)} kN</span>
                     </div>
 
+                    <ErgebnisAnsage text={kurzzeile(ansageWert('Spreizkraft je Feldträger', kappeCalculations.totalThrust, 1, 'kN'), ansageWert('erforderliche Zugbänder', Math.ceil(kappeCalculations.requiredRods), 0, 'Stück'))} />
                     <div className="bg-blue-50 p-3 rounded-lg border border-blue-100">
                       <div className="flex justify-between items-center text-xs font-bold text-blue-950">
                         <span><MdText text={inhalt.texte.erforderlicheAnzahlZugbänder} /></span>

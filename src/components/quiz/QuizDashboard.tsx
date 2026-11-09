@@ -352,10 +352,10 @@ export const QuizDashboard: React.FC<QuizDashboardProps> = ({
         <div className="bg-white p-6 sm:p-7 rounded-3xl border border-home-grau/30 shadow-sm flex flex-col gap-6">
           <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-home-grau/20 pb-4">
             <div className="space-y-1">
-              <h3 className="text-base sm:text-lg font-bold text-text-main flex items-center gap-2">
+              <h2 className="text-base sm:text-lg font-bold text-text-main flex items-center gap-2">
                 <TrendingUp size={20} className="text-shiraz" />
                 Lernkurve &amp; Fehlerquoten-Entwicklung (Recharts)
-              </h3>
+              </h2>
               <p className="text-xs text-text-main/70">
                 Visualisiert die Erfolgsquote (%) sowie die verbleibende Anzahl offener Wissenslücken über alle Quiz-Durchläufe hinweg.
               </p>
@@ -372,7 +372,7 @@ export const QuizDashboard: React.FC<QuizDashboardProps> = ({
               <div className="w-12 h-12 rounded-2xl bg-slate-100 text-slate-500 flex items-center justify-center">
                 <BarChart3 size={24} />
               </div>
-              <h4 className="text-sm font-bold text-text-main">Noch keine Quiz-Durchläufe vorhanden</h4>
+              <h3 className="text-sm font-bold text-text-main wie-h4">Noch keine Quiz-Durchläufe vorhanden</h3>
               <p className="text-xs text-text-main/70 max-w-md">
                 Starten Sie oben ein Quiz (z. B. den 360° Diagnose-Check). Nach Abschluss wird hier Ihre persönliche 
                 Lernkurve mit Erfolgsquote und Wissenslücken-Reduktion grafisch gezeichnet.
@@ -461,10 +461,10 @@ export const QuizDashboard: React.FC<QuizDashboardProps> = ({
 
           {/* Quick cluster competence bar overview */}
           <div className="mt-4 pt-6 border-t border-home-grau/20">
-            <h4 className="text-xs font-bold text-text-main uppercase tracking-wider mb-4 flex items-center gap-2">
+            <h3 className="text-xs font-bold text-text-main uppercase tracking-wider mb-4 flex items-center gap-2 wie-h4">
               <Layers size={15} className="text-shiraz" />
               Verteilung offener Wissenslücken auf die 5 Cluster
-            </h4>
+            </h3>
             <div className="w-full h-44">
               <ResponsiveContainer width="100%" height="100%">
                 <BarChart data={clusterChartData} margin={{ top: 5, right: 10, left: -15, bottom: 20 }}>
@@ -506,10 +506,10 @@ export const QuizDashboard: React.FC<QuizDashboardProps> = ({
         <div className="bg-white p-6 sm:p-7 rounded-3xl border border-home-grau/30 shadow-sm flex flex-col gap-6">
           <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-home-grau/20 pb-4">
             <div className="space-y-1">
-              <h3 className="text-base sm:text-lg font-bold text-text-main flex items-center gap-2">
+              <h2 className="text-base sm:text-lg font-bold text-text-main flex items-center gap-2">
                 <BarChart3 size={20} className="text-shiraz" />
                 Modul-Kompetenz-Heatmap &amp; Lücken-Matrix
-              </h3>
+              </h2>
               <p className="text-xs text-text-main/70">
                 Farbcodierte Matrix aller {moduleCompetenceMap.length} Lehrplan-Module. Klicken Sie auf ein Modul, 
                 um die Wissenslücke direkt im jeweiligen Modul zu schließen.
@@ -615,9 +615,9 @@ export const QuizDashboard: React.FC<QuizDashboardProps> = ({
                       </span>
                     </div>
 
-                    <h4 className="text-sm font-bold text-text-main group-hover:text-shiraz transition-colors line-clamp-1">
+                    <h3 className="text-sm font-bold text-text-main group-hover:text-shiraz transition-colors line-clamp-1 wie-h4">
                       {mod.moduleTitle}
-                    </h4>
+                    </h3>
 
                     <p className="text-[11px] text-text-main/70 leading-snug line-clamp-2">
                       {mod.clusterName} • {formatDeWert(mod.totalQuestions)} Prüffragen im Katalog

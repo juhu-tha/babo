@@ -123,8 +123,8 @@
     "gefährlicheFasern": "Gefährliche Fasern",
     "gipsSulfat": "Gips & Sulfat",
     "gefahrVGipstreiben": "Gefahr v. Gipstreiben",
-    "haufwerksvolumen": "Haufwerksvolumen ()",
-    "haufwerksvolumenM": "Haufwerksvolumen (): m³",
+    "haufwerksvolumen": "Haufwerksvolumen V (m³)",
+    "haufwerksvolumenM": "Haufwerksvolumen V (m³), Schieberegler",
     "zertifizierterProbennehmerName": "Zertifizierter Probennehmer Name",
     "datumDerProbenahme": "Datum der Probenahme",
     "entnahmeortGpsKoordinaten": "Entnahmeort / GPS-Koordinaten",
@@ -164,7 +164,7 @@
             "Kammerfilterpresse: Eindickung des Schlamms zu hochkonzentriertem Filterkuchen (Klasse DK I/II oder Deponierung).",
             "Ausgangskontrolle: Analytik des gereinigten Sandes/Kieses zur Einstufung nach EBV (Ziel: BM-0 bzw. BM-0*)."
           ],
-          "rules": "EBV Anlage 1 Tabelle 3 (Bodenmaterial) & BBodSchV Anlage 1: Gereinigte Sande sind mineralische Ersatzbaustoffe. Grenzwerte für Schwermetalle (As, Pb, Cd, Cu, Ni, Zn) im Eluat müssen sicher unterschritten werden, um Einbauklasse BM-0 bzw. BM-0* zu erhalten."
+          "rules": "EBV Anlage 1 Tabelle 3 (Bodenmaterial) & BBodSchV Anlage 1: Gereinigte Sande sind mineralische Ersatzbaustoffe. Grenzwerte für Schwermetalle (As, Pb, Cd, Cu, Ni, Zn) im Eluat müssen sicher unterschritten werden, um die Materialklasse BM-0 bzw. BM-0* zu erhalten."
         },
         "mkw_pak": {
           "method": "Mikrobiologische Mietenbehandlung (Bioremediation)",
@@ -257,7 +257,7 @@
             "Einbau in DK-Sicherheitsdeponie mit sofortiger Überdeckung.",
             "Katastermäßige Erfassung der Einbaukoordinaten."
           ],
-          "rules": "DepV / TRGS 519: Jede Art von mechanischer Mischung oder Siebung asbesthaltiger Tonböden ist verboten, um Faserfreisetzung zu unterbinden."
+          "rules": "GefStoffV § 11 Abs. 1 / TRGS 519: Jede Art von mechanischer Mischung oder Siebung asbesthaltiger Tonböden ist verboten, um Faserfreisetzung zu unterbinden."
         },
         "gips_sulfat": {
           "method": "Immobilisierung & kontrollierter Monoeinbau",

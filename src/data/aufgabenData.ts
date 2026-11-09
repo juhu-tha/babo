@@ -88,7 +88,7 @@ export const taskCategories: TaskCategory[] = [
   },
   {
     id: 'aufgaben_kennwerte',
-    name: 'Labor, Prüftechnik & Kenngrößen',
+    name: 'Labor & Grundlagen: Prüftechnik & Kenngrößen',
     tasks: laborTasks
   },
   {

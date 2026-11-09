@@ -106,7 +106,8 @@ type Frage = { id: string; moduleId: string; topic: string; question: string };
 const qs = quiz as unknown as Frage[];
 const kd = (q: Frage) => /dichtstoff|klebstoff|fuge|flanke/i.test(q.topic + ' ' + q.question);
 gilt(!qs.some(q => q.moduleId === 'bauschaeden' && kd(q)), 'Quizfrage zu Kleb-/Dichtstoffen noch bei bauschaeden');
-gilt(qs.filter(q => q.moduleId === 'bauschaeden').length === 6, 'Anzahl Fragen bauschaeden geändert');
+// ohne die Lernziel-Fragen qlz_* (Kleinpunkte 04.11.2026: qlz_bauschaeden_1 zu Mangel/Schaden, kein Kleb-/Dichtstoffthema)
+gilt(qs.filter(q => q.moduleId === 'bauschaeden' && !q.id.startsWith('qlz_')).length === 6, 'Anzahl Fragen bauschaeden geändert');
 
 if (fehler.length) { for (const f of fehler) console.error(`FAIL: ${f}`); process.exit(1); }
 console.log(`OK: Reiter, ${TEXTE.length + WERTE.length} Schlüssel, Beispiel, Fußzeile, Verweise, Lernziele, Kurzfassung und Quiz geprüft`);

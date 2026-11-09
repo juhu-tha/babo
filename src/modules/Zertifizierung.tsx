@@ -16,6 +16,7 @@ import {
 } from 'chart.js';
 import inhalt from '@/content/zertifizierung/Zertifizierung.json';
 import { MdText } from '@/src/components/inhalt/MdText';
+import { ErgebnisAnsage } from '@/src/components/ui/ErgebnisAnsage';
 import { AuswahlGruppe, ReiterLeiste, alsOption, alsReiter, reiterPanel } from '../components/ui/Auswahlgruppe';
 
 ChartJS.register(
@@ -389,6 +390,8 @@ export default function Zertifizierung() {
                     min="0"
                     max="100"
                     value={dgnbScore}
+                    aria-label="Gesamterfüllungsgrad DGNB-Score"
+                    aria-valuetext={`${formatDeWert(dgnbScore)} %`}
                     onChange={(e) => setDgnbScore(Number(e.target.value))}
                     className="w-full accent-blue-600 h-2 bg-home-grau/20 rounded-lg cursor-pointer"
                   />
@@ -495,6 +498,7 @@ export default function Zertifizierung() {
                   <div className={`lg:col-span-5 flex flex-col justify-between border rounded-xl p-5 ${status.bgCol} space-y-4`}>
                     <div className="space-y-4">
                       <span className="text-xs font-bold uppercase text-text-main/50 tracking-wider block"><MdText text={inhalt.texte.simuliertesAuszeichnungsergebnis} /></span>
+                      <ErgebnisAnsage text={`DGNB-Score ${formatDeWert(dgnbScore)} %: ${status.award}`} />
                       
                       <div className="flex flex-col items-center justify-center p-6 bg-white rounded-xl border border-home-grau/15 text-center shadow-xs">
                         <span className="text-[10px] font-bold text-text-main/50 uppercase tracking-widest">Zertifikstatus</span>

@@ -750,14 +750,14 @@ export default function BpRechtliches({ isEmbedded = false, activeSubTab: active
             {/* Informative Grid Callout about legal binding of standards */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-2">
               <div className="bg-amber-50 border border-amber-200 p-4 rounded-xl text-xs space-y-1">
-                <h5 className="font-bold text-amber-900 flex items-center gap-1">
-                  <Scale size={14} className="text-amber-700" /><MdText text={inhalt.texte.müssenNormenImmerEingehalten} /></h5>
+                <h4 className="font-bold text-amber-900 flex items-center gap-1 wie-h5">
+                  <Scale size={14} className="text-amber-700" /><MdText text={inhalt.texte.müssenNormenImmerEingehalten} /></h4>
                 <p className="text-amber-950/80 leading-relaxed text-[11px]"><MdText text={inhalt.texte.rechtlichGesehenHandeltEs} /></p>
               </div>
 
               <div className="bg-indigo-50/40 border border-indigo-100 p-4 rounded-xl text-xs space-y-1">
-                <h5 className="font-bold text-indigo-900 flex items-center gap-1">
-                  <HelpCircle size={14} className="text-indigo-700" /><MdText text={inhalt.texte.wieOftWerdenNormen} /></h5>
+                <h4 className="font-bold text-indigo-900 flex items-center gap-1 wie-h5">
+                  <HelpCircle size={14} className="text-indigo-700" /><MdText text={inhalt.texte.wieOftWerdenNormen} /></h4>
                 <p className="text-indigo-950/80 leading-relaxed text-[11px]"><MdText text={inhalt.texte.normenUnterliegenDerRegelmäßigen} /></p>
               </div>
             </div>

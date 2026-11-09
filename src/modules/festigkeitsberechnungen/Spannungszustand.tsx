@@ -11,6 +11,7 @@ import { formatDeZahl, formatDeTeX } from '@/src/utils/numberFormat';
 import { hauptspannungen, transformiere, type EbenerSpannungszustand } from '@/src/calc/spannungszustand';
 import { BAUSTAHL_EC3 } from '@/src/data/kennwerte';
 import inhalt from '@/content/festigkeitsberechnungen/Spannungszustand.json';
+import { ErgebnisAnsage, ansageWert, kurzzeile } from '@/src/components/ui/ErgebnisAnsage';
 
 /** Formeln und Quellen des Reiters für den Modulfuß */
 export const SPANNUNGSZUSTAND_FUSS = { formeln: inhalt.daten.formeln, literatur: inhalt.daten.literatur, weblinks: inhalt.daten.weblinks };
@@ -108,7 +109,7 @@ export default function Spannungszustand() {
 
   return (
     <div className="flex flex-col gap-6 animate-in fade-in duration-300">
-      <BloomLernziele moduleId="festigkeit_spannungszustand" moduleTitle={inhalt.werte.lernzielTitel} timeMinutes={45} goals={inhalt.daten.lernziele as BloomGoalItem[]} />
+      <BloomLernziele titelElement="p" titelKlasse="wie-h4" moduleId="festigkeit_spannungszustand" moduleTitle={inhalt.werte.lernzielTitel} timeMinutes={45} goals={inhalt.daten.lernziele as BloomGoalItem[]} />
 
       <div className="bg-white p-6 rounded-2xl shadow-sm border border-home-grau/30 flex flex-col gap-4">
         <h2 className="text-xl font-bold text-text-main flex items-center gap-2"><Compass className="text-shiraz" aria-hidden="true" /><MdText text={inhalt.texte.titel} /></h2>
@@ -158,6 +159,7 @@ export default function Spannungszustand() {
         </div>
 
         <EingabeHinweise hinweise={r.hinweise} />
+        <ErgebnisAnsage text={ok ? kurzzeile(ansageWert('σ₁', r.sigma1, 1, 'N/mm²'), ansageWert('σ₂', r.sigma2, 1, 'N/mm²'), ansageWert('Hauptrichtung', r.phi1Grad, 1, '°'), ansageWert('Vergleichsspannung nach Mises', r.sigmaVMises, 1, 'N/mm²'), fy !== undefined && ansageWert('Ausnutzung', r.eta, 2)) : 'Hauptspannungen –'} />
         {ok && (
           <div className="bg-shiraz/5 p-5 rounded-xl border border-shiraz/20">
             <h3 className="text-sm font-bold text-shiraz uppercase tracking-wider mb-3"><MdText text={inhalt.texte.ergebnisse} /></h3>

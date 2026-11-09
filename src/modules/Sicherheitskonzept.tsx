@@ -12,6 +12,7 @@ import { ModuleTabs } from '@/src/components/ui/ModuleTabs';
 import { EingabeHinweise } from '@/src/components/ui/EingabeHinweise';
 import { kombination610 } from '@/src/calc/sicherheitskonzept';
 import { EcKennwerteVerweis } from '@/src/components/ui/EcKennwerteVerweis';
+import { ErgebnisAnsage, ansageWert, kurzzeile } from '@/src/components/ui/ErgebnisAnsage';
 
 const REITER = [
   { id: 'eurocodes', label: inhalt.texte.dieEurocodesÜbersicht, icon: Shield },
@@ -300,6 +301,7 @@ export default function Sicherheitskonzept() {
                 </div>
               </div>
               <div className="mt-3"><EingabeHinweise hinweise={k.hinweise} /></div>
+              <ErgebnisAnsage text={kurzzeile(ansageWert('Bemessungswert E_d', ed, 2, 'kN'), ansageWert(`Maximum beider Kombinationen (Leiteinwirkung Q_k,${k.massgebend})`, k.edMax, 2, 'kN'))} />
               
               <div className="mt-6 bg-white p-3 rounded-lg border border-home-grau/25">
                 <div className="text-[10px] text-text-main/70 mb-1"><MdText text={inhalt.texte.gleichung610} /></div>

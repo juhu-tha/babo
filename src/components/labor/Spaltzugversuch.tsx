@@ -21,6 +21,7 @@ import { AuswahlGruppe, alsOption } from '../ui/Auswahlgruppe';
 import { Fz } from '../ui/Formelzeichen';
 import { hoechstwert, spaltkraft } from '@/src/calc/laborVersuch';
 import { useDiagrammFarben, linAchse, PfeilDefs } from './laborGrafik';
+import { ErgebnisAnsage, ansageWert, kurzzeile } from '@/src/components/ui/ErgebnisAnsage';
 
 ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend);
 
@@ -345,6 +346,8 @@ export default function Spaltzugversuch({ onNavigateToProtocols }: Spaltzugversu
                 max="0.10"
                 step="0.01"
                 value={loadingRate}
+                aria-label="Prüfgeschwindigkeit"
+                aria-valuetext={`${formatDeZahl(loadingRate, 2)} MPa/s`}
                 onChange={e => setLoadingRate(parseFloat(e.target.value))}
                 disabled={testStatus === 'running'}
                 className="w-full accent-shiraz cursor-pointer"
@@ -569,6 +572,7 @@ export default function Spaltzugversuch({ onNavigateToProtocols }: Spaltzugversu
               </div>
             </div>
 
+            <ErgebnisAnsage text={testStatus === 'finished' ? kurzzeile(ansageWert('Spaltzugfestigkeit', fctsp, 2, 'N/mm²'), ansageWert('Höchstkraft', fMaxKN, 1, 'kN')) : ''} />
             {/* Test Summary & Norm Relations */}
             {testStatus === 'finished' && (
               <div className="mt-2 p-4 bg-off-white rounded-xl border border-home-grau/30 flex flex-col gap-3 animate-in fade-in slide-in-from-bottom-2">

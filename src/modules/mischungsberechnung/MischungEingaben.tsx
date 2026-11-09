@@ -12,6 +12,7 @@ import { NachErstemBild } from '@/src/components/ui/NachErstemBild';
 import inhalt from '@/content/mischungsberechnung/MischungEingaben.json';
 import { MdText } from '@/src/components/inhalt/MdText';
 import { AuswahlGruppe, alsOption } from '../../components/ui/Auswahlgruppe';
+import { reglerName } from '@/src/lib/reglerName';
 
 interface MischungEingabenProps {
   applyWalzSandReduction: () => void;
@@ -155,7 +156,10 @@ export default function MischungEingaben({ applyWalzSandReduction, bauteil, bioc
           {allExpClasses.map(cls => (
             <div key={cls} className="relative group">
               <button
+                type="button"
                 onClick={() => toggleExpClass(cls)}
+                aria-pressed={expClasses.includes(cls)}
+                aria-describedby={`expklasse-hinweis-${cls}`}
                 className={`px-2 py-1 text-xs font-medium rounded-md border transition-colors ${
                         expClasses.includes(cls) 
                           ? 'bg-shiraz text-white border-shiraz' 
@@ -164,7 +168,7 @@ export default function MischungEingaben({ applyWalzSandReduction, bauteil, bioc
               >
                 {cls}
               </button>
-              <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 hidden group-hover:block w-48 bg-gray-900 text-white text-xs rounded p-2 z-10 text-center pointer-events-none">
+              <div id={`expklasse-hinweis-${cls}`} role="tooltip" className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 hidden group-hover:block group-focus-within:block w-48 bg-gray-900 text-white text-xs rounded p-2 z-10 text-center pointer-events-none">
                 {EXPOSITIONSKLASSEN[cls].desc}
                 <div className="absolute top-full left-1/2 -translate-x-1/2 border-4 border-transparent border-t-gray-900"></div>
               </div>
@@ -457,6 +461,7 @@ export default function MischungEingaben({ applyWalzSandReduction, bauteil, bioc
               step={0.1} 
               value={kKsm} 
               unit="-" 
+              aria-label="k-Wert HüS" 
               onChange={(e) => setKKsm(Number(e.target.value))} 
             />
             <div className="text-xs text-home-grau">{inhalt.werte.kWertHuesLehrannahme}</div>
@@ -493,6 +498,7 @@ export default function MischungEingaben({ applyWalzSandReduction, bauteil, bioc
               step={0.1} 
               value={kBiochar} 
               unit="-" 
+              aria-label={reglerName(inhalt.texte.kWertBiochar)} 
               onChange={(e) => setKBiochar(Number(e.target.value))} 
             />
           </div>

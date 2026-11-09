@@ -121,7 +121,7 @@ export default function BpDachFassade() {
           </div>
         ) : activeTab === 'fenster_rechner' ? (
           <div className="flex flex-col gap-4 animate-in fade-in duration-300">
-            <Querverweis ziel="bp_glaeser" titel={inhalt.werte.fensterUWertU} linkText={inhalt.werte.zumUWRechner}>
+            <Querverweis ebene={3} ziel="bp_glaeser" titel={inhalt.werte.fensterUWertU} linkText={inhalt.werte.zumUWRechner}>
               <p><MdText text={inhalt.texte.dasGebäudemodernisierungsgesetzGmodgVorm} /></p>
               <p><MdText text={inhalt.texte.derInteraktiveRechnerMit} /></p>
             </Querverweis>

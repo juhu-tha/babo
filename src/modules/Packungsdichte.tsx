@@ -23,6 +23,7 @@ import { MdText } from '@/src/components/inhalt/MdText';
 import { sieblinienOptimierung, zweikornMischung } from '@/src/calc/packungsdichte';
 import { EingabeHinweise } from '@/src/components/ui/EingabeHinweise';
 import { ReiterLeiste, alsReiter, reiterPanel } from '../components/ui/Auswahlgruppe';
+import { ErgebnisAnsage, ansageWert, kurzzeile } from '@/src/components/ui/ErgebnisAnsage';
 
 ChartJS.register(
   CategoryScale,
@@ -128,6 +129,9 @@ export default function Packungsdichte() {
 
     return {
       hinweise: z.hinweise,
+      gueltig: z.gueltig,
+      verhaeltnis: sizeRatio,
+      maximum: z.maximum,
       chartData: {
         labels: fractions.map(f => f.x),
         datasets: [
@@ -248,6 +252,7 @@ export default function Packungsdichte() {
                 </div>
               </div>
               <EingabeHinweise hinweise={results.hinweise} />
+              <ErgebnisAnsage text={kurzzeile(ansageWert('Gesamtmasse', results.mTotal, 0, 'kg'), ansageWert('RMSE zu A&A', results.rmseAA, 1), ansageWert('RMSE zu Fuller', results.rmseFuller, 1), ansageWert('geschätzte Packungsdichte', results.estimatedPD * 100, 1, '%'))} />
             </div>
 
             <div className="bg-off-white p-5 rounded-xl border border-home-grau/30">
@@ -397,7 +402,7 @@ export default function Packungsdichte() {
               <div className="mt-4">
                 <h4 className="text-sm font-medium text-text-main mb-2"><MdText text={inhalt.texte.schematischesGefügemodell} /></h4>
                 <div className="relative w-full h-40 bg-slate-100 rounded-lg border border-home-grau/30 overflow-hidden">
-                  <svg width="100%" height="100%" viewBox="0 0 400 160" preserveAspectRatio="xMidYMid slice">
+                  <svg role="img" aria-label="Schematisches Gefügemodell der Packungsdichte" width="100%" height="100%" viewBox="0 0 400 160" preserveAspectRatio="xMidYMid slice">
                     {/* Hintergrund (Wasser/Luft) */}
                     <rect width="400" height="160" fill="#e2e8f0" />
                     
@@ -492,6 +497,7 @@ export default function Packungsdichte() {
                   <Slider label={inhalt.werte.packungsdichte2} value={phi2} min={0.4} max={0.7} step={0.01} onChange={(e) => setPhi2(Number(e.target.value))} unit="" />
                 </div>
                 <EingabeHinweise hinweise={zweikornResults.hinweise} />
+                <ErgebnisAnsage text={zweikornResults.gueltig ? kurzzeile(ansageWert('Durchmesserverhältnis', zweikornResults.verhaeltnis, 2), ansageWert('größte ideale Packungsdichte', zweikornResults.maximum.gamma * 100, 1, '%'), ansageWert('bei Feinkornanteil', zweikornResults.maximum.y1 * 100, 0, 'Vol.-%')) : 'Packungsdichte –'} />
               </div>
             </div>
             

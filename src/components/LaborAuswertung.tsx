@@ -22,6 +22,7 @@ import {
 } from 'lucide-react';
 import { exportToCSV, exportToJSON, openPrintableReport } from '@/src/utils/labExportUtils';
 import { AuswahlGruppe, ReiterLeiste, alsOption, alsReiter, reiterPanel } from './ui/Auswahlgruppe';
+import { ErgebnisAnsage, ansageWert, kurzzeile } from '@/src/components/ui/ErgebnisAnsage';
 
 interface MethodItem {
   verfahren: string;
@@ -593,6 +594,8 @@ export default function LaborAuswertung() {
                     max="0.0" 
                     step="0.1" 
                     value={delta18O}
+                    aria-label="Sauerstoff-Isotop (δ18O)"
+                    aria-valuetext={`${formatDeZahl(delta18O, 2)} ‰`}
                     onChange={(e) => setDelta18O(parseFloat(e.target.value))}
                     className="w-full accent-middle-blue"
                   />
@@ -614,6 +617,8 @@ export default function LaborAuswertung() {
                     max="10.0" 
                     step="1" 
                     value={deltaD}
+                    aria-label="Wasserstoff-Isotop (δD)"
+                    aria-valuetext={`${formatDeZahl(deltaD, 1)} ‰`}
                     onChange={(e) => setDeltaD(parseInt(e.target.value))}
                     className="w-full accent-middle-blue"
                   />
@@ -652,6 +657,7 @@ export default function LaborAuswertung() {
                   <Check className="h-5 w-5 shrink-0 mt-0.5" />
                   <div>
                     <div className="font-bold text-xs uppercase tracking-wider">Ergebnis: {isotopeResults.diagnosis}</div>
+                    <ErgebnisAnsage text={kurzzeile(ansageWert('Deuterium-Exzess', isotopeResults.dExzess, 2, '‰'), isotopeResults.diagnosis)} />
                     <p className="text-xs leading-relaxed mt-1 opacity-90">{isotopeResults.description}</p>
                   </div>
                 </div>
@@ -811,6 +817,7 @@ export default function LaborAuswertung() {
                 <ShieldAlert className="h-5 w-5 shrink-0 mt-0.5" />
                 <div>
                   <div className="font-bold text-xs uppercase tracking-wider">Tracer-Status: {tracerResults.source}</div>
+                  <ErgebnisAnsage text={`Tracer-Status: ${tracerResults.source}`} />
                   <p className="text-xs leading-relaxed mt-1 opacity-90">{tracerResults.details}</p>
                 </div>
               </div>
@@ -1194,10 +1201,10 @@ export default function LaborAuswertung() {
 
       {/* --------------------- SECTION 10: CONCLUSIO / FAZIT BAR --------------------- */}
       <div className="rounded-xl border border-indigo-100 bg-indigo-50/45 p-4.5 text-slate-800 space-y-2 mt-2">
-        <h4 className="font-bold text-xs uppercase text-indigo-950 flex items-center gap-1.5 leading-none">
+        <h3 className="font-bold text-xs uppercase text-indigo-950 flex items-center gap-1.5 leading-none wie-h4">
           <BookOpen size={14} className="text-indigo-600" />
           10. Fazit der Fachübersicht
-        </h4>
+        </h3>
         <p className="text-xs text-slate-650 leading-relaxed">
           Die moderne Bauwerksdiagnostik ist eine forensische Wissenschaft, die weit über das bloße Messen von Feuchtigkeit hinausgeht. Die Integration von Isotopen-Exzess-Bestimmung und Abwasser-Tracern (Gadolinium) liefert wichtige Indizien zur Unterscheidung von Kondensat, Leckagen und Fäkalwasser – belastbar im Zusammenspiel mit Referenzproben und weiteren Befunden. Verfahren wie TGA und Impakt-Echo erlauben den tiefen Blick in die chemische Geschichte und physikalische Integrität des Materials, während die Schadstoffanalytik gesundheitliche Risiken (Asbest, Fogging, Brandlasten) quantifiziert. Mit dem Einzug von KI, Sensor Fusion und LIBS steht die Branche vor einem Sprung in die digitale Echtzeit-Überwachung und hocheffiziente Vor-Ort-Diagnostik.
         </p>

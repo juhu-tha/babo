@@ -18,6 +18,7 @@ import { Slider } from '@/src/components/ui/Slider';
 import { InfoTooltip } from '@/src/components/ui/InfoTooltip';
 import inhalt from '@/content/frischbetondruck/Frischbetondruck.json';
 import { MdText } from '@/src/components/inhalt/MdText';
+import { ErgebnisAnsage, ansageWert, kurzzeile } from '@/src/components/ui/ErgebnisAnsage';
 
 ChartJS.register(
   CategoryScale,
@@ -222,6 +223,7 @@ export default function Frischbetondruck() {
               <span><MdText text={inhalt.texte.maxSchalungsdruck} /></span>
               <span className="font-bold text-shiraz">{formatDeZahl(maxP, 1)} kN/m²</span>
             </div>
+            <ErgebnisAnsage text={kurzzeile(ansageWert('maximaler Schalungsdruck', maxP, 1, 'kN/m²'), ansageWert('erreicht in Tiefe', hs, 2, 'm'))} />
             <div className="p-3 bg-white border border-home-grau/30 rounded mt-2">
               {maxP <= 40 && (
                 <p><MdText text={inhalt.texte.leichteRahmenschalungBrAusreichend} /></p>
@@ -256,7 +258,7 @@ export default function Frischbetondruck() {
         <div className="bg-white p-6 rounded-2xl shadow-sm border border-home-grau/30">
           <h3 className="font-semibold mb-4 text-text-main"><MdText text={inhalt.texte.schematischeDruckverteilung} /></h3>
           <div className="relative w-full h-48 bg-off-white rounded-lg border border-home-grau/30 overflow-hidden flex items-center justify-center">
-            <svg width="100%" height="100%" viewBox="0 0 400 200" preserveAspectRatio="xMidYMid meet">
+            <svg role="img" aria-label="Schematische Druckverteilung des Frischbetons auf die Schalung" width="100%" height="100%" viewBox="0 0 400 200" preserveAspectRatio="xMidYMid meet">
               {/* Schalung links */}
               <rect x="100" y="20" width="10" height="160" fill="#94a3b8" />
               {/* Schalung rechts */}

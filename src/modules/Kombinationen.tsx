@@ -42,6 +42,7 @@ import { faserverbund, eModulLaengs, eModulQuer, schichtaufbau, RSI_WAND, RSE_WA
 import { EingabeHinweise } from '@/src/components/ui/EingabeHinweise';
 import { MdText } from '@/src/components/inhalt/MdText';
 import { ReiterLeiste, alsReiter, reiterPanel } from '../components/ui/Auswahlgruppe';
+import { ErgebnisAnsage, ansageWert, kurzzeile } from '@/src/components/ui/ErgebnisAnsage';
 
 ChartJS.register(
   CategoryScale,
@@ -590,6 +591,7 @@ export default function Kombinationen({ initialTab = 'ueberblick' }: Kombination
               <div className="flex flex-col gap-6">
                 <div className="bg-shiraz text-white p-5 rounded-xl shadow-md">
                   <h3 className="text-xs font-bold uppercase tracking-wider mb-3 opacity-90"><MdText text={inhalt.texte.berechneteVerbundkennwerte} /></h3>
+                  <ErgebnisAnsage text={kurzzeile(ansageWert('Dichte', fvkResults.rho_composite, 2, 'g/cm³'), ansageWert('Zugfestigkeit längs', fvkResults.S_parallel, 0, 'MPa'), ansageWert('E-Modul längs', fvkResults.E_parallel, 1, 'GPa'), ansageWert('quer', fvkResults.E_quer, 1, 'GPa'))} />
                   <div className="grid grid-cols-2 gap-4">
                     <div>
                       <div className="text-white/70 text-xs"><MdText text={inhalt.texte.dichteVerbund} /></div>
@@ -623,7 +625,7 @@ export default function Kombinationen({ initialTab = 'ueberblick' }: Kombination
             <div className="bg-white p-5 rounded-xl border border-home-grau/30 shadow-xxs">
               <h3 className="font-bold mb-3 text-text-main text-sm"><MdText text={inhalt.texte.gefügemodelleDerMischungsregelnVoigt} /></h3>
               <div className="flex flex-col items-center bg-off-white rounded-lg border border-home-grau/30 p-4">
-                <svg width="100%" height="150" viewBox="0 0 450 150" className="max-w-xl">
+                <svg role="img" aria-label="Gefügemodelle der Mischungsregeln nach Voigt und Reuss" width="100%" height="150" viewBox="0 0 450 150" className="max-w-xl">
                   {/* Voigt (Parallel) */}
                   <g transform="translate(50, 30)">
                     <text x="50" y="-15" fontSize="11" fill="#1e293b" textAnchor="middle" fontWeight="bold">Voigt (Parallelschaltung)</text>
@@ -976,6 +978,7 @@ export default function Kombinationen({ initialTab = 'ueberblick' }: Kombination
             </div>
 
             <EingabeHinweise hinweise={calcResults.hinweise} />
+            <ErgebnisAnsage text={kurzzeile(ansageWert('U-Wert', calcResults.gueltig ? calcResults.uValue : NaN, 3, 'W/(m²K)'), ansageWert('s_d gesamt', calcResults.totalSd, 2, 'm'), calcResults.hasDiffusionTrap && inhalt.werte.hinweisMöglichesTauwasserrisikoIm)} />
 
             {/* Hygrothermische Risikobewertung (Feuchte-Ampel) */}
             {calcResults.gueltig && (
@@ -990,13 +993,13 @@ export default function Kombinationen({ initialTab = 'ueberblick' }: Kombination
                 <CheckCircle2 size={20} className="text-emerald-700 shrink-0 mt-0.5" />
               )}
               <div>
-                <h4 className="font-bold text-sm mb-1">
+                <h3 className="font-bold text-sm mb-1 wie-h4">
                   {calcResults.hasDiffusionTrap
                     ? inhalt.werte.hinweisMöglichesTauwasserrisikoIm
                     : calcResults.einordnung === 'aussendaemmung'
                     ? inhalt.werte.außendämmungÜberschrift
                     : inhalt.werte.schichtfolgeEntsprichtDerGrundregel}
-                </h4>
+                </h3>
                 <p>
                   {calcResults.einordnung === 'innendaemmung' ? (
                     <><MdText text={inhalt.texte.innendämmungNachweisErforderlich} /></>

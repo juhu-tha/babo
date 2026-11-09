@@ -26,6 +26,7 @@ import inhalt from '@/content/bpbetonzusatzmittel/BpBetonzusatzmittel.json';
 import { MdText } from '@/src/components/inhalt/MdText';
 import { ModuleTabs } from '@/src/components/ui/ModuleTabs';
 import { AuswahlGruppe, alsOption } from '../components/ui/Auswahlgruppe';
+import { ErgebnisAnsage, ansageWert, kurzzeile } from '@/src/components/ui/ErgebnisAnsage';
 
 export interface AdmixtureProduct {
   name: string;
@@ -325,8 +326,8 @@ export default function BpBetonzusatzmittel() {
                 </div>
 
                 <div className="p-4 bg-indigo-50/50 rounded-xl border border-indigo-200 text-xs text-indigo-950 space-y-2">
-                  <h5 className="font-bold flex items-center gap-1.5">
-                    <FileText size={14} className="text-indigo-800" /><MdText text={inhalt.texte.gleichmäßigkeitsprüfungChargenkontrolle} /></h5>
+                  <h4 className="font-bold flex items-center gap-1.5 wie-h5">
+                    <FileText size={14} className="text-indigo-800" /><MdText text={inhalt.texte.gleichmäßigkeitsprüfungChargenkontrolle} /></h4>
                   <p className="leading-relaxed text-[11px] text-indigo-900"><MdText text={inhalt.texte.jedeHergestellteChargeEines} /></p>
                 </div>
               </div>
@@ -661,6 +662,7 @@ export default function BpBetonzusatzmittel() {
                     <div className="bg-stone-50 p-4 rounded-xl border border-slate-200 text-center space-y-0.5">
                       <span className="text-[10px] text-slate-400 uppercase font-bold block">Zusatzmittel-Gewicht</span>
                       <span className="text-base font-extrabold text-slate-800 block">{formatDeZahl(admixtureMass, 2)} kg/m³</span>
+                      <ErgebnisAnsage text={kurzzeile(ansageWert('Zusatzmittel', admixtureMass, 2, 'kg/m³'), ansageWert('Volumen', admixtureVolume, 2, 'l/m³'), ansageWert('w/z effektiv', effectiveWcRatio, 3), Number.isFinite(effectiveWcRatio) && (effectiveWcRatio > targetWcValue ? `Grenzwert ${formatDeZahl(targetWcValue, 2)} überschritten` : `Grenzwert ${formatDeZahl(targetWcValue, 2)} eingehalten`))} />
                     </div>
 
                     <div className="bg-stone-50 p-4 rounded-xl border border-slate-200 text-center space-y-0.5">

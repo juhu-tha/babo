@@ -7,6 +7,7 @@ import { BlockMath, InlineMath } from 'react-katex';
 import inhalt from '@/content/baustoffkenngroessen/PhysikalischTab.json';
 import { MdText } from '@/src/components/inhalt/MdText';
 import { FormulaDerivationBox } from '@/src/components/ui/FormulaDerivationBox';
+import { ErgebnisAnsage, ansageWert, kurzzeile } from '@/src/components/ui/ErgebnisAnsage';
 
 export interface PhysikalischTabProps {
   dichtePresets: { ziegel: { name: string; rhoR: number; rho: number; rhoS: number; desc: string; }; blaehton: { name: string; rhoR: number; rho: number; rhoS: number; desc: string; }; granit: { name: string; rhoR: number; rho: number; rhoS: number; desc: string; }; porenbeton: { name: string; rhoR: number; rho: number; rhoS: number; desc: string; }; };
@@ -35,7 +36,7 @@ export default function PhysikalischTab({ dichtePresets, handleDichtePresetChang
           <div className="bg-slate-50 p-5 rounded-xl border border-home-grau/30 flex flex-col justify-between">
             <div>
               <div className="bg-white p-4 rounded-lg border border-home-grau/30 shadow-inner mb-4 flex justify-center">
-                <svg viewBox="0 0 120 120" className="w-24 h-24">
+                <svg aria-hidden="true" viewBox="0 0 120 120" className="w-24 h-24">
                   <rect x="10" y="10" width="100" height="100" rx="8" fill="#475569" />
                   <g opacity="0.3">
                     <circle cx="25" cy="25" r="4" fill="#ffffff" />
@@ -74,7 +75,7 @@ export default function PhysikalischTab({ dichtePresets, handleDichtePresetChang
           <div className="bg-slate-50 p-5 rounded-xl border border-home-grau/30 flex flex-col justify-between">
             <div>
               <div className="bg-white p-4 rounded-lg border border-home-grau/30 shadow-inner mb-4 flex justify-center relative">
-                <svg viewBox="0 0 120 120" className="w-24 h-24">
+                <svg aria-hidden="true" viewBox="0 0 120 120" className="w-24 h-24">
                   <rect x="8" y="8" width="104" height="104" rx="10" fill="transparent" stroke="#94a3b8" strokeDasharray="4,4" strokeWidth="1.5" />
                   <rect x="10" y="10" width="100" height="100" rx="8" fill="#64748b" />
                   <circle cx="35" cy="28" r="7" fill="#ffffff" stroke="#334155" strokeWidth="1" />
@@ -101,7 +102,7 @@ export default function PhysikalischTab({ dichtePresets, handleDichtePresetChang
           <div className="bg-slate-50 p-5 rounded-xl border border-home-grau/30 flex flex-col justify-between">
             <div>
               <div className="bg-white p-4 rounded-lg border border-home-grau/30 shadow-inner mb-4 flex justify-center">
-                <svg viewBox="0 0 120 120" className="w-24 h-24">
+                <svg aria-hidden="true" viewBox="0 0 120 120" className="w-24 h-24">
                   <path d="M 15 15 L 15 110 L 105 110 L 105 15" fill="none" stroke="#64748b" strokeWidth="3" strokeLinecap="round" />
                   <g stroke="#334155" strokeWidth="1" fill="#94a3b8">
                     <circle cx="35" cy="95" r="12" />
@@ -227,6 +228,7 @@ export default function PhysikalischTab({ dichtePresets, handleDichtePresetChang
 
             return (
               <div className="space-y-6">
+                <ErgebnisAnsage text={kurzzeile(ansageWert('Kornporosität', grainPorosity, 1, '%'), ansageWert('Haufwerksporigkeit', haufwerkPorosity, 1, '%'), ansageWert('Gesamthohlraum', totalVoidRatio, 1, '%'))} />
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                   {/* Kornporosität */}
                   <div className="bg-slate-50 p-4 rounded-xl border border-home-grau/30 flex flex-col justify-between">

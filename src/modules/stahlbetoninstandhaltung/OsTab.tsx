@@ -20,7 +20,7 @@ export default function OsTab() {
       <div className="bg-white p-5 rounded-xl border border-home-grau/30 shadow-sm">
         <h3 className="font-semibold mb-4 text-text-main"><MdText text={inhalt.texte.schematischeDarstellungAufbauVon} /></h3>
         <div className="flex flex-col items-center bg-off-white rounded-lg border border-home-grau/30 p-4">
-          <svg width="100%" height="200" viewBox="0 0 600 200">
+          <svg role="img" aria-label="Schematische Darstellung: Aufbau von OS-Systemen" width="100%" height="200" viewBox="0 0 600 200">
             <defs>
               <pattern id="concrete-os" patternUnits="userSpaceOnUse" width="20" height="20">
                 <circle cx="4" cy="4" r="1.5" fill="#cbd5e1" />

@@ -1,6 +1,7 @@
 import { Layers, Sliders, CheckCircle2, AlertTriangle } from 'lucide-react';
 import { InlineMath, BlockMath } from 'react-katex';
 import { formatDeWert, formatDeZahl, formatDeTeX } from '@/src/utils/numberFormat';
+import { ErgebnisAnsage } from '@/src/components/ui/ErgebnisAnsage';
 import React from 'react';
 import inhalt from '@/content/beispielrechnungen/RechnungUWert.json';
 import { MdText } from '@/src/components/inhalt/MdText';
@@ -47,6 +48,7 @@ export default function RechnungUWert({ R_T, R_concrete, R_insulation, R_plaster
               <input aria-label="Dicke (cm)" 
                 type="range" min="10" max="40" step="5"
                 value={uConcreteThick}
+                aria-valuetext={`${formatDeWert(uConcreteThick)} cm`}
                 onChange={(e) => setUConcreteThick(Number(e.target.value))}
                 className="w-full accent-shiraz"
               />
@@ -63,6 +65,7 @@ export default function RechnungUWert({ R_T, R_concrete, R_insulation, R_plaster
               <input aria-label="Dicke (cm)" 
                 type="range" min="0" max="30" step="2"
                 value={uInsuThick}
+                aria-valuetext={`${formatDeWert(uInsuThick)} cm`}
                 onChange={(e) => setUInsuThick(Number(e.target.value))}
                 className="w-full accent-shiraz"
               />
@@ -79,6 +82,7 @@ export default function RechnungUWert({ R_T, R_concrete, R_insulation, R_plaster
               <input aria-label="Dicke (cm)" 
                 type="range" min="0.5" max="3.0" step="0.5"
                 value={uPlasterThick}
+                aria-valuetext={`${formatDeWert(uPlasterThick)} cm`}
                 onChange={(e) => setUPlasterThick(Number(e.target.value))}
                 className="w-full accent-shiraz"
               />
@@ -141,6 +145,7 @@ export default function RechnungUWert({ R_T, R_concrete, R_insulation, R_plaster
                 {U_value <= gegLimit ? inhalt.werte.bestandenGegKonform : inhalt.werte.nichtBestandenGegenGeg}
               </span>
             </div>
+            <ErgebnisAnsage text={`U-Wert ${formatDeZahl(U_value, 3)} W/(m²K), ${U_value <= gegLimit ? inhalt.werte.bestandenGegKonform : inhalt.werte.nichtBestandenGegenGeg}`} />
             <p><MdText text={inhalt.texte.ihrBerechneterUWert} /><strong>{formatDeZahl(U_value, 3)} W/(m²K)</strong><MdText text={inhalt.texte.dasGebäudeenergiegesetzGegAnlage} /></p>
             <p className="text-xxs opacity-90 mt-1">
               {U_value <= gegLimit 

@@ -439,9 +439,9 @@ export default function Informationsquellen() {
                   <div className="flex items-start justify-between gap-2 pb-3 mb-3 border-b border-home-grau/10">
                     <div>
                       <div className="flex items-center gap-2">
-                        <h4 className="font-bold text-slate-800 text-sm leading-tight group-hover:text-shiraz">
+                        <h3 className="font-bold text-slate-800 text-sm leading-tight group-hover:text-shiraz wie-h4">
                           {db.name}
-                        </h4>
+                        </h3>
                         {db.isBeta && (
                           <span className="bg-rose-100 text-rose-800 text-[8px] font-extrabold uppercase px-1.5 py-0.5 rounded shadow-xs">
                             BETA

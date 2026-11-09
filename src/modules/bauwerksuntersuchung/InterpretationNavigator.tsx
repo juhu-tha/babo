@@ -13,6 +13,8 @@ import inhalt from '@/content/bauwerksuntersuchung/InterpretationNavigator.json'
 import { befundSynthese } from '@/src/calc/bauwerksuntersuchung';
 import { fcdBeton, FCD_MODUL } from '@/src/data/kennwerte';
 import { MdText } from '@/src/components/inhalt/MdText';
+import { ErgebnisAnsage, kurzzeile } from '@/src/components/ui/ErgebnisAnsage';
+import { reglerName, reglerEinheit } from '@/src/lib/reglerName';
 
 interface DiagnosticScenario {
   id: string;
@@ -169,8 +171,8 @@ export default function InterpretationNavigator() {
       <div className="bg-white p-6 rounded-2xl shadow-sm border border-home-grau/30 space-y-3">
         <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
           <div>
-            <h3 className="text-lg font-bold text-text-main flex items-center gap-2">
-              <Scale className="text-shiraz" size={20} /><MdText text={inhalt.texte.interpretationIngenieurtechnischeAnwendu} /></h3>
+            <h2 className="text-lg font-bold text-text-main flex items-center gap-2">
+              <Scale className="text-shiraz" size={20} /><MdText text={inhalt.texte.interpretationIngenieurtechnischeAnwendu} /></h2>
             <p className="text-xs text-text-main/70 mt-1"><MdText text={inhalt.texte.vomMesswertZurBautechnischen} /></p>
           </div>
         </div>
@@ -234,6 +236,8 @@ export default function InterpretationNavigator() {
                 max="2.50"
                 step="0.05"
                 value={chloridVal}
+                aria-label={reglerName(inhalt.texte.chloridAnBewehrung)}
+                aria-valuetext={`${formatDeZahl(chloridVal, 2)} M.-%`}
                 onChange={(e) => setChloridVal(Number(e.target.value))}
                 className="w-full accent-shiraz"
               />
@@ -255,6 +259,8 @@ export default function InterpretationNavigator() {
                   max="50"
                   step="1"
                   value={deckungVal}
+                  aria-label={inhalt.werte.betondeckungCMm}
+                  aria-valuetext={`${formatDeZahl(deckungVal, 0)} mm`}
                   title={inhalt.werte.betondeckungCMm}
                   onChange={(e) => setDeckungVal(Number(e.target.value))}
                   className="w-full accent-shiraz"
@@ -265,6 +271,8 @@ export default function InterpretationNavigator() {
                   max="50"
                   step="1"
                   value={karbVal}
+                  aria-label={inhalt.werte.karbonatisierungDKMm}
+                  aria-valuetext={`${formatDeZahl(karbVal, 0)} mm`}
                   title={inhalt.werte.karbonatisierungDKMm}
                   onChange={(e) => setKarbVal(Number(e.target.value))}
                   className="w-full accent-amber-600"
@@ -289,6 +297,8 @@ export default function InterpretationNavigator() {
                 max="0"
                 step="10"
                 value={potentialVal}
+                aria-label={reglerName(inhalt.texte.halbzellenpotentialUCse)}
+                aria-valuetext={`${formatDeZahl(potentialVal, 0)} mV`}
                 onChange={(e) => setPotentialVal(Number(e.target.value))}
                 className="w-full accent-shiraz"
               />
@@ -309,6 +319,8 @@ export default function InterpretationNavigator() {
                 max="50"
                 step="1"
                 value={fckIsVal}
+                aria-label={reglerName(inhalt.texte.druckfestigkeitFCkIs)}
+                aria-valuetext={`${formatDeZahl(fckIsVal, 1)}${reglerEinheit(inhalt.texte.nMmSoll)}${formatDeZahl(fckPlanVal, 0)})`}
                 onChange={(e) => setFckIsVal(Number(e.target.value))}
                 className="w-full accent-shiraz"
               />
@@ -332,6 +344,7 @@ export default function InterpretationNavigator() {
                   step="0.05"
                   aria-label={inhalt.werte.haftzugfestigkeitFCtNMm}
                   value={haftzugVal}
+                  aria-valuetext={`${formatDeZahl(haftzugVal, 2)} N/mm² (Typ ${bruchTyp})`}
                   onChange={(e) => setHaftzugVal(Number(e.target.value))}
                   className="w-full accent-shiraz"
                 />
@@ -364,6 +377,8 @@ export default function InterpretationNavigator() {
                 max="100"
                 step="5"
                 value={holzRestVal}
+                aria-label={reglerName(inhalt.texte.holzRestquerschnitt)}
+                aria-valuetext={`${formatDeZahl(holzRestVal, 0)} %`}
                 onChange={(e) => setHolzRestVal(Number(e.target.value))}
                 className="w-full accent-shiraz"
               />
@@ -373,6 +388,7 @@ export default function InterpretationNavigator() {
         </div>
       </div>
 
+      <ErgebnisAnsage text={kurzzeile(`Gefährdungsstufe ${evaluation.overallRisk}`, evaluation.isCarbDepassivated && 'Karbonatisierung hat die Bewehrung erreicht', evaluation.isChlorideCritical && 'Chloridgehalt kritisch', evaluation.isStrengthDeficient && 'Festigkeit unzureichend', evaluation.isHaftzugFailed && 'Haftzug nicht erreicht')} />
       {/* 3. SYNTHESE & ENTSCHEIDUNGSMATRIX: WAS BEDEUTET DAS INGENIEURTECHNISCH? */}
       <div className="bg-white p-6 rounded-2xl shadow-sm border border-home-grau/30 space-y-6">
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-home-grau/20 pb-4">
@@ -389,8 +405,8 @@ export default function InterpretationNavigator() {
                <CheckCircle2 size={20} />}
             </div>
             <div>
-              <h4 className="text-base font-bold text-text-main"><MdText text={inhalt.texte.syntheseDerBauwerksdiagnostikGefährdungs} />{evaluation.overallRisk.toUpperCase()}
-              </h4>
+              <h3 className="text-base font-bold text-text-main wie-h4"><MdText text={inhalt.texte.syntheseDerBauwerksdiagnostikGefährdungs} />{evaluation.overallRisk.toUpperCase()}
+              </h3>
               <p className="text-xs text-text-main/70"><MdText text={inhalt.texte.ganzheitlicheIngenieurtechnischeBeurteil} /></p>
             </div>
           </div>
@@ -420,7 +436,7 @@ export default function InterpretationNavigator() {
             <div className="space-y-3">
               <span className="text-xs font-mono font-bold text-shiraz uppercase tracking-wider flex items-center gap-1.5">
                 <span className="w-2 h-2 rounded-full bg-shiraz"></span><MdText text={inhalt.texte.t1WerkstoffGefügebefund} /></span>
-              <h5 className="font-bold text-sm text-slate-800"><MdText text={inhalt.texte.physikochemischerZustand} /></h5>
+              <h4 className="font-bold text-sm text-slate-800 wie-h5"><MdText text={inhalt.texte.physikochemischerZustand} /></h4>
               
               <div className="space-y-2 text-xs text-slate-700">
                 <div className="p-2.5 bg-white rounded-xl border border-home-grau/20 space-y-1"><MdText text={inhalt.texte.passivierungKorrosionsschutz} /><p className="text-[11px] text-slate-650">
@@ -468,7 +484,7 @@ export default function InterpretationNavigator() {
             <div className="space-y-3">
               <span className="text-xs font-mono font-bold text-shiraz uppercase tracking-wider flex items-center gap-1.5">
                 <span className="w-2 h-2 rounded-full bg-shiraz"></span><MdText text={inhalt.texte.t2StatikStandsicherheit} /></span>
-              <h5 className="font-bold text-sm text-slate-800"><MdText text={inhalt.texte.auswirkungAufTragfähigkeit} /></h5>
+              <h4 className="font-bold text-sm text-slate-800 wie-h5"><MdText text={inhalt.texte.auswirkungAufTragfähigkeit} /></h4>
 
               <div className="space-y-2 text-xs text-slate-700">
                 <div className="p-2.5 bg-white rounded-xl border border-home-grau/20 space-y-1">
@@ -515,7 +531,7 @@ export default function InterpretationNavigator() {
             <div className="space-y-3">
               <span className="text-xs font-mono font-bold text-shiraz uppercase tracking-wider flex items-center gap-1.5">
                 <span className="w-2 h-2 rounded-full bg-shiraz"></span><MdText text={inhalt.texte.t3InstandsetzungNachTr} /></span>
-              <h5 className="font-bold text-sm text-slate-800"><MdText text={inhalt.texte.verbindlicheMaßnahmen} /></h5>
+              <h4 className="font-bold text-sm text-slate-800 wie-h5"><MdText text={inhalt.texte.verbindlicheMaßnahmen} /></h4>
 
               <div className="space-y-2 text-xs text-slate-700">
                 <div className="p-2.5 bg-white rounded-xl border border-home-grau/20 space-y-1"><MdText text={inhalt.texte.empfohlenesInstandsetzungsprinzip} /><p className="text-[11px] font-semibold text-shiraz">
@@ -570,8 +586,8 @@ export default function InterpretationNavigator() {
 
       {/* 4. Gutachterliche Checkliste zur Ergebnisabnahme */}
       <div className="bg-white p-6 rounded-2xl shadow-sm border border-home-grau/30 space-y-4">
-        <h4 className="font-bold text-sm text-text-main flex items-center gap-2">
-          <FileCheck className="text-shiraz" size={16} /><MdText text={inhalt.texte.gutachterlichePrüflisteVollständigkeitDe} /></h4>
+        <h3 className="font-bold text-sm text-text-main flex items-center gap-2 wie-h4">
+          <FileCheck className="text-shiraz" size={16} /><MdText text={inhalt.texte.gutachterlichePrüflisteVollständigkeitDe} /></h3>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-3 text-xs">
           <div className="p-3 bg-off-white rounded-xl border border-home-grau/20 flex items-start gap-2.5">

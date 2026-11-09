@@ -28,6 +28,7 @@ import { formatDeZahl, formatDeWert } from '@/src/utils/numberFormat';
 import inhalt from '@/content/korrosion/Korrosion.json';
 import { MdText } from '@/src/components/inhalt/MdText';
 import { ModuleTabs, type ModulTab } from '@/src/components/ui/ModuleTabs';
+import { ErgebnisAnsage, ansageWert, kurzzeile } from '@/src/components/ui/ErgebnisAnsage';
 
 ChartJS.register(
   CategoryScale,
@@ -96,6 +97,8 @@ function LokalelementSimulator() {
                 max={2.50}
                 step={0.05}
                 value={clContent}
+                aria-label="Chloridgehalt am Bewehrungsstahl"
+                aria-valuetext={`${formatDeZahl(clContent, 2)} % bezogen auf Zementgehalt`}
                 onChange={(e) => setClContent(Number(e.target.value))}
                 className="w-full h-2 bg-slate-200 rounded-lg appearance-none cursor-pointer accent-shiraz"
               />
@@ -120,6 +123,8 @@ function LokalelementSimulator() {
                 max={98}
                 step={2}
                 value={relHum}
+                aria-label="Relative Betonfeuchte"
+                aria-valuetext={`${formatDeWert(relHum)} %`}
                 onChange={(e) => setRelHum(Number(e.target.value))}
                 className="w-full h-2 bg-slate-200 rounded-lg appearance-none cursor-pointer accent-shiraz"
               />
@@ -146,6 +151,8 @@ function LokalelementSimulator() {
                 max={55}
                 step={5}
                 value={coverMm}
+                aria-label="Betondeckung c_nom"
+                aria-valuetext={`${formatDeWert(coverMm)} mm`}
                 onChange={(e) => setCoverMm(Number(e.target.value))}
                 className="w-full h-2 bg-slate-200 rounded-lg appearance-none cursor-pointer accent-shiraz"
               />
@@ -165,12 +172,15 @@ function LokalelementSimulator() {
                 max={25}
                 step={1}
                 value={durationYears}
+                aria-label="Wirkungsdauer t"
+                aria-valuetext={`${durationYears} Jahre`}
                 onChange={(e) => setDurationYears(Number(e.target.value))}
                 className="w-full h-2 bg-slate-200 rounded-lg appearance-none cursor-pointer accent-shiraz"
               />
             </div>
 
             <EingabeHinweise hinweise={lok.hinweise} />
+            <ErgebnisAnsage text={kurzzeile(crackState.title, ansageWert('Abtrag', totalLossMicron, 0, 'µm'), ansageWert('Rostschicht', rustWedgeThicknessMm, 3, 'mm'), ansageWert('Radialspannung', radialStressMPa, 1, 'MPa'))} />
 
             {/* Live Metrics Cards */}
             <div className="grid grid-cols-2 gap-2.5 pt-3 border-t border-home-grau/20">
@@ -219,7 +229,7 @@ function LokalelementSimulator() {
 
             {/* SVG Visualizer */}
             <div className="relative w-full aspect-4/3 max-h-[380px] svg-buehne rounded-xl overflow-hidden border shadow-inner flex items-center justify-center">
-              <svg width="100%" height="100%" viewBox="0 0 540 380" className="select-none">
+              <svg role="img" aria-label="Elektrochemische Zelle und Rissfortschritt" width="100%" height="100%" viewBox="0 0 540 380" className="select-none">
                 <defs>
                   {/* Concrete matrix gradient */}
                   <linearGradient id="concreteCrossGrad" x1="0" y1="0" x2="0" y2="1">
@@ -546,6 +556,8 @@ export default function Korrosion() {
           fill: false,
         }],
       isCorroding,
+      xc: front.xc,
+      tDeckung: front.tDeckung,
       hinweise: front.hinweise,
     };
   }, [tKarb, cNomKarb, kKarb]);
@@ -747,6 +759,7 @@ export default function Korrosion() {
               onChange={(e) => setA(Number(e.target.value))}
             />
             <EingabeHinweise hinweise={chlorid.hinweise} />
+            <ErgebnisAnsage text={chlorid.gueltig ? kurzzeile(ansageWert(`Chloridgehalt in ${formatDeZahl(cNom, 0)} mm Tiefe`, chlorid.cBewehrung, 2, '%'), chlorid.depassiviert ? 'kritischer Gehalt überschritten' : 'unter dem kritischen Gehalt') : 'Chloridgehalt –'} />
             <LebensdauerUebernehmen aktiv={chlorid.gueltig} art="korrosionChlorid"
               daten={{ quelle: 'korrosion', mech: 'chlorid', deckM: cNom, tSL: t, drcm: dApp, cS, a }} />
           </div>
@@ -770,7 +783,7 @@ export default function Korrosion() {
             <div className="bg-white p-6 rounded-2xl shadow-sm border border-home-grau/30">
               <h3 className="font-semibold mb-4 text-text-main"><MdText text={inhalt.texte.schematischeDarstellungChloridfrontBeweh} /></h3>
               <div className="relative w-full h-48 bg-off-white rounded-lg border border-home-grau/30 overflow-hidden flex items-center justify-center">
-                <svg
+                <svg role="img" aria-label="Schematische Darstellung: Chloridfront und Bewehrung"
                   width="100%"
                   height="100%"
                   viewBox="0 0 400 200"
@@ -1007,6 +1020,7 @@ export default function Korrosion() {
               onChange={(e) => setKKarb(Number(e.target.value))}
             />
             <EingabeHinweise hinweise={karbonatisierungChartData.hinweise} />
+            <ErgebnisAnsage text={kurzzeile(ansageWert(`Karbonatisierungstiefe nach ${formatDeZahl(tKarb, 0)} Jahren`, karbonatisierungChartData.xc, 1, 'mm'), Number.isFinite(karbonatisierungChartData.xc) && (karbonatisierungChartData.isCorroding ? 'Bewehrung erreicht' : 'Bewehrung noch geschützt'), ansageWert('Front an der Bewehrung nach', karbonatisierungChartData.tDeckung, 0, 'Jahren'))} />
             <LebensdauerUebernehmen aktiv={kKarb > 0 && cNomKarb > 0 && tKarb > 0} art="korrosionKarb"
               daten={{ quelle: 'korrosion', mech: 'karbonatisierung', deckM: cNomKarb, tSL: tKarb, kNat: kKarb }} />
           </div>
@@ -1080,6 +1094,7 @@ export default function Korrosion() {
               onChange={(e) => setKKarbSchnell(Number(e.target.value))}
             />
             <EingabeHinweise hinweise={schnellkarbonatisierungChartData.hinweise} />
+            <ErgebnisAnsage text={ansageWert('äquivalenter natürlicher Karbonatisierungskoeffizient K_nat', schnellkarbonatisierungChartData.kNatEquivalent, 2, 'mm/√a')} />
             <LebensdauerUebernehmen aktiv={kKarbSchnell > 0 && co2KonzSchnell > 0} art="korrosionSchnell"
               daten={{ quelle: 'korrosion', mech: 'karbonatisierung', kac: kKarbSchnell, cAcc: co2KonzSchnell }} />
           </div>
@@ -1124,7 +1139,7 @@ export default function Korrosion() {
         ergebnisHinweis={inhalt.werte.mit35MmDeckung}
         normQuelle={inhalt.werte.fibBulletin342006}
       />
-      <Querverweis ziel="lebensdauerbemessung" titel={inhalt.werte.querLebensdauerTitel} linkText={inhalt.werte.querLebensdauerLink}>
+      <Querverweis ebene={3} ziel="lebensdauerbemessung" titel={inhalt.werte.querLebensdauerTitel} linkText={inhalt.werte.querLebensdauerLink}>
         <p><MdText text={inhalt.texte.querLebensdauerText} /></p>
       </Querverweis>
       <FormulaDerivationBox

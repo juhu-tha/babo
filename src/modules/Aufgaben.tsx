@@ -167,7 +167,7 @@ export default function Aufgaben() {
 
       <div {...reiterPanel('aufgaben-modus', mode)}><React.Suspense fallback={<div className="min-h-screen" aria-busy="true" />}>
       {mode === 'klausur' ? (
-        <KlausurSimulator />
+        <KlausurSimulator ebene={2} />
       ) : mode === 'quizzes' ? (
         <InteractiveQuizSystem 
           initialScope={quizConfig.gruppen ? 'gruppe' : 'diagnose_15'}
@@ -187,8 +187,9 @@ export default function Aufgaben() {
                 <GraduationCap size={20} />
               </div>
               <div>
-                <h4 className="font-bold text-sm text-text-main"><MdText text={inhalt.texte.fachQuizWissenscheck} />{quizConfig.label} (Cluster {clusterDerGruppen(quizConfig.gruppen)})
-                </h4>
+                {/* Kartentitel vor der Bereichsüberschrift (h2): kein Überschriftenelement, sonst Sprung h1 → h4 (Kleinpunkte 04.11.2026) */}
+                <p className="font-bold text-sm text-text-main"><MdText text={inhalt.texte.fachQuizWissenscheck} />{quizConfig.label} (Cluster {clusterDerGruppen(quizConfig.gruppen)})
+                </p>
                 <p className="text-xs text-text-main/70 mt-0.5"><MdText text={inhalt.texte.prüfenSieIhrVerständnis} /></p>
               </div>
             </div>
@@ -204,6 +205,7 @@ export default function Aufgaben() {
           {/* Bloom Learning Objectives */}
           <BloomLernziele 
             moduleId="aufgaben_uebungen" 
+            titelElement="p"
             moduleTitle={inhalt.werte.übungsaufgabenBemessungsnachweiseFallstu} 
             studyLevel="Bachelor Basis (1.-2. Semester)" 
             timeMinutes={60} 

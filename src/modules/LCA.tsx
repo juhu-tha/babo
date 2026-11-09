@@ -11,6 +11,8 @@ import { EingabeHinweise } from '@/src/components/ui/EingabeHinweise';
 import { MdText } from '@/src/components/inhalt/MdText';
 import { ModuleTabs } from '@/src/components/ui/ModuleTabs';
 import { AuswahlGruppe, ReiterLeiste, alsOption, alsReiter, reiterPanel } from '../components/ui/Auswahlgruppe';
+import { ErgebnisAnsage, ansageWert, kurzzeile } from '@/src/components/ui/ErgebnisAnsage';
+import { reglerName } from '@/src/lib/reglerName';
 
 // Comprehensive EPD Reference Database representing realistic German ÖKOBAUDAT entries for students
 // Beton und BSH aus der gemeinsamen Lehrwerttabelle (Konsistenz 29.10.2026, F-4); Dämmstoffe EPS und Mineralwolle je kg
@@ -351,7 +353,7 @@ export default function LCA() {
           {/* List and search bar (5-cols) */}
           <div className="lg:col-span-5 flex flex-col gap-4">
             <div className="bg-white p-4 rounded-xl border border-home-grau/30 shadow-sm flex flex-col gap-3">
-              <h4 className="font-bold text-xs uppercase tracking-wider text-slate-900">Referenz-Materialdatenbank</h4>
+              <h3 className="font-bold text-xs uppercase tracking-wider text-slate-900 wie-h4">Referenz-Materialdatenbank</h3>
               
               {/* Search Bar */}
               <div className="relative">
@@ -800,6 +802,8 @@ export default function LCA() {
                     min="1"
                     max="150"
                     value={calcQuantity}
+                    aria-label="2. Menge"
+                    aria-valuetext={`${formatDeWert(calcQuantity)} ${REFERENZEN_EPD.find(m => m.id === calcMaterialId)?.einheit.split(' ')[1] || 'Einheiten'}`}
                     onChange={(e) => setCalcQuantity(parseInt(e.target.value))}
                     className="w-full h-1.5 bg-slate-200 rounded-lg appearance-none cursor-pointer accent-shiraz"
                   />
@@ -821,6 +825,8 @@ export default function LCA() {
                     max="1000"
                     step="10"
                     value={calcDistance}
+                    aria-label={reglerName(inhalt.texte.t3DistanzZurBaustelle)}
+                    aria-valuetext={`${formatDeWert(calcDistance)} km`}
                     onChange={(e) => setCalcDistance(parseInt(e.target.value))}
                     className="w-full h-1.5 bg-slate-200 rounded-lg appearance-none cursor-pointer accent-shiraz"
                   />
@@ -879,6 +885,7 @@ export default function LCA() {
                   </div>
 
                   <EingabeHinweise hinweise={calcResults.hinweise} />
+                  <ErgebnisAnsage text={kurzzeile(`${calcResults.materialQuantityText} ${calcResults.materialName}`, ansageWert('GWP A1–A3', calcResults.gwpA1A3, 1, 'kg CO₂-Äquivalent'), ansageWert('A4', calcResults.gwpA4, 1, 'kg'), ansageWert('gesamt', calcResults.totalGwp, 1, 'kg CO₂-Äquivalent'))} />
 
                   {/* Bezugsgröße des Ergebnisses: deklarierte Einheit der EPD (Auftrag 28.10.2026) */}
                   <p className="mb-4 p-3 bg-sky-50 border border-sky-200 rounded-lg text-[11px] text-slate-800 leading-relaxed" data-testid="bezug-einzelbaustoff">

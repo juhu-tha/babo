@@ -20,6 +20,7 @@ import { Line } from 'react-chartjs-2';
 import '@/src/lib/chartSetup';
 import inhalt from '@/content/bruchmechanik/Bruchmechanik.json';
 import { MdText } from '@/src/components/inhalt/MdText';
+import { ErgebnisAnsage, ansageWert, kurzzeile } from '@/src/components/ui/ErgebnisAnsage';
 
 ChartJS.register(
   CategoryScale,
@@ -136,6 +137,8 @@ export default function Bruchmechanik() {
                 <div className="flex justify-between"><span><MdText text={inhalt.texte.spannungsintensitätKI} /></span><strong>{formatDeZahl(results.kI, 2)} MPa√m</strong></div>
                 <div className="flex justify-between"><span><MdText text={inhalt.texte.ausnutzungKIK} /></span><strong>{formatDeZahl(results.kI / kIc, 2)}</strong></div>
                 <div className="mt-1 font-bold">{results.isCritical ? inhalt.werte.kIKIc : `Riss stabil, Sicherheit gegen Bruch η = ${formatDeZahl(results.safetyFactor, 2)}`}</div>
+                <ErgebnisAnsage text={kurzzeile(ansageWert('K_I', results.kI, 2, 'MPa√m'),
+                  results.isCritical ? inhalt.werte.kIKIc : `Riss stabil, Sicherheit gegen Bruch η ${formatDeZahl(results.safetyFactor, 2)}`)} />
               </div>
             </div>
           </div>
@@ -143,7 +146,7 @@ export default function Bruchmechanik() {
             {/* Visualization */}
             <div className="bg-white p-6 rounded-xl shadow-sm border border-home-grau/30 flex flex-col items-center justify-center">
               <h3 className="text-sm font-bold text-text-main mb-4 self-start"><MdText text={inhalt.texte.rissmodellKantenriss} /></h3>
-              <svg width="100%" height="200" viewBox="0 0 400 200" className="max-w-sm">
+              <svg role="img" aria-label="Rissmodell Kantenriss unter Nennspannung σ" width="100%" height="200" viewBox="0 0 400 200" className="max-w-sm">
                 <defs>
                   <pattern id="material" patternUnits="userSpaceOnUse" width="10" height="10">
                     <path d="M 0 10 L 10 0 M -1 1 L 1 -1 M 9 11 L 11 9" stroke="#cbd5e1" strokeWidth="1" />
@@ -196,7 +199,7 @@ export default function Bruchmechanik() {
             <div className="bg-white p-5 rounded-xl border border-home-grau/30 shadow-sm mt-6">
               <h3 className="font-semibold mb-4 text-text-main"><MdText text={inhalt.texte.schematischeDarstellungRissöffnungsmodi} /></h3>
               <div className="flex flex-col items-center bg-off-white rounded-lg border border-home-grau/30 p-4">
-                <svg width="100%" height="160" viewBox="0 0 450 160">
+                <svg role="img" aria-label="Schematische Darstellung: Rissöffnungsmodi" width="100%" height="160" viewBox="0 0 450 160">
                   {/* Modus I (Opening) */}
                   <g transform="translate(50, 40)">
                     <text x="0" y="-20" fontSize="12" fill="#1e293b" textAnchor="middle" fontWeight="bold">Modus I</text>

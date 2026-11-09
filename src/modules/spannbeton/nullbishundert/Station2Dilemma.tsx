@@ -4,6 +4,7 @@ import { InlineMath } from 'react-katex';
 import { formatDeZahl, formatDeWert } from '@/src/utils/numberFormat';
 import inhalt from '@/content/spannbeton/nullbishundert/Station2Dilemma.json';
 import { MdText } from '@/src/components/inhalt/MdText';
+import { reglerName } from '@/src/lib/reglerName';
 
 export interface Station2DilemmaProps {
   concreteStauchung: number;
@@ -100,6 +101,8 @@ export function Station2Dilemma({ concreteStauchung, setConcreteStauchung, lossP
             max={2.0}
             step={0.05}
             value={concreteStauchung}
+            aria-label={reglerName(inhalt.texte.gesamteZeitabhängigeBetonverkürzungKriec)}
+            aria-valuetext={`${formatDeZahl(concreteStauchung, 2)} ‰`}
             onChange={(e) => setConcreteStauchung(Number(e.target.value))}
             className="w-full accent-shiraz cursor-pointer"
           />

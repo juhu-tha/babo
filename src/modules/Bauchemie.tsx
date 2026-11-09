@@ -24,6 +24,8 @@ import { MdText } from '@/src/components/inhalt/MdText';
 import { stellmittelRheologie, SCHERRATEN, akrKurve, K_RICHTWERTE, KARBONATISIERUNG_ZEITEN, karbonatisierungstiefe } from '@/src/calc/bauchemie';
 import { EingabeHinweise } from '@/src/components/ui/EingabeHinweise';
 import { ModuleTabs, type ModulTab } from '@/src/components/ui/ModuleTabs';
+import { ErgebnisAnsage, ansageWert, kurzzeile } from '@/src/components/ui/ErgebnisAnsage';
+import { reglerName } from '@/src/lib/reglerName';
 
 ChartJS.register(
   CategoryScale,
@@ -376,6 +378,8 @@ export const Bauchemie: React.FC = () => {
                     max="2.0"
                     step="0.1"
                     value={stellmittelConc}
+                    aria-label={reglerName(inhalt.texte.stellmittelKonzentrationZB)}
+                    aria-valuetext={`${formatDeZahl(stellmittelConc, 1)} %`}
                     onChange={(e) => setStellmittelConc(Number(e.target.value))}
                     className="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer accent-shiraz"
                   />
@@ -398,6 +402,8 @@ export const Bauchemie: React.FC = () => {
                     max="100.0"
                     step="1.0"
                     value={currentShear}
+                    aria-label={reglerName(inhalt.texte.auswirkendeScherrateEinwirkkraft)}
+                    aria-valuetext={`${formatDeZahl(currentShear, 0)} s⁻¹`}
                     onChange={(e) => setCurrentShear(Number(e.target.value))}
                     className="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer accent-shiraz"
                   />
@@ -425,6 +431,7 @@ export const Bauchemie: React.FC = () => {
                   </div>
                 </div>
                 <EingabeHinweise hinweise={rheologyResults.hinweise} />
+                <ErgebnisAnsage text={kurzzeile(ansageWert('Viskosität', rheologyResults.currentViscosity, 1, 'Pa·s'), `Status ${rheologyResults.statusClass || '–'}`)} />
               </div>
 
               {/* Chart Column */}
@@ -534,6 +541,7 @@ export const Bauchemie: React.FC = () => {
               />
             </div>
             <EingabeHinweise hinweise={akr.hinweise} />
+            <ErgebnisAnsage text={ansageWert(`AKR-Dehnung nach ${formatDeWert(akr.jahre[akr.jahre.length - 1])} Jahren`, akr.dehnung[akr.dehnung.length - 1], 2, 'mm/m')} />
             <div className="h-[200px] relative mt-4">
               <Line 
                 data={akrData} 

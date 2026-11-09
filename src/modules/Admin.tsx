@@ -292,7 +292,7 @@ export default function Admin() {
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
               <div className="bg-off-white p-4 rounded-xl border border-home-grau/30 space-y-2">
                 <span className="text-xs font-mono font-bold text-shiraz bg-shiraz/10 px-2 py-0.5 rounded">Dimension 1</span>
-                <h4 className="font-bold text-sm text-text-main">Richtigkeit &amp; Normen</h4>
+                <h3 className="font-bold text-sm text-text-main wie-h4">Richtigkeit &amp; Normen</h3>
                 <p className="text-xs text-text-main/70 leading-relaxed">
                   Fehlerfreie Gleichungen, aktuelle Normengeneration (2023/2024), DIN Media Links mit Monats-/Jahresausgaben.
                 </p>
@@ -300,7 +300,7 @@ export default function Admin() {
 
               <div className="bg-off-white p-4 rounded-xl border border-home-grau/30 space-y-2">
                 <span className="text-xs font-mono font-bold text-shiraz bg-shiraz/10 px-2 py-0.5 rounded">Dimension 2</span>
-                <h4 className="font-bold text-sm text-text-main">Didaktik &amp; Verständlichkeit</h4>
+                <h3 className="font-bold text-sm text-text-main wie-h4">Didaktik &amp; Verständlichkeit</h3>
                 <p className="text-xs text-text-main/70 leading-relaxed">
                   4-Stufen-Lehrpfad (Grundlagen, Labor, Bemessung, Test), adressatengerechte Sprache und Hervorhebung von Kernbegriffen.
                 </p>
@@ -308,7 +308,7 @@ export default function Admin() {
 
               <div className="bg-white p-4 rounded-xl border-2 border-shiraz shadow-sm space-y-2 relative">
                 <span className="text-xs font-mono font-bold text-white bg-shiraz px-2 py-0.5 rounded">Dimension 3 (KERN)</span>
-                <h4 className="font-bold text-sm text-shiraz">Vollständigkeit (Thematisch)</h4>
+                <h3 className="font-bold text-sm text-shiraz wie-h4">Vollständigkeit (Thematisch)</h3>
                 <p className="text-xs text-text-main/80 leading-relaxed font-medium">
                   „Ist das Modul in sich thematisch umfassend und vollständig? (dies ist die einzige Bedingung)“ – Keine inhaltlichen Auslassungen.
                 </p>
@@ -316,7 +316,7 @@ export default function Admin() {
 
               <div className="bg-off-white p-4 rounded-xl border border-home-grau/30 space-y-2">
                 <span className="text-xs font-mono font-bold text-shiraz bg-shiraz/10 px-2 py-0.5 rounded">Dimension 4</span>
-                <h4 className="font-bold text-sm text-text-main">Praxisrelevanz</h4>
+                <h3 className="font-bold text-sm text-text-main wie-h4">Praxisrelevanz</h3>
                 <p className="text-xs text-text-main/70 leading-relaxed">
                   Handlungskompetenz für Baustelle, Prüflabor, Tragwerksplanung und Schadensgutachten; forensische Realdaten.
                 </p>
@@ -324,7 +324,7 @@ export default function Admin() {
 
               <div className="bg-off-white p-4 rounded-xl border border-home-grau/30 space-y-2">
                 <span className="text-xs font-mono font-bold text-shiraz bg-shiraz/10 px-2 py-0.5 rounded">Dimension 5</span>
-                <h4 className="font-bold text-sm text-text-main">Konsistenz &amp; Vernetzung</h4>
+                <h3 className="font-bold text-sm text-text-main wie-h4">Konsistenz &amp; Vernetzung</h3>
                 <p className="text-xs text-text-main/70 leading-relaxed">
                   Logischer modularer Aufbau, konsistente Nomenklatur, keine Textdopplungen, saubere Querverlinkung.
                 </p>
@@ -332,7 +332,7 @@ export default function Admin() {
 
               <div className="bg-off-white p-4 rounded-xl border border-home-grau/30 space-y-2">
                 <span className="text-xs font-mono font-bold text-shiraz bg-shiraz/10 px-2 py-0.5 rounded">Dimension 6</span>
-                <h4 className="font-bold text-sm text-text-main">Interaktivität &amp; Verifikation</h4>
+                <h3 className="font-bold text-sm text-text-main wie-h4">Interaktivität &amp; Verifikation</h3>
                 <p className="text-xs text-text-main/70 leading-relaxed">
                   Interaktive Rechner mit deutscher Zahlenformatierung (formatDeZahl), KaTeX-Formeln und dynamische Verifikation.
                 </p>

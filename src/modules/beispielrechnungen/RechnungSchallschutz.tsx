@@ -6,6 +6,7 @@ import inhalt from '@/content/beispielrechnungen/RechnungSchallschutz.json';
 import { MdText } from '@/src/components/inhalt/MdText';
 import { EingabeHinweise } from '@/src/components/ui/EingabeHinweise';
 import type { Hinweis } from '@/src/calc/plausibilitaet';
+import { reglerName } from '@/src/lib/reglerName';
 
 interface RechnungSchallschutzProps {
   schallDicke: number;
@@ -97,7 +98,9 @@ export default function RechnungSchallschutz({ schallDicke, schallFlanke, schall
                 min="10" 
                 max="36.5" 
                 step="0.5" 
-                value={schallDicke} 
+                value={schallDicke}
+                aria-label={reglerName(inhalt.texte.wanddickeRohbauteilD)}
+                aria-valuetext={`${formatDeZahl(schallDicke, 1)} cm`} 
                 onChange={(e) => setSchallDicke(parseFloat(e.target.value))}
                 className="w-full accent-shiraz"
               />
@@ -120,7 +123,9 @@ export default function RechnungSchallschutz({ schallDicke, schallFlanke, schall
                 min="400" 
                 max="2600" 
                 step="50" 
-                value={schallRohdichte} 
+                value={schallRohdichte}
+                aria-label={reglerName(inhalt.texte.trockenrohdichte)}
+                aria-valuetext={`${formatDeWert(schallRohdichte)} kg/m³`} 
                 onChange={(e) => setSchallRohdichte(parseInt(e.target.value))}
                 className="w-full accent-shiraz"
               />

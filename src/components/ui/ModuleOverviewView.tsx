@@ -214,9 +214,9 @@ export default function ModuleOverviewView({ groupKey }: ModuleOverviewViewProps
                   </div>
 
                   <div>
-                    <h5 className="text-xs font-bold text-text-main dark:text-slate-100 truncate">
+                    <h4 className="text-xs font-bold text-text-main dark:text-slate-100 truncate wie-h5">
                       {st.title}
-                    </h5>
+                    </h4>
                     <span className="text-[10px] text-text-main/60 dark:text-slate-400 truncate block">
                       {st.subtitle}
                     </span>

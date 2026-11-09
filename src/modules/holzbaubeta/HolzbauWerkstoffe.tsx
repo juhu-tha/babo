@@ -7,6 +7,7 @@ import type { DataholzConstruction } from './daten';
 import inhalt from '@/content/holzbaubeta/HolzbauWerkstoffe.json';
 import { MdText } from '@/src/components/inhalt/MdText';
 import { AuswahlGruppe, alsOption } from '../../components/ui/Auswahlgruppe';
+import { ErgebnisAnsage, ansageWert, kurzzeile } from '@/src/components/ui/ErgebnisAnsage';
 
 interface HolzbauWerkstoffeProps {
   activeConstruction: DataholzConstruction;
@@ -350,6 +351,7 @@ export default function HolzbauWerkstoffe({ activeConstruction, dbSearch, dbType
                   </div>
                 </div>
 
+                <ErgebnisAnsage text={kurzzeile(ansageWert('Änderung Breite', shrinkResults.deltaB, 2, 'mm'), ansageWert('neue Breite', shrinkResults.finalB, 1, 'mm'), ansageWert('Änderung Höhe', shrinkResults.deltaH, 2, 'mm'), ansageWert('neue Höhe', shrinkResults.finalH, 1, 'mm'))} />
                 <div className="grid grid-cols-2 gap-3 mt-3">
                   <div className="bg-white p-3 rounded-lg border border-home-grau/10 text-center">
                     <span className="text-[10px] text-text-main/50 font-black block"><MdText text={inhalt.texte.änderungBreiteB} /></span>

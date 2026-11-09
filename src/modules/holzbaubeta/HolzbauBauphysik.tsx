@@ -6,6 +6,7 @@ import { BSP_AUFBAUTEN, BSP_ROLLSCHUB, BSP_KENNWERTSAETZE, type BspKennwertsatz,
 import { EingabeHinweise } from '@/src/components/ui/EingabeHinweise';
 import inhalt from '@/content/holzbaubeta/HolzbauBauphysik.json';
 import { MdText } from '@/src/components/inhalt/MdText';
+import { ErgebnisAnsage, ansageWert, kurzzeile } from '@/src/components/ui/ErgebnisAnsage';
 
 interface HolzbauBauphysikProps {
   fireB: number;
@@ -197,6 +198,7 @@ export default function HolzbauBauphysik({ fireB, fireH, fireResults, fireSides,
                   Nach <span className="font-bold">{formatDeWert(fireTime)} min</span><MdText text={inhalt.texte.brandeinwirkungMit} /><InlineMath math={`\\beta = ${formatDeTeXWert(fireResults.beta_0)}\\text{ mm/min}`} />:
                 </p>
 
+                <ErgebnisAnsage text={kurzzeile(ansageWert('Abbrand: wirksame Tiefe d_ef', fireResults.d_ef, 1, 'mm'), fireResults.isCollapsed ? 'Querschnitt komplett zerstört' : `Restquerschnitt ${formatDeZahl(fireResults.b_fi, 0)} mal ${formatDeZahl(fireResults.h_fi, 0)} mm`)} />
                 <div className="grid grid-cols-2 gap-4 mt-2.5">
                   <div className="bg-white p-3 rounded-lg border border-home-grau/10">
                     <span className="text-[9px] text-text-main/40 font-bold block uppercase"><MdText text={inhalt.texte.verkohlteSchichttiefeDEf} /></span>
@@ -296,6 +298,7 @@ export default function HolzbauBauphysik({ fireB, fireH, fireResults, fireSides,
                   max="8.0"
                   step="0.1"
                   value={vib.span}
+                  aria-valuetext={`${formatDeZahl(vib.span, 2)} m`}
                   onChange={(e) => vib.setSpan(parseFloat(e.target.value))}
                   className="w-full accent-blue-700 cursor-pointer"
                 />
@@ -418,6 +421,7 @@ export default function HolzbauBauphysik({ fireB, fireH, fireResults, fireSides,
               </div>
 
               <EingabeHinweise hinweise={vib.ergebnis.hinweise} />
+              <ErgebnisAnsage text={kurzzeile(ansageWert('Eigenfrequenz f_1', vib.ergebnis.f1, 2, 'Hz'), ansageWert('Durchbiegung unter 1 kN', vib.ergebnis.w1kN, 2, 'mm'))} />
 
               <div className="bg-white p-4 rounded-xl border border-home-grau/20 flex flex-col gap-3 shadow-xs text-xs">
                 {/* Mass */}

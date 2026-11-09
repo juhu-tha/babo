@@ -27,6 +27,7 @@ import { EingabeHinweise } from '@/src/components/ui/EingabeHinweise';
 import { bemessungswerteBeton, festigkeitsentwicklung } from '@/src/calc/pruefverfahren';
 import { festbetonStatistik, konformitaetDruck, pruefwerteAusText } from '@/src/calc/festbetonStatistik';
 import { AuswahlGruppe, alsOption } from '../components/ui/Auswahlgruppe';
+import { ErgebnisAnsage, ansageWert, kurzzeile } from '@/src/components/ui/ErgebnisAnsage';
 
 ChartJS.register(
   CategoryScale,
@@ -382,6 +383,7 @@ export default function Festbeton() {
                       </div>
                     </div>
 
+                    <ErgebnisAnsage text={kurzzeile(selectedKlasse.name, ansageWert('f_cd', fcd, 2, 'N/mm²'), ansageWert('f_ctd', fctd, 2, 'N/mm²'))} />
                     <div className="bg-emerald-50/70 p-3 rounded-xl border border-emerald-300 mt-2">
                       <div className="flex justify-between items-center">
                         <span className="text-xs font-bold text-emerald-950">Bemessungsdruckfestigkeit f_cd:</span>
@@ -500,6 +502,7 @@ export default function Festbeton() {
                     </span>
                   </div>
                   <EingabeHinweise hinweise={entwicklung.hinweise} />
+                  <ErgebnisAnsage text={kurzzeile(ansageWert(`Festigkeit nach ${formatDeWert(alter)} Tagen`, fcm_t_eff, 1, 'MPa'), ansageWert('β_cc', beta_cc, 3))} />
                 </div>
               </div>
 
@@ -518,7 +521,7 @@ export default function Festbeton() {
                     {/* Zylinder 150/300 */}
                     <div className="bg-off-white p-4 rounded-xl border border-home-grau/20 flex flex-col items-center">
                       <span className="text-xs font-bold text-text-main mb-2">Zylinder 150 / 300 mm (Europäische Referenz)</span>
-                      <svg width="100%" height="180" viewBox="0 0 200 180" className="max-w-[200px]">
+                      <svg role="img" aria-label="Zylinder 150/300 mm mit Reibungskegeln und ungestörtem Kern" width="100%" height="180" viewBox="0 0 200 180" className="max-w-[200px]">
                         {/* Stahldruckplatten */}
                         <rect x="50" y="10" width="100" height="12" fill="#475569" rx="2" />
                         <rect x="50" y="158" width="100" height="12" fill="#475569" rx="2" />
@@ -543,7 +546,7 @@ export default function Festbeton() {
                     {/* Würfel 150 */}
                     <div className="bg-off-white p-4 rounded-xl border border-home-grau/20 flex flex-col items-center">
                       <span className="text-xs font-bold text-text-main mb-2">Würfel 150 / 150 mm (Baustellen-Standard)</span>
-                      <svg width="100%" height="180" viewBox="0 0 200 180" className="max-w-[200px]">
+                      <svg role="img" aria-label="Würfel 150 mm mit sich überschneidenden Reibungskegeln" width="100%" height="180" viewBox="0 0 200 180" className="max-w-[200px]">
                         {/* Stahldruckplatten */}
                         <rect x="40" y="25" width="120" height="12" fill="#475569" rx="2" />
                         <rect x="40" y="143" width="120" height="12" fill="#475569" rx="2" />
@@ -663,6 +666,7 @@ export default function Festbeton() {
                       <span className="font-mono font-bold text-emerald-800 text-base">{formatDeZahl(statFcd, 1)} N/mm²</span>
                     </div>
                     <EingabeHinweise hinweise={statErg.hinweise} />
+                    <ErgebnisAnsage text={kurzzeile(ansageWert('f_cm', statDisplayFcm, 1, 'MPa'), ansageWert('f_ck', statDisplayFck, 1, 'MPa'), ansageWert('f_cd', statFcd, 2, 'MPa'))} />
                   </div>
                 </div>
               </div>
@@ -856,6 +860,7 @@ export default function Festbeton() {
                       )}
                     </div>
                     <EingabeHinweise hinweise={konf.hinweise} />
+                    <ErgebnisAnsage text={kurzzeile(ansageWert('Mittelwert', konfMean, 1, 'MPa'), ansageWert('Kleinstwert', konfMin, 1, 'MPa'), Number.isFinite(konfMean) && `Kriterium 1 ${konfMeanOk ? 'erfüllt' : 'nicht erfüllt'}, Kriterium 2 ${konfMinOk ? 'erfüllt' : 'nicht erfüllt'}`, Number.isFinite(konfMean) && (konfBestanden ? 'konform' : 'nicht konform'))} />
                   </div>
                 </div>
               </div>

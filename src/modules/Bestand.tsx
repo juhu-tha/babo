@@ -37,6 +37,7 @@ import inhalt from '@/content/bestand/Bestand.json';
 import { MdText } from '@/src/components/inhalt/MdText';
 import { ModuleTabs, type ModulTab } from '@/src/components/ui/ModuleTabs';
 import { AuswahlGruppe, alsOption } from '../components/ui/Auswahlgruppe';
+import { ErgebnisAnsage, ansageWert, kurzzeile } from '@/src/components/ui/ErgebnisAnsage';
 
 ChartJS.register(
   CategoryScale,
@@ -458,6 +459,9 @@ export default function Bestand() {
                     </span>
                   </div>
 
+                  <ErgebnisAnsage text={kurzzeile(ansageWert('U-Wert neu', sanierungResults.newU, 2, 'W/(m²K)'),
+                    sanierungResults.gegCompliant ? inhalt.werte.gmodgKonformAnlage7 : `Grenzwert überschritten, ca. ${formatDeWert(sanierungResults.dReqMm)} mm mehr Dämmung`,
+                    sanierungResults.paybackYears > 60 ? inhalt.werte.keineAmortisation : ansageWert('Amortisation', sanierungResults.paybackYears, 1, 'Jahre'))} />
                   {/* U-Value Comparison */}
                   <div className="grid grid-cols-3 gap-3">
                     <div className="bg-slate-50 p-3.5 rounded-xl border border-slate-200 text-center">

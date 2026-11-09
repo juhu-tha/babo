@@ -23,6 +23,7 @@ import {
 } from 'chart.js';
 import inhalt from '@/content/schallschutz/Schallschutz.json';
 import { MdText } from '@/src/components/inhalt/MdText';
+import { ansageWert, kurzzeile } from '@/src/components/ui/ErgebnisAnsage';
 
 // Reiter Trittschall (Z24) als eigener Chunk
 const TrittschallTab = React.lazy(() => import('./schallschutz/TrittschallTab'));
@@ -256,6 +257,7 @@ export default function Schallschutz() {
             {/* Live-Rechenweg (AP 3.7) mit dem aktuellen Schichtaufbau */}
             <FormulaDerivationBox
               live
+              kurzzeile={kurzzeile(ansageWert('flächenbezogene Masse', schallData.m_prime, 1, 'kg/m²'), ansageWert('Schalldämmmaß R_w', schallData.Rw, 1, 'dB'), !schallData.isValidRange && 'außerhalb des Gültigkeitsbereichs')}
               title={inhalt.werte.ihrRechenwegSchalldämmMaß}
               zielGleichung="R_w = 30{,}9 \cdot \lg\left(\frac{m'}{1\,\text{kg/m}^2}\right) - 22{,}2\,\text{dB}"
               schritte={[
@@ -309,7 +311,7 @@ export default function Schallschutz() {
             <div className="bg-white p-5 rounded-xl border border-home-grau/30 shadow-sm">
               <h3 className="font-semibold mb-4 text-text-main"><MdText text={inhalt.texte.schematischeDarstellungSchalldämmung} /></h3>
               <div className="flex flex-col items-center bg-off-white rounded-lg border border-home-grau/30 p-4">
-                <svg width="100%" height="160" viewBox="0 0 350 160">
+                <svg role="img" aria-label="Schematische Darstellung: Schalldämmung" width="100%" height="160" viewBox="0 0 350 160">
                   {/* Senderaum */}
                   <text x="50" y="30" fontSize="12" fill="#1e293b" textAnchor="middle" fontWeight="bold">Senderaum</text>
                   

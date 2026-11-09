@@ -7,6 +7,7 @@ import { MdText } from '@/src/components/inhalt/MdText';
 import { ReiterLeiste, alsReiter, reiterPanel } from '../../components/ui/Auswahlgruppe';
 import { ALTBETON_ZUORDNUNG, KP_CM2_IN_N_MM2, type AltbetonKlasse, type AltbetonZuordnung } from '@/src/data/kennwerte';
 import type { InsituErgebnis } from '@/src/calc/bauwerksuntersuchung';
+import { reglerName } from '@/src/lib/reglerName';
 
 interface RechnungBestandProps {
   bestandSubTab: "beton" | "stahl";
@@ -52,7 +53,7 @@ function Regler({ label, wert, einheit, min, max, step, setze }: { label: string
         <span className="text-slate-700"><MdText text={label} /></span>
         <span className="text-shiraz">{formatDeWert(wert)}{einheit}</span>
       </div>
-      <input type="range" aria-label={label} min={min} max={max} step={step} value={wert}
+      <input type="range" aria-label={reglerName(label)} min={min} max={max} step={step} value={wert} aria-valuetext={`${formatDeWert(wert)}${einheit}`}
         onChange={(e) => setze(parseFloat(e.target.value))} className="w-full accent-shiraz" />
     </div>
   );
@@ -284,7 +285,9 @@ export default function RechnungBestand({ bestandSubTab, altbeton, altbetonGrenz
                     min="6" 
                     max="32" 
                     step="2" 
-                    value={diameterStahl} 
+                    value={diameterStahl}
+                    aria-label={reglerName(inhalt.texte.stabdurchmesser)}
+                    aria-valuetext={`${formatDeWert(diameterStahl)} mm`} 
                     onChange={(e) => setDiameterStahl(parseInt(e.target.value))}
                     className="w-full accent-shiraz"
                   />

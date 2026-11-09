@@ -337,7 +337,7 @@ function KiBaustoffeInhalt({ forceTab }: KiBaustoffeProps) {
         </div>
 
         {/* Hands-on-Übungen zur Master-Vorlesung (AP 6.5) */}
-        <Querverweis ziel="ki_uebungen" titel={inhalt.werte.handsOnÜbungenZum} linkText={inhalt.werte.zuDenSechsÜbungen} className="mt-4">
+        <Querverweis ebene={3} ziel="ki_uebungen" titel={inhalt.werte.handsOnÜbungenZum} linkText={inhalt.werte.zuDenSechsÜbungen} className="mt-4">
           <p><MdText text={inhalt.texte.zuJedemThemenblockLlm} /></p>
         </Querverweis>
 

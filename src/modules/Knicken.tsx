@@ -24,6 +24,7 @@ import { Querverweis } from '@/src/components/ui/Querverweis';
 import inhalt from '@/content/knicken/Knicken.json';
 import { MdText } from '@/src/components/inhalt/MdText';
 import { ModuleTabs } from '@/src/components/ui/ModuleTabs';
+import { reglerName } from '@/src/lib/reglerName';
 
 ChartJS.register(
   CategoryScale,
@@ -151,6 +152,8 @@ export default function Knicken() {
                     max={120}
                     step={1}
                     value={loadPercent}
+                    aria-label={reglerName(inhalt.texte.normalkraftNEd)}
+                    aria-valuetext={`${formatDeZahl(results.N_Ed_kN, 1)} kN (${formatDeZahl(results.utilization, 0)} % FK)`}
                     onChange={(e) => setLoadPercent(Number(e.target.value))}
                     className="w-full h-2.5 bg-slate-300 rounded-lg appearance-none cursor-pointer accent-shiraz"
                   />
@@ -288,7 +291,8 @@ export default function Knicken() {
 
                 {/* SVG Visualizer with White Background */}
                 <div className="relative w-full aspect-4/3 max-h-[380px] bg-white rounded-xl overflow-hidden border border-home-grau/30 shadow-sm flex items-center justify-center">
-                  <svg width="100%" height="100%" viewBox="0 0 460 360" className="select-none">
+                  <svg width="100%" height="100%" viewBox="0 0 460 360" className="select-none" role="img"
+                    aria-label={`Schema des Druckstabs, Euler-Fall ${formatDeZahl(eulerFall, 0)}: Normalkraft ${formatDeZahl(results.N_Ed_kN, 1)} kN, Knicklast ${formatDeZahl(results.F_K_kN, 1)} kN, Ausbiegung w ≈ ${formatDeZahl(results.maxDeflectionMm, 1)} mm${results.isBuckled ? ' – der Stab knickt aus' : ''}`}>
                     <defs>
                       <linearGradient id="columnGradKnicken" x1="0" y1="0" x2="1" y2="0">
                         <stop offset="0%" stopColor="#475569" />
@@ -490,7 +494,7 @@ export default function Knicken() {
       />
 
       {/* SELBSTTEST (Stufe 4 des Lehrpfads) */}
-      <Querverweis ziel="stahlbau_ec3" titel={inhalt.werte.bemessungNachEurocode3} linkText={inhalt.werte.zumModulStahlbauNach}>{inhalt.werte.dieEulerLastIst}</Querverweis>
+      <Querverweis ebene={3} ziel="stahlbau_ec3" titel={inhalt.werte.bemessungNachEurocode3} linkText={inhalt.werte.zumModulStahlbauNach}>{inhalt.werte.dieEulerLastIst}</Querverweis>
       <ModulTest moduleId="knicken" />
 
       <ModuleFooter 

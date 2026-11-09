@@ -1,5 +1,6 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { Eye } from 'lucide-react';
+import { useDialogFokus } from './useDialogFokus';
 import { leseSeitenbreite, waehleSeitenbreite, alsSeitenbreite, type Bildschirmbreite } from '@/src/utils/seitenbreite';
 
 const A11yPanel = React.lazy(() => import('./A11yPanel'));
@@ -88,6 +89,10 @@ if (typeof document !== 'undefined') {
 
 export function AccessibilityToolbar() {
   const [isOpen, setIsOpen] = useState(false);
+  const knopf = useRef<HTMLButtonElement>(null);
+  const dialog = useRef<HTMLDivElement>(null);
+  // Fokus in den Dialog, Escape schließt, Fokus zurück zum Auslöser (WCAG 2.1.1, 2.4.3)
+  useDialogFokus(isOpen, () => setIsOpen(false), knopf, dialog);
   const [settings, setSettings] = useState<A11ySettings>(getA11yPreferences);
   const [screenWidth, setScreenWidth] = useState<Bildschirmbreite>(leseSeitenbreite);
 
@@ -130,7 +135,9 @@ export function AccessibilityToolbar() {
   return (
     <div className="relative inline-block text-left">
       <button
+        ref={knopf}
         id="a11y-toggle-btn"
+        aria-controls={isOpen ? 'a11y-dialog' : undefined}
         onClick={() => setIsOpen(!isOpen)}
         aria-haspopup="dialog"
         aria-expanded={isOpen}
@@ -142,13 +149,13 @@ export function AccessibilityToolbar() {
         }`}
         title="A11y (Accessibility = Barrierefreiheit: Schriftgröße, Schieberegler, Kontrast)"
       >
-        <Eye size={14} />
+        <Eye size={14} aria-hidden="true" />
         <span className="hidden sm:inline">A11y</span>
       </button>
 
       {isOpen && (
         <React.Suspense fallback={null}>
-          <A11yPanel settings={settings} updateSetting={updateSetting} screenWidth={screenWidth} changeScreenWidth={changeScreenWidth} resetSettings={resetSettings} />
+          <A11yPanel ref={dialog} settings={settings} updateSetting={updateSetting} screenWidth={screenWidth} changeScreenWidth={changeScreenWidth} resetSettings={resetSettings} />
         </React.Suspense>
       )}
     </div>

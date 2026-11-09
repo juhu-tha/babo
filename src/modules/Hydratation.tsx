@@ -756,7 +756,7 @@ export default function Hydratation() {
         <div className="bg-white p-6 rounded-2xl shadow-sm border border-home-grau/30">
           <h3 className="font-semibold mb-4 text-text-main"><MdText text={inhalt.texte.schematischeDarstellungTemperaturverteil} /></h3>
           <div className="relative w-full h-48 bg-off-white rounded-lg border border-home-grau/30 overflow-hidden flex items-center justify-center">
-            <svg width="100%" height="100%" viewBox="0 0 400 200" preserveAspectRatio="xMidYMid meet">
+            <svg role="img" aria-label="Schematische Darstellung: Temperaturverteilung im Bauteil" width="100%" height="100%" viewBox="0 0 400 200" preserveAspectRatio="xMidYMid meet">
               {/* Bauteil (Querschnitt) */}
               <rect x="100" y="40" width="200" height="120" fill="#e2e8f0" stroke="#94a3b8" strokeWidth="2" />
               

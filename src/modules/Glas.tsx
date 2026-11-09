@@ -18,6 +18,7 @@ import { MdText } from '@/src/components/inhalt/MdText';
 import { ModuleTabs } from '@/src/components/ui/ModuleTabs';
 import { EingabeHinweise } from '@/src/components/ui/EingabeHinweise';
 import { weibull, vsgEffektiveDicke, sigma0Lehrmodell, VSG_MODUL } from '@/src/calc/glas';
+import { ErgebnisAnsage, ansageWert, kurzzeile } from '@/src/components/ui/ErgebnisAnsage';
 
 const glassTypes = inhalt.daten.glassTypes;
 
@@ -145,6 +146,7 @@ export default function Glas() {
                 <Slider label={inhalt.werte.weibullModulM} info={inhalt.werte.parameterFürDieStreuung} min={3} max={15} step={1} value={m} unit="-" onChange={(e) => setM(Number(e.target.value))} />
               </div>
               <EingabeHinweise hinweise={wb.hinweise} />
+              <ErgebnisAnsage text={kurzzeile(ansageWert('Bruchwahrscheinlichkeit', wb.pf * 100, 2, '%'), ansageWert('bei Spannung', sigma, 'frei', 'MPa'))} />
             </div>
           </div>
 
@@ -191,6 +193,7 @@ export default function Glas() {
 
               <Slider label={<div className="flex items-center gap-2">Temperatur <FormulaText text="T" /></div>} min={-20} max={60} step={5} value={temp} unit="°C" onChange={(e) => setTemp(Number(e.target.value))} />
               <EingabeHinweise hinweise={vsgData.hinweise} />
+              <ErgebnisAnsage text={kurzzeile(ansageWert('Schubmodul PVB', vsgData.G, 2, 'MPa'), ansageWert('effektive Dicke h_ef,w', vsgData.hef_w, 1, 'mm'))} />
               
               <div className="mt-6 grid grid-cols-2 gap-4">
                 <div className="bg-white p-3 rounded-lg border border-home-grau/30">
@@ -210,7 +213,7 @@ export default function Glas() {
             <div className="bg-white p-5 rounded-xl border border-home-grau/30 shadow-sm">
               <h3 className="font-semibold mb-4 text-text-main"><MdText text={inhalt.texte.schematischeDarstellungVsgVerbundsicherh} /></h3>
               <div className="flex flex-col items-center bg-off-white rounded-lg border border-home-grau/30 p-4">
-                <svg width="100%" height="160" viewBox="0 0 350 160">
+                <svg role="img" aria-label="Schematische Darstellung: VSG (Verbundsicherheitsglas)" width="100%" height="160" viewBox="0 0 350 160">
                   {/* Glas 1 */}
                   <rect x="100" y="40" width="150" height="20" fill="#cbd5e1" opacity="0.6" stroke="#475569" strokeWidth="1" />
                   <text x="175" y="54" fontSize="10" fill="#1e293b" textAnchor="middle">Glas 1 (h_1)</text>
@@ -271,7 +274,7 @@ export default function Glas() {
             <div className="bg-white p-5 rounded-xl border border-home-grau/30 shadow-sm">
               <h3 className="font-semibold mb-4 text-text-main">MIG Aufbau</h3>
               <div className="bg-off-white p-4 rounded-lg flex justify-center border border-home-grau/30">
-                 <svg width="200" height="150" viewBox="0 0 200 150">
+                 <svg role="img" aria-label="Aufbau einer Mehrscheiben-Isolierverglasung (MIG)" width="200" height="150" viewBox="0 0 200 150">
                     {/* Scheibe Außen */}
                     <rect x="50" y="20" width="10" height="110" fill="#cbd5e1" opacity="0.6" stroke="#475569" />
                     <text x="35" y="75" fontSize="10" fill="#1e293b" transform="rotate(-90 35,75)">Außen</text>

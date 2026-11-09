@@ -298,10 +298,10 @@ export default function BpInnovationen() {
               
               {/* Box 1: Die F&E-Phasen im Bauwesen */}
               <div className="bg-white p-5 rounded-xl border border-slate-200 space-y-3">
-                <h4 className="font-bold text-sm text-slate-800 flex items-center gap-2">
+                <h3 className="font-bold text-sm text-slate-800 flex items-center gap-2 wie-h4">
                   <FlaskConical className="text-shiraz" size={18} />
                   <span><MdText text={inhalt.texte.phasenmodellEinesBaustoffF} /></span>
-                </h4>
+                </h3>
                 <div className="space-y-3 text-xs text-slate-600">
                   <div className="p-3 bg-off-white rounded-lg border border-slate-200">
                     <strong className="text-slate-800 block mb-1"><MdText text={inhalt.texte.phase1SyntheseRezepturoptimierung} /></strong><MdText text={inhalt.texte.reaktionskinetikPartikelgrößenverteilung} /></div>
@@ -316,10 +316,10 @@ export default function BpInnovationen() {
 
               {/* Box 2: Fördermittellandschaft */}
               <div className="bg-white p-5 rounded-xl border border-slate-200 space-y-3">
-                <h4 className="font-bold text-sm text-slate-800 flex items-center gap-2">
+                <h3 className="font-bold text-sm text-slate-800 flex items-center gap-2 wie-h4">
                   <Award className="text-shiraz" size={18} />
                   <span><MdText text={inhalt.texte.zentraleFördermittelgeberFürBau} /></span>
-                </h4>
+                </h3>
                 <div className="space-y-3 text-xs text-slate-600">
                   <div className="p-3 bg-off-white rounded-lg border border-slate-200">
                     <div className="flex justify-between items-center mb-1">
@@ -351,10 +351,10 @@ export default function BpInnovationen() {
 
             {/* Patentierung vs. Normung */}
             <div className="bg-slate-50 p-5 rounded-xl border border-slate-200 space-y-2">
-              <h4 className="font-bold text-xs text-slate-800 uppercase tracking-wider flex items-center gap-1.5">
+              <h3 className="font-bold text-xs text-slate-800 uppercase tracking-wider flex items-center gap-1.5 wie-h4">
                 <Lightbulb size={16} className="text-shiraz" />
                 <span><MdText text={inhalt.texte.strategischesDilemmaPatentrechtVs} /></span>
-              </h4>
+              </h3>
               <p className="text-xs text-slate-600 leading-relaxed font-normal"><MdText text={inhalt.texte.währendInDerElektronik} /></p>
             </div>
           </div>

@@ -6,6 +6,8 @@ import inhalt from '@/content/historischematerialkennwerte/RechnerLaborTab.json'
 import { MdText } from '@/src/components/inhalt/MdText';
 import { AuswahlGruppe, alsOption } from '../../components/ui/Auswahlgruppe';
 import { altbeton1972, fcdBeton, FCD_MODUL } from '@/src/data/kennwerte';
+import { ErgebnisAnsage, ansageWert, kurzzeile } from '@/src/components/ui/ErgebnisAnsage';
+import { reglerName } from '@/src/lib/reglerName';
 
 // Beispiel 1: Bn 250 aus der gemeinsamen Zuordnungstabelle (Schnell/Fischer/Loch 2008, Tab. 2.2; Entscheidung 29.10.2026, Nachtrag)
 const BN250 = altbeton1972('Bn 250')!;
@@ -141,6 +143,8 @@ export function RechnerLaborTab({ probeType, setProbeType, setCoreDiameter, core
                   max="300"
                   step="5"
                   value={coreHeight}
+                  aria-label={reglerName(inhalt.texte.längeDesBohrkernsH)}
+                  aria-valuetext={`${formatDeWert(coreHeight)} mm`}
                   onChange={(e) => setCoreHeight(Number(e.target.value))}
                   className="w-full accent-shiraz"
                 />
@@ -162,6 +166,8 @@ export function RechnerLaborTab({ probeType, setProbeType, setCoreDiameter, core
                   max="800"
                   step="10"
                   value={failureForceKn}
+                  aria-label={reglerName(inhalt.texte.prüfkraftZylinderpresseF)}
+                  aria-valuetext={`${formatDeWert(failureForceKn)} kN`}
                   onChange={(e) => setFailureForceKn(Number(e.target.value))}
                   className="w-full accent-shiraz"
                 />
@@ -282,6 +288,8 @@ export function RechnerLaborTab({ probeType, setProbeType, setCoreDiameter, core
                   max="600"
                   step="10"
                   value={brickForceKn}
+                  aria-label={reglerName(inhalt.texte.zylinderStempelprüfkraftFC)}
+                  aria-valuetext={`${formatDeWert(brickForceKn)} kN`}
                   onChange={(e) => setBrickForceKn(Number(e.target.value))}
                   className="w-full accent-shiraz"
                 />
@@ -298,6 +306,8 @@ export function RechnerLaborTab({ probeType, setProbeType, setCoreDiameter, core
                   max="15.0"
                   step="0.5"
                   value={mortarStrength}
+                  aria-label={reglerName(inhalt.texte.mörtelfestigkeitsklasseFM)}
+                  aria-valuetext={`${formatDeZahl(mortarStrength, 1)} MPa`}
                   onChange={(e) => setMortarStrength(Number(e.target.value))}
                   className="w-full accent-shiraz"
                 />
@@ -376,6 +386,8 @@ export function RechnerLaborTab({ probeType, setProbeType, setCoreDiameter, core
                     max="32"
                     step="1"
                     value={steelDiameter}
+                    aria-label={reglerName(inhalt.texte.nenndurchmesserD)}
+                    aria-valuetext={`${formatDeWert(steelDiameter)} mm`}
                     onChange={(e) => setSteelDiameter(Number(e.target.value))}
                     className="w-full accent-shiraz"
                   />
@@ -393,6 +405,8 @@ export function RechnerLaborTab({ probeType, setProbeType, setCoreDiameter, core
                   max="250"
                   step="2"
                   value={steelForceYieldKn}
+                  aria-label={reglerName(inhalt.texte.kraftAnDerStreckgrenze)}
+                  aria-valuetext={`${formatDeWert(steelForceYieldKn)} kN`}
                   onChange={(e) => setSteelForceYieldKn(Number(e.target.value))}
                   className="w-full accent-shiraz"
                 />
@@ -409,6 +423,8 @@ export function RechnerLaborTab({ probeType, setProbeType, setCoreDiameter, core
                   max="350"
                   step="2"
                   value={steelForceTensileKn}
+                  aria-label={reglerName(inhalt.texte.zerreißkraftPlastischFM)}
+                  aria-valuetext={`${formatDeWert(steelForceTensileKn)} kN`}
                   onChange={(e) => setSteelForceTensileKn(Math.max(steelForceYieldKn + 1, Number(e.target.value)))}
                   className="w-full accent-shiraz"
                 />
@@ -442,6 +458,7 @@ export function RechnerLaborTab({ probeType, setProbeType, setCoreDiameter, core
                 <div className="bg-shiraz/10 p-3 rounded-xl border border-shiraz/25">
                   <span className="text-xs font-bold text-shiraz block uppercase"><MdText text={inhalt.texte.equivCylinderFIs} /></span>
                   <span className="text-lg font-black text-shiraz font-mono">{formatDeZahl(calculatedConcrete.fIsCyl, 1)} N/mm²</span>
+                  <ErgebnisAnsage text={kurzzeile(ansageWert('Bohrkern: Druckfestigkeit', calculatedConcrete.rawStrengthMpa, 1, 'MPa'), ansageWert('Zylinderäquivalent f_is', calculatedConcrete.fIsCyl, 1, 'N/mm²'))} />
                 </div>
               </div>
     
@@ -531,6 +548,7 @@ export function RechnerLaborTab({ probeType, setProbeType, setCoreDiameter, core
                 <div className="bg-white p-3 rounded-xl border border-amber-300">
                   <span className="text-xs font-bold text-amber-800 block uppercase"><MdText text={inhalt.texte.wanddruckfestigkeitFK} /></span>
                   <span className="text-lg font-black text-amber-800 font-mono">{formatDeZahl(calculatedBrick.fK, 2)} N/mm²</span>
+                  <ErgebnisAnsage text={kurzzeile(ansageWert('Mauerstein: Druckfestigkeit', calculatedBrick.rawStrengthMpa, 1, 'MPa'), ansageWert('Wanddruckfestigkeit f_k', calculatedBrick.fK, 2, 'N/mm²'))} />
                 </div>
               </div>
     
@@ -586,6 +604,7 @@ export function RechnerLaborTab({ probeType, setProbeType, setCoreDiameter, core
                 <div className="bg-indigo-50 p-3 rounded-xl border border-indigo-200">
                   <span className="text-xs font-bold text-indigo-800 block uppercase"><MdText text={inhalt.texte.zugfestigkeitRM} /></span>
                   <span className="text-lg font-black text-indigo-800 font-mono">{formatDeZahl(calculatedSteel.tensileStrengthMpa, 1)} MPa</span>
+                  <ErgebnisAnsage text={kurzzeile(ansageWert('Stahl: Streckgrenze', calculatedSteel.yieldStrengthMpa, 1, 'MPa'), ansageWert('Zugfestigkeit', calculatedSteel.tensileStrengthMpa, 1, 'MPa'))} />
                 </div>
               </div>
     

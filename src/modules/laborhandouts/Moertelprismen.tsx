@@ -13,6 +13,7 @@ import { ModulTest } from '@/src/components/quiz/ModulTest';
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
 import inhaltJson from '@/content/laborhandouts/Moertelprismen.json';
 import { MdText } from '@/src/components/inhalt/MdText';
+import { ansageWert, kurzzeile } from '@/src/components/ui/ErgebnisAnsage';
 
 const th = 'p-2 text-left text-xs font-bold text-text-main border-b border-home-grau/30 bg-off-white';
 const td = 'p-2 text-xs text-text-main/85 border-b border-home-grau/15 font-mono';
@@ -101,7 +102,10 @@ function auswerten(stand: ProtokollStand): AuswertungsAnsicht {
       )}
     </div>
   );
-  return { inhalt, ergebnisse };
+  const kz = erg.gueltig
+    ? kurzzeile(ansageWert('Biegezugfestigkeit R_f', erg.rfMittel, 1, 'MPa'), ansageWert('Druckfestigkeit R_c', erg.druck.mittel, 1, 'MPa'), `Festigkeitsklasse ${erg.klasse}`)
+    : 'Druckfestigkeit R_c –';
+  return { inhalt, ergebnisse, kurzzeile: kz };
 }
 
 export default function Moertelprismen() {
@@ -115,7 +119,7 @@ export default function Moertelprismen() {
         </div>
         <p className="text-sm text-text-main/80 leading-relaxed"><MdText text={inhaltJson.texte.mitDemNormmörtelWird} /></p>
         <VersuchsHandout daten={MOERTEL_HANDOUT} auswertung={auswerten} />
-        <Querverweis ziel="bindemittel" titel={inhaltJson.werte.zementeUndIhreFestigkeitsentwicklung} linkText={inhaltJson.werte.zumModulBindemittel}>
+        <Querverweis ebene={3} ziel="bindemittel" titel={inhaltJson.werte.zementeUndIhreFestigkeitsentwicklung} linkText={inhaltJson.werte.zumModulBindemittel}>
           <p><MdText text={inhaltJson.texte.zementartenNachDinEn} /></p>
         </Querverweis>
       </div>

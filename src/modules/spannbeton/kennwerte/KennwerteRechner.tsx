@@ -4,6 +4,7 @@ import type { Dispatch, SetStateAction } from 'react';
 import inhalt from '@/content/spannbeton/kennwerte/KennwerteRechner.json';
 import { MdText } from '@/src/components/inhalt/MdText';
 import { E_SPANNSTAHL } from '@/src/calc/spannbeton';
+import { reglerName } from '@/src/lib/reglerName';
 
 interface KennwerteRechnerProps {
   calcFck: number;
@@ -46,6 +47,8 @@ export default function KennwerteRechner({ calcFck, calcRH, calcSteelLoss, calcT
                 max="90"
                 step="5"
                 value={calcFck}
+                aria-label={reglerName(inhalt.texte.betonfestigkeitFCk)}
+                aria-valuetext={`${formatDeWert(calcFck)} MPa`}
                 onChange={(e) => setCalcFck(Number(e.target.value))}
                 className="w-full accent-shiraz"
               />
@@ -66,6 +69,8 @@ export default function KennwerteRechner({ calcFck, calcRH, calcSteelLoss, calcT
                 max="28"
                 step="1"
                 value={calcT0}
+                aria-label={reglerName(inhalt.texte.vorspannalterT)}
+                aria-valuetext={`${formatDeWert(calcT0)} Tage`}
                 onChange={(e) => setCalcT0(Number(e.target.value))}
                 className="w-full accent-shiraz"
               />

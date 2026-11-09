@@ -13,6 +13,7 @@ import { ModulTest } from '@/src/components/quiz/ModulTest';
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
 import inhaltJson from '@/content/laborhandouts/FrischbetonHandout.json';
 import { MdText } from '@/src/components/inhalt/MdText';
+import { ansageWert, kurzzeile } from '@/src/components/ui/ErgebnisAnsage';
 
 const th = 'p-2 text-left text-xs font-bold text-text-main border-b border-home-grau/30 bg-off-white';
 const td = 'p-2 text-xs text-text-main/85 border-b border-home-grau/15 font-mono';
@@ -103,7 +104,10 @@ function auswerten(stand: ProtokollStand): AuswertungsAnsicht {
       )}
     </div>
   );
-  return { inhalt, ergebnisse };
+  const kz = erg.gueltig
+    ? kurzzeile(ansageWert('Ausbreitmaß', erg.mittelF, 0, 'mm'), `Klasse ${erg.werte.map(w => w.klasse).join(' / ')}`, ansageWert('Frischbetonrohdichte', erg.mittelRohdichte, 0, 'kg/m³'), ansageWert('Luftgehalt', erg.mittelLuft, 1, '%'))
+    : 'Ausbreitmaß –';
+  return { inhalt, ergebnisse, kurzzeile: kz };
 }
 
 export default function FrischbetonHandout() {
@@ -117,7 +121,7 @@ export default function FrischbetonHandout() {
         </div>
         <p className="text-sm text-text-main/80 leading-relaxed"><MdText text={inhaltJson.texte.dieDreiPrüfungenWerden} /></p>
         <VersuchsHandout daten={FRISCHBETON_HANDOUT} auswertung={auswerten} />
-        <Querverweis ziel="frischbeton" titel={inhaltJson.werte.theorieUndVirtuelleVersuche} linkText={inhaltJson.werte.zumModulFrischbeton}>
+        <Querverweis ebene={3} ziel="frischbeton" titel={inhaltJson.werte.theorieUndVirtuelleVersuche} linkText={inhaltJson.werte.zumModulFrischbeton}>
           <p><MdText text={inhaltJson.texte.konsistenzprüfverfahrenImÜberblickRheolo} /></p>
         </Querverweis>
       </div>

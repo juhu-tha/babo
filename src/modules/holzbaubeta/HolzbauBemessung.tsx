@@ -9,6 +9,7 @@ import type { Dispatch, SetStateAction } from 'react';
 import type { WoodMaterial } from './daten';
 import inhalt from '@/content/holzbaubeta/HolzbauBemessung.json';
 import { MdText } from '@/src/components/inhalt/MdText';
+import { ErgebnisAnsage, ansageWert, kurzzeile } from '@/src/components/ui/ErgebnisAnsage';
 
 interface HolzbauBemessungProps {
   calculationResults: DruckstabErgebnis;
@@ -408,6 +409,7 @@ export default function HolzbauBemessung({ calculationResults, colB, colH, colLe
               </div>
 
               <EingabeHinweise hinweise={qpResults.hinweise} />
+              <ErgebnisAnsage text={kurzzeile(ansageWert('Querdruck: Ausnutzung', qpResults.utilization, 1, '%'), Number.isFinite(qpResults.utilization) && (qpResults.isUnsafe ? 'überlastet' : 'erfüllt'), ansageWert('F_c,90,Rd', qpResults.F_c90Rd_kN, 1, 'kN'))} />
               {/* Performance Indicator */}
               <div className="bg-white p-4 rounded-xl border border-home-grau/20 shadow-xs">
                 <div className="flex justify-between items-center mb-1">

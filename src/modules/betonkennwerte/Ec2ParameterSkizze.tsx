@@ -61,7 +61,7 @@ export function Ec2ParameterSkizze({
 
       {/* SVG Canvas */}
       <div className="w-full overflow-x-auto bg-white dark:bg-slate-950 rounded-xl border border-home-grau/25 p-2 sm:p-3">
-        <svg 
+        <svg role="img" aria-label="Systemskizze: einwirkende Größen, Bauteilgeometrie und Zeitparameter" 
           viewBox="0 0 940 370" 
           className="w-full min-w-[760px] h-auto select-none"
           xmlns="http://www.w3.org/2000/svg"

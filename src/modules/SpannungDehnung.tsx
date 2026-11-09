@@ -20,6 +20,7 @@ import { betonSdLinien, betonstahlLinien } from '@/src/calc/werkstoffmodelle';
 import { EingabeHinweise } from '@/src/components/ui/EingabeHinweise';
 import inhalt from '@/content/spannungdehnung/SpannungDehnung.json';
 import { MdText } from '@/src/components/inhalt/MdText';
+import { ErgebnisAnsage, ansageWert, kurzzeile } from '@/src/components/ui/ErgebnisAnsage';
 
 ChartJS.register(
   CategoryScale,
@@ -146,6 +147,7 @@ export default function SpannungDehnung() {
             />
             <p className="text-[11px] text-slate-500 mt-2"><MdText text={inhalt.texte.hinweisDieFormelnDer} /></p>
             <EingabeHinweise hinweise={betonSd.hinweise} />
+            <ErgebnisAnsage text={kurzzeile(ansageWert('f_cd', betonProps.fcd, 1, 'MPa'), ansageWert('f_cm', betonProps.fcm, 1, 'MPa'), ansageWert('E_cm', betonProps.Ecm / 1000, 1, 'GPa'), ansageWert('ε_c2', betonProps.ec2, 2, '‰'))} />
             
             <div className="grid grid-cols-2 gap-4 mt-6 pt-4 border-t border-home-grau/30">
               <div>

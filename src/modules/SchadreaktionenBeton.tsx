@@ -25,6 +25,7 @@ import { ModuleTabs } from '@/src/components/ui/ModuleTabs';
 import { Fz } from '@/src/components/ui/Formelzeichen';
 import { AuswahlGruppe, alsOption } from '@/src/components/ui/Auswahlgruppe';
 import { akrGefuege, type AkrFeuchte, type AkrKlasseE } from '@/src/calc/akrGefuege';
+import { ErgebnisAnsage, ansageWert, kurzzeile } from '@/src/components/ui/ErgebnisAnsage';
 
 ChartJS.register(
   CategoryScale,
@@ -178,6 +179,7 @@ function AkrGefuegeSimulator() {
                 max={25}
                 step={1}
                 value={years}
+                aria-valuetext={`${formatDeWert(years)} Jahre`}
                 onChange={(e) => setYears(Number(e.target.value))}
                 aria-label="Expositionsdauer in Jahren"
                 className="w-full h-2 bg-slate-200 rounded-lg appearance-none cursor-pointer accent-shiraz"
@@ -185,6 +187,7 @@ function AkrGefuegeSimulator() {
             </div>
 
             {/* Live Readout Cards */}
+            <ErgebnisAnsage text={kurzzeile(ansageWert('Gel-Quelldruck', simResults.currentGelPressure, 1, 'MPa'), ansageWert('Rissbreite', simResults.crackWidthMm, 2, 'mm'), simResults.damageLevel)} />
             <div className="grid grid-cols-2 gap-2.5 pt-3 border-t border-home-grau/20">
               <div className="bg-off-white p-2.5 rounded-xl border border-home-grau/20">
                 <span className="text-[10px] uppercase font-bold text-text-main/60 block">Gel-Quelldruck</span>
@@ -248,7 +251,7 @@ function AkrGefuegeSimulator() {
 
             {/* SVG Visualizer Canvas */}
             <div className="relative w-full aspect-4/3 max-h-[380px] svg-buehne rounded-xl overflow-hidden border shadow-inner flex items-center justify-center">
-              <svg width="100%" height="100%" viewBox="0 0 540 380" className="select-none">
+              <svg role="img" aria-label="Mikrogefüge mit Gelquellen (schematisch)" width="100%" height="100%" viewBox="0 0 540 380" className="select-none">
                 <defs>
                   {/* Cement paste background */}
                   <radialGradient id="cementPasteGrad" cx="50%" cy="50%" r="65%">
@@ -711,6 +714,7 @@ export default function SchadreaktionenBeton() {
           <div className="flex flex-col gap-6">
             <div className={`p-6 rounded-xl shadow-md text-white ${akrResults.isOk ? 'bg-shiraz' : 'bg-red-600'}`}>
               <h3 className="text-sm font-bold uppercase tracking-wider mb-4 opacity-90"><MdText text={inhalt.texte.bewertungAlkalieintrag} /></h3>
+              <ErgebnisAnsage text={kurzzeile(ansageWert('Alkalieintrag', akrResults.alkaliEintrag, 2, 'kg/m³'), `AKR-Risiko ${akrResults.risiko}`)} />
               <div className="grid grid-cols-2 gap-4 mb-6">
                 <div>
                   <div className="text-white/70 text-sm mb-1"><MdText text={inhalt.texte.alkalieintragZement} /></div>
@@ -837,7 +841,7 @@ export default function SchadreaktionenBeton() {
             <div className="bg-white p-5 rounded-xl border border-home-grau/30 shadow-sm">
               <h3 className="font-semibold mb-4 text-text-main"><MdText text={inhalt.texte.schematischeDarstellungSulfattreiben} /></h3>
               <div className="flex flex-col items-center bg-off-white rounded-lg border border-home-grau/30 p-4">
-                <svg width="100%" height="160" viewBox="0 0 300 160">
+                <svg role="img" aria-label="Schematische Darstellung: Sulfattreiben" width="100%" height="160" viewBox="0 0 300 160">
                   <rect width="300" height="160" fill="#cbd5e1" />
                   
                   {/* Zementstein */}

@@ -13,6 +13,7 @@ import { InfoTooltip } from '@/src/components/ui/InfoTooltip';
 import inhalt from '@/content/zwang/Zwang.json';
 import { MdText } from '@/src/components/inhalt/MdText';
 import { zwangSpannung } from '@/src/calc/zwang';
+import { ErgebnisAnsage, ansageWert, kurzzeile } from '@/src/components/ui/ErgebnisAnsage';
 
 export function ZwangCalculator() {
   const [deltaT, setDeltaT] = useState(20); // Temperaturänderung in K
@@ -130,6 +131,7 @@ export function ZwangCalculator() {
                 {calcData.isCracked && <AlertTriangle size={24} className="animate-pulse" />}
               </div>
               
+              <ErgebnisAnsage text={kurzzeile(ansageWert('Zwangspannung', calcData.sigmaZ, 2, 'MPa'), Number.isFinite(calcData.sigmaZ) && (calcData.isCracked ? 'gerissen' : 'ungerissen'))} />
               <div className="grid grid-cols-2 gap-4 mb-6">
                 <div>
                   <div className="text-white/70 text-sm mb-1"><FormulaText text="Zwangspannung \sigma_{z}" /></div>
@@ -183,7 +185,7 @@ export function ZwangCalculator() {
             <div className="bg-white p-5 rounded-xl border border-home-grau/30 shadow-sm mt-6">
               <h3 className="font-semibold mb-4 text-text-main"><MdText text={inhalt.texte.schematischeDarstellungEntstehungVon} /></h3>
               <div className="flex flex-col items-center bg-off-white rounded-lg border border-home-grau/30 p-4">
-                <svg width="100%" height="180" viewBox="0 0 350 180">
+                <svg role="img" aria-label="Schematische Darstellung: Entstehung von Zwang" width="100%" height="180" viewBox="0 0 350 180">
                   {/* Fall 1: Frei */}
                   <g transform="translate(20, 20)">
                     <text x="0" y="0" fontSize="10" fill="#1e293b" fontWeight="bold">1. Freie Verformung (R = 0)</text>

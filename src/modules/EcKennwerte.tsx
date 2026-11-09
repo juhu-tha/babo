@@ -22,6 +22,7 @@ import { ModulTest } from '@/src/components/quiz/ModulTest';
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
 import inhalt from '@/content/eckennwerte/EcKennwerte.json';
 import { MdText } from '@/src/components/inhalt/MdText';
+import { ErgebnisAnsage, ansageWert, kurzzeile } from '@/src/components/ui/ErgebnisAnsage';
 
 type Reiter = 'grundlagen' | 'statistik' | 'beton' | 'baustoffe' | 'beispiele' | 'rechner' | 'grenzen';
 
@@ -200,7 +201,7 @@ export default function EcKennwerte() {
                   <div className={kasten}><p><MdText text={inhalt.texte.kZeta} /></p></div>
                   <div className={kasten}><p><MdText text={inhalt.texte.kStahl} /></p></div>
                 </div>
-                <Querverweis ziel="sicherheitskonzept" titel={inhalt.texte.querSicherheitTitel} linkText={inhalt.werte.zumModulSicherheit}><p><MdText text={inhalt.texte.querSicherheit} /></p></Querverweis>
+                <Querverweis ebene={3} ziel="sicherheitskonzept" titel={inhalt.texte.querSicherheitTitel} linkText={inhalt.werte.zumModulSicherheit}><p><MdText text={inhalt.texte.querSicherheit} /></p></Querverweis>
               </div>
             )}
 
@@ -242,7 +243,7 @@ export default function EcKennwerte() {
                 </div>
                 <p className={absatz}><MdText text={inhalt.texte.sIs} /></p>
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-                  <Querverweis ziel="statistik" titel={inhalt.texte.querStatistikTitel} linkText={inhalt.werte.zumModulStatistik}><p><MdText text={inhalt.texte.querStatistik} /></p></Querverweis>
+                  <Querverweis ebene={3} ziel="statistik" titel={inhalt.texte.querStatistikTitel} linkText={inhalt.werte.zumModulStatistik}><p><MdText text={inhalt.texte.querStatistik} /></p></Querverweis>
                   <Querverweis ziel="festbeton_statistik" titel={inhalt.texte.querFestbetonTitel} linkText={inhalt.werte.zumModulFestbeton}><p><MdText text={inhalt.texte.querFestbeton} /></p></Querverweis>
                   <Querverweis ziel="historisch" titel={inhalt.texte.querHistTitel} linkText={inhalt.werte.zumModulHist}><p><MdText text={inhalt.texte.querHist} /></p></Querverweis>
                 </div>
@@ -286,7 +287,7 @@ export default function EcKennwerte() {
                   <div className={kasten}><p><MdText text={inhalt.texte.bFcd} /></p></div>
                 </div>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                  <Querverweis ziel="betonkennwerte" titel={inhalt.texte.querBetonTitel} linkText={inhalt.werte.zumModulBeton}><p><MdText text={inhalt.texte.querBeton} /></p></Querverweis>
+                  <Querverweis ebene={3} ziel="betonkennwerte" titel={inhalt.texte.querBetonTitel} linkText={inhalt.werte.zumModulBeton}><p><MdText text={inhalt.texte.querBeton} /></p></Querverweis>
                   <Querverweis ziel="stahlbeton_bemessung" titel={inhalt.texte.querStbTitel} linkText={inhalt.werte.zumModulStb}><p><MdText text={inhalt.texte.querStb} /></p></Querverweis>
                 </div>
               </div>
@@ -311,7 +312,7 @@ export default function EcKennwerte() {
                 </div>
                 <p className={absatz}><MdText text={inhalt.texte.wMauerwerk} /></p>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                  <Querverweis ziel="stahlbau_ec3" titel={inhalt.texte.querStahlTitel} linkText={inhalt.werte.zumModulStahl}><p><MdText text={inhalt.texte.querStahl} /></p></Querverweis>
+                  <Querverweis ebene={3} ziel="stahlbau_ec3" titel={inhalt.texte.querStahlTitel} linkText={inhalt.werte.zumModulStahl}><p><MdText text={inhalt.texte.querStahl} /></p></Querverweis>
                   <Querverweis ziel="holzbau_bemessung" titel={inhalt.texte.querHolzTitel} linkText={inhalt.werte.zumModulHolz}><p><MdText text={inhalt.texte.querHolz} /></p></Querverweis>
                   <Querverweis ziel="mauerwerk" titel={inhalt.texte.querMwTitel} linkText={inhalt.werte.zumModulMw}><p><MdText text={inhalt.texte.querMw} /></p></Querverweis>
                 </div>
@@ -437,7 +438,7 @@ export default function EcKennwerte() {
                     <EingabeHinweise hinweise={erg.hinweise} />
                   </div>
                   <div className="lg:col-span-7 flex flex-col gap-4">
-                    <div className="grid grid-cols-3 gap-3" aria-live="polite">
+                    <div className="grid grid-cols-3 gap-3">
                       {[[inhalt.werte.charakteristisch, erg.xk], [inhalt.werte.bemessung, erg.xd], [inhalt.werte.verhaeltnis, erg.verhaeltnis]].map(([name, wert], i) => (
                         <div key={String(name)} className="p-3 rounded-xl border border-home-grau/30 bg-off-white text-center">
                           <div className="text-[11px] text-text-main/70">{name}</div>
@@ -446,7 +447,7 @@ export default function EcKennwerte() {
                       ))}
                     </div>
                     <KennwertTabelle zeilen={erg.zeilen} titel={`${BAUSTOFF_NAME[baustoff]} ${erg.gueltig ? klassenName(baustoff, klasse) : '–'}`} />
-                    <FormulaDerivationBox live title={inhalt.werte.rechenweg} zielGleichung={`X_d = \\eta \\cdot X_k / \\gamma_M = ${tex(erg.beiwert, 2)} \\cdot ${tex(erg.xk, 1)} / ${tex(erg.gamma, 2)} = ${tex(erg.xd, 2)}\\,\\text{N/mm}^2`} schritte={schritte} normQuelle={REGEL[baustoff].regel} />
+                    <FormulaDerivationBox live kurzzeile={kurzzeile(`${BAUSTOFF_NAME[baustoff]} ${erg.gueltig ? klassenName(baustoff, klasse) : '–'}`, ansageWert(inhalt.werte.charakteristisch, erg.xk, 1, 'N/mm²'), ansageWert(inhalt.werte.bemessung, erg.xd, 1, 'N/mm²'), ansageWert(inhalt.werte.verhaeltnis, erg.verhaeltnis, 3))} title={inhalt.werte.rechenweg} zielGleichung={`X_d = \\eta \\cdot X_k / \\gamma_M = ${tex(erg.beiwert, 2)} \\cdot ${tex(erg.xk, 1)} / ${tex(erg.gamma, 2)} = ${tex(erg.xd, 2)}\\,\\text{N/mm}^2`} schritte={schritte} normQuelle={REGEL[baustoff].regel} />
                   </div>
                 </div>
 
@@ -478,6 +479,7 @@ export default function EcKennwerte() {
                     </label>
                   </div>
                   <EingabeHinweise hinweise={serie.hinweise} />
+                  <ErgebnisAnsage text={kurzzeile(`n = ${zahl(serie.n, 0)}`, ansageWert(inhalt.werte.charakteristisch, serie.xk, 1, 'N/mm²'), ansageWert(inhalt.werte.bemessung, serie.xd, 1, 'N/mm²'))} />
                   <div className="overflow-x-auto">
                     <table className="w-full border-collapse min-w-[560px]">
                       <caption className="text-left text-xs font-bold text-text-main pb-2">{inhalt.texte.rKetteTitel}</caption>

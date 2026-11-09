@@ -85,7 +85,7 @@ export default function Grundlagen() {
             </div>
 
             <div className="lg:col-span-5 bg-off-white p-4 rounded-xl border border-home-grau/25 flex flex-col items-center justify-center">
-              <svg width="240" height="150" viewBox="0 0 240 150" className="select-none">
+              <svg role="img" aria-label="Skizze: Querdehnung und Poisson-Zahl ν" width="240" height="150" viewBox="0 0 240 150" className="select-none">
                 {/* Original ungestreckter Stab */}
                 <rect x="40" y="45" width="160" height="60" fill="none" stroke="#94a3b8" strokeWidth="1.5" strokeDasharray="4 3" rx="4" />
                 <text x="120" y="40" textAnchor="middle" fill="#94a3b8" fontSize="10" className="font-mono">Ausgangszustand (L0, d0)</text>
