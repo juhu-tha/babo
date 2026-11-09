@@ -478,7 +478,7 @@ export default function BetonAZ() {
               <div className="flex gap-2.5 items-start">
                 <CheckCircle2 size={16} className="text-slate-400 shrink-0 mt-0.5" />
                 <div>
-                  <h4 className="font-semibold text-slate-800"><MdText text={inhalt.texte.xcXdGrenzwerteFestlegen} /></h4>
+                  <h3 className="font-semibold text-slate-800 wie-h4"><MdText text={inhalt.texte.xcXdGrenzwerteFestlegen} /></h3>
                   <p className="text-slate-500 text-[10.5px] mt-0.5"><MdText text={inhalt.texte.zulässigenWZWert} /></p>
                 </div>
               </div>
@@ -486,7 +486,7 @@ export default function BetonAZ() {
               <div className="flex gap-2.5 items-start">
                 <CheckCircle2 size={16} className="text-slate-400 shrink-0 mt-0.5" />
                 <div>
-                  <h4 className="font-semibold text-slate-800"><MdText text={inhalt.texte.coZusatzstoffeOptimieren} /></h4>
+                  <h3 className="font-semibold text-slate-800 wie-h4"><MdText text={inhalt.texte.coZusatzstoffeOptimieren} /></h3>
                   <p className="text-slate-500 text-[10.5px] mt-0.5"><MdText text={inhalt.texte.nachhaltigkeitswertDurchDasK} /></p>
                 </div>
               </div>
@@ -494,7 +494,7 @@ export default function BetonAZ() {
               <div className="flex gap-2.5 items-start">
                 <CheckCircle2 size={16} className="text-slate-400 shrink-0 mt-0.5" />
                 <div>
-                  <h4 className="font-semibold text-slate-800"><MdText text={inhalt.texte.bewehrungslageKonsistenzAufeinanderAbsti} /></h4>
+                  <h3 className="font-semibold text-slate-800 wie-h4"><MdText text={inhalt.texte.bewehrungslageKonsistenzAufeinanderAbsti} /></h3>
                   <p className="text-slate-500 text-[10.5px] mt-0.5"><MdText text={inhalt.texte.beiKomplizierterEngerVerlegung} /></p>
                 </div>
               </div>
@@ -502,7 +502,7 @@ export default function BetonAZ() {
               <div className="flex gap-2.5 items-start">
                 <CheckCircle2 size={16} className="text-slate-400 shrink-0 mt-0.5" />
                 <div>
-                  <h4 className="font-semibold text-slate-800"><MdText text={inhalt.texte.kriechenUndSchwindenEinkalkulieren} /></h4>
+                  <h3 className="font-semibold text-slate-800 wie-h4"><MdText text={inhalt.texte.kriechenUndSchwindenEinkalkulieren} /></h3>
                   <p className="text-slate-500 text-[10.5px] mt-0.5"><MdText text={inhalt.texte.zeitabhängigeUndUmweltbedingteLängenände} /></p>
                 </div>
               </div>
@@ -517,7 +517,7 @@ export default function BetonAZ() {
               <div className="flex gap-2.5 items-start">
                 <CheckCircle2 size={16} className="text-slate-400 shrink-0 mt-0.5" />
                 <div>
-                  <h4 className="font-semibold text-slate-800"><MdText text={inhalt.texte.eignungsprüfungDesHerstellersAnfordern} /></h4>
+                  <h3 className="font-semibold text-slate-800 wie-h4"><MdText text={inhalt.texte.eignungsprüfungDesHerstellersAnfordern} /></h3>
                   <p className="text-slate-500 text-[10.5px] mt-0.5"><MdText text={inhalt.texte.sicherstellenDassVorBetonierbeginn} /></p>
                 </div>
               </div>
@@ -525,7 +525,7 @@ export default function BetonAZ() {
               <div className="flex gap-2.5 items-start">
                 <CheckCircle2 size={16} className="text-slate-400 shrink-0 mt-0.5" />
                 <div>
-                  <h4 className="font-semibold text-slate-800"><MdText text={inhalt.texte.frühzeitigeNachbehandlungGewährleisten} /></h4>
+                  <h3 className="font-semibold text-slate-800 wie-h4"><MdText text={inhalt.texte.frühzeitigeNachbehandlungGewährleisten} /></h3>
                   <p className="text-slate-500 text-[10.5px] mt-0.5"><MdText text={inhalt.texte.unmittelbarNachEinbauFolienabdeckungen} /></p>
                 </div>
               </div>
@@ -533,7 +533,7 @@ export default function BetonAZ() {
               <div className="flex gap-2.5 items-start">
                 <CheckCircle2 size={16} className="text-slate-400 shrink-0 mt-0.5" />
                 <div>
-                  <h4 className="font-semibold text-slate-800"><MdText text={inhalt.texte.sicherstellungDerAbstandshalter} /></h4>
+                  <h3 className="font-semibold text-slate-800 wie-h4"><MdText text={inhalt.texte.sicherstellungDerAbstandshalter} /></h3>
                   <p className="text-slate-500 text-[10.5px] mt-0.5"><MdText text={inhalt.texte.prüfungVorEinbringungLückenlose} /></p>
                 </div>
               </div>
@@ -541,7 +541,7 @@ export default function BetonAZ() {
               <div className="flex gap-2.5 items-start">
                 <CheckCircle2 size={16} className="text-slate-400 shrink-0 mt-0.5" />
                 <div>
-                  <h4 className="font-semibold text-slate-800"><MdText text={inhalt.texte.prüfungVonUntergrundhaftwerten} /></h4>
+                  <h3 className="font-semibold text-slate-800 wie-h4"><MdText text={inhalt.texte.prüfungVonUntergrundhaftwerten} /></h3>
                   <p className="text-slate-500 text-[10.5px] mt-0.5"><MdText text={inhalt.texte.beiSanierungenDieSaubere} /></p>
                 </div>
               </div>

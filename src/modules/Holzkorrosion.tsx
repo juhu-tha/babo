@@ -10,6 +10,7 @@ import { InlineMath } from 'react-katex';
 import inhalt from '@/content/holzkorrosion/Holzkorrosion.json';
 import { MdText } from '@/src/components/inhalt/MdText';
 import { ModuleTabs, type ModulTab } from '@/src/components/ui/ModuleTabs';
+import { ErgebnisAnsage } from '@/src/components/ui/ErgebnisAnsage';
 
 function WoodThematicLinks({ current }: { current: 'baustoff' | 'bauprodukt' | 'dauerhaftigkeit' }) {
   const { setActiveTab } = useTabContext();
@@ -211,6 +212,8 @@ export default function Holzkorrosion() {
                     min="0"
                     max="100"
                     value={woodMoisture}
+                    aria-label="Holzfeuchte u"
+                    aria-valuetext={`${formatDeWert(woodMoisture)} %`}
                     onChange={(e) => setWoodMoisture(Number(e.target.value))}
                     className="w-full h-2 rounded-lg appearance-none cursor-pointer focus:outline-none accent-shiraz bg-slate-100 border border-home-grau/30"
                   />
@@ -260,7 +263,7 @@ export default function Holzkorrosion() {
                 </div>
                 
                 <div className="relative h-16 w-full flex items-center justify-center bg-slate-50 border border-home-grau/30 rounded-lg overflow-hidden">
-                  <svg className="w-full h-full max-w-sm" viewBox="0 0 350 70">
+                  <svg role="img" aria-label="Holzzellen mit Zellwänden und Zellhohlräumen bei der gewählten Holzfeuchte" className="w-full h-full max-w-sm" viewBox="0 0 350 70">
                     {/* Draw three hexagonal cells */}
                     {/* Left Cell */}
                     <polygon 
@@ -316,6 +319,7 @@ export default function Holzkorrosion() {
                 </p>
               </div>
 
+              <ErgebnisAnsage text={`Holzfeuchte ${formatDeWert(woodMoisture)} %: ${currentRange.label}, ${currentRange.level}`} />
               {/* Real-time Status Details */}
               <div className={`p-4 rounded-xl border flex flex-col gap-3 transition-colors duration-300 ${currentRange.colorBg}`}>
                 <div className="flex items-start md:items-center justify-between gap-3 flex-col md:flex-row">

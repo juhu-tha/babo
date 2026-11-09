@@ -748,7 +748,7 @@ export default function Konformitaetskontrolle() {
                   </div>
 
                   <div className="w-full relative overflow-x-auto">
-                    <svg 
+                    <svg role="img" aria-label="Diagramm: Festigkeitsentwicklung mit Grenzwert und Mittelwert" 
                       viewBox={`0 0 ${chartWidth} ${chartHeight}`} 
                       className="w-full min-w-[500px] h-auto text-slate-800"
                     >

@@ -71,9 +71,9 @@ export default function ElektromagnetischTab({ barDiameter, bewehrungssucherResu
             </div>
             
             {/* Magnetic Field Lines (simplified) */}
-            <svg className="absolute inset-0 w-full h-full" style={{ opacity: bewehrungssucherResults.signalStrength / 100 }}>
+            <svg aria-hidden="true" className="absolute inset-0 w-full h-full" style={{ opacity: bewehrungssucherResults.signalStrength / 100 }}>
               {/* SVG-Pfade akzeptieren keine %-Koordinaten → zentriertes Unter-SVG */}
-              <svg x="50%" overflow="visible">
+              <svg aria-hidden="true" x="50%" overflow="visible">
                 <path d="M 0 24 Q -40 50 0 100" stroke="rgba(230, 57, 70, 0.3)" strokeWidth="2" fill="none" className="animate-pulse" />
                 <path d="M 0 24 Q 40 50 0 100" stroke="rgba(230, 57, 70, 0.3)" strokeWidth="2" fill="none" className="animate-pulse" />
               </svg>
@@ -176,7 +176,7 @@ export default function ElektromagnetischTab({ barDiameter, bewehrungssucherResu
             </div>
             
             {/* Radar Waves (SVG) */}
-            <svg className="absolute inset-0 w-full h-full" viewBox="0 0 100 100" preserveAspectRatio="none">
+            <svg aria-hidden="true" className="absolute inset-0 w-full h-full" viewBox="0 0 100 100" preserveAspectRatio="none">
               <defs>
                 <linearGradient id="radarGrad" x1="0%" y1="0%" x2="0%" y2="100%">
                   <stop offset="0%" stopColor="rgba(37, 99, 235, 0.6)" />

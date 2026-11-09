@@ -374,7 +374,7 @@ export default function Querkraftbemessung() {
             {/* Visualisierung Fachwerkmodell */}
             <div className="bg-white p-6 rounded-xl border border-home-grau/30 shadow-sm flex flex-col items-center">
               <h3 className="text-sm font-bold text-text-main uppercase tracking-wider mb-2"><MdText text={inhalt.texte.fachwerkmodellSeitenansicht} /></h3>
-              <svg width={svgWidth} height={svgHeight} className="overflow-visible">
+              <svg role="img" aria-label="Fachwerkmodell in der Seitenansicht" width={svgWidth} height={svgHeight} className="overflow-visible">
                 <rect x={startX} y={topY} width={drawWidth - 40} height={beamHeight} fill="none" stroke="#94a3b8" strokeWidth="1" strokeDasharray="4,4" />
                 <line x1={startX} y1={zBottomY} x2={startX + drawWidth - 40} y2={zBottomY} stroke="#A3113E" strokeWidth="3" />
                 <line x1={startX} y1={zTopY} x2={startX + drawWidth - 40} y2={zTopY} stroke="#475569" strokeWidth="3" />

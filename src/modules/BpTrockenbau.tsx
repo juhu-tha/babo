@@ -139,7 +139,7 @@ export default function BpTrockenbau() {
               <div {...reiterPanel('trockenbau-bereich', selectedSubCategory)} className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-stretch">
                 {/* Product List Sidebar */}
                 <AuswahlGruppe label="Produkt" className="lg:col-span-5 flex flex-col gap-2 max-h-[500px] overflow-y-auto pr-1">
-                  <h4 className="text-[10px] font-black uppercase tracking-wider text-slate-400 px-2 select-none"><MdText text={inhalt.texte.verfügbareAusbauproduktePlatten} /></h4>
+                  <h3 className="text-[10px] font-black uppercase tracking-wider text-slate-400 px-2 select-none wie-h4"><MdText text={inhalt.texte.verfügbareAusbauproduktePlatten} /></h3>
                   {DRY_PRODUCTS_DB.map((prod) => (
                     <button {...alsOption(selectedProductId === prod.id)}
                       key={prod.id}

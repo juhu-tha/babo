@@ -185,7 +185,7 @@ export function ZwangCalculator() {
             <div className="bg-white p-5 rounded-xl border border-home-grau/30 shadow-sm mt-6">
               <h3 className="font-semibold mb-4 text-text-main"><MdText text={inhalt.texte.schematischeDarstellungEntstehungVon} /></h3>
               <div className="flex flex-col items-center bg-off-white rounded-lg border border-home-grau/30 p-4">
-                <svg width="100%" height="180" viewBox="0 0 350 180">
+                <svg role="img" aria-label="Schematische Darstellung: Entstehung von Zwang" width="100%" height="180" viewBox="0 0 350 180">
                   {/* Fall 1: Frei */}
                   <g transform="translate(20, 20)">
                     <text x="0" y="0" fontSize="10" fill="#1e293b" fontWeight="bold">1. Freie Verformung (R = 0)</text>

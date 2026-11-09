@@ -8,6 +8,7 @@ import inhalt from '@/content/analytik/Analytik.json';
 import { MdText } from '@/src/components/inhalt/MdText';
 import { ModuleTabs } from '@/src/components/ui/ModuleTabs';
 import { AuswahlGruppe, alsOption } from '../components/ui/Auswahlgruppe';
+import { ErgebnisAnsage } from '@/src/components/ui/ErgebnisAnsage';
 
 const TGAInteraction = () => {
   const [temp, setTemp] = useState(20);
@@ -44,6 +45,8 @@ const TGAInteraction = () => {
           type="range" 
           min="20" max="1000" 
           value={temp} 
+          aria-label="Temperatur"
+          aria-valuetext={`${formatDeWert(temp)} °C`}
           onChange={(e) => setTemp(Number(e.target.value))}
           className="w-full accent-orange-600" 
         />
@@ -58,6 +61,7 @@ const TGAInteraction = () => {
           <span className="text-sm text-gray-800 leading-tight">{getPhase(temp)}</span>
         </div>
       </div>
+      <ErgebnisAnsage text={`Masse ${getMass(temp)} %, ${getPhase(temp)}`} />
     </div>
   );
 };
@@ -89,6 +93,8 @@ const MIPInteraction = () => {
           type="range" 
           min="0" max="3.6" step="0.1"
           value={pressure} 
+          aria-label="Druck (log10)"
+          aria-valuetext={`${formatDeZahl(Math.pow(10, pressure), 0)} bar`}
           onChange={(e) => setPressure(Number(e.target.value))}
           className="w-full accent-cyan-600" 
         />
@@ -102,6 +108,7 @@ const MIPInteraction = () => {
           <span className="text-sm text-gray-800 leading-tight">{getPoreType(Math.pow(10, pressure))}</span>
         </div>
       </div>
+      <ErgebnisAnsage text={`Porenradius ca. ${getPoreRadius(Math.pow(10, pressure))} nm, ${getPoreType(Math.pow(10, pressure))}`} />
     </div>
   );
 };
@@ -170,7 +177,7 @@ const XrdInteraction = () => {
                 <div className="absolute top-2 -left-8 text-xs text-slate-500 font-mono -rotate-90 origin-top-left transform translate-y-8">Intensität</div>
                 
                 {/* Simulated baseline noise */}
-                <svg className="absolute inset-x-0 bottom-0 h-full w-full opacity-30 pointer-events-none" preserveAspectRatio="none">
+                <svg aria-hidden="true" className="absolute inset-x-0 bottom-0 h-full w-full opacity-30 pointer-events-none" preserveAspectRatio="none">
                     <path d="M0,150 Q10,145 20,150 T40,150 T60,150 T80,148 T100,150 T120,150 T140,150 T160,152 T180,150 T200,150 T220,149 T240,150 T260,150 T280,150 T300,150 T320,151 T340,150 L340,160 L0,160 Z" fill="none" stroke="#64748b" strokeWidth="1" vectorEffect="non-scaling-stroke" />
                 </svg>
 

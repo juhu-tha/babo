@@ -317,7 +317,7 @@ export default function WUBauwerke() {
                   <h3 className="font-bold text-xs uppercase tracking-wider mb-3 text-text-main flex items-center gap-2">
                     <span className="w-2 h-2 rounded-full bg-shiraz"></span><MdText text={inhalt.texte.schnittmodellWasserdruckUngerissenerDich} /></h3>
                   <div className="flex flex-col items-center bg-off-white rounded-lg border border-home-grau/30 p-4">
-                    <svg width="100%" height="170" viewBox="0 0 320 170">
+                    <svg role="img" aria-label="Schnittmodell: Wasserdruck und ungerissener Dichtkern" width="100%" height="170" viewBox="0 0 320 170">
                       {/* Wasserstand links */}
                       <rect x="20" y="30" width="70" height="110" fill="#0284c7" opacity="0.25" />
                       <path d="M 20 30 Q 37 25 55 30 T 90 30" fill="none" stroke="#0284c7" strokeWidth="2" />

@@ -521,7 +521,7 @@ export default function Festbeton() {
                     {/* Zylinder 150/300 */}
                     <div className="bg-off-white p-4 rounded-xl border border-home-grau/20 flex flex-col items-center">
                       <span className="text-xs font-bold text-text-main mb-2">Zylinder 150 / 300 mm (Europäische Referenz)</span>
-                      <svg width="100%" height="180" viewBox="0 0 200 180" className="max-w-[200px]">
+                      <svg role="img" aria-label="Zylinder 150/300 mm mit Reibungskegeln und ungestörtem Kern" width="100%" height="180" viewBox="0 0 200 180" className="max-w-[200px]">
                         {/* Stahldruckplatten */}
                         <rect x="50" y="10" width="100" height="12" fill="#475569" rx="2" />
                         <rect x="50" y="158" width="100" height="12" fill="#475569" rx="2" />
@@ -546,7 +546,7 @@ export default function Festbeton() {
                     {/* Würfel 150 */}
                     <div className="bg-off-white p-4 rounded-xl border border-home-grau/20 flex flex-col items-center">
                       <span className="text-xs font-bold text-text-main mb-2">Würfel 150 / 150 mm (Baustellen-Standard)</span>
-                      <svg width="100%" height="180" viewBox="0 0 200 180" className="max-w-[200px]">
+                      <svg role="img" aria-label="Würfel 150 mm mit sich überschneidenden Reibungskegeln" width="100%" height="180" viewBox="0 0 200 180" className="max-w-[200px]">
                         {/* Stahldruckplatten */}
                         <rect x="40" y="25" width="120" height="12" fill="#475569" rx="2" />
                         <rect x="40" y="143" width="120" height="12" fill="#475569" rx="2" />

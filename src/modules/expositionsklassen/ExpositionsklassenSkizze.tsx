@@ -96,7 +96,7 @@ export function ExpositionsklassenSkizze({
         <div className="space-y-5">
           {/* Technischer Vektor-Gebäudeschnitt SVG */}
           <div className="w-full bg-[#fcf8f2] rounded-2xl border border-home-grau/30 p-3 sm:p-4 overflow-hidden shadow-inner">
-            <svg
+            <svg role="group" aria-label="Bauteilskizze mit Expositionszonen"
               viewBox="0 0 940 430"
               className="w-full h-auto select-none font-sans"
               style={{ maxHeight: '420px' }}
@@ -467,7 +467,7 @@ export function ExpositionsklassenSkizze({
 
           {/* Vektor-Querschnitt Betondeckung SVG */}
           <div className="w-full bg-[#fcf8f2] rounded-2xl border border-home-grau/30 p-3 sm:p-4 overflow-hidden shadow-inner">
-            <svg
+            <svg role="img" aria-label="Querschnitt mit Betondeckung und Bewehrung"
               viewBox="0 0 920 370"
               className="w-full h-auto select-none font-sans"
               style={{ maxHeight: '380px' }}

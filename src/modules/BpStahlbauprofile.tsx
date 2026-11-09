@@ -340,7 +340,7 @@ export default function BpStahlbauprofile() {
                     if (profileSeries === 'UPN') {
                       // Draw UPN profile shape
                       return (
-                        <svg width="170" height="170" viewBox="0 0 170 170" className="overflow-visible">
+                        <svg role="img" aria-label="Querschnitt UPN-Profil" width="170" height="170" viewBox="0 0 170 170" className="overflow-visible">
                           {/* Profile boundary path */}
                           <path
                             d={`
@@ -368,7 +368,7 @@ export default function BpStahlbauprofile() {
                     } else {
                       // Draw I-Profile (IPE, HEA, HEB, HEM)
                       return (
-                        <svg width="170" height="170" viewBox="0 0 170 170" className="overflow-visible">
+                        <svg role="img" aria-label={`Querschnitt ${profileSeries}-Profil`} width="170" height="170" viewBox="0 0 170 170" className="overflow-visible">
                           {/* Upper Flange */}
                           <rect
                             x={85 - b_sc/2}

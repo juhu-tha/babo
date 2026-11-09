@@ -159,9 +159,9 @@ export default function MaterialSchaedenGross() {
                     <span>{cs.year}</span>
                     <span className="uppercase tracking-wider font-bold">{cs.category}</span>
                   </div>
-                  <h4 className="font-bold text-xs leading-snug line-clamp-2 mb-1.5">
+                  <h3 className="font-bold text-xs leading-snug line-clamp-2 mb-1.5 wie-h4">
                     {cs.name}
-                  </h4>
+                  </h3>
                   <p className={`text-[11px] line-clamp-2 ${isSelected ? 'text-white/80' : 'text-text-main/70'}`}>
                     {cs.location}
                   </p>

@@ -326,8 +326,8 @@ export default function BpBetonzusatzmittel() {
                 </div>
 
                 <div className="p-4 bg-indigo-50/50 rounded-xl border border-indigo-200 text-xs text-indigo-950 space-y-2">
-                  <h5 className="font-bold flex items-center gap-1.5">
-                    <FileText size={14} className="text-indigo-800" /><MdText text={inhalt.texte.gleichmäßigkeitsprüfungChargenkontrolle} /></h5>
+                  <h4 className="font-bold flex items-center gap-1.5 wie-h5">
+                    <FileText size={14} className="text-indigo-800" /><MdText text={inhalt.texte.gleichmäßigkeitsprüfungChargenkontrolle} /></h4>
                   <p className="leading-relaxed text-[11px] text-indigo-900"><MdText text={inhalt.texte.jedeHergestellteChargeEines} /></p>
                 </div>
               </div>

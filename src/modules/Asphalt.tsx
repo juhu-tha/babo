@@ -177,7 +177,7 @@ export default function Asphalt() {
                 <div className="bg-white p-5 rounded-xl border border-home-grau/30 shadow-sm mt-6">
                   <h3 className="font-semibold mb-4 text-text-main"><MdText text={inhalt.texte.schematischeDarstellungAsphaltzusammense} /></h3>
                   <div className="flex flex-col items-center bg-off-white rounded-lg border border-home-grau/30 p-4">
-                    <svg width="100%" height="160" viewBox="0 0 350 160">
+                    <svg role="img" aria-label="Schematische Darstellung: Asphaltzusammensetzung" width="100%" height="160" viewBox="0 0 350 160">
                       {/* Gesteinskörnung */}
                       <path d="M 100 80 Q 110 60 130 70 T 150 90 T 120 110 Z" fill="#94a3b8" />
                       <path d="M 160 50 Q 180 40 200 60 T 180 80 T 150 70 Z" fill="#64748b" />

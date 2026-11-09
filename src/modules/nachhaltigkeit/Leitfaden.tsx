@@ -82,10 +82,10 @@ export default function Leitfaden({ activeEcoDb, activeStep, checklistState, set
             })}
 
             <div className="bg-emerald-50/30 p-4 border border-emerald-100/80 rounded-xl mt-4">
-              <h4 className="text-[10px] uppercase font-bold text-emerald-900 tracking-wider flex items-center gap-1">
+              <h3 className="text-[10px] uppercase font-bold text-emerald-900 tracking-wider flex items-center gap-1 wie-h4">
                 <Sparkles size={11} className="text-emerald-700" />
                 Prüfungsrelevant:
-              </h4>
+              </h3>
               <p className="text-[10px] text-emerald-800/80 mt-1.5 leading-relaxed"><MdText text={inhalt.texte.ökobilanzierungenSindKernbestandteilMode} /></p>
             </div>
           </div>

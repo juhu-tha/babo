@@ -287,9 +287,9 @@ export default function BestandChecklisten() {
                       <span className="text-xs font-mono font-bold text-home-grau/50">
                         {String(index + 1).padStart(2, '0')}.
                       </span>
-                      <h4 className="text-sm font-bold text-text-main leading-tight">
+                      <h3 className="text-sm font-bold text-text-main leading-tight wie-h4">
                         {item.task}
-                      </h4>
+                      </h3>
                       <span className={`px-1 py-0.5 rounded text-xs font-bold border ${badgeStyle} font-mono tracking-wide shrink-0`}>
                         {badgeLabel}
                       </span>

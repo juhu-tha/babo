@@ -92,8 +92,8 @@ export default function BpBetonwaren() {
                 <div className="border border-slate-200 rounded-2xl overflow-hidden bg-slate-50/50 p-4 sm:p-6 shadow-xs">
                   <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-4 border-b border-slate-200 pb-4 mb-4">
                     <div>
-                      <h4 className="text-sm font-extrabold text-slate-800 uppercase tracking-wider flex items-center gap-2">
-                        <Sparkles className="text-shiraz w-4.5 h-4.5" /><MdText text={inhalt.texte.interaktivesBetonwarenZertifizierungsstu} /></h4>
+                      <h3 className="text-sm font-extrabold text-slate-800 uppercase tracking-wider flex items-center gap-2 wie-h4">
+                        <Sparkles className="text-shiraz w-4.5 h-4.5" /><MdText text={inhalt.texte.interaktivesBetonwarenZertifizierungsstu} /></h3>
                       <p className="text-xs text-slate-650 font-medium"><MdText text={inhalt.texte.wählenSieEineBauteilskizze} /></p>
                     </div>
 
@@ -135,7 +135,7 @@ export default function BpBetonwaren() {
                         {/* SCHEME A: PAVING CROSS-SECTION WITH COMPACTION PRESSURE */}
                         {/* SCHEME A: PAVING CROSS-SECTION WITH COMPACTION PRESSURE */}
                         {selectedStudio === 'paving' && (
-                          <svg 
+                          <svg role="group" aria-label="Skizze Pflasterquerschnitt mit Verdichtung" 
                             viewBox="0 0 420 220" 
                             className="w-full h-auto select-none" 
                             style={{ maxHeight: '280px' }}
@@ -237,7 +237,7 @@ export default function BpBetonwaren() {
 
                         {/* SCHEME B: PIPELINES, SPIGOT AND GASKETS */}
                         {selectedStudio === 'pipe' && (
-                          <svg 
+                          <svg role="group" aria-label="Skizze Betonrohr mit Muffe und Dichtung" 
                             viewBox="0 0 420 220" 
                             className="w-full h-auto select-none" 
                             style={{ maxHeight: '280px' }}

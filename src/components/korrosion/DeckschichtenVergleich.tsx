@@ -12,6 +12,7 @@ import {
 } from 'lucide-react';
 import { formatDeZahl } from '@/src/utils/numberFormat';
 import { Fz } from '@/src/components/ui/Formelzeichen';
+import { ErgebnisAnsage, ansageWert } from '@/src/components/ui/ErgebnisAnsage';
 
 export interface MetalCorrosionProfile {
   id: string;
@@ -730,6 +731,7 @@ export function DeckschichtenVergleich() {
           </div>
         </div>
 
+        <ErgebnisAnsage text={`${ansageWert('Pilling-Bedworth-Verhältnis', calculatedPbr, 2)}: ${pbrStatus.text}`} />
         {/* Ergebnis & Status-Box */}
         <div className={`p-4 rounded-xl border flex flex-col sm:flex-row items-center justify-between gap-4 ${pbrStatus.color}`}>
           <div className="flex flex-col gap-1">

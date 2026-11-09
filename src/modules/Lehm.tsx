@@ -143,7 +143,7 @@ export default function Lehm() {
             <div className="bg-white p-5 rounded-xl border border-home-grau/30 shadow-sm mt-6">
               <h3 className="font-semibold mb-4 text-text-main"><MdText text={inhalt.texte.schematischeDarstellungLehmstruktur} /></h3>
               <div className="flex flex-col items-center bg-off-white rounded-lg border border-home-grau/30 p-4">
-                <svg width="100%" height="160" viewBox="0 0 450 160">
+                <svg role="img" aria-label="Schematische Darstellung: Lehmstruktur" width="100%" height="160" viewBox="0 0 450 160">
                   {/* Sand/Kies (Gerüst) */}
                   <circle cx="100" cy="80" r="30" fill="#F4A460" stroke="#d97706" strokeWidth="2" />
                   <circle cx="170" cy="60" r="25" fill="#F4A460" stroke="#d97706" strokeWidth="2" />

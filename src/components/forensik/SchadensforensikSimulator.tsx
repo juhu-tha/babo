@@ -413,7 +413,7 @@ export function SchadensforensikSimulator() {
             </span>
 
             {currentCase.visualType === 'parkhaus' && (
-              <svg width="340" height="180" viewBox="0 0 340 180" className="select-none">
+              <svg role="img" aria-label="Schadensschematik im Querschnitt: Parkhausstütze" width="340" height="180" viewBox="0 0 340 180" className="select-none">
                 {/* Concrete Column Body */}
                 <rect x="70" y="20" width="200" height="140" fill="var(--bu-beton)" stroke="var(--bu-kontur)" strokeWidth="2" rx="4" />
                 
@@ -444,7 +444,7 @@ export function SchadensforensikSimulator() {
             )}
 
             {currentCase.visualType === 'bruecke' && (
-              <svg width="340" height="180" viewBox="0 0 340 180" className="select-none">
+              <svg role="img" aria-label="Schadensschematik im Querschnitt: Brückenbauteil" width="340" height="180" viewBox="0 0 340 180" className="select-none">
                 {/* Bridge Pier Body */}
                 <rect x="60" y="20" width="220" height="140" fill="var(--bu-beton)" stroke="var(--bu-kontur)" strokeWidth="2" rx="4" />
                 

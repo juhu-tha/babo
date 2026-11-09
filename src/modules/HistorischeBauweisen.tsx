@@ -306,7 +306,7 @@ export default function HistorischeBauweisen() {
                 {/* Live SVG Visualization */}
                 <div className="bg-white p-3 rounded-xl border border-home-grau/20 flex flex-col items-center">
                   <span className="text-[10px] text-slate-400 font-mono mb-2"><MdText text={inhalt.texte.vektormodellDerBogenstatik} /></span>
-                  <svg width="220" height="110" viewBox="-10 -10 240 120" className="overflow-visible">
+                  <svg role="img" aria-label="Vektormodell der Bogenstatik" width="220" height="110" viewBox="-10 -10 240 120" className="overflow-visible">
                     {/* Abutments (Widerlager) */}
                     <rect x="0" y="80" width="30" height="20" fill="#e2e8f0" stroke="#94a3b8" strokeWidth="1" />
                     <rect x="190" y="80" width="30" height="20" fill="#e2e8f0" stroke="#94a3b8" strokeWidth="1" />

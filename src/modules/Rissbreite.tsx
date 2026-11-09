@@ -332,7 +332,7 @@ export default function Rissbreite() {
               <FormulaText text="$h_{c,ef} = \min\{2{,}5\,(h-d);\; (h-x)/3;\; h/2\}$" /><MdText text={inhalt.texte.mitDerDruckzonenhöhe} /><FormulaText text="x" /><MdText text={inhalt.texte.imZustandIi} />{formatDeZahl(ergebnis.x, 1)}<MdText text={inhalt.texte.mmBeiZentrischemZug} /><FormulaText text="$(h-x)/3$" />).
             </div>
           </div>
-          <svg width="100%" height="250" viewBox="0 0 500 250" className="max-w-md">
+          <svg role="img" aria-label="Querschnitt mit wirksamer Zugzone" width="100%" height="250" viewBox="0 0 500 250" className="max-w-md">
             <defs>
               <pattern id="concrete" patternUnits="userSpaceOnUse" width="20" height="20">
                 <circle cx="4" cy="4" r="1.5" fill="#cbd5e1" />
@@ -440,11 +440,11 @@ export default function Rissbreite() {
           <div className="bg-white p-6 rounded-2xl shadow-sm border border-home-grau/30 flex flex-col justify-center items-center text-center">
             <div className={`w-24 h-24 rounded-full flex items-center justify-center mb-4 ${isOk ? 'bg-emerald-100 text-emerald-600' : 'bg-torch-red/10 text-torch-red'}`}>
               {isOk ? (
-                <svg className="w-12 h-12" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <svg aria-hidden="true" className="w-12 h-12" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                 </svg>
               ) : (
-                <svg className="w-12 h-12" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <svg aria-hidden="true" className="w-12 h-12" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
                 </svg>
               )}

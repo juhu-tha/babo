@@ -258,7 +258,7 @@ export default function Frischbetondruck() {
         <div className="bg-white p-6 rounded-2xl shadow-sm border border-home-grau/30">
           <h3 className="font-semibold mb-4 text-text-main"><MdText text={inhalt.texte.schematischeDruckverteilung} /></h3>
           <div className="relative w-full h-48 bg-off-white rounded-lg border border-home-grau/30 overflow-hidden flex items-center justify-center">
-            <svg width="100%" height="100%" viewBox="0 0 400 200" preserveAspectRatio="xMidYMid meet">
+            <svg role="img" aria-label="Schematische Druckverteilung des Frischbetons auf die Schalung" width="100%" height="100%" viewBox="0 0 400 200" preserveAspectRatio="xMidYMid meet">
               {/* Schalung links */}
               <rect x="100" y="20" width="10" height="160" fill="#94a3b8" />
               {/* Schalung rechts */}

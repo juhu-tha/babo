@@ -625,7 +625,7 @@ export default function Kombinationen({ initialTab = 'ueberblick' }: Kombination
             <div className="bg-white p-5 rounded-xl border border-home-grau/30 shadow-xxs">
               <h3 className="font-bold mb-3 text-text-main text-sm"><MdText text={inhalt.texte.gefügemodelleDerMischungsregelnVoigt} /></h3>
               <div className="flex flex-col items-center bg-off-white rounded-lg border border-home-grau/30 p-4">
-                <svg width="100%" height="150" viewBox="0 0 450 150" className="max-w-xl">
+                <svg role="img" aria-label="Gefügemodelle der Mischungsregeln nach Voigt und Reuss" width="100%" height="150" viewBox="0 0 450 150" className="max-w-xl">
                   {/* Voigt (Parallel) */}
                   <g transform="translate(50, 30)">
                     <text x="50" y="-15" fontSize="11" fill="#1e293b" textAnchor="middle" fontWeight="bold">Voigt (Parallelschaltung)</text>

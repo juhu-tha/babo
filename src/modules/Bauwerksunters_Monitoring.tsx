@@ -323,7 +323,7 @@ export default function Bauwerksunters_Monitoring() {
                       </div>
                       
                       {/* SVG plotting path */}
-                      <svg viewBox="0 0 120 100" className="w-full h-full overflow-visible" preserveAspectRatio="none">
+                      <svg role="img" aria-label="Bohrwiderstandskurve über die Bohrtiefe" viewBox="0 0 120 100" className="w-full h-full overflow-visible" preserveAspectRatio="none">
                         {/* Area shading for defect zones if active */}
                         {selectedState === 'kernfaeule' && (
                           <rect x="40" y="0" width="55" height="100" fill="rgba(245, 158, 11, 0.05)" />
@@ -448,7 +448,7 @@ export default function Bauwerksunters_Monitoring() {
 
                   {/* Double line plotting */}
                   {/* Sun rises, temperature rises, material expands, CRACK WIDTH DECREASES/CLOSES */}
-                  <svg viewBox="0 0 100 50" className="w-full h-full overflow-visible" preserveAspectRatio="none">
+                  <svg role="img" aria-label="Verlauf von Temperatur und Rissbreite über die Zeit" viewBox="0 0 100 50" className="w-full h-full overflow-visible" preserveAspectRatio="none">
                     {/* Temp Line (Red) */}
                     <path
                       fill="none"

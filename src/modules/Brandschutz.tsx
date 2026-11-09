@@ -12,6 +12,7 @@ import { formatDeZahl } from '@/src/utils/numberFormat';
 import { Flame, Shield, Activity, Layers } from 'lucide-react';
 import inhalt from '@/content/brandschutz/Brandschutz.json';
 import { MdText } from '@/src/components/inhalt/MdText';
+import { ErgebnisAnsage, ansageWert, kurzzeile } from '@/src/components/ui/ErgebnisAnsage';
 import { ModuleTabs, type ModulTab } from '@/src/components/ui/ModuleTabs';
 
 type BrandschutzReiter = 'baustoffklassen' | 'baulicher_brandschutz' | 'holzabbrand';
@@ -246,13 +247,15 @@ export default function Brandschutz() {
               <div className="bg-off-white p-5 rounded-xl border border-home-grau/30">
                 <Slider label={inhalt.werte.branddauerT} info={inhalt.werte.dauerDerBrandeinwirkungIn} min={0} max={120} step={5} value={dauer} unit="min" onChange={(e) => setDauer(Number(e.target.value))} />
                 <div className="mt-6 border-t border-home-grau/30 pt-4">
-                  <h4 className="font-bold text-sm mb-4"><MdText text={inhalt.texte.holzquerschnitt3SeitigBeflammt} /></h4>
+                  <h3 className="font-bold text-sm mb-4 wie-h4"><MdText text={inhalt.texte.holzquerschnitt3SeitigBeflammt} /></h3>
                   <Slider label="Breite b"  min={50} max={400} step={10} value={holzBreite} unit="mm" onChange={(e) => setHolzBreite(Number(e.target.value))} />
                   <div className="mt-4"><Slider label="Höhe h" info={inhalt.werte.höheDesBauteilquerschnitts} min={100} max={800} step={10} value={holzHoehe} unit="mm" onChange={(e) => setHolzHoehe(Number(e.target.value))} /></div>
                 </div>
               </div>
               <div className="bg-shiraz text-white p-6 rounded-xl shadow-md">
                 <h3 className="text-sm font-bold uppercase tracking-wider mb-4 opacity-90">Brandverhalten</h3>
+                <ErgebnisAnsage text={kurzzeile(ansageWert('Gastemperatur', results.tempIso, 0, '°C'), ansageWert('Abbrandtiefe', results.abbrandTiefe, 1, 'mm'),
+                  `Restquerschnitt ${formatDeZahl(results.restBreite, 0)} × ${formatDeZahl(results.restHoehe, 0)} mm`)} />
                 <div className="grid grid-cols-2 gap-4">
                   <div><div className="text-white/70 text-sm"><MdText text={inhalt.texte.gastemperaturIso} /></div><div className="text-2xl font-bold">{formatDeZahl(results.tempIso, 0)} °C</div></div>
                   <div><div className="text-white/70 text-sm"><MdText text={inhalt.texte.abbrandtiefeHolz} /></div><div className="text-2xl font-bold">{formatDeZahl(results.abbrandTiefe, 1)} mm</div></div>
@@ -278,7 +281,7 @@ export default function Brandschutz() {
               <div className="bg-white p-5 rounded-xl border border-home-grau/30 shadow-sm">
                 <h3 className="font-semibold mb-4 text-text-main"><MdText text={inhalt.texte.schematischeDarstellungHolzabbrand3} /></h3>
                 <div className="flex flex-col items-center bg-off-white rounded-lg border border-home-grau/30 p-4">
-                  <svg width="100%" height="160" viewBox="0 0 350 160">
+                  <svg role="img" aria-label="Schematische Darstellung: Holzabbrand bei dreiseitiger Beflammung" width="100%" height="160" viewBox="0 0 350 160">
                     {/* Ursprünglicher Querschnitt */}
                     <rect x="125" y="20" width="100" height="120" fill="none" stroke="#94a3b8" strokeWidth="2" strokeDasharray="4 4" />
                     <text x="175" y="15" fontSize="10" fill="#64748b" textAnchor="middle">Ursprünglich (b × h)</text>

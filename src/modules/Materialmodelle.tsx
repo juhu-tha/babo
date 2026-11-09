@@ -141,26 +141,26 @@ function RheologySection() {
                   <span className="text-[10px] font-mono bg-off-white text-shiraz px-2 py-0.5 rounded border border-home-grau/30 font-bold">{name}</span>
                 </div>
                 <div className="text-shiraz scale-[1.15] origin-center z-10 py-2">
-                  {m === 'hooke' && <svg width="100" height="40" viewBox="0 0 100 40"><HookeShape x={0} y={0} /></svg>}
-                  {m === 'newton' && <svg width="100" height="40" viewBox="0 0 100 40"><NewtonShape x={0} y={0} /></svg>}
-                  {m === 'st_venant' && <svg width="100" height="40" viewBox="0 0 100 40"><StVenantShape x={0} y={0} /></svg>}
-                  {m === 'prandtl' && <svg width="200" height="40" viewBox="0 0 200 40"><HookeShape x={0} y={0} /><StVenantShape x={100} y={0} /></svg>}
-                  {m === 'elasto_plastic' && <svg width="230" height="90" viewBox="0 0 230 90"><ElastoPlasticShape x={0} y={0} /></svg>}
-                  {m === 'maxwell' && <svg width="200" height="40" viewBox="0 0 200 40"><HookeShape x={0} y={0} /><NewtonShape x={100} y={0} /></svg>}
+                  {m === 'hooke' && <svg role="img" aria-label={`Ersatzschaltbild ${name}`} width="100" height="40" viewBox="0 0 100 40"><HookeShape x={0} y={0} /></svg>}
+                  {m === 'newton' && <svg role="img" aria-label={`Ersatzschaltbild ${name}`} width="100" height="40" viewBox="0 0 100 40"><NewtonShape x={0} y={0} /></svg>}
+                  {m === 'st_venant' && <svg role="img" aria-label={`Ersatzschaltbild ${name}`} width="100" height="40" viewBox="0 0 100 40"><StVenantShape x={0} y={0} /></svg>}
+                  {m === 'prandtl' && <svg role="img" aria-label={`Ersatzschaltbild ${name}`} width="200" height="40" viewBox="0 0 200 40"><HookeShape x={0} y={0} /><StVenantShape x={100} y={0} /></svg>}
+                  {m === 'elasto_plastic' && <svg role="img" aria-label={`Ersatzschaltbild ${name}`} width="230" height="90" viewBox="0 0 230 90"><ElastoPlasticShape x={0} y={0} /></svg>}
+                  {m === 'maxwell' && <svg role="img" aria-label={`Ersatzschaltbild ${name}`} width="200" height="40" viewBox="0 0 200 40"><HookeShape x={0} y={0} /><NewtonShape x={100} y={0} /></svg>}
                   {m === 'kelvin' && (
-                    <svg width="160" height="90" viewBox="0 0 160 90">
+                    <svg role="img" aria-label={`Ersatzschaltbild ${name}`} width="160" height="90" viewBox="0 0 160 90">
                       <path d="M 0 45 L 30 45 M 30 15 L 30 75 M 130 15 L 130 75 M 130 45 L 160 45" className="stroke-current" strokeWidth="2" fill="none" />
                       <HookeShape x={30} y={-5} /> 
                       <NewtonShape x={30} y={55} />
                     </svg>
                   )}
                   {m === 'zener' && (
-                    <svg width="200" height="90" viewBox="0 0 200 90">
+                    <svg role="img" aria-label={`Ersatzschaltbild ${name}`} width="200" height="90" viewBox="0 0 200 90">
                       <ZenerShape x={0} y={0} />
                     </svg>
                   )}
                   {m === 'bingham' && (
-                    <svg width="170" height="90" viewBox="0 0 170 90">
+                    <svg role="img" aria-label={`Ersatzschaltbild ${name}`} width="170" height="90" viewBox="0 0 170 90">
                       <BinghamShape x={0} y={0} />
                     </svg>
                   )}

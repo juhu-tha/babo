@@ -220,7 +220,7 @@ export default function DppEpd({ view }: DppEpdProps = {}) {
                   {activeDetailSection === 'grundlagen' && (
                     <div className="space-y-4 animate-in fade-in duration-300">
                       <div>
-                        <h4 className="font-bold text-base text-slate-900"><MdText text={inhalt.texte.t1WissenschaftlicheGrundlagenZiele} /></h4>
+                        <h3 className="font-bold text-base text-slate-900 wie-h4"><MdText text={inhalt.texte.t1WissenschaftlicheGrundlagenZiele} /></h3>
                         <p className="text-xs text-slate-500 mt-0.5"><MdText text={inhalt.texte.euEcodesignForSustainable} /></p>
                       </div>
                       <p className="text-sm text-slate-700 leading-relaxed font-normal"><MdText text={inhalt.texte.dieGrundlagenDesDpp} /></p>
@@ -257,7 +257,7 @@ export default function DppEpd({ view }: DppEpdProps = {}) {
                   {activeDetailSection === 'umsetzung' && (
                     <div className="space-y-4 animate-in fade-in duration-300">
                       <div>
-                        <h4 className="font-bold text-base text-slate-900"><MdText text={inhalt.texte.t2TechnischeUmsetzungStandardisierung} /></h4>
+                        <h3 className="font-bold text-base text-slate-900 wie-h4"><MdText text={inhalt.texte.t2TechnischeUmsetzungStandardisierung} /></h3>
                         <p className="text-xs text-slate-500 mt-0.5"><MdText text={inhalt.texte.identifikatorenSchnittstellenUndDatenstr} /></p>
                       </div>
                       <p className="text-sm text-slate-700 leading-relaxed font-normal"><MdText text={inhalt.texte.dieUmsetzungDesDpp} /></p>
@@ -281,7 +281,7 @@ export default function DppEpd({ view }: DppEpdProps = {}) {
                   {activeDetailSection === 'inhalte' && (
                     <div className="space-y-4 animate-in fade-in duration-300">
                       <div>
-                        <h4 className="font-bold text-base text-slate-900"><MdText text={inhalt.texte.t3ZuDokumentierendeInhalte} /></h4>
+                        <h3 className="font-bold text-base text-slate-900 wie-h4"><MdText text={inhalt.texte.t3ZuDokumentierendeInhalte} /></h3>
                         <p className="text-xs text-slate-500 mt-0.5"><MdText text={inhalt.texte.billOfMaterialsBom} /></p>
                       </div>
                       <p className="text-sm text-slate-700 leading-relaxed font-normal"><MdText text={inhalt.texte.einNormkonformerDigitalerProduktpass} /></p>
@@ -313,7 +313,7 @@ export default function DppEpd({ view }: DppEpdProps = {}) {
                   {activeDetailSection === 'zeitschiene' && (
                     <div className="space-y-4 animate-in fade-in duration-300">
                       <div>
-                        <h4 className="font-bold text-base text-slate-900"><MdText text={inhalt.texte.t4ZeitschieneZurStufenweisen} /></h4>
+                        <h3 className="font-bold text-base text-slate-900 wie-h4"><MdText text={inhalt.texte.t4ZeitschieneZurStufenweisen} /></h3>
                         <p className="text-xs text-slate-500 mt-0.5"><MdText text={inhalt.texte.euWeiteImplementierungsstufenDer} /></p>
                       </div>
                       <p className="text-sm text-slate-700 leading-relaxed font-normal"><MdText text={inhalt.texte.dieSchrittweiseEinführungDes} /></p>
@@ -345,7 +345,7 @@ export default function DppEpd({ view }: DppEpdProps = {}) {
                   {activeDetailSection === 'verpflichtung' && (
                     <div className="space-y-4 animate-in fade-in duration-300">
                       <div>
-                        <h4 className="font-bold text-base text-slate-900"><MdText text={inhalt.texte.t5GesetzlicheVerpflichtungenAkteureskreis} /></h4>
+                        <h3 className="font-bold text-base text-slate-900 wie-h4"><MdText text={inhalt.texte.t5GesetzlicheVerpflichtungenAkteureskreis} /></h3>
                         <p className="text-xs text-slate-500 mt-0.5"><MdText text={inhalt.texte.werIstWannZu} /></p>
                       </div>
                       <p className="text-sm text-slate-700 leading-relaxed font-normal"><MdText text={inhalt.texte.dieEinführungDesDpp} /></p>
@@ -523,7 +523,7 @@ export default function DppEpd({ view }: DppEpdProps = {}) {
 
                     {/* Lower half of physical phone screen: List of Scannable barcoded assets */}
                     <div className="flex-1 p-3 bg-white flex flex-col gap-2 overflow-y-auto scrollbar-none">
-                      <h4 className="font-bold text-center text-[11px] text-slate-500 uppercase tracking-widest mt-0.5 select-none"><MdText text={inhalt.texte.scannbareBauteile} /></h4>
+                      <h3 className="font-bold text-center text-[11px] text-slate-500 uppercase tracking-widest mt-0.5 select-none wie-h4"><MdText text={inhalt.texte.scannbareBauteile} /></h3>
                       <p className="text-[10px] text-slate-600 dark:text-slate-300 text-center -mt-1 leading-snug font-normal select-none"><MdText text={inhalt.texte.wählenSieEinesDer} /></p>
                       
                       {/* Interactive Button Elements */}

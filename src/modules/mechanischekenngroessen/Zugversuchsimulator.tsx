@@ -287,7 +287,7 @@ export default function Zugversuchsimulator({ breiteMm, durchmesserMm, handleSel
 
             {/* 2D Technical SVG Visualization with White Background */}
             <div className="relative w-full aspect-16/9 max-h-[360px] bg-white rounded-xl overflow-hidden border border-home-grau/30 shadow-sm flex items-center justify-center p-2">
-              <svg width="100%" height="100%" viewBox="0 0 520 280" className="select-none">
+              <svg role="img" aria-label="Stabverformung und Querdehnung im Zugversuch" width="100%" height="100%" viewBox="0 0 520 280" className="select-none">
                 <defs>
                   <pattern id="gridMech" width="20" height="20" patternUnits="userSpaceOnUse">
                     <path d="M 20 0 L 0 0 0 20" fill="none" stroke="#f1f5f9" strokeWidth="1" />

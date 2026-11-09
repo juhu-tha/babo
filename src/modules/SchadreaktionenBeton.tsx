@@ -250,7 +250,7 @@ function AkrGefuegeSimulator() {
 
             {/* SVG Visualizer Canvas */}
             <div className="relative w-full aspect-4/3 max-h-[380px] svg-buehne rounded-xl overflow-hidden border shadow-inner flex items-center justify-center">
-              <svg width="100%" height="100%" viewBox="0 0 540 380" className="select-none">
+              <svg role="img" aria-label="Mikrogefüge mit Gelquellen (schematisch)" width="100%" height="100%" viewBox="0 0 540 380" className="select-none">
                 <defs>
                   {/* Cement paste background */}
                   <radialGradient id="cementPasteGrad" cx="50%" cy="50%" r="65%">
@@ -840,7 +840,7 @@ export default function SchadreaktionenBeton() {
             <div className="bg-white p-5 rounded-xl border border-home-grau/30 shadow-sm">
               <h3 className="font-semibold mb-4 text-text-main"><MdText text={inhalt.texte.schematischeDarstellungSulfattreiben} /></h3>
               <div className="flex flex-col items-center bg-off-white rounded-lg border border-home-grau/30 p-4">
-                <svg width="100%" height="160" viewBox="0 0 300 160">
+                <svg role="img" aria-label="Schematische Darstellung: Sulfattreiben" width="100%" height="160" viewBox="0 0 300 160">
                   <rect width="300" height="160" fill="#cbd5e1" />
                   
                   {/* Zementstein */}

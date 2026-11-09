@@ -7,6 +7,7 @@ import { ModulTest } from '@/src/components/quiz/ModulTest';
 import inhalt from '@/content/materialdatenbanken/Materialdatenbanken.json';
 import { MdText } from '@/src/components/inhalt/MdText';
 import { AuswahlGruppe, alsOption } from '../components/ui/Auswahlgruppe';
+import { ErgebnisAnsage, ansageWert, kurzzeile } from '@/src/components/ui/ErgebnisAnsage';
 import { LEHRWERTE_A2 } from '@/src/data/oekobaudatLehrwerteA2';
 import { GWP_LEHRWERTE as GWP, daemmstoffGwpJeM3 } from '@/src/data/gwpLehrwerte';
 
@@ -515,6 +516,14 @@ export default function Materialdatenbanken() {
                 </span>
               </div>
 
+              <ErgebnisAnsage text={(() => {
+                let gwp = 0, penrt = 0;
+                QNG_DATA.forEach(mat => {
+                  const qty = parseFloat(qngQuantities[mat.name] || '0');
+                  if (!isNaN(qty) && qty > 0) { gwp += mat.gwp * qty; penrt += mat.penrt * qty; }
+                });
+                return kurzzeile(ansageWert('GWP A1–A3', gwp / 1000, 2, 't CO₂-Äq.'), ansageWert('PENRT', penrt / 1000, 1, 'GJ'));
+              })()} />
               {/* GWP indicator */}
               <div className="space-y-1">
                 <div className="flex justify-between text-xs text-slate-600 font-medium">

@@ -122,9 +122,9 @@ export function DatenbankTab({ setActiveCategory, setExpandedIndex, activeCatego
                     <tr className="bg-shiraz/5 border-b border-home-grau/25">
                       <td colSpan={5} className="p-4">
                         <div className="bg-white p-4 rounded-xl border border-shiraz/15 shadow-sm space-y-2">
-                          <h5 className="font-bold text-shiraz flex items-center gap-1.5 text-xs uppercase tracking-wider">
+                          <h4 className="font-bold text-shiraz flex items-center gap-1.5 text-xs uppercase tracking-wider wie-h5">
                             <Info size={14} /><MdText text={inhalt.texte.praxisDiagnostikhinweisFür} />{row.old}
-                          </h5>
+                          </h4>
                           <p className="text-slate-750 leading-relaxed text-sm font-normal">
                             {row.explanation}
                           </p>

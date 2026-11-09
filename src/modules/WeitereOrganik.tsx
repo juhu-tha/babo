@@ -19,6 +19,7 @@ import { useTabContext } from '../contexts/TabContext';
 import { motion } from 'motion/react';
 import inhalt from '@/content/weitereorganik/WeitereOrganik.json';
 import { MdText } from '@/src/components/inhalt/MdText';
+import { ErgebnisAnsage } from '@/src/components/ui/ErgebnisAnsage';
 
 function DynamicInteractiveDegradationCalculator() {
   const [material, setMaterial] = useState<'bitumen' | 'pvc' | 'hemp' | 'cork'>('bitumen');
@@ -121,7 +122,7 @@ function DynamicInteractiveDegradationCalculator() {
               </div>
               <input 
                 type="range" min="1" max="5" 
-                value={uvExposure} onChange={(e) => setUvExposure(parseInt(e.target.value))}
+                value={uvExposure} aria-label="UV-Strahlungsintensität" aria-valuetext={`Stufe ${formatDeWert(uvExposure)} von 5`} onChange={(e) => setUvExposure(parseInt(e.target.value))}
                 className="w-full accent-shiraz" 
               />
             </div>
@@ -134,7 +135,7 @@ function DynamicInteractiveDegradationCalculator() {
               </div>
               <input 
                 type="range" min="1" max="5" 
-                value={moisture} onChange={(e) => setMoisture(parseInt(e.target.value))}
+                value={moisture} aria-label="Dauernässe / Feuchteklasse" aria-valuetext={`Stufe ${formatDeWert(moisture)} von 5`} onChange={(e) => setMoisture(parseInt(e.target.value))}
                 className="w-full accent-shiraz" 
               />
             </div>
@@ -147,7 +148,7 @@ function DynamicInteractiveDegradationCalculator() {
               </div>
               <input 
                 type="range" min="1" max="5" 
-                value={tempCycles} onChange={(e) => setTempCycles(parseInt(e.target.value))}
+                value={tempCycles} aria-label="Thermische Zyklen" aria-valuetext={`Stufe ${formatDeWert(tempCycles)} von 5`} onChange={(e) => setTempCycles(parseInt(e.target.value))}
                 className="w-full accent-shiraz" 
               />
             </div>
@@ -160,7 +161,7 @@ function DynamicInteractiveDegradationCalculator() {
               </div>
               <input 
                 type="range" min="1" max="5" 
-                value={chemicalLoad} onChange={(e) => setChemicalLoad(parseInt(e.target.value))}
+                value={chemicalLoad} aria-label="Chemische Beanspruchung" aria-valuetext={`Stufe ${formatDeWert(chemicalLoad)} von 5`} onChange={(e) => setChemicalLoad(parseInt(e.target.value))}
                 className="w-full accent-shiraz" 
               />
             </div>
@@ -203,6 +204,7 @@ function DynamicInteractiveDegradationCalculator() {
           <div className="bg-slate-50/70 p-5 rounded-2xl border border-slate-200/80 flex flex-col gap-4 text-slate-800">
             <h5 className="text-sm font-bold text-slate-900 border-b border-slate-200 pb-2"><MdText text={inhalt.texte.lebensdauerPrognoseSchadensfortschritt} /></h5>
 
+            <ErgebnisAnsage text={`Prognostizierte Standzeit ${formatDeWert(projectedLifetime)} Jahre, Qualitätsabbau in 10 Jahren ${abbauJe10Jahre} %`} />
             <div className="grid grid-cols-2 gap-4">
               <div className="bg-white p-3 rounded-xl border border-slate-150 text-center">
                 <span className="text-xs text-slate-450 uppercase font-bold tracking-wider"><MdText text={inhalt.texte.prognostizierteStandzeit} /></span>

@@ -73,7 +73,7 @@ export default function KriechModellDiagramm({ rheoModus, rheoTauSec, rheoWert0 
             </div>
 
             <div className="w-full overflow-x-auto">
-              <svg viewBox={`0 0 ${W} ${H}`} className="w-full max-h-[260px] select-none font-mono">
+              <svg role="img" aria-label="Diagramm: Spannungsverlauf über die Zeit bei vorgegebener Dehnung" viewBox={`0 0 ${W} ${H}`} className="w-full max-h-[260px] select-none font-mono">
                 {/* Explicit White Background */}
                 <rect width={W} height={H} fill="#ffffff" rx="12" />
 
@@ -260,7 +260,7 @@ export default function KriechModellDiagramm({ rheoModus, rheoTauSec, rheoWert0 
             </div>
 
             <div className="w-full overflow-x-auto">
-              <svg viewBox={`0 0 ${W} ${H}`} className="w-full max-h-[260px] select-none font-mono">
+              <svg role="img" aria-label="Diagramm: Dehnungsverlauf über die Zeit bei konstanter Spannung" viewBox={`0 0 ${W} ${H}`} className="w-full max-h-[260px] select-none font-mono">
                 <rect width={W} height={H} fill="#ffffff" rx="12" />
 
                 {[0, 0.25, 0.5, 0.75, 1.0].map((frac, idx) => {

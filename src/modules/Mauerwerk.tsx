@@ -535,7 +535,7 @@ export default function Mauerwerk() {
             <div className="bg-white p-5 rounded-xl border border-home-grau/30 shadow-sm">
               <h3 className="font-semibold mb-4 text-text-main"><MdText text={inhalt.texte.schematischeDarstellungSchubfestigkeitRe} /></h3>
               <div className="flex flex-col items-center bg-off-white rounded-lg border border-home-grau/30 p-4">
-                <svg width="100%" height="160" viewBox="0 0 350 160">
+                <svg role="img" aria-label="Schematische Darstellung: Schubfestigkeit durch Reibung" width="100%" height="160" viewBox="0 0 350 160">
                   {/* Mauersteine */}
                   <rect x="125" y="40" width="100" height="40" fill="#94a3b8" stroke="#A3113E" strokeWidth="2" />
                   <rect x="125" y="90" width="100" height="40" fill="#94a3b8" stroke="#A3113E" strokeWidth="2" />

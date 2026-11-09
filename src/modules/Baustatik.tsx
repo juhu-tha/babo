@@ -295,7 +295,7 @@ export default function Baustatik() {
       <div className="bg-white p-4 rounded-xl border border-home-grau/30 shadow-sm mb-6 overflow-x-auto">
         <h3 className="text-sm font-bold text-center mb-4"><MdText text={inhalt.texte.systemskizzeLaststellung} /></h3>
         <div className="min-w-[600px] flex justify-center">
-          <svg width="100%" height="280" viewBox="0 0 800 280" style={{ maxWidth: '800px' }}>
+          <svg role="img" aria-label="Systemskizze mit Laststellung" width="100%" height="280" viewBox="0 0 800 280" style={{ maxWidth: '800px' }}>
             <defs>
               <marker id="arrowhead-red" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
                 <polygon points="0 0, 10 3.5, 0 7" fill="#A3113E" />
@@ -525,7 +525,7 @@ export default function Baustatik() {
             <div className="bg-white p-6 rounded-xl border border-home-grau/30 shadow-sm">
               <h3 className="font-semibold mb-4 text-text-main"><MdText text={inhalt.texte.schematischeDarstellungAuflagerartenIn} /></h3>
               <div className="flex flex-col items-center bg-off-white rounded-lg border border-home-grau/30 p-4">
-                <svg width="100%" height="160" viewBox="0 0 450 160">
+                <svg role="img" aria-label="Schematische Darstellung: Auflagerarten in der Ebene" width="100%" height="160" viewBox="0 0 450 160">
                   {/* Loslager (Verschieblich) */}
                   <g transform="translate(50, 40)">
                     <text x="0" y="-20" fontSize="12" fill="#1e293b" textAnchor="middle" fontWeight="bold">Loslager</text>
@@ -652,7 +652,7 @@ export default function Baustatik() {
                   </AuswahlGruppe>
                 </div>
                 <div className="min-w-[600px] flex justify-center">
-                  <svg width="100%" height="400" viewBox="0 0 800 400" style={{ maxWidth: '800px' }}>
+                  <svg role="img" aria-label="Systemskizze mit Schnittgrößenverläufen" width="100%" height="400" viewBox="0 0 800 400" style={{ maxWidth: '800px' }}>
                     <defs>
                       <marker id="arrowhead-red" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
                         <polygon points="0 0, 10 3.5, 0 7" fill="#A3113E" />

@@ -30,13 +30,13 @@ export default function TunnelbauTab({ betonKlasse, gebirgsdruck, setBetonKlasse
           
           <div className="space-y-4 text-xs text-text-main/75 leading-relaxed">
             <div>
-              <h5 className="font-extrabold text-[#A3113E] text-xs uppercase font-mono mb-1"><MdText text={inhalt.texte.dasPrinzipDerNöt} /></h5>
+              <h4 className="font-extrabold text-[#A3113E] text-xs uppercase font-mono mb-1 wie-h5"><MdText text={inhalt.texte.dasPrinzipDerNöt} /></h4>
               <p><MdText text={inhalt.texte.dieNeueÖsterreichischeTunnelbauweise} /></p>
               <p className="mt-1.5"><MdText text={inhalt.texte.direktNachDemMechanischen} /></p>
             </div>
 
             <div>
-              <h5 className="font-extrabold text-[#A3113E] text-xs uppercase font-mono mb-1"><MdText text={inhalt.texte.frühfestigkeitsklassenBeiSpritzbeton} /></h5>
+              <h4 className="font-extrabold text-[#A3113E] text-xs uppercase font-mono mb-1 wie-h5"><MdText text={inhalt.texte.frühfestigkeitsklassenBeiSpritzbeton} /></h4>
               <p><MdText text={inhalt.texte.nachDerRichtlinieSpritzbeton} /></p>
               <ul className="list-disc pl-4 mt-1.5 space-y-1 text-[11px]">
                 <li><MdText text={inhalt.texte.klasseJ1GeringeFrühfestigkeit} /></li>
@@ -46,7 +46,7 @@ export default function TunnelbauTab({ betonKlasse, gebirgsdruck, setBetonKlasse
             </div>
 
             <div className="bg-zinc-50 p-3 rounded-lg border border-zinc-200">
-              <h5 className="font-bold text-zinc-800 text-xs mb-1"><MdText text={inhalt.texte.vortriebsverfahrenImVergleich} /></h5>
+              <h4 className="font-bold text-zinc-800 text-xs mb-1 wie-h5"><MdText text={inhalt.texte.vortriebsverfahrenImVergleich} /></h4>
               <p className="text-[11px]"><MdText text={inhalt.texte.währendDieNötFlexibel} /></p>
             </div>
           </div>

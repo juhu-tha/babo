@@ -947,7 +947,7 @@ export function PruefverfahrenSimulator({ method }: SimulatorProps) {
             <div>
               <span className="text-[10px] font-mono text-slate-600 uppercase tracking-widest block mb-2"><MdText text={inhalt.texte.resistogrammKurvensimulation0Bis} /></span>
               <div className="h-16 w-full bg-white border border-home-grau/30 rounded-lg p-2 flex items-center relative overflow-hidden">
-                <svg viewBox="0 0 100 40" className="w-full h-full">
+                <svg role="img" aria-label="Resistogramm-Kurve des Bohrwiderstands" viewBox="0 0 100 40" className="w-full h-full">
                   <polyline
                     fill="none"
                     stroke={timberCondition === 'gesund' ? '#059669' : timberCondition === 'faeule' ? '#d97706' : '#ef4444'}

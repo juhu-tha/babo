@@ -577,7 +577,7 @@ export default function BpKunststoffe() {
             <h4 className="font-extrabold text-sm text-slate-800"><MdText text={inhalt.texte.rheologischerModellaufbau} /></h4>
             <div className="flex flex-col md:flex-row gap-6 items-center bg-slate-50 p-4 rounded-xl border border-slate-200">
               <div className="w-full md:w-1/3 flex justify-center py-2">
-                <svg width="220" height="150" viewBox="0 0 220 150" className="opacity-90">
+                <svg role="img" aria-label="Rheologischer Modellaufbau" width="220" height="150" viewBox="0 0 220 150" className="opacity-90">
                   {/* Outer Frame */}
                   <line x1="110" y1="10" x2="110" y2="25" stroke="#475569" strokeWidth="2" />
                   

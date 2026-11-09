@@ -8,6 +8,7 @@ import { formatDeZahl } from '@/src/utils/numberFormat';
 import inhalt from '@/content/schadstoffe/Schadstoffe.json';
 import { MdText } from '@/src/components/inhalt/MdText';
 import { AuswahlGruppe, alsOption } from '../components/ui/Auswahlgruppe';
+import { ErgebnisAnsage, ansageWert } from '@/src/components/ui/ErgebnisAnsage';
 
 const SCHADSTOFFE_DATA = [
   {
@@ -401,6 +402,11 @@ export default function Schadstoffe() {
                         </div>
                       </div>
 
+                      <ErgebnisAnsage text={(() => {
+                        const kiVal = (oxidNaK + oxidCaMg + oxidBaB) - 2 * oxidAl;
+                        const stufe = kiVal >= 40 ? 'unbedenklich, biologisch abbaubar' : kiVal <= 30 ? 'krebserzeugend, TRGS 521 pflichtig' : 'Verdachtsbereich, erhöhtes Risiko';
+                        return `${ansageWert('Kanzerogenitätsindex KI', kiVal, 2)}: ${stufe}`;
+                      })()} />
                       {(() => {
                         const kiVal = (oxidNaK + oxidCaMg + oxidBaB) - 2 * oxidAl;
                         if (kiVal >= 40) {
@@ -769,6 +775,8 @@ export default function Schadstoffe() {
                             min="1950" 
                             max="2020" 
                             value={asbestBaujahr}
+                            aria-label="Baujahr"
+                            aria-valuetext={`Baujahr ${asbestBaujahr}`}
                             onChange={(e) => setAsbestBaujahr(Number(e.target.value))}
                             className="w-full accent-shiraz"
                           />
@@ -779,6 +787,7 @@ export default function Schadstoffe() {
                           </div>
                         </div>
 
+                        <ErgebnisAnsage text={`Baujahr ${asbestBaujahr}: ${asbestBaujahr < 1993 ? 'Asbestverdacht, Baujahr vor dem Verbot 1993' : asbestBaujahr <= 1996 ? 'Übergangszeit 1993 bis 1996, Baubeginn mitteilen' : 'nach 1996, Asbest nicht zu erwarten'}`} />
                         {asbestBaujahr < 1993 ? (
                           <div className="mt-3 p-3 rounded-lg bg-red-50 text-red-900 border border-red-200 text-xs font-semibold leading-relaxed animate-pulse"><MdText text={inhalt.texte.asbestverdachtBaujahrVorDem} /></div>
                         ) : asbestBaujahr <= 1996 ? (

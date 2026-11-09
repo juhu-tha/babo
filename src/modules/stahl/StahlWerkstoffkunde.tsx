@@ -363,7 +363,7 @@ export default function StahlWerkstoffkunde({ activeTab, alloyC, alloyCr, alloyM
             <div className="bg-white p-5 rounded-xl border border-home-grau/30 shadow-sm">
               <h3 className="font-semibold mb-4 text-text-main"><MdText text={inhalt.texte.schematischeDarstellungErmüdungKerbwirku} /></h3>
               <div className="flex flex-col items-center bg-off-white rounded-lg border border-home-grau/30 p-4">
-                <svg width="100%" height="160" viewBox="0 0 350 160">
+                <svg role="img" aria-label="Schematische Darstellung: Ermüdung durch Kerbwirkung" width="100%" height="160" viewBox="0 0 350 160">
                   {/* Bauteil mit Kerbe */}
                   <path d="M 50 40 L 150 40 Q 175 40 175 60 Q 175 40 200 40 L 300 40 L 300 120 L 200 120 Q 175 120 175 100 Q 175 120 150 120 L 50 120 Z" fill="#cbd5e1" stroke="#64748b" strokeWidth="2" />
 

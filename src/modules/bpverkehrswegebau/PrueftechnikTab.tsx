@@ -25,12 +25,12 @@ export default function PrueftechnikTab({ asphaltMischung, luftPorenErrechnet, s
           
           <div className="space-y-4 text-xs text-text-main/75 leading-relaxed">
             <div>
-              <h5 className="font-extrabold text-[#A3113E] text-xs uppercase font-mono mb-1"><MdText text={inhalt.texte.marshallStabilitätUndFließwert} /></h5>
+              <h4 className="font-extrabold text-[#A3113E] text-xs uppercase font-mono mb-1 wie-h5"><MdText text={inhalt.texte.marshallStabilitätUndFließwert} /></h4>
               <p><MdText text={inhalt.texte.mischprobenWerdenMitDem} /></p>
             </div>
 
             <div className="border-t border-zinc-100 pt-3">
-              <h5 className="font-extrabold text-[#A3113E] text-xs uppercase font-mono mb-1"><MdText text={inhalt.texte.spurbildungsversuchWheelTrackingDin} /></h5>
+              <h4 className="font-extrabold text-[#A3113E] text-xs uppercase font-mono mb-1 wie-h5"><MdText text={inhalt.texte.spurbildungsversuchWheelTrackingDin} /></h4>
               <p><MdText text={inhalt.texte.simuliertDieSpurinnenbildungUnter} /></p>
             </div>
           </div>

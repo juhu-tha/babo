@@ -258,7 +258,7 @@ export default function Lebensdauern() {
               <h3 className="font-bold text-sm text-text-main mb-3 flex items-center gap-2">
                 <Layers className="text-shiraz" size={16} /><MdText text={inhalt.texte.schematischeDarstellungAustauschzyklenIm} /></h3>
               <div className="flex flex-col items-center bg-off-white rounded-xl border border-home-grau/30 p-4">
-                <svg width="100%" height="150" viewBox="0 0 450 150">
+                <svg role="img" aria-label="Schematische Darstellung: Austauschzyklen im Gebäudelebenszyklus" width="100%" height="150" viewBox="0 0 450 150">
                   <line x1="50" y1="120" x2="400" y2="120" stroke="#1e293b" strokeWidth="2" markerEnd="url(#arrow-black-lebensdauer)" />
                   <text x="410" y="125" fontSize="11" fill="#1e293b">Zeit (a)</text>
                   

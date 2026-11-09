@@ -207,7 +207,7 @@ export default function Ausbreitversuch() {
             
             <div className="flex flex-col md:flex-row gap-8 items-center justify-center">
               <div className="w-full max-w-md h-64 bg-stone-200 rounded-xl flex items-center justify-center relative border-2 border-stone-300 overflow-hidden shadow-inner">
-                <svg viewBox="0 0 300 150" className="w-full h-full">
+                <svg role="img" aria-label="Skizze der Versuchsdurchführung beim Ausbreitversuch" viewBox="0 0 300 150" className="w-full h-full">
                   <defs>
                     <clipPath id="ground-clip">
                       <rect x="0" y="0" width="300" height="120" />

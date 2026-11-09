@@ -213,7 +213,7 @@ export default function Glas() {
             <div className="bg-white p-5 rounded-xl border border-home-grau/30 shadow-sm">
               <h3 className="font-semibold mb-4 text-text-main"><MdText text={inhalt.texte.schematischeDarstellungVsgVerbundsicherh} /></h3>
               <div className="flex flex-col items-center bg-off-white rounded-lg border border-home-grau/30 p-4">
-                <svg width="100%" height="160" viewBox="0 0 350 160">
+                <svg role="img" aria-label="Schematische Darstellung: VSG (Verbundsicherheitsglas)" width="100%" height="160" viewBox="0 0 350 160">
                   {/* Glas 1 */}
                   <rect x="100" y="40" width="150" height="20" fill="#cbd5e1" opacity="0.6" stroke="#475569" strokeWidth="1" />
                   <text x="175" y="54" fontSize="10" fill="#1e293b" textAnchor="middle">Glas 1 (h_1)</text>
@@ -274,7 +274,7 @@ export default function Glas() {
             <div className="bg-white p-5 rounded-xl border border-home-grau/30 shadow-sm">
               <h3 className="font-semibold mb-4 text-text-main">MIG Aufbau</h3>
               <div className="bg-off-white p-4 rounded-lg flex justify-center border border-home-grau/30">
-                 <svg width="200" height="150" viewBox="0 0 200 150">
+                 <svg role="img" aria-label="Aufbau einer Mehrscheiben-Isolierverglasung (MIG)" width="200" height="150" viewBox="0 0 200 150">
                     {/* Scheibe Außen */}
                     <rect x="50" y="20" width="10" height="110" fill="#cbd5e1" opacity="0.6" stroke="#475569" />
                     <text x="35" y="75" fontSize="10" fill="#1e293b" transform="rotate(-90 35,75)">Außen</text>

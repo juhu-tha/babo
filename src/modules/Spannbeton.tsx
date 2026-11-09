@@ -1230,7 +1230,7 @@ export default function Spannbeton({ bereiche }: { bereiche: readonly Spannbeton
               {/* Schlaffe Bewehrung */}
               <div className="flex flex-col items-center bg-off-white rounded-lg border border-home-grau/30 p-4">
                 <div className="text-xs font-bold mb-2"><MdText text={inhalt.texte.stahlbetonSchlaffBewehrt} /></div>
-                <svg width="100%" height="110" viewBox="0 0 200 110">
+                <svg role="img" aria-label="Stahlbeton, schlaff bewehrt: Balken unter Last mit Rissen" width="100%" height="110" viewBox="0 0 200 110">
                   <defs>
                     <marker id="arrow-black" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
                       <path d="M 0 0 L 10 5 L 0 10 z" fill="#1e293b" />
@@ -1253,7 +1253,7 @@ export default function Spannbeton({ bereiche }: { bereiche: readonly Spannbeton
               {/* Spannbeton */}
               <div className="flex flex-col items-center bg-off-white rounded-lg border border-home-grau/30 p-4">
                 <div className="text-xs font-bold mb-2"><MdText text={inhalt.texte.spannbetonVorgespanntÜberdrückt} /></div>
-                <svg width="100%" height="110" viewBox="0 0 200 110">
+                <svg role="img" aria-label="Spannbeton, vorgespannt: überdrückter Balken ohne Risse" width="100%" height="110" viewBox="0 0 200 110">
                   <defs>
                     <marker id="arrow-black-2" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
                       <path d="M 0 0 L 10 5 L 0 10 z" fill="#1e293b" />

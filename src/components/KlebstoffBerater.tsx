@@ -11,6 +11,7 @@ import {
 } from 'lucide-react';
 import { ReiterLeiste, alsReiter, reiterPanel } from './ui/Auswahlgruppe';
 import { ALPHA_T_ALUMINIUM } from '@/src/data/kennwerte';
+import { ErgebnisAnsage, ansageWert, kurzzeile } from './ui/ErgebnisAnsage';
 
 // Joint calculation parameters
 interface SubstrateMaterial {
@@ -270,6 +271,8 @@ export function KlebstoffBerater() {
                 max="15"
                 step="0.5"
                 value={componentLength}
+                aria-label="Bauteillänge / Fugenabstand L"
+                aria-valuetext={`${formatDeZahl(componentLength, 1)} m`}
                 onChange={(e) => setComponentLength(parseFloat(e.target.value))}
                 className="w-full h-2 bg-slate-100 rounded appearance-none cursor-pointer accent-shiraz"
               />
@@ -288,6 +291,8 @@ export function KlebstoffBerater() {
                 max="100"
                 step="5"
                 value={tempDelta}
+                aria-label="Temperaturspanne ΔT"
+                aria-valuetext={`${formatDeWert(tempDelta)} K`}
                 onChange={(e) => setTempDelta(parseInt(e.target.value))}
                 className="w-full h-2 bg-slate-100 rounded appearance-none cursor-pointer accent-shiraz"
               />
@@ -391,6 +396,8 @@ export function KlebstoffBerater() {
 
             </div>
 
+            <ErgebnisAnsage text={kurzzeile(ansageWert('Fugennennbreite b', calcResults.calculatedWidth, 'frei', 'mm'),
+              ansageWert('Dichtstofftiefe t', calcResults.calculatedDepth, 'frei', 'mm'), ansageWert('ΔL', calcResults.deltaL, 2, 'mm'))} />
             {/* Calculations Panel */}
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
               <div className="bg-white p-4 rounded-xl border border-slate-200 shadow-xs flex flex-col justify-between">

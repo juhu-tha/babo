@@ -230,7 +230,7 @@ export default function Frischbetontemperatur() {
             <div className="bg-white p-5 rounded-xl border border-home-grau/30 shadow-sm">
               <h3 className="font-semibold mb-4 text-text-main"><MdText text={inhalt.texte.schematischeEnergiebilanz} /></h3>
               <div className="relative w-full h-40 bg-off-white rounded-lg border border-home-grau/30 overflow-hidden flex items-center justify-center">
-                <svg width="100%" height="100%" viewBox="0 0 400 160" preserveAspectRatio="xMidYMid meet">
+                <svg role="img" aria-label="Schematische Energiebilanz der Frischbetontemperatur" width="100%" height="100%" viewBox="0 0 400 160" preserveAspectRatio="xMidYMid meet">
                   {/* Mischer */}
                   <path d="M 150 120 L 250 120 L 270 60 L 130 60 Z" fill="#cbd5e1" stroke="#64748b" strokeWidth="2" />
                   <path d="M 130 60 Q 200 80 270 60" fill="#94a3b8" />

@@ -472,7 +472,7 @@ export default function Statistik() {
               <span className="text-[9.5px] font-semibold text-text-main/60 italic font-mono select-none"><MdText text={inhalt.texte.klickenZiehenSieDie} /></span>
             </div>
             <div className="w-full max-w-[500px] aspect-[500/145] relative">
-              <svg
+              <svg role="group" aria-label="Interaktives Diagramm der Baustoff-Prüfsandbox"
                 ref={svgRef}
                 viewBox="0 0 500 145"
                 className="w-full h-full overflow-visible touch-none select-none"

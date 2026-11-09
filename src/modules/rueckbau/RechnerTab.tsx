@@ -192,8 +192,8 @@ export function RechnerTab({ setBuildingVolume, setStructureType, buildingVolume
             {showCalculations && (
               <div className="mt-3 p-4 bg-white border border-home-grau/25 rounded-xl space-y-4 text-text-main/90 leading-relaxed text-left">
                 <div>
-                  <h5 className="font-bold text-slate-800 text-xs mb-1.5 flex items-center gap-1">
-                    <span className="w-1.5 h-1.5 rounded-full bg-indigo-600"></span><MdText text={inhalt.texte.schritt1ErmittlungDes} /></h5>
+                  <h4 className="font-bold text-slate-800 text-xs mb-1.5 flex items-center gap-1 wie-h5">
+                    <span className="w-1.5 h-1.5 rounded-full bg-indigo-600"></span><MdText text={inhalt.texte.schritt1ErmittlungDes} /></h4>
                   <p className="mb-2 text-text-main/75 text-xs"><MdText text={inhalt.texte.ausgangspunktIstDerBrutto} /><FormulaText text="V" /> = {formatDeIntl(buildingVolume)}<MdText text={inhalt.texte.mSowieDerTragende} /><strong>{
                       structureType === 'concrete' ? 'Stahlbetonbau' :
                       structureType === 'masonry' ? 'Mauerwerksbau' :
@@ -203,9 +203,9 @@ export function RechnerTab({ setBuildingVolume, setStructureType, buildingVolume
                 </div>
     
                 <div>
-                  <h5 className="font-bold text-slate-800 text-xs mb-1.5 flex items-center gap-1">
+                  <h4 className="font-bold text-slate-800 text-xs mb-1.5 flex items-center gap-1 wie-h5">
                     <span className="w-1.5 h-1.5 rounded-full bg-indigo-600"></span><MdText text={inhalt.texte.schritt2SpezifischeMassendichten} /><FormulaText text="\rho_i" />)
-                  </h5>
+                  </h4>
                   <p className="mb-2 text-text-main/75 text-xs"><MdText text={inhalt.texte.fürDieGewählteBauart} /></p>
                   <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 text-xs bg-slate-50 p-2.5 rounded-lg border border-home-grau/15 font-mono">
                     <div>Beton: {formatDeWert(currentDensity.concrete)} t/m³</div>
@@ -220,24 +220,24 @@ export function RechnerTab({ setBuildingVolume, setStructureType, buildingVolume
                 </div>
     
                 <div>
-                  <h5 className="font-bold text-slate-800 text-xs mb-1.5 flex items-center gap-1">
+                  <h4 className="font-bold text-slate-800 text-xs mb-1.5 flex items-center gap-1 wie-h5">
                     <span className="w-1.5 h-1.5 rounded-full bg-indigo-600"></span><MdText text={inhalt.texte.schritt3BerechnungDer} /><FormulaText text="m_i = V \cdot \rho_i" />)
-                  </h5>
+                  </h4>
                   <p className="mb-2 text-text-main/75 text-xs"><MdText text={inhalt.texte.diePrognostiziertenMassenströmeErgeben} /></p>
                   <FormulaText text={`m_{\\text{Beton}} = V \\cdot \\rho_{\\text{Beton}} = ${formatDeTeXWert(buildingVolume)} \\text{ m}^3 \\cdot ${formatDeTeXWert(currentDensity.concrete)} \\text{ t/m}^3 = ${formatDeTeXWert(massConcrete)} \\text{ t}`} />
                 </div>
     
                 <div>
-                  <h5 className="font-bold text-slate-800 text-xs mb-1.5 flex items-center gap-1">
+                  <h4 className="font-bold text-slate-800 text-xs mb-1.5 flex items-center gap-1 wie-h5">
                     <span className="w-1.5 h-1.5 rounded-full bg-indigo-600"></span><MdText text={inhalt.texte.schritt4BestimmungDer} /><FormulaText text="m_{\text{ges}} = \sum m_i" />)
-                  </h5>
+                  </h4>
                   <p className="mb-2 text-text-main/75 text-xs"><MdText text={inhalt.texte.dieSummeAllerFraktionen} /></p>
                   <FormulaText text={`m_{\\text{ges}} = ${formatDeTeXWert(massConcrete)} + ${formatDeTeXWert(massMasonry)} + ${formatDeTeXWert(massWood)} + ${formatDeTeXWert(massMetals)} + ${formatDeTeXWert(massPlastics)} + ${formatDeTeXWert(massGypsum)} + ${formatDeTeXWert(massHazardous)} + ${formatDeTeXWert(massMixed)} = ${formatDeTeXWert(totalMass)} \\text{ t}`} />
                 </div>
     
                 <div>
-                  <h5 className="font-bold text-slate-800 text-xs mb-1.5 flex items-center gap-1">
-                    <span className="w-1.5 h-1.5 rounded-full bg-indigo-600"></span><MdText text={inhalt.texte.schritt5MineralischerAnteil} /><FormulaText text="P_{\text{min}}" /><MdText text={inhalt.texte.undGetrennthalteQuote} /></h5>
+                  <h4 className="font-bold text-slate-800 text-xs mb-1.5 flex items-center gap-1 wie-h5">
+                    <span className="w-1.5 h-1.5 rounded-full bg-indigo-600"></span><MdText text={inhalt.texte.schritt5MineralischerAnteil} /><FormulaText text="P_{\text{min}}" /><MdText text={inhalt.texte.undGetrennthalteQuote} /></h4>
                   <p className="mb-2 text-text-main/75 text-xs"><MdText text={inhalt.texte.nachDerGewerbeabfallverordnungGewabfv} /></p>
                   <FormulaText text={`P_{\\text{min}} = \\frac{m_{\\text{Beton}} + m_{\\text{Mauerwerk}}}{m_{\\text{ges}}} \\cdot 100 = \\frac{${formatDeTeXWert(massConcrete)} + ${formatDeTeXWert(massMasonry)}}{${formatDeTeXWert(totalMass)}} \\cdot 100 \\approx ${formatDeTeXWert(mineralPercentage)} \\%`} />
                   <div className="mt-2 text-indigo-950 bg-indigo-50/50 border border-indigo-100 p-2.5 rounded-lg text-xs">

@@ -797,7 +797,7 @@ export default function BpAbdichtung() {
                 <div className="bg-red-50/25 border border-red-200/50 p-4 rounded-xl space-y-2 flex flex-col justify-between">
                   <div className="space-y-1">
                     <span className="text-[9px] font-black uppercase text-red-700 bg-red-50 px-1.5 py-0.5 rounded tracking-wider">KRAFTSCHLÜSSIG</span>
-                    <h5 className="font-extrabold text-text-main text-xs mt-1"><MdText text={inhalt.texte.epoxidharzeEp} /></h5>
+                    <h4 className="font-extrabold text-text-main text-xs mt-1 wie-h5"><MdText text={inhalt.texte.epoxidharzeEp} /></h4>
                     <p className="text-[11px] text-text-main/60 leading-normal"><MdText text={inhalt.texte.hoheHaftfestigkeitAufTrockenen} /></p>
                   </div>
                   <div className="bg-white/80 p-2 rounded text-[10px] text-text-main/50 font-bold border border-home-grau/10"><MdText text={inhalt.texte.anwendungTrockenFeuchtTragwerksstabilisi} /></div>
@@ -806,7 +806,7 @@ export default function BpAbdichtung() {
                 <div className="bg-emerald-50/25 border border-emerald-200/50 p-4 rounded-xl space-y-2 flex flex-col justify-between">
                   <div className="space-y-1">
                     <span className="text-[9px] font-black uppercase text-emerald-700 bg-emerald-50 px-1.5 py-0.5 rounded tracking-wider"><MdText text={inhalt.texte.elastischDichtend} /></span>
-                    <h5 className="font-extrabold text-text-main text-xs mt-1"><MdText text={inhalt.texte.polyurethanharzePur} /></h5>
+                    <h4 className="font-extrabold text-text-main text-xs mt-1 wie-h5"><MdText text={inhalt.texte.polyurethanharzePur} /></h4>
                     <p className="text-[11px] text-text-main/60 leading-normal"><MdText text={inhalt.texte.elastischesHarzFürDehnfähiges} /></p>
                   </div>
                   <div className="bg-white/80 p-2 rounded text-[10px] text-text-main/50 font-bold border border-home-grau/10"><MdText text={inhalt.texte.anwendungWasserführendeRisseRisse} /></div>
@@ -815,7 +815,7 @@ export default function BpAbdichtung() {
                 <div className="bg-amber-50/25 border border-amber-200/50 p-4 rounded-xl space-y-2 flex flex-col justify-between">
                   <div className="space-y-1">
                     <span className="text-[9px] font-black uppercase text-amber-700 bg-amber-50 px-1.5 py-0.5 rounded tracking-wider"><MdText text={inhalt.texte.mineralischFüllend} /></span>
-                    <h5 className="font-extrabold text-text-main text-xs mt-1"><MdText text={inhalt.texte.zementsuspensionenZs} /></h5>
+                    <h4 className="font-extrabold text-text-main text-xs mt-1 wie-h5"><MdText text={inhalt.texte.zementsuspensionenZs} /></h4>
                     <p className="text-[11px] text-text-main/60 leading-normal"><MdText text={inhalt.texte.feinstzementleimZurMineralischenAuffüllu} /></p>
                   </div>
                   <div className="bg-white/80 p-2 rounded text-[10px] text-text-main/50 font-bold border border-home-grau/10"><MdText text={inhalt.texte.anwendungHohlraumverfüllungDenkmalpflege} /></div>
@@ -824,7 +824,7 @@ export default function BpAbdichtung() {
                 <div className="bg-blue-50/25 border border-blue-200/50 p-4 rounded-xl space-y-2 flex flex-col justify-between">
                   <div className="space-y-1">
                     <span className="text-[9px] font-black uppercase text-blue-700 bg-blue-50 px-1.5 py-0.5 rounded tracking-wider"><MdText text={inhalt.texte.gelbildungExtern} /></span>
-                    <h5 className="font-extrabold text-text-main text-xs mt-1"><MdText text={inhalt.texte.acrylatgeleAy} /></h5>
+                    <h4 className="font-extrabold text-text-main text-xs mt-1 wie-h5"><MdText text={inhalt.texte.acrylatgeleAy} /></h4>
                     <p className="text-[11px] text-text-main/60 leading-normal"><MdText text={inhalt.texte.wasserquellfähigeGeleMitExtrem} /></p>
                   </div>
                   <div className="bg-white/80 p-2 rounded text-[10px] text-text-main/50 font-bold border border-home-grau/10"><MdText text={inhalt.texte.anwendungSchleierinjektionenErdseitigKel} /></div>

@@ -203,7 +203,7 @@ export default function Nachbehandlung() {
         <div className="bg-white p-6 rounded-2xl shadow-sm border border-home-grau/30">
           <h3 className="font-semibold mb-4 text-text-main"><MdText text={inhalt.texte.schematischeDarstellungVerdunstung} /></h3>
           <div className="relative w-full h-48 bg-off-white rounded-lg border border-home-grau/30 overflow-hidden flex items-center justify-center">
-            <svg width="100%" height="100%" viewBox="0 0 400 200" preserveAspectRatio="xMidYMid meet">
+            <svg role="img" aria-label="Schematische Darstellung: Verdunstung" width="100%" height="100%" viewBox="0 0 400 200" preserveAspectRatio="xMidYMid meet">
               {/* Beton */}
               <rect x="50" y="120" width="300" height="80" fill="#cbd5e1" />
               <text x="200" y="160" fontSize="14" fill="#334155" textAnchor="middle" fontWeight="bold">Frischbeton (T_c)</text>

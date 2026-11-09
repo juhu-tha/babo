@@ -89,19 +89,17 @@ const TEILDATEIEN: Record<string, string[]> = {
  */
 export const AUSNAHMEN: Record<string, string> = {
   dpp: 'Digitaler Produktpass: Scan-Simulation und Datenblatt, keine Eingabe mit Rechenergebnis',
-  ki_prompting: 'Prompt-Übungen: Texteingaben ohne Rechenergebnis (Rückmeldungen sind Lerntexte)',
   px_bautagebuch: 'Bautagebuch: Formular zum Ausfüllen und Drucken, kein Rechenergebnis',
 };
-const MAX_AUSNAHMEN = 3;
+const MAX_AUSNAHMEN = 2;   // 09.11.: ki_prompting gestrichen (Komponentenbaum hat jetzt die Ansage des Token-Rechners)
 /** Zusätzlich wie Rechner geprüft: im Befund vom 04.11. genannt (Regler, Lehrnäherung ohne Rechenkern) */
 const ZUSATZ_RECHNER = ['sonderbetone'];
 /**
  * Offen (Folgeauftrag, Ratsche): Module ohne Rechenkern und nicht typ 'calculator', deren Baum Regler oder Zahlenfelder
  * enthält, aber keine Ansagequelle. Liste darf nur kürzer werden; ein Modul mit neuer Kurzzeile hier streichen.
+ * Seit 09.11.2026 leer (alle 25 Module mit Ansage, docs/pruefung/a11y-regler-svg-2026-11-09.md).
  */
-const REGLER_OFFEN = ['analytik', 'bp_klebstoffe', 'bindemittel', 'innovative_werkstoffe', 'innenausbau', 'bruchmechanik', 'brandschutz',
-  'zertifizierung_siegel', 'kreislauf_dpp', 'bestand', 'schadstoffe', 'holzkorrosion', 'metallkorrosion', 'weitere_organik', 'bim_baustoffe',
-  'materialdatenbanken', 'ki_ueberblick', 'ki_system', 'ki_llmpraxis', 'ki_thesen', 'ki_recht_ethik', 'ki_lokal', 'ki_ressourcen', 'ki_onlinekurse', 'ki_baustoffe'];
+const REGLER_OFFEN: string[] = [];
 
 function aufloesen(von: string, spec: string): string | null {
   let p: string;

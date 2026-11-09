@@ -349,7 +349,7 @@ export default function Verankerungslaenge() {
             <div className="bg-white p-5 rounded-xl border border-home-grau/20 shadow-sm">
               <h3 className="font-semibold mb-4 text-text-main"><MdText text={inhalt.texte.schematischeDarstellung} /></h3>
               <div className="flex flex-col items-center bg-off-white rounded-lg border border-home-grau/20 p-4">
-                <svg width="300" height="150" viewBox="0 0 300 150">
+                <svg role="img" aria-label="Schematische Darstellung: Verankerungslänge" width="300" height="150" viewBox="0 0 300 150">
                   {/* Betonblock */}
                   <rect x="150" y="20" width="130" height="110" fill="#cbd5e1" stroke="#94a3b8" />
                   <text x="215" y="40" fontSize="12" fill="#64748b" textAnchor="middle">Beton</text>

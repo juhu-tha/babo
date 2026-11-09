@@ -97,6 +97,8 @@ function LokalelementSimulator() {
                 max={2.50}
                 step={0.05}
                 value={clContent}
+                aria-label="Chloridgehalt am Bewehrungsstahl"
+                aria-valuetext={`${formatDeZahl(clContent, 2)} % bezogen auf Zementgehalt`}
                 onChange={(e) => setClContent(Number(e.target.value))}
                 className="w-full h-2 bg-slate-200 rounded-lg appearance-none cursor-pointer accent-shiraz"
               />
@@ -121,6 +123,8 @@ function LokalelementSimulator() {
                 max={98}
                 step={2}
                 value={relHum}
+                aria-label="Relative Betonfeuchte"
+                aria-valuetext={`${formatDeWert(relHum)} %`}
                 onChange={(e) => setRelHum(Number(e.target.value))}
                 className="w-full h-2 bg-slate-200 rounded-lg appearance-none cursor-pointer accent-shiraz"
               />
@@ -147,6 +151,8 @@ function LokalelementSimulator() {
                 max={55}
                 step={5}
                 value={coverMm}
+                aria-label="Betondeckung c_nom"
+                aria-valuetext={`${formatDeWert(coverMm)} mm`}
                 onChange={(e) => setCoverMm(Number(e.target.value))}
                 className="w-full h-2 bg-slate-200 rounded-lg appearance-none cursor-pointer accent-shiraz"
               />
@@ -166,6 +172,8 @@ function LokalelementSimulator() {
                 max={25}
                 step={1}
                 value={durationYears}
+                aria-label="Wirkungsdauer t"
+                aria-valuetext={`${durationYears} Jahre`}
                 onChange={(e) => setDurationYears(Number(e.target.value))}
                 className="w-full h-2 bg-slate-200 rounded-lg appearance-none cursor-pointer accent-shiraz"
               />
@@ -221,7 +229,7 @@ function LokalelementSimulator() {
 
             {/* SVG Visualizer */}
             <div className="relative w-full aspect-4/3 max-h-[380px] svg-buehne rounded-xl overflow-hidden border shadow-inner flex items-center justify-center">
-              <svg width="100%" height="100%" viewBox="0 0 540 380" className="select-none">
+              <svg role="img" aria-label="Elektrochemische Zelle und Rissfortschritt" width="100%" height="100%" viewBox="0 0 540 380" className="select-none">
                 <defs>
                   {/* Concrete matrix gradient */}
                   <linearGradient id="concreteCrossGrad" x1="0" y1="0" x2="0" y2="1">
@@ -775,7 +783,7 @@ export default function Korrosion() {
             <div className="bg-white p-6 rounded-2xl shadow-sm border border-home-grau/30">
               <h3 className="font-semibold mb-4 text-text-main"><MdText text={inhalt.texte.schematischeDarstellungChloridfrontBeweh} /></h3>
               <div className="relative w-full h-48 bg-off-white rounded-lg border border-home-grau/30 overflow-hidden flex items-center justify-center">
-                <svg
+                <svg role="img" aria-label="Schematische Darstellung: Chloridfront und Bewehrung"
                   width="100%"
                   height="100%"
                   viewBox="0 0 400 200"

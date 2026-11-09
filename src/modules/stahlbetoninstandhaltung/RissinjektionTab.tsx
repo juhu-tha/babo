@@ -223,7 +223,7 @@ export default function RissinjektionTab({ bauteilDicke, crackActivity, crackMoi
               <span className="text-emerald-700 font-bold"><MdText text={inhalt.texte.ztvIngDinEn} /></span>
             </div>
 
-            <svg width="100%" height="220" viewBox="0 0 540 220" className="select-none mt-2">
+            <svg role="img" aria-label="Prinzipschnitt: Hochdruck-Rissinjektion mit Schraubpackern" width="100%" height="220" viewBox="0 0 540 220" className="select-none mt-2">
               {/* Concrete Cross-Section */}
               <rect x="20" y="30" width="500" height="150" fill="#f8fafc" stroke="#64748b" strokeWidth="2" rx="4" />
               <text x="35" y="50" fill="#475569" fontSize="10" fontWeight="bold">Betonbauteil (h = {formatDeWert(bauteilDicke)} mm)</text>

@@ -439,7 +439,7 @@ export default function SpannbetonDehnungsAnimation() {
 
           {/* SVG LÄNGSSCHNITT DES EINFELDTRÄGERS */}
           <div className="bg-white p-3 rounded-xl border border-slate-200 shadow-2xs">
-            <svg viewBox="0 0 620 155" className="w-full h-48">
+            <svg role="img" aria-label="Längsschnitt des Einfeldträgers mit Spanngliedlage" viewBox="0 0 620 155" className="w-full h-48">
               <defs>
                 <marker id="arrowUpGreen" viewBox="0 0 10 10" refX="5" refY="3" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
                   <path d="M 0 6 L 5 0 L 10 6 z" fill="#059669" />
@@ -730,7 +730,7 @@ export default function SpannbetonDehnungsAnimation() {
           {/* SVG DEHNUNGS- UND SPANNUNGSDIAGRAMM */}
           <div className="bg-white p-3 rounded-xl border border-slate-200 shadow-2xs">
             {activeDisplayMode === 'dehnung' && (
-              <svg viewBox="0 0 470 260" className="w-full h-56">
+              <svg role="img" aria-label="Dehnungsverteilung im Querschnitt" viewBox="0 0 470 260" className="w-full h-56">
                 {/* 1. Querschnitt-Körper links (Breite b, Höhe h) */}
                 <g transform="translate(15, 0)">
                   <rect x="0" y={topY} width="55" height={botY - topY} fill="#f8fafc" stroke="#64748b" strokeWidth="1.5" rx="2" />
@@ -853,7 +853,7 @@ export default function SpannbetonDehnungsAnimation() {
 
             {/* MODUS 2: SPANNUNGSVERTEILUNG σ(z) */}
             {activeDisplayMode === 'spannung' && (
-              <svg viewBox="0 0 470 260" className="w-full h-56">
+              <svg role="img" aria-label="Spannungsverteilung σ(z) im Querschnitt" viewBox="0 0 470 260" className="w-full h-56">
                 <line x1={zeroX} y1={topY - 12} x2={zeroX} y2={botY + 20} stroke="#475569" strokeWidth="1.5" />
                 <text x={zeroX} y={topY - 16} textAnchor="middle" fontSize="10" fontWeight="bold" fill="#334155">
                   σ = 0 MPa (Spannungsnulllinie)

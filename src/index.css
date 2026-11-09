@@ -712,6 +712,17 @@ h4 {
 h5 {
   font-size: 0.875rem !important; /* Gewährleistet mind. 14px für Kärtchen-Titel */
 }
+/* Überschriftenfolge korrigiert (a11y 09.11.2026): angehobene Ebene sieht aus wie die frühere
+   (gleiche Spezifität wie „h4“ bzw. „.dark h4“, daher steht diese Regel nach beiden) */
+h3:where(.wie-h4) {
+  font-size: 0.9375rem !important;
+}
+h4:where(.wie-h5) {
+  font-size: 0.875rem !important;
+}
+.dark h3:where(.wie-h4) {
+  color: #e2e8f0 !important; /* slate-200 wie .dark h4 */
+}
 
 /* Hide scrollbar utility */
 .scrollbar-none::-webkit-scrollbar {

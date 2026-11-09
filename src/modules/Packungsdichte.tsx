@@ -402,7 +402,7 @@ export default function Packungsdichte() {
               <div className="mt-4">
                 <h4 className="text-sm font-medium text-text-main mb-2"><MdText text={inhalt.texte.schematischesGefügemodell} /></h4>
                 <div className="relative w-full h-40 bg-slate-100 rounded-lg border border-home-grau/30 overflow-hidden">
-                  <svg width="100%" height="100%" viewBox="0 0 400 160" preserveAspectRatio="xMidYMid slice">
+                  <svg role="img" aria-label="Schematisches Gefügemodell der Packungsdichte" width="100%" height="100%" viewBox="0 0 400 160" preserveAspectRatio="xMidYMid slice">
                     {/* Hintergrund (Wasser/Luft) */}
                     <rect width="400" height="160" fill="#e2e8f0" />
                     
