@@ -37,5 +37,17 @@ for (const d of Object.keys(PROBEN)) {
   gilt(!/aria-valuetext=\{`[^`]*&[a-z]+;/.test(s), `${d}: HTML-Entität in aria-valuetext`);
 }
 
+// Überschriftenfolge zur Laufzeit (scripts/qa/a11y-ueberschriften.mjs): angehobene Ebenen behalten ihr Aussehen
+const css = fs.readFileSync('src/index.css', 'utf8');
+gilt(/h3:where\(\.wie-h5\) \{\s*font-size: 0\.875rem !important;/.test(css), 'index.css: h3.wie-h5 wie h5');
+gilt(/p:where\(\.wie-h4\) \{\s*font-size: 0\.9375rem !important;/.test(css) && /\.dark p:where\(\.wie-h4\) \{\s*color: #e2e8f0 !important;/.test(css), 'index.css: p.wie-h4 wie h4 (hell/dunkel)');
+gilt(/h5:where\(\.wie-h6\.text-xs\)/.test(css), 'index.css: h5.wie-h6 mit eigener Schriftgröße');
+gilt(css.indexOf('h3:where(.wie-h5)') > css.lastIndexOf('\nh5 {'), 'index.css: Regeln nach der h5-Regel');
+gilt(/ebene === 3 \? 'h3' : 'h4'/.test(fs.readFileSync('src/components/ui/Querverweis.tsx', 'utf8')), 'Querverweis: Ebene wählbar');
+gilt(/<KlausurSimulator ebene=\{2\} \/>/.test(fs.readFileSync('src/modules/Aufgaben.tsx', 'utf8')), 'Aufgaben: Klausur direkt unter dem Seitentitel als h2');
+gilt(fs.existsSync('scripts/qa/a11y-ueberschriften.mjs'), 'Laufzeitprüfung der Überschriftenfolge vorhanden');
+// Slider: eindeutige Kennung auch bei gleicher oder leerer Beschriftung
+gilt(/'slider-' \+ label\.toLowerCase\(\)\.replace\(\/\[\^a-z0-9\]\/g, '-'\) \+ '-' \+ eindeutig/.test(fs.readFileSync('src/components/ui/Slider.tsx', 'utf8')), 'Slider: Kennung mit useId-Anhang');
+
 if (fehler.length) { fehler.forEach(f => console.error('FAIL: ' + f)); process.exit(1); }
 console.log('OK: a11y Regler-Klartext 09.11.2026');
